@@ -5,6 +5,7 @@ import * as React from "react";
 
 import Layout from "@/layout/Layout";
 
+import Button from "../components/ui/buttons";
 export default function HomePage() {
     const { t } = useTranslation("common");
 
@@ -19,6 +20,12 @@ export default function HomePage() {
                     العربية
                 </Link>
             </div>
+            <Button
+                content='login'
+                transform='capitalize'
+                filled='true'
+                size='sm'
+            />
         </Layout>
     );
 }
