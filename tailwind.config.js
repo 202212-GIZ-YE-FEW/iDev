@@ -91,7 +91,7 @@ module.exports = {
                 sm: "2px",
                 md: "6px",
                 lg: "10px",
-                '2xl': "16px",
+                "2xl": "16px",
             },
             // paddingBlock: {
             //   'sm': '4.7px',
