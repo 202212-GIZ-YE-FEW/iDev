@@ -18,6 +18,15 @@ export default function HomePage() {
                 <Link href='/' locale='ar'>
                     العربية
                 </Link>
+                <div className='container max-w-4xl mx-auto pt-16 md:pt-32 text-center break-normal'>
+                    <p className='text-brand font-extrabold text-3xl md:text-5xl'>
+                        {" "}
+                        Ghostwind CSS
+                    </p>
+                    <p className='text-gray-500 bg-light-cyan text-yellow w-80 rounded-md px-md text-9xl font-normal px-lg'>
+                        Welcome to my Blog
+                    </p>
+                </div>
             </div>
         </Layout>
     );
