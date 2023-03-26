@@ -6,7 +6,9 @@ module.exports = {
     variants: {
         extend: {},
     },
-    plugins: [],
+    plugins: [
+      require('tailwindcss-rtl'),
+    ],
     theme: {
         screens: {
             sm: "480px",
