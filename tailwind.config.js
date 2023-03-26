@@ -15,6 +15,17 @@ module.exports = {
             xl: "1440px",
             "2xl": "1536px",
         },
+        container: {
+            padding: {
+                DEFAULT: ".5rem",
+                sm: "1rem",
+                md: "1.5rem",
+                lg: "3rem",
+                xl: "4rem",
+                "2xl": "4.5rem",
+            },
+            center: true,
+        },
         colors: {
             cyan: "#2DD3E3",
             "light-cyan": "#EAF8F9",
@@ -31,38 +42,32 @@ module.exports = {
         },
         fontSize: {
             xl: [
-                "1.25rem",
+                "1.25rem", // 20px
                 {
-                    // 20px
-                    // letterSpacing: '-0.02em',
                     lineHeight: "30px",
                 },
             ],
             "2xl": [
-                "1.5rem",
+                "1.5rem", // 24px
                 {
-                    // 24px
                     lineHeight: "36px",
                 },
             ],
             "3xl": [
-                "2.5rem",
+                "2.5rem", // 36px
                 {
-                    // 36px
                     lineHeight: "40px",
                 },
             ],
             "5xl": [
-                "3.1rem",
+                "3.1rem", // 50px
                 {
-                    // 50px
                     lineHeight: "75px",
                 },
             ],
             "9xl": [
-                "8rem",
+                "8rem", // 128px
                 {
-                    // 128px
                     lineHeight: "192px",
                 },
             ],
@@ -74,10 +79,14 @@ module.exports = {
             semibold: "600",
         },
         extend: {
-            spacing: {
-                128: "32rem",
-                144: "36rem",
+            boxShadow: {
+                md: "0 4px 6px -1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.15)",
+                "2xl": "0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2)",
             },
+            // spacing: {
+            //     128: "32rem",
+            //     144: "36rem",
+            // },
             borderRadius: {
                 sm: "2px",
                 md: "6px",
