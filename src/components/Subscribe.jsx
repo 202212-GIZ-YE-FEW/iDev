@@ -13,7 +13,7 @@ export default function Subscribe(prop) {
                 <p className='text-sm md:text-xl text-light-gray'>{subtitle}</p>
                 <form className='mt-[24px]'>
                     <label htmlFor='subscribe-newsletter' class='sr-only'>
-                        {title}{" "}
+                        {title}
                     </label>
                     <div className='flex max-w-[20rem] bg-white border-2 border-light-gray/80 rounded-md'>
                         <input
