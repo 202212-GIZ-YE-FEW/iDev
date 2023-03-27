@@ -43,6 +43,7 @@ module.exports = {
             sans: ["Poppins", "Graphik", "sans-serif"],
         },
         fontSize: {
+            
             xl: [
                 "1.25rem", // 20px
                 {
