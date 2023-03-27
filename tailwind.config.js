@@ -36,6 +36,8 @@ module.exports = {
             "light-gray": "#718096",
             phosphorescent: "#6BD24D",
             background: "#E5E5E5",
+            white: "#FFF",
+            transparent: "transparent",
         },
         fontFamily: {
             sans: ["Poppins", "Graphik", "sans-serif"],
