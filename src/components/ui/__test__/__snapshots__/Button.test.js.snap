@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<button
+  className="font-normal cursor-pointer capitalize text-xl rounded-6px px-[59px] py-[12px] font-medium bg-cyan text-black"
+/>
+`;
