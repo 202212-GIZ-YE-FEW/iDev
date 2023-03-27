@@ -36,11 +36,25 @@ module.exports = {
             "light-gray": "#718096",
             phosphorescent: "#6BD24D",
             background: "#E5E5E5",
+            white: "#FFF",
+            transparent: "transparent",
         },
         fontFamily: {
             sans: ["Poppins", "Graphik", "sans-serif"],
         },
         fontSize: {
+            sm: [
+                "0.875rem", // 14px
+                {
+                    lineHeight: "21px",
+                },
+            ],
+            lg: [
+                "1.125rem", // 18px
+                {
+                    lineHeight: "27px",
+                },
+            ],
             xl: [
                 "1.25rem", // 20px
                 {
