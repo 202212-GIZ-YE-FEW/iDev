@@ -68,7 +68,7 @@ module.exports = {
                 },
             ],
             "3xl": [
-                "2.5rem", // 36px
+                "2.25rem", // 36px
                 {
                     lineHeight: "40px",
                 },
