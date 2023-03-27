@@ -33,3 +33,64 @@ npm install               // Installs the node modules
 -   The `layout` folder contains the components that will be used in the layout of pages, so components like the header and footer will be placed there.
 
 Good luck and happy coding :D
+
+## 🔨 Build
+
+To build this project run
+
+Using npm
+
+```bash
+  npm run build
+```
+
+Using yarn
+
+```bash
+  yarn build
+```
+
+## 🚀 Deployment
+
+To deploy this project run
+
+```bash
+  npm run build
+  npm run start
+```
+
+Use the following command to run the project in development mode
+
+```bash
+  npm run dev
+```
+
+## 🚀 Live Demo
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8f7034b6-9a78-4634-bbe0-8ad0611dd6c7/deploy-status)](https://app.netlify.com/sites/therapistidev/deploys)
+
+![Netlify Badge](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
+
+Deployed on Netlify: [iDev Therapist](https://therapistidev.netlify.app/)
+
+## 🌵 Branches
+
+We use an agile continuous integration methodology, so the version is frequently updated and development is really fast.
+
+1. develop is the development branch.
+
+2. master is the production branch.
+
+3. No other permanent branches should be created in the main repository, you can create feature branches but they should get merged with the master.
+
+**Steps to work with feature branch**
+
+1. To start working on a new feature, create a new branch prefixed with feature and followed by feature name. (ie. feature/featurename-issuenumber)
+2. Once you are done with your changes, you can raise PR.
+
+**Steps to create a pull request**
+
+1. Make a PR to develop branch.
+2. Comply with the best practices and guidelines e.g. where the PR concerns visual elements it should have an image showing the effect.
+3. It must pass all continuous integration checks and get positive reviews.
+4. After this, changes will be merged to develop branch.
