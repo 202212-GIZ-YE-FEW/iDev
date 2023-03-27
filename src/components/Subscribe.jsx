@@ -14,7 +14,7 @@ export default function Subscribe(prop) {
                     {subtitle}
                 </p>
                 <form className='mt-[24px]'>
-                    <label htmlFor='subscribe-newsletter' class='sr-only'>
+                    <label htmlFor='subscribe-newsletter' className='sr-only'>
                         {title}
                     </label>
                     <div className='flex max-w-[20rem] bg-white border-2 border-light-gray/80 rounded-md'>
