@@ -51,7 +51,7 @@ export default {
         radius: {
             control: {
                 type: "select",
-                options: ["none", "sm", "md", "lg", "full"],
+                options: ["sm", "md", "lg", "2xl"],
             },
         },
         border: {
@@ -59,20 +59,22 @@ export default {
                 type: "select",
                 options: [
                     "gray",
-                    "red",
+                    "cyan",
                     "yellow",
-                    "green",
-                    "blue",
-                    "indigo",
-                    "purple",
-                    "pink",
+                    "black",
+                    "light-black",
+                    "light-gray",
+                    "phosphorescent",
+                    "background",
+                    "white",
+                    "transparent",
                 ],
             },
         },
         shadow: {
             control: {
                 type: "select",
-                options: ["sm", "md", "lg", "xl", "2xl", "inner", "none"],
+                options: ["md", "2xl"],
             },
         },
     },
@@ -85,8 +87,8 @@ Default.args = {
     label: "Label",
     placeholder: "Placeholder",
     size: "sm",
-    height: "24",
-    radius: "none",
+    height: "48",
+    radius: "md",
     border: "gray",
-    shadow: "md",
+    shadow: "2xl",
 };

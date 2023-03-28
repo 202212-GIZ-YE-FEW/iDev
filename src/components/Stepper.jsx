@@ -19,7 +19,7 @@ function Stepper(props) {
 
     return (
         <div className='flex items-start justify-between sm:p-6 lg:p-8 flex-col'>
-            <div className='max-w-sm p-6 border-gray rounded-lg shadow dark:border-gray'>
+            <div className='max-w-sm p-6 border-gray rounded-lg shadow'>
                 {steps.map((step, index) => {
                     return (
                         <div
