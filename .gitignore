@@ -6,6 +6,9 @@
 .pnp.js
 yarn.lock
 
+/.idea/
+/.swc/
+
 # testing
 /coverage
 
