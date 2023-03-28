@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
         we are here to
       </p>
       <span
-        className="text-3xl md:text-5xl lg:text-9xl uppercase"
+        className="text-3xl md:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase"
       >
         help
       </span>

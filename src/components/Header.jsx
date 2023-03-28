@@ -22,7 +22,7 @@ export default function Hero() {
                     <p className='text-xl md:text-2xl lg:text-3xl uppercase'>
                         we are here to
                     </p>
-                    <span className='text-3xl md:text-5xl lg:text-9xl uppercase'>
+                    <span className='text-3xl md:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase'>
                         help
                     </span>
                     <Button
