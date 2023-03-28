@@ -1,21 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div
-  className=" block "
->
-  <input
-    className="border border-solid border-gray-300 px-[20px] py-[20px] rounded-md 
-      
-  
-  text-3xl font-light"
-    required={false}
-    style={
-      Object {
-        "height": "",
-        "width": "",
-      }
-    }
-  />
-</div>
+<input
+  className="border border-solid border-gray-300 px-[20px] py-[20px]  text-3xl font-light"
+  required={false}
+/>
 `;
