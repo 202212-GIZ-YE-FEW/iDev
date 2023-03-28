@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex flex-col md:flex-row mw-[1440px] h-[400px] md:gap-[200px] md:mw-[1024px] gap-[66px] bg-light-cyan"
+>
+  <div
+    className="w-full md:w-[590px] h-[320px]"
+  >
+    <img
+      alt="My Image"
+      className="mb-10 mt-[40px] md:ml-[191px] md:mb-[40px]"
+      data-nimg="1"
+      decoding="async"
+      height={320}
+      loading="lazy"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="/_next/image?url=%2F.%2F..%2Fpublic%2FOurFounding.png&w=828&q=75"
+      srcSet="/_next/image?url=%2F.%2F..%2Fpublic%2FOurFounding.png&w=640&q=75 1x, /_next/image?url=%2F.%2F..%2Fpublic%2FOurFounding.png&w=828&q=75 2x"
+      style={
+        Object {
+          "color": "transparent",
+        }
+      }
+      width={400}
+    />
+  </div>
+  <div
+    className="w-full md:w-[950px] mt-[66px]"
+  >
+    <h1
+      className="bg-red w-full md:w-[363px] h-[47px] text-3xl font-sans mb-4 md:mb-0"
+    >
+      Our Founding
+    </h1>
+    <p
+      className="w-full md:w-[641px] h-[195px] leading-[2.5rem]"
+    >
+      Healing was founded by Payam Abubakr in 2021. It was called Healing Online, and started as a blog and an online community where some of the worlds therapists shared their research and ideas. We launched the Beginners Guide to Therapy and our first study, and that hub of industry expertise transformed into a small consulting firm and led us to create the Online Therapist of today!
+    </p>
+  </div>
+</div>
+`;
