@@ -33,6 +33,6 @@ export default function Button(prop) {
     filled='false'
     size='large'
     fontSize="5xl"
-    radius="5px"
+    radius="md"
 /> */
 }
