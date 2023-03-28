@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <input
-  className="w-full border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-3xl font-light rounded-md"
+  className="w-full border border-solid self-center border-light-gray/30 text-light-black  md:px-3  py-[0.32rem] px-3 leading-[2.15]  min-w-0 text-3xl font-light rounded-md"
   required={false}
 />
 `;
