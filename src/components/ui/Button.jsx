@@ -26,15 +26,12 @@ export default function Button(prop) {
         </button>
     );
 }
-
 // Example of using
-{
-    /* <Button
-    content='login'
-    text-transform='uppercase'
-    filled='false'
-    size='large'
-    fontSize="5xl"
-    radius="md"
+/* <Button
+content='book an appointment'
+text-transform='uppercase'
+filled='true'
+size='large'
+fontSize='text-lg md:text-xl lg:text-2xl'
+radius='md'
 /> */
-}

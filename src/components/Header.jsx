@@ -16,14 +16,6 @@ export default function Hero() {
             style={style}
             className='container flex flex-col items-center justify-center md:flex-row md:space-s-20 space-y-10'
         >
-            {/* <svg width="1440" height="745" viewBox="0 0 1440 745" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-          <rect width="1440" height="745" fill="url(#pattern0)"/>
-          <defs>
-          <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-          <use xlinkHref="#image0_279_4816" transform="matrix(0.000569154 0 0 0.00110011 -0.0466725 0)"/>
-          </pattern>
-          </defs>
-        </svg> */}
             <div className='flex flex-col'>
                 <p className='text-xl md:text-2xl lg:text-3xl uppercase'>
                     we are here to
