@@ -9,28 +9,6 @@ on:
     pull_request: {}
 
 jobs:
-    install:
-        name: 📥 Install dependencies
-        runs-on: ubuntu-latest
-        steps:
-            - name: ⬇️ Checkout repo
-              uses: actions/checkout@v2
-
-            - name: ⎔ Setup node
-              uses: actions/setup-node@v2
-              with:
-                  node-version: 16
-
-            - name: 📥 Download deps
-              run: |
-                  if [ -f yarn.lock ]; then
-                      yarn install --frozen-lockfile
-                  elif [ -f package-lock.json ]; then
-                      npm ci
-                  else
-                      npm install
-                  fi
-
     lint:
         name: ⬣ ESLint
         runs-on: ubuntu-latest
