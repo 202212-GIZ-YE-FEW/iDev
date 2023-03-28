@@ -103,7 +103,7 @@ module.exports = {
             // },
             borderRadius: {
                 sm: "2px",
-                md: "6px",
+                md: "5px",
                 lg: "10px",
                 "2xl": "16px",
             },
