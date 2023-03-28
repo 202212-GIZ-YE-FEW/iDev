@@ -68,7 +68,7 @@ module.exports = {
                 },
             ],
             "3xl": [
-                "2.5rem", // 36px
+                "2.25rem", // 36px
                 {
                     lineHeight: "40px",
                 },
@@ -103,7 +103,7 @@ module.exports = {
             // },
             borderRadius: {
                 sm: "2px",
-                md: "6px",
+                md: "5px",
                 lg: "10px",
                 "2xl": "16px",
             },
