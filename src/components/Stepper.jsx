@@ -2,7 +2,8 @@ import { React, useState } from "react";
 
 import Button from "./ui/Button";
 
-function Stepper({ steps, currentStep }) {
+function Stepper(props) {
+    const { steps, currentStep } = props;
     const [current, setCurrent] = useState(currentStep);
     const nextStep = () => {
         if (current < steps.length - 1) {
