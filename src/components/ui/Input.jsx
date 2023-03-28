@@ -12,15 +12,23 @@ const Input = (props) => {
         label,
         inputFontSize = "3xl",
         inputFontWeight = "light",
-
+        inputWidthSize = "w-full",
+        radius = "md",
         ...rest
     } = props;
 
-    const inputClasses = `border border-solid border-gray-300 px-[20px] py-[20px]  text-${inputFontSize} font-${inputFontWeight}`;
+    const inputClasses = `${inputWidthSize} border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>
-            {label && <label htmlFor={rest.id || rest.name}>{label}</label>}
+            {label && (
+                <label
+                    className='font-normal   whitespace-nowrap flex:me-10 flex:self-center'
+                    htmlFor={rest.id || rest.name}
+                >
+                    {label}
+                </label>
+            )}
             <input
                 onChange={handleChange}
                 value={value}
@@ -43,8 +51,8 @@ label="email"
  type="name"
  name="name"
  placeholder="name"
- inputWidthSize="100px" 
- inputHightSize="40px"
+ inputWidthSize="w-full" 
+
 
 /> */
 }
