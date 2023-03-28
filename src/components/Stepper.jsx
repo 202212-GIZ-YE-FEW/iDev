@@ -18,8 +18,8 @@ function Stepper(props) {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center'>
-            <div className='max-w-sm p-6 border-gray rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
+        <div className='flex items-start justify-between sm:p-6 lg:p-8 flex-col'>
+            <div className='max-w-sm p-6 border-gray rounded-lg shadow dark:border-gray'>
                 {steps.map((step, index) => {
                     return (
                         <div
@@ -28,8 +28,10 @@ function Stepper(props) {
                                 current === index ? "block" : "hidden"
                             } w-full h-full p-4 text-center`}
                         >
-                            <h1 className='text-4xl font-bold'>{step.title}</h1>
-                            <p className='text-xl'>{step.content}</p>
+                            <p className='text-3xl font-normal text-start'>
+                                {step.title}
+                            </p>
+                            {step.content}
                         </div>
                     );
                 })}
