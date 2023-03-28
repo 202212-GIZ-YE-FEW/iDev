@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DropDown = ({ value, data, styleClass, onChange }) => {
+function DropDown(props) {
+    const { value, data, styleClass, onChange } = props;
     const handleChange = (event) => {
         console.log(event.target.value);
     };
@@ -16,7 +17,7 @@ const DropDown = ({ value, data, styleClass, onChange }) => {
             </select>
         </div>
     );
-};
+}
 
 DropDown.propTypes = {
     value: PropTypes.string,
