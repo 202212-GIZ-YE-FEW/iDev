@@ -7,7 +7,7 @@ exports[`renders correctly 1`] = `
     Object {
       "backgroundImage": "url(/header.png)",
       "backgroundSize": "cover",
-      "height": "100vh",
+      "height": "calc(100vh - 5rem)",
       "left": "0",
       "minWidth": "96.5vw",
       "position": "relative",
