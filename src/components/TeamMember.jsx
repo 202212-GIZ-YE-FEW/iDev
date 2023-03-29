@@ -1,5 +1,5 @@
 import Image from "next/image";
-const SingleTeam = ({ title, job, photo }) => {
+const TeamMember = ({ title, job, photo }) => {
     return (
         <>
             {/* Single Card */}
@@ -20,4 +20,4 @@ const SingleTeam = ({ title, job, photo }) => {
     );
 };
 
-export default SingleTeam;
+export default TeamMember;
