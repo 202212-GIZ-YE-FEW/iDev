@@ -2,6 +2,6 @@
 
 exports[`renders correctly 1`] = `
 <span
-  className="font-normal  text-5xl block uppercase"
+  className="font-normal text-3xl md:text-4xl lg:text-5xl block uppercase"
 />
 `;
