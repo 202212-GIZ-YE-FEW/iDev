@@ -15,7 +15,7 @@ export default function Singup() {
                         alt='Sample image'
                     />
                 </div>
-                <div className='w-full max-w-xs md:mx-auto mb-12 md:mb-0  md:shrink-0 md:w-7/12 lg:w-4/12 xl:w-5/12  ml-2 leading-normal '>
+                <div className='w-full max-w-xs md:mx-auto mb-12 md:mb-0  md:shrink-0 md:w-7/12 lg:w-12/12 xl:w-5/12  ml-2 leading-normal '>
                     <FormTitle title='Singup Now' />
                     <form className=' shadow-[0_4px_9px_-4px_#3b71ca] mt-8  p-6'>
                         <div
@@ -84,21 +84,21 @@ export default function Singup() {
                             />
                         </div>
 
-                        <div className=' flex justify-center lg:text-left space-x-5 sm:flex-row '>
+                        <div className=' flex justify-center space-x-5 lg:space-x-2   sm:flex-row '>
                             <Button
                                 content='login'
                                 text-transform='uppercase'
                                 filled='false'
-                                size='small'
-                                fontSize='sm md:text-1xl'
+                                size='large'
+                                fontSize='lg:text-md xl:text-sm'
                                 radius='md '
                             />
                             <Button
                                 content='Singup'
                                 text-transform='uppercase'
                                 filled='true'
-                                size='small'
-                                fontSize='sm md:text-1xl'
+                                size='large'
+                                fontSize='lg:text-md xl xl:text-sm'
                                 radius='md '
                             />
                         </div>
