@@ -11,10 +11,12 @@ export default function Button(prop) {
     return (
         <button
             className={clsx(
-                `font-normal cursor-pointer ${textTransform} text-${fontSize} rounded-${radius}`,
+                `font-normal whitespace-nowrap cursor-pointer ${textTransform} ${fontSize} rounded-${radius}`,
                 {
-                    "px-[28px] py-[4.7px]": size === "small",
-                    "px-[59px] py-[12px] font-medium": size === "large",
+                    "px-[10] md:px-[18px] lg:px-[28px] py-[4.7px]":
+                        size === "small",
+                    "px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium":
+                        size === "large",
                     "bg-cyan text-black": filled === "true",
                     "border-2 border-cyan text-cyan": filled === "false",
                 }
@@ -24,15 +26,12 @@ export default function Button(prop) {
         </button>
     );
 }
-
 // Example of using
-{
-    /* <Button
-    content='login'
-    text-transform='uppercase'
-    filled='false'
-    size='large'
-    fontSize="5xl"
-    radius="5px"
+/* <Button
+content='book an appointment'
+text-transform='uppercase'
+filled='true'
+size='large'
+fontSize='text-lg md:text-xl lg:text-2xl'
+radius='md'
 /> */
-}

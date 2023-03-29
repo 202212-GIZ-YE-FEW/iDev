@@ -60,9 +60,7 @@ exports[`renders correctly 1`] = `
     <div
       className="flex flex-col space-y-10 justify-center"
     >
-      <nav
-        className=""
-      >
+      <nav>
         <ul
           className="flex text-light-gray text-sm md:text-lg lg:text-xl"
         >
@@ -119,7 +117,10 @@ exports[`renders correctly 1`] = `
       <div
         className="flex space-x-[35px] justify-center"
       >
-        <div>
+        <a
+          href="#"
+          target="_blank"
+        >
           <svg
             fill="none"
             height="26"
@@ -132,8 +133,11 @@ exports[`renders correctly 1`] = `
               fill="#1A1A1A"
             />
           </svg>
-        </div>
-        <div>
+        </a>
+        <a
+          href="#"
+          target="_blank"
+        >
           <svg
             fill="none"
             height="26"
@@ -146,8 +150,11 @@ exports[`renders correctly 1`] = `
               fill="#1A1A1A"
             />
           </svg>
-        </div>
-        <div>
+        </a>
+        <a
+          href="#"
+          target="_blank"
+        >
           <svg
             fill="none"
             height="26"
@@ -160,7 +167,7 @@ exports[`renders correctly 1`] = `
               fill="#1A1A1A"
             />
           </svg>
-        </div>
+        </a>
       </div>
     </div>
   </div>

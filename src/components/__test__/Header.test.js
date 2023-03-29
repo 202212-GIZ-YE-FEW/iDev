@@ -1,7 +1,8 @@
 import renderer from "react-test-renderer";
-import TeamMember from "@/components/TeamMember";
+
+import Header from "../Header";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<TeamMember />).toJSON();
+    const tree = renderer.create(<Header />).toJSON();
     expect(tree).toMatchSnapshot();
 });
