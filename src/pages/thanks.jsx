@@ -8,7 +8,7 @@ export default function Thanks(prop) {
         <>
             <div className='container'>
                 <PageIntro title='Thank you!' subtitle={subtitle} />
-                <Button content='back to home' text-transform='uppercase' />
+                <Button content='back to home' textTransform='uppercase' />
             </div>
         </>
     );
