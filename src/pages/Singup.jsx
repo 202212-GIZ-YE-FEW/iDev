@@ -19,7 +19,7 @@ export default function Singup() {
                     <FormTitle title='Singup Now' />
                     <form className=' shadow-[0_4px_9px_-4px_#3b71ca] mt-8  p-6'>
                         <div
-                            className=' flex mb-2 lg:text-left  justify-center space-x-3 sm:flex-row '
+                            className=' flex mb-2 lg:text-start  justify-center space-x-3 sm:flex-row '
                             data-te-input-wrapper-init
                         >
                             <Input
@@ -57,7 +57,7 @@ export default function Singup() {
                             />
                         </div>
                         <div
-                            className=' flex mb-2 lg:text-left  justify-center space-x-3 sm:flex-row '
+                            className=' flex mb-2 lg:text-start  justify-center space-x-3 sm:flex-row '
                             data-te-input-wrapper-init
                         >
                             <Input
@@ -72,7 +72,7 @@ export default function Singup() {
                             />
                         </div>
                         <div
-                            className='flex space-x-5 text-center lg:text-left  justify-center mb-6 text-md  font-weight-500 '
+                            className='flex space-x-5 text-center lg:text-start  justify-center mb-6 text-md  font-weight-500 '
                             data-te-input-wrapper-init
                         >
                             <Input
