@@ -10,6 +10,7 @@ export default function AuthSocialMedia() {
             </div>
             <div className='flex flex-row items-center justify-center '>
                 <svg
+                    testId='facebook-icon'
                     width='50px'
                     height='50px'
                     viewBox='0 0 24 24'
@@ -32,6 +33,7 @@ export default function AuthSocialMedia() {
                     </g>
                 </svg>
                 <svg
+                    testId='google-icon'
                     width='50px'
                     height='50px'
                     viewBox='0 0 24 24'
