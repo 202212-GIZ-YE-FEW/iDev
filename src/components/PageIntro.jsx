@@ -2,7 +2,7 @@ export default function PageIntro(prop) {
     const { title, subtitle } = prop;
     return (
         <>
-            <span className='font-normal text-5xl block uppercase'>
+            <span className='font-normal  text-5xl block uppercase'>
                 {title}
             </span>
             {subtitle && <p className='text-2xl text-black/50'>{subtitle}</p>}
