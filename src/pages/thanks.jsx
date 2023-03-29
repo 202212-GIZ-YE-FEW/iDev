@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 
@@ -10,12 +12,14 @@ export default function Thanks(prop) {
         <Layout>
             <div className='container my-20'>
                 <PageIntro title='Thank you!' subtitle={subtitle} />
-                <Button
-                    content='back to home'
-                    textTransform='uppercase'
-                    radius='md'
-                    fontSize='text-lg md:text-xl lg:text-2xl'
-                />
+                <Link href='/'>
+                    <Button
+                        content='back to home'
+                        textTransform='uppercase'
+                        radius='md'
+                        fontSize='text-lg md:text-xl lg:text-2xl'
+                    />
+                </Link>
             </div>
         </Layout>
     );
