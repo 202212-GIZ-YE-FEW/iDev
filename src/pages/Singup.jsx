@@ -91,7 +91,7 @@ export default function Singup() {
                                 filled='false'
                                 size='small'
                                 fontSize='5xl'
-                                radius='5px'
+                                radius='md'
                             />
                             <Button
                                 content='Singup'
@@ -99,7 +99,7 @@ export default function Singup() {
                                 filled='true'
                                 size='small'
                                 fontSize='5xl'
-                                radius='5px'
+                                radius='md'
                             />
                         </div>
                     </form>
