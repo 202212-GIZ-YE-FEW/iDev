@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import DropDown from "../DropDown/DropDown";
+import Dropdown from "../Dropdown/Dropdown";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<DropDown />).toJSON();
+    const tree = renderer.create(<Dropdown />).toJSON();
     expect(tree).toMatchSnapshot();
 });

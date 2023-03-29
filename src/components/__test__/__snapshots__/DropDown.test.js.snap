@@ -1,13 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div
-  className="mb-3 xl:w-96 "
->
-  <select
-    className=""
-    onChange={[Function]}
-    value=""
-  />
-</div>
+<select
+  className="w-full border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-3xl font-light rounded-md"
+  onChange={[Function]}
+  value=""
+/>
 `;

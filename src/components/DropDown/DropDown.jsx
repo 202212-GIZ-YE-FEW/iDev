@@ -1,34 +1,58 @@
 import PropTypes from "prop-types";
 
-function DropDown(props) {
-    const { value, data, styleClass, onChange } = props;
+function Dropdown(props) {
+    const {
+        label,
+        placeholder,
+        value,
+        data,
+        FontSize = "3xl",
+        FontWeight = "light",
+        WidthSize = "w-full",
+        radius = "md",
+        onChange,
+    } = props;
+
+    const inputClasses = `${WidthSize} border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius}`;
+
     const handleChange = (event) => {
         const { value } = event.target;
         onChange(value);
     };
     return (
-        <div className={`mb-3 xl:w-96 ${styleClass}`}>
-            <select value={value} className='' onChange={handleChange}>
+        <>
+            {label && (
+                <label className='font-normal   whitespace-nowrap flex:me-10 flex:self-center'>
+                    {label}
+                </label>
+            )}
+
+            <select
+                value={value}
+                onChange={handleChange}
+                placeholder={placeholder}
+                className={inputClasses}
+            >
                 {data?.map((item, key) => (
                     <option key={key} value={item.value}>
                         {item.lable}
                     </option>
                 ))}
             </select>
-        </div>
+        </>
     );
 }
 
-DropDown.propTypes = {
+Dropdown.propTypes = {
     value: PropTypes.string,
     data: PropTypes.array.isRequired,
     styleClass: PropTypes.srting,
     onChange: PropTypes.func.isRequired,
 };
 
-DropDown.defaultProps = {
+Dropdown.defaultProps = {
     value: "",
     styleClass: "",
 };
 
-export default DropDown;
+export default Dropdown;
