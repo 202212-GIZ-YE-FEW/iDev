@@ -2,6 +2,6 @@
 
 exports[`renders correctly 1`] = `
 <span
-  className="font-poppins  uppercase font-normal font-400 text-3xl leading-75 text-center tracking-tighter"
+  className="font-poppins  uppercase font-normal font-400  md:text-xl lg:text-3xl  leading-75 text-center tracking-tighter"
 />
 `;
