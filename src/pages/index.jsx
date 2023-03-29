@@ -5,6 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Header from "@/components/Header";
 
 import Layout from "@/layout/Layout";
+import Singup from "./signup";
 export default function HomePage() {
     const { t } = useTranslation("common");
 

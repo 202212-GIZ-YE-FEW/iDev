@@ -17,8 +17,7 @@ export default function Button(prop) {
                         size === "small",
                     "px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium":
                         size === "large",
-                    "bg-cyan text-black shadow-[0_4px_9px_-4px_#3b71ca]":
-                        filled === "true",
+                    "bg-cyan text-black ": filled === "true",
                     "border-2 border-cyan text-cyan": filled === "false",
                 }
             )}

@@ -2,6 +2,6 @@
 
 exports[`renders correctly 1`] = `
 <button
-  className="font-normal whitespace-nowrap cursor-pointer capitalize xl rounded-6px px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black shadow-[0_4px_9px_-4px_#3b71ca]"
+  className="font-normal whitespace-nowrap cursor-pointer capitalize xl rounded-6px px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black "
 />
 `;

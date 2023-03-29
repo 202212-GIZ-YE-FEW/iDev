@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import AuthSocialMedia from "@/components/ui/AuthSocialMedia";
-import FormTitle from "@/components/ui/FormTitle";
+import FormTitle from "@/components/FormTitle";
 
 export default function Singup() {
     return (
@@ -84,7 +84,7 @@ export default function Singup() {
                             />
                         </div>
 
-                        <div className=' flex justify-center space-x-5 lg:space-x-2   sm:flex-row '>
+                        <div className=' flex justify-center space-x-5 lg:space-x-2 sm:flex-row '>
                             <Button
                                 content='login'
                                 text-transform='uppercase'
