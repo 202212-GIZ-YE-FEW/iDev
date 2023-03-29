@@ -6,8 +6,10 @@ export default function Thanks(prop) {
     } = prop;
     return (
         <>
-            <PageIntro title='Thank you!' subtitle={subtitle} />
-            <Button content='back to home' text-transoform='uppercase' />
+            <div className='container'>
+                <PageIntro title='Thank you!' subtitle={subtitle} />
+                <Button content='back to home' text-transform='uppercase' />
+            </div>
         </>
     );
 }
