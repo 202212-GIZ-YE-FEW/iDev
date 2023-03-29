@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<footer
+  className="bg-yellow py-8"
+>
+  <div
+    className="container flex flex-col items-center md:flex-row justify-center md:justify-between space-y-4 md:space-y-0"
+  >
+    <div
+      className="flex flex-col"
+    >
+      <span
+        className="text-xl md:text-3xl capitalize font-medium mb-[12px]"
+      >
+        subscribe
+      </span>
+      <p
+        className="text-sm md:text-lg lg:text-xl text-light-gray"
+      >
+        We’ll never to spam you or share your email
+      </p>
+      <form
+        className="mt-[24px]"
+      >
+        <label
+          className="sr-only"
+          htmlFor="subscribe-newsletter"
+        >
+          subscribe
+        </label>
+        <div
+          className="flex max-w-[20rem] bg-white border-2 border-light-gray/80 rounded-md"
+        >
+          <input
+            className="block flex-1 min-w-0 w-full focus:outline-none text-sm py-2.5 px-3 bg-transparent"
+            id="subscribe-newsletter"
+            placeholder="Enter your e-mail"
+            type="text"
+          />
+          <span
+            className="inline-flex items-center text-2xl px-3 bg-cyan border-s-2 border-light-gray/80 text-light-black rounded-r-[5px]"
+          >
+            <svg
+              fill="none"
+              height="20"
+              viewBox="0 0 25 25"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.6327 12.3673L8.04212 14.5401C7.59967 14.7861 7.05302 14.7438 6.65376 14.4325L0.486233 9.74981C-0.307758 9.13085 -0.0922473 7.87688 0.862835 7.55852L23.3377 0.0669056C24.3237 -0.261766 25.2618 0.676297 24.9331 1.66231L17.4415 24.1372C17.1231 25.0922 15.8691 25.3078 15.2502 24.5138L10.5675 18.3462C10.2562 17.947 10.2139 17.4003 10.4599 16.9579L12.6327 12.3673Z"
+                fill="#1A1A1A"
+              />
+            </svg>
+          </span>
+        </div>
+      </form>
+    </div>
+    <div
+      className="flex flex-col space-y-10 justify-center"
+    >
+      <nav>
+        <ul
+          className="flex text-light-gray text-sm md:text-lg lg:text-xl"
+        >
+          <li
+            className="mx-6"
+          >
+            <a
+              href="#"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              Home
+            </a>
+          </li>
+          <li
+            className="mx-6"
+          >
+            <a
+              href="#"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              Blogs
+            </a>
+          </li>
+          <li
+            className="mx-6"
+          >
+            <a
+              href="#"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              About
+            </a>
+          </li>
+          <li
+            className="mx-6"
+          >
+            <a
+              href="#"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div
+        className="flex space-x-[35px] justify-center"
+      >
+        <a
+          href="#"
+          target="_blank"
+        >
+          <svg
+            fill="none"
+            height="26"
+            viewBox="0 0 35 31"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M29.2578 2.62682C30.9347 2.28241 32.5884 1.39473 32.5884 1.39473C33.3256 1.04856 33.6012 1.31906 33.2037 2.01651C33.2037 2.01651 32.2112 4.07413 30.6949 5.02984C32.1797 4.84341 33.52 4.29924 33.52 4.29924C34.2926 4.0365 34.5007 4.66055 33.9952 5.29167C33.9952 5.29167 32.6842 7.11819 31.25 8.20833C31.2624 8.53802 31.2682 8.47983 31.2682 8.81639C31.2682 20.4922 25.3761 30.8125 10.3789 30.8125C4.74279 30.8125 1.72544 28.5762 1.72544 28.5762C0.269777 27.8354 0.435023 26.9706 2.05229 26.7287C2.05229 26.7287 7.48179 26.2115 9.99381 24.1372C-4.37503 16.9583 1.48563 3.05932 1.48563 3.05932C1.54196 2.25827 2.09591 2.05424 2.68917 2.61642C2.68917 2.61642 9.15627 9.35606 16.7492 9.67889C16.6231 9.11272 16.5601 8.52497 16.5601 7.91857C16.5601 3.64926 19.8479 0.1875 23.8993 0.1875C26.0129 0.1875 27.922 1.12555 29.2578 2.62682Z"
+              fill="#1A1A1A"
+            />
+          </svg>
+        </a>
+        <a
+          href="#"
+          target="_blank"
+        >
+          <svg
+            fill="none"
+            height="26"
+            viewBox="0 0 33 33"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.458252 16.539C0.458252 7.65794 7.64035 0.458374 16.4999 0.458374C25.3595 0.458374 32.5416 7.65794 32.5416 16.539C32.5416 24.8822 26.2031 31.7414 18.09 32.5417C18.1335 32.5341 18.1768 32.5259 18.2201 32.5172V21.1551H22.3906L23.0147 16.3013H18.2201V13.2024C18.2201 11.797 18.6092 10.8396 20.6198 10.8396L23.1836 10.8383V6.49719C22.7401 6.43784 21.2183 6.30589 19.4475 6.30589C15.751 6.30589 13.2198 8.56769 13.2198 12.7219V16.3013H9.03863V21.1551H13.2198V32.2833C5.93343 30.7657 0.458252 24.2933 0.458252 16.539Z"
+              fill="#1A1A1A"
+            />
+          </svg>
+        </a>
+        <a
+          href="#"
+          target="_blank"
+        >
+          <svg
+            fill="none"
+            height="26"
+            viewBox="0 0 33 33"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.7257 13.3234V18.6752C16.7257 19.2281 17.1736 19.676 17.7264 19.6753C19.5968 19.6728 23.6062 19.6679 25.5201 19.6679C24.1418 23.7872 21.9993 26.0298 16.7257 26.0298C11.3887 26.0298 7.22315 21.7631 7.22315 16.4994C7.22315 11.2369 11.3887 6.97025 16.7257 6.97025C19.5472 6.97025 21.3698 7.94853 23.0413 9.31162C24.3791 7.99225 24.2674 7.8036 27.6714 4.63262C24.7814 2.03886 20.9408 0.458374 16.7257 0.458374C7.74226 0.458374 0.458252 7.63992 0.458252 16.4994C0.458252 25.3589 7.74226 32.5417 16.7257 32.5417C30.154 32.5417 33.4362 21.011 32.3485 13.3234H16.7257Z"
+              fill="#1A1A1A"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+`;
