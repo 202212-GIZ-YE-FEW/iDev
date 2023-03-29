@@ -10,7 +10,6 @@ function Dropdown(props) {
         radius = "md",
         onChange,
     } = props;
-
     const inputClasses = `${WidthSize} border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius}`;
 
     const handleChange = (event) => {
