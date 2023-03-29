@@ -2,22 +2,31 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import Layout from "@/layout/Layout";
+import Header from "@/components/Header";
 
+import Layout from "@/layout/Layout";
 export default function HomePage() {
     const { t } = useTranslation("common");
 
     return (
         <Layout>
-            <p>{t("test")}</p>
-            <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-                <Link href='/' locale='en'>
-                    English
-                </Link>
-                <Link href='/' locale='ar'>
-                    العربية
-                </Link>
-            </div>
+            <Header>
+                <p>{t("test")}</p>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "20px",
+                    }}
+                >
+                    <Link href='/' locale='en'>
+                        English
+                    </Link>
+                    <Link href='/' locale='ar'>
+                        العربية
+                    </Link>
+                </div>
+            </Header>
         </Layout>
     );
 }
