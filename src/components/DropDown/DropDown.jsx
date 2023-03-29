@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 function Dropdown(props) {
     const {
         label,
