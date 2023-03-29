@@ -29,7 +29,7 @@ export default function Button(prop) {
 // Example of using
 /* <Button
 content='book an appointment'
-text-transform='uppercase'
+textTransform='uppercase'
 filled='true'
 size='large'
 fontSize='text-lg md:text-xl lg:text-2xl'
