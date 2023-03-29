@@ -33,11 +33,13 @@ function Dropdown(props) {
                 placeholder={placeholder}
                 className={inputClasses}
             >
-                {data?.map((item, key) => (
-                    <option key={key} value={item.value}>
-                        {item.lable}
-                    </option>
-                ))}
+                {data?.map((item, key) => {
+                    return (
+                        <option key={key} value={item.value}>
+                            {item.lable}
+                        </option>
+                    );
+                })}
             </select>
         </>
     );
