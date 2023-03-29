@@ -4,7 +4,9 @@ import Button from "./ui/Button";
 
 function Stepper(props) {
     const { steps, currentStep } = props;
-    const [current, setCurrent] = useState(currentStep);
+    const [current, setCurrent] = useState(
+        currentStep >= 0 && currentStep < steps.length ? currentStep : 0
+    );
     const nextStep = () => {
         if (current < steps.length - 1) {
             setCurrent(current + 1);
