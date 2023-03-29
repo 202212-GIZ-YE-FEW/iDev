@@ -43,16 +43,4 @@ function Dropdown(props) {
     );
 }
 
-Dropdown.propTypes = {
-    value: PropTypes.string,
-    data: PropTypes.array.isRequired,
-    styleClass: PropTypes.srting,
-    onChange: PropTypes.func.isRequired,
-};
-
-Dropdown.defaultProps = {
-    value: "",
-    styleClass: "",
-};
-
 export default Dropdown;
