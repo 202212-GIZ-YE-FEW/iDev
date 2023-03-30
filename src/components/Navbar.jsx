@@ -6,11 +6,70 @@ import { useState } from "react";
 import Button from "@/components/ui/Button";
 
 import { navigation } from "@/constants";
-function MobileNav({ openHamburger, setOpenHamburger, t }) {
+
+function LangDropdown(prop) {
+    const { setOpenLangDropdown, openLangDropdown, router } = prop;
     return (
         <div
-            className={`md:hidden absolute top-0 left-0 h-full w-full z-20 bg-background transform ${
-                openHamburger ? "-translate-x-[2px]" : "-translate-x-full"
+            className='relative inline-block'
+            onClick={() => {
+                setOpenLangDropdown(!openLangDropdown);
+            }}
+        >
+            <button className='relative z-10 block p-2 text-black bg-yellow border border-transparent rounded-md focus:outline-none'>
+                <svg
+                    fill='none'
+                    height='23'
+                    viewBox='0 0 28 28'
+                    width='23'
+                    xmlns='http://www.w3.org/2000/svg'
+                >
+                    <path
+                        clipRule='evenodd'
+                        d='M14 27.75C21.5939 27.75 27.75 21.5939 27.75 14C27.75 6.40608 21.5939 0.25 14 0.25C6.40608 0.25 0.25 6.40608 0.25 14C0.25 21.5939 6.40608 27.75 14 27.75ZM11.6258 25.2121C9.49226 21.8802 8.30818 18.5222 8.08965 15.1458H2.59824C3.09437 20.1428 6.80075 24.1954 11.6258 25.2121ZM8.08965 12.8542C8.30818 9.47784 9.49226 6.11978 11.6258 2.78795C6.80075 3.80459 3.09437 7.85719 2.59824 12.8542H8.08965ZM19.9104 12.8542C19.6918 9.47784 18.5077 6.11978 16.3742 2.78795C21.1993 3.80459 24.9056 7.85719 25.4018 12.8542H19.9104ZM16.3742 25.2121C18.5077 21.8802 19.6918 18.5222 19.9104 15.1458H25.4018C24.9056 20.1428 21.1993 24.1954 16.3742 25.2121ZM10.3869 12.8542C10.621 9.71035 11.8191 6.54607 14 3.35196C16.1809 6.54607 17.379 9.71035 17.6131 12.8542H10.3869ZM14 24.648C11.8191 21.4539 10.621 18.2896 10.3869 15.1458H17.6131C17.379 18.2896 16.1809 21.4539 14 24.648Z'
+                        fill='black'
+                        fillRule='evenodd'
+                    />
+                </svg>
+            </button>
+            {openLangDropdown ? (
+                <div className='absolute start-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl'>
+                    <Link
+                        href={router.pathname}
+                        className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
+                        locale='en'
+                    >
+                        English
+                    </Link>
+                    <Link
+                        href={router.pathname}
+                        className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
+                        locale='ar'
+                    >
+                        العربية
+                    </Link>
+                </div>
+            ) : (
+                ""
+            )}
+        </div>
+    );
+}
+function MobileNav(prop) {
+    const {
+        openHamburger,
+        setOpenHamburger,
+        openLangDropdown,
+        setOpenLangDropdown,
+        router,
+        t,
+    } = prop;
+    return (
+        <div
+            className={`md:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ${
+                openHamburger
+                    ? "-translate-x-0"
+                    : "ltr:-translate-x-full rtl:translate-x-full "
             } transition-transform duration-300 ease-in-out`}
         >
             <div className='flex items-center justify-between bg-light-cyan h-20 px-4'>
@@ -71,25 +130,32 @@ function MobileNav({ openHamburger, setOpenHamburger, t }) {
                                 }, 100)
                             }
                         >
-                            {t("about")}
+                            {t(`${nav.name}`)}
                         </Link>
                     );
                 })}
-                <Button
-                    className='self-center w-fit'
-                    content='log in'
-                    text-transform='capitalize'
-                    filled='true'
-                    size='large'
-                    fontSize='text-sm md:text-xl'
-                    radius='md'
-                />
+                <div className='flex space-s-10'>
+                    <LangDropdown
+                        setOpenLangDropdown={setOpenLangDropdown}
+                        openLangDropdown={openLangDropdown}
+                        router={router}
+                    />
+                    <Button
+                        className='self-center w-fit'
+                        content='log in'
+                        text-transform='capitalize'
+                        filled='true'
+                        size='large'
+                        fontSize='text-sm md:text-xl'
+                        radius='md'
+                    />
+                </div>
             </div>
         </div>
     );
 }
 
-export default function Navbar(prop) {
+export default function Navbar() {
     const { t } = useTranslation("common");
     const router = useRouter();
     const [openHamburger, setOpenHamburger] = useState(false);
@@ -100,6 +166,9 @@ export default function Navbar(prop) {
                 <MobileNav
                     openHamburger={openHamburger}
                     setOpenHamburger={setOpenHamburger}
+                    setOpenLangDropdown={setOpenLangDropdown}
+                    openLangDropdown={openLangDropdown}
+                    router={router}
                     t={t}
                 />
                 <div className='w-3/12 flex items-center'>
@@ -179,58 +248,15 @@ export default function Navbar(prop) {
                                     href={nav.href}
                                     className='md:mx-3 lg:mx-6'
                                 >
-                                    {t("about")}
-                                    {/* {t(`${nav.name}`)} */}
+                                    {t(`${nav.name}`)}
                                 </Link>
                             );
                         })}
-                        <div
-                            className='relative inline-block'
-                            onClick={() => {
-                                setOpenLangDropdown(!openLangDropdown);
-                            }}
-                        >
-                            <button className='relative z-10 block p-2 text-black bg-yellow border border-transparent rounded-md focus:outline-none'>
-                                <svg
-                                    fill='none'
-                                    height='23'
-                                    viewBox='0 0 28 28'
-                                    width='23'
-                                    xmlns='http://www.w3.org/2000/svg'
-                                >
-                                    <path
-                                        clipRule='evenodd'
-                                        d='M14 27.75C21.5939 27.75 27.75 21.5939 27.75 14C27.75 6.40608 21.5939 0.25 14 0.25C6.40608 0.25 0.25 6.40608 0.25 14C0.25 21.5939 6.40608 27.75 14 27.75ZM11.6258 25.2121C9.49226 21.8802 8.30818 18.5222 8.08965 15.1458H2.59824C3.09437 20.1428 6.80075 24.1954 11.6258 25.2121ZM8.08965 12.8542C8.30818 9.47784 9.49226 6.11978 11.6258 2.78795C6.80075 3.80459 3.09437 7.85719 2.59824 12.8542H8.08965ZM19.9104 12.8542C19.6918 9.47784 18.5077 6.11978 16.3742 2.78795C21.1993 3.80459 24.9056 7.85719 25.4018 12.8542H19.9104ZM16.3742 25.2121C18.5077 21.8802 19.6918 18.5222 19.9104 15.1458H25.4018C24.9056 20.1428 21.1993 24.1954 16.3742 25.2121ZM10.3869 12.8542C10.621 9.71035 11.8191 6.54607 14 3.35196C16.1809 6.54607 17.379 9.71035 17.6131 12.8542H10.3869ZM14 24.648C11.8191 21.4539 10.621 18.2896 10.3869 15.1458H17.6131C17.379 18.2896 16.1809 21.4539 14 24.648Z'
-                                        fill='black'
-                                        fillRule='evenodd'
-                                    />
-                                </svg>
-                            </button>
-                            {openLangDropdown ? (
-                                <div className='absolute right-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl'>
-                                    <Link
-                                        href={router.pathname}
-                                        className='block px-4 py-3 text-sm text-gray capitalize transition-colors duration-300 transform hover:bg-cyan'
-                                        locale='en'
-                                        dir='ltr'
-                                    >
-                                        {" "}
-                                        English{" "}
-                                    </Link>
-                                    <Link
-                                        href={router.pathname}
-                                        className='block px-4 py-3 text-sm text-gray capitalize transition-colors duration-300 transform hover:bg-cyan'
-                                        locale='ar'
-                                        dir='rtl'
-                                    >
-                                        {" "}
-                                        العربية{" "}
-                                    </Link>
-                                </div>
-                            ) : (
-                                ""
-                            )}
-                        </div>
+                        <LangDropdown
+                            setOpenLangDropdown={setOpenLangDropdown}
+                            openLangDropdown={openLangDropdown}
+                            router={router}
+                        />
                         <Button
                             content='log in'
                             text-transform='capitalize'

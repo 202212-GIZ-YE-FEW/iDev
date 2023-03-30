@@ -7,10 +7,10 @@ export default function Layout({ i18n, children }) {
     const { t } = useTranslation("common");
     useEffect(() => {
         document.dir = i18n.dir();
-    }, [i18n, i18n.language]);
+    }, [i18n]);
     return (
         <>
-            <Navbar t={t} />
+            <Navbar />
             {children}
             <Footer />
         </>
