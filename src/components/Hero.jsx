@@ -2,7 +2,8 @@ import Image from "next/image";
 
 import Button from "./ui/Button";
 
-export default function Hero() {
+export default function Hero(prop) {
+    const { t } = prop;
     const style = {
         backgroundImage: "url(/header.png)",
         backgroundSize: "cover",
@@ -10,7 +11,7 @@ export default function Hero() {
         position: "relative",
         left: "0",
         right: "0",
-        height: "calc(100vh - 5rem)",
+        minHeight: "calc(100vh - 5rem)",
     };
     return (
         <header

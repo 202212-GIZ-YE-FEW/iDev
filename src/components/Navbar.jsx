@@ -1,14 +1,16 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
 import Button from "@/components/ui/Button";
 
 import { navigation } from "@/constants";
-function MobileNav({ open, setOpen }) {
+function MobileNav({ openHamburger, setOpenHamburger, t }) {
     return (
         <div
             className={`md:hidden absolute top-0 left-0 h-full w-full z-20 bg-background transform ${
-                open ? "-translate-x-[2px]" : "-translate-x-full"
+                openHamburger ? "-translate-x-[2px]" : "-translate-x-full"
             } transition-transform duration-300 ease-in-out`}
         >
             <div className='flex items-center justify-between bg-light-cyan h-20 px-4'>
@@ -65,11 +67,11 @@ function MobileNav({ open, setOpen }) {
                             className='my-4'
                             onClick={() =>
                                 setTimeout(() => {
-                                    setOpen(!open);
+                                    setOpenHamburger(!openHamburger);
                                 }, 100)
                             }
                         >
-                            {nav.name}
+                            {t("about")}
                         </Link>
                     );
                 })}
@@ -87,12 +89,19 @@ function MobileNav({ open, setOpen }) {
     );
 }
 
-export default function Navbar() {
-    const [open, setOpen] = useState(false);
+export default function Navbar(prop) {
+    const { t } = useTranslation("common");
+    const router = useRouter();
+    const [openHamburger, setOpenHamburger] = useState(false);
+    const [openLangDropdown, setOpenLangDropdown] = useState(false);
     return (
         <nav className='bg-light-cyan'>
             <div className='container flex py-8 h-20 items-center'>
-                <MobileNav open={open} setOpen={setOpen} />
+                <MobileNav
+                    openHamburger={openHamburger}
+                    setOpenHamburger={setOpenHamburger}
+                    t={t}
+                />
                 <div className='w-3/12 flex items-center'>
                     <Link
                         className='text-2xl font-semibold flex items-center space-s-4'
@@ -140,38 +149,88 @@ export default function Navbar() {
                     <div
                         className='z-50 flex relative w-8 h-5 flex-col justify-between items-center md:hidden'
                         onClick={() => {
-                            setOpen(!open);
+                            setOpenHamburger(!openHamburger);
                         }}
                     >
                         {/* hamburger button */}
                         <span
                             className={`h-1 w-full bg-black rounded-lg transform transition duration-300 ease-in-out ${
-                                open ? "rotate-45 translate-y-1.5" : ""
+                                openHamburger ? "rotate-45 translate-y-1.5" : ""
                             }`}
                         />
                         <span
                             className={`h-1 w-full bg-black rounded-lg transition-all duration-300 ease-in-out ${
-                                open ? "w-0" : "w-full"
+                                openHamburger ? "w-0" : "w-full"
                             }`}
                         />
                         <span
                             className={`h-1 w-full bg-black rounded-lg transform transition duration-300 ease-in-out ${
-                                open ? "-rotate-45 -translate-y-1.5" : ""
+                                openHamburger
+                                    ? "-rotate-45 -translate-y-1.5"
+                                    : ""
                             }`}
                         />
                     </div>
-                    <div className='hidden md:flex items-center'>
+                    <div className='hidden md:flex items-center md:space-s-5 lg:space-s-10'>
                         {navigation.map((nav) => {
                             return (
                                 <Link
                                     key={nav.name}
                                     href={nav.href}
-                                    className='mx-6'
+                                    className='md:mx-3 lg:mx-6'
                                 >
-                                    {nav.name}
+                                    {t("about")}
+                                    {/* {t(`${nav.name}`)} */}
                                 </Link>
                             );
                         })}
+                        <div
+                            className='relative inline-block'
+                            onClick={() => {
+                                setOpenLangDropdown(!openLangDropdown);
+                            }}
+                        >
+                            <button className='relative z-10 block p-2 text-black bg-yellow border border-transparent rounded-md focus:outline-none'>
+                                <svg
+                                    fill='none'
+                                    height='23'
+                                    viewBox='0 0 28 28'
+                                    width='23'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                >
+                                    <path
+                                        clipRule='evenodd'
+                                        d='M14 27.75C21.5939 27.75 27.75 21.5939 27.75 14C27.75 6.40608 21.5939 0.25 14 0.25C6.40608 0.25 0.25 6.40608 0.25 14C0.25 21.5939 6.40608 27.75 14 27.75ZM11.6258 25.2121C9.49226 21.8802 8.30818 18.5222 8.08965 15.1458H2.59824C3.09437 20.1428 6.80075 24.1954 11.6258 25.2121ZM8.08965 12.8542C8.30818 9.47784 9.49226 6.11978 11.6258 2.78795C6.80075 3.80459 3.09437 7.85719 2.59824 12.8542H8.08965ZM19.9104 12.8542C19.6918 9.47784 18.5077 6.11978 16.3742 2.78795C21.1993 3.80459 24.9056 7.85719 25.4018 12.8542H19.9104ZM16.3742 25.2121C18.5077 21.8802 19.6918 18.5222 19.9104 15.1458H25.4018C24.9056 20.1428 21.1993 24.1954 16.3742 25.2121ZM10.3869 12.8542C10.621 9.71035 11.8191 6.54607 14 3.35196C16.1809 6.54607 17.379 9.71035 17.6131 12.8542H10.3869ZM14 24.648C11.8191 21.4539 10.621 18.2896 10.3869 15.1458H17.6131C17.379 18.2896 16.1809 21.4539 14 24.648Z'
+                                        fill='black'
+                                        fillRule='evenodd'
+                                    />
+                                </svg>
+                            </button>
+                            {openLangDropdown ? (
+                                <div className='absolute right-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl'>
+                                    <Link
+                                        href={router.pathname}
+                                        className='block px-4 py-3 text-sm text-gray capitalize transition-colors duration-300 transform hover:bg-cyan'
+                                        locale='en'
+                                        dir='ltr'
+                                    >
+                                        {" "}
+                                        English{" "}
+                                    </Link>
+                                    <Link
+                                        href={router.pathname}
+                                        className='block px-4 py-3 text-sm text-gray capitalize transition-colors duration-300 transform hover:bg-cyan'
+                                        locale='ar'
+                                        dir='rtl'
+                                    >
+                                        {" "}
+                                        العربية{" "}
+                                    </Link>
+                                </div>
+                            ) : (
+                                ""
+                            )}
+                        </div>
                         <Button
                             content='log in'
                             text-transform='capitalize'

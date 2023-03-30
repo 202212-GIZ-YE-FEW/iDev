@@ -68,12 +68,12 @@ exports[`renders correctly 1`] = `
             className="mx-6"
           >
             <a
-              href="#"
+              href="/"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              Home
+              home
             </a>
           </li>
           <li
@@ -85,7 +85,7 @@ exports[`renders correctly 1`] = `
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              Blogs
+              blogs
             </a>
           </li>
           <li
@@ -97,7 +97,7 @@ exports[`renders correctly 1`] = `
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              About
+              about
             </a>
           </li>
           <li
@@ -109,7 +109,7 @@ exports[`renders correctly 1`] = `
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              Contact
+              contact us
             </a>
           </li>
         </ul>

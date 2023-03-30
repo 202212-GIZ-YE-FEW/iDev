@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import Navbar from "@/components/Navbar";
+import Hero from "../Hero";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<Navbar />).toJSON();
+    const tree = renderer.create(<Hero />).toJSON();
     expect(tree).toMatchSnapshot();
 });
