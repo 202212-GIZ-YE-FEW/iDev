@@ -55,6 +55,14 @@ function LangDropdown(prop) {
         </div>
     );
 }
+
+function NavLink({ to, children }) {
+    return (
+        <Link href={to} className='my-4 md:my-0 md:mx-3 lg:mx-6'>
+            {children}
+        </Link>
+    );
+}
 function MobileNav(prop) {
     const {
         openHamburger,
@@ -120,10 +128,9 @@ function MobileNav(prop) {
             <div className='flex flex-col px-4'>
                 {navigation.map((nav) => {
                     return (
-                        <Link
+                        <NavLink
                             key={nav.name}
-                            href={nav.href}
-                            className='my-4'
+                            to={nav.href}
                             onClick={() =>
                                 setTimeout(() => {
                                     setOpenHamburger(!openHamburger);
@@ -131,7 +138,7 @@ function MobileNav(prop) {
                             }
                         >
                             {t(`${nav.name}`)}
-                        </Link>
+                        </NavLink>
                     );
                 })}
                 <div className='flex space-s-10'>
@@ -242,13 +249,9 @@ export default function Navbar() {
                     <div className='hidden md:flex items-center md:space-s-5 lg:space-s-10'>
                         {navigation.map((nav) => {
                             return (
-                                <Link
-                                    key={nav.name}
-                                    href={nav.href}
-                                    className='md:mx-3 lg:mx-6'
-                                >
+                                <NavLink key={nav.name} to={nav.href}>
                                     {t(`${nav.name}`)}
-                                </Link>
+                                </NavLink>
                             );
                         })}
                         <LangDropdown
