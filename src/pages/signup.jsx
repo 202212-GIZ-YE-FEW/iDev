@@ -7,15 +7,15 @@ import FormTitle from "@/components/FormTitle";
 export default function Signup() {
     return (
         <div className='h-full'>
-            <div className='g-6 flex h-full flex-wrap items-center lg:justify-center mx-12 my-8 justify-between   space-x-2'>
-                <div className='shrink-1 mb-[12px] mt-[12px] grow-0 basis-auto  md:mb-0 lg:px-20 xl:px-0 md:w-6/12 md:shrink-0 lg:w-8/12 xl:w-6/12'>
+            <div className='g-6 flex h-full flex-wrap items-center lg:justify-center xl:justify-center md:justify-center mx-12 my-8 justify-between   space-x-2'>
+                <div className='shrink-1 mb-[12px] mt-[12px] grow-0 basis-auto  md:mb-0 lg:px-20 xl:px-0 md:w-12/12 md:shrink-0 lg:w-8/12 xl:w-6/12'>
                     <img
                         src='https://i.ibb.co/RSfKc5F/Signup-Image.png'
                         className='w-full'
                         alt='Sample image'
                     />
                 </div>
-                <div className='w-full max-w-xs md:mx-auto mb-[12px] md:mb-0  md:shrink-0 md:w-6/12 lg:w-12/12 xl:w-6/12  ml-2 leading-normal '>
+                <div className='w-full max-w-xs md:mx-auto mb-[12px] md:mb-0  md:shrink-0 md:w-12/12 lg:w-12/12 xl:w-6/12  ml-2 leading-normal '>
                     <FormTitle title='Singup Now' />
                     <form className=' shadow-[0_4px_9px_-4px_#3b71ca] mt-[8px]  p-6'>
                         <div
