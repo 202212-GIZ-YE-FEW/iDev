@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import AuthSocialMedia from "@/components/ui/AuthSocialMedia";
+import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 
 export default function Signup() {
