@@ -10,26 +10,28 @@ export default function HomePage() {
     const { t } = useTranslation("common");
 
     return (
-        <Layout>
-            <Header>
-                <p>{t("test")}</p>
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "20px",
-                    }}
-                >
-                    <Link href='/' locale='en'>
-                        English
-                    </Link>
-                    <Link href='/' locale='ar'>
-                        العربية
-                    </Link>
-                </div>
-            </Header>
-            <Signup />
-        </Layout>
+
+        <>
+            <p>{t("test")}</p>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: "20px",
+                }}
+            >
+                <Link href='/' locale='en'>
+                    English
+                </Link>
+                <Link href='/' locale='ar'>
+                    العربية
+                </Link>
+            </div>
+            <Layout>
+                <Header />
+            </Layout>
+        </>
+
     );
 }
 

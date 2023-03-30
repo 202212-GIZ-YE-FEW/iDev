@@ -10,7 +10,7 @@ export default function Hero() {
         position: "relative",
         left: "0",
         right: "0",
-        height: "100vh",
+        minHeight: "100vh",
     };
     return (
         <header
