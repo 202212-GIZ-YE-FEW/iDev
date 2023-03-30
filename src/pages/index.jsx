@@ -5,7 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Header from "@/components/Header";
 
 import Layout from "@/layout/Layout";
-import Singup from "./signup";
+import Signup from "./signup";
 export default function HomePage() {
     const { t } = useTranslation("common");
 
@@ -28,6 +28,7 @@ export default function HomePage() {
                     </Link>
                 </div>
             </Header>
+            <Signup />
         </Layout>
     );
 }
