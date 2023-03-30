@@ -28,7 +28,6 @@ export default function HomePage() {
                     </Link>
                 </div>
             </Header>
-            <Signup />
         </Layout>
     );
 }

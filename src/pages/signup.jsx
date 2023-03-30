@@ -8,7 +8,7 @@ export default function Signup() {
     return (
         <div className='h-full'>
             <div className='g-6 flex h-full flex-wrap items-center lg:justify-center xl:justify-center md:justify-center mx-12 my-8 justify-between   space-x-2'>
-                <div className='shrink-1 mb-[12px] mt-[12px] grow-0 basis-auto  md:mb-0 lg:px-20 xl:px-0 md:w-12/12 md:shrink-0 lg:w-8/12 xl:w-6/12'>
+                <div className='shrink-1 mb-[12px] mt-[12px] grow-0 basis-auto  md:mb-0 lg:px-20 xl:px-0 md:w-6/12 md:shrink-0 lg:w-8/12 xl:w-6/12'>
                     <img
                         src='https://i.ibb.co/RSfKc5F/Signup-Image.png'
                         className='w-full'
