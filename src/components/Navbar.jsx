@@ -141,8 +141,7 @@ function MobileNav(prop) {
                         router={router}
                     />
                     <Button
-                        className='self-center w-fit'
-                        content='log in'
+                        content={t("login")}
                         text-transform='capitalize'
                         filled='true'
                         size='large'
@@ -258,7 +257,7 @@ export default function Navbar() {
                             router={router}
                         />
                         <Button
-                            content='log in'
+                            content={t("login")}
                             text-transform='capitalize'
                             filled='true'
                             size='small'
