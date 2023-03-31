@@ -1,11 +1,11 @@
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Abdulmajeed from "public/AbdulmajeedJaafer.png";
-import AhmedMohammed from "public/AhmedMohammed.png";
-import AllanSaleh from "public/AllanSaleh.png";
-import AvrazZebary from "public/AvrazZebary.png";
-import PayamAbubakr from "public/PayamAbubakr.png";
-import SnoorMadih from "public/SnoorMadih.png";
+import Abdulmajeed from "public/team/AbdulmajeedJaafer.png";
+import AhmedMohammed from "public/team/AhmedMohammed.png";
+import AllanSaleh from "public/team/AllanSaleh.png";
+import AvrazZebary from "public/team/AvrazZebary.png";
+import PayamAbubakr from "public/team/PayamAbubakr.png";
+import SnoorMadih from "public/team/SnoorMadih.png";
 
 import PageIntro from "@/components/PageIntro";
 import TeamMember from "@/components/TeamMember";
