@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 
 import Button from "./ui/Button";
-export default function TrustTherapists() {
-    const { t } = useTranslation("home");
+function TrustTherapists({ t }) {
     return (
         <>
             <div className='bg-yellow py-16'>
@@ -35,3 +34,4 @@ export default function TrustTherapists() {
         </>
     );
 }
+export default withTranslation("home")(TrustTherapists);
