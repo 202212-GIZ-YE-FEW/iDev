@@ -1,7 +1,8 @@
 import { i18n, useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Link from "next/link";
+
 import Hero from "@/components/Hero";
+import TrustTherapists from "@/components/TrustTherapists";
 
 import Layout from "@/layout/Layout";
 export default function HomePage() {
@@ -11,6 +12,7 @@ export default function HomePage() {
         <>
             <Layout i18n={i18n}>
                 <Hero />
+                <TrustTherapists />
             </Layout>
         </>
     );
