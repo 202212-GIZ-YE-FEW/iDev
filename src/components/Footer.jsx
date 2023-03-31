@@ -23,7 +23,7 @@ export default function Footer() {
                                 })}
                             </ul>
                         </nav>
-                        <div className='flex space-x-[35px] justify-center'>
+                        <div className='flex space-s-9 justify-center'>
                             <a href='#' target='_blank'>
                                 <svg
                                     width='30'
