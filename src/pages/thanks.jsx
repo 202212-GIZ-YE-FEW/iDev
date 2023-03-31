@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
+import { i18n, useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import PageIntro from "@/components/PageIntro";
@@ -13,22 +13,7 @@ export default function Thanks(prop) {
     } = prop;
     return (
         <>
-            <p>{t("test")}</p>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    gap: "20px",
-                }}
-            >
-                <Link href='thanks' locale='en'>
-                    English
-                </Link>
-                <Link href='thanks' locale='ar'>
-                    العربية
-                </Link>
-            </div>
-            <Layout>
+            <Layout i18n={i18n}>
                 <div className='container my-20'>
                     <PageIntro title={t("thank you!")} subtitle={subtitle} />
                     <Link href='/'>

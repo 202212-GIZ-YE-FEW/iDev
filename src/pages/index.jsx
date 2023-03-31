@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { useTranslation } from "next-i18next";
+import { i18n, useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
-import Header from "@/components/Header";
+import Link from "next/link";
+import Hero from "@/components/Hero";
 
 import Layout from "@/layout/Layout";
 import Signup from "./signup";
@@ -11,23 +10,8 @@ export default function HomePage() {
 
     return (
         <>
-            <p>{t("test")}</p>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    gap: "20px",
-                }}
-            >
-                <Link href='/' locale='en'>
-                    English
-                </Link>
-                <Link href='/' locale='ar'>
-                    العربية
-                </Link>
-            </div>
-            <Layout>
-                <Header />
+            <Layout i18n={i18n}>
+                <Hero />
             </Layout>
         </>
     );
