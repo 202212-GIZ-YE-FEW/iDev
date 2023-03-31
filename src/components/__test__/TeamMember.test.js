@@ -1,8 +1,7 @@
 import renderer from "react-test-renderer";
-
-import PageIntro from "../PageIntro";
+import TeamMember from "../TeamMember";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<PageIntro />).toJSON();
+    const tree = renderer.create(<TeamMember />).toJSON();
     expect(tree).toMatchSnapshot();
 });
