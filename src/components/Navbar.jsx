@@ -8,6 +8,9 @@ import Button from "@/components/ui/Button";
 import { navigation } from "@/constants";
 
 function LangDropdown(prop) {
+    const onChangeDir = (locale) => {
+        document.dir = locale === "en" ? "ltr" : "rtl";
+    };
     const { setOpenLangDropdown, openLangDropdown, router } = prop;
     return (
         <div
@@ -38,6 +41,7 @@ function LangDropdown(prop) {
                         href={router.pathname}
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                         locale='en'
+                        onClick={() => onChangeDir("en")}
                     >
                         English
                     </Link>
@@ -45,6 +49,7 @@ function LangDropdown(prop) {
                         href={router.pathname}
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                         locale='ar'
+                        onClick={() => onChangeDir("ar")}
                     >
                         العربية
                     </Link>

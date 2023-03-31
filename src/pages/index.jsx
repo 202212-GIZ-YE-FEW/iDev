@@ -1,4 +1,4 @@
-import { i18n } from "next-i18next";
+// import { i18n } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Hero from "@/components/Hero";
@@ -8,7 +8,7 @@ import Layout from "@/layout/Layout";
 export default function HomePage() {
     return (
         <>
-            <Layout i18n={i18n}>
+            <Layout>
                 <Hero />
                 <TrustTherapists />
             </Layout>
