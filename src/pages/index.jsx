@@ -1,11 +1,11 @@
 import { i18n, useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Link from "next/link";
+
 import Hero from "@/components/Hero";
 
 import Layout from "@/layout/Layout";
 export default function HomePage() {
-    const { t } = useTranslation("common");
+    const { translate } = useTranslation("common");
 
     return (
         <>
