@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="p-4"
+>
+  <fieldset
+    className="space-y-4"
+  >
+    <div
+      className="text-9xl font-normal text-black"
+    />
+  </fieldset>
+</div>
+`;

@@ -2,6 +2,10 @@
 
 exports[`renders correctly 1`] = `
 <textarea
-  className="block p-2.5 w-full px-4 py-2 text-sm text-gray-900 bg-gray-50 h-24 undefined rounded-md rounded-md placeholder-gray-400 text-gray-700 bg-white border-gray shadow-md focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-gray focus:shadow-outline-indigo"
+  className="
+    block p-2.5 w-full px-4 py-2 text-sm text-gray bg-gray
+    h-24 undefined rounded-md placeholder-gray text-gray bg-white
+    border-gray shadow-md focus:outline-none border-[1px] border-light-gray/60
+    "
 />
 `;

@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 export default function Button(prop) {
     const {
         content,
@@ -7,14 +8,19 @@ export default function Button(prop) {
         textTransform = "capitalize",
         fontSize = "xl",
         radius = "6px",
+        onClick,
     } = prop;
     return (
         <button
+            onClick={onClick}
             className={clsx(
                 `font-normal whitespace-nowrap cursor-pointer ${textTransform} ${fontSize} rounded-${radius}`,
                 {
                     "px-[10] md:px-[18px] lg:px-[28px] py-[4.7px]":
                         size === "small",
+                    /// for medium size button
+                    "px-[15px] md:px-[25px] lg:px-[35px] py-[7px]":
+                        size === "medium",
                     "px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium":
                         size === "large",
                     "bg-cyan text-black ": filled === "true",

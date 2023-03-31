@@ -1,7 +1,8 @@
 import renderer from "react-test-renderer";
-import TeamMember from "@/components/TeamMember";
+
+import TrustTherapists from "../TrustTherapists";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<TeamMember />).toJSON();
+    const tree = renderer.create(<TrustTherapists />).toJSON();
     expect(tree).toMatchSnapshot();
 });

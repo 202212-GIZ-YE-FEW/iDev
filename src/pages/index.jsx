@@ -1,18 +1,17 @@
-import { i18n, useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Link from "next/link";
+
 import Hero from "@/components/Hero";
+import TrustTherapists from "@/components/TrustTherapists";
 
 import Layout from "@/layout/Layout";
 import Signup from "./signup";
 export default function HomePage() {
-    const { t } = useTranslation("common");
-
     return (
         <>
-            <Layout i18n={i18n}>
+            <Layout>
                 <Hero />
                 <Signup />
+                <TrustTherapists />
             </Layout>
         </>
     );
@@ -21,7 +20,7 @@ export default function HomePage() {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            ...(await serverSideTranslations(locale, "common")),
             // Will be passed to the page component as props
         },
     };

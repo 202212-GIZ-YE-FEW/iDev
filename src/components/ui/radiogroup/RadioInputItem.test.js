@@ -1,7 +1,8 @@
 import renderer from "react-test-renderer";
-import TeamMember from "../TeamMember";
+
+import RadioInputItem from "./RadioInputItem";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<TeamMember />).toJSON();
+    const tree = renderer.create(<RadioInputItem />).toJSON();
     expect(tree).toMatchSnapshot();
 });
