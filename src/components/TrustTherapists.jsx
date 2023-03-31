@@ -1,14 +1,15 @@
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 import Button from "./ui/Button";
 export default function TrustTherapists() {
+    const { t } = useTranslation("home");
     return (
         <>
             <div className='bg-yellow py-16'>
                 <div className='container flex flex-col space-y-8 justify-between'>
                     <p className='text-3xl md:text-4xl lg:text-5xl uppercase break-words'>
-                        Professional, licensed, and vetted therapists that you
-                        can trust
+                        {t("title of trust therapists")}.
                     </p>
                     <Image
                         src='/trust_therapists.png'
@@ -17,18 +18,11 @@ export default function TrustTherapists() {
                         height={300}
                     />
                     <p className='pb-20'>
-                        Tap into the world&apos;s largest network of licensed,
-                        accredited, and experienced therapists who can help you
-                        with a range of issues including depression, anxiety,
-                        relationships, trauma, grief, and more. with our
-                        therapists, you get the same professionalism and quality
-                        you would expect from an in-office therapist, but with
-                        the ability to communicate whenever and however you
-                        want.
+                        {t("description of trust therapists")}.
                     </p>
                     <div className='w-fit'>
                         <Button
-                            content='book an appointment'
+                            content={t("book an appointment")}
                             text-transform='uppercase'
                             filled='true'
                             size='large'
