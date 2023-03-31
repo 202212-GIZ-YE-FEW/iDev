@@ -73,7 +73,7 @@ module.exports = {
                     lineHeight: "38px",
                 },
             ],
-            "4xl":[
+            "4xl": [
                 "2.25rem", // 36px
                 {
                     lineHeight: "40px",
