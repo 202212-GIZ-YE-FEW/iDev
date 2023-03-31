@@ -12,6 +12,7 @@ export default function HomePage() {
         <>
             <Layout i18n={i18n}>
                 <Hero />
+                <Signup />
             </Layout>
         </>
     );
