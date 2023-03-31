@@ -8,10 +8,5 @@ exports[`renders correctly 1`] = `
     className="w-5 h-5 bg-black border-black"
     type="radio"
   />
-  <label
-    className="w-full py-3 ml-2 text-xl font-medium text-black"
-  >
-     
-  </label>
 </div>
 `;
