@@ -28,7 +28,7 @@ _These are strongly recommended to assist reviewers and reduce the time to merge
 
 -   [ ] My code follows the style guidelines of this project
 -   [ ] I have performed a self-review of my code
--   [ ] I have commented my code, particularly in hard-to-understand areas
+-   [ ] I have commented on my code, particularly in hard-to-understand areas
 -   [ ] I have made corresponding changes to the documentation
 -   [ ] My changes generate no new warnings
 -   [ ] I have added tests that prove my fix is effective or that my feature works
@@ -39,5 +39,5 @@ _These are strongly recommended to assist reviewers and reduce the time to merge
 
 -   [ ] I have reviewed the code changes and documentation ✅
 -   [ ] I have tested the changes locally and they work as expected 🧪
--   [ ] I have reviewed the changes in the PR and ensure that it is ready to be merged 🚀
--   [ ] I have reviewed the changes in the PR and ensure that it is not ready to be merged (if there are any changes that need to be made before it can be merged) 🔴
+-   [ ] I have reviewed the changes in the PR and ensured that it is ready to be merged 🚀
+-   [ ] I have reviewed the changes in the PR and ensured that it is not ready to be merged (if any changes need to be made before it can be merged) 🔴
