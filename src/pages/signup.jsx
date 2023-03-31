@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
@@ -6,6 +7,7 @@ import FormTitle from "@/components/FormTitle";
 
 export default function Signup() {
     const style = { minHeight: "calc(100vh - 1rem)" };
+    const { t } = useTranslation("common");
     return (
         <div style={style}>
             <div className='g-6 flex h-full flex-wrap items-center lg:justify-center  xl:justify-center md:justify-center mx-12 my-8 justify-between   space-x-2'>
@@ -17,7 +19,7 @@ export default function Signup() {
                     />
                 </div>
                 <div className='w-full max-w-xs md:mx-auto   md:shrink-0 md:w-12/12 lg:w-12/12 xl:w-6/12  ml-2 leading-normal '>
-                    <FormTitle title='Singup Now' />
+                    <FormTitle title='signup' />
                     <form className=' shadow-[0_4px_9px_-4px_#3b71ca] mt-[8px]  p-6  md:p-6'>
                         <div
                             className=' flex mb-[0.5rem] lg:text-start  justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '
@@ -85,7 +87,7 @@ export default function Signup() {
                             />
                         </div>
 
-                        <div className=' flex justify-center space-x-1.5rem lg:space-x-[0.5rem]  rtl:space-x-reverse 1.4rem sm:flex-row '>
+                        <div className=' flex justify-center space-x-[0.5rem] lg:space-x-[0.5rem]  rtl:space-x-reverse 1.4rem sm:flex-row '>
                             <Button
                                 content='login'
                                 text-transform='uppercase'
