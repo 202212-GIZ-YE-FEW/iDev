@@ -1,4 +1,4 @@
-import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Abdulmajeed from "public/AbdulmajeedJaafer.png";
 import AhmedMohammed from "public/AhmedMohammed.png";
@@ -9,9 +9,7 @@ import SnoorMadih from "public/SnoorMadih.png";
 
 import PageIntro from "@/components/PageIntro";
 import TeamMember from "@/components/TeamMember";
-
-export default function Team() {
-    const { t } = useTranslation("common");
+function Team({ t }) {
     const teamMembers = [
         {
             id: 1,
@@ -53,10 +51,10 @@ export default function Team() {
     return (
         <>
             <div className='container py-20'>
-                <PageIntro title={t("WE ARE HEALING, NICE TO MEET YOU!")} />
+                <PageIntro title={t("teamPageTitle")} />
                 <div className='team-members mt-32'>
                     <p className='text-[30px] w-full mb-8 text-center md:text-start'>
-                        {t("Meet the Team!")}
+                        {t("meetTeam")}
                     </p>
                     <div className='flex justify-between flex-wrap items-center gap-10'>
                         {teamMembers.map((member) => {
@@ -78,8 +76,9 @@ export default function Team() {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            ...(await serverSideTranslations(locale, ["common", "team"])),
             // Will be passed to the page component as props
         },
     };
 }
+export default withTranslation("team")(Team);

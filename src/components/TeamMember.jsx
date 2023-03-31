@@ -1,8 +1,8 @@
 import Image from "next/image";
-const TeamMember = ({ name, job, photo }) => {
+import { withTranslation } from "next-i18next";
+const TeamMember = ({ name, job, photo, t }) => {
     return (
         <>
-            {/* Single Card */}
             <div className='rounded-[25px] w-[11rem] bg-light-cyan'>
                 <Image
                     src={photo}
@@ -13,10 +13,10 @@ const TeamMember = ({ name, job, photo }) => {
                 <div className='w-full h-[5px] mt-0 bg-phosphorescent'></div>
                 <div className='p-5'>
                     <h5 className='text-xl font-bold tracking-tight text-gray pb-[33px] h-[50px] mb-[40px] text-center'>
-                        {name}
+                        {t(`${name}`)}
                     </h5>
                     <p className='font-normal text-gray pb-[40px] text-center'>
-                        {job}.
+                        {t(`${job}`)}
                     </p>
                 </div>
             </div>
@@ -24,4 +24,4 @@ const TeamMember = ({ name, job, photo }) => {
     );
 };
 
-export default TeamMember;
+export default withTranslation("team")(TeamMember);

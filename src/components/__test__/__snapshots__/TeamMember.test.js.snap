@@ -28,11 +28,13 @@ exports[`renders correctly 1`] = `
   >
     <h5
       className="text-xl font-bold tracking-tight text-gray pb-[33px] h-[50px] mb-[40px] text-center"
-    />
+    >
+      undefined
+    </h5>
     <p
       className="font-normal text-gray pb-[40px] text-center"
     >
-      .
+      undefined
     </p>
   </div>
 </div>
