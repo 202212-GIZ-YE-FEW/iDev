@@ -24,7 +24,7 @@ export default function Subscribe(prop) {
                             className='block flex-1 min-w-0 w-full focus:outline-none text-sm py-2.5 px-3 bg-transparent'
                             placeholder={placeholder}
                         />
-                        <span className='inline-flex items-center text-2xl px-3 bg-cyan border-s-2 border-light-gray/80 text-light-black rounded-r-[5px]'>
+                        <span className='inline-flex items-center text-2xl px-3 bg-cyan border-s-2 border-light-gray/80 text-light-black rounded-e-1.5'>
                             <svg
                                 width='20'
                                 height='20'

@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className='container flex flex-col items-center md:flex-row justify-center md:justify-between space-y-4 md:space-y-0'>
                     <Subscribe />
                     <div className='flex flex-col space-y-10 justify-center'>
-                        <nav className=''>
+                        <nav>
                             <ul className='flex text-light-gray text-sm md:text-lg lg:text-xl'>
                                 {navigation.map((nav) => {
                                     return (
@@ -23,8 +23,8 @@ export default function Footer() {
                                 })}
                             </ul>
                         </nav>
-                        <div className='flex space-x-[35px] justify-center'>
-                            <div>
+                        <div className='flex space-s-9 justify-center'>
+                            <a href='#' target='_blank'>
                                 <svg
                                     width='30'
                                     height='26'
@@ -37,8 +37,8 @@ export default function Footer() {
                                         fill='#1A1A1A'
                                     />
                                 </svg>
-                            </div>
-                            <div>
+                            </a>
+                            <a href='#' target='_blank'>
                                 <svg
                                     width='30'
                                     height='26'
@@ -51,8 +51,8 @@ export default function Footer() {
                                         fill='#1A1A1A'
                                     />
                                 </svg>
-                            </div>
-                            <div>
+                            </a>
+                            <a href='#' target='_blank'>
                                 <svg
                                     width='30'
                                     height='26'
@@ -65,7 +65,7 @@ export default function Footer() {
                                         fill='#1A1A1A'
                                     />
                                 </svg>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

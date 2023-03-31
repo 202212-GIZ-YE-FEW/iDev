@@ -1,3 +1,11 @@
 {
-    "test": "Hello"
+    "about": "About",
+    "back to home": "back to home",
+    "blogs": "Blogs",
+    "contact us": "Conntact Us",
+    "home": "Home",
+    "login": "log in",
+    "signup": "sign up",
+    "test": "Hello",
+    "thank you!": "thank you!"
 }

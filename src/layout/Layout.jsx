@@ -1,14 +1,16 @@
+import { useEffect } from "react";
+
 import Footer from "@/components/Footer";
-export default function Layout({ children }) {
-    // Put Header or Footer around the children element
-    // Example
+import Navbar from "@/components/Navbar";
+export default function Layout({ i18n, children }) {
+    useEffect(() => {
+        document.dir = i18n.dir();
+    }, [i18n]);
     return (
         <>
-            {/* <Navbar /> */}
+            <Navbar />
             {children}
             <Footer />
         </>
     );
-
-    // return <>{children}</>;
 }

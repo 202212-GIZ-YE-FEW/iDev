@@ -1,24 +1,18 @@
-import Link from "next/link";
-import { useTranslation } from "next-i18next";
+import { i18n, useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import Layout from "@/layout/Layout";
+import Hero from "@/components/Hero";
 
+import Layout from "@/layout/Layout";
 export default function HomePage() {
-    const { t } = useTranslation("common");
+    const { translate } = useTranslation("common");
 
     return (
-        <Layout>
-            <p>{t("test")}</p>
-            <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-                <Link href='/' locale='en'>
-                    English
-                </Link>
-                <Link href='/' locale='ar'>
-                    العربية
-                </Link>
-            </div>
-        </Layout>
+        <>
+            <Layout i18n={i18n}>
+                <Hero />
+            </Layout>
+        </>
     );
 }
 
