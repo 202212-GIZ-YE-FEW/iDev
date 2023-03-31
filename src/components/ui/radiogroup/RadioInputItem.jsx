@@ -31,9 +31,11 @@ export default function RadioInputItem(props) {
                     "peer hidden": asButton,
                 })}
             />
-            <label htmlFor={id} className={labelClassNames}>
-                {title} {asButton}
-            </label>
+            {title && (
+                <label htmlFor={id} className={labelClassNames}>
+                    {title} {asButton}
+                </label>
+            )}
         </div>
     );
 }
