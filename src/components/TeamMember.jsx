@@ -1,17 +1,21 @@
 import Image from "next/image";
-const TeamMember = ({ title, job, photo }) => {
+const TeamMember = ({ name, job, photo }) => {
     return (
         <>
             {/* Single Card */}
-
-            <div className=' w-[176px] rounded-[25px] max-w-sm  bg-light-cyan'>
-                <Image src={photo} alt='My Image' width={176} height={190} />
-                <div className='bg-black w-full h-[5px] mt-0 bg-phosphorescent '></div>
+            <div className='rounded-[25px] w-[11rem] bg-light-cyan'>
+                <Image
+                    src={photo}
+                    alt={`${name} photo`}
+                    width={176}
+                    height={190}
+                />
+                <div className='w-full h-[5px] mt-0 bg-phosphorescent'></div>
                 <div className='p-5'>
-                    <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white pb-[33px] h-[50px] mb-[40px] text-center'>
-                        {title}
+                    <h5 className='text-xl font-bold tracking-tight text-gray pb-[33px] h-[50px] mb-[40px] text-center'>
+                        {name}
                     </h5>
-                    <p className='mb-3 font-normal text-gray-700 dark:text-gray-400 pb-[40px] text-center'>
+                    <p className='font-normal text-gray pb-[40px] text-center'>
                         {job}.
                     </p>
                 </div>
