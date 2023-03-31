@@ -7,7 +7,20 @@ import FormTitle from "@/components/FormTitle";
 
 export default function Signup() {
     const style = { minHeight: "calc(100vh - 1rem)" };
-    const { t } = useTranslation("common");
+    const { t } = useTranslation("signup");
+
+    const {
+        firstname = "first name",
+        lastname = "last name",
+        email = "email",
+        confirmemail = "confirm email",
+        password = "password",
+        confirmpassword = "confirm password",
+        datebrith = "date",
+        signup = "signup",
+        login = "login",
+    } = [];
+
     return (
         <div style={style}>
             <div className='g-6 flex h-full flex-wrap items-center lg:justify-center  xl:justify-center md:justify-center mx-12 my-8 justify-between   space-x-2'>
@@ -28,12 +41,12 @@ export default function Signup() {
                             <Input
                                 type='name'
                                 name='Frst Name'
-                                placeholder='Frst Name'
+                                placeholder={t(`${firstname}`)}
                             />
                             <Input
                                 type='name'
                                 name='Last Name'
-                                placeholder='Last Name'
+                                placeholder={t(`${lastname}`)}
                             />
                         </div>
 
@@ -44,7 +57,7 @@ export default function Signup() {
                             <Input
                                 type='email'
                                 name='email'
-                                placeholder='Email'
+                                placeholder={t(`${email}`)}
                                 inputWidthSize='w-full'
                             />
                         </div>
@@ -55,7 +68,7 @@ export default function Signup() {
                             <Input
                                 type='email'
                                 name='email'
-                                placeholder='Confirm Email'
+                                placeholder={t(`${confirmemail}`)}
                                 inputWidthSize='w-full'
                             />
                         </div>
@@ -66,12 +79,12 @@ export default function Signup() {
                             <Input
                                 type='name'
                                 name='Password'
-                                placeholder='Password'
+                                placeholder={t(`${password}`)}
                             />
                             <Input
                                 type='name'
                                 name='Confirm Password'
-                                placeholder='Confirm Password'
+                                placeholder={t(`${confirmpassword}`)}
                             />
                         </div>
                         <div
@@ -79,26 +92,23 @@ export default function Signup() {
                             data-te-input-wrapper-init
                         >
                             <Input
-                                label='Brith Date'
+                                label={t(`${datebrith}`)}
                                 type='date'
-                                name='date'
-                                placeholder='Confirm Email'
+                                name='date brith'
                                 inputWidthSize='w-full'
                             />
                         </div>
 
                         <div className=' flex justify-center space-x-[0.5rem] lg:space-x-[0.5rem]  rtl:space-x-reverse 1.4rem sm:flex-row '>
                             <Button
-                                content='login'
-                                text-transform='uppercase'
+                                content={t(`${login}`)}
                                 filled='false'
                                 size='large'
                                 fontSize='lg:text-md xl:text-sm'
                                 radius='md '
                             />
                             <Button
-                                content='Singup'
-                                text-transform='uppercase'
+                                content={t(`${signup}`)}
                                 filled='true'
                                 size='large'
                                 fontSize='lg:text-md xl xl:text-sm'
