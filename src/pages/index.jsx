@@ -3,14 +3,11 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Hero from "@/components/Hero";
 import TrustTherapists from "@/components/TrustTherapists";
 
-import Layout from "@/layout/Layout";
 export default function HomePage() {
     return (
         <>
-            <Layout>
-                <Hero />
-                <TrustTherapists />
-            </Layout>
+            <Hero />
+            <TrustTherapists />
         </>
     );
 }
