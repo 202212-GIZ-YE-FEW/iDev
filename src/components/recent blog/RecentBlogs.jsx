@@ -46,7 +46,7 @@ function RecentBlogs({ t }) {
                     {recentBlogs.map((item, index) => {
                         return (
                             <BlogItem
-                                key={item.key}
+                                key={item.index}
                                 title={item.title}
                                 thumbnail={item.thumbnail}
                                 isOdd={index % 2 === 0 ? false : true}
