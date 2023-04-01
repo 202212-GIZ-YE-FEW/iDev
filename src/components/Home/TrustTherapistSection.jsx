@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 
-import Button from "./ui/Button";
+import Button from "../ui/Button";
 function TrustTherapists({ t }) {
     return (
         <>

@@ -4,7 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import BlogItem from "./RecentBlogItem";
-import PageIntro from "../PageIntro";
+import PageIntro from "../../PageIntro";
 function RecentBlogs({ t }) {
     const recentBlogs = [
         {

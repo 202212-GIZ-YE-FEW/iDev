@@ -1,22 +1,22 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import CommunicateThrough from "@/components/communicate/CommunicateThrough";
-import Hero from "@/components/Hero";
-import RecentBlogs from "@/components/Blog/RecentBlogs";
-import TicketSection from "@/components/Tickets/TicketSection";
-import TrustTherapists from "@/components/TrustTherapists";
+import CommunicateThroughSection from "@/components/Home/communicateSection/CommunicateThroughSection";
+import HeroSection from "@/components/Home/HeroSection";
+import RecentBlogsSection from "@/components/Home/RecentBlogSection/RecentBlogSection";
+import TicketSection from "@/components/Home/TicketSection/TicketSection";
+import TrustTherapistsSection from "@/components/Home/TrustTherapistSection";
 export default function HomePage() {
     return (
         <>
-            <Hero />
+            <HeroSection />
             <section className='bg-yellow py-16'>
-                <TrustTherapists />
+                <TrustTherapistsSection />
             </section>
             <section className='bg-white py-20'>
-                <CommunicateThrough />
+                <CommunicateThroughSection />
             </section>
             <section className='bg-light-cyan py-20'>
-                <RecentBlogs />
+                <RecentBlogsSection />
             </section>
             <section className='bg-white py-20'>
                 <TicketSection />

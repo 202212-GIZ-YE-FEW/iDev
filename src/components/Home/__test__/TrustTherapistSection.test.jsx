@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 
-import TrustTherapists from "../TrustTherapists";
+import TrustTherapists from "../TrustTherapistSection";
 
 it("renders correctly", () => {
     const tree = renderer.create(<TrustTherapists />).toJSON();
