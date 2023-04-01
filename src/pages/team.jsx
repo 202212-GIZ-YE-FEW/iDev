@@ -1,108 +1,84 @@
-import TeamMember from "@/components/TeamMember";
-import { useState } from "react";
-import { i18n, useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Abdulmajeed from "public/team/AbdulmajeedJaafer.png";
+import AhmedMohammed from "public/team/AhmedMohammed.png";
+import AllanSaleh from "public/team/AllanSaleh.png";
+import AvrazZebary from "public/team/AvrazZebary.png";
+import PayamAbubakr from "public/team/PayamAbubakr.png";
+import SnoorMadih from "public/team/SnoorMadih.png";
 
-import Abdulmajeed from "public/AbdulmajeedJaafer.png";
-import AhmedMohammed from "public/AhmedMohammed.png";
-import AllanSaleh from "public/AllanSaleh.png";
-import AvrazZebary from "public/AvrazZebary.png";
-import PayamAbubakr from "public/PayamAbubakr.png";
-import SnoorMadih from "public/SnoorMadih.png";
 import PageIntro from "@/components/PageIntro";
-import Layout from "@/layout/Layout";
-
-export default function Team() {
-    const { t } = useTranslation("common");
-    const [title, seTtitle] = useState("");
-    const [job, setJob] = useState("");
-    const [photo, setPhoto] = useState();
+import TeamMember from "@/components/TeamMember";
+function Team({ t }) {
+    const teamMembers = [
+        {
+            id: 1,
+            name: "Allan Saleh",
+            job: "Lead Engineer & Web Devloper",
+            photo: AllanSaleh,
+        },
+        {
+            id: 2,
+            name: "Payan Abubakr",
+            job: "Junior Designer & FE Developer",
+            photo: PayamAbubakr,
+        },
+        {
+            id: 3,
+            name: "Ahmed Mohammed",
+            job: "Junior Designer & FE Developer",
+            photo: AhmedMohammed,
+        },
+        {
+            id: 4,
+            name: "Abdulmajeed Jaafer",
+            job: "Junior Designer & FE Developer",
+            photo: Abdulmajeed,
+        },
+        {
+            id: 5,
+            name: "Snoor Mahdi",
+            job: "Junior Designer & FE Developer",
+            photo: SnoorMadih,
+        },
+        {
+            id: 6,
+            name: "Avraz Zebary",
+            job: "Lead Engineer & Web Devloper",
+            photo: AvrazZebary,
+        },
+    ];
     return (
         <>
-            <Layout i18n={i18n}>
-                {/* Page Intro  */}
-                <div className=' container'>
-                    <div className='ml-2 mt-8 flex-wrap nowrap md:text-start  text-center justify-center items-center sm:text-center'>
-                        <PageIntro
-                            title={t("WE ARE HEALING, NICE TO MEET YOU!")}
-                        />
-                    </div>
-
-                    <div className='flex justify-center items-center'>
-                        <div className='flex justify-center  items-center'>
-                            <div className='flex flex-wrap items-center'>
-                                <h1 className='text-[30px]  w-full p-4  flex-wrap nowrap md:text-start  text-center justify-center items-center sm:text-center'>
-                                    {t("Meet the Team!")}
-                                </h1>
-                                {/* Cards */}
-                                <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/6  p-4 flex justify-center items-center '>
-                                    <TeamMember
-                                        title={t("Allan Saleh")}
-                                        job={t("Lead Engineer  &Web Devloper")}
-                                        photo={AllanSaleh}
-                                    />{" "}
-                                </div>
-
-                                <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/6 p-4 flex justify-center items-center'>
-                                    <TeamMember
-                                        title={t("Payan Abubakr")}
-                                        job={t(
-                                            "Junior Designer & FE Developer"
-                                        )}
-                                        photo={PayamAbubakr}
-                                    />{" "}
-                                </div>
-
-                                <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/6 p-4 flex justify-center items-center'>
-                                    <TeamMember
-                                        title={t("Ahmed Mohammed")}
-                                        job={t(
-                                            "Junior Designer & FE Developer"
-                                        )}
-                                        photo={AhmedMohammed}
-                                    />{" "}
-                                </div>
-
-                                <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/6 p-4 flex justify-center items-center'>
-                                    <TeamMember
-                                        title={t("Abdulmajeed Jaafer")}
-                                        job={t(
-                                            "Junior Designer & FE Developer"
-                                        )}
-                                        photo={Abdulmajeed}
-                                    />{" "}
-                                </div>
-
-                                <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/6 p-4 flex justify-center items-center'>
-                                    <TeamMember
-                                        title={t("Snoor Mahdi")}
-                                        job={t(
-                                            "Junior Designer & FE Developer"
-                                        )}
-                                        photo={SnoorMadih}
-                                    />{" "}
-                                </div>
-
-                                <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/6 p-4 flex justify-center items-center'>
-                                    <TeamMember
-                                        title={t("Avraz Zebary")}
-                                        job={t("Lead Engineer  &Web Devloper")}
-                                        photo={AvrazZebary}
-                                    />{" "}
-                                </div>
-                            </div>
-                        </div>
+            <div className='container py-20'>
+                <PageIntro title={t("teamPageTitle")} />
+                <div className='team-members mt-32'>
+                    <p className='text-[30px] w-full mb-8 text-center md:text-start'>
+                        {t("meetTeam")}
+                    </p>
+                    <div className='flex justify-between flex-wrap items-center gap-10'>
+                        {teamMembers.map((member) => {
+                            return (
+                                <TeamMember
+                                    key={member.id}
+                                    name={t(`${member.name}`)}
+                                    job={t(`${member.job}`)}
+                                    photo={member.photo}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
-            </Layout>
+            </div>
         </>
     );
 }
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            ...(await serverSideTranslations(locale, ["common", "team"])),
             // Will be passed to the page component as props
         },
     };
 }
+export default withTranslation("team")(Team);
