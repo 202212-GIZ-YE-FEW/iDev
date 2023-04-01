@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
       <p
         className="text-xl md:text-2xl lg:text-3xl uppercase"
       >
-        we are here to
+        weAreHereTo
       </p>
       <span
         className="text-3xl md:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase"
@@ -34,7 +34,7 @@ exports[`renders correctly 1`] = `
       <button
         className="font-normal whitespace-nowrap cursor-pointer capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black "
       >
-        book an appointment
+        bookAppointment
       </button>
     </div>
     <div>

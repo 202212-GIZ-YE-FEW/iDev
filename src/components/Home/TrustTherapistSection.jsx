@@ -7,7 +7,7 @@ function TrustTherapists({ t }) {
         <>
             <div className='container flex flex-col space-y-8 justify-between'>
                 <p className='text-3xl md:text-4xl lg:text-5xl uppercase break-words'>
-                    {t("title of trust therapists")}.
+                    {t("trustTherapistTitle")}.
                 </p>
                 <Image
                     src='/trust_therapists.png'
@@ -15,10 +15,10 @@ function TrustTherapists({ t }) {
                     width={600}
                     height={300}
                 />
-                <p className='pb-20'>{t("description of trust therapists")}.</p>
+                <p className='pb-20'>{t("trustTherapistSubtitle")}.</p>
                 <div className='w-fit'>
                     <Button
-                        content={t("book an appointment")}
+                        content={t("bookAppointment")}
                         text-transform='uppercase'
                         filled='true'
                         size='large'

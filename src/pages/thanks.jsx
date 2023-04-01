@@ -15,7 +15,7 @@ export default function Thanks(prop) {
         <>
             <Layout i18n={i18n}>
                 <div className='container my-20'>
-                    <PageIntro title={t("thank you!")} subtitle={subtitle} />
+                    <PageIntro title={t("thankYou")} subtitle={subtitle} />
                     <Link href='/'>
                         <Button
                             content={t("back to home")}

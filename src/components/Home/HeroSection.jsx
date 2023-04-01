@@ -1,9 +1,9 @@
 import Image from "next/image";
+import { withTranslation } from "next-i18next";
 
 import Button from "../ui/Button";
 
-export default function Hero(prop) {
-    const { t } = prop;
+function Hero({ t }) {
     const style = {
         backgroundImage: "url(/header.png)",
         backgroundSize: "cover",
@@ -21,13 +21,13 @@ export default function Hero(prop) {
             <div className='container flex flex-col items-center justify-center md:flex-row md:space-s-20 space-y-10'>
                 <div className='flex flex-col'>
                     <p className='text-xl md:text-2xl lg:text-3xl uppercase'>
-                        we are here to
+                        {t("weAreHereTo")}
                     </p>
                     <span className='text-3xl md:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase'>
-                        help
+                        {t("help")}
                     </span>
                     <Button
-                        content='book an appointment'
+                        content={t("bookAppointment")}
                         text-transform='uppercase'
                         filled='true'
                         size='large'
@@ -48,3 +48,4 @@ export default function Hero(prop) {
         </header>
     );
 }
+export default withTranslation("home")(Hero);

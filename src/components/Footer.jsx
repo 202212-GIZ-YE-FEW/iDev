@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { withTranslation } from "next-i18next";
 
 import { navigation } from "@/constants";
 
 import Subscribe from "./Subscribe";
-export default function Footer() {
+function Footer({ t }) {
     return (
         <>
             <footer className='bg-yellow py-8'>
@@ -16,7 +17,7 @@ export default function Footer() {
                                     return (
                                         <li key={nav.name} className='mx-6'>
                                             <Link href={nav.href}>
-                                                {nav.name}
+                                                {t(`${nav.name}`)}
                                             </Link>
                                         </li>
                                     );
@@ -73,3 +74,4 @@ export default function Footer() {
         </>
     );
 }
+export default withTranslation("common")(Footer);

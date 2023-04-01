@@ -7,7 +7,7 @@ exports[`renders correctly 1`] = `
   <p
     className="text-3xl md:text-4xl lg:text-5xl uppercase break-words"
   >
-    title of trust therapists
+    trustTherapistTitle
     .
   </p>
   <img
@@ -30,7 +30,7 @@ exports[`renders correctly 1`] = `
   <p
     className="pb-20"
   >
-    description of trust therapists
+    trustTherapistSubtitle
     .
   </p>
   <div
@@ -39,7 +39,7 @@ exports[`renders correctly 1`] = `
     <button
       className="font-normal whitespace-nowrap cursor-pointer capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black "
     >
-      book an appointment
+      bookAppointment
     </button>
   </div>
 </div>
