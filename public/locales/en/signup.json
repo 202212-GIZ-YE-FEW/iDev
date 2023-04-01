@@ -1,10 +1,10 @@
 {
-    "first name": "First name",
-    "last name": "Second name   ",
+    "firstName": "First name",
+    "lastName": "Second name   ",
     "email": "Email",
-    "confirm email": "Confirm email",
+    "confirmEmail": "Confirm email",
     "password": "Password",
-    "confirm password": " Confirm Password",
+    "confirmPassword": " Confirm Password",
     "date": " Date Brith",
     "signup": "Signup",
     "login": "Login"

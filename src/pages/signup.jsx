@@ -4,22 +4,23 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export default function Signup() {
+export default function Signup(prop) {
     const style = { minHeight: "calc(100vh - 1rem)" };
     const { t } = useTranslation("signup");
 
     const {
-        firstname = "first name",
-        lastname = "last name",
+        firstname = "firstName",
+        lastname = "lastName",
         email = "email",
-        confirmemail = "confirm email",
+        confirmemail = "confirmEmail",
         password = "password",
-        confirmpassword = "confirm password",
+        confirmpassword = "confirmPassword",
         datebrith = "date",
         signup = "signup",
         login = "login",
-    } = [];
+    } = prop;
 
     return (
         <div style={style}>
@@ -92,7 +93,7 @@ export default function Signup() {
                             data-te-input-wrapper-init
                         >
                             <Input
-                                label={t(`${datebrith}`)}
+                                label='data'
                                 type='date'
                                 name='date brith'
                                 inputWidthSize='w-full'
@@ -101,14 +102,14 @@ export default function Signup() {
 
                         <div className=' flex justify-center space-x-[0.5rem] lg:space-x-[0.5rem]  rtl:space-x-reverse 1.4rem sm:flex-row '>
                             <Button
-                                content={t(`${login}`)}
+                                content='login' //{t(`${login}`)}
                                 filled='false'
                                 size='large'
                                 fontSize='lg:text-md xl:text-sm'
                                 radius='md '
                             />
                             <Button
-                                content={t(`${signup}`)}
+                                content='login'
                                 filled='true'
                                 size='large'
                                 fontSize='lg:text-md xl xl:text-sm'
@@ -121,4 +122,13 @@ export default function Signup() {
             </div>
         </div>
     );
+}
+
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["signup"])),
+            // Will be passed to the page component as props
+        },
+    };
 }

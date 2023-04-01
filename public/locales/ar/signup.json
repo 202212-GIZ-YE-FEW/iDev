@@ -1,10 +1,10 @@
 {
-    "first name": "الاسم الاول ",
-    "last name": "الاسم الثاني",
+    "firstName": "الاسم الاول ",
+    "lastName": "الاسم الثاني",
     "email": "البريد الالكتروني",
-    "confirm email": " تأكيد البريد الالكتروني",
+    "confirmEmail": " تأكيد البريد الالكتروني",
     "password": " كلمة المرور",
-    "confirm password": " مطابقه كلمه المرور",
+    "confirmPassword": " مطابقه كلمه المرور",
     "date": " تاريخ الميلاد",
     "signup": "انشاءحساب",
     "login": "الدخول"
