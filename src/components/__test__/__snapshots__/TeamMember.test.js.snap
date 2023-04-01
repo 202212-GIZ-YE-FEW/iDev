@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="rounded-[25px] w-[11rem] bg-light-cyan"
+>
+  <img
+    alt="undefined photo"
+    data-nimg="1"
+    decoding="async"
+    height={190}
+    loading="lazy"
+    onError={[Function]}
+    onLoad={[Function]}
+    src=""
+    style={
+      Object {
+        "color": "transparent",
+      }
+    }
+    width={176}
+  />
+  <div
+    className="w-full h-[5px] mt-0 bg-phosphorescent"
+  />
+  <div
+    className="p-5"
+  >
+    <h5
+      className="text-xl font-bold tracking-tight text-gray pb-[33px] h-[50px] mb-[40px] text-center"
+    >
+      undefined
+    </h5>
+    <p
+      className="font-normal text-gray pb-[40px] text-center"
+    >
+      undefined
+    </p>
+  </div>
+</div>
+`;

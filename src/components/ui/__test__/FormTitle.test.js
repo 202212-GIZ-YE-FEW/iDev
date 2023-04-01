@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import PageIntro from "../PageIntro";
+import FormTitle from "../FormTitle";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<PageIntro />).toJSON();
+    const tree = renderer.create(<FormTitle />).toJSON();
     expect(tree).toMatchSnapshot();
 });

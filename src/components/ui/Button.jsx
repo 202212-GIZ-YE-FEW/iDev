@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 export default function Button(prop) {
     const {
         content,
@@ -7,14 +8,21 @@ export default function Button(prop) {
         textTransform = "capitalize",
         fontSize = "xl",
         radius = "6px",
+        onClick,
     } = prop;
     return (
         <button
+            onClick={onClick}
             className={clsx(
-                `font-normal cursor-pointer ${textTransform} text-${fontSize} rounded-${radius}`,
+                `font-normal whitespace-nowrap cursor-pointer ${textTransform} ${fontSize} rounded-${radius}`,
                 {
-                    "px-[28px] py-[4.7px]": size === "small",
-                    "px-[59px] py-[12px] font-medium": size === "large",
+                    "px-[10] md:px-[18px] lg:px-[28px] py-[4.7px]":
+                        size === "small",
+                    /// for medium size button
+                    "px-[15px] md:px-[25px] lg:px-[35px] py-[7px]":
+                        size === "medium",
+                    "px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium":
+                        size === "large",
                     "bg-cyan text-black": filled === "true",
                     "border-2 border-cyan text-cyan": filled === "false",
                 }
@@ -24,15 +32,12 @@ export default function Button(prop) {
         </button>
     );
 }
-
 // Example of using
-{
-    /* <Button
-    content='login'
-    text-transform='uppercase'
-    filled='false'
-    size='large'
-    fontSize="5xl"
-    radius="5px"
+/* <Button
+content='book an appointment'
+textTransform='uppercase'
+filled='true'
+size='large'
+fontSize='text-lg md:text-xl lg:text-2xl'
+radius='md'
 /> */
-}
