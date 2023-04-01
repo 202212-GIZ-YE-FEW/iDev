@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex items-center pl-3"
+>
+  <input
+    className="w-5 h-5 bg-black border-black"
+    type="radio"
+  />
+</div>
+`;
