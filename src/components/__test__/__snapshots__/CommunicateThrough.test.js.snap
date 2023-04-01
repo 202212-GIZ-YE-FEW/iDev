@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bg-white py-20"
+>
+  <div
+    className="container flex flex-col space-y-20 justify-between"
+  >
+    <span
+      className="font-normal text-3xl md:text-4xl lg:text-5xl block uppercase"
+    >
+      commThroughTitle
+    </span>
+    <div
+      className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+    >
+      <div
+        className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+      >
+        <img
+          alt="voiceCall svg"
+          data-nimg="1"
+          decoding="async"
+          height={50}
+          loading="lazy"
+          onError={[Function]}
+          onLoad={[Function]}
+          src="/home/voice.svg"
+          style={
+            Object {
+              "color": "transparent",
+            }
+          }
+          width={50}
+        />
+        <span
+          className="uppercase text-4xl"
+        >
+          voiceCall
+        </span>
+        <p
+          className="text-sm rtl:text-base text-black/50"
+        >
+          voiceCallDesc
+        </p>
+      </div>
+      <div
+        className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+      >
+        <img
+          alt="chat svg"
+          data-nimg="1"
+          decoding="async"
+          height={50}
+          loading="lazy"
+          onError={[Function]}
+          onLoad={[Function]}
+          src="/home/chat.svg"
+          style={
+            Object {
+              "color": "transparent",
+            }
+          }
+          width={50}
+        />
+        <span
+          className="uppercase text-4xl"
+        >
+          chat
+        </span>
+        <p
+          className="text-sm rtl:text-base text-black/50"
+        >
+          chatDesc
+        </p>
+      </div>
+      <div
+        className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+      >
+        <img
+          alt="videoCall svg"
+          data-nimg="1"
+          decoding="async"
+          height={50}
+          loading="lazy"
+          onError={[Function]}
+          onLoad={[Function]}
+          src="/home/video.svg"
+          style={
+            Object {
+              "color": "transparent",
+            }
+          }
+          width={50}
+        />
+        <span
+          className="uppercase text-4xl"
+        >
+          videoCall
+        </span>
+        <p
+          className="text-sm rtl:text-base text-black/50"
+        >
+          videoCallDesc
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
