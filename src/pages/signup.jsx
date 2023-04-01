@@ -6,7 +6,7 @@ import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Image from "next/image";
-export default function Signup(prop) {
+export default function Signup() {
     const style = { minHeight: "calc(100vh - 1rem)" };
     const { t } = useTranslation("signup");
 
@@ -95,7 +95,7 @@ export default function Signup(prop) {
                             data-te-input-wrapper-init
                         >
                             <Input
-                                label='data'
+                                label={t(`${datebrith}`)}
                                 type='date'
                                 name='date brith'
                                 inputWidthSize='w-full'
@@ -104,14 +104,14 @@ export default function Signup(prop) {
 
                         <div className=' flex justify-center space-x-[0.5rem] lg:space-x-[0.5rem]  rtl:space-x-reverse 1.4rem sm:flex-row '>
                             <Button
-                                content='singup'
+                                content={t(`${signup}`)}
                                 filled='false'
                                 size='large'
                                 fontSize='lg:text-md xl:text-sm'
                                 radius='md '
                             />
                             <Button
-                                content='login'
+                                content={t(`${login}`)}
                                 filled='true'
                                 size='large'
                                 fontSize='lg:text-md xl xl:text-sm'

@@ -10,7 +10,6 @@ export default function HomePage() {
         <>
             <Layout>
                 <Hero />
-                <Signup />
                 <TrustTherapists />
             </Layout>
         </>
