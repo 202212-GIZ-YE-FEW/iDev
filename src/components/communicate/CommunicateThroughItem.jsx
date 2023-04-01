@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 
-function CommunicateThroughItem({ t, name, icon, description }) {
+function CommunicateThroughItem({ name, icon, description }) {
     return (
         <>
             <div className='bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg'>

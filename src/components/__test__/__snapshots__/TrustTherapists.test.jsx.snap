@@ -2,49 +2,45 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-yellow py-16"
+  className="container flex flex-col space-y-8 justify-between"
 >
-  <div
-    className="container flex flex-col space-y-8 justify-between"
+  <p
+    className="text-3xl md:text-4xl lg:text-5xl uppercase break-words"
   >
-    <p
-      className="text-3xl md:text-4xl lg:text-5xl uppercase break-words"
-    >
-      title of trust therapists
-      .
-    </p>
-    <img
-      alt="trust_therapist"
-      data-nimg="1"
-      decoding="async"
-      height={300}
-      loading="lazy"
-      onError={[Function]}
-      onLoad={[Function]}
-      src="/_next/image?url=%2Ftrust_therapists.png&w=1200&q=75"
-      srcSet="/_next/image?url=%2Ftrust_therapists.png&w=640&q=75 1x, /_next/image?url=%2Ftrust_therapists.png&w=1200&q=75 2x"
-      style={
-        Object {
-          "color": "transparent",
-        }
+    title of trust therapists
+    .
+  </p>
+  <img
+    alt="trust_therapist"
+    data-nimg="1"
+    decoding="async"
+    height={300}
+    loading="lazy"
+    onError={[Function]}
+    onLoad={[Function]}
+    src="/_next/image?url=%2Ftrust_therapists.png&w=1200&q=75"
+    srcSet="/_next/image?url=%2Ftrust_therapists.png&w=640&q=75 1x, /_next/image?url=%2Ftrust_therapists.png&w=1200&q=75 2x"
+    style={
+      Object {
+        "color": "transparent",
       }
-      width={600}
-    />
-    <p
-      className="pb-20"
+    }
+    width={600}
+  />
+  <p
+    className="pb-20"
+  >
+    description of trust therapists
+    .
+  </p>
+  <div
+    className="w-fit"
+  >
+    <button
+      className="font-normal whitespace-nowrap cursor-pointer capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black"
     >
-      description of trust therapists
-      .
-    </p>
-    <div
-      className="w-fit"
-    >
-      <button
-        className="font-normal whitespace-nowrap cursor-pointer capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black"
-      >
-        book an appointment
-      </button>
-    </div>
+      book an appointment
+    </button>
   </div>
 </div>
 `;

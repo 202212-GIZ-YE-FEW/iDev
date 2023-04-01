@@ -23,21 +23,19 @@ function CommunicateThrough({ t }) {
     ];
     return (
         <>
-            <div className='bg-white py-20'>
-                <div className='container flex flex-col space-y-20 justify-between'>
-                    <PageIntro title={t("commThroughTitle")} />
-                    <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-                        {communicationMeans.map((item) => {
-                            return (
-                                <CommunicateThroughItem
-                                    key={item.name}
-                                    name={item.name}
-                                    icon={item.icon}
-                                    description={item.description}
-                                />
-                            );
-                        })}
-                    </div>
+            <div className='container flex flex-col space-y-20 justify-between'>
+                <PageIntro title={t("commThroughTitle")} />
+                <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                    {communicationMeans.map((item) => {
+                        return (
+                            <CommunicateThroughItem
+                                key={item.name}
+                                name={item.name}
+                                icon={item.icon}
+                                description={item.description}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </>
