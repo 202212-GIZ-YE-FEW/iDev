@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "backgroundImage": "url(/profile-icon.png)",
+        "backgroundSize": "cover",
+        "bottom": "58.31%",
+        "height": "315px",
+        "left": "9.51%",
+        "position": "absolute",
+        "right": "68.61%",
+        "top": "16.77%",
+        "width": "315px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "background": "#FFFFFF",
+          "border": "2px solid #000000",
+          "borderRadius": "50%",
+          "bottom": "56.72%",
+          "height": "70px",
+          "left": "17.43%",
+          "position": "absolute",
+          "right": "35.36%",
+          "top": "90.74%",
+          "width": "75px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "backgroundImage": "url(/edit_profile_icon.png)",
+            "backgroundSize": "cover",
+            "height": "52px",
+            "position": "absolute",
+            "right": "6.12%",
+            "top": "13.21%",
+            "width": "54px",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
