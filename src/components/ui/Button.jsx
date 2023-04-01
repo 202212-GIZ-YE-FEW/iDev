@@ -23,7 +23,7 @@ export default function Button(prop) {
                         size === "medium",
                     "px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium":
                         size === "large",
-                    "bg-cyan text-black": filled === "true",
+                    "bg-cyan text-black ": filled === "true",
                     "border-2 border-cyan text-cyan": filled === "false",
                 }
             )}

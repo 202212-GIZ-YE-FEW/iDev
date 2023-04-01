@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import FormTitle from "../../FormTitle";
+import Singup from "../Button";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<FormTitle />).toJSON();
+    const tree = renderer.create(<Singup />).toJSON();
     expect(tree).toMatchSnapshot();
 });

@@ -45,7 +45,7 @@ module.exports = {
         },
         fontSize: {
             sm: [
-                "0.875rem", // 14px
+                "0.575rem", // 14px
                 {
                     lineHeight: "21px",
                 },
