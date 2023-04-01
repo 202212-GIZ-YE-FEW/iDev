@@ -4,7 +4,7 @@ import { withTranslation } from "next-i18next";
 function BlogItem({ title, thumbnail, isOdd }) {
     return (
         <>
-            <div className='relative'>
+            <div className='relative mx-3'>
                 <Image
                     src={`/home/${thumbnail}.svg`}
                     alt={`${title} svg`}
@@ -22,7 +22,7 @@ function BlogItem({ title, thumbnail, isOdd }) {
                         </p>
                     </div>
                 ) : (
-                    <p className='uppercase absolute top-2 left-2 text-base text-white px-2'>
+                    <p className='uppercase absolute top-2 left-2 text-base bg-light-gray text-white px-2'>
                         {title}
                     </p>
                 )}
