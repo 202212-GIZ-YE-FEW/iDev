@@ -264,14 +264,16 @@ export default function Navbar() {
                             openLangDropdown={openLangDropdown}
                             router={router}
                         />
-                        <Button
-                            content={t("login")}
-                            text-transform='capitalize'
-                            filled='true'
-                            size='small'
-                            fontSize='text-sm md:text-lg'
-                            radius='md'
-                        />
+                        <Link href='/signup'>
+                            <Button
+                                content={t("login")}
+                                text-transform='capitalize'
+                                filled='true'
+                                size='small'
+                                fontSize='text-sm md:text-lg'
+                                radius='md'
+                            />
+                        </Link>
                     </div>
                 </div>
             </div>
