@@ -4,11 +4,15 @@ exports[`renders correctly 1`] = `
 <div
   className="container flex flex-col space-y-20 justify-between"
 >
-  <span
-    className="font-normal text-3xl md:text-4xl lg:text-5xl block uppercase"
+  <div
+    className="mb-5"
   >
-    commThroughTitle
-  </span>
+    <span
+      className="font-normal text-3xl md:text-4xl lg:text-5xl block uppercase"
+    >
+      commThroughTitle
+    </span>
+  </div>
   <div
     className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
   >

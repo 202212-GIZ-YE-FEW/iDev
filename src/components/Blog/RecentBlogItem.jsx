@@ -13,7 +13,7 @@ function BlogItem({ title, thumbnail, isOdd }) {
                     sizes='(max-width: 768px) 100vw,
                         (max-width: 1200px) 50vw,
                         33vw'
-                    style={{ height: "100%", width: "100%" }}
+                    className='w-full h-full'
                 />
                 {isOdd ? (
                     <div className='w-32 absolute bottom-2 left-2'>

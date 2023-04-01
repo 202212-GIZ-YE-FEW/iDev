@@ -6,6 +6,7 @@ exports[`renders correctly 1`] = `
 >
   <img
     alt="undefined svg"
+    className="w-full h-full"
     data-nimg="1"
     decoding="async"
     height={160}
@@ -16,8 +17,6 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "color": "transparent",
-        "height": "100%",
-        "width": "100%",
       }
     }
     width={200}

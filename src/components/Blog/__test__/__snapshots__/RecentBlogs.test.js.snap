@@ -4,11 +4,15 @@ exports[`renders correctly 1`] = `
 <div
   className="container flex flex-col space-y-20 justify-between"
 >
-  <span
-    className="font-normal text-3xl md:text-4xl lg:text-5xl block uppercase"
+  <div
+    className="mb-5"
   >
-    recentBlogsTitle
-  </span>
+    <span
+      className="font-normal text-3xl md:text-4xl lg:text-5xl block uppercase"
+    >
+      recentBlogsTitle
+    </span>
+  </div>
   <div
     className="react-multi-carousel-list  "
     dir="ltr"

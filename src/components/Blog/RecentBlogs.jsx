@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 
 import "react-multi-carousel/lib/styles.css";
 
-import BlogItem from "./BlogItem";
+import BlogItem from "./RecentBlogItem";
 import PageIntro from "../PageIntro";
 function RecentBlogs({ t }) {
     const recentBlogs = [
@@ -46,7 +46,7 @@ function RecentBlogs({ t }) {
                     {recentBlogs.map((item, index) => {
                         return (
                             <BlogItem
-                                key={item.index}
+                                key={index}
                                 title={item.title}
                                 thumbnail={item.thumbnail}
                                 isOdd={index % 2 === 0 ? false : true}
