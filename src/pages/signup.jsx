@@ -95,7 +95,7 @@ function SignUp({ t }) {
                                 content={t(`${signup}`)}
                                 filled='true'
                                 size='medium'
-                                fontSize='lg:text-md xl xl:text-sm'
+                                fontSize='lg:text-md xl:text-sm'
                                 radius='md '
                                 shadow='shadow-lg'
                             />
