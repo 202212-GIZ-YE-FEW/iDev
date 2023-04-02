@@ -8,13 +8,14 @@ export default function Button(prop) {
         textTransform = "capitalize",
         fontSize = "xl",
         radius = "6px",
+        shadow = "",
         onClick,
     } = prop;
     return (
         <button
             onClick={onClick}
             className={clsx(
-                `font-normal whitespace-nowrap cursor-pointer ${textTransform} ${fontSize} rounded-${radius}`,
+                `font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
                 {
                     "px-[10] md:px-[18px] lg:px-[28px] py-[4.7px]":
                         size === "small",

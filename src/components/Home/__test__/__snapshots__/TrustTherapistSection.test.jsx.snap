@@ -40,7 +40,7 @@ exports[`renders correctly 1`] = `
     className="w-fit"
   >
     <button
-      className="font-normal whitespace-nowrap cursor-pointer capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[8px] font-medium bg-cyan text-black "
+      className="font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[8px] font-medium bg-cyan text-black "
     >
       bookAppointment
     </button>
