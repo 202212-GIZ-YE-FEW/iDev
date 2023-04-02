@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
     className="mb-5"
   >
     <span
-      className="font-normal text-3xl md:text-4xl lg:text-5xl block uppercase"
+      className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl uppercase break-words"
     >
       commThroughTitle
     </span>

@@ -4,12 +4,15 @@ exports[`renders correctly 1`] = `
 <div
   className="container flex flex-col space-y-8 justify-between"
 >
-  <p
-    className="text-3xl md:text-4xl lg:text-5xl uppercase break-words"
+  <div
+    className="mb-5"
   >
-    trustTherapistTitle
-    .
-  </p>
+    <span
+      className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl uppercase break-words"
+    >
+      trustTherapistTitle
+    </span>
+  </div>
   <img
     alt="trust_therapist"
     data-nimg="1"
@@ -37,7 +40,7 @@ exports[`renders correctly 1`] = `
     className="w-fit"
   >
     <button
-      className="font-normal whitespace-nowrap cursor-pointer capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black "
+      className="font-normal whitespace-nowrap cursor-pointer capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[8px] font-medium bg-cyan text-black "
     >
       bookAppointment
     </button>

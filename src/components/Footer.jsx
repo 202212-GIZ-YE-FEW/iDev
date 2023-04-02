@@ -8,7 +8,7 @@ function Footer({ t }) {
     return (
         <>
             <footer className='bg-yellow py-8'>
-                <div className='container flex flex-col items-center md:flex-row justify-center md:justify-between space-y-4 md:space-y-0'>
+                <div className='container flex flex-col items-center lg:flex-row justify-center md:justify-between space-y-4 lg:space-y-0'>
                     <Subscribe />
                     <div className='flex flex-col space-y-10 justify-center'>
                         <nav>

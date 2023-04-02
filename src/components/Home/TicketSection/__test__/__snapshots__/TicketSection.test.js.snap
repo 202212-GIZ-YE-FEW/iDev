@@ -8,12 +8,12 @@ exports[`renders correctly 1`] = `
     className="mb-5"
   >
     <span
-      className="font-normal text-3xl md:text-4xl lg:text-5xl block uppercase"
+      className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl uppercase break-words"
     >
       purchaseTicketsTitle
     </span>
     <p
-      className="text:lg md:text:xl text-2xl text-black/50"
+      className="text-lg md:text-xl lg:text-2xl text-black/50"
     >
       purchaseTicketsSubtitle
     </p>
@@ -37,11 +37,15 @@ exports[`renders correctly 1`] = `
         10
         $
       </span>
-      <button
-        className="font-normal whitespace-nowrap cursor-pointer uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black "
+      <div
+        className="w-fit"
       >
-        purchase
-      </button>
+        <button
+          className="font-normal whitespace-nowrap cursor-pointer uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[8px] font-medium bg-cyan text-black "
+        >
+          purchase
+        </button>
+      </div>
     </div>
     <div
       className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
@@ -59,11 +63,15 @@ exports[`renders correctly 1`] = `
         40
         $
       </span>
-      <button
-        className="font-normal whitespace-nowrap cursor-pointer uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black "
+      <div
+        className="w-fit"
       >
-        purchase
-      </button>
+        <button
+          className="font-normal whitespace-nowrap cursor-pointer uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[8px] font-medium bg-cyan text-black "
+        >
+          purchase
+        </button>
+      </div>
     </div>
     <div
       className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
@@ -81,11 +89,15 @@ exports[`renders correctly 1`] = `
         70
         $
       </span>
-      <button
-        className="font-normal whitespace-nowrap cursor-pointer uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black "
+      <div
+        className="w-fit"
       >
-        purchase
-      </button>
+        <button
+          className="font-normal whitespace-nowrap cursor-pointer uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[8px] font-medium bg-cyan text-black "
+        >
+          purchase
+        </button>
+      </div>
     </div>
   </div>
   <div
@@ -97,15 +109,19 @@ exports[`renders correctly 1`] = `
       askIfCounselor
     </span>
     <span
-      className="text-base rtl:text-2xl text-black"
+      className="text-base rtl:text-xl text-black"
     >
       askCounselor
     </span>
-    <button
-      className="font-normal whitespace-nowrap cursor-pointer uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[12px] font-medium bg-cyan text-black "
+    <div
+      className=""
     >
-      learnMore
-    </button>
+      <button
+        className="font-normal whitespace-nowrap cursor-pointer uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] lg:px-[59px] py-[8px] font-medium bg-cyan text-black "
+      >
+        learnMore
+      </button>
+    </div>
   </div>
 </div>
 `;

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
 import Button from "../ui/Button";
@@ -6,42 +7,36 @@ import Button from "../ui/Button";
 function Hero({ t }) {
     const style = {
         backgroundImage: "url(/header.png)",
-        backgroundSize: "cover",
-        minWidth: "96.5vw",
-        position: "relative",
-        left: "0",
-        right: "0",
         minHeight: "calc(100vh - 5rem)",
     };
     return (
-        <header
-            style={style}
-            className='flex flex-col items-center justify-center'
-        >
-            <div className='container flex flex-col items-center justify-center md:flex-row md:space-s-20 space-y-10'>
-                <div className='flex flex-col'>
-                    <p className='text-xl md:text-2xl lg:text-3xl uppercase'>
+        <header style={style} className='min-w-[96vw] bg-cover'>
+            <div className='container flex flex-col h-full justify-center lg:flex-row gap-y-10 lg:justify-between items-center'>
+                <div className='flex flex-col justify-center text-center lg:text-start'>
+                    <h1 className='text-xl sm:text-3xl md:text-4xl xl:text-5xl uppercase'>
                         {t("weAreHereTo")}
-                    </p>
-                    <span className='text-3xl md:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase'>
+                    </h1>
+                    <p className='text-3xl sm:text-5xl md:text-9xl rtl:lg:text-9xl mb-3 lg:mb-0 uppercase'>
                         {t("help")}
-                    </span>
-                    <Button
-                        content={t("bookAppointment")}
-                        text-transform='uppercase'
-                        filled='true'
-                        size='large'
-                        fontSize='text-lg md:text-xl lg:text-2xl'
-                        radius='md'
-                    />
+                    </p>
+                    <Link className='w-fit xl:w-full rtl:w-full' href='#'>
+                        <Button
+                            content={t("bookAppointment")}
+                            text-transform='uppercase'
+                            filled='true'
+                            size='large'
+                            fontSize='text-lg md:text-xl lg:text-2xl'
+                            radius='md'
+                        />
+                    </Link>
                 </div>
-                <div>
+                <div className='basis-1/2'>
                     <Image
                         src='/hero.png'
-                        className='w-full'
-                        width={600}
-                        height={500}
-                        alt='hero image'
+                        width={900}
+                        height={200}
+                        alt=''
+                        className='object-fit w-full lg:min-w-[29rem] lg:max-w-[36rem] xl:min-w-[40rem]'
                     />
                 </div>
             </div>

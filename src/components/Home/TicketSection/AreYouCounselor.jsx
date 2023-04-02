@@ -8,17 +8,19 @@ function AreYouCounselor({ t }) {
                 <span className='uppercase text-4xl'>
                     {t("askIfCounselor")}
                 </span>
-                <span className='text-base rtl:text-2xl text-black'>
+                <span className='text-base rtl:text-xl text-black'>
                     {t("askCounselor")}
                 </span>
-                <Button
-                    content={t("learnMore")}
-                    textTransform='uppercase'
-                    filled='true'
-                    size='large'
-                    fontSize='text-lg md:text-xl lg:text-2xl'
-                    radius='md'
-                />
+                <div className=''>
+                    <Button
+                        content={t("learnMore")}
+                        textTransform='uppercase'
+                        filled='true'
+                        size='large'
+                        fontSize='text-lg md:text-xl lg:text-2xl'
+                        radius='md'
+                    />
+                </div>
             </div>
         </>
     );

@@ -17,10 +17,11 @@ module.exports = {
         },
         container: {
             padding: {
-                DEFAULT: ".5rem",
-                sm: "1rem",
-                md: "1.5rem",
-                lg: "5rem",
+                // DEFAULT: "1.5rem",
+                xs: "1rem",
+                sm: "2.5rem",
+                md: "3.5rem",
+                lg: "6.5rem",
                 xl: "9rem",
                 "2xl": "12rem",
             },
@@ -44,8 +45,14 @@ module.exports = {
             sans: ["Poppins", "Graphik", "sans-serif"],
         },
         fontSize: {
+            xs: [
+                "0.575rem", // 9px
+                {
+                    lineHeight: "12px",
+                },
+            ],
             sm: [
-                "0.575rem", // 14px
+                "0.875rem", // 14px
                 {
                     lineHeight: "21px",
                 },
@@ -90,6 +97,12 @@ module.exports = {
                 "3.1rem", // 50px
                 {
                     lineHeight: "75px",
+                },
+            ],
+            "6xl": [
+                "3.75rem", // 60px
+                {
+                    lineHeight: "90px",
                 },
             ],
             "9xl": [

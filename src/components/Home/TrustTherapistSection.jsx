@@ -1,14 +1,13 @@
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 
+import PageIntro from "../PageIntro";
 import Button from "../ui/Button";
 function TrustTherapists({ t }) {
     return (
         <>
             <div className='container flex flex-col space-y-8 justify-between'>
-                <p className='text-3xl md:text-4xl lg:text-5xl uppercase break-words'>
-                    {t("trustTherapistTitle")}.
-                </p>
+                <PageIntro title={t("trustTherapistTitle")} />
                 <Image
                     src='/trust_therapists.png'
                     alt='trust_therapist'

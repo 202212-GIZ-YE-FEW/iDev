@@ -11,14 +11,16 @@ function TicketItem({ t, numberOfTickets, price }) {
                 <span className='text-base rtl:text-3xl text-black/50'>
                     {price}$
                 </span>
-                <Button
-                    content={t("purchase")}
-                    textTransform='uppercase'
-                    filled='true'
-                    size='large'
-                    fontSize='text-lg md:text-xl lg:text-2xl'
-                    radius='md'
-                />
+                <div className='w-fit'>
+                    <Button
+                        content={t("purchase")}
+                        textTransform='uppercase'
+                        filled='true'
+                        size='large'
+                        fontSize='text-lg md:text-xl lg:text-2xl'
+                        radius='md'
+                    />
+                </div>
             </div>
         </>
     );
