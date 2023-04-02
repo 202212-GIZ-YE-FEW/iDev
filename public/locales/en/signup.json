@@ -8,10 +8,10 @@
     "date": " Date Brith",
     "signup": "Signup",
     "login": "Login",
-    "userName":" User Name",
-    "city":"City",
-    "licenseNamber":" License Namber ",
-    "createPassword":"Create Password",
-    "create":"Create",
-    "createAnAccount":"Create An Account"
+    "userName": " User Name",
+    "city": "City",
+    "licenseNamber": " License Namber ",
+    "createPassword": "Create Password",
+    "create": "Create",
+    "createAnAccount": "Create An Account"
 }
