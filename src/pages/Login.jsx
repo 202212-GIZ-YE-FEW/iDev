@@ -4,7 +4,6 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
-
 import Image from "next/image";
 
 function Login({ t }) {
