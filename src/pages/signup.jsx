@@ -1,14 +1,13 @@
 import React from "react";
-import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 import Image from "next/image";
-export default function Singup() {
+function Singup({ t }) {
     const style = { minHeight: "calc(100vh - 1rem)" };
-    const { t } = useTranslation("signup");
 
     const {
         firstname = "firstName",
@@ -125,12 +124,4 @@ export default function Singup() {
         </div>
     );
 }
-
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["signup"])),
-            // Will be passed to the page component as props
-        },
-    };
-}
+export default withTranslation("signup")(Singup);
