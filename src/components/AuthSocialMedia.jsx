@@ -1,16 +1,18 @@
 import React from "react";
-
+import { useTranslation } from "next-i18next";
 export default function AuthSocialMedia() {
+    const { t } = useTranslation("signup");
+    const or = "or";
+
     return (
         <div>
             <div className='my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-cyan after:mt-0.5 after:flex-1 after:border-t after:border-cyan'>
                 <p className='mx-4 mb-0 text-center font-semibold dark:text-white'>
-                    Or
+                    {t(`${or}`)}
                 </p>
             </div>
             <div className='flex flex-row items-center justify-center '>
                 <svg
-                    testId='facebook-icon'
                     width='50px'
                     height='50px'
                     viewBox='0 0 24 24'
@@ -32,7 +34,6 @@ export default function AuthSocialMedia() {
                     </g>
                 </svg>
                 <svg
-                    testId='google-icon'
                     width='50px'
                     height='50px'
                     viewBox='0 0 24 24'
