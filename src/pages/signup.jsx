@@ -24,8 +24,8 @@ function SignUp({ t }) {
             <div className='grid grid-cols-1 lg:grid-cols-2 justify-items-center py-20 items-center gap-y-10 gap-x-32'>
                 <div className='w-1/2 lg:justify-self-start'>
                     <Image
-                        src='/SignupImage.png'
-                        className='w-full lg:min-w-[27rem] lg:max-w-[31rem] xl:min-w-[34rem]'
+                        src='/signup.svg'
+                        className='w-full lg:min-w-[27rem] lg:max-w-[33rem] xl:min-w-[34rem]'
                         width={500}
                         height={300}
                         alt='signup image'
