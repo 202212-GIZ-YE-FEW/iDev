@@ -12,7 +12,7 @@ function Footer({ t }) {
                     <Subscribe />
                     <div className='flex flex-col space-y-10 justify-center'>
                         <nav>
-                            <ul className='flex text-light-gray text-sm md:text-lg lg:text-xl'>
+                            <ul className='flex flex-wrap text-light-gray text-sm md:text-lg lg:text-xl'>
                                 {navigation.map((nav) => {
                                     return (
                                         <li key={nav.name} className='mx-6'>

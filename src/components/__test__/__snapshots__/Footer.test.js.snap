@@ -62,7 +62,7 @@ exports[`renders correctly 1`] = `
     >
       <nav>
         <ul
-          className="flex text-light-gray text-sm md:text-lg lg:text-xl"
+          className="flex flex-wrap text-light-gray text-sm md:text-lg lg:text-xl"
         >
           <li
             className="mx-6"
