@@ -1,16 +1,14 @@
 import React from "react";
-import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 import Image from "next/image";
 
-export default function Login() {
+function Login({ t }) {
     const style = { minHeight: "calc(100vh - 1rem)" };
-    const { t } = useTranslation("signup");
-
     const {
         email = "email",
         password = "password",
@@ -40,7 +38,7 @@ export default function Login() {
                             <Input
                                 type='email'
                                 name='email'
-                                placeholder={t(`${email}`)}
+                                placeholder={t("email")}
                                 inputWidthSize='w-full'
                             />
                         </div>
@@ -52,7 +50,7 @@ export default function Login() {
                             <Input
                                 type='name'
                                 name='Password'
-                                placeholder={t(`${password}`)}
+                                placeholder={t("password")}
                             />
                         </div>
 
@@ -79,12 +77,4 @@ export default function Login() {
         </div>
     );
 }
-
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["signup"])),
-            // Will be passed to the page component as props
-        },
-    };
-}
+export default withTranslation("signup")(Login);
