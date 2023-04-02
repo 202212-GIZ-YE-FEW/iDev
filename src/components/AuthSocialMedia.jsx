@@ -1,7 +1,6 @@
 import React from "react";
-import { useTranslation } from "next-i18next";
-export default function AuthSocialMedia() {
-    const { t } = useTranslation("signup");
+import { withTranslation } from "next-i18next";
+function AuthSocialMedia({ t }) {
     const or = "or";
 
     return (
@@ -57,3 +56,4 @@ export default function AuthSocialMedia() {
         </div>
     );
 }
+export default withTranslation("signup")(AuthSocialMedia);
