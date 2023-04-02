@@ -115,16 +115,30 @@ exports[`renders correctly 1`] = `
         <div
           className="flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row"
         >
-          <button
-            className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
+          <a
+            href="/login"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
-            login
-          </button>
-          <button
-            className="font-normal whitespace-nowrap cursor-pointer shadow-lg capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+            <button
+              className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
+            >
+              login
+            </button>
+          </a>
+          <a
+            href="/signup"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
-            signup
-          </button>
+            <button
+              className="font-normal whitespace-nowrap cursor-pointer shadow-lg capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+            >
+              signup
+            </button>
+          </a>
         </div>
       </form>
       <div>

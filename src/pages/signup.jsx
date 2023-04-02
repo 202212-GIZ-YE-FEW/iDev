@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
+import Link from "next/link";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
@@ -84,21 +84,25 @@ function SignUp({ t }) {
                             />
                         </div>
                         <div className='flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row'>
-                            <Button
-                                content={t(`${login}`)}
-                                filled='false'
-                                size='medium'
-                                fontSize='lg:text-md xl:text-sm'
-                                radius='md'
-                            />
-                            <Button
-                                content={t(`${signup}`)}
-                                filled='true'
-                                size='medium'
-                                fontSize='lg:text-md xl:text-sm'
-                                radius='md '
-                                shadow='shadow-lg'
-                            />
+                            <Link href='/login'>
+                                <Button
+                                    content={t(`${login}`)}
+                                    filled='false'
+                                    size='medium'
+                                    fontSize='lg:text-md xl:text-sm'
+                                    radius='md'
+                                />
+                            </Link>
+                            <Link href='/signup'>
+                                <Button
+                                    content={t(`${signup}`)}
+                                    filled='true'
+                                    size='medium'
+                                    fontSize='lg:text-md xl:text-sm'
+                                    radius='md '
+                                    shadow='shadow-lg'
+                                />
+                            </Link>
                         </div>
                     </form>
                     <AuthSocialMedia />
