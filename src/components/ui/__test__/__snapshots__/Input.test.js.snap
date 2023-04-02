@@ -2,7 +2,11 @@
 
 exports[`renders correctly 1`] = `
 <input
+<<<<<<< HEAD
   className="w-full border border-solid self-center border-light-gray/30 text-light-black  md:px-3  py-[0.32rem] px-3 leading-[2.15]  min-w-0 text-3xl font-light rounded-md"
+=======
+  className="w-full border border-solid self-center border-light-gray/80 px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
+>>>>>>> 350a3e3b8df1ed24649e672fccf683d437104f50
   required={false}
 />
 `;

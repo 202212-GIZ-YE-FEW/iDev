@@ -10,20 +10,21 @@ const Input = (props) => {
         isRequired = false,
         placeholder,
         label,
-        inputFontSize = "3xl",
+        inputFontSize = "sm",
         inputFontWeight = "light",
         inputWidthSize = "w-full",
         radius = "md",
         ...rest
     } = props;
 
-    const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black  md:px-3  py-[0.32rem] px-3 leading-[2.15]  min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    // const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black  md:px-3  py-[0.32rem] px-3 leading-[2.15]  min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/80 px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>
             {label && (
                 <label
-                    className='font-normal   whitespace-nowrap flex:me-10 flex:self-center'
+                    className='font-normal  mt-1 whitespace-nowrap flex:me-10 flex:self-center'
                     htmlFor={rest.id || rest.name}
                 >
                     {label}
