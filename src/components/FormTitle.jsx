@@ -1,4 +1,3 @@
-import React from "react";
 import { withTranslation } from "next-i18next";
 
 function FormTitle({ title, t }) {

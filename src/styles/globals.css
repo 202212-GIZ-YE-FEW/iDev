@@ -8,6 +8,10 @@
         @apply h-full flex flex-col justify-between;
     }
 
+    .container {
+        @apply max-w-full;
+    }
+
     html,
     body {
         @apply h-full;

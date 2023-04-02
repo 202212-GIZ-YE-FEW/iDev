@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import TrustTherapists from "../TrustTherapists";
+import RecentBlogItem from "../RecentBlogItem";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<TrustTherapists />).toJSON();
+    const tree = renderer.create(<RecentBlogItem />).toJSON();
     expect(tree).toMatchSnapshot();
 });

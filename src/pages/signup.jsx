@@ -1,14 +1,12 @@
-import React from "react";
+import Image from "next/image";
 import { withTranslation } from "next-i18next";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
-
-import Image from "next/image";
-function Singup({ t }) {
-    const style = { minHeight: "calc(100vh - 1rem)" };
-
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
+function SignUp({ t }) {
     const {
         firstname = "firstName",
         lastname = "lastName",
@@ -22,40 +20,34 @@ function Singup({ t }) {
     } = [];
 
     return (
-        <div style={style}>
-            <div className='g-6 flex h-full flex-wrap items-center lg:justify-center  xl:justify-center md:justify-center mx-12 my-8 justify-between   space-x-2'>
-                <div className='shrink-1 mb-[12px] mt-[12px] grow-0 basis-auto  md:mb-0 lg:px-20 xl:px-0 md:w-6/12 md:shrink-0 lg:w-8/12 xl:w-6/12'>
+        <div className='container'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 justify-items-center py-20 items-center gap-y-10 gap-x-32'>
+                <div className='w-1/2 lg:justify-self-start'>
                     <Image
-                        src='/SignupImage.png'
-                        className='w-full'
-                        width={600}
-                        height={500}
-                        alt='hero image'
+                        src='/signup.svg'
+                        className='w-full lg:min-w-[27rem] lg:max-w-[33rem] xl:min-w-[34rem]'
+                        width={500}
+                        height={300}
+                        alt='signup image'
                     />
                 </div>
-                <div className='w-full max-w-xs md:mx-auto   md:shrink-0 md:w-12/12 lg:w-12/12 xl:w-6/12  ml-2 leading-normal '>
+                <div className='max-w-[29rem] lg:justify-self-end'>
                     <FormTitle title='signup' />
-                    <form className=' shadow-[0_4px_9px_-4px_#3b71ca] mt-[8px]  p-6  md:p-6'>
-                        <div
-                            className=' flex mb-[0.5rem] lg:text-start  justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '
-                            data-te-input-wrapper-init
-                        >
+                    <form className='shadow-lg px-7 py-11  mt-4 rounded-lg'>
+                        <div className='flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '>
                             <Input
                                 type='name'
-                                name='Frst Name'
+                                name='firstname'
                                 placeholder={t(`${firstname}`)}
                             />
                             <Input
                                 type='name'
-                                name='Last Name'
+                                name='lastname'
                                 placeholder={t(`${lastname}`)}
                             />
                         </div>
 
-                        <div
-                            className='relative mb-[0.5rem]'
-                            data-te-input-wrapper-init
-                        >
+                        <div className='mb-[0.8rem]'>
                             <Input
                                 type='email'
                                 name='email'
@@ -63,24 +55,18 @@ function Singup({ t }) {
                                 inputWidthSize='w-full'
                             />
                         </div>
-                        <div
-                            className='relative  mb-[0.5rem]'
-                            data-te-input-wrapper-init
-                        >
+                        <div className='mb-[0.8rem]'>
                             <Input
                                 type='email'
-                                name='email'
+                                name='confirm_email'
                                 placeholder={t(`${confirmemail}`)}
                                 inputWidthSize='w-full'
                             />
                         </div>
-                        <div
-                            className=' flex  mb-[0.5rem] lg:text-start  justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem  sm:flex-row '
-                            data-te-input-wrapper-init
-                        >
+                        <div className='flex mb-[0.8rem] space-x-[0.7rem] rtl:space-x-reverse'>
                             <Input
                                 type='name'
-                                name='Password'
+                                name='password'
                                 placeholder={t(`${password}`)}
                             />
                             <Input
@@ -89,33 +75,34 @@ function Singup({ t }) {
                                 placeholder={t(`${confirmpassword}`)}
                             />
                         </div>
-                        <div
-                            className='flex space-x-[1.5rem] text-center lg:text-start  justify-center  mb-[0.5rem] rtl:space-x-reverse 1.7rem  text-md  font-weight-500 '
-                            data-te-input-wrapper-init
-                        >
+                        <div className='flex space-x-[1.5rem] text-center lg:text-start justify-center mb-[0.5rem] rtl:space-x-reverse ext-md font-weight-500'>
                             <Input
                                 label={t(`${datebrith}`)}
                                 type='date'
-                                name='date brith'
+                                name='datebrith'
                                 inputWidthSize='w-full'
                             />
                         </div>
-
-                        <div className=' flex justify-center space-x-[0.5rem] lg:space-x-[0.5rem]  rtl:space-x-reverse 1.4rem sm:flex-row '>
-                            <Button
-                                content={t(`${signup}`)}
-                                filled='false'
-                                size='medium'
-                                fontSize='lg:text-md xl:text-sm'
-                                radius='md '
-                            />
-                            <Button
-                                content={t(`${login}`)}
-                                filled='true'
-                                size='medium'
-                                fontSize='lg:text-xl xl xl:text-xl'
-                                radius='md '
-                            />
+                        <div className='flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row'>
+                            <Link href='/login'>
+                                <Button
+                                    content={t(`${login}`)}
+                                    filled='false'
+                                    size='medium'
+                                    fontSize='lg:text-md xl:text-sm'
+                                    radius='md'
+                                />
+                            </Link>
+                            <Link href='/signup'>
+                                <Button
+                                    content={t(`${signup}`)}
+                                    filled='true'
+                                    size='medium'
+                                    fontSize='lg:text-md xl:text-sm'
+                                    radius='md '
+                                    shadow='shadow-lg'
+                                />
+                            </Link>
                         </div>
                     </form>
                     <AuthSocialMedia />
@@ -124,4 +111,13 @@ function Singup({ t }) {
         </div>
     );
 }
-export default withTranslation("signup")(Singup);
+
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common", "signup"])),
+            // Will be passed to the page component as props
+        },
+    };
+}
+export default withTranslation("signup")(SignUp);
