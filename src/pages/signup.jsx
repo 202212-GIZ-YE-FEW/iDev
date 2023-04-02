@@ -35,7 +35,7 @@ export default function Signup() {
                     />
                 </div>
                 <div className='w-full max-w-xs md:mx-auto   md:shrink-0 md:w-12/12 lg:w-12/12 xl:w-6/12  ml-2 leading-normal '>
-                    <FormTitle title='signup' />
+                    <FormTitle title={t(`${signup}`)} />
                     <form className=' shadow-[0_4px_9px_-4px_#3b71ca] mt-[8px]  p-6  md:p-6'>
                         <div
                             className=' flex mb-[0.5rem] lg:text-start  justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '
