@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import Singup from "@/pages/signup";
+import Login from "@/pages/login";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<Singup />).toJSON();
+    const tree = renderer.create(<Login />).toJSON();
     expect(tree).toMatchSnapshot();
 });

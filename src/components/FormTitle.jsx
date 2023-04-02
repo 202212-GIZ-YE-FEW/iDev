@@ -1,8 +1,7 @@
 import React from "react";
-import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 
-export default function FormTitle({ title }) {
-    const { t } = useTranslation("common");
+function FormTitle({ title, t }) {
     return (
         <>
             <span className=' uppercase font-normal  md:text-xl lg:text-3xl  leading-75 text-center tracking-tighter'>
@@ -11,3 +10,5 @@ export default function FormTitle({ title }) {
         </>
     );
 }
+
+export default withTranslation("common")(FormTitle);
