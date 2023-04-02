@@ -8,12 +8,7 @@ import Image from "next/image";
 
 function Login({ t }) {
     const style = { minHeight: "calc(100vh - 1rem)" };
-    const {
-        email = "email",
-        password = "password",
-        signup = "signup",
-        login = "login",
-    } = [];
+    const { signup = "signup", login = "login" } = [];
 
     return (
         <div style={style}>
