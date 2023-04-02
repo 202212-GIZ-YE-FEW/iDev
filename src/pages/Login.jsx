@@ -6,13 +6,13 @@ import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Image from "next/image";
+
 export default function Login() {
     const style = { minHeight: "calc(100vh - 1rem)" };
     const { t } = useTranslation("signup");
 
     const {
         email = "email",
-
         password = "password",
         signup = "signup",
         login = "login",
