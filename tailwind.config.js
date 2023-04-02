@@ -17,12 +17,12 @@ module.exports = {
         },
         container: {
             padding: {
-                DEFAULT: ".5rem",
-                sm: "1rem",
-                md: "1.5rem",
-                lg: "3rem",
-                xl: "4rem",
-                "2xl": "4.5rem",
+                DEFAULT: "1.7rem",
+                sm: "2.5rem",
+                md: "4rem",
+                lg: "6rem",
+                xl: "9rem",
+                "2xl": "12rem",
             },
             center: true,
         },
@@ -37,16 +37,29 @@ module.exports = {
             phosphorescent: "#6BD24D",
             background: "#E5E5E5",
             white: "#FFF",
+            "light-white": "#FBFBFB",
             transparent: "transparent",
         },
         fontFamily: {
             sans: ["Poppins", "Graphik", "sans-serif"],
         },
         fontSize: {
+            xs: [
+                "0.575rem", // 9px
+                {
+                    lineHeight: "12px",
+                },
+            ],
             sm: [
-                "0.575rem", // 14px
+                "0.875rem", // 14px
                 {
                     lineHeight: "21px",
+                },
+            ],
+            base: [
+                "1rem", // 16px
+                {
+                    lineHeight: "24px",
                 },
             ],
             lg: [
@@ -68,6 +81,12 @@ module.exports = {
                 },
             ],
             "3xl": [
+                "1.875rem", // 30px
+                {
+                    lineHeight: "38px",
+                },
+            ],
+            "4xl": [
                 "2.25rem", // 36px
                 {
                     lineHeight: "40px",
@@ -77,6 +96,12 @@ module.exports = {
                 "3.1rem", // 50px
                 {
                     lineHeight: "75px",
+                },
+            ],
+            "6xl": [
+                "3.75rem", // 60px
+                {
+                    lineHeight: "90px",
                 },
             ],
             "9xl": [
@@ -93,29 +118,13 @@ module.exports = {
             semibold: "600",
         },
         extend: {
-            boxShadow: {
-                md: "0 4px 6px -1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.15)",
-                "2xl": "0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2)",
-            },
-            // spacing: {
-            //     128: "32rem",
-            //     144: "36rem",
-            // },
             borderRadius: {
                 sm: "2px",
                 md: "5px",
                 lg: "10px",
                 "2xl": "16px",
+                "3xl": "25px",
             },
-            // paddingBlock: {
-            //   'sm': '4.7px',
-            //   'lg': '12px',
-            // },
-            // paddingInline: {
-            //   'sm': '6px',
-            //   'md': '28px',
-            //   'lg': '48px',
-            // }
         },
     },
 };

@@ -12,7 +12,7 @@ exports[`renders correctly 1`] = `
   <p
     className="text-sm md:text-lg lg:text-xl text-light-gray"
   >
-    We’ll never to spam you or share your email
+    emailCommitment
   </p>
   <form
     className="mt-[24px]"
@@ -29,7 +29,7 @@ exports[`renders correctly 1`] = `
       <input
         className="block flex-1 min-w-0 w-full focus:outline-none text-sm py-2.5 px-3 bg-transparent"
         id="subscribe-newsletter"
-        placeholder="Enter your e-mail"
+        placeholder="enterEmail"
         type="text"
       />
       <span

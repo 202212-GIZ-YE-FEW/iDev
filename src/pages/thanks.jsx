@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { i18n, useTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 
-import Layout from "@/layout/Layout";
 export default function Thanks(prop) {
     const { t } = useTranslation("common");
     const {
@@ -13,19 +12,17 @@ export default function Thanks(prop) {
     } = prop;
     return (
         <>
-            <Layout i18n={i18n}>
-                <div className='container my-20'>
-                    <PageIntro title={t("thank you!")} subtitle={subtitle} />
-                    <Link href='/'>
-                        <Button
-                            content={t("back to home")}
-                            textTransform='uppercase'
-                            radius='md'
-                            fontSize='text-lg md:text-xl lg:text-2xl'
-                        />
-                    </Link>
-                </div>
-            </Layout>
+            <div className='container my-20'>
+                <PageIntro title={t("thankYou")} subtitle={subtitle} />
+                <Link href='/'>
+                    <Button
+                        content={t("back to home")}
+                        textTransform='uppercase'
+                        radius='md'
+                        fontSize='text-lg md:text-xl lg:text-2xl'
+                    />
+                </Link>
+            </div>
         </>
     );
 }

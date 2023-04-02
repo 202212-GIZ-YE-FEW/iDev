@@ -56,7 +56,7 @@ function Team({ t }) {
                     <p className='text-[30px] w-full mb-8 text-center md:text-start'>
                         {t("meetTeam")}
                     </p>
-                    <div className='flex justify-between flex-wrap items-center gap-10'>
+                    <div className='flex justify-between flex-wrap items-center gap-x-1 gap-y-7'>
                         {teamMembers.map((member) => {
                             return (
                                 <TeamMember

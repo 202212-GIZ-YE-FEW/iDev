@@ -72,12 +72,12 @@ exports[`renders correctly 1`] = `
           className=" flex justify-center space-x-[0.5rem] lg:space-x-[0.5rem] mt-6  rtl:space-x-reverse 1.4rem sm:flex-row "
         >
           <button
-            className="font-normal whitespace-nowrap cursor-pointer capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
+            className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
           >
             signup
           </button>
           <button
-            className="font-normal whitespace-nowrap cursor-pointer capitalize lg:text-xl xl xl:text-xl rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+            className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-xl xl xl:text-xl rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
           >
             login
           </button>
