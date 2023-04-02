@@ -1,13 +1,16 @@
 import Image from "next/image";
-import { withTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from "react";
 
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-function Signup({ t }) {
+export default function Signup() {
     const style = { minHeight: "calc(100vh - 1rem)" };
+    const { t } = useTranslation("signup");
+
     const {
         firstname = "firstName",
         lastname = "lastName",
@@ -132,4 +135,3 @@ export async function getStaticProps({ locale }) {
         },
     };
 }
-export default withTranslation("signup")(Signup);
