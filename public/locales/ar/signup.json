@@ -7,5 +7,11 @@
     "confirmPassword": " مطابقه كلمه المرور",
     "date": " تاريخ الميلاد",
     "signup": "انشاءحساب",
-    "login": "الدخول"
+    "login": "الدخول",
+    "userName":"اسم المستخدم",
+    "city":"المدينة",
+    "licenseNamber":"الرقم التسلسلي ",
+    "createPassword":"انشئ كلمة مرور",
+    "create":"انشئ",
+    "createAnAccount":"انشئ حساب"
 }
