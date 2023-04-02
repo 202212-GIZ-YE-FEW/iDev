@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -20,7 +21,7 @@ function LangDropdown(prop) {
                 setOpenLangDropdown(!openLangDropdown);
             }}
         >
-            <button className='relative z-10 block p-2 text-black bg-yellow border border-transparent rounded-md focus:outline-none mx-3'>
+            <button className='relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none mx-3'>
                 <Image priority src='/lang.svg' width={23} height={23} alt='' />
             </button>
             {openLangDropdown ? (
@@ -49,11 +50,64 @@ function LangDropdown(prop) {
     );
 }
 
+function AboutDropdown(prop) {
+    const {
+        setOpenAboutDropdown,
+        openAboutDropdown,
+        mobile = false,
+        nav,
+    } = prop;
+    return (
+        <div
+            className='relative'
+            onClick={() => {
+                setOpenAboutDropdown(!openAboutDropdown);
+            }}
+        >
+            <div className='flex'>
+                <Image
+                    priority
+                    src='/arrow.svg'
+                    width={15}
+                    height={15}
+                    alt=''
+                />
+                <span className='inline-block ms-1'>{nav}</span>
+            </div>
+            {openAboutDropdown ? (
+                <div
+                    className={clsx(
+                        "w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl",
+                        {
+                            "absolute start-0 z-20": mobile === false,
+                        }
+                    )}
+                >
+                    <Link
+                        href='#'
+                        className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
+                    >
+                        About
+                    </Link>
+                    <Link
+                        href='/team'
+                        className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
+                    >
+                        Team
+                    </Link>
+                </div>
+            ) : (
+                ""
+            )}
+        </div>
+    );
+}
+
 function NavLink({ to, children }) {
     return (
         <Link
             href={to}
-            className='my-4 md:my-0 md:mx-2 lg:mx-4 xl:mx-5 text-md md:text-md lg:text-lg'
+            className='my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow'
         >
             {children}
         </Link>
@@ -65,12 +119,14 @@ function MobileNav(prop) {
         setOpenHamburger,
         openLangDropdown,
         setOpenLangDropdown,
+        openAboutDropdown,
+        setOpenAboutDropdown,
         router,
         t,
     } = prop;
     return (
         <div
-            className={`md:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ${
+            className={`lg:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ${
                 openHamburger
                     ? "-translate-x-0"
                     : "ltr:-translate-x-full rtl:translate-x-full "
@@ -85,8 +141,8 @@ function MobileNav(prop) {
                         priority
                         src='/logo.svg'
                         alt='Healing Logo'
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                     />
                     <span className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase'>
                         Healing
@@ -105,7 +161,16 @@ function MobileNav(prop) {
                                 }, 100)
                             }
                         >
-                            {t(`${nav.name}`)}
+                            {nav.name === "about" ? (
+                                <AboutDropdown
+                                    mobile={true}
+                                    openAboutDropdown={openAboutDropdown}
+                                    nav={t(`${nav.name}`)}
+                                    setOpenAboutDropdown={setOpenAboutDropdown}
+                                />
+                            ) : (
+                                `${t(`${nav.name}`)}`
+                            )}
                         </NavLink>
                     );
                 })}
@@ -134,6 +199,7 @@ export default function Navbar() {
     const router = useRouter();
     const [openHamburger, setOpenHamburger] = useState(false);
     const [openLangDropdown, setOpenLangDropdown] = useState(false);
+    const [openAboutDropdown, setOpenAboutDropdown] = useState(false);
     return (
         <nav className='bg-light-cyan'>
             <div className='container flex h-20 py-8 items-center'>
@@ -142,6 +208,8 @@ export default function Navbar() {
                     setOpenHamburger={setOpenHamburger}
                     setOpenLangDropdown={setOpenLangDropdown}
                     openLangDropdown={openLangDropdown}
+                    openAboutDropdown={openAboutDropdown}
+                    setOpenAboutDropdown={setOpenAboutDropdown}
                     router={router}
                     t={t}
                 />
@@ -154,8 +222,8 @@ export default function Navbar() {
                             priority
                             src='/logo.svg'
                             alt='Healing Logo'
-                            width={40}
-                            height={40}
+                            width={30}
+                            height={30}
                         />
                         <span className='text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase'>
                             Healing
@@ -164,7 +232,7 @@ export default function Navbar() {
                 </div>
                 <div className='w-9/12 flex justify-end items-center'>
                     <div
-                        className='z-50 flex relative w-8 h-5 flex-col justify-between items-center md:hidden'
+                        className='z-50 flex relative w-8 h-5 flex-col justify-between items-center lg:hidden'
                         onClick={() => {
                             setOpenHamburger(!openHamburger);
                         }}
@@ -188,11 +256,23 @@ export default function Navbar() {
                             }`}
                         />
                     </div>
-                    <div className='hidden md:flex items-center'>
+                    <div className='hidden lg:flex items-center'>
                         {navigation.map((nav) => {
                             return (
                                 <NavLink key={nav.name} to={nav.href}>
-                                    {t(`${nav.name}`)}
+                                    {nav.name === "about" ? (
+                                        <AboutDropdown
+                                            openAboutDropdown={
+                                                openAboutDropdown
+                                            }
+                                            nav={t(`${nav.name}`)}
+                                            setOpenAboutDropdown={
+                                                setOpenAboutDropdown
+                                            }
+                                        />
+                                    ) : (
+                                        `${t(`${nav.name}`)}`
+                                    )}
                                 </NavLink>
                             );
                         })}

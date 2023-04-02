@@ -11,12 +11,12 @@ function Hero({ t }) {
     };
     return (
         <header style={style} className='min-w-[96vw] bg-cover'>
-            <div className='container flex flex-col h-full justify-center lg:flex-row gap-y-10 lg:justify-between items-center'>
+            <div className='container h-full flex flex-col justify-center lg:flex-row gap-y-10 lg:justify-between items-center'>
                 <div className='flex flex-col justify-center text-center lg:text-start'>
-                    <h1 className='text-xl sm:text-3xl md:text-4xl xl:text-5xl uppercase'>
+                    <h1 className='text-xl sm:text-3xl lg:text-5xl uppercase'>
                         {t("weAreHereTo")}
                     </h1>
-                    <p className='text-3xl sm:text-5xl md:text-9xl rtl:lg:text-9xl mb-3 lg:mb-0 uppercase'>
+                    <p className='text-3xl sm:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase'>
                         {t("help")}
                     </p>
                     <Link className='w-fit xl:w-full rtl:w-full' href='#'>
@@ -33,10 +33,10 @@ function Hero({ t }) {
                 <div className='basis-1/2'>
                     <Image
                         src='/hero.png'
-                        width={900}
+                        width={500}
                         height={200}
                         alt=''
-                        className='object-fit w-full lg:min-w-[29rem] lg:max-w-[36rem] xl:min-w-[40rem]'
+                        className='max-w-full lg:min-w-[20rem] lg:max-w-[27rem] xl:min-w-[40rem]'
                     />
                 </div>
             </div>

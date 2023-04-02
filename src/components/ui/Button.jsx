@@ -17,8 +17,7 @@ export default function Button(prop) {
             className={clsx(
                 `font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
                 {
-                    "px-[10] md:px-[18px] lg:px-[28px] py-[4.7px]":
-                        size === "small",
+                    "px-[10px] lg:px-[28px] py-[4.7px]": size === "small",
                     /// for medium size button
                     "px-[15px] md:px-[25px] lg:px-[35px] py-[7px]":
                         size === "medium",

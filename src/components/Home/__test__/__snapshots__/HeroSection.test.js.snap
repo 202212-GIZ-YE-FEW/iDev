@@ -11,18 +11,18 @@ exports[`renders correctly 1`] = `
   }
 >
   <div
-    className="container flex flex-col h-full justify-center lg:flex-row gap-y-10 lg:justify-between items-center"
+    className="container h-full flex flex-col justify-center lg:flex-row gap-y-10 lg:justify-between items-center"
   >
     <div
       className="flex flex-col justify-center text-center lg:text-start"
     >
       <h1
-        className="text-xl sm:text-3xl md:text-4xl xl:text-5xl uppercase"
+        className="text-xl sm:text-3xl lg:text-5xl uppercase"
       >
         weAreHereTo
       </h1>
       <p
-        className="text-3xl sm:text-5xl md:text-9xl rtl:lg:text-9xl mb-3 lg:mb-0 uppercase"
+        className="text-3xl sm:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase"
       >
         help
       </p>
@@ -45,21 +45,21 @@ exports[`renders correctly 1`] = `
     >
       <img
         alt=""
-        className="object-fit w-full lg:min-w-[29rem] lg:max-w-[36rem] xl:min-w-[40rem]"
+        className="max-w-full lg:min-w-[20rem] lg:max-w-[27rem] xl:min-w-[40rem]"
         data-nimg="1"
         decoding="async"
         height={200}
         loading="lazy"
         onError={[Function]}
         onLoad={[Function]}
-        src="/_next/image?url=%2Fhero.png&w=1920&q=75"
-        srcSet="/_next/image?url=%2Fhero.png&w=1080&q=75 1x, /_next/image?url=%2Fhero.png&w=1920&q=75 2x"
+        src="/_next/image?url=%2Fhero.png&w=1080&q=75"
+        srcSet="/_next/image?url=%2Fhero.png&w=640&q=75 1x, /_next/image?url=%2Fhero.png&w=1080&q=75 2x"
         style={
           Object {
             "color": "transparent",
           }
         }
-        width={900}
+        width={500}
       />
     </div>
   </div>
