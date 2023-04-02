@@ -9,7 +9,6 @@ import Image from "next/image";
 function Login({ t }) {
     const style = { minHeight: "calc(100vh - 1rem)" };
     const { signup = "signup", login = "login" } = [];
-
     return (
         <div style={style}>
             <div className='g-6 flex h-full flex-wrap items-center lg:justify-center  xl:justify-center md:justify-center mx-12 my-8 justify-between   space-x-2'>
