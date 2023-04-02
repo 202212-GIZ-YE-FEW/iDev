@@ -4,13 +4,13 @@ import CommunicateThroughSection from "@/components/home/CommunicateThroughSecti
 import HeroSection from "@/components/home/HeroSection";
 import RecentBlogSection from "@/components/home/RecentBlogSection";
 import TicketSection from "@/components/home/TicketSection";
-import TrustTherapistsSection from "@/components/home/TrustTherapistsSection";
+import TrustTherapistSection from "@/components/home/TrustTherapistSection";
 export default function HomePage() {
     return (
         <>
             <HeroSection />
             <section className='bg-yellow py-16'>
-                <TrustTherapistsSection />
+                <TrustTherapistSection />
             </section>
             <section className='bg-white py-20'>
                 <CommunicateThroughSection />
