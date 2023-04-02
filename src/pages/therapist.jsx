@@ -11,8 +11,8 @@ function therapist({ t }) {
         <div style={style}>
             <div className='g-8 flex h-full flex-wrap items-center lg:justify-start xl:justify-start md:justify-start mx-12 my-8 space-x-2 justify-start'>
                 <div></div>
-                <div className='w-full max-w-xs md:mx-auto  justify-start md:shrink-0 ml-2 leading-normal  md:w-12/12 lg:w-12/12 xl:w-12/12 '>
-                    <PageIntro title={t("create")} />
+                <div className='max-w-[29rem] lg:justify-self-end '>
+                    <PageIntro title={t("createAnAccount")} />
                     <div className='w-full'>
                         <form className='  mt-[8px]  w-full'>
                             <div
