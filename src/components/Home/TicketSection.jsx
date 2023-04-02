@@ -4,7 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 
 import AreYouCounselor from "./AreYouCounselor";
 import TicketItem from "./TicketItem";
-import PageIntro from "../../PageIntro";
+import PageIntro from "../PageIntro";
 function TicketSection({ t }) {
     const ticketPlans = [
         {
