@@ -5,7 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 
 import BlogItem from "./RecentBlogItem";
 import PageIntro from "../../PageIntro";
-function RecentBlogs({ t }) {
+function RecentBlogsSection({ t }) {
     const recentBlogs = [
         {
             title: t("blog1Title"),
@@ -58,4 +58,4 @@ function RecentBlogs({ t }) {
         </>
     );
 }
-export default withTranslation("home")(RecentBlogs);
+export default withTranslation("home")(RecentBlogsSection);

@@ -2,7 +2,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import CommunicateThroughSection from "@/components/Home/communicateSection/CommunicateThroughSection";
 import HeroSection from "@/components/Home/HeroSection";
-import RecentBlogsSection from "@/components/Home/RecentBlogSection/RecentBlogSection";
+import RecentBlogSection from "@/components/Home/RecentBlogSection/RecentBlogSection";
 import TicketSection from "@/components/Home/TicketSection/TicketSection";
 import TrustTherapistsSection from "@/components/Home/TrustTherapistSection";
 export default function HomePage() {
@@ -16,7 +16,7 @@ export default function HomePage() {
                 <CommunicateThroughSection />
             </section>
             <section className='bg-light-cyan py-20'>
-                <RecentBlogsSection />
+                <RecentBlogSection />
             </section>
             <section className='bg-white py-20'>
                 <TicketSection />

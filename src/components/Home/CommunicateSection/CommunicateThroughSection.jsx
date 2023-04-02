@@ -3,7 +3,7 @@ import { withTranslation } from "next-i18next";
 import PageIntro from "@/components/PageIntro";
 
 import CommunicateThroughItem from "./CommunicateThroughItem";
-function CommunicateThrough({ t }) {
+function CommunicateThroughSection({ t }) {
     const communicationMeans = [
         {
             name: t("voiceCall"),
@@ -41,4 +41,4 @@ function CommunicateThrough({ t }) {
         </>
     );
 }
-export default withTranslation("home")(CommunicateThrough);
+export default withTranslation("home")(CommunicateThroughSection);

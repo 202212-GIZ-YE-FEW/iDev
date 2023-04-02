@@ -4,7 +4,7 @@ import { withTranslation } from "next-i18next";
 
 import Button from "../ui/Button";
 
-function Hero({ t }) {
+function HeroSection({ t }) {
     const style = {
         backgroundImage: "url(/header.png)",
         minHeight: "calc(100vh - 5rem)",
@@ -43,4 +43,4 @@ function Hero({ t }) {
         </header>
     );
 }
-export default withTranslation("home")(Hero);
+export default withTranslation("home")(HeroSection);
