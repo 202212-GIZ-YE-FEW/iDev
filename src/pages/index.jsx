@@ -1,10 +1,10 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import CommunicateThroughSection from "../components/Home/communicateSection/CommunicateThroughSection";
-import HeroSection from "../components/Home/HeroSection";
-import RecentBlogSection from "../components/Home/RecentBlogSection/RecentBlogSection";
-import TicketSection from "../components/Home/TicketSection/TicketSection";
-import TrustTherapistsSection from "../components/Home/TrustTherapistSection";
+import CommunicateThroughSection from "@/components/Home/communicateSection/CommunicateThroughSection";
+import HeroSection from "@/components/Home/HeroSection";
+import RecentBlogSection from "@/components/Home/RecentBlogSection/RecentBlogSection";
+import TicketSection from "@/components/Home/TicketSection/TicketSection";
+import TrustTherapistsSection from "@/components/Home/TrustTherapistSection";
 export default function HomePage() {
     return (
         <>

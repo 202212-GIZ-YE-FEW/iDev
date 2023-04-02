@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import Hero from "../HeroSection";
+import HeroSection from "../HeroSection";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<Hero />).toJSON();
+    const tree = renderer.create(<HeroSection />).toJSON();
     expect(tree).toMatchSnapshot();
 });
