@@ -17,8 +17,7 @@ const Input = (props) => {
         ...rest
     } = props;
 
-    // const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black  md:px-3  py-[0.32rem] px-3 leading-[2.15]  min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
-    const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/80 px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>
