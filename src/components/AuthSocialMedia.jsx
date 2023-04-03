@@ -1,7 +1,7 @@
 import React from "react";
 import { withTranslation } from "next-i18next";
-function AuthSocialMedia(prop) {
-    const { t, googleLogoOnclick, FbLogoOnClick } = prop;
+function AuthSocialMedia(props) {
+    const { t, googleLogoOnclick, FbLogoOnClick } = props;
     const or = "or";
 
     return (
