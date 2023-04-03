@@ -4,9 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
-
+import { auth, signOut } from "@/firebase-config/firebase";
 import Button from "@/components/ui/Button";
-
 import { navigation } from "@/constants";
 
 function LangDropdown(prop) {

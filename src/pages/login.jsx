@@ -5,7 +5,10 @@ import Input from "@/components/ui/Input";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Image from "next/image";
-
+import {
+    signInWithGoogleAccount,
+    signInWithFbAccount,
+} from "@/firebase-config/firebaseProvidersMethods";
 function Login({ t }) {
     const style = { minHeight: "calc(100vh - 1rem)" };
     const { signup = "signup", login = "login" } = [];
@@ -64,7 +67,10 @@ function Login({ t }) {
                             />
                         </div>
                     </form>
-                    <AuthSocialMedia />
+                    <AuthSocialMedia
+                        googleLogoOnclick={signInWithGoogleAccount}
+                        FbLogoOnClick={signInWithFbAccount}
+                    />
                 </div>
             </div>
         </div>
