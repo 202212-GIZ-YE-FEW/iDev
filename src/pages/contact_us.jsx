@@ -1,13 +1,8 @@
 // import Image from "next/image";
 import { collection, getDocs } from "firebase/firestore";
 import { withTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-// import Button from "@/components/ui/Button";
-// import Textarea from "@/components/ui/textarea/Textarea";
-// import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
-// import Input from "@/components/ui/Input";
-// import Link from "next/link";
-// import AuthSocialMedia from "@/components/AuthSocialMedia";
 import PageIntro from "@/components/PageIntro";
 import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
@@ -36,7 +31,7 @@ function ContactUs({ t, choices }) {
                             key={index}
                             id={index}
                             name={item.name}
-                            value={item.value}
+                            value={item.name}
                             title={item.title}
                             checked={item.checked}
                             onChange={null}
@@ -48,7 +43,7 @@ function ContactUs({ t, choices }) {
     );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps({ locale }) {
     const choices = await getDocs(collection(db, "type_of_contact")).then(
         (res) =>
             res.docs.map((data) => {
@@ -56,16 +51,11 @@ export async function getServerSideProps() {
             })
     );
     return {
-        props: { choices },
+        props: {
+            ...(await serverSideTranslations(locale, ["common"])),
+            choices,
+        },
     };
 }
 
-// export async function getStaticProps({ locale }) {
-//     return {
-//         props: {
-//             ...(await serverSideTranslations(locale, ["common", "signup"])),
-//             // Will be passed to the page component as props
-//         },
-//     };
-// }
 export default withTranslation("signup")(ContactUs);
