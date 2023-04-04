@@ -2,7 +2,6 @@ import React from "react";
 import { withTranslation } from "next-i18next";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import Image from "next/image";
 import PageIntro from "@/components/PageIntro";
 function Therapist({ t }) {
     return (
