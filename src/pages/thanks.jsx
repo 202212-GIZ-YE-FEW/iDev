@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -5,18 +6,21 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 
-export default function Thanks(prop) {
+export default function Thanks(props) {
     const { t } = useTranslation("common");
     const {
         subtitle = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
-    } = prop;
+    } = props;
     return (
         <>
-            <div className='container my-20'>
+            <Head>
+                <title>{t("thankYou")} | purpose </title>
+            </Head>
+            <div className='container -mt-28'>
                 <PageIntro title={t("thankYou")} subtitle={subtitle} />
                 <Link href='/'>
                     <Button
-                        content={t("back to home")}
+                        content={t("backToHome")}
                         textTransform='uppercase'
                         radius='md'
                         fontSize='text-lg md:text-xl lg:text-2xl'
