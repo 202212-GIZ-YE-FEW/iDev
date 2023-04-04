@@ -9,7 +9,7 @@ import OurFounding from "public/OurFoundingPayan.png";
 import PageIntro from "@/components/PageIntro";
 import Layout from "@/layout/Layout";
 
-export default function About() {
+const About() {
     const { t } = useTranslation("about");
 
     return (
@@ -49,6 +49,7 @@ export default function About() {
         </>
     );
 }
+export default About;
 export async function getStaticProps({ locale }) {
     return {
         props: {
