@@ -10,7 +10,7 @@ function Appointment({ t }) {
             <Head>
                 <title>{t("bookAppointment")}</title>
             </Head>
-            <div className='container my-20'>
+            <div className='container mb-20'>
                 <BookAppointment />
             </div>
         </>

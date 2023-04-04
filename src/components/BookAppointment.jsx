@@ -1,7 +1,6 @@
 import { withTranslation } from "next-i18next";
 import React from "react";
 
-import PageIntro from "./PageIntro";
 import Stepper from "./Stepper";
 import RadioGroup from "./ui/radiogroup/RadioGroup";
 import RadioInputItem from "./ui/radiogroup/RadioInputItem";
@@ -158,30 +157,38 @@ const BringsHere = () => {
 function BookAppointment({ t }) {
     return (
         <>
-            <PageIntro
-                title={t("matchWithRightTherapist")}
-                subtitle={t("fillOutThisShortQuestionnaire")}
-            />
             <div className='flex flex-col justify-center items-center mt-[30px]'>
                 <Stepper
                     currentStep={0}
                     steps={[
                         {
+                            pageTitle: "matchWithRightTherapist",
+                            pageSubtitle: "fillOutThisShortQuestionnaire",
                             content: <CounselingType t={t} />,
                         },
                         {
+                            pageTitle: "matchWithRightTherapist",
+                            pageSubtitle: "fillOutThisShortQuestionnaire",
                             content: <RelationshipStatus t={t} />,
                         },
                         {
+                            pageTitle: "matchWithRightTherapist",
+                            pageSubtitle: "fillOutThisShortQuestionnaire",
                             content: <TherapyBefore t={t} />,
                         },
                         {
+                            pageTitle: "matchWithRightTherapist",
+                            pageSubtitle: "fillOutThisShortQuestionnaire",
                             content: <SpecificQualities t={t} />,
                         },
                         {
+                            pageTitle: "matchWithRightTherapist",
+                            pageSubtitle: "fillOutThisShortQuestionnaire",
                             content: <Issues t={t} />,
                         },
                         {
+                            pageTitle: "whatBringsYou",
+                            pageSubtitle: "whatBringsYouDesc",
                             content: <BringsHere />,
                         },
                     ]}
