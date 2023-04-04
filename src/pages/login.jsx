@@ -25,7 +25,7 @@ function Login({ t }) {
                     />
                 </div>
                 <div className='w-full max-w-xs md:mx-auto   md:shrink-0 md:w-12/12 lg:w-12/12 xl:w-6/12  ml-2 leading-normal '>
-                    <FormTitle title='login' />
+                    <FormTitle title={t(`${login}`)} />
                     <form className=' shadow-[0_4px_9px_-4px_#3b71ca] mt-[8px]  p-6  md:p-6'>
                         <div
                             className='relative mb-[0.5rem]'
