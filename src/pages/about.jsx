@@ -9,21 +9,21 @@ import OurFounding from "public/OurFoundingPayan.png";
 import PageIntro from "@/components/PageIntro";
 import Layout from "@/layout/Layout";
 
-export default function About() {
+const About = () => {
     const { t } = useTranslation("about");
 
     return (
         <>
             {/* Page Intro  */}
             <div className=' container mt-8 '>
-                <div className='flex-wrap nowrap md:text-start  text-center justify-center items-center sm:text-center'>
+                <div className='nowrap md:text-start  text-center justify-center items-center sm:text-center'>
                     <PageIntro
-                        title={t("HEALING!")}
-                        subtitle={t("Bringing hope through therapy.")}
+                        title={t("healing")}
+                        subtitle={t("bringingHopeThroughTherapy")}
                     />
                 </div>
 
-                <div className='text-start sm:text-center sm:w-full  text-gray  text-xl md:mb-[120px] mb-8 '>
+                <div className='sm:text-center text-start  sm:w-full  text-gray  text-xl md:mb-[120px] mb-8 '>
                     <p>{t("introAboutPage")}</p>
                 </div>
             </div>
@@ -38,17 +38,18 @@ export default function About() {
                     />
                 </div>
                 <div className='w-full md:w-2/3 p-4 flex flex-col order-1 md:order-2  '>
-                    <div className='  lg:w-3/4 w-full text-start   '>
+                    <div className='w-full lg:w-3/4 text-start'>
                         <PageIntro
-                            title={t("Our Founding")}
-                            subtitle={t("AboutHealing")}
+                            title={t("ourFounding")}
+                            subtitle={t("aboutHealing")}
                         />
                     </div>
                 </div>
             </div>
         </>
     );
-}
+};
+export default About;
 export async function getStaticProps({ locale }) {
     return {
         props: {
