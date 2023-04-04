@@ -1,13 +1,9 @@
-import { withTranslation } from "next-i18next";
-
-function FormTitle({ title, t }) {
+export default function FormTitle({ title }) {
     return (
         <>
             <span className=' uppercase font-normal  md:text-xl lg:text-3xl  leading-75 text-center tracking-tighter'>
-                {t(title)}
+                {title}
             </span>
         </>
     );
 }
-
-export default withTranslation("common")(FormTitle);
