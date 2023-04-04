@@ -16,7 +16,7 @@ const About() {
         <>
             {/* Page Intro  */}
             <div className=' container mt-8 '>
-                <div className='flex-wrap nowrap md:text-start  text-center justify-center items-center sm:text-center'>
+                <div className='nowrap md:text-start  text-center justify-center items-center sm:text-center'>
                     <PageIntro
                         title={t("healing")}
                         subtitle={t("BringingHopeThroughTherapy")}
