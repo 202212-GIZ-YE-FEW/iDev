@@ -2,39 +2,35 @@
 
 exports[`renders correctly 1`] = `
 <div
-  style={
-    Object {
-      "minHeight": "calc(100vh - 1rem)",
-    }
-  }
+  className="container"
 >
   <div
-    className="g-6 flex h-full flex-wrap items-center lg:justify-center  xl:justify-center md:justify-center mx-12 my-8 justify-between   space-x-2"
+    className="grid grid-cols-1 lg:grid-cols-2 justify-items-center py-20 items-center gap-y-10 gap-x-32"
   >
     <div
-      className="shrink-1 mb-[12px] mt-[12px] grow-0 basis-auto  md:mb-0 lg:px-20 xl:px-0 md:w-6/12 md:shrink-0 lg:w-8/12 xl:w-6/12"
+      className="w-1/2 lg:justify-self-start"
     >
       <img
-        alt="hero image"
-        className="w-full"
+        alt="signup image"
+        className="w-full lg:min-w-[27rem] lg:max-w-[33rem] xl:min-w-[34rem]"
         data-nimg="1"
         decoding="async"
-        height={500}
+        height={300}
         loading="lazy"
         onError={[Function]}
         onLoad={[Function]}
-        src="/_next/image?url=%2Flogin.png&w=1200&q=75"
-        srcSet="/_next/image?url=%2Flogin.png&w=640&q=75 1x, /_next/image?url=%2Flogin.png&w=1200&q=75 2x"
+        src="/_next/image?url=%2Flogin.png&w=1080&q=75"
+        srcSet="/_next/image?url=%2Flogin.png&w=640&q=75 1x, /_next/image?url=%2Flogin.png&w=1080&q=75 2x"
         style={
           Object {
             "color": "transparent",
           }
         }
-        width={600}
+        width={500}
       />
     </div>
     <div
-      className="w-full max-w-xs md:mx-auto   md:shrink-0 md:w-12/12 lg:w-12/12 xl:w-6/12  ml-2 leading-normal "
+      className="max-w-[29rem] lg:justify-self-end"
     >
       <span
         className=" uppercase font-normal  md:text-xl lg:text-3xl  leading-75 text-center tracking-tighter"
@@ -42,11 +38,10 @@ exports[`renders correctly 1`] = `
         login
       </span>
       <form
-        className=" shadow-[0_4px_9px_-4px_#3b71ca] mt-[8px]  p-6  md:p-6"
+        className="shadow-lg px-7 py-11  mt-4 rounded-lg"
       >
         <div
-          className="relative mb-[0.5rem]"
-          data-te-input-wrapper-init={true}
+          className="mb-[0.8rem]"
         >
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
@@ -57,30 +52,43 @@ exports[`renders correctly 1`] = `
           />
         </div>
         <div
-          className=" flex  mb-[0.5rem] lg:text-start  justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem  sm:flex-row "
-          data-te-input-wrapper-init={true}
+          className="mb-[0.8rem]"
         >
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
-            name="Password"
+            name="password"
             placeholder="password"
             required={false}
             type="name"
           />
         </div>
         <div
-          className=" flex justify-center space-x-[0.5rem] lg:space-x-[0.5rem] mt-6  rtl:space-x-reverse 1.4rem sm:flex-row "
+          className="flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row"
         >
-          <button
-            className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
+          <a
+            href="/login"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
-            signup
-          </button>
-          <button
-            className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-xl xl xl:text-xl rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+            <button
+              className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
+            >
+              login
+            </button>
+          </a>
+          <a
+            href="/signup"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
-            login
-          </button>
+            <button
+              className="font-normal whitespace-nowrap cursor-pointer shadow-lg capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+            >
+              signup
+            </button>
+          </a>
         </div>
       </form>
       <div>

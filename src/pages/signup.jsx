@@ -37,6 +37,7 @@ function SignUp({ t }) {
                 </div>
                 <div className='max-w-[29rem] lg:justify-self-end'>
                     <FormTitle title='signup' />
+
                     <form className='shadow-lg px-7 py-11  mt-4 rounded-lg'>
                         <div className='flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '>
                             <Input
