@@ -2,125 +2,117 @@
 
 exports[`renders correctly 1`] = `
 <div
-  style={
-    Object {
-      "minHeight": "calc(100vh - 0.5rem)",
-    }
-  }
+  className="g-8 flex flex-wrap items-center lg:justify-start xl:justify-start md:justify-start mx-12 my-8 space-x-2 justify-start"
 >
+  <div />
   <div
-    className="g-8 flex h-full flex-wrap items-center lg:justify-start xl:justify-start md:justify-start mx-12 my-8 space-x-2 justify-start"
+    className="max-w-[29rem] lg:justify-self-end "
   >
-    <div />
     <div
-      className="max-w-[29rem] lg:justify-self-end "
+      className="mb-5"
     >
-      <div
-        className="mb-5"
+      <span
+        className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-4xl rtl:lg:text-4xl uppercase break-words"
       >
-        <span
-          className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl uppercase break-words"
-        >
-          createAnAccount
-        </span>
-      </div>
-      <div
-        className="w-full"
+        createAnAccount
+      </span>
+    </div>
+    <div
+      className="w-full"
+    >
+      <form
+        className="  mt-[8px]  w-full"
       >
-        <form
-          className="  mt-[8px]  w-full"
+        <div
+          className="relative mb-[0.9rem]"
+          data-te-input-wrapper-init={true}
         >
-          <div
-            className="relative mb-[0.9rem]"
-            data-te-input-wrapper-init={true}
+          <label
+            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
           >
-            <label
-              className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
-            >
-              userName
-            </label>
-            <input
-              className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
-              name="text"
-              required={false}
-              type="text"
-            />
-          </div>
-          <div
-            className="relative mb-[0.9rem]"
-            data-te-input-wrapper-init={true}
+            userName
+          </label>
+          <input
+            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            name="text"
+            required={false}
+            type="text"
+          />
+        </div>
+        <div
+          className="relative mb-[0.9rem]"
+          data-te-input-wrapper-init={true}
+        >
+          <label
+            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
           >
-            <label
-              className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
-            >
-              city
-            </label>
-            <input
-              className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
-              name="text"
-              required={false}
-              type="text"
-            />
-          </div>
-          <div
-            className="relative mb-[0.9rem]"
-            data-te-input-wrapper-init={true}
+            city
+          </label>
+          <input
+            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            name="text"
+            required={false}
+            type="text"
+          />
+        </div>
+        <div
+          className="relative mb-[0.9rem]"
+          data-te-input-wrapper-init={true}
+        >
+          <label
+            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
           >
-            <label
-              className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
-            >
-              licenseNamber
-            </label>
-            <input
-              className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
-              name="text"
-              required={false}
-              type="text"
-            />
-          </div>
-          <div
-            className="frelative mb-[0.9rem]"
-            data-te-input-wrapper-init={true}
+            licenseNamber
+          </label>
+          <input
+            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            name="text"
+            required={false}
+            type="text"
+          />
+        </div>
+        <div
+          className="frelative mb-[0.9rem]"
+          data-te-input-wrapper-init={true}
+        >
+          <label
+            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
           >
-            <label
-              className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
-            >
-              createPassword
-            </label>
-            <input
-              className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
-              name="Password"
-              required={false}
-              type="Password"
-            />
-          </div>
-          <div
-            className="frelative mb-[0.9rem]"
-            data-te-input-wrapper-init={true}
+            createPassword
+          </label>
+          <input
+            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            name="Password"
+            required={false}
+            type="Password"
+          />
+        </div>
+        <div
+          className="frelative mb-[0.9rem]"
+          data-te-input-wrapper-init={true}
+        >
+          <label
+            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
           >
-            <label
-              className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
-            >
-              confirmPassword
-            </label>
-            <input
-              className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
-              name="Password"
-              required={false}
-              type="Password"
-            />
-          </div>
-          <div
-            className="flex justify-start space-x-[0.5rem] lg:space-x-[0.5rem] mt-6 rtl:space-x-reverse 1.4rem sm:flex-row"
+            confirmPassword
+          </label>
+          <input
+            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            name="password"
+            required={false}
+            type="password"
+          />
+        </div>
+        <div
+          className="flex justify-start space-x-[0.5rem] lg:space-x-[0.5rem] mt-6 rtl:space-x-reverse 1.4rem sm:flex-row"
+        >
+          <button
+            className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-xl xl xl:text-xl rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
           >
-            <button
-              className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-xl xl xl:text-xl rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
-            >
-              create
-            </button>
-          </div>
-        </form>
-      </div>
+            create
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
