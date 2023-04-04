@@ -2,12 +2,13 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Hero from "@/components/Hero";
 import TrustTherapists from "@/components/TrustTherapists";
-
+// import PreviewProfile from "@/components/ui/PreviewProfile";
 export default function HomePage() {
     return (
         <>
             <Hero />
             <TrustTherapists />
+            {/* <PreviewProfile /> */}
         </>
     );
 }
