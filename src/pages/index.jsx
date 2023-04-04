@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import RecentBlogSection from "@/components/RecentBlogSection";
 import TicketSection from "@/components/TicketSection";
 import TrustTherapistSection from "@/components/TrustTherapistSection";
+
 export default function HomePage() {
     return (
         <>
