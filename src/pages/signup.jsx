@@ -6,6 +6,10 @@ import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import {
+    signInWithGoogleAccount,
+    signInWithFbAccount,
+} from "@/firebase-config/firebaseProvidersMethods";
 function SignUp({ t }) {
     const {
         firstname = "firstName",
@@ -105,7 +109,10 @@ function SignUp({ t }) {
                             </Link>
                         </div>
                     </form>
-                    <AuthSocialMedia />
+                    <AuthSocialMedia
+                        googleLogoOnclick={signInWithGoogleAccount}
+                        FbLogoOnClick={signInWithFbAccount}
+                    />
                 </div>
             </div>
         </div>
