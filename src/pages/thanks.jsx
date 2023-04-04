@@ -6,11 +6,11 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 
-export default function Thanks(prop) {
+export default function Thanks(props) {
     const { t } = useTranslation("common");
     const {
         subtitle = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
-    } = prop;
+    } = props;
     return (
         <>
             <Head>
