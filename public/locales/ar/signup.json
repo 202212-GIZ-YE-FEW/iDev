@@ -1,0 +1,18 @@
+{
+    "firstName": "الاسم الاول ",
+    "lastName": "الاسم الثاني",
+    "email": "البريد الالكتروني",
+    "confirmEmail": " تأكيد البريد الالكتروني",
+    "password": " كلمة المرور",
+    "confirmPassword": " مطابقه كلمه المرور",
+    "date": " تاريخ الميلاد",
+    "signup": "انشاءحساب",
+    "userName": "اسم المستخدم",
+    "city": "المدينة",
+    "licenseNamber": "الرقم التسلسلي ",
+    "createPassword": "انشئ كلمة مرور",
+    "create": "انشئ",
+    "createAnAccount": "انشئ حساب",
+    "login": " تسجيل الدخول",
+    "or": "او"
+}

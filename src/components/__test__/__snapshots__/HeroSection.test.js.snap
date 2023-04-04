@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<header
+  className="min-w-[96vw] bg-cover"
+  style={
+    Object {
+      "backgroundImage": "url(/header.png)",
+      "minHeight": "calc(100vh - 5rem)",
+    }
+  }
+>
+  <div
+    className="container h-full flex flex-col justify-center lg:flex-row gap-y-10 lg:justify-between items-center"
+  >
+    <div
+      className="flex flex-col justify-center text-center lg:text-start"
+    >
+      <h1
+        className="text-xl sm:text-3xl lg:text-5xl uppercase"
+      >
+        weAreHereTo
+      </h1>
+      <p
+        className="text-3xl sm:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase"
+      >
+        help
+      </p>
+      <a
+        className="w-fit xl:w-full rtl:w-full"
+        href="#"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onTouchStart={[Function]}
+      >
+        <button
+          className="font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+        >
+          bookAppointment
+        </button>
+      </a>
+    </div>
+    <div
+      className="basis-1/2"
+    >
+      <img
+        alt=""
+        className="max-w-full lg:min-w-[20rem] lg:max-w-[27rem] xl:min-w-[40rem]"
+        data-nimg="1"
+        decoding="async"
+        height={200}
+        loading="lazy"
+        onError={[Function]}
+        onLoad={[Function]}
+        src="/_next/image?url=%2Fhero.png&w=1080&q=75"
+        srcSet="/_next/image?url=%2Fhero.png&w=640&q=75 1x, /_next/image?url=%2Fhero.png&w=1080&q=75 2x"
+        style={
+          Object {
+            "color": "transparent",
+          }
+        }
+        width={500}
+      />
+    </div>
+  </div>
+</header>
+`;

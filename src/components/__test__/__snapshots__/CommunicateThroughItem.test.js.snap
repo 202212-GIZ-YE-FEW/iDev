@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+>
+  <img
+    alt="undefined svg"
+    data-nimg="1"
+    decoding="async"
+    height={50}
+    loading="lazy"
+    onError={[Function]}
+    onLoad={[Function]}
+    src="/home/undefined.svg"
+    style={
+      Object {
+        "color": "transparent",
+      }
+    }
+    width={50}
+  />
+  <span
+    className="uppercase text-4xl"
+  />
+  <p
+    className="text-sm rtl:text-base text-black/50"
+  />
+</div>
+`;

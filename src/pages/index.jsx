@@ -1,18 +1,30 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import Hero from "@/components/Hero";
-import TrustTherapists from "@/components/TrustTherapists";
-// import PreviewProfile from "@/components/ui/PreviewProfile";
+import CommunicateThroughSection from "@/components/CommunicateThroughSection";
+import HeroSection from "@/components/HeroSection";
+import RecentBlogSection from "@/components/RecentBlogSection";
+import TicketSection from "@/components/TicketSection";
+import TrustTherapistSection from "@/components/TrustTherapistSection";
+
 export default function HomePage() {
     return (
         <>
-            <Hero />
-            <TrustTherapists />
-            {/* <PreviewProfile /> */}
+            <HeroSection />
+            <section className='bg-yellow py-16'>
+                <TrustTherapistSection />
+            </section>
+            <section className='bg-white py-20'>
+                <CommunicateThroughSection />
+            </section>
+            <section className='bg-light-cyan py-20'>
+                <RecentBlogSection />
+            </section>
+            <section className='bg-white py-20'>
+                <TicketSection />
+            </section>
         </>
     );
 }
-
 export async function getStaticProps({ locale }) {
     return {
         props: {
