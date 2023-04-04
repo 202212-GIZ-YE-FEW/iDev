@@ -1,11 +1,14 @@
 {
     "about": "About",
-    "back to home": "back to home",
+    "backToHome": "back to home",
     "blogs": "Blogs",
-    "contact us": "Conntact Us",
+    "contactUs": "Contact Us",
+    "emailCommitment": "We’ll never to spam you or share your email",
+    "enterEmail": "Enter your e-mail",
     "home": "Home",
     "login": "log in",
     "signup": "sign up",
+    "subscribe": "subscribe",
     "test": "Hello",
-    "thank you!": "thank you!"
+    "thankYou": "Thank you!"
 }

@@ -1,22 +1,23 @@
 import Link from "next/link";
+import { withTranslation } from "next-i18next";
 
 import { navigation } from "@/constants";
 
 import Subscribe from "./Subscribe";
-export default function Footer() {
+function Footer({ t }) {
     return (
         <>
             <footer className='bg-yellow py-8'>
-                <div className='container flex flex-col items-center md:flex-row justify-center md:justify-between space-y-4 md:space-y-0'>
+                <div className='container flex flex-col items-center lg:flex-row justify-center md:justify-between space-y-4 lg:space-y-0'>
                     <Subscribe />
                     <div className='flex flex-col space-y-10 justify-center'>
                         <nav>
-                            <ul className='flex text-light-gray text-sm md:text-lg lg:text-xl'>
+                            <ul className='flex flex-wrap text-light-gray text-sm md:text-lg lg:text-xl'>
                                 {navigation.map((nav) => {
                                     return (
                                         <li key={nav.name} className='mx-6'>
                                             <Link href={nav.href}>
-                                                {nav.name}
+                                                {t(`${nav.name}`)}
                                             </Link>
                                         </li>
                                     );
@@ -73,3 +74,4 @@ export default function Footer() {
         </>
     );
 }
+export default withTranslation("common")(Footer);
