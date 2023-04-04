@@ -2,9 +2,8 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="g-8 flex flex-wrap items-center lg:justify-start xl:justify-start md:justify-start mx-12 my-8 space-x-2 justify-start"
+  className="mx-12 py-20"
 >
-  <div />
   <div
     className="max-w-[29rem] lg:justify-self-end "
   >

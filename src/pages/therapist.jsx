@@ -6,8 +6,7 @@ import Image from "next/image";
 import PageIntro from "@/components/PageIntro";
 function Therapist({ t }) {
     return (
-        <div className='g-8 flex flex-wrap items-center lg:justify-start xl:justify-start md:justify-start mx-12 my-8 space-x-2 justify-start'>
-            <div></div>
+        <div className='mx-12 py-20'>
             <div className='max-w-[29rem] lg:justify-self-end '>
                 <PageIntro title={t("createAnAccount")} />
                 <div className='w-full'>
