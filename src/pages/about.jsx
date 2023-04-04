@@ -1,13 +1,8 @@
-import TeamMember from "@/components/TeamMember";
-import { useState } from "react";
-import { i18n, useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Image from "next/image";
-
-import OurFounding from "public/OurFoundingPayan.png";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import PageIntro from "@/components/PageIntro";
-import Layout from "@/layout/Layout";
 
 const About = () => {
     const { t } = useTranslation("about");
@@ -15,34 +10,35 @@ const About = () => {
     return (
         <>
             {/* Page Intro  */}
-            <div className=' container mt-8 '>
-                <div className='nowrap md:text-start  text-center justify-center items-center sm:text-center'>
+            <div className='container mt-8'>
+                <div className='text-center nowrap md:text-start justify-center items-center'>
                     <PageIntro
                         title={t("healing")}
                         subtitle={t("bringingHopeThroughTherapy")}
                     />
                 </div>
 
-                <div className='sm:text-center text-start  sm:w-full  text-gray  text-xl md:mb-[120px] mb-8 '>
+                <div className='text-start  sm:w-full text-gray text-xl my-12 md:mb-[120px]'>
                     <p>{t("introAboutPage")}</p>
                 </div>
             </div>
 
-            <div className='flex flex-col md:flex-row bg-light-cyan '>
-                <div className='w-full md:w-1/3 flex md:justify-end sm:justify-center order-2 md:order-1 p-4'>
-                    <Image
-                        src={OurFounding}
-                        alt='My Image'
-                        width={400}
-                        height={320}
-                    />
-                </div>
-                <div className='w-full md:w-2/3 p-4 flex flex-col order-1 md:order-2  '>
-                    <div className='w-full lg:w-3/4 text-start'>
-                        <PageIntro
-                            title={t("ourFounding")}
-                            subtitle={t("aboutHealing")}
+            <div className='bg-light-cyan py-8'>
+                <div className='container flex flex-col md:flex-row md:space-s-9'>
+                    <div className='hidden md:block md:w-1/3'>
+                        <Image
+                            src='/ourFounding.svg'
+                            alt='founding image'
+                            width={300}
+                            height={300}
+                            className='w-full'
                         />
+                    </div>
+                    <div className='w-full md:w-2/3'>
+                        <span className='text-5xl'>{t("ourFounding")}</span>
+                        <p className='text-md lg:text-xl text-gray'>
+                            {t("aboutHealing")}
+                        </p>
                     </div>
                 </div>
             </div>
