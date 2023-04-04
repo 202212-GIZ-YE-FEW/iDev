@@ -31,7 +31,7 @@ function Login({ t }) {
                     />
                 </div>
                 <div className='max-w-[29rem] lg:justify-self-end'>
-                    <FormTitle title='login' />
+                    <FormTitle title={t(`${login}`)} />
 
                     <form className='shadow-lg px-7 py-11  mt-4 rounded-lg'>
                         <div className='mb-[0.8rem]'>
