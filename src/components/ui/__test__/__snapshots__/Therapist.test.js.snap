@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="mx-12 py-20"
+  className="container py-20"
 >
   <div
     className="max-w-[29rem] lg:justify-self-end "
@@ -103,7 +103,7 @@ exports[`renders correctly 1`] = `
           />
         </div>
         <div
-          className="flex justify-start space-x-[0.5rem] lg:space-x-[0.5rem] mt-6 rtl:space-x-reverse 1.4rem sm:flex-row"
+          className="mt-12"
         >
           <button
             className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-xl xl xl:text-xl rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "

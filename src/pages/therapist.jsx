@@ -1,11 +1,12 @@
-import React from "react";
 import { withTranslation } from "next-i18next";
+import React from "react";
+
+import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import PageIntro from "@/components/PageIntro";
 function Therapist({ t }) {
     return (
-        <div className='mx-12 py-20'>
+        <div className='container py-20'>
             <div className='max-w-[29rem] lg:justify-self-end '>
                 <PageIntro title={t("createAnAccount")} />
                 <div className='w-full'>
@@ -64,7 +65,7 @@ function Therapist({ t }) {
                             />
                         </div>
 
-                        <div className='flex justify-start space-x-[0.5rem] lg:space-x-[0.5rem] mt-6 rtl:space-x-reverse 1.4rem sm:flex-row'>
+                        <div className='mt-12'>
                             <Button
                                 content={t("create")}
                                 filled='true'
