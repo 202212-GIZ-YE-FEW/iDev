@@ -49,7 +49,7 @@ function Stepper(props) {
                                     </p>
                                     {step.content}
                                 </div>
-                                <div className='flex flex-row gap-4 mb-5 pl-[40px]'>
+                                <div className='flex justify-center gap-4 mb-5'>
                                     {current > 0 && (
                                         <Button
                                             content={t("previous")}
