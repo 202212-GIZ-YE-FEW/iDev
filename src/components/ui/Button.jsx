@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-export default function Button(prop) {
+export default function Button(props) {
     const {
         content,
         size = "large",
@@ -10,7 +10,8 @@ export default function Button(prop) {
         radius = "6px",
         shadow = "",
         onClick,
-    } = prop;
+    } = props;
+
     return (
         <button
             onClick={onClick}
