@@ -36,14 +36,18 @@ exports[`renders correctly 1`] = `
     trustTherapistSubtitle
     .
   </p>
-  <div
-    className="w-fit"
+  <a
+    className="w-fit xl:w-full rtl:w-full"
+    href="/appointment"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <button
-      className="font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+      className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
     >
       bookAppointment
     </button>
-  </div>
+  </a>
 </div>
 `;

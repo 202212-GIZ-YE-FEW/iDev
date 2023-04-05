@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
 import PageIntro from "./PageIntro";
@@ -15,16 +16,19 @@ function TrustTherapists({ t }) {
                     height={300}
                 />
                 <p className='pb-20'>{t("trustTherapistSubtitle")}.</p>
-                <div className='w-fit'>
+                <Link
+                    className='w-fit xl:w-full rtl:w-full'
+                    href='/appointment'
+                >
                     <Button
                         content={t("bookAppointment")}
-                        text-transform='uppercase'
+                        textTransform='uppercase'
                         filled='true'
                         size='large'
                         fontSize='text-lg md:text-xl lg:text-2xl'
                         radius='md'
                     />
-                </div>
+                </Link>
             </div>
         </>
     );

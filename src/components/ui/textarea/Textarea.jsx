@@ -12,7 +12,7 @@ export default function Textarea(props) {
 
     const inputClasses = `
     block p-2.5 w-full px-4 py-2 text-sm text-gray bg-gray
-    h-${height} ${size} rounded-${radius} placeholder-gray text-gray bg-white
+    h-${height} ${size} rounded-${radius} placeholder-gray text-gray bg-white resize-none
     border-${border} shadow-${shadow} focus:outline-none border-[1px] border-light-gray/60
     `;
 

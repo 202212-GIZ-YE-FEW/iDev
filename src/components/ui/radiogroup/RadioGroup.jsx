@@ -13,7 +13,7 @@ export default function RadioGroup(props) {
     return (
         <>
             {title && (
-                <p className='mb-4 p-2 text-3xl font-normal break-words text-black'>
+                <p className='mb-4 p-2 text:lg md:text-2xl lg:text-3xl font-normal break-words text-black'>
                     {title}
                 </p>
             )}
