@@ -128,8 +128,8 @@ function MobileNav(prop) {
         <div
             className={`lg:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ${
                 openHamburger
-                    ? "-translate-x-0"
-                    : "ltr:-translate-x-full rtl:translate-x-full "
+                    ? "ltr:translate-x-0 rtl:-translate-x-0 opacity-100"
+                    : "ltr:-translate-x-full rtl:translate-x-full opacity-0"
             } transition-transform duration-300 ease-in-out`}
         >
             <div className='flex items-center justify-between bg-light-cyan h-20 px-4'>

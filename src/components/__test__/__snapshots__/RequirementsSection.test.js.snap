@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="py-8"
+>
+  <span
+    className="mb-3 font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-4xl rtl:lg:text-4xl uppercase break-words"
+  >
+    requirements
+  </span>
+  <div
+    className="mb-5 px-5"
+  />
+  <button
+    className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+  >
+    Get started
+  </button>
+</div>
+`;
