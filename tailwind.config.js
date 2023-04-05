@@ -124,6 +124,7 @@ module.exports = {
                 lg: "10px",
                 "2xl": "16px",
                 "3xl": "25px",
+                "4xl": "35px",
             },
         },
     },

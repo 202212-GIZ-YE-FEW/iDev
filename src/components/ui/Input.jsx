@@ -10,7 +10,7 @@ const Input = (props) => {
         isRequired = false,
         placeholder,
         label,
-        labelColor = "light-gray/80",
+        labelColor = "light-gray",
         inputFontSize = "sm",
         inputFontWeight = "light",
         inputWidthSize = "w-full",

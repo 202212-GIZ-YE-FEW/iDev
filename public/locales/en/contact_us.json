@@ -1,9 +1,9 @@
 {
     "details": "details",
     "email": "email",
-    "enterDetails": "enter your details address here...",
-    "enterEmail": "enter your email address here...",
-    "enterFullName": "enter your fall name here...",
+    "enterDetails": "Enter your details address here...",
+    "enterEmail": "Enter your email address here...",
+    "enterFullName": "Enter your fall name here...",
     "findAt": "find us at",
     "fullName": "full name",
     "typeOfContact": "Type of Contact"

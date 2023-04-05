@@ -45,9 +45,9 @@ function ContactUs({ t, choices }) {
                     }
                 })}
                 {/* </RadioGroup> */}
-                <div className='flex flex-col lg:flex-row'>
-                    <div>
-                        <div className='mb-[0.8rem]'>
+                <div className='flex flex-col lg:flex-row lg:justify-between gap-32'>
+                    <div className='bg-red w-full'>
+                        <div className='mb-[1rem]'>
                             <Input
                                 label={t("fullName")}
                                 type='text'
@@ -57,7 +57,7 @@ function ContactUs({ t, choices }) {
                                 inputWidthSize='w-full'
                             />
                         </div>
-                        <div className='mb-[0.8rem]'>
+                        <div className='mb-[1rem]'>
                             <Input
                                 label={t("email")}
                                 type='email'
@@ -67,16 +67,28 @@ function ContactUs({ t, choices }) {
                                 inputWidthSize='w-full'
                             />
                         </div>
-                        <div className='mb-[0.8rem]'>
+                        <div className='mb-[1rem]'>
                             <Textarea
                                 label={t("details")}
                                 name='email'
                                 labelColor='text-black'
                                 placeholder={t("enterDetails")}
+                                rows='8'
                             />
                         </div>
                     </div>
-                    <div>dkfjdkjflk</div>
+                    <div className='bg-light-cyan p-8 rounded-3xl self-center w-[38rem]'>
+                        <span className='text-lg lg:text-2xl capitalize'>
+                            {t("findAt")}
+                        </span>
+                        <address className='text-gray/40 not-italic'>
+                            3rd Floor <br />
+                            Almasbah Street <br />
+                            Taiz, Yemen
+                            <br />
+                            00000
+                        </address>
+                    </div>
                 </div>
             </div>
         </>
