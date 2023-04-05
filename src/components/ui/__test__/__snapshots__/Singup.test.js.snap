@@ -43,14 +43,14 @@ exports[`renders correctly 1`] = `
           className="flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row "
         >
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="firstname"
             placeholder="firstName"
             required={false}
             type="name"
           />
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="lastname"
             placeholder="lastName"
             required={false}
@@ -61,7 +61,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="email"
             placeholder="email"
             required={false}
@@ -72,7 +72,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="confirm_email"
             placeholder="confirmEmail"
             required={false}
@@ -83,14 +83,14 @@ exports[`renders correctly 1`] = `
           className="flex mb-[0.8rem] space-x-[0.7rem] rtl:space-x-reverse"
         >
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="password"
             placeholder="password"
             required={false}
             type="name"
           />
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="Confirm Password"
             placeholder="confirmPassword"
             required={false}
@@ -101,12 +101,12 @@ exports[`renders correctly 1`] = `
           className="flex space-x-[1.5rem] text-center lg:text-start justify-center mb-[0.5rem] rtl:space-x-reverse ext-md font-weight-500"
         >
           <label
-            className="mt-1 whitespace-wrap flex:me-10 text-light-gray font-light flex:self-center capitalize"
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg"
           >
             date
           </label>
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="datebrith"
             required={false}
             type="date"

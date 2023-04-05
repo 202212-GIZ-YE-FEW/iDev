@@ -1,7 +1,8 @@
-// import Image from "next/image";
 import { collection, getDocs } from "firebase/firestore";
+import Image from "next/image";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import ContactSVG from "public/contactus.svg";
 import { useState } from "react";
 
 import PageIntro from "@/components/PageIntro";
@@ -20,6 +21,9 @@ function ContactUs({ t, choices }) {
                     title='send us your request'
                     subtitle="Do you have a question, concern, idea, feedback, or problem?  If you need assistance, please fill out the form below and we'd be happy to help!"
                 />
+                <div>
+                    <Image src={ContactSVG} alt='contact us image' />
+                </div>
                 {/* <RadioGroup title='Type of contact'> */}
                 {choices.map((lang) => {
                     {
@@ -47,33 +51,40 @@ function ContactUs({ t, choices }) {
                 {/* </RadioGroup> */}
                 <div className='flex flex-col lg:flex-row lg:justify-between gap-32'>
                     <div className='bg-red w-full'>
-                        <div className='mb-[1rem]'>
+                        <div className='mb-[1.2rem]'>
                             <Input
                                 label={t("fullName")}
                                 type='text'
                                 name='fullname'
                                 labelColor='text-black'
                                 placeholder={t("enterFullName")}
-                                inputWidthSize='w-full'
+                                shadow='md'
+                                border='light-gray/10'
+                                radius='lg'
                             />
                         </div>
-                        <div className='mb-[1rem]'>
+                        <div className='mb-[1.2rem]'>
                             <Input
                                 label={t("email")}
                                 type='email'
                                 name='email'
                                 labelColor='text-black'
                                 placeholder={t("enterEmail")}
-                                inputWidthSize='w-full'
+                                shadow='md'
+                                border='light-gray/10'
+                                radius='lg'
                             />
                         </div>
-                        <div className='mb-[1rem]'>
+                        <div className='mb-[1.2rem]'>
                             <Textarea
                                 label={t("details")}
                                 name='email'
                                 labelColor='text-black'
                                 placeholder={t("enterDetails")}
                                 rows='8'
+                                shadow='md'
+                                border='light-gray/10'
+                                radius='lg'
                             />
                         </div>
                     </div>

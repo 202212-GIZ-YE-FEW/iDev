@@ -44,7 +44,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="email"
             placeholder="email"
             required={false}
@@ -55,7 +55,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base border-solid border-gray shadow-sm self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="password"
             placeholder="password"
             required={false}

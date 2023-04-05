@@ -12,16 +12,16 @@ export default function Textarea(props) {
     } = props;
 
     const inputClasses = `
-    block p-2.5 w-full px-4 py-2 text-sm text-gray bg-gray
-    h-${height} ${size} rounded-${radius} placeholder-gray text-gray bg-white resize-none
-    border-${border} shadow-${shadow} focus:outline-none border-[1px] border-light-gray/60
+    block p-2.5 w-full px-4 py-2 text-base text-gray bg-gray
+    h-${height} ${size} rounded-${radius} placeholder-light-gray text-gray bg-white resize-none
+    border-${border} shadow-${shadow} focus:outline-none border-[1px]
     `;
 
     return (
         <>
             {label && (
                 <label
-                    className={`block mb-2 text-sm font-medium text-${labelColor} capitalize`}
+                    className={`block mb-2 font-medium text-sm md:text-base lg:text-lg text-${labelColor} capitalize`}
                 >
                     {label}
                 </label>

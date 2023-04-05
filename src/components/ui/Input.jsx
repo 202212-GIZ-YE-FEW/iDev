@@ -15,15 +15,17 @@ const Input = (props) => {
         inputFontWeight = "light",
         inputWidthSize = "w-full",
         radius = "md",
+        shadow = "sm",
+        border = "gray",
     } = props;
 
-    const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    const inputClasses = `${inputWidthSize} border text-base border-solid border-${border} shadow-${shadow} self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>
             {label && (
                 <label
-                    className={`mt-1 whitespace-wrap flex:me-10 text-${labelColor} font-light flex:self-center capitalize`}
+                    className={`mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-${labelColor} font-light flex:self-center capitalize text-sm md:text-base lg:text-lg`}
                     htmlFor={id}
                 >
                     {label}
