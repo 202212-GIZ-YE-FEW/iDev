@@ -10,9 +10,8 @@ import Input from "@/components/ui/Input";
 import {
     signInWithGoogleAccount,
     signInWithFbAccount,
-} from "@/firebase-config/firebaseProvidersMethods";
+} from "@/firebase/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
-
 
 function SignUp({ t }) {
     const { signUp, user } = useAuth();
@@ -95,10 +94,10 @@ function SignUp({ t }) {
                         <div className='mb-[0.8rem]'>
                             <Input
                                 type='email'
-                                name='confirmemail'
+                                name='confirmEmail'
                                 placeholder={t(`${confirmemail}`)}
                                 inputWidthSize='w-full'
-                                value={formData.confirmemail || ""}
+                                value={formData.confirmEmail || ""}
                                 onChange={handleChange}
                             />
                         </div>
@@ -112,9 +111,9 @@ function SignUp({ t }) {
                             />
                             <Input
                                 type='name'
-                                name='confirmpassword'
+                                name='confirmPassword'
                                 placeholder={t(`${confirmpassword}`)}
-                                value={formData.confirmpassword || ""}
+                                value={formData.confirmPassword || ""}
                                 onChange={handleChange}
                             />
                         </div>
