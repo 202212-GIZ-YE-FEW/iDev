@@ -23,8 +23,8 @@ const Input = (props) => {
         <>
             {label && (
                 <label
-                    className='font-normal  mt-1 whitespace-nowrap flex:me-10 flex:self-center'
-                    htmlFor={rest.id || rest.name}
+                    className='  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center'
+                    htmlFor={id}
                 >
                     {label}
                 </label>

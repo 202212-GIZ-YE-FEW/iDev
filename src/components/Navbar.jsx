@@ -84,7 +84,7 @@ function AboutDropdown(prop) {
                     )}
                 >
                     <Link
-                        href='#'
+                        href='/about'
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                     >
                         About

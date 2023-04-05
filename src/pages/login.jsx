@@ -1,73 +1,92 @@
-import React from "react";
+import Image from "next/image";
 import { withTranslation } from "next-i18next";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
-import Image from "next/image";
-
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
+import {
+    signInWithGoogleAccount,
+    signInWithFbAccount,
+} from "@/firebase-config/firebaseProvidersMethods";
 function Login({ t }) {
-    const style = { minHeight: "calc(100vh - 1rem)" };
-    const { signup = "signup", login = "login" } = [];
+    const {
+        email = "email",
+        password = "password",
+        signup = "signup",
+        login = "login",
+    } = [];
+
     return (
-        <div style={style}>
-            <div className='g-6 flex h-full flex-wrap items-center lg:justify-center  xl:justify-center md:justify-center mx-12 my-8 justify-between   space-x-2'>
-                <div className='shrink-1 mb-[12px] mt-[12px] grow-0 basis-auto  md:mb-0 lg:px-20 xl:px-0 md:w-6/12 md:shrink-0 lg:w-8/12 xl:w-6/12'>
+        <div className='container'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 justify-items-center py-20 items-center gap-y-10 gap-x-32'>
+                <div className='w-1/2 lg:justify-self-start'>
                     <Image
                         src='/login.png'
-                        className='w-full'
-                        width={600}
-                        height={500}
-                        alt='hero image'
+                        className='w-full lg:min-w-[27rem] lg:max-w-[33rem] xl:min-w-[34rem]'
+                        width={500}
+                        height={300}
+                        alt='signup image'
                     />
                 </div>
-                <div className='w-full max-w-xs md:mx-auto   md:shrink-0 md:w-12/12 lg:w-12/12 xl:w-6/12  ml-2 leading-normal '>
-                    <FormTitle title='login' />
-                    <form className=' shadow-[0_4px_9px_-4px_#3b71ca] mt-[8px]  p-6  md:p-6'>
-                        <div
-                            className='relative mb-[0.5rem]'
-                            data-te-input-wrapper-init
-                        >
+                <div className='max-w-[29rem] lg:justify-self-end'>
+                    <FormTitle title={t(`${login}`)} />
+
+                    <form className='shadow-lg px-7 py-11  mt-4 rounded-lg'>
+                        <div className='mb-[0.8rem]'>
                             <Input
                                 type='email'
                                 name='email'
-                                placeholder={t("email")}
+                                placeholder={t(`${email}`)}
                                 inputWidthSize='w-full'
                             />
                         </div>
-
-                        <div
-                            className=' flex  mb-[0.5rem] lg:text-start  justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem  sm:flex-row '
-                            data-te-input-wrapper-init
-                        >
+                        <div className='mb-[0.8rem]'>
                             <Input
                                 type='name'
-                                name='Password'
-                                placeholder={t("password")}
+                                name='password'
+                                placeholder={t(`${password}`)}
                             />
                         </div>
-
-                        <div className=' flex justify-center space-x-[0.5rem] lg:space-x-[0.5rem] mt-6  rtl:space-x-reverse 1.4rem sm:flex-row '>
-                            <Button
-                                content={t(`${signup}`)}
-                                filled='false'
-                                size='medium'
-                                fontSize='lg:text-md xl:text-sm'
-                                radius='md '
-                            />
-                            <Button
-                                content={t(`${login}`)}
-                                filled='true'
-                                size='medium'
-                                fontSize='lg:text-xl xl xl:text-xl'
-                                radius='md '
-                            />
+                        <div className='flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row'>
+                            <Link href='/login'>
+                                <Button
+                                    content={t(`${login}`)}
+                                    filled='false'
+                                    size='medium'
+                                    fontSize='lg:text-md xl:text-sm'
+                                    radius='md'
+                                />
+                            </Link>
+                            <Link href='/signup'>
+                                <Button
+                                    content={t(`${signup}`)}
+                                    filled='true'
+                                    size='medium'
+                                    fontSize='lg:text-md xl:text-sm'
+                                    radius='md '
+                                    shadow='shadow-lg'
+                                />
+                            </Link>
                         </div>
                     </form>
-                    <AuthSocialMedia />
+                    <AuthSocialMedia
+                        googleLogoOnclick={signInWithGoogleAccount}
+                        FbLogoOnClick={signInWithFbAccount}
+                    />
                 </div>
             </div>
         </div>
     );
+}
+
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common", "signup"])),
+            // Will be passed to the page component as props
+        },
+    };
 }
 export default withTranslation("signup")(Login);

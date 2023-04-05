@@ -7,6 +7,10 @@ import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import {
+    signInWithGoogleAccount,
+    signInWithFbAccount,
+} from "@/firebase-config/firebaseProvidersMethods";
 function SignUp({ t }) {
     const {
         firstname = "firstName",
@@ -33,7 +37,8 @@ function SignUp({ t }) {
                     />
                 </div>
                 <div className='max-w-[29rem] lg:justify-self-end'>
-                    <FormTitle title='signup' />
+                    <FormTitle title={t(`${signup}`)} />
+
                     <form className='shadow-lg px-7 py-11  mt-4 rounded-lg'>
                         <div className='flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '>
                             <Input
@@ -106,7 +111,10 @@ function SignUp({ t }) {
                             </Link>
                         </div>
                     </form>
-                    <AuthSocialMedia />
+                    <AuthSocialMedia
+                        googleLogoOnclick={signInWithGoogleAccount}
+                        FbLogoOnClick={signInWithFbAccount}
+                    />
                 </div>
             </div>
         </div>
