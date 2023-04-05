@@ -14,12 +14,14 @@ const CounselingType = ({ t }) => {
                     value='individual'
                     title={t("individualCounseling")}
                     checked={true}
+                    onChange={(e) => e.target.value}
                 />
                 <RadioInputItem
                     id='teen'
                     name='counselingType'
                     value='teen'
                     title={t("teenCounseling")}
+                    onChange={(e) => e.target.value}
                 />
             </RadioGroup>
         </>
@@ -36,18 +38,21 @@ const RelationshipStatus = ({ t }) => {
                     value='Single'
                     title={t("single")}
                     checked={true}
+                    onChange={(e) => e.target.value}
                 />
                 <RadioInputItem
                     id='married'
                     name='relationshipStatus'
                     value='Married'
                     title={t("married")}
+                    onChange={(e) => e.target.value}
                 />
                 <RadioInputItem
                     id='divorced'
                     name='relationshipStatus'
                     value='Divorced'
                     title={t("divorced")}
+                    onChange={(e) => e.target.value}
                 />
             </RadioGroup>
         </>
@@ -64,12 +69,14 @@ const TherapyBefore = ({ t }) => {
                     value='yes'
                     title={t("yes")}
                     checked={true}
+                    onChange={(e) => e.target.value}
                 />
                 <RadioInputItem
                     id='no'
                     name='therapyBefore'
                     value='no'
                     title={t("no")}
+                    onChange={(e) => e.target.value}
                 />
             </RadioGroup>
         </>
