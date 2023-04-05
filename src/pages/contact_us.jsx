@@ -1,4 +1,3 @@
-import { collection, getDocs } from "firebase/firestore";
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -7,11 +6,11 @@ import { useState } from "react";
 
 import PageIntro from "@/components/PageIntro";
 import Input from "@/components/ui/Input";
+import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
+import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import Textarea from "@/components/ui/textarea/Textarea";
 
-// import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
-// import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
-import { db } from "@/firebase-config/firebase";
+import getDocument from "@/firebase/getData";
 function ContactUs({ t, choices }) {
     const [typeOfContact, setTypeOfContact] = useState("serviceQuestion");
     return (
@@ -24,31 +23,23 @@ function ContactUs({ t, choices }) {
                 <div>
                     <Image src={ContactSVG} alt='contact us image' />
                 </div>
-                {/* <RadioGroup title='Type of contact'> */}
-                {choices.map((lang) => {
-                    {
-                        Object.entries(lang.value).map((item) => (
-                            <input
-                                key={item[0]}
+                <RadioGroup title={t("counselingTypeTitle")}>
+                    {choices.map((item, index) => {
+                        return (
+                            <RadioInputItem
+                                key={index}
                                 id={item[0]}
-                                type='radio'
-                                name={item[0]}
-                                value={item[1]}
-                                title='Type Of Contact'
-                                checked={typeOfContact === item[1]}
+                                name={typeOfContact}
+                                value={item[0]}
+                                title={item[0]}
+                                checked={typeOfContact === item[0]}
                                 onChange={(e) =>
                                     setTypeOfContact(e.target.value)
                                 }
                             />
-                        ));
-                    }
-                    {
-                        Object.entries(lang.value).map((item, index) => (
-                            <p key={index}>{item}</p>
-                        ));
-                    }
-                })}
-                {/* </RadioGroup> */}
+                        );
+                    })}
+                </RadioGroup>
                 <div className='flex flex-col lg:flex-row lg:justify-between gap-32'>
                     <div className='bg-red w-full'>
                         <div className='mb-[1.2rem]'>
@@ -107,12 +98,15 @@ function ContactUs({ t, choices }) {
 }
 
 export async function getStaticProps({ locale }) {
-    const choices = await getDocs(collection(db, "type_of_contact")).then(
-        (res) =>
-            res.docs.map((data) => {
-                return { ...data.data(), id: data.id };
-            })
+    const typeOfContactData = await getDocument("type_of_contact");
+    // Take only locale row
+    const typeOfContactDataByLang = typeOfContactData.find(
+        (data) => data.id === locale
     );
+
+    // Pick up value field in db, and convert to array to pass
+    const choices = Object.entries(typeOfContactDataByLang.value);
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common", "contact_us"])),
