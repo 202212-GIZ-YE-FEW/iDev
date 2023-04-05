@@ -2,22 +2,16 @@
 import { collection, getDocs } from "firebase/firestore";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 
 import PageIntro from "@/components/PageIntro";
-import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
-import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
+import Input from "@/components/ui/Input";
 
+// import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
+// import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import { db } from "@/firebase-config/firebase";
 function ContactUs({ t, choices }) {
-    //  const choices = [
-    //   {name:"service_question", title:"I have a question about the service.", value:"service_question",  checked:false},
-    //   {name:"client_support", title:"I'm a registered client and I need support.", value:"client_support", checked:true},
-    //   {name:"counselor", title:"I'm a counselor interested in joining.", value:"counselor", checked:false},
-    //   {name:"counselor_support", title:"I'm a registered counselor and I need support.", value:"counselor_support", checked:false},
-    //   {name:"business_inquiry", title:"I have a business-related inquiry.", value:"counselor_support", checked:false},
-    //   {name:"healing_online", title:"I'm interested in Healing Online for my organization.", value:"healing_online", checked:false},
-    //   {name:"billing_question", title:"I have a billing related question.", value:"billing_question", checked:false},
-    //  ];
+    const [typeOfContact, setTypeOfContact] = useState("serviceQuestion");
     return (
         <>
             <div className='container py-10'>
@@ -25,19 +19,52 @@ function ContactUs({ t, choices }) {
                     title='send us your request'
                     subtitle="Do you have a question, concern, idea, feedback, or problem?  If you need assistance, please fill out the form below and we'd be happy to help!"
                 />
-                <RadioGroup title='Type of contact'>
-                    {choices.map((item, index) => (
-                        <RadioInputItem
-                            key={index}
-                            id={index}
-                            name={item.name}
-                            value={item.name}
-                            title={item.title}
-                            checked={item.checked}
-                            onChange={null}
-                        />
-                    ))}
-                </RadioGroup>
+                {/* <RadioGroup title='Type of contact'> */}
+                {choices.map((lang) => {
+                    {
+                        Object.entries(lang.value).map((item) => (
+                            <input
+                                key={item[0]}
+                                id={item[0]}
+                                type='radio'
+                                name={item[0]}
+                                value={item[1]}
+                                title='Type Of Contact'
+                                checked={typeOfContact === item[1]}
+                                onChange={(e) =>
+                                    setTypeOfContact(e.target.value)
+                                }
+                            />
+                        ));
+                    }
+                    {
+                        Object.entries(lang.value).map((item, index) => (
+                            <p key={index}>{item}</p>
+                        ));
+                    }
+                })}
+                {/* </RadioGroup> */}
+                <div className='flex flex-col lg:flex-row'>
+                    <div>
+                        <div className='mb-[0.8rem]'>
+                            <Input
+                                type='text'
+                                name='fullname'
+                                placeholder={t("fullname")}
+                                inputWidthSize='w-full'
+                            />
+                        </div>
+                        <div className='mb-[0.8rem]'>
+                            <Input
+                                type='email'
+                                name='email'
+                                placeholder={t("email")}
+                                inputWidthSize='w-full'
+                            />
+                        </div>
+                    </div>
+                    <div>dkfjdkjflk</div>
+                </div>
             </div>
         </>
     );
@@ -58,4 +85,4 @@ export async function getStaticProps({ locale }) {
     };
 }
 
-export default withTranslation("signup")(ContactUs);
+export default withTranslation("contact_us")(ContactUs);
