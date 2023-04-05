@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex flex-col md:flex-row mb-5"
+>
+  <div
+    className="w-full"
+  >
+    <span
+      className="font-semibold text-xl uppercase"
+    />
+    <p
+      className="font-normal text-md lg:text-xl text-gray capitalize"
+    />
+  </div>
+</div>
+`;
