@@ -149,7 +149,7 @@ const Issues = ({ t }) => {
 const BringsHere = () => {
     return (
         <>
-            <Textarea cols='20' />
+            <Textarea rows='16' />
         </>
     );
 };
