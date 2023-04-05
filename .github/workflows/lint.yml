@@ -83,4 +83,4 @@ jobs:
               uses: bahmutov/npm-install@v1
 
             - name: 🃏 Run jest
-              run: yarn test -u
+              run: yarn test

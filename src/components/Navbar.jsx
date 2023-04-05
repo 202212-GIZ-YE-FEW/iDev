@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
-import { auth, signOut } from "@/firebase-config/firebase";
+
 import Button from "@/components/ui/Button";
+
 import { navigation } from "@/constants";
 
 function LangDropdown(prop) {
@@ -83,7 +84,7 @@ function AboutDropdown(prop) {
                     )}
                 >
                     <Link
-                        href='#'
+                        href='/about'
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                     >
                         About
@@ -127,8 +128,8 @@ function MobileNav(prop) {
         <div
             className={`lg:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ${
                 openHamburger
-                    ? "-translate-x-0"
-                    : "ltr:-translate-x-full rtl:translate-x-full "
+                    ? "ltr:translate-x-0 rtl:-translate-x-0 opacity-100"
+                    : "ltr:-translate-x-full rtl:translate-x-full opacity-0"
             } transition-transform duration-300 ease-in-out`}
         >
             <div className='flex items-center justify-between bg-light-cyan h-20 px-4'>

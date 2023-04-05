@@ -4,8 +4,8 @@ exports[`renders correctly 1`] = `
 <textarea
   className="
     block p-2.5 w-full px-4 py-2 text-sm text-gray bg-gray
-    h-24 undefined rounded-md placeholder-gray text-gray bg-white
-    border-gray shadow-md focus:outline-none border-[1px] border-light-gray/60
+    h-24 undefined rounded-md placeholder-gray text-gray bg-white resize-none
+    border-gray shadow-sm focus:outline-none border-[1px] border-light-gray/60
     "
 />
 `;

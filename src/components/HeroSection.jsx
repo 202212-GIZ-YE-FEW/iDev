@@ -19,7 +19,10 @@ function HeroSection({ t }) {
                     <p className='text-3xl sm:text-5xl lg:text-9xl mb-3 lg:mb-0 uppercase'>
                         {t("help")}
                     </p>
-                    <Link className='w-fit xl:w-full rtl:w-full' href='#'>
+                    <Link
+                        className='w-fit xl:w-full rtl:w-full'
+                        href='/appointment'
+                    >
                         <Button
                             content={t("bookAppointment")}
                             text-transform='uppercase'
