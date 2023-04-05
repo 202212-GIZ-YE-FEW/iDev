@@ -1,12 +1,9 @@
 import { withTranslation } from "next-i18next";
 
-import Button from "@/components/ui/Button";
-
 import Stepper from "./Stepper";
 import RadioGroup from "./ui/radiogroup/RadioGroup";
 import RadioInputItem from "./ui/radiogroup/RadioInputItem";
 import Textarea from "./ui/textarea/Textarea";
-
 const CounselingType = ({ t }) => {
     return (
         <>
@@ -159,14 +156,13 @@ const TwoLastSteps = (props) => {
     const { t, title, subtitle } = props;
     return (
         <>
-            <div className='text-center'>
-                <span className='text-base md:text-xl lg:text-3xl'>
+            <div className='flex flex-col justify-center h-full text-center space-y-12'>
+                <p className='text-base md:text-xl lg:text-3xl'>
                     {t(`${title}`)}
-                </span>
-                <p className='text-sm md:text-lg lg:text-2xl'>
+                </p>
+                <p className='text-sm md:text-lg lg:text-2xl text-black/80 capitalize'>
                     {t(`${subtitle}`)}
                 </p>
-                <Button />
             </div>
         </>
     );

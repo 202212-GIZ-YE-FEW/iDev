@@ -43,7 +43,7 @@ function Stepper(props) {
                                         index !== 5,
                                 })}
                             >
-                                <div className='w-full mb-4'>
+                                <div className='w-full h-full mb-4'>
                                     <p className='text-3xl font-normal text-start'>
                                         {step.title}
                                     </p>
@@ -64,6 +64,17 @@ function Stepper(props) {
                                     {current < steps.length - 1 && (
                                         <Button
                                             content={t("next")}
+                                            onClick={nextStep}
+                                            textTransform='uppercase'
+                                            filled='true'
+                                            size='large'
+                                            fontSize='text-lg md:text-xl lg:text-2xl'
+                                            radius='md'
+                                        />
+                                    )}
+                                    {current === steps.length - 1 && (
+                                        <Button
+                                            content={t("submit")}
                                             onClick={nextStep}
                                             textTransform='uppercase'
                                             filled='true'
