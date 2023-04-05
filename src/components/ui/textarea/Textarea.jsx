@@ -3,6 +3,7 @@ export default function Textarea(props) {
         label,
         placeholder,
         size,
+        labelColor = "gray",
         height = "24",
         radius = "md",
         border = "gray",
@@ -19,7 +20,9 @@ export default function Textarea(props) {
     return (
         <>
             {label && (
-                <label className='block mb-2 text-sm font-medium text-gray'>
+                <label
+                    className={`block mb-2 text-sm font-medium text-${labelColor}`}
+                >
                     {label}
                 </label>
             )}

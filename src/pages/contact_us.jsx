@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import PageIntro from "@/components/PageIntro";
 import Input from "@/components/ui/Input";
+import Textarea from "@/components/ui/textarea/Textarea";
 
 // import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 // import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
@@ -48,18 +49,30 @@ function ContactUs({ t, choices }) {
                     <div>
                         <div className='mb-[0.8rem]'>
                             <Input
+                                label={t("fullName")}
                                 type='text'
                                 name='fullname'
-                                placeholder={t("fullname")}
+                                labelColor='text-black'
+                                placeholder={t("enterFullName")}
                                 inputWidthSize='w-full'
                             />
                         </div>
                         <div className='mb-[0.8rem]'>
                             <Input
+                                label={t("email")}
                                 type='email'
                                 name='email'
-                                placeholder={t("email")}
+                                labelColor='text-black'
+                                placeholder={t("enterEmail")}
                                 inputWidthSize='w-full'
+                            />
+                        </div>
+                        <div className='mb-[0.8rem]'>
+                            <Textarea
+                                label={t("details")}
+                                name='email'
+                                labelColor='text-black'
+                                placeholder={t("enterDetails")}
                             />
                         </div>
                     </div>
@@ -79,7 +92,7 @@ export async function getStaticProps({ locale }) {
     );
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            ...(await serverSideTranslations(locale, ["common", "contact_us"])),
             choices,
         },
     };

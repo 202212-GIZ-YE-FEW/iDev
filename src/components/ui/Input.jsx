@@ -10,11 +10,11 @@ const Input = (props) => {
         isRequired = false,
         placeholder,
         label,
+        labelColor = "light-gray/80",
         inputFontSize = "sm",
         inputFontWeight = "light",
         inputWidthSize = "w-full",
         radius = "md",
-        ...rest
     } = props;
 
     const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
@@ -23,7 +23,7 @@ const Input = (props) => {
         <>
             {label && (
                 <label
-                    className='  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center'
+                    className={`mt-1 whitespace-wrap flex:me-10 text-${labelColor} font-light flex:self-center`}
                     htmlFor={id}
                 >
                     {label}
