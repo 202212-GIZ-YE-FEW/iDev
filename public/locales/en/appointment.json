@@ -1,5 +1,6 @@
 {
     "areThereIssues": "Are there any issues you'd like to focus on?",
+    "beAwareYouPay": "Please be aware that this action will cost you a ticket!",
     "bookAppointment": "Book Appointment",
     "counselingTypeTitle": "What type of counseling are you looking for?",
     "depression": "Depression",
@@ -23,7 +24,10 @@
     "stressAnxiety": "Stress and Anxiety",
     "teenCounseling": "Teen Counseling (for my child)",
     "therapyBefore": "Have you ever been in therapy before?",
+    "toSubmitAppointment": "Submit Appointment?",
     "traumaAbuse": "Trauma and abuse",
+    "submitYourAppointment": "Submit your appointment",
+    "clickIfSure": "Click Submit if you are sure of all your choices.",
     "whatBringsYou": "What brings you here?",
     "whatBringsYouDesc": "Please specify (in a few sentences) why you'd like counseling.\n\r\nThis will give your counselor a good understanding of where to start.",
     "whatRelationshipStatus": "What is your relationship status?",

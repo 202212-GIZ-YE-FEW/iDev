@@ -6,7 +6,7 @@ export default function Textarea(props) {
         height = "24",
         radius = "md",
         border = "gray",
-        shadow = "md",
+        shadow = "sm",
         ...rest
     } = props;
 

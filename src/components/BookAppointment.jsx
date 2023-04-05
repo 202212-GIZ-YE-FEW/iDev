@@ -154,6 +154,22 @@ const BringsHere = () => {
     );
 };
 
+const TwoLastSteps = (props) => {
+    const { t, title, subtitle } = props;
+    return (
+        <>
+            <div className='text-center'>
+                <span className='text-base md:text-xl lg:text-3xl'>
+                    {t(`${title}`)}
+                </span>
+                <p className='text-sm md:text-lg lg:text-2xl'>
+                    {t(`${subtitle}`)}
+                </p>
+            </div>
+        </>
+    );
+};
+
 function BookAppointment({ t }) {
     return (
         <>
@@ -190,6 +206,17 @@ function BookAppointment({ t }) {
                             pageTitle: "whatBringsYou",
                             pageSubtitle: "whatBringsYouDesc",
                             content: <BringsHere />,
+                        },
+                        {
+                            pageTitle: "submitYourAppointment",
+                            pageSubtitle: "clickIfSure",
+                            content: (
+                                <TwoLastSteps
+                                    t={t}
+                                    title='toSubmitAppointment'
+                                    subtitle='beAwareYouPay'
+                                />
+                            ),
                         },
                     ]}
                 />
