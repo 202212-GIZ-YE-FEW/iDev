@@ -3,12 +3,15 @@ import { appWithTranslation } from "next-i18next";
 import "@/styles/globals.css";
 
 import Layout from "@/layout/Layout";
+import { AuthContextProvider } from "@/components/context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
     return (
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
+        <AuthContextProvider>
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </AuthContextProvider>
     );
 }
 
