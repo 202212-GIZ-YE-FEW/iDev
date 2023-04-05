@@ -3,13 +3,6 @@ import { Children } from "react";
 
 export default function RadioGroup(props) {
     const { title, children, asButton = false } = props;
-    React.Children.forEach(children, (child) => {
-        if (child.type.name !== "RadioInputItem") {
-            throw new Error(
-                "RadioGroup component can only have RadioInputItem as children"
-            );
-        }
-    });
     return (
         <>
             {title && (
