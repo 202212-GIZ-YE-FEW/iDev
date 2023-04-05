@@ -156,11 +156,11 @@ const TwoLastSteps = (props) => {
     const { t, title, subtitle } = props;
     return (
         <>
-            <div className='flex flex-col justify-center h-full text-center space-y-12'>
+            <div className='flex flex-col justify-center h-full text-center space-y-12 capitalize'>
                 <p className='text-base md:text-xl lg:text-3xl'>
                     {t(`${title}`)}
                 </p>
-                <p className='text-sm md:text-lg lg:text-2xl text-black/80 capitalize'>
+                <p className='text-sm md:text-lg lg:text-2xl text-black/80'>
                     {t(`${subtitle}`)}
                 </p>
             </div>
