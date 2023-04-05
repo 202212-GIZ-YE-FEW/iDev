@@ -217,13 +217,13 @@ function BookAppointment({ t }) {
                             ),
                         },
                         {
-                            pageTitle: "submitYourAppointment",
-                            pageSubtitle: "clickIfSure",
+                            pageTitle: "hasBeenSubmitted",
+                            pageSubtitle: "receiveEmail",
                             content: (
                                 <TwoLastSteps
                                     t={t}
-                                    title='toSubmitAppointment'
-                                    subtitle='beAwareYouPay'
+                                    title='requestSubmitted'
+                                    subtitle='keepEyeOnEmail'
                                 />
                             ),
                         },
