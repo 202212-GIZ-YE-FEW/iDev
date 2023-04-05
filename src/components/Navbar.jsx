@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
-import { auth, signOut } from "@/firebase-config/firebase";
+
 import Button from "@/components/ui/Button";
+
 import { navigation } from "@/constants";
 
 function LangDropdown(prop) {
@@ -83,7 +84,7 @@ function AboutDropdown(prop) {
                     )}
                 >
                     <Link
-                        href='#'
+                        href='/about'
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                     >
                         About

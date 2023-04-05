@@ -1,9 +1,13 @@
-import { React, useState } from "react";
+import clsx from "clsx";
+import Link from "next/link";
+import { withTranslation } from "next-i18next";
+import { useState } from "react";
 
+import PageIntro from "./PageIntro";
 import Button from "./ui/Button";
 
 function Stepper(props) {
-    const { steps, currentStep } = props;
+    const { t, steps, currentStep } = props;
     const [current, setCurrent] = useState(
         currentStep >= 0 && currentStep < steps.length ? currentStep : 0
     );
@@ -20,44 +24,88 @@ function Stepper(props) {
     };
 
     return (
-        <div className='flex items-start justify-between sm:p-6 lg:p-8 flex-col'>
-            <div className='max-w-sm p-6 border-gray rounded-lg shadow'>
-                {steps.map((step, index) => {
-                    return (
+        <>
+            {steps.map((step, index) => {
+                return (
+                    <div
+                        key={index}
+                        className={`${
+                            current === index ? "flex flex-col" : "hidden"
+                        }`}
+                    >
+                        <PageIntro
+                            title={t(`${step.pageTitle}`)}
+                            subtitle={t(`${step.pageSubtitle}`)}
+                        />
                         <div
-                            key={index}
-                            className={`${
-                                current === index ? "block" : "hidden"
-                            } w-full h-full p-4 text-center`}
+                            className={clsx("w-full mx-auto py-5", {
+                                "bg-light-white flex flex-col justify-between max-w-3xl h-[30rem] px-8 rounded-md drop-shadow-lg":
+                                    index !== 5,
+                            })}
                         >
-                            <p className='text-3xl font-normal text-start'>
-                                {step.title}
-                            </p>
-                            {step.content}
+                            <div className='w-full h-full mb-4'>
+                                <p className='text-3xl font-normal text-start'>
+                                    {step.title}
+                                </p>
+                                {step.content}
+                            </div>
+                            <div className='flex justify-center gap-4 mb-5'>
+                                {/* Exclude last step from having previous button */}
+                                {current > 0 && current < steps.length - 1 && (
+                                    <Button
+                                        content={t("previous")}
+                                        onClick={prevStep}
+                                        textTransform='uppercase'
+                                        filled='true'
+                                        size='large'
+                                        fontSize='text-lg md:text-xl lg:text-2xl'
+                                        radius='md'
+                                    />
+                                )}
+                                {current < steps.length - 2 && (
+                                    <Button
+                                        content={t("next")}
+                                        onClick={nextStep}
+                                        textTransform='uppercase'
+                                        filled='true'
+                                        size='large'
+                                        fontSize='text-lg md:text-xl lg:text-2xl'
+                                        radius='md'
+                                    />
+                                )}
+                                {/* Submission step:one step before completed step */}
+                                {current === steps.length - 2 && (
+                                    <Button
+                                        content={t("submit")}
+                                        onClick={nextStep}
+                                        textTransform='uppercase'
+                                        filled='true'
+                                        size='large'
+                                        fontSize='text-lg md:text-xl lg:text-2xl'
+                                        radius='md'
+                                    />
+                                )}
+                                {/* After submission:Completed step */}
+                                {current === steps.length - 1 && (
+                                    <Link href='/'>
+                                        <Button
+                                            content={t("backToHome")}
+                                            onClick={nextStep}
+                                            textTransform='uppercase'
+                                            filled='true'
+                                            size='large'
+                                            fontSize='text-lg md:text-xl lg:text-2xl'
+                                            radius='md'
+                                        />
+                                    </Link>
+                                )}
+                            </div>
                         </div>
-                    );
-                })}
-                <div className='flex flex-row gap-4'>
-                    {current > 0 && (
-                        <Button
-                            content='Prev'
-                            onClick={prevStep}
-                            radius='md'
-                            size='medium'
-                        />
-                    )}
-                    {current < steps.length - 1 && (
-                        <Button
-                            content='Next'
-                            onClick={nextStep}
-                            radius='md'
-                            size='medium'
-                        />
-                    )}
-                </div>
-            </div>
-        </div>
+                    </div>
+                );
+            })}
+        </>
     );
 }
 
-export default Stepper;
+export default withTranslation("appointment")(Stepper);
