@@ -1,7 +1,15 @@
 import clsx from "clsx";
 
 export default function RadioInputItem(props) {
-    const { id, name, value, checked, onChange, title, asButton } = props;
+    const {
+        id,
+        name,
+        value,
+        checked = false,
+        onChange,
+        title,
+        asButton,
+    } = props;
 
     const inputProps = {
         id,
