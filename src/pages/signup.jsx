@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Link from "next/link";
+import { useState } from "react";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
@@ -10,7 +11,11 @@ import {
     signInWithGoogleAccount,
     signInWithFbAccount,
 } from "@/firebase-config/firebaseProvidersMethods";
+import { useAuth } from "@/components/context/AuthContext";
+
 function SignUp({ t }) {
+    const { signUp, user } = useAuth();
+
     const {
         firstname = "firstName",
         lastname = "lastName",
@@ -21,7 +26,25 @@ function SignUp({ t }) {
         datebrith = "date",
         signup = "signup",
         login = "login",
-    } = [];
+    } = {};
+
+    const [formData, setFormData] = useState({});
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await signUp(formData.email, formData.password);
+            // Do something with the user object, e.g. redirect to login
+        } catch (error) {
+            console.error(error);
+            // Handle the error here, e.g. display an error message to the user
+        }
+    };
 
     return (
         <div className='container'>
@@ -38,17 +61,24 @@ function SignUp({ t }) {
                 <div className='max-w-[29rem] lg:justify-self-end'>
                     <FormTitle title={t(`${signup}`)} />
 
-                    <form className='shadow-lg px-7 py-11  mt-4 rounded-lg'>
+                    <form
+                        className='shadow-lg px-7 py-11  mt-4 rounded-lg'
+                        onSubmit={handleSubmit}
+                    >
                         <div className='flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '>
                             <Input
                                 type='name'
                                 name='firstname'
                                 placeholder={t(`${firstname}`)}
+                                value={formData.firstname || ""}
+                                onChange={handleChange}
                             />
                             <Input
                                 type='name'
                                 name='lastname'
                                 placeholder={t(`${lastname}`)}
+                                value={formData.lastname || ""}
+                                onChange={handleChange}
                             />
                         </div>
 
@@ -58,14 +88,18 @@ function SignUp({ t }) {
                                 name='email'
                                 placeholder={t(`${email}`)}
                                 inputWidthSize='w-full'
+                                value={formData.email || ""}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='mb-[0.8rem]'>
                             <Input
                                 type='email'
-                                name='confirm_email'
+                                name='confirmemail'
                                 placeholder={t(`${confirmemail}`)}
                                 inputWidthSize='w-full'
+                                value={formData.confirmemail || ""}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='flex mb-[0.8rem] space-x-[0.7rem] rtl:space-x-reverse'>
@@ -73,11 +107,15 @@ function SignUp({ t }) {
                                 type='name'
                                 name='password'
                                 placeholder={t(`${password}`)}
+                                value={formData.password || ""}
+                                onChange={handleChange}
                             />
                             <Input
                                 type='name'
-                                name='Confirm Password'
+                                name='confirmpassword'
                                 placeholder={t(`${confirmpassword}`)}
+                                value={formData.confirmpassword || ""}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='flex space-x-[1.5rem] text-center lg:text-start justify-center mb-[0.5rem] rtl:space-x-reverse ext-md font-weight-500'>
@@ -86,6 +124,8 @@ function SignUp({ t }) {
                                 type='date'
                                 name='datebrith'
                                 inputWidthSize='w-full'
+                                value={formData.datebrith || ""}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row'>
@@ -106,6 +146,7 @@ function SignUp({ t }) {
                                     fontSize='lg:text-md xl:text-sm'
                                     radius='md '
                                     shadow='shadow-lg'
+                                    onClick={handleSubmit}
                                 />
                             </Link>
                         </div>
