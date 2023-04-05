@@ -13,6 +13,7 @@ import {
 } from "@/firebase-config/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
 
+
 function SignUp({ t }) {
     const { signUp, user } = useAuth();
 

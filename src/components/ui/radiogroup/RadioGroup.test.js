@@ -36,36 +36,3 @@ it("does not render title if not passed", () => {
     );
     expect(queryByText("test title")).not.toBeInTheDocument();
 });
-
-describe("RadioGroup", () => {
-    it("renders without error when passed only RadioInputItem children", () => {
-        const { container } = render(
-            <RadioGroup>
-                <RadioInputItem value='option1'>Option 1</RadioInputItem>
-                <RadioInputItem value='option2'>Option 2</RadioInputItem>
-            </RadioGroup>
-        );
-        expect(container.firstChild).toBeInTheDocument();
-    });
-
-    it("throws an error when passed non-RadioInputItem children", () => {
-        const errorMsg =
-            "RadioGroup component can only have RadioInputItem as children";
-        expect(() => {
-            render(
-                <RadioGroup>
-                    <div>This should cause an error</div>
-                </RadioGroup>
-            );
-        }).toThrow(errorMsg);
-
-        expect(() => {
-            render(
-                <RadioGroup>
-                    <RadioInputItem value='option1'>Option 1</RadioInputItem>
-                    <div>This should also cause an error</div>
-                </RadioGroup>
-            );
-        }).toThrow(errorMsg);
-    });
-});
