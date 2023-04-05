@@ -1,10 +1,6 @@
 import { signInWithPopup, signOut } from "firebase/auth"; //popUp Google SignIn window
 
-import {
-    auth,
-    facebookProvider,
-    googleProvider,
-} from "@/firebase/config";
+import { auth, facebookProvider, googleProvider } from "@/firebase/config";
 //SignIn with Google account
 export const signInWithGoogleAccount = async () => {
     await signInWithPopup(auth, googleProvider);

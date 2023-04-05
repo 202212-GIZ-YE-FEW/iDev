@@ -9,7 +9,7 @@ function RequirementsSection({ t, requirements }) {
                 {t("requirements")}
             </span>
             <div className='mb-5 px-5'>
-                {requirements.length > 0 && (
+                {requirements && (
                     <ul className='font-normal text-md lg:text-xl text-black capitalize list-disc'>
                         {requirements.map((item, index) => (
                             <li key={index}>{item}</li>
