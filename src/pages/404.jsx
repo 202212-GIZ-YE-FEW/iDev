@@ -1,14 +1,9 @@
-import Layout from "@/layout/Layout";
-import { i18n, useTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function NotFoundPage() {
     const { t } = useTranslation("common");
-    return (
-        <Layout i18n={i18n}>
-            <div className='text-center text-[100px]'>404</div>
-        </Layout>
-    );
+    return <div className='text-center text-[100px]'>404</div>;
 }
 export async function getStaticProps({ locale }) {
     return {
