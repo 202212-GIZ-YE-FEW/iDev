@@ -38,6 +38,7 @@ exports[`renders correctly 1`] = `
       </span>
       <form
         className="shadow-lg px-7 py-11  mt-4 rounded-lg"
+        onSubmit={[Function]}
       >
         <div
           className="flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row "
@@ -45,16 +46,20 @@ exports[`renders correctly 1`] = `
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="firstname"
+            onChange={[Function]}
             placeholder="firstName"
             required={false}
             type="name"
+            value=""
           />
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="lastname"
+            onChange={[Function]}
             placeholder="lastName"
             required={false}
             type="name"
+            value=""
           />
         </div>
         <div
@@ -63,9 +68,11 @@ exports[`renders correctly 1`] = `
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="email"
+            onChange={[Function]}
             placeholder="email"
             required={false}
             type="email"
+            value=""
           />
         </div>
         <div
@@ -73,10 +80,12 @@ exports[`renders correctly 1`] = `
         >
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
-            name="confirm_email"
+            name="confirmemail"
+            onChange={[Function]}
             placeholder="confirmEmail"
             required={false}
             type="email"
+            value=""
           />
         </div>
         <div
@@ -85,16 +94,20 @@ exports[`renders correctly 1`] = `
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="password"
+            onChange={[Function]}
             placeholder="password"
             required={false}
             type="name"
+            value=""
           />
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
-            name="Confirm Password"
+            name="confirmpassword"
+            onChange={[Function]}
             placeholder="confirmPassword"
             required={false}
             type="name"
+            value=""
           />
         </div>
         <div
@@ -108,8 +121,10 @@ exports[`renders correctly 1`] = `
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="datebrith"
+            onChange={[Function]}
             required={false}
             type="date"
+            value=""
           />
         </div>
         <div
@@ -135,6 +150,7 @@ exports[`renders correctly 1`] = `
           >
             <button
               className="font-normal whitespace-nowrap cursor-pointer shadow-lg capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+              onClick={[Function]}
             >
               signup
             </button>
