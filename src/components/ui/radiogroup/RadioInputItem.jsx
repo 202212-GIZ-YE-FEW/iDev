@@ -19,7 +19,7 @@ export default function RadioInputItem(props) {
 
     return (
         <div
-            className={clsx("flex items-center ps-2", {
+            className={clsx("flex items-center", {
                 "space-y-4": asButton,
             })}
         >

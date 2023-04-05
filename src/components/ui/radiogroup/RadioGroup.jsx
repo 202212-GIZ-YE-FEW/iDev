@@ -11,7 +11,7 @@ export default function RadioGroup(props) {
         }
     });
     return (
-        <div className='p-4'>
+        <>
             {title && (
                 <p className='mb-4 p-2 text-3xl font-normal break-words text-black'>
                     {title}
@@ -24,6 +24,6 @@ export default function RadioGroup(props) {
                     })}
                 </div>
             </fieldset>
-        </div>
+        </>
     );
 }

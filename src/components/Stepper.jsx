@@ -38,8 +38,8 @@ function Stepper(props) {
                                 subtitle={t(`${step.pageSubtitle}`)}
                             />
                             <div
-                                className={clsx("w-full mx-auto", {
-                                    "bg-light-white flex flex-col justify-between max-w-3xl h-[30rem] px-2 rounded-md drop-shadow-lg":
+                                className={clsx("w-full mx-auto py-5", {
+                                    "bg-light-white flex flex-col justify-between max-w-3xl h-[30rem] px-8 rounded-md drop-shadow-lg":
                                         index !== 5,
                                 })}
                             >
