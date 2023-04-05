@@ -216,6 +216,17 @@ function BookAppointment({ t }) {
                                 />
                             ),
                         },
+                        {
+                            pageTitle: "submitYourAppointment",
+                            pageSubtitle: "clickIfSure",
+                            content: (
+                                <TwoLastSteps
+                                    t={t}
+                                    title='toSubmitAppointment'
+                                    subtitle='beAwareYouPay'
+                                />
+                            ),
+                        },
                     ]}
                 />
             </div>
