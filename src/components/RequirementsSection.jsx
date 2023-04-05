@@ -1,11 +1,22 @@
+import { withTranslation } from "next-i18next";
+
 import Button from "./ui/Button";
 
-export default function RequirementsSection() {
+function RequirementsSection({ t, requirements }) {
     return (
-        <div className='py-20'>
-            <span className='font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-4xl rtl:lg:text-4xl uppercase break-words'>
-                Requirements
+        <div className='py-8'>
+            <span className='mb-3 font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-4xl rtl:lg:text-4xl uppercase break-words'>
+                {t("requirements")}
             </span>
+            <div className='mb-5 px-5'>
+                {requirements.length > 0 && (
+                    <ul className='font-normal text-md lg:text-xl text-black capitalize list-disc'>
+                        {requirements.map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </ul>
+                )}
+            </div>
             <Button
                 content='Get started'
                 textTransform='uppercase'
@@ -17,3 +28,4 @@ export default function RequirementsSection() {
         </div>
     );
 }
+export default withTranslation("requirements")(RequirementsSection);
