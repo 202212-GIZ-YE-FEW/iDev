@@ -26,67 +26,65 @@ function Stepper(props) {
         <>
             {steps.map((step, index) => {
                 return (
-                    <>
+                    <div
+                        key={index}
+                        className={`${
+                            current === index ? "flex flex-col" : "hidden"
+                        }`}
+                    >
+                        <PageIntro
+                            title={t(`${step.pageTitle}`)}
+                            subtitle={t(`${step.pageSubtitle}`)}
+                        />
                         <div
-                            key={index}
-                            className={`${
-                                current === index ? "flex flex-col" : "hidden"
-                            }`}
+                            className={clsx("w-full mx-auto py-5", {
+                                "bg-light-white flex flex-col justify-between max-w-3xl h-[30rem] px-8 rounded-md drop-shadow-lg":
+                                    index !== 5,
+                            })}
                         >
-                            <PageIntro
-                                title={t(`${step.pageTitle}`)}
-                                subtitle={t(`${step.pageSubtitle}`)}
-                            />
-                            <div
-                                className={clsx("w-full mx-auto py-5", {
-                                    "bg-light-white flex flex-col justify-between max-w-3xl h-[30rem] px-8 rounded-md drop-shadow-lg":
-                                        index !== 5,
-                                })}
-                            >
-                                <div className='w-full h-full mb-4'>
-                                    <p className='text-3xl font-normal text-start'>
-                                        {step.title}
-                                    </p>
-                                    {step.content}
-                                </div>
-                                <div className='flex justify-center gap-4 mb-5'>
-                                    {current > 0 && (
-                                        <Button
-                                            content={t("previous")}
-                                            onClick={prevStep}
-                                            textTransform='uppercase'
-                                            filled='true'
-                                            size='large'
-                                            fontSize='text-lg md:text-xl lg:text-2xl'
-                                            radius='md'
-                                        />
-                                    )}
-                                    {current < steps.length - 1 && (
-                                        <Button
-                                            content={t("next")}
-                                            onClick={nextStep}
-                                            textTransform='uppercase'
-                                            filled='true'
-                                            size='large'
-                                            fontSize='text-lg md:text-xl lg:text-2xl'
-                                            radius='md'
-                                        />
-                                    )}
-                                    {current === steps.length - 1 && (
-                                        <Button
-                                            content={t("submit")}
-                                            onClick={nextStep}
-                                            textTransform='uppercase'
-                                            filled='true'
-                                            size='large'
-                                            fontSize='text-lg md:text-xl lg:text-2xl'
-                                            radius='md'
-                                        />
-                                    )}
-                                </div>
+                            <div className='w-full h-full mb-4'>
+                                <p className='text-3xl font-normal text-start'>
+                                    {step.title}
+                                </p>
+                                {step.content}
+                            </div>
+                            <div className='flex justify-center gap-4 mb-5'>
+                                {current > 0 && (
+                                    <Button
+                                        content={t("previous")}
+                                        onClick={prevStep}
+                                        textTransform='uppercase'
+                                        filled='true'
+                                        size='large'
+                                        fontSize='text-lg md:text-xl lg:text-2xl'
+                                        radius='md'
+                                    />
+                                )}
+                                {current < steps.length - 1 && (
+                                    <Button
+                                        content={t("next")}
+                                        onClick={nextStep}
+                                        textTransform='uppercase'
+                                        filled='true'
+                                        size='large'
+                                        fontSize='text-lg md:text-xl lg:text-2xl'
+                                        radius='md'
+                                    />
+                                )}
+                                {current === steps.length - 1 && (
+                                    <Button
+                                        content={t("submit")}
+                                        onClick={nextStep}
+                                        textTransform='uppercase'
+                                        filled='true'
+                                        size='large'
+                                        fontSize='text-lg md:text-xl lg:text-2xl'
+                                        radius='md'
+                                    />
+                                )}
                             </div>
                         </div>
-                    </>
+                    </div>
                 );
             })}
         </>
