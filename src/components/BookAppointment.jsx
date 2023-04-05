@@ -173,7 +173,7 @@ const TwoLastSteps = (props) => {
 function BookAppointment({ t }) {
     return (
         <>
-            <div className='flex flex-col justify-center items-center mt-[30px]'>
+            <div className='mt-[30px]'>
                 <Stepper
                     currentStep={0}
                     steps={[

@@ -1,7 +1,7 @@
 export default function PageIntro(prop) {
     const { title, subtitle } = prop;
     return (
-        <div className='mb-5'>
+        <div className='mb-5 text-start'>
             <span className='font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl uppercase break-words'>
                 {title}
             </span>
