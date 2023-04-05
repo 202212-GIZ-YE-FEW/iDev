@@ -134,7 +134,7 @@ const SpecificQualities = ({ t }) => {
 };
 
 const Issues = ({ t }) => {
-    const [issues, setIssues] = useState("male_counselor");
+    const [issues, setIssues] = useState("depression");
     return (
         <>
             <RadioGroup title={t("areThereIssues")}>

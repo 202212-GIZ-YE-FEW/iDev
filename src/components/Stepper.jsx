@@ -1,6 +1,7 @@
 import clsx from "clsx";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
-import { React, useState } from "react";
+import { useState } from "react";
 
 import PageIntro from "./PageIntro";
 import Button from "./ui/Button";
@@ -49,7 +50,8 @@ function Stepper(props) {
                                 {step.content}
                             </div>
                             <div className='flex justify-center gap-4 mb-5'>
-                                {current > 0 && (
+                                {/* Exclude last step from having previous button */}
+                                {current > 0 && current < steps.length - 1 && (
                                     <Button
                                         content={t("previous")}
                                         onClick={prevStep}
@@ -60,7 +62,7 @@ function Stepper(props) {
                                         radius='md'
                                     />
                                 )}
-                                {current < steps.length - 1 && (
+                                {current < steps.length - 2 && (
                                     <Button
                                         content={t("next")}
                                         onClick={nextStep}
@@ -71,7 +73,8 @@ function Stepper(props) {
                                         radius='md'
                                     />
                                 )}
-                                {current === steps.length - 1 && (
+                                {/* Submission step:one step before completed step */}
+                                {current === steps.length - 2 && (
                                     <Button
                                         content={t("submit")}
                                         onClick={nextStep}
@@ -81,6 +84,20 @@ function Stepper(props) {
                                         fontSize='text-lg md:text-xl lg:text-2xl'
                                         radius='md'
                                     />
+                                )}
+                                {/* After submission:Completed step */}
+                                {current === steps.length - 1 && (
+                                    <Link href='/'>
+                                        <Button
+                                            content={t("backToHome")}
+                                            onClick={nextStep}
+                                            textTransform='uppercase'
+                                            filled='true'
+                                            size='large'
+                                            fontSize='text-lg md:text-xl lg:text-2xl'
+                                            radius='md'
+                                        />
+                                    </Link>
                                 )}
                             </div>
                         </div>
