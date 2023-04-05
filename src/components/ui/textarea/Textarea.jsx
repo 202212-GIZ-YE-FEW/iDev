@@ -21,7 +21,7 @@ export default function Textarea(props) {
         <>
             {label && (
                 <label
-                    className={`block mb-2 text-sm font-medium text-${labelColor}`}
+                    className={`block mb-2 text-sm font-medium text-${labelColor} capitalize`}
                 >
                     {label}
                 </label>

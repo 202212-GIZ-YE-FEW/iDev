@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center capitalize"
           >
             userName
           </label>
@@ -43,7 +43,7 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center capitalize"
           >
             city
           </label>
@@ -59,7 +59,7 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center capitalize"
           >
             licenseNamber
           </label>
@@ -75,7 +75,7 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center capitalize"
           >
             createPassword
           </label>
@@ -91,7 +91,7 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center capitalize"
           >
             confirmPassword
           </label>

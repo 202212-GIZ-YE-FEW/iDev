@@ -101,7 +101,7 @@ exports[`renders correctly 1`] = `
           className="flex space-x-[1.5rem] text-center lg:text-start justify-center mb-[0.5rem] rtl:space-x-reverse ext-md font-weight-500"
         >
           <label
-            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center capitalize"
           >
             date
           </label>
