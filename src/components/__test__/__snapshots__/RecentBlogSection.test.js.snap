@@ -5,10 +5,10 @@ exports[`renders correctly 1`] = `
   className="container flex flex-col space-y-20 justify-between"
 >
   <div
-    className="mb-5"
+    className="mb-5 text-start"
   >
     <span
-      className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-4xl rtl:lg:text-4xl uppercase break-words"
+      className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl uppercase break-words"
     >
       recentBlogsTitle
     </span>

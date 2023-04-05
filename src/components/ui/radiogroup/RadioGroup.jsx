@@ -3,17 +3,10 @@ import { Children } from "react";
 
 export default function RadioGroup(props) {
     const { title, children, asButton = false } = props;
-    React.Children.forEach(children, (child) => {
-        if (child.type.name !== "RadioInputItem") {
-            throw new Error(
-                "RadioGroup component can only have RadioInputItem as children"
-            );
-        }
-    });
     return (
-        <div className='p-4'>
+        <>
             {title && (
-                <p className='mb-4 p-2 text-3xl font-normal break-words text-black'>
+                <p className='mb-4 p-2 text:lg md:text-2xl lg:text-3xl font-normal break-words text-black'>
                     {title}
                 </p>
             )}
@@ -24,6 +17,6 @@ export default function RadioGroup(props) {
                     })}
                 </div>
             </fieldset>
-        </div>
+        </>
     );
 }

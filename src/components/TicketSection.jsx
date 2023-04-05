@@ -3,8 +3,8 @@ import { withTranslation } from "next-i18next";
 import "react-multi-carousel/lib/styles.css";
 
 import AreYouCounselor from "./AreYouCounselor";
-import TicketItem from "./TicketItem";
 import PageIntro from "./PageIntro";
+import TicketItem from "./TicketItem";
 function TicketSection({ t }) {
     const ticketPlans = [
         {
