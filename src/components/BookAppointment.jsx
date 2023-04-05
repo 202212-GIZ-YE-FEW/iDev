@@ -1,5 +1,6 @@
 import { withTranslation } from "next-i18next";
-import React from "react";
+
+import Button from "@/components/ui/Button";
 
 import Stepper from "./Stepper";
 import RadioGroup from "./ui/radiogroup/RadioGroup";
@@ -165,6 +166,7 @@ const TwoLastSteps = (props) => {
                 <p className='text-sm md:text-lg lg:text-2xl'>
                     {t(`${subtitle}`)}
                 </p>
+                <Button />
             </div>
         </>
     );

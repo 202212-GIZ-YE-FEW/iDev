@@ -39,11 +39,11 @@ function Stepper(props) {
                             />
                             <div
                                 className={clsx("w-full mx-auto", {
-                                    "bg-light-white max-w-3xl px-2 rounded-md drop-shadow-lg":
+                                    "bg-light-white flex flex-col justify-between max-w-3xl h-[30rem] px-2 rounded-md drop-shadow-lg":
                                         index !== 5,
                                 })}
                             >
-                                <div className='w-full h-full mb-4'>
+                                <div className='w-full mb-4'>
                                     <p className='text-3xl font-normal text-start'>
                                         {step.title}
                                     </p>

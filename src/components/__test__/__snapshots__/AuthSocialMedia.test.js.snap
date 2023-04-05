@@ -15,7 +15,7 @@ exports[`renders correctly 1`] = `
     className="flex flex-row items-center justify-center "
   >
     <svg
-      className="mr-4"
+      className="me-4"
       fill="none"
       height="50px"
       viewBox="0 0 24 24"

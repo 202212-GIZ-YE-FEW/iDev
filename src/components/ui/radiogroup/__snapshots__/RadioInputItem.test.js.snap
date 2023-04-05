@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex items-center pl-2"
+  className="flex items-center ps-2"
 >
   <input
     className="w-5 h-5 bg-black border-black"

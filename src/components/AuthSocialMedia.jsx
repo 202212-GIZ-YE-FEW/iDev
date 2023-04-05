@@ -1,5 +1,5 @@
-import React from "react";
 import { withTranslation } from "next-i18next";
+import React from "react";
 function AuthSocialMedia({ t }) {
     const or = "or";
 
@@ -17,7 +17,7 @@ function AuthSocialMedia({ t }) {
                     viewBox='0 0 24 24'
                     fill='none'
                     xmlns='http://www.w3.org/2000/svg'
-                    className='mr-4'
+                    className='me-4'
                 >
                     <g id='SVGRepo_bgCarrier' stroke-width='0'></g>
                     <g
