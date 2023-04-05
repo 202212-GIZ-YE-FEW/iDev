@@ -42,7 +42,6 @@ function SignUp({ t }) {
             // Do something with the user object, e.g. redirect to login
         } catch (error) {
             console.error(error);
-            // Handle the error here, e.g. display an error message to the user
         }
     };
 
