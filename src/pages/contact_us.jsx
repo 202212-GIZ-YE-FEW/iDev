@@ -59,7 +59,7 @@ function ContactUs({ t, choices }) {
                                 labelColor='text-black'
                                 placeholder={t("enterFullName")}
                                 shadow='md'
-                                border='light-gray/10'
+                                border='light-gray/20'
                                 radius='lg'
                             />
                         </div>
@@ -71,7 +71,7 @@ function ContactUs({ t, choices }) {
                                 labelColor='text-black'
                                 placeholder={t("enterEmail")}
                                 shadow='md'
-                                border='light-gray/10'
+                                border='light-gray/20'
                                 radius='lg'
                             />
                         </div>
@@ -83,7 +83,7 @@ function ContactUs({ t, choices }) {
                                 placeholder={t("enterDetails")}
                                 rows='8'
                                 shadow='md'
-                                border='light-gray/10'
+                                border='light-gray/20'
                                 radius='lg'
                             />
                         </div>

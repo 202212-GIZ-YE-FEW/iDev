@@ -19,7 +19,7 @@ const Input = (props) => {
         border = "gray",
     } = props;
 
-    const inputClasses = `${inputWidthSize} border text-base border-solid border-${border} shadow-${shadow} self-center placeholder-light-gray text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    const inputClasses = `${inputWidthSize} border text-base text-gray border-solid border-${border} shadow-${shadow} self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>
