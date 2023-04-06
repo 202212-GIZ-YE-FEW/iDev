@@ -26,10 +26,6 @@ function ContactUs({ t, choices }) {
             .email("Invalid email format")
             .required("email is required"),
         details: Yup.string()
-            .matches(
-                /^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/,
-                "Full name must contain only letters and spaces"
-            )
             .required("details is required")
             .min(3, "must be at least 3 characters long"),
     });
