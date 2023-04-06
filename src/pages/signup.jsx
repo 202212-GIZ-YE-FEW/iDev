@@ -15,7 +15,7 @@ import { useAuth } from "@/components/context/AuthContext";
 import * as Yup from "yup";
 
 function SignUp({ t }) {
-    const { signUp, user } = useAuth();
+    const { signUp } = useAuth();
 
     const {
         firstname = "firstName",
@@ -30,15 +30,42 @@ function SignUp({ t }) {
     } = {};
 
     const schema = Yup.object().shape({
-        email: Yup.string().email("Invalid email").required("Required"),
+        firstName: Yup.string()
+            .matches(
+                /^[a-zA-Z\s]*$/,
+                "First name must contain only letters and spaces"
+            )
+            .required("Required"),
+        lastName: Yup.string()
+            .matches(
+                /^[a-zA-Z\s]*$/,
+                "Last name must contain only letters and spaces"
+            )
+            .required("Required"),
+        email: Yup.string()
+            .email("Invalid email format")
+            .matches(
+                /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
+                "Invalid email format, must include '@' and '.'"
+            )
+            .required("Required"),
+        confirmEmail: Yup.string()
+            .oneOf([Yup.ref("email"), null], "Emails must match")
+            .required("Required"),
         password: Yup.string()
             .min(6, "Password must be at least 6 characters long")
+            .matches(
+                /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+                "Password must contain at least one letter and one number"
+            )
             .required("Required"),
         confirmPassword: Yup.string()
             .oneOf([Yup.ref("password"), null], "Passwords must match")
             .required("Required"),
-        firstName: Yup.string().required("Required"),
-        lastName: Yup.string().required("Required"),
+        dateOfBirth: Yup.date()
+            .nullable()
+            .max(new Date(), "Date of birth cannot be in the future")
+            .required("Required"),
     });
 
     const [formData, setFormData] = useState({});
@@ -87,22 +114,26 @@ function SignUp({ t }) {
                         onSubmit={handleSubmit}
                     >
                         <div className='flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '>
-                            <Input
-                                type='text'
-                                name='firstName'
-                                placeholder={t(`${firstname}`)}
-                                value={formData.firstName || ""}
-                                onChange={handleChange}
-                                error={formErrors.firstname}
-                            />
-                            <Input
-                                type='text'
-                                name='lastName'
-                                placeholder={t(`${lastname}`)}
-                                value={formData.lastName || ""}
-                                onChange={handleChange}
-                                error={formErrors.lastname}
-                            />
+                            <div className='flex-col mt-[0.8rem]'>
+                                <Input
+                                    type='name'
+                                    name='firstName'
+                                    placeholder={t(`${firstname}`)}
+                                    value={formData.firstName || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.firstName}
+                                />
+                            </div>
+                            <div className='flex-col mt-[0.8rem]'>
+                                <Input
+                                    type='name'
+                                    name='lastName'
+                                    placeholder={t(`${lastname}`)}
+                                    value={formData.lastName || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.lastName}
+                                />
+                            </div>
                         </div>
 
                         <div className='mb-[0.8rem]'>
@@ -149,15 +180,15 @@ function SignUp({ t }) {
                                 />
                             </div>
                         </div>
-                        <div className='flex space-x-[1.5rem] text-center lg:text-start justify-center mb-[0.5rem] rtl:space-x-reverse ext-md font-weight-500'>
+                        <div className='flex-col  text-center lg:text-start justify-center mb-[0.5rem]  ext-md font-weight-500'>
                             <Input
                                 label={t(`${datebrith}`)}
                                 type='date'
-                                name='datebrith'
+                                name='dateOfBirth'
                                 inputWidthSize='w-full'
-                                value={formData.datebrith || ""}
+                                value={formData.dateOfBirth || ""}
                                 onChange={handleChange}
-                                error={formErrors.datebrith}
+                                error={formErrors.dateOfBirth}
                             />
                         </div>
                         <div className='flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row'>
