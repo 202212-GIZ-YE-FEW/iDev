@@ -14,6 +14,7 @@ const Input = (props) => {
         inputFontWeight = "light",
         inputWidthSize = "w-full",
         radius = "md",
+        error, // new prop for error message
     } = props;
 
     const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
@@ -38,6 +39,7 @@ const Input = (props) => {
                 placeholder={placeholder}
                 className={inputClasses}
             />
+            {error && <div className='text-red text-xs mt-1'>{error}</div>}
         </>
     );
 };
