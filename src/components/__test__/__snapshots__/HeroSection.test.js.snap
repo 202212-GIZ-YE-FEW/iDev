@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
       </p>
       <a
         className="w-fit xl:w-full rtl:w-full"
-        href="#"
+        href="/appointment"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}

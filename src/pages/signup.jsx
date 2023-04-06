@@ -1,15 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Link from "next/link";
+
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+
 import {
-    signInWithGoogleAccount,
     signInWithFbAccount,
-} from "@/firebase-config/firebaseProvidersMethods";
+    signInWithGoogleAccount,
+} from "@/firebase/firebaseProvidersMethods";
 function SignUp({ t }) {
     const {
         firstname = "firstName",
