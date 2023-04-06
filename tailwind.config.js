@@ -39,6 +39,7 @@ module.exports = {
             white: "#FFF",
             "light-white": "#FBFBFB",
             transparent: "transparent",
+            red: "#EF4444",
         },
         fontFamily: {
             sans: ["Poppins", "Graphik", "sans-serif"],
