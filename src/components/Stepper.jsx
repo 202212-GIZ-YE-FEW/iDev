@@ -1,16 +1,13 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
-import { useState } from "react";
 
 import PageIntro from "./PageIntro";
 import Button from "./ui/Button";
 
 function Stepper(props) {
-    const { t, steps, currentStep } = props;
-    const [current, setCurrent] = useState(
-        currentStep >= 0 && currentStep < steps.length ? currentStep : 0
-    );
+    const { t, steps, current, setCurrent, onSubmit } = props;
+
     const nextStep = () => {
         if (current < steps.length - 1) {
             setCurrent(current + 1);
@@ -26,6 +23,13 @@ function Stepper(props) {
     return (
         <>
             {steps.map((step, index) => {
+                const {
+                    pageTitle,
+                    pageSubtitle,
+                    title,
+                    content,
+                    asCard = true,
+                } = step;
                 return (
                     <div
                         key={index}
@@ -34,20 +38,20 @@ function Stepper(props) {
                         }`}
                     >
                         <PageIntro
-                            title={t(`${step.pageTitle}`)}
-                            subtitle={t(`${step.pageSubtitle}`)}
+                            title={t(`${pageTitle}`)}
+                            subtitle={t(`${pageSubtitle}`)}
                         />
                         <div
                             className={clsx("w-full mx-auto py-5", {
                                 "bg-light-white flex flex-col justify-between max-w-3xl h-[30rem] px-8 rounded-md drop-shadow-lg":
-                                    index !== 5,
+                                    asCard,
                             })}
                         >
                             <div className='w-full h-full mb-4'>
                                 <p className='text-3xl font-normal text-start'>
-                                    {step.title}
+                                    {title}
                                 </p>
-                                {step.content}
+                                {content}
                             </div>
                             <div className='flex justify-center gap-4 mb-5'>
                                 {/* Exclude last step from having previous button */}
@@ -77,7 +81,7 @@ function Stepper(props) {
                                 {current === steps.length - 2 && (
                                     <Button
                                         content={t("submit")}
-                                        onClick={nextStep}
+                                        onClick={onSubmit}
                                         textTransform='uppercase'
                                         filled='true'
                                         size='large'
@@ -90,7 +94,6 @@ function Stepper(props) {
                                     <Link href='/'>
                                         <Button
                                             content={t("backToHome")}
-                                            onClick={nextStep}
                                             textTransform='uppercase'
                                             filled='true'
                                             size='large'
