@@ -2,53 +2,58 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="relative bg-yellow container pb-5 my-5 w-4/12 "
+  className="container"
 >
-  <img
-    alt=""
-    className="bg-center bg-cover w-full h-auto border-black rounded-full"
-    data-nimg="1"
-    decoding="async"
-    height={315}
-    loading="lazy"
-    onError={[Function]}
-    onLoad={[Function]}
-    src=""
-    style={
-      Object {
-        "color": "transparent",
-      }
-    }
-    width={315}
-  />
-  <label
-    className="absolute w-[70px] h-[70px] bg-white border-2 border-black rounded-full inset-x-0 bottom-0"
-    for="upload"
+  <div
+    className="relative inline-flex justify-center w-[14rem] h-[14rem] lg:w-[20rem] lg:h-[20rem] xl:w-[18rem] xl:h-[18rem] rounded-full"
   >
     <img
-      alt=""
-      className="absolute bg-center bg-cover w-12 h-12  top-2 left-2 "
+      alt="profile"
+      className="object-cover min-w-full h-full rounded-full"
       data-nimg="1"
       decoding="async"
-      height={50}
+      height={315}
       loading="lazy"
       onError={[Function]}
       onLoad={[Function]}
-      src="/_next/image?url=%2Fedit_profile_icon.png&w=128&q=75"
-      srcSet="/_next/image?url=%2Fedit_profile_icon.png&w=64&q=75 1x, /_next/image?url=%2Fedit_profile_icon.png&w=128&q=75 2x"
+      src="/_next/image?url=%2Fprofile-icon.png&w=640&q=75"
+      srcSet="/_next/image?url=%2Fprofile-icon.png&w=384&q=75 1x, /_next/image?url=%2Fprofile-icon.png&w=640&q=75 2x"
       style={
         Object {
           "color": "transparent",
         }
       }
-      width={54}
+      width={315}
     />
-    <input
-      hidden={true}
-      id="upload"
-      onChange={[Function]}
-      type="file"
-    />
-  </label>
+    <label
+      className="inline-flex justify-center items-center cursor-pointer w-[3rem] h-[3rem] lg:w-[4rem] lg:h-[4rem] bg-white border-2 border-black rounded-full absolute left-1/2 -translate-x-1/2 -bottom-[1.5rem] lg:-bottom-[2rem]"
+      for="upload"
+    >
+      <img
+        alt=""
+        className="p-2"
+        data-nimg="1"
+        decoding="async"
+        height={50}
+        loading="lazy"
+        onError={[Function]}
+        onLoad={[Function]}
+        src="/_next/image?url=%2Fedit_profile_icon.png&w=128&q=75"
+        srcSet="/_next/image?url=%2Fedit_profile_icon.png&w=64&q=75 1x, /_next/image?url=%2Fedit_profile_icon.png&w=128&q=75 2x"
+        style={
+          Object {
+            "color": "transparent",
+          }
+        }
+        width={54}
+      />
+      <input
+        hidden={true}
+        id="upload"
+        onChange={[Function]}
+        type="file"
+      />
+    </label>
+  </div>
 </div>
 `;
