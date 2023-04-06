@@ -12,6 +12,7 @@ import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import Textarea from "@/components/ui/textarea/Textarea";
 
+import addData from "@/firebase/addData";
 import getDocument from "@/firebase/getData";
 function ContactUs({ t, choices }) {
     const schema = Yup.object().shape({
@@ -37,8 +38,10 @@ function ContactUs({ t, choices }) {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log({ ...formData });
         try {
             await schema.validate(formData, { abortEarly: false });
+            await addData("visitors_messages", { ...formData });
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
