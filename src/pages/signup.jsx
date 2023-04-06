@@ -12,6 +12,7 @@ import {
     signInWithFbAccount,
 } from "@/firebase/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
+import * as Yup from "yup";
 
 function SignUp({ t }) {
     const { signUp, user } = useAuth();
@@ -28,7 +29,20 @@ function SignUp({ t }) {
         login = "login",
     } = {};
 
+    const schema = Yup.object().shape({
+        email: Yup.string().email("Invalid email").required("Required"),
+        password: Yup.string()
+            .min(6, "Password must be at least 6 characters long")
+            .required("Required"),
+        confirmPassword: Yup.string()
+            .oneOf([Yup.ref("password"), null], "Passwords must match")
+            .required("Required"),
+        firstName: Yup.string().required("Required"),
+        lastName: Yup.string().required("Required"),
+    });
+
     const [formData, setFormData] = useState({});
+    const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,10 +52,18 @@ function SignUp({ t }) {
         e.preventDefault();
 
         try {
+            await schema.validate(formData, { abortEarly: false });
             await signUp(formData.email, formData.password);
             // Do something with the user object, e.g. redirect to login
         } catch (error) {
             console.error(error);
+            if (error.inner) {
+                const newErrors = {};
+                error.inner.forEach((e) => {
+                    newErrors[e.path] = e.message;
+                });
+                setFormErrors(newErrors);
+            }
         }
     };
 
@@ -66,18 +88,20 @@ function SignUp({ t }) {
                     >
                         <div className='flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '>
                             <Input
-                                type='name'
-                                name='firstname'
+                                type='text'
+                                name='firstName'
                                 placeholder={t(`${firstname}`)}
-                                value={formData.firstname || ""}
+                                value={formData.firstName || ""}
                                 onChange={handleChange}
+                                error={formErrors.firstname}
                             />
                             <Input
-                                type='name'
-                                name='lastname'
+                                type='text'
+                                name='lastName'
                                 placeholder={t(`${lastname}`)}
-                                value={formData.lastname || ""}
+                                value={formData.lastName || ""}
                                 onChange={handleChange}
+                                error={formErrors.lastname}
                             />
                         </div>
 
@@ -89,6 +113,7 @@ function SignUp({ t }) {
                                 inputWidthSize='w-full'
                                 value={formData.email || ""}
                                 onChange={handleChange}
+                                error={formErrors.email}
                             />
                         </div>
                         <div className='mb-[0.8rem]'>
@@ -99,23 +124,30 @@ function SignUp({ t }) {
                                 inputWidthSize='w-full'
                                 value={formData.confirmEmail || ""}
                                 onChange={handleChange}
+                                error={formErrors.confirmEmail}
                             />
                         </div>
                         <div className='flex mb-[0.8rem] space-x-[0.7rem] rtl:space-x-reverse'>
-                            <Input
-                                type='name'
-                                name='password'
-                                placeholder={t(`${password}`)}
-                                value={formData.password || ""}
-                                onChange={handleChange}
-                            />
-                            <Input
-                                type='name'
-                                name='confirmPassword'
-                                placeholder={t(`${confirmpassword}`)}
-                                value={formData.confirmPassword || ""}
-                                onChange={handleChange}
-                            />
+                            <div className='flex-col mt-[0.8rem]'>
+                                <Input
+                                    type='password'
+                                    name='password'
+                                    placeholder={t(`${password}`)}
+                                    value={formData.password || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.password}
+                                />
+                            </div>
+                            <div className='flex-col mt-[0.8rem]'>
+                                <Input
+                                    type='password'
+                                    name='confirmPassword'
+                                    placeholder={t(`${confirmpassword}`)}
+                                    value={formData.confirmPassword || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.confirmPassword}
+                                />
+                            </div>
                         </div>
                         <div className='flex space-x-[1.5rem] text-center lg:text-start justify-center mb-[0.5rem] rtl:space-x-reverse ext-md font-weight-500'>
                             <Input
@@ -125,6 +157,7 @@ function SignUp({ t }) {
                                 inputWidthSize='w-full'
                                 value={formData.datebrith || ""}
                                 onChange={handleChange}
+                                error={formErrors.datebrith}
                             />
                         </div>
                         <div className='flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row'>
