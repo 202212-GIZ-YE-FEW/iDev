@@ -8,6 +8,7 @@ export default function Textarea(props) {
         radius = "md",
         border = "gray",
         shadow = "sm",
+        error,
         ...rest
     } = props;
 
@@ -31,6 +32,11 @@ export default function Textarea(props) {
                 placeholder={placeholder}
                 {...rest}
             />
+            {error && (
+                <div className='text-red text-sm md:text-base mt-1'>
+                    {error}
+                </div>
+            )}
         </>
     );
 }

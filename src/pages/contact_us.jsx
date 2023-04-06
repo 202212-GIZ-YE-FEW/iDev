@@ -3,6 +3,7 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ContactSVG from "public/contactus.svg";
 import { useState } from "react";
+import * as Yup from "yup";
 
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
@@ -13,7 +14,43 @@ import Textarea from "@/components/ui/textarea/Textarea";
 
 import getDocument from "@/firebase/getData";
 function ContactUs({ t, choices }) {
+    const schema = Yup.object().shape({
+        fullName: Yup.string()
+            .matches(
+                /^[a-zA-Z\s]*$/,
+                "Full name must contain only letters and spaces"
+            )
+            .required("full name is required"),
+        email: Yup.string()
+            .email("Invalid email format")
+            .required("email is required"),
+        details: Yup.string()
+            .required("details is required")
+            .min(3, "must be at least 3 characters long"),
+    });
+
+    const [formData, setFormData] = useState({});
+    const [formErrors, setFormErrors] = useState({});
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await schema.validate(formData, { abortEarly: false });
+        } catch (error) {
+            if (error.inner) {
+                const newErrors = {};
+                error.inner.forEach((e) => {
+                    newErrors[e.path] = e.message;
+                });
+                setFormErrors(newErrors);
+            }
+        }
+    };
     const [typeOfContact, setTypeOfContact] = useState("");
+
     return (
         <>
             <div className='container py-10'>
@@ -21,7 +58,7 @@ function ContactUs({ t, choices }) {
                     title='send us your request'
                     subtitle="Do you have a question, concern, idea, feedback, or problem?  If you need assistance, please fill out the form below and we'd be happy to help!"
                 />
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className='flex flex-col xl:flex-row gap-32 mt-20'>
                         <div className='w-full xl:w-2/3'>
                             <RadioGroup title={t("typeOfContact")}>
@@ -52,7 +89,10 @@ function ContactUs({ t, choices }) {
                                 <Input
                                     label={t("fullName")}
                                     type='text'
-                                    name='fullname'
+                                    name='fullName'
+                                    value={formData.fullName || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.fullName}
                                     labelColor='text-black'
                                     placeholder={t("enterFullName")}
                                     shadow='md'
@@ -63,8 +103,11 @@ function ContactUs({ t, choices }) {
                             <div className='mb-[1.2rem]'>
                                 <Input
                                     label={t("email")}
-                                    type='email'
+                                    type='text'
                                     name='email'
+                                    value={formData.email || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.email}
                                     labelColor='text-black'
                                     placeholder={t("enterEmail")}
                                     shadow='md'
@@ -75,7 +118,10 @@ function ContactUs({ t, choices }) {
                             <div className='mb-[1.2rem]'>
                                 <Textarea
                                     label={t("details")}
-                                    name='email'
+                                    name='details'
+                                    value={formData.details || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.details}
                                     labelColor='text-black'
                                     placeholder={t("enterDetails")}
                                     rows='8'

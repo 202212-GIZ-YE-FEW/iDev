@@ -2,7 +2,7 @@ import React from "react";
 
 const Input = (props) => {
     const {
-        handleChange,
+        onChange,
         value,
         id,
         name,
@@ -17,6 +17,7 @@ const Input = (props) => {
         radius = "md",
         shadow = "sm",
         border = "gray",
+        error,
     } = props;
 
     const inputClasses = `${inputWidthSize} border text-base text-gray border-solid border-${border} shadow-${shadow} self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
@@ -32,7 +33,7 @@ const Input = (props) => {
                 </label>
             )}
             <input
-                onChange={handleChange}
+                onChange={onChange}
                 value={value}
                 id={id}
                 name={name}
@@ -41,6 +42,11 @@ const Input = (props) => {
                 placeholder={placeholder}
                 className={inputClasses}
             />
+            {error && (
+                <div className='text-red text-sm md:text-base mt-1'>
+                    {error}
+                </div>
+            )}
         </>
     );
 };
