@@ -12,7 +12,7 @@ import Textarea from "@/components/ui/textarea/Textarea";
 
 import getDocument from "@/firebase/getData";
 function ContactUs({ t, choices }) {
-    const [typeOfContact, setTypeOfContact] = useState("serviceQuestion");
+    const [typeOfContact, setTypeOfContact] = useState("");
     return (
         <>
             <div className='container py-10'>
@@ -20,28 +20,32 @@ function ContactUs({ t, choices }) {
                     title='send us your request'
                     subtitle="Do you have a question, concern, idea, feedback, or problem?  If you need assistance, please fill out the form below and we'd be happy to help!"
                 />
-                <div>
-                    <Image src={ContactSVG} alt='contact us image' />
+                <div className='flex flex-col xl:flex-row gap-32 mt-20'>
+                    <div className='w-full xl:w-2/3'>
+                        <RadioGroup title={t("typeOfContact")}>
+                            {choices.map((item, index) => {
+                                return (
+                                    <RadioInputItem
+                                        key={index}
+                                        id={item[0]}
+                                        name={typeOfContact}
+                                        value={item[0]}
+                                        title={item[1]}
+                                        checked={typeOfContact === item[0]}
+                                        onChange={(e) =>
+                                            setTypeOfContact(e.target.value)
+                                        }
+                                    />
+                                );
+                            })}
+                        </RadioGroup>
+                    </div>
+                    <div className='w-full xl:w-2/3 mx-auto'>
+                        <Image src={ContactSVG} alt='contact us image' />
+                    </div>
                 </div>
-                <RadioGroup title={t("counselingTypeTitle")}>
-                    {choices.map((item, index) => {
-                        return (
-                            <RadioInputItem
-                                key={index}
-                                id={item[0]}
-                                name={typeOfContact}
-                                value={item[0]}
-                                title={item[0]}
-                                checked={typeOfContact === item[0]}
-                                onChange={(e) =>
-                                    setTypeOfContact(e.target.value)
-                                }
-                            />
-                        );
-                    })}
-                </RadioGroup>
-                <div className='flex flex-col lg:flex-row lg:justify-between gap-32'>
-                    <div className='bg-red w-full'>
+                <div className='flex flex-col lg:flex-row lg:justify-between gap-32 mt-20'>
+                    <div className='lg:w-1/2'>
                         <div className='mb-[1.2rem]'>
                             <Input
                                 label={t("fullName")}
@@ -50,7 +54,7 @@ function ContactUs({ t, choices }) {
                                 labelColor='text-black'
                                 placeholder={t("enterFullName")}
                                 shadow='md'
-                                border='light-gray/20'
+                                border='light-gray'
                                 radius='lg'
                             />
                         </div>
@@ -79,7 +83,7 @@ function ContactUs({ t, choices }) {
                             />
                         </div>
                     </div>
-                    <div className='bg-light-cyan p-8 rounded-3xl self-center w-[38rem]'>
+                    <div className='bg-light-cyan p-8 rounded-3xl self-center lg:w-1/2 max-w-[38rem]'>
                         <span className='text-lg lg:text-2xl capitalize'>
                             {t("findAt")}
                         </span>
