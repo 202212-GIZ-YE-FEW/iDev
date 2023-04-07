@@ -13,7 +13,7 @@ import {
 } from "@/firebase/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
 import addData from "@/firebase/addData";
-
+import { useRouter } from "next/router";
 import schema from "@/components/validation/validationSchema";
 
 function SignUp({ t }) {
@@ -39,6 +39,7 @@ function SignUp({ t }) {
     };
 
     const handleSubmit = async (e) => {
+        const router = useRouter();
         e.preventDefault();
 
         try {
@@ -66,7 +67,13 @@ function SignUp({ t }) {
                     console.log("Error adding data:", response.error);
                 } else {
                     console.log("Data added successfully:", response.result);
-                    window.location.href = "/login";
+                    router.push({
+                        pathname: "/thanks",
+                        query: {
+                            subtitle:
+                                "Please check your email to Activate the Signup Account",
+                        },
+                    });
                 }
             });
         } catch (error) {
