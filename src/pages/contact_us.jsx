@@ -129,6 +129,14 @@ function ContactUs({ t, choices }) {
                                     t={t}
                                 />
                             </div>
+                            <Button
+                                content={t("submit")}
+                                text-transform='capitalize'
+                                filled='true'
+                                size='large'
+                                fontSize='text-sm md:text-xl'
+                                radius='md'
+                            />
                         </div>
                         <div className='bg-light-cyan p-8 rounded-3xl self-center lg:w-1/2 max-w-[38rem]'>
                             <span className='text-lg lg:text-2xl capitalize'>
@@ -143,14 +151,6 @@ function ContactUs({ t, choices }) {
                             </address>
                         </div>
                     </div>
-                    <Button
-                        content={t("submit")}
-                        text-transform='capitalize'
-                        filled='true'
-                        size='large'
-                        fontSize='text-sm md:text-xl'
-                        radius='md'
-                    />
                 </form>
             </div>
         </>
