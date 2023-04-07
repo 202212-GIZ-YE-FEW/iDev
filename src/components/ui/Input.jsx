@@ -18,6 +18,7 @@ const Input = (props) => {
         shadow = "sm",
         border = "gray",
         error,
+        t,
     } = props;
 
     const inputClasses = `${inputWidthSize} border text-base text-gray border-solid border-${border} shadow-${shadow} self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
@@ -44,7 +45,7 @@ const Input = (props) => {
             />
             {error && (
                 <div className='text-red text-sm md:text-base mt-1'>
-                    {error}
+                    {t(`${error}`, { field: label })}
                 </div>
             )}
         </>

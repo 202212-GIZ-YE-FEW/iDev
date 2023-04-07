@@ -1,0 +1,6 @@
+{
+    "invalidFormat": ".بصيغة غير صحيحة {{ field }} هذا الحقل",
+    "letterSpace": "{{ field }} يجب أن يحتوي على حروف ومسافات فقط",
+    "min": "{{ field }} يجب أن يكون على الأقل {{ count }} حرفا ",
+    "required": "{{ field }} مطلوب"
+}

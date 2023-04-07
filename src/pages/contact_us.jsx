@@ -19,14 +19,15 @@ function ContactUs({ t, choices }) {
         fullName: Yup.string()
             .matches(
                 /^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/,
-                "Full name must contain only letters and spaces"
+                ("letterSpace", { field: "fullName" })
             )
-            .required("full name is required"),
+            .required("required", { field: "fullName" })
+            .min(3),
         email: Yup.string()
-            .email("Invalid email format")
-            .required("email is required"),
+            .email("required", { field: "email" })
+            .required("required", { field: "email" }),
         details: Yup.string()
-            .required("details is required")
+            .required("required", { field: "details" })
             .min(3, "must be at least 3 characters long"),
     });
 
@@ -100,6 +101,7 @@ function ContactUs({ t, choices }) {
                                     shadow='md'
                                     border='light-gray'
                                     radius='lg'
+                                    t={t}
                                 />
                             </div>
                             <div className='mb-[1.2rem]'>
@@ -115,6 +117,7 @@ function ContactUs({ t, choices }) {
                                     shadow='md'
                                     border='light-gray/20'
                                     radius='lg'
+                                    t={t}
                                 />
                             </div>
                             <div className='mb-[1.2rem]'>
@@ -130,6 +133,7 @@ function ContactUs({ t, choices }) {
                                     shadow='md'
                                     border='light-gray/20'
                                     radius='lg'
+                                    t={t}
                                 />
                             </div>
                         </div>
@@ -172,10 +176,14 @@ export async function getStaticProps({ locale }) {
 
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common", "contact_us"])),
+            ...(await serverSideTranslations(locale, [
+                "common",
+                "validation",
+                "contact_us",
+            ])),
             choices,
         },
     };
 }
 
-export default withTranslation("contact_us")(ContactUs);
+export default withTranslation(["validation", "contact_us"])(ContactUs);
