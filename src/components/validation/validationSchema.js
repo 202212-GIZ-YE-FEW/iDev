@@ -2,13 +2,13 @@ import * as Yup from "yup";
 const schema = Yup.object().shape({
     firstName: Yup.string()
         .matches(
-            /^[a-zA-Z\s]*$/,
+            /^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/,
             "First name must contain only letters and spaces"
         )
         .required("Required"),
     lastName: Yup.string()
         .matches(
-            /^[a-zA-Z\s]*$/,
+            /^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/,
             "Last name must contain only letters and spaces"
         )
         .required("Required"),
