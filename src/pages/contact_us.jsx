@@ -3,7 +3,6 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ContactSVG from "public/contactus.svg";
 import { useState } from "react";
-import * as Yup from "yup";
 
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
@@ -14,16 +13,8 @@ import Textarea from "@/components/ui/textarea/Textarea";
 
 import addData from "@/firebase/addData";
 import getDocument from "@/firebase/getData";
+import schema from "@/utils/validationSchema";
 function ContactUs({ t, choices }) {
-    const schema = Yup.object().shape({
-        fullName: Yup.string()
-            .matches(/^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/, "letterSpace")
-            .required("required")
-            .min(3, "min"),
-        email: Yup.string().email("invalidFormat").required("required"),
-        details: Yup.string().required("required").min("min"),
-    });
-
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
 
