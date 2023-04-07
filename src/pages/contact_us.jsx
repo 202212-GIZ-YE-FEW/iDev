@@ -27,6 +27,7 @@ function ContactUs({ t, choices }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             await addDocument("visitors_messages", { ...formData });
+            setFormData({});
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
@@ -37,7 +38,7 @@ function ContactUs({ t, choices }) {
             }
         }
     };
-    const [typeOfContact, setTypeOfContact] = useState("counselor");
+    const [typeOfContact, setTypeOfContact] = useState("");
 
     return (
         <>
