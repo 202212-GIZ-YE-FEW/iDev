@@ -16,7 +16,7 @@ export default function Textarea(props) {
     const inputClasses = `
     block p-2.5 w-full px-4 py-2 text-base text-gray bg-gray
     h-${height} ${size} rounded-${radius} placeholder-light-gray text-gray bg-white resize-none
-    border-${border} shadow-${shadow} focus:outline-none border-[1px]
+    border-${border} shadow-${shadow} border-[1px]
     `;
 
     return (

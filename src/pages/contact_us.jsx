@@ -89,7 +89,7 @@ function ContactUs({ t, choices }) {
                                     labelColor='text-black'
                                     placeholder={t("enterFullName")}
                                     shadow='md'
-                                    border='light-gray'
+                                    border='light-gray/20'
                                     radius='lg'
                                     t={t}
                                 />
