@@ -35,7 +35,7 @@ export default function Textarea(props) {
             />
             {error && (
                 <div className='text-red text-sm md:text-base mt-1'>
-                    {t(`${error}`, { field: label })}
+                    {t(`validation:${error}`, { field: label })}
                 </div>
             )}
         </>

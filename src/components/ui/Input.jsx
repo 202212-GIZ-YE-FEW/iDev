@@ -45,7 +45,7 @@ const Input = (props) => {
             />
             {error && (
                 <div className='text-red text-sm md:text-base mt-1'>
-                    {t(`${error}`, { field: label })}
+                    {t(`validation:${error}`, { field: t(`${label}`) })}
                 </div>
             )}
         </>

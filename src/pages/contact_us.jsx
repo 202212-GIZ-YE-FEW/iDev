@@ -178,12 +178,12 @@ export async function getStaticProps({ locale }) {
         props: {
             ...(await serverSideTranslations(locale, [
                 "common",
-                "validation",
                 "contact_us",
+                "validation",
             ])),
             choices,
         },
     };
 }
 
-export default withTranslation(["validation", "contact_us"])(ContactUs);
+export default withTranslation(["contact_us", "validation"])(ContactUs);
