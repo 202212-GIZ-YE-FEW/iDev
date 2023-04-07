@@ -6,7 +6,7 @@ export default function Textarea(props) {
         labelColor = "gray",
         height = "24",
         radius = "md",
-        border = "gray",
+        border = "light-gray/30",
         shadow = "sm",
         error,
         t,

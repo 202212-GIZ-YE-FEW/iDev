@@ -16,12 +16,12 @@ const Input = (props) => {
         inputWidthSize = "w-full",
         radius = "md",
         shadow = "sm",
-        border = "gray",
+        border = "light-gray",
         error,
         t,
     } = props;
 
-    const inputClasses = `${inputWidthSize} border text-base text-gray border-solid border-${border} shadow-${shadow} self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    const inputClasses = `${inputWidthSize} border text-base text-gray border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>

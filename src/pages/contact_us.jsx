@@ -89,7 +89,6 @@ function ContactUs({ t, choices }) {
                                     labelColor='text-black'
                                     placeholder={t("enterFullName")}
                                     shadow='md'
-                                    border='light-gray/20'
                                     radius='lg'
                                     t={t}
                                 />
@@ -105,12 +104,11 @@ function ContactUs({ t, choices }) {
                                     labelColor='text-black'
                                     placeholder={t("enterEmail")}
                                     shadow='md'
-                                    border='light-gray/20'
                                     radius='lg'
                                     t={t}
                                 />
                             </div>
-                            <div className='mb-[1.2rem]'>
+                            <div className='mb-[1.8rem]'>
                                 <Textarea
                                     label={t("details")}
                                     name='details'
@@ -121,7 +119,6 @@ function ContactUs({ t, choices }) {
                                     placeholder={t("enterDetails")}
                                     rows='8'
                                     shadow='md'
-                                    border='light-gray/20'
                                     radius='lg'
                                     t={t}
                                 />
