@@ -36,7 +36,7 @@ function ContactUs({ t, choices }) {
             }
         }
     };
-    const [typeOfContact, setTypeOfContact] = useState("");
+    const [typeOfContact, setTypeOfContact] = useState("counselor");
 
     return (
         <>
@@ -57,13 +57,16 @@ function ContactUs({ t, choices }) {
                                         <RadioInputItem
                                             key={index}
                                             id={item[0]}
-                                            name={typeOfContact}
+                                            name='typeContact'
                                             value={item[0]}
                                             title={item[1]}
                                             checked={typeOfContact === item[0]}
-                                            onChange={(e) =>
-                                                setTypeOfContact(e.target.value)
-                                            }
+                                            onChange={(e) => {
+                                                setTypeOfContact(
+                                                    e.target.value
+                                                );
+                                                handleChange(e);
+                                            }}
                                         />
                                     );
                                 })}
