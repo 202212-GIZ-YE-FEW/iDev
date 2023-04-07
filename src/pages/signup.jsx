@@ -17,7 +17,7 @@ import addData from "@/firebase/addData";
 import schema from "@/components/validation/validationSchema";
 
 function SignUp({ t }) {
-    const { signUp, user } = useAuth();
+    const { signUp, user, sendEmailConfirmation } = useAuth();
 
     const {
         firstname = "firstName",
@@ -66,6 +66,7 @@ function SignUp({ t }) {
                     console.log("Error adding data:", response.error);
                 } else {
                     console.log("Data added successfully:", response.result);
+                    sendEmailConfirmation();
                     const router = require("next/router").default;
                     router.push({
                         pathname: "/thanks",
@@ -150,6 +151,7 @@ function SignUp({ t }) {
                                 value={formData.confirmEmail || ""}
                                 onChange={handleChange}
                                 error={formErrors.confirmEmail}
+                                t={t}
                             />
                         </div>
                         <div className='flex mb-[0.8rem] space-x-[0.7rem] rtl:space-x-reverse'>
@@ -161,6 +163,7 @@ function SignUp({ t }) {
                                     value={formData.password || ""}
                                     onChange={handleChange}
                                     error={formErrors.password}
+                                    t={t}
                                 />
                             </div>
                             <div className='flex-col mt-[0.8rem]'>
@@ -221,9 +224,15 @@ function SignUp({ t }) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common", "signup"])),
+            ...(await serverSideTranslations(locale, [
+                "common",
+                "signup",
+                "validation",
+            ])),
+
             // Will be passed to the page component as props
         },
     };
 }
-export default withTranslation("signup")(SignUp);
+
+export default withTranslation(["signup", "validation"])(SignUp);

@@ -3,6 +3,7 @@ import {
     onAuthStateChanged,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    sendEmailVerification,
     signOut,
 } from "firebase/auth";
 import { auth } from "@/firebase/config";
@@ -54,9 +55,17 @@ export function AuthContextProvider({ children }) {
         setUser({ email: null, uid: null });
         await signOut(auth);
     };
+    const sendEmailConfirmation = () => {
+        const user = auth.currentUser;
+        return sendEmailVerification(user)
+            .then(() => console.log("Verification email sent."))
+            .catch((error) => console.error(error));
+    };
 
     return (
-        <AuthContext.Provider value={{ user, signUp, logIn, logOut }}>
+        <AuthContext.Provider
+            value={{ user, signUp, logIn, logOut, sendEmailConfirmation }}
+        >
             {loading ? <div>Loading...</div> : children}
         </AuthContext.Provider>
     );
