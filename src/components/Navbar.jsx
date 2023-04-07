@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import Button from "@/components/ui/Button";
 
-import { navigation } from "@/constants";
+import { navigation } from "@/utils/constants";
 
 function LangDropdown(prop) {
     const onChangeDir = (locale) => {
