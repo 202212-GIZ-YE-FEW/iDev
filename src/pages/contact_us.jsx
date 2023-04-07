@@ -11,7 +11,7 @@ import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import Textarea from "@/components/ui/textarea/Textarea";
 
-import addData from "@/firebase/addData";
+import addDocument from "@/firebase/addData";
 import getDocument from "@/firebase/getData";
 import schema from "@/utils/validationSchema";
 function ContactUs({ t, choices }) {
@@ -25,7 +25,7 @@ function ContactUs({ t, choices }) {
         e.preventDefault();
         try {
             await schema.validate(formData, { abortEarly: false });
-            await addData("visitors_messages", { ...formData });
+            await addDocument("visitors_messages", { ...formData });
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
