@@ -57,7 +57,7 @@ function ContactUs({ t, choices }) {
                 <div className='grid grid-cols-1 xl:grid-cols-2 my-10 gap-28'>
                     <form
                         onSubmit={handleSubmit}
-                        className='flex flex-col md:flex-row md:justify-between xl:flex-col gap-x-5 gap-y-10'
+                        className='flex flex-col md:flex-row md:justify-between xl:flex-col gap-x-5 gap-y-16'
                     >
                         <div>
                             <RadioGroup title={t("typeOfContact")}>
