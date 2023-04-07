@@ -1,6 +1,6 @@
 {
-    "invalidFormat": "Field {{ field }} is invalid format",
-    "letterSpace": "Field {{ field }} must contain only letters and spaces",
-    "min": "Field {{ field }} must be at least {{ min }} characters long",
-    "required": "Field {{ field }} is required"
+    "invalidFormat": "{{ field }} is invalid format",
+    "letterSpace": "{{ field }} must contain only letters and spaces",
+    "min": "{{ field }} must be at least {{ min }} characters long",
+    "required": "{{ field }} is required"
 }
