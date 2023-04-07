@@ -12,10 +12,11 @@ import {
     signInWithFbAccount,
 } from "@/firebase/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
+import addData from "@/firebase/addData";
 import * as Yup from "yup";
 
 function SignUp({ t }) {
-    const { signUp } = useAuth();
+    const { signUp, user } = useAuth();
 
     const {
         firstname = "firstName",
@@ -82,6 +83,31 @@ function SignUp({ t }) {
             await schema.validate(formData, { abortEarly: false });
             await signUp(formData.email, formData.password);
             // Do something with the user object, e.g. redirect to login
+            // call the function and handle the result
+            const collection = "user"; // collection name
+            const userId = user.uid; // document ID
+            const userData = {
+                active: "true",
+                deleted: "true",
+                education_level: "",
+                email: formData.email,
+                familySize: "4",
+                first_name: formData.firstName,
+                gender: "",
+                hobbies: "",
+                last_name: formData.lastName,
+                password: formData.password,
+                date_brith: formData.dateOfBirth,
+                phoneNumber: "",
+                userType: "1",
+            };
+            addData(collection, userId, userData).then((response) => {
+                if (response.error) {
+                    console.log("Error adding data:", response.error);
+                } else {
+                    console.log("Data added successfully:", response.result);
+                }
+            });
         } catch (error) {
             console.error(error);
             if (error.inner) {
