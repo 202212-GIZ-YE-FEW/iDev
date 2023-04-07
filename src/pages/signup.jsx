@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
@@ -13,7 +13,7 @@ import {
 } from "@/firebase/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
 import addData from "@/firebase/addData";
-import { useRouter } from "next/router";
+
 import schema from "@/components/validation/validationSchema";
 
 function SignUp({ t }) {
@@ -39,7 +39,6 @@ function SignUp({ t }) {
     };
 
     const handleSubmit = async (e) => {
-        const router = useRouter();
         e.preventDefault();
 
         try {
@@ -67,6 +66,7 @@ function SignUp({ t }) {
                     console.log("Error adding data:", response.error);
                 } else {
                     console.log("Data added successfully:", response.result);
+                    const router = require("next/router").default;
                     router.push({
                         pathname: "/thanks",
                         query: {
