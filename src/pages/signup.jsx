@@ -13,7 +13,8 @@ import {
 } from "@/firebase/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
 import addData from "@/firebase/addData";
-import * as Yup from "yup";
+
+import schema from "@/components/validation/validationSchema";
 
 function SignUp({ t }) {
     const { signUp, user } = useAuth();
@@ -30,45 +31,6 @@ function SignUp({ t }) {
         login = "login",
     } = {};
 
-    const schema = Yup.object().shape({
-        firstName: Yup.string()
-            .matches(
-                /^[a-zA-Z\s]*$/,
-                "First name must contain only letters and spaces"
-            )
-            .required("Required"),
-        lastName: Yup.string()
-            .matches(
-                /^[a-zA-Z\s]*$/,
-                "Last name must contain only letters and spaces"
-            )
-            .required("Required"),
-        email: Yup.string()
-            .email("Invalid email format")
-            .matches(
-                /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
-                "Invalid email format, must include '@' and '.'"
-            )
-            .required("Required"),
-        confirmEmail: Yup.string()
-            .oneOf([Yup.ref("email"), null], "Emails must match")
-            .required("Required"),
-        password: Yup.string()
-            .min(6, "Password must be at least 6 characters long")
-            .matches(
-                /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-                "Password must contain at least one letter and one number"
-            )
-            .required("Required"),
-        confirmPassword: Yup.string()
-            .oneOf([Yup.ref("password"), null], "Passwords must match")
-            .required("Required"),
-        dateOfBirth: Yup.date()
-            .nullable()
-            .max(new Date(), "Date of birth cannot be in the future")
-            .required("Required"),
-    });
-
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
 
@@ -82,8 +44,6 @@ function SignUp({ t }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             await signUp(formData.email, formData.password);
-            // Do something with the user object, e.g. redirect to login
-            // call the function and handle the result
             const collection = "user"; // collection name
             const userId = user.uid; // document ID
             const userData = {
@@ -106,6 +66,7 @@ function SignUp({ t }) {
                     console.log("Error adding data:", response.error);
                 } else {
                     console.log("Data added successfully:", response.result);
+                    window.location.href = "/login";
                 }
             });
         } catch (error) {
