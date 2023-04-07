@@ -23,13 +23,38 @@ const schema = Yup.object().shape({
     confirmEmail: Yup.string()
         .oneOf([Yup.ref("email"), null], "Emails must match")
         .required("Required"),
+
     password: Yup.string()
-        .min(6, "Password must be at least 6 characters long")
+        .required("Password is required")
+        .min(12, "Password must be at least have at least 12 characters long")
         .matches(
-            /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-            "Password must contain at least one letter and one number"
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{12,}$/,
+            "Password Have at least (one uppercase letter ,one lowercase letter, one number, one special character from the set @$!%*#?&)"
         )
-        .required("Required"),
+        .test(
+            "no-repeat-characters",
+            "Password must not contain repeating characters",
+            function (value) {
+                const regex = /(.)\1{2,}/;
+                return !regex.test(value);
+            }
+        )
+        .test(
+            "no-common-words",
+            "Password must not contain common words",
+            function (value) {
+                const commonWords = [
+                    "password",
+                    "123456",
+                    "qwerty",
+                    "letmein",
+                    "admin",
+                ];
+                const regex = new RegExp(`(${commonWords.join("|")})`, "i");
+                return !regex.test(value);
+            }
+        ),
+
     confirmPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords must match")
         .required("Required"),
