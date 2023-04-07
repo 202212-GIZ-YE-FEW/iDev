@@ -54,9 +54,12 @@ function ContactUs({ t, choices }) {
                     title={t("sendRequest")}
                     subtitle={t("sendRequestDesc")}
                 />
-                <form onSubmit={handleSubmit}>
-                    <div className='flex flex-col xl:flex-row gap-32 mt-20'>
-                        <div className='w-full xl:w-2/3'>
+                <div className='grid grid-cols-1 xl:grid-cols-2 my-10 gap-28'>
+                    <form
+                        onSubmit={handleSubmit}
+                        className='flex flex-col md:flex-row md:justify-between xl:flex-col gap-x-5 gap-y-10'
+                    >
+                        <div>
                             <RadioGroup title={t("typeOfContact")}>
                                 {choices.map((item, index) => {
                                     return (
@@ -75,12 +78,7 @@ function ContactUs({ t, choices }) {
                                 })}
                             </RadioGroup>
                         </div>
-                        <div className='w-full xl:w-2/3 mx-auto'>
-                            <Image src={ContactSVG} alt='contact us image' />
-                        </div>
-                    </div>
-                    <div className='flex flex-col lg:flex-row lg:justify-between gap-32 mt-20'>
-                        <div className='lg:w-1/2'>
+                        <div className='min-w-fit md:min-w-[25rem] lg:min-w-[30rem]'>
                             <div className='mb-[1.2rem]'>
                                 <Input
                                     label={t("fullName")}
@@ -138,7 +136,12 @@ function ContactUs({ t, choices }) {
                                 radius='md'
                             />
                         </div>
-                        <div className='bg-light-cyan p-8 rounded-3xl self-center lg:w-1/2 max-w-[38rem]'>
+                    </form>
+                    <div className='grid md:grid-cols-2 xl:grid-cols-1 gap-10'>
+                        <div className='mx-auto max-w-[28rem]'>
+                            <Image src={ContactSVG} alt='contact us image' />
+                        </div>
+                        <div className='bg-light-cyan p-8 rounded-3xl self-start'>
                             <span className='text-lg lg:text-2xl capitalize'>
                                 {t("findAt")}
                             </span>
@@ -151,7 +154,7 @@ function ContactUs({ t, choices }) {
                             </address>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </>
     );
