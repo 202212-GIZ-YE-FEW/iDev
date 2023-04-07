@@ -1,5 +1,5 @@
 {
-    "invalidFormat": ".بصيغة غير صحيحة {{ field }}حقل",
+    "invalidFormat": "حقل {{ field }} بصيغة غير صحيحة.",
     "letterSpace": " حقل {{ field }} يجب أن يحتوي على حروف ومسافات فقط",
     "min": " حقل {{ field }} يجب أن يكون على الأقل {{ count }} حرفا ",
     "required": "حقل {{ field }} مطلوب"

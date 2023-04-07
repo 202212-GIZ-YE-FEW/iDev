@@ -17,18 +17,11 @@ import getDocument from "@/firebase/getData";
 function ContactUs({ t, choices }) {
     const schema = Yup.object().shape({
         fullName: Yup.string()
-            .matches(
-                /^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/,
-                ("letterSpace", { field: "fullName" })
-            )
-            .required("required", { field: "fullName" })
-            .min(3),
-        email: Yup.string()
-            .email("required", { field: "email" })
-            .required("required", { field: "email" }),
-        details: Yup.string()
-            .required("required", { field: "details" })
-            .min(3, "must be at least 3 characters long"),
+            .matches(/^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/, "letterSpace")
+            .required("required")
+            .min(3, "min"),
+        email: Yup.string().email("invalidFormat").required("required"),
+        details: Yup.string().required("required").min("min"),
     });
 
     const [formData, setFormData] = useState({});
@@ -58,8 +51,8 @@ function ContactUs({ t, choices }) {
         <>
             <div className='container py-10'>
                 <PageIntro
-                    title='send us your request'
-                    subtitle="Do you have a question, concern, idea, feedback, or problem?  If you need assistance, please fill out the form below and we'd be happy to help!"
+                    title={t("sendRequest")}
+                    subtitle={t("sendRequestDesc")}
                 />
                 <form onSubmit={handleSubmit}>
                     <div className='flex flex-col xl:flex-row gap-32 mt-20'>

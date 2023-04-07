@@ -6,6 +6,8 @@
     "enterFullName": "Enter your fall name here...",
     "findAt": "find us at",
     "fullName": "full name",
+    "sendRequest": "send your request",
+    "sendRequestDesc": "Do you have a question, concern, idea, feedback, or problem? If you need assistance, please fill out the form below and we'd be happy to help!",
     "submit": "submit",
     "typeOfContact": "Type of Contact"
 }
