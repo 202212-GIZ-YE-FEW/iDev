@@ -32,14 +32,17 @@ const Input = (props) => {
             <input
                 onChange={onChange}
                 value={value}
-                id={id}
                 name={name}
                 type={type}
                 required={isRequired}
                 placeholder={placeholder}
                 className={inputClasses}
             />
-            {error && <div className='text-red text-xs mt-1'>{error}</div>}
+            {error && (
+                <div className='text-red text-xs mt-1' id='email-error'>
+                    {error}
+                </div>
+            )}
         </>
     );
 };
