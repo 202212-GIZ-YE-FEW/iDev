@@ -12,9 +12,10 @@ import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import Textarea from "@/components/ui/textarea/Textarea";
 
-import addDocument from "@/firebase/addData";
 import getDocument from "@/firebase/getData";
 import schema from "@/utils/validationSchema";
+
+import { sendContactForm } from "../utils/api";
 function ContactUs({ t, choices }) {
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
@@ -26,16 +27,10 @@ function ContactUs({ t, choices }) {
         e.preventDefault();
         try {
             await schema.validate(formData, { abortEarly: false });
-            await addDocument("visitors_messages", { ...formData });
+            await sendContactForm(formData);
             setFormData({});
         } catch (error) {
-            if (error.inner) {
-                const newErrors = {};
-                error.inner.forEach((e) => {
-                    newErrors[e.path] = e.message;
-                });
-                setFormErrors(newErrors);
-            }
+            //
         }
     };
     const [typeOfContact, setTypeOfContact] = useState("");
