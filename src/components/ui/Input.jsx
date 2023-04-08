@@ -15,6 +15,7 @@ const Input = (props) => {
         inputWidthSize = "w-full",
         radius = "md",
         error,
+        t,
     } = props;
 
     const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
@@ -39,8 +40,11 @@ const Input = (props) => {
                 className={inputClasses}
             />
             {error && (
-                <div className='text-red text-xs mt-1' id='email-error'>
-                    {error}
+                <div className='text-red text-sm md:text-base mt-1'>
+                    {t(`validation:${error}`, {
+                        field: t(`${label}`),
+                        count: "3",
+                    })}
                 </div>
             )}
         </>
