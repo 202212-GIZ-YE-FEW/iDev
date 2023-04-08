@@ -10,5 +10,7 @@
     "noRepeatCharacters": "يجب ألا تحتوي كلمة المرور على أحرف متكررة",
     "noCommonWords": "يجب ألا تحتوي كلمة المرور على كلمات شائعة",
     "passwordsMustMatch": "يجب أن تتطابق كلمات المرور",
-    "emailExist": "هذا البريد استخدم من قبل"
+    "emailExist": "هذا البريد استخدم من قبل",
+    "loginErrorEmailNotExist": "عنوان البريد الإلكتروني الذي أدخلته غير موجود",
+    "loginErrorWrongPassword": "كلمة المرور التي أدخلتها غير صحيحة."
 }
