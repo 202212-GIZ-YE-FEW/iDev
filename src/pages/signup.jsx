@@ -117,6 +117,7 @@ function SignUp({ t }) {
                                     value={formData.firstName || ""}
                                     onChange={handleChange}
                                     error={formErrors.firstName}
+                                    t={t}
                                 />
                             </div>
                             <div className='flex-col mt-[0.8rem]'>
@@ -127,6 +128,7 @@ function SignUp({ t }) {
                                     value={formData.lastName || ""}
                                     onChange={handleChange}
                                     error={formErrors.lastName}
+                                    t={t}
                                 />
                             </div>
                         </div>
@@ -140,6 +142,7 @@ function SignUp({ t }) {
                                 value={formData.email || ""}
                                 onChange={handleChange}
                                 error={formErrors.email}
+                                t={t}
                             />
                         </div>
                         <div className='mb-[0.8rem]'>
@@ -174,6 +177,7 @@ function SignUp({ t }) {
                                     value={formData.confirmPassword || ""}
                                     onChange={handleChange}
                                     error={formErrors.confirmPassword}
+                                    t={t}
                                 />
                             </div>
                         </div>
@@ -186,6 +190,7 @@ function SignUp({ t }) {
                                 value={formData.dateOfBirth || ""}
                                 onChange={handleChange}
                                 error={formErrors.dateOfBirth}
+                                t={t}
                             />
                         </div>
                         <div className='flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row'>
