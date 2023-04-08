@@ -3,25 +3,25 @@ import { withTranslation } from "next-i18next";
 import RadioGroup from "../ui/radiogroup/RadioGroup";
 import RadioInputItem from "../ui/radiogroup/RadioInputItem";
 
-const TherapyBefore = ({ t, therapyBefore, setTherapyBefore }) => {
+const TherapyBefore = ({ t, name, therapyBefore, onChange }) => {
     return (
         <>
             <RadioGroup title={t("therapyBefore")} asButton={true}>
                 <RadioInputItem
                     id='yes'
-                    name={therapyBefore}
+                    name={name}
                     value='yes'
                     title={t("yes")}
                     checked={therapyBefore === "yes"}
-                    onChange={(e) => setTherapyBefore(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='no'
-                    name={therapyBefore}
+                    name={name}
                     value='no'
                     title={t("no")}
                     checked={therapyBefore === "no"}
-                    onChange={(e) => setTherapyBefore(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
             </RadioGroup>
         </>

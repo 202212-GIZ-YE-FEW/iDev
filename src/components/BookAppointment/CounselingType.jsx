@@ -3,25 +3,25 @@ import { withTranslation } from "next-i18next";
 import RadioGroup from "../ui/radiogroup/RadioGroup";
 import RadioInputItem from "../ui/radiogroup/RadioInputItem";
 
-const CounselingType = ({ t, counselingType, setCounselingType }) => {
+const CounselingType = ({ t, name, counselingType, onChange }) => {
     return (
         <>
             <RadioGroup title={t("counselingTypeTitle")} asButton={true}>
                 <RadioInputItem
                     id='individual'
-                    name={counselingType}
+                    name={name}
                     value='individual'
                     title={t("individualCounseling")}
                     checked={counselingType === "individual"}
-                    onChange={(e) => setCounselingType(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='teen'
-                    name={counselingType}
+                    name={name}
                     value='teen'
                     title={t("teenCounseling")}
                     checked={counselingType === "teen"}
-                    onChange={(e) => setCounselingType(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
             </RadioGroup>
         </>

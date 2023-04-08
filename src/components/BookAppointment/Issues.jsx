@@ -3,57 +3,57 @@ import { withTranslation } from "next-i18next";
 import RadioGroup from "../ui/radiogroup/RadioGroup";
 import RadioInputItem from "../ui/radiogroup/RadioInputItem";
 
-const Issues = ({ t, issues, setIssues }) => {
+const Issues = ({ t, name, issues, onChange }) => {
     return (
         <>
             <RadioGroup title={t("areThereIssues")}>
                 <RadioInputItem
                     id='depression'
-                    name={issues}
+                    name={name}
                     title={t("depression")}
                     value='depression'
                     checked={issues === "depression"}
-                    onChange={(e) => setIssues(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='stress-anxiety'
-                    name='issues'
+                    name={name}
                     title={t("stressAnxiety")}
                     value='stressAnxiety'
                     checked={issues === "stressAnxiety"}
-                    onChange={(e) => setIssues(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='relationship-issues'
-                    name='issues'
+                    name={name}
                     title={t("relationshipIssues")}
                     value='relationshipIssues'
                     checked={issues === "relationshipIssues"}
-                    onChange={(e) => setIssues(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='family-conflicts'
-                    name='issues'
+                    name={name}
                     title={t("familyConflicts")}
                     value='familyConflicts'
                     checked={issues === "familyConflicts"}
-                    onChange={(e) => setIssues(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='trauma-abuse'
-                    name='issues'
+                    name={name}
                     title={t("traumaAbuse")}
                     value='traumaAbuse'
                     checked={issues === "traumaAbuse"}
-                    onChange={(e) => setIssues(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='eating-disorders'
-                    name='issues'
+                    name={name}
                     title={t("eatingDisorders")}
                     value='eatingDisorders'
                     checked={issues === "eatingDisorders"}
-                    onChange={(e) => setIssues(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
             </RadioGroup>
         </>

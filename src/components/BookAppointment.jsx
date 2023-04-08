@@ -27,12 +27,21 @@ const TwoLastSteps = (props) => {
 
 function BookAppointment({ t }) {
     const [currentStep, setCurrentStep] = useState(0);
-    const [counselingType, setCounselingType] = useState("individual");
-    const [relationshipStatus, setRelationshipStatus] = useState("single");
-    const [therapyBefore, setTherapyBefore] = useState("yes");
-    const [specificQualities, setSpecificQualities] = useState("maleCounselor");
-    const [issues, setIssues] = useState("depression");
-    const [bringsHere, setBringsHere] = useState("");
+
+    const initialValues = {
+        counselingType: "individual",
+        relationshipStatus: "single",
+        therapyBefore: "yes",
+        specificQualities: "maleCounselor",
+        issues: "depression",
+        bringsHere: "",
+    };
+
+    const [values, setValues] = useState(initialValues);
+
+    const handelChange = ({ target }) => {
+        setValues({ ...values, [target.name]: target.value });
+    };
 
     const onSubmit = (data) => {
         setCurrentStep(currentStep + 1);
@@ -51,8 +60,9 @@ function BookAppointment({ t }) {
                             content: (
                                 <CounselingType
                                     t={t}
-                                    counselingType={counselingType}
-                                    setCounselingType={setCounselingType}
+                                    counselingType={values.counselingType}
+                                    onChange={handelChange}
+                                    name='counselingType'
                                 />
                             ),
                         },
@@ -62,10 +72,11 @@ function BookAppointment({ t }) {
                             content: (
                                 <RelationshipStatus
                                     t={t}
-                                    relationshipStatus={relationshipStatus}
-                                    setRelationshipStatus={
-                                        setRelationshipStatus
+                                    relationshipStatus={
+                                        values.relationshipStatus
                                     }
+                                    onChange={handelChange}
+                                    name='relationshipStatus'
                                 />
                             ),
                         },
@@ -75,8 +86,9 @@ function BookAppointment({ t }) {
                             content: (
                                 <TherapyBefore
                                     t={t}
-                                    therapyBefore={therapyBefore}
-                                    setTherapyBefore={setTherapyBefore}
+                                    therapyBefore={values.therapyBefore}
+                                    onChange={handelChange}
+                                    name='therapyBefore'
                                 />
                             ),
                         },
@@ -86,8 +98,9 @@ function BookAppointment({ t }) {
                             content: (
                                 <SpecificQualities
                                     t={t}
-                                    specificQualities={specificQualities}
-                                    setSpecificQualities={setSpecificQualities}
+                                    specificQualities={values.specificQualities}
+                                    onChange={handelChange}
+                                    name='specificQualities'
                                 />
                             ),
                         },
@@ -97,8 +110,9 @@ function BookAppointment({ t }) {
                             content: (
                                 <Issues
                                     t={t}
-                                    issues={issues}
-                                    setIssues={setIssues}
+                                    issues={values.issues}
+                                    onChange={handelChange}
+                                    name='issues'
                                 />
                             ),
                         },
@@ -107,8 +121,9 @@ function BookAppointment({ t }) {
                             pageSubtitle: "whatBringsYouDesc",
                             content: (
                                 <BringsHere
-                                    bringsHere={bringsHere}
-                                    setBringsHere={setBringsHere}
+                                    bringsHere={values.bringsHere}
+                                    onChange={handelChange}
+                                    name='bringsHere'
                                 />
                             ),
                             asCard: false,

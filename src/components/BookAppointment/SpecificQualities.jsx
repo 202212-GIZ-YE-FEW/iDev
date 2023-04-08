@@ -3,41 +3,41 @@ import { withTranslation } from "next-i18next";
 import RadioGroup from "../ui/radiogroup/RadioGroup";
 import RadioInputItem from "../ui/radiogroup/RadioInputItem";
 
-const SpecificQualities = ({ t, specificQualities, setSpecificQualities }) => {
+const SpecificQualities = ({ t, name, specificQualities, onChange }) => {
     return (
         <>
             <RadioGroup title={t("specificQualitiesCounselor")}>
                 <RadioInputItem
                     id='male-counselor'
-                    name={specificQualities}
+                    name={name}
                     title={t("maleCounselor")}
                     value='maleCounselor'
                     checked={specificQualities === "maleCounselor"}
-                    onChange={(e) => setSpecificQualities(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='female-counselor'
-                    name={specificQualities}
+                    name={name}
                     title={t("femaleCounselor")}
                     value='femaleCounselor'
                     checked={specificQualities === "femaleCounselor"}
-                    onChange={(e) => setSpecificQualities(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='older-counselor'
-                    name={specificQualities}
+                    name={name}
                     title={t("olderCounselor")}
                     value='olderCounselor'
                     checked={specificQualities === "olderCounselor"}
-                    onChange={(e) => setSpecificQualities(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
                 <RadioInputItem
                     id='non-religious-counselor'
-                    name={specificQualities}
+                    name={name}
                     title={t("nonReligiousCounselor")}
                     value='nonReligiousCounselor'
                     checked={specificQualities === "nonReligiousCounselor"}
-                    onChange={(e) => setSpecificQualities(e.target.value)}
+                    onChange={(e) => onChange(e)}
                 />
             </RadioGroup>
         </>
