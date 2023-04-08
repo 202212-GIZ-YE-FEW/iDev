@@ -19,7 +19,7 @@ export default function PreviewProfile() {
                         className='object-cover min-w-full h-full rounded-full'
                     />
                     <label
-                        for='upload'
+                        htmlFor='upload'
                         className='inline-flex justify-center items-center cursor-pointer w-[3rem] h-[3rem] lg:w-[4rem] lg:h-[4rem] bg-white border-2 border-black rounded-full absolute left-1/2 -translate-x-1/2 -bottom-[1.5rem] lg:-bottom-[2rem]'
                     >
                         <Image

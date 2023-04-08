@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
     />
     <label
       className="inline-flex justify-center items-center cursor-pointer w-[3rem] h-[3rem] lg:w-[4rem] lg:h-[4rem] bg-white border-2 border-black rounded-full absolute left-1/2 -translate-x-1/2 -bottom-[1.5rem] lg:-bottom-[2rem]"
-      for="upload"
+      htmlFor="upload"
     >
       <img
         alt="profile edit icon"
