@@ -39,6 +39,7 @@ module.exports = {
             white: "#FFF",
             "light-white": "#FBFBFB",
             transparent: "transparent",
+            red: "#FF0000",
         },
         fontFamily: {
             sans: ["Poppins", "Graphik", "sans-serif"],
@@ -124,6 +125,7 @@ module.exports = {
                 lg: "10px",
                 "2xl": "16px",
                 "3xl": "25px",
+                "4xl": "35px",
             },
         },
     },

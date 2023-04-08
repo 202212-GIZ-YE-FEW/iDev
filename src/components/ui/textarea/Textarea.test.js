@@ -17,7 +17,7 @@ describe("Textarea component", () => {
     });
 
     test("applies custom styles correctly", () => {
-        const size = "sm";
+        const size = "base";
         const height = "12";
         const radius = "lg";
         const border = "blue";

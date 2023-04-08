@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="relative inline-flex justify-center w-[14rem] h-[14rem] lg:w-[20rem] lg:h-[20rem] xl:w-[18rem] xl:h-[18rem] rounded-full"
+  >
+    <img
+      alt="profile preview"
+      className="object-cover min-w-full h-full rounded-full"
+      data-nimg="1"
+      decoding="async"
+      height={315}
+      loading="lazy"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="/_next/image?url=%2Fimg.jpg&w=640&q=75"
+      srcSet="/_next/image?url=%2Fimg.jpg&w=384&q=75 1x, /_next/image?url=%2Fimg.jpg&w=640&q=75 2x"
+      style={
+        Object {
+          "color": "transparent",
+        }
+      }
+      width={315}
+    />
+    <label
+      className="inline-flex justify-center items-center cursor-pointer w-[3rem] h-[3rem] lg:w-[4rem] lg:h-[4rem] bg-white border-2 border-black rounded-full absolute left-1/2 -translate-x-1/2 -bottom-[1.5rem] lg:-bottom-[2rem]"
+      htmlFor="upload"
+    >
+      <img
+        alt="profile edit icon"
+        className="p-2"
+        data-nimg="1"
+        decoding="async"
+        height={40}
+        loading="lazy"
+        onError={[Function]}
+        onLoad={[Function]}
+        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+        srcSet="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+        style={
+          Object {
+            "color": "transparent",
+          }
+        }
+        width={40}
+      />
+      <input
+        hidden={true}
+        id="upload"
+        onChange={[Function]}
+        type="file"
+      />
+    </label>
+  </div>
+</div>
+`;

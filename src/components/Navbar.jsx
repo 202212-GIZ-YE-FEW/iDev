@@ -6,9 +6,9 @@ import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
 import Button from "@/components/ui/Button";
-
-import { navigation } from "@/constants";
+//import { navigation } from "@/constants";
 import { isLoggedIn, Logout } from "@/firebase/firebaseProvidersMethods";
+import { navigation } from "@/utils/constants";
 function LangDropdown(prop) {
     const onChangeDir = (locale) => {
         document.dir = locale === "en" ? "ltr" : "rtl";
