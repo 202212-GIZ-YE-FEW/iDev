@@ -33,18 +33,7 @@ export function AuthContextProvider({ children }) {
     }, []);
 
     const signUp = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password).catch(
-            (error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                if (errorCode === "auth/email-already-in-use") {
-                    const emailError = document.getElementById("email-error");
-                    emailError.textContent =
-                        "The email address is already in use. Please try a different email address.";
-                }
-                console.error(errorCode, errorMessage);
-            }
-        );
+        return createUserWithEmailAndPassword(auth, email, password);
     };
 
     const logIn = (email, password) => {

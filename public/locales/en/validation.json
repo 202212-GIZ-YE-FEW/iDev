@@ -2,12 +2,13 @@
     "required": " is required",
     "invalidEmailFormat": "Invalid email format, must include '@' and '.'",
     "emailsMustMatch": "Emails must match",
-    "passwordLength": "Password Have at least (one uppercase letter ,one lowercase letter, one number, one special character from the set @$!%*#?&)",
-    "passwordCriteria": "Password must contain at least one letter and one number",
+    "passwordCriteria": "Password Have at least (one uppercase letter ,one lowercase letter, one number, one special character from the set @$!%*#?&)",
+    "passwordLength": "Password must be 12 character",
     "dateOfBirthFuture": "Date of birth cannot be in the future",
     "firstNameSpaceLetter": "First name must contain only letters and spaces",
     "LastNameSpaceLetter": "last name must contain only letters and spaces",
     "noRepeatCharacters": "Password must not contain repeating characters",
     "noCommonWords": "Password must not contain common words",
-    "passwordsMustMatch": "Passwords must match"
+    "passwordsMustMatch": "Passwords must match",
+    "emailExist": "This email is already in use"
 }

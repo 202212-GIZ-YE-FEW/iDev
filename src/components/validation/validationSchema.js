@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+
 const schema = Yup.object().shape({
     firstName: Yup.string()
         .matches(
@@ -20,7 +21,6 @@ const schema = Yup.object().shape({
     confirmEmail: Yup.string()
         .oneOf([Yup.ref("email"), null], "emailsMustMatch")
         .required("required"),
-
     password: Yup.string()
         .required("required")
         .min(12, "passwordLength")
@@ -54,3 +54,4 @@ const schema = Yup.object().shape({
 });
 
 export default schema;
+//password= X3&c9Q@zL1#p

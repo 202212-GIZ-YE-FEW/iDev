@@ -79,6 +79,9 @@ function SignUp({ t }) {
             });
         } catch (error) {
             console.error(error);
+            if (error.code === "auth/email-already-in-use") {
+                setFormErrors({ email: "emailExist" });
+            }
             if (error.inner) {
                 const newErrors = {};
                 error.inner.forEach((e) => {
