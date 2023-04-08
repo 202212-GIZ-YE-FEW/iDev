@@ -1,8 +1,16 @@
 import addDocument from "@/firebase/addData";
 
 import { mailOptions, transporter } from "/config/nodemailer.config";
+
 export default async function handler(req, res) {
     const { method, body } = req;
+    const generateEmailContent = (data) => {
+        return {
+            html: `
+       `,
+        };
+    };
+
     if (method === "POST") {
         try {
             const result = await addDocument("visitors_messages", { body });
@@ -11,9 +19,8 @@ export default async function handler(req, res) {
                 try {
                     await transporter.sendMail({
                         ...mailOptions,
+                        ...generateEmailContent(body),
                         subject: "Thank you for your contact",
-                        text: "we got your message",
-                        html: `<h1>Thank you for your contact</h1>`,
                     });
                     return res.status(200).json({
                         success: 0,

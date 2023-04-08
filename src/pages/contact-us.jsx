@@ -15,7 +15,7 @@ import Textarea from "@/components/ui/textarea/Textarea";
 import getDocument from "@/firebase/getData";
 import schema from "@/utils/validationSchema";
 
-import { sendContactForm } from "../utils/api";
+import { sendForm } from "../utils/api";
 function ContactUs({ t, choices }) {
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
@@ -27,14 +27,16 @@ function ContactUs({ t, choices }) {
         e.preventDefault();
         try {
             await schema.validate(formData, { abortEarly: false });
-            await sendContactForm(formData);
+            await sendForm(formData, "contact");
             setFormData({});
+            setFormErrors({});
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
                 error.inner.forEach((e) => {
                     newErrors[e.path] = e.message;
                 });
+                setFormErrors(newErrors);
             }
         }
     };
