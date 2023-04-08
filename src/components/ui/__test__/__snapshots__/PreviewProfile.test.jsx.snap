@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
     className="relative inline-flex justify-center w-[14rem] h-[14rem] lg:w-[20rem] lg:h-[20rem] xl:w-[18rem] xl:h-[18rem] rounded-full"
   >
     <img
-      alt="profile"
+      alt="profile preview"
       className="object-cover min-w-full h-full rounded-full"
       data-nimg="1"
       decoding="async"
@@ -16,8 +16,8 @@ exports[`renders correctly 1`] = `
       loading="lazy"
       onError={[Function]}
       onLoad={[Function]}
-      src="/_next/image?url=%2Fprofile-icon.png&w=640&q=75"
-      srcSet="/_next/image?url=%2Fprofile-icon.png&w=384&q=75 1x, /_next/image?url=%2Fprofile-icon.png&w=640&q=75 2x"
+      src="/_next/image?url=%2Fimg.jpg&w=640&q=75"
+      srcSet="/_next/image?url=%2Fimg.jpg&w=384&q=75 1x, /_next/image?url=%2Fimg.jpg&w=640&q=75 2x"
       style={
         Object {
           "color": "transparent",
@@ -30,22 +30,22 @@ exports[`renders correctly 1`] = `
       for="upload"
     >
       <img
-        alt=""
+        alt="profile edit icon"
         className="p-2"
         data-nimg="1"
         decoding="async"
-        height={50}
+        height={40}
         loading="lazy"
         onError={[Function]}
         onLoad={[Function]}
-        src="/_next/image?url=%2Fedit_profile_icon.png&w=128&q=75"
-        srcSet="/_next/image?url=%2Fedit_profile_icon.png&w=64&q=75 1x, /_next/image?url=%2Fedit_profile_icon.png&w=128&q=75 2x"
+        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+        srcSet="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
         style={
           Object {
             "color": "transparent",
           }
         }
-        width={54}
+        width={40}
       />
       <input
         hidden={true}
