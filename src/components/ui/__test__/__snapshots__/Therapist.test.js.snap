@@ -27,12 +27,12 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg"
           >
             userName
           </label>
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-gray border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="text"
             required={false}
             type="text"
@@ -43,12 +43,12 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg"
           >
             city
           </label>
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-gray border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="text"
             required={false}
             type="text"
@@ -59,12 +59,12 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg"
           >
             licenseNamber
           </label>
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-gray border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="text"
             required={false}
             type="text"
@@ -75,12 +75,12 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg"
           >
             createPassword
           </label>
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-gray border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="Password"
             required={false}
             type="Password"
@@ -91,12 +91,12 @@ exports[`renders correctly 1`] = `
           data-te-input-wrapper-init={true}
         >
           <label
-            className="  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center"
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg"
           >
             confirmPassword
           </label>
           <input
-            className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-gray border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="password"
             required={false}
             type="password"
