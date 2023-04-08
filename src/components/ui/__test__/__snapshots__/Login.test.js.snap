@@ -39,6 +39,7 @@ exports[`renders correctly 1`] = `
       </span>
       <form
         className="shadow-lg px-7 py-11  mt-4 rounded-lg"
+        onSubmit={[Function]}
       >
         <div
           className="mb-[0.8rem]"
@@ -46,9 +47,11 @@ exports[`renders correctly 1`] = `
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="email"
+            onChange={[Function]}
             placeholder="email"
             required={false}
             type="email"
+            value=""
           />
         </div>
         <div
@@ -57,9 +60,11 @@ exports[`renders correctly 1`] = `
           <input
             className="w-full border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-sm font-light rounded-md"
             name="password"
+            onChange={[Function]}
             placeholder="password"
             required={false}
-            type="name"
+            type="password"
+            value=""
           />
         </div>
         <div
@@ -73,6 +78,7 @@ exports[`renders correctly 1`] = `
           >
             <button
               className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
+              onClick={[Function]}
             >
               login
             </button>
