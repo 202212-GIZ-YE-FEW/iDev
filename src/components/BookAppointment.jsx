@@ -33,7 +33,7 @@ function BookAppointment({ t }) {
         relationshipStatus: "single",
         therapyBefore: "yes",
         specificQualities: "maleCounselor",
-        issues: "depression",
+        issue: "depression",
         bringsHere: "",
     };
 
@@ -112,7 +112,7 @@ function BookAppointment({ t }) {
                                     t={t}
                                     issues={values.issues}
                                     onChange={handelChange}
-                                    name='issues'
+                                    name='issue'
                                 />
                             ),
                         },
