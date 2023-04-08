@@ -14,12 +14,10 @@ export default async function handler(req, res) {
                     text: "Appointment created",
                     html: `<h1>Appointment created</h1>`,
                 });
-                return res
-                    .status(200)
-                    .json({
-                        success: 0,
-                        message: "Appointment created successfully",
-                    });
+                return res.status(200).json({
+                    success: 0,
+                    message: "Appointment created successfully",
+                });
             } catch {
                 return res
                     .status(400)
