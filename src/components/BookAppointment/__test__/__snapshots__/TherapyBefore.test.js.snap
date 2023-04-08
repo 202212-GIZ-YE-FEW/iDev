@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <p
+    className="mb-4 p-2 text:lg md:text-2xl lg:text-3xl font-normal break-words text-black"
+  >
+    therapyBefore
+  </p>,
+  <fieldset
+    className="space-y-4"
+  >
+    <div
+      className="text-9xl font-normal text-black"
+    >
+      <div
+        className="flex items-center space-y-4"
+      >
+        <input
+          checked={false}
+          className="peer hidden"
+          id="yes"
+          onChange={[Function]}
+          type="radio"
+          value="yes"
+        />
+        <label
+          className="w-full flex cursor-pointer rounded-md p-4 text-base md:text-xl lg:text-2xl shadow-md border-[1px] border-light-gray/80 hover:border-gray peer-checked:border-none peer-checked:bg-cyan peer-checked:text-white"
+          htmlFor="yes"
+        >
+          yes
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center space-y-4"
+      >
+        <input
+          checked={false}
+          className="peer hidden"
+          id="no"
+          onChange={[Function]}
+          type="radio"
+          value="no"
+        />
+        <label
+          className="w-full flex cursor-pointer rounded-md p-4 text-base md:text-xl lg:text-2xl shadow-md border-[1px] border-light-gray/80 hover:border-gray peer-checked:border-none peer-checked:bg-cyan peer-checked:text-white"
+          htmlFor="no"
+        >
+          no
+           
+        </label>
+      </div>
+    </div>
+  </fieldset>,
+]
+`;
