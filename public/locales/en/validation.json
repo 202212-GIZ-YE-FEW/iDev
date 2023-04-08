@@ -1,0 +1,6 @@
+{
+    "invalidFormat": "{{ field }} is invalid format",
+    "letterSpace": "{{ field }} must contain only letters and spaces",
+    "min": "{{ field }} must be at least {{ count }} characters long",
+    "required": "{{ field }} is required"
+}
