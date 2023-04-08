@@ -1,0 +1,10 @@
+{
+    "required": "Required ",
+    "invalidEmailFormat": "Invalid email format, must include '@' and '.'",
+    "emailsMustMatch": "Emails must match",
+    "passwordLength": "Password must be at least 6 characters long",
+    "passwordCriteria": "Password must contain at least one letter and one number",
+    "dateOfBirthFuture": "Date of birth cannot be in the future",
+    "firstNameSpaceLetter": "First name must contain only letters and spaces",
+    "LastNameSpaceLetter": "last name must contain only letters and spaces"
+}
