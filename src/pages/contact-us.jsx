@@ -30,7 +30,12 @@ function ContactUs({ t, choices }) {
             await sendContactForm(formData);
             setFormData({});
         } catch (error) {
-            //
+            if (error.inner) {
+                const newErrors = {};
+                error.inner.forEach((e) => {
+                    newErrors[e.path] = e.message;
+                });
+            }
         }
     };
     const [typeOfContact, setTypeOfContact] = useState("");
