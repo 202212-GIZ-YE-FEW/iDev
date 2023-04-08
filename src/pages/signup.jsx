@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
@@ -62,10 +62,7 @@ function SignUp({ t }) {
                 userType: "1",
             };
             addData(collection, userId, userData).then((response) => {
-                if (response.error) {
-                    console.log("Error adding data:", response.error);
-                } else {
-                    console.log("Data added successfully:", response.result);
+                if (!response.error) {
                     sendEmailConfirmation();
                     const router = require("next/router").default;
                     router.push({
