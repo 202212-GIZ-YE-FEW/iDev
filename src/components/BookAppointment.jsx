@@ -1,3 +1,4 @@
+import axios from "axios";
 import { withTranslation } from "next-i18next";
 import { useState } from "react";
 
@@ -29,6 +30,7 @@ function BookAppointment({ t }) {
     const [currentStep, setCurrentStep] = useState(0);
 
     const initialValues = {
+        dateTime: new Date(),
         counselingType: "individual",
         relationshipStatus: "single",
         therapyBefore: "yes",
@@ -43,8 +45,16 @@ function BookAppointment({ t }) {
         setValues({ ...values, [target.name]: target.value });
     };
 
-    const onSubmit = (data) => {
-        setCurrentStep(currentStep + 1);
+    const onSubmit = async () => {
+        axios
+            .post("/api/appointments", values, {
+                headers: { "Content-Type": "application/json" },
+            })
+            .then((res) => {
+                if (res.data.success === 0) {
+                    setCurrentStep(currentStep + 1);
+                }
+            });
     };
 
     return (
@@ -110,7 +120,7 @@ function BookAppointment({ t }) {
                             content: (
                                 <Issues
                                     t={t}
-                                    issues={values.issues}
+                                    issues={values.issue}
                                     onChange={handelChange}
                                     name='issue'
                                 />
