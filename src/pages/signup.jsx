@@ -61,18 +61,14 @@ function SignUp({ t }) {
                 role: "user",
             };
             addData(collection, userId, userData).then((response) => {
-                if (response.error) {
-                    console.log("Error adding data:", response.error);
-                } else {
-                    sendEmailConfirmation();
-                    const router = require("next/router").default;
-                    router.push({
-                        pathname: "/thanks",
-                        query: {
-                            subtitle: "confirmEmail",
-                        },
-                    });
-                }
+                sendEmailConfirmation();
+                const router = require("next/router").default;
+                router.push({
+                    pathname: "/thanks",
+                    query: {
+                        subtitle: "confirmEmail",
+                    },
+                });
             });
         } catch (error) {
             if (error.code === "auth/email-already-in-use") {
