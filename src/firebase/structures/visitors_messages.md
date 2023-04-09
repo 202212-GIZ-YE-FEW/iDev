@@ -9,3 +9,7 @@
 ### Firebase Structure for: <ins>Visitors' Messages</ins>
 
 ![Visitors Messages](/firebase_structure/visitors_messages.png?raw=true)
+
+### Firebase Structure for: <ins>Appointments</ins>
+
+![Appointments](/firebase_structure/appointments.png?raw=true)

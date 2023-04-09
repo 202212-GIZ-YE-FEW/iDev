@@ -14,9 +14,9 @@ import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import Textarea from "@/components/ui/textarea/Textarea";
 
 import getDocument from "@/firebase/getData";
+import { postHandler } from "@/utils/api";
 import schema from "@/utils/validationSchema";
 
-import { sendForm } from "../utils/api";
 function ContactUs({ t, choices }) {
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
@@ -28,7 +28,7 @@ function ContactUs({ t, choices }) {
         e.preventDefault();
         try {
             await schema.validate(formData, { abortEarly: false });
-            const response = await sendForm(formData, "contact");
+            const response = await postHandler("/api/appointments", formData);
             if (response.success === 0) {
                 toast(response.message, {
                     hideProgressBar: true,
