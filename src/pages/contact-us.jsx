@@ -28,7 +28,7 @@ function ContactUs({ t, choices }) {
         e.preventDefault();
         try {
             await schema.validate(formData, { abortEarly: false });
-            const response = await sendForm({ formData }, "contact");
+            const response = await sendForm(formData, "contact");
             if (response.success === 0) {
                 toast(response.message, {
                     hideProgressBar: true,
