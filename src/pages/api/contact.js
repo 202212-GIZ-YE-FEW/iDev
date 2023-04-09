@@ -1,10 +1,9 @@
 import ContactSVG from "public/contactus.svg";
 
+import { mailOptions, transporter } from "@/config/nodemailer";
 import addDocument from "@/firebase/addData";
 
 import { TransactionalTemplate } from "../../template/TransactionalEmail";
-
-import { mailOptions, transporter } from "/config/nodemailer.config";
 export default async function handler(req, res) {
     const { method, body } = req;
     const generateEmailContent = (data) => {
