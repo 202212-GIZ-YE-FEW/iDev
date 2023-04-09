@@ -6,14 +6,15 @@ import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
 import Button from "@/components/ui/Button";
+
 //import { navigation } from "@/constants";
 import { isLoggedIn, Logout } from "@/firebase/firebaseProvidersMethods";
 import { navigation } from "@/utils/constants";
-function LangDropdown(prop) {
+function LangDropdown(props) {
     const onChangeDir = (locale) => {
         document.dir = locale === "en" ? "ltr" : "rtl";
     };
-    const { setOpenLangDropdown, openLangDropdown, router } = prop;
+    const { setOpenLangDropdown, openLangDropdown, router } = props;
     return (
         <div
             className='relative inline-block'
