@@ -1,6 +1,7 @@
-import axios from "axios";
 import { withTranslation } from "next-i18next";
 import { useState } from "react";
+
+import { postHandler } from "@/utils/api";
 
 import BringsHere from "./BookAppointment/BringsHere";
 import CounselingType from "./BookAppointment/CounselingType";
@@ -46,15 +47,10 @@ function BookAppointment({ t }) {
     };
 
     const onSubmit = async () => {
-        axios
-            .post("/api/appointments", values, {
-                headers: { "Content-Type": "application/json" },
-            })
-            .then((res) => {
-                if (res.data.success === 0) {
-                    setCurrentStep(currentStep + 1);
-                }
-            });
+        const res = await postHandler("/api/appointments", values);
+        if (res.data.success === 0) {
+            setCurrentStep(currentStep + 1);
+        }
     };
 
     return (
