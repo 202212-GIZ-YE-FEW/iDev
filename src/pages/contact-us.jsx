@@ -28,9 +28,9 @@ function ContactUs({ t, choices }) {
         e.preventDefault();
         try {
             await schema.validate(formData, { abortEarly: false });
-            const response = await postHandler("/api/appointments", formData);
-            if (response.success === 0) {
-                toast(response.message, {
+            const response = await postHandler("/api/contact", formData);
+            if (response.data.success === 0) {
+                toast(response.data.message, {
                     hideProgressBar: true,
                     position: "bottom-left",
                     autoClose: 2000,
@@ -39,7 +39,7 @@ function ContactUs({ t, choices }) {
                 setFormData({});
                 setFormErrors({});
             } else {
-                toast(response.message, {
+                toast(response.data.message, {
                     hideProgressBar: true,
                     position: "bottom-left",
                     autoClose: 2000,
