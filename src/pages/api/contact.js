@@ -14,19 +14,6 @@ export default async function handler(req, res) {
                 "We're glad you are with our community",
                 ContactSVG,
                 `
-            <div style="
-                    background-color: #fbfbfb;
-                    color: #424a4f;
-                    padding-left:2rem;
-                    padding-right:2rem;
-                    padding-top:1rem;
-                    padding-bottom: 1rem;
-                    word-break: break-all;
-                    font-size: 16px;
-                    -webkit-font-smoothing: antialiased;
-                    line-height: 1.2;
-                    text-align: center;
-                ">
                 <p style="text-align: left; font-weight: 900; font-size: 26px">
                     Your Message:
                 </p>
@@ -37,7 +24,7 @@ export default async function handler(req, res) {
                         background-color: #eaf8f9;
                         color: #424a4f;
                     ">
-                    <span>Your Name: ${data.name}</span>
+                    <span>Your Name: ${data.fullName}</span>
                     <br>
                     <span>Your Email: ${data.email}</span>
                     <br>

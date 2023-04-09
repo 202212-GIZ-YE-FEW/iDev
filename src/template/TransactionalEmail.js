@@ -75,6 +75,19 @@ export const TransactionalTemplate = (
                 </p>
                 <img src="${image}" width="250" height="210" style="min-width: 50%">
             </div>
+            <div style="
+                background-color: #fbfbfb;
+                color: #424a4f;
+                padding-left:2rem;
+                padding-right:2rem;
+                padding-top:1rem;
+                padding-bottom: 1rem;
+                word-break: break-all;
+                font-size: 16px;
+                -webkit-font-smoothing: antialiased;
+                line-height: 1.2;
+                text-align: center;
+            ">
             ${mainContent}
             </div>
             <div style="
