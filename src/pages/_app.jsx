@@ -1,6 +1,7 @@
 import { appWithTranslation } from "next-i18next";
 
 import "@/styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import Layout from "@/layout/Layout";
 
