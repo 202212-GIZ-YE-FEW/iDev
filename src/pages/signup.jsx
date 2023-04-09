@@ -3,17 +3,19 @@ import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+
 import AuthSocialMedia from "@/components/AuthSocialMedia";
+import { useAuth } from "@/components/context/AuthContext";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import {
-    signInWithGoogleAccount,
-    signInWithFbAccount,
-} from "@/firebase/firebaseProvidersMethods";
-import { useAuth } from "@/components/context/AuthContext";
+
 import addDocument from "@/firebase/addData";
-import schema from "@/components/validation/validationSchemaSignUp";
+import {
+    signInWithFbAccount,
+    signInWithGoogleAccount,
+} from "@/firebase/firebaseProvidersMethods";
+import schema from "@/utils/validationSchemaSignUp";
 
 function SignUp({ t }) {
     const { signUp, user, sendEmailConfirmation } = useAuth();

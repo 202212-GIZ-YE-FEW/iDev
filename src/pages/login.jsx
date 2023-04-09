@@ -2,17 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
+
 import AuthSocialMedia from "@/components/AuthSocialMedia";
+import { useAuth } from "@/components/context/AuthContext";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { useAuth } from "@/components/context/AuthContext";
+
 import {
     signInWithFbAccount,
     signInWithGoogleAccount,
 } from "@/firebase/firebaseProvidersMethods";
-import { useState } from "react";
-import schema from "@/components/validation/validationSchemalogin";
+import schema from "@/utils/validationSchemalogin";
 
 function Login({ t }) {
     const {
