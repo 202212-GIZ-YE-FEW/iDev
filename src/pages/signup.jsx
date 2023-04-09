@@ -56,10 +56,9 @@ function SignUp({ t }) {
                 gender: "",
                 hobbies: "",
                 last_name: formData.lastName,
-                password: formData.password,
                 date_brith: formData.dateOfBirth,
                 phoneNumber: "",
-                userType: "1",
+                role: "user",
             };
             addData(collection, userId, userData).then((response) => {
                 if (response.error) {
