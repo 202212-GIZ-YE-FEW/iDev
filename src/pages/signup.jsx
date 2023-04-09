@@ -106,6 +106,7 @@ function SignUp({ t }) {
                         <div className='flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '>
                             <div className='flex-col mt-[0.8rem]'>
                                 <Input
+                                    field={t(`${firstname}`)}
                                     type='name'
                                     name='firstName'
                                     placeholder={t(`${firstname}`)}
@@ -117,6 +118,7 @@ function SignUp({ t }) {
                             </div>
                             <div className='flex-col mt-[0.8rem]'>
                                 <Input
+                                    field={t(`${lastname}`)}
                                     type='name'
                                     name='lastName'
                                     placeholder={t(`${lastname}`)}
@@ -130,6 +132,7 @@ function SignUp({ t }) {
 
                         <div className='mb-[0.8rem]'>
                             <Input
+                                field={t(`${email}`)}
                                 type='email'
                                 name='email'
                                 placeholder={t(`${email}`)}
@@ -142,6 +145,7 @@ function SignUp({ t }) {
                         </div>
                         <div className='mb-[0.8rem]'>
                             <Input
+                                field={t(`${confirmemail}`)}
                                 type='email'
                                 name='confirmEmail'
                                 placeholder={t(`${confirmemail}`)}
@@ -155,6 +159,7 @@ function SignUp({ t }) {
                         <div className='flex mb-[0.8rem] space-x-[0.7rem] rtl:space-x-reverse'>
                             <div className='flex-col mt-[0.8rem]'>
                                 <Input
+                                    field={t(`${password}`)}
                                     type='password'
                                     name='password'
                                     placeholder={t(`${password}`)}
@@ -166,6 +171,7 @@ function SignUp({ t }) {
                             </div>
                             <div className='flex-col mt-[0.8rem]'>
                                 <Input
+                                    field={t(`${confirmpassword}`)}
                                     type='password'
                                     name='confirmPassword'
                                     placeholder={t(`${confirmpassword}`)}
@@ -178,6 +184,7 @@ function SignUp({ t }) {
                         </div>
                         <div className='flex-col  text-center lg:text-start justify-center mb-[0.5rem]  ext-md font-weight-500'>
                             <Input
+                                field={t(`${datebrith}`)}
                                 label={t(`${datebrith}`)}
                                 type='date'
                                 name='dateOfBirth'
