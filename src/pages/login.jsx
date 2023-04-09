@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
@@ -29,12 +28,15 @@ function Login({ t }) {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             await schema.validate(formData, { abortEarly: false });
             await logIn(formData.email, formData.password);
+            const router = require("next/router").default;
+            router.push("/appointment");
         } catch (error) {
             if (error.code === "auth/user-not-found") {
                 setFormErrors({ email: "loginErrorEmailNotExist" });
