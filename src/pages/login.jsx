@@ -13,6 +13,7 @@ import {
     signInWithGoogleAccount,
 } from "@/firebase/firebaseProvidersMethods";
 import { useState } from "react";
+import schema from "@/components/validation/validationSchemalogin";
 function Login({ t }) {
     const {
         email = "email",
@@ -32,8 +33,16 @@ function Login({ t }) {
         e.preventDefault();
 
         try {
+            await schema.validate(formData, { abortEarly: false });
             await logIn(formData.email, formData.password);
         } catch (error) {
+            if (error.code === "auth/user-not-found") {
+                setFormErrors({ email: "loginErrorEmailNotExist" });
+            } else if (error.code === "auth/wrong-password") {
+                setFormErrors({ password: "loginErrorWrongPassword" });
+            } else {
+                console.error(error);
+            }
             if (error.inner) {
                 const newErrors = {};
                 error.inner.forEach((e) => {
@@ -122,9 +131,13 @@ function Login({ t }) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common", "signup"])),
+            ...(await serverSideTranslations(locale, [
+                "common",
+                "signup",
+                "validation",
+            ])),
             // Will be passed to the page component as props
         },
     };
 }
-export default withTranslation("signup")(Login);
+export default withTranslation(["signup", "validation"])(Login);
