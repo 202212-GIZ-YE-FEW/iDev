@@ -12,5 +12,6 @@
     "passwordsMustMatch": "Passwords must match",
     "emailExist": "This email is already in use",
     "loginErrorEmailNotExist": "The email address you entered does not exist.",
-    "loginErrorWrongPassword": "The password you entered is incorrect."
+    "loginErrorWrongPassword": "The password you entered is incorrect.",
+    "confirmEmail": "Please check your email to Activate the Signup Account"
 }

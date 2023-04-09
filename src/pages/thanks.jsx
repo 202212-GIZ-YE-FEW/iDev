@@ -7,7 +7,7 @@ import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/router";
 export default function Thanks() {
-    const { t } = useTranslation("common");
+    const { t } = useTranslation("common", "validation");
     const router = useRouter();
     const { subtitle } = router.query;
     return (
@@ -16,7 +16,7 @@ export default function Thanks() {
                 <title>{t("thankYou")} | purpose </title>
             </Head>
             <div className='container -mt-28'>
-                <PageIntro title={t("thankYou")} subtitle={subtitle} />
+                <PageIntro title={t("thankYou")} subtitle={t(`${subtitle}`)} />
                 <Link href='/'>
                     <Button
                         content={t("backToHome")}
@@ -33,7 +33,7 @@ export default function Thanks() {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            ...(await serverSideTranslations(locale, ["common", "validation"])),
             // Will be passed to the page component as props
         },
     };

@@ -12,5 +12,6 @@
     "passwordsMustMatch": "يجب أن تتطابق كلمات المرور",
     "emailExist": "هذا البريد استخدم من قبل",
     "loginErrorEmailNotExist": "عنوان البريد الإلكتروني الذي أدخلته غير موجود",
-    "loginErrorWrongPassword": "كلمة المرور التي أدخلتها غير صحيحة."
+    "loginErrorWrongPassword": "كلمة المرور التي أدخلتها غير صحيحة.",
+    "confirmEmail": "يرجى التحقق من بريدك الإلكتروني لتفعيل حساب التسجيل"
 }

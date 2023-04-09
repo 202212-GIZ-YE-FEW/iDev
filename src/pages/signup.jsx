@@ -13,7 +13,6 @@ import {
 } from "@/firebase/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
 import addData from "@/firebase/addData";
-
 import schema from "@/components/validation/validationSchema";
 
 function SignUp({ t }) {
@@ -29,6 +28,7 @@ function SignUp({ t }) {
         datebrith = "date",
         signup = "signup",
         login = "login",
+        confirmEmail = "confirmEmail",
     } = {};
 
     const [formData, setFormData] = useState({});
@@ -62,20 +62,20 @@ function SignUp({ t }) {
                 userType: "1",
             };
             addData(collection, userId, userData).then((response) => {
-                if (!response.error) {
+                if (response.error) {
+                    console.log("Error adding data:", response.error);
+                } else {
                     sendEmailConfirmation();
                     const router = require("next/router").default;
                     router.push({
                         pathname: "/thanks",
                         query: {
-                            subtitle:
-                                "Please check your email to Activate the Signup Account",
+                            subtitle: "confirmEmail",
                         },
                     });
                 }
             });
         } catch (error) {
-            console.error(error);
             if (error.code === "auth/email-already-in-use") {
                 setFormErrors({ email: "emailExist" });
             }
