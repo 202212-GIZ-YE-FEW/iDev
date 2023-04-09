@@ -1,203 +1,15 @@
 import { withTranslation } from "next-i18next";
 import { useState } from "react";
 
+import { postHandler } from "@/utils/api";
+
+import BringsHere from "./BookAppointment/BringsHere";
+import CounselingType from "./BookAppointment/CounselingType";
+import Issues from "./BookAppointment/Issues";
+import RelationshipStatus from "./BookAppointment/RelationshipStatus";
+import SpecificQualities from "./BookAppointment/SpecificQualities";
+import TherapyBefore from "./BookAppointment/TherapyBefore";
 import Stepper from "./Stepper";
-import RadioGroup from "./ui/radiogroup/RadioGroup";
-import RadioInputItem from "./ui/radiogroup/RadioInputItem";
-import Textarea from "./ui/textarea/Textarea";
-const CounselingType = ({ t }) => {
-    const [counselingType, setCounselingType] = useState("individual");
-    return (
-        <>
-            <RadioGroup title={t("counselingTypeTitle")} asButton={true}>
-                <RadioInputItem
-                    id='individual'
-                    name={counselingType}
-                    value='individual'
-                    title={t("individualCounseling")}
-                    checked={counselingType === "individual"}
-                    onChange={(e) => setCounselingType(e.target.value)}
-                />
-                <RadioInputItem
-                    id='teen'
-                    name={counselingType}
-                    value='teen'
-                    title={t("teenCounseling")}
-                    checked={counselingType === "teen"}
-                    onChange={(e) => setCounselingType(e.target.value)}
-                />
-            </RadioGroup>
-        </>
-    );
-};
-
-const RelationshipStatus = ({ t }) => {
-    const [relationshipStatus, setRelationshipStatus] = useState("single");
-    return (
-        <>
-            <RadioGroup title={t("whatRelationshipStatus")} asButton={true}>
-                <RadioInputItem
-                    id='single'
-                    name={relationshipStatus}
-                    value='single'
-                    title={t("single")}
-                    checked={relationshipStatus === "single"}
-                    onChange={(e) => setRelationshipStatus(e.target.value)}
-                />
-                <RadioInputItem
-                    id='married'
-                    name={relationshipStatus}
-                    value='married'
-                    title={t("married")}
-                    checked={relationshipStatus === "married"}
-                    onChange={(e) => setRelationshipStatus(e.target.value)}
-                />
-                <RadioInputItem
-                    id='divorced'
-                    name={relationshipStatus}
-                    value='divorced'
-                    title={t("divorced")}
-                    checked={relationshipStatus === "divorced"}
-                    onChange={(e) => setRelationshipStatus(e.target.value)}
-                />
-            </RadioGroup>
-        </>
-    );
-};
-
-const TherapyBefore = ({ t }) => {
-    const [therapyBefore, setTherapyBefore] = useState("yes");
-    return (
-        <>
-            <RadioGroup title={t("therapyBefore")} asButton={true}>
-                <RadioInputItem
-                    id='yes'
-                    name={therapyBefore}
-                    value='yes'
-                    title={t("yes")}
-                    checked={therapyBefore === "yes"}
-                    onChange={(e) => setTherapyBefore(e.target.value)}
-                />
-                <RadioInputItem
-                    id='no'
-                    name={therapyBefore}
-                    value='no'
-                    title={t("no")}
-                    checked={therapyBefore === "no"}
-                    onChange={(e) => setTherapyBefore(e.target.value)}
-                />
-            </RadioGroup>
-        </>
-    );
-};
-
-const SpecificQualities = ({ t }) => {
-    const [specificQualities, setSpecificQualities] = useState("maleCounselor");
-    return (
-        <>
-            <RadioGroup title={t("specificQualitiesCounselor")}>
-                <RadioInputItem
-                    id='male-counselor'
-                    name={specificQualities}
-                    title={t("maleCounselor")}
-                    value='maleCounselor'
-                    checked={specificQualities === "maleCounselor"}
-                    onChange={(e) => setSpecificQualities(e.target.value)}
-                />
-                <RadioInputItem
-                    id='female-counselor'
-                    name={specificQualities}
-                    title={t("femaleCounselor")}
-                    value='femaleCounselor'
-                    checked={specificQualities === "femaleCounselor"}
-                    onChange={(e) => setSpecificQualities(e.target.value)}
-                />
-                <RadioInputItem
-                    id='older-counselor'
-                    name={specificQualities}
-                    title={t("olderCounselor")}
-                    value='olderCounselor'
-                    checked={specificQualities === "olderCounselor"}
-                    onChange={(e) => setSpecificQualities(e.target.value)}
-                />
-                <RadioInputItem
-                    id='non-religious-counselor'
-                    name={specificQualities}
-                    title={t("nonReligiousCounselor")}
-                    value='nonReligiousCounselor'
-                    checked={specificQualities === "nonReligiousCounselor"}
-                    onChange={(e) => setSpecificQualities(e.target.value)}
-                />
-            </RadioGroup>
-        </>
-    );
-};
-
-const Issues = ({ t }) => {
-    const [issues, setIssues] = useState("depression");
-    return (
-        <>
-            <RadioGroup title={t("areThereIssues")}>
-                <RadioInputItem
-                    id='depression'
-                    name={issues}
-                    title={t("depression")}
-                    value='depression'
-                    checked={issues === "depression"}
-                    onChange={(e) => setIssues(e.target.value)}
-                />
-                <RadioInputItem
-                    id='stress-anxiety'
-                    name='issues'
-                    title={t("stressAnxiety")}
-                    value='stressAnxiety'
-                    checked={issues === "stressAnxiety"}
-                    onChange={(e) => setIssues(e.target.value)}
-                />
-                <RadioInputItem
-                    id='relationship-issues'
-                    name='issues'
-                    title={t("relationshipIssues")}
-                    value='relationshipIssues'
-                    checked={issues === "relationshipIssues"}
-                    onChange={(e) => setIssues(e.target.value)}
-                />
-                <RadioInputItem
-                    id='family-conflicts'
-                    name='issues'
-                    title={t("familyConflicts")}
-                    value='familyConflicts'
-                    checked={issues === "familyConflicts"}
-                    onChange={(e) => setIssues(e.target.value)}
-                />
-                <RadioInputItem
-                    id='trauma-abuse'
-                    name='issues'
-                    title={t("traumaAbuse")}
-                    value='traumaAbuse'
-                    checked={issues === "traumaAbuse"}
-                    onChange={(e) => setIssues(e.target.value)}
-                />
-                <RadioInputItem
-                    id='eating-disorders'
-                    name='issues'
-                    title={t("eatingDisorders")}
-                    value='eatingDisorders'
-                    checked={issues === "eatingDisorders"}
-                    onChange={(e) => setIssues(e.target.value)}
-                />
-            </RadioGroup>
-        </>
-    );
-};
-
-const BringsHere = () => {
-    return (
-        <>
-            <Textarea rows='17' />
-        </>
-    );
-};
 
 const TwoLastSteps = (props) => {
     const { t, title, subtitle } = props;
@@ -216,41 +28,111 @@ const TwoLastSteps = (props) => {
 };
 
 function BookAppointment({ t }) {
+    const [currentStep, setCurrentStep] = useState(0);
+
+    const initialValues = {
+        dateTime: new Date(),
+        counselingType: "individual",
+        relationshipStatus: "single",
+        therapyBefore: "yes",
+        specificQualities: "maleCounselor",
+        issue: "depression",
+        bringsHere: "",
+    };
+
+    const [values, setValues] = useState(initialValues);
+
+    const handelChange = ({ target }) => {
+        setValues({ ...values, [target.name]: target.value });
+    };
+
+    const onSubmit = async () => {
+        const res = await postHandler("/api/appointments", values);
+        if (res.data.success === 0) {
+            setCurrentStep(currentStep + 1);
+        }
+    };
+
     return (
         <>
             <div className='mt-[30px]'>
                 <Stepper
-                    currentStep={0}
+                    current={currentStep}
+                    setCurrent={setCurrentStep}
                     steps={[
                         {
                             pageTitle: "matchWithRightTherapist",
                             pageSubtitle: "fillOutThisShortQuestionnaire",
-                            content: <CounselingType t={t} />,
+                            content: (
+                                <CounselingType
+                                    t={t}
+                                    counselingType={values.counselingType}
+                                    onChange={handelChange}
+                                    name='counselingType'
+                                />
+                            ),
                         },
                         {
                             pageTitle: "matchWithRightTherapist",
                             pageSubtitle: "fillOutThisShortQuestionnaire",
-                            content: <RelationshipStatus t={t} />,
+                            content: (
+                                <RelationshipStatus
+                                    t={t}
+                                    relationshipStatus={
+                                        values.relationshipStatus
+                                    }
+                                    onChange={handelChange}
+                                    name='relationshipStatus'
+                                />
+                            ),
                         },
                         {
                             pageTitle: "matchWithRightTherapist",
                             pageSubtitle: "fillOutThisShortQuestionnaire",
-                            content: <TherapyBefore t={t} />,
+                            content: (
+                                <TherapyBefore
+                                    t={t}
+                                    therapyBefore={values.therapyBefore}
+                                    onChange={handelChange}
+                                    name='therapyBefore'
+                                />
+                            ),
                         },
                         {
                             pageTitle: "matchWithRightTherapist",
                             pageSubtitle: "fillOutThisShortQuestionnaire",
-                            content: <SpecificQualities t={t} />,
+                            content: (
+                                <SpecificQualities
+                                    t={t}
+                                    specificQualities={values.specificQualities}
+                                    onChange={handelChange}
+                                    name='specificQualities'
+                                />
+                            ),
                         },
                         {
                             pageTitle: "matchWithRightTherapist",
                             pageSubtitle: "fillOutThisShortQuestionnaire",
-                            content: <Issues t={t} />,
+                            content: (
+                                <Issues
+                                    t={t}
+                                    issues={values.issue}
+                                    onChange={handelChange}
+                                    name='issue'
+                                />
+                            ),
                         },
                         {
                             pageTitle: "whatBringsYou",
                             pageSubtitle: "whatBringsYouDesc",
-                            content: <BringsHere />,
+                            content: (
+                                <BringsHere
+                                    bringsHere={values.bringsHere}
+                                    onChange={handelChange}
+                                    name='bringsHere'
+                                />
+                            ),
+                            asCard: false,
                         },
                         {
                             pageTitle: "submitYourAppointment",
@@ -275,6 +157,7 @@ function BookAppointment({ t }) {
                             ),
                         },
                     ]}
+                    onSubmit={onSubmit}
                 />
             </div>
         </>

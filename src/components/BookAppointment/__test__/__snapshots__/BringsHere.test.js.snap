@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<textarea
+  className="
+    block p-2.5 w-full px-4 py-2 text-base text-gray bg-gray
+    h-24 undefined rounded-md placeholder-light-gray text-gray bg-white resize-none
+    border-light-gray/30 shadow-sm border-[1px]
+    "
+  onChange={[Function]}
+  rows="17"
+/>
+`;
