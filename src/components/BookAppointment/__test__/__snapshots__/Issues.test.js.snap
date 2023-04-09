@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <p
+    className="mb-4 p-2 text:lg md:text-2xl lg:text-3xl font-normal break-words text-black"
+  >
+    areThereIssues
+  </p>,
+  <fieldset
+    className="space-y-4"
+  >
+    <div
+      className="text-9xl font-normal text-black"
+    >
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="depression"
+          onChange={[Function]}
+          type="radio"
+          value="depression"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="depression"
+        >
+          depression
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="stress-anxiety"
+          onChange={[Function]}
+          type="radio"
+          value="stressAnxiety"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="stress-anxiety"
+        >
+          stressAnxiety
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="relationship-issues"
+          onChange={[Function]}
+          type="radio"
+          value="relationshipIssues"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="relationship-issues"
+        >
+          relationshipIssues
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="family-conflicts"
+          onChange={[Function]}
+          type="radio"
+          value="familyConflicts"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="family-conflicts"
+        >
+          familyConflicts
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="trauma-abuse"
+          onChange={[Function]}
+          type="radio"
+          value="traumaAbuse"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="trauma-abuse"
+        >
+          traumaAbuse
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="eating-disorders"
+          onChange={[Function]}
+          type="radio"
+          value="eatingDisorders"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="eating-disorders"
+        >
+          eatingDisorders
+           
+        </label>
+      </div>
+    </div>
+  </fieldset>,
+]
+`;

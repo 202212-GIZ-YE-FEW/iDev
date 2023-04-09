@@ -7,4 +7,8 @@ module.exports = {
         dirs: ["src"],
     },
     reactStrictMode: true,
+    //to make Image from google account works
+    images: {
+        domains: ["lh3.googleusercontent.com"],
+    },
 };

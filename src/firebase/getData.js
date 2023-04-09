@@ -11,3 +11,4 @@ export default async function getDocument(doc, criterions) {
     }));
     return data;
 }
+//just update the commit message

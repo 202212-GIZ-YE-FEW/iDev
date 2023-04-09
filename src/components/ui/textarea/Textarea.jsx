@@ -3,23 +3,28 @@ export default function Textarea(props) {
         label,
         placeholder,
         size,
+        labelColor = "gray",
         height = "24",
         radius = "md",
-        border = "gray",
+        border = "light-gray/30",
         shadow = "sm",
+        error,
+        t,
         ...rest
     } = props;
 
     const inputClasses = `
-    block p-2.5 w-full px-4 py-2 text-sm text-gray bg-gray
-    h-${height} ${size} rounded-${radius} placeholder-gray text-gray bg-white resize-none
-    border-${border} shadow-${shadow} focus:outline-none border-[1px] border-light-gray/60
+    block p-2.5 w-full px-4 py-2 text-base text-gray bg-gray
+    h-${height} ${size} rounded-${radius} placeholder-light-gray text-gray bg-white resize-none
+    border-${border} shadow-${shadow} border-[1px]
     `;
 
     return (
         <>
             {label && (
-                <label className='block mb-2 text-sm font-medium text-gray'>
+                <label
+                    className={`block mb-2 font-medium text-sm md:text-base lg:text-lg text-${labelColor} capitalize`}
+                >
                     {label}
                 </label>
             )}
@@ -28,6 +33,14 @@ export default function Textarea(props) {
                 placeholder={placeholder}
                 {...rest}
             />
+            {error && (
+                <div className='text-red text-sm md:text-base mt-1'>
+                    {t(`validation:${error}`, {
+                        field: t(`${label}`),
+                        count: "10",
+                    })}
+                </div>
+            )}
         </>
     );
 }

@@ -10,21 +10,24 @@ const Input = (props) => {
         isRequired = false,
         placeholder,
         label,
+        labelColor = "light-gray",
         inputFontSize = "sm",
         inputFontWeight = "light",
         inputWidthSize = "w-full",
         radius = "md",
+        field = "",
+        shadow = "sm",
         error,
         t,
     } = props;
 
-    const inputClasses = `${inputWidthSize} border border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] leading-[2.15] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    const inputClasses = `${inputWidthSize} border text-base text-gray border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>
             {label && (
                 <label
-                    className='  mt-1 whitespace-wrap flex:me-10 text-light-gray/80 font-light flex:self-center'
+                    className={`mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-${labelColor} font-light flex:self-center capitalize text-sm md:text-base lg:text-lg`}
                     htmlFor={id}
                 >
                     {label}
@@ -42,7 +45,7 @@ const Input = (props) => {
             {error && (
                 <div className='text-red text-sm md:text-base mt-1'>
                     {t(`validation:${error}`, {
-                        field: t(`${label}`),
+                        field: t(`${field}`),
                         count: "3",
                     })}
                 </div>

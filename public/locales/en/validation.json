@@ -1,5 +1,4 @@
 {
-    "required": " is required",
     "invalidEmailFormat": "Invalid email format, must include '@' and '.'",
     "emailsMustMatch": "Emails must match",
     "passwordCriteria": "Password Have at least (one uppercase letter ,one lowercase letter, one number, one special character from the set @$!%*#?&)",
@@ -13,5 +12,9 @@
     "emailExist": "This email is already in use",
     "loginErrorEmailNotExist": "The email address you entered does not exist.",
     "loginErrorWrongPassword": "The password you entered is incorrect.",
-    "confirmEmail": "Please check your email to Activate the Signup Account"
+    "confirmEmail": "Please check your email to Activate the Signup Account",
+    "invalidFormat": "{{ field }} is invalid format",
+    "letterSpace": "{{ field }} must contain only letters and spaces",
+    "min": "{{ field }} must be at least {{ count }} characters long",
+    "required": "{{ field }} is required"
 }

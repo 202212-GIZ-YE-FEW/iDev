@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <p
+    className="mb-4 p-2 text:lg md:text-2xl lg:text-3xl font-normal break-words text-black"
+  >
+    specificQualitiesCounselor
+  </p>,
+  <fieldset
+    className="space-y-4"
+  >
+    <div
+      className="text-9xl font-normal text-black"
+    >
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="male-counselor"
+          onChange={[Function]}
+          type="radio"
+          value="maleCounselor"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="male-counselor"
+        >
+          maleCounselor
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="female-counselor"
+          onChange={[Function]}
+          type="radio"
+          value="femaleCounselor"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="female-counselor"
+        >
+          femaleCounselor
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="older-counselor"
+          onChange={[Function]}
+          type="radio"
+          value="olderCounselor"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="older-counselor"
+        >
+          olderCounselor
+           
+        </label>
+      </div>
+      <div
+        className="flex items-center"
+      >
+        <input
+          checked={false}
+          className="w-5 h-5 bg-black border-black"
+          id="non-religious-counselor"
+          onChange={[Function]}
+          type="radio"
+          value="nonReligiousCounselor"
+        />
+        <label
+          className="w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3"
+          htmlFor="non-religious-counselor"
+        >
+          nonReligiousCounselor
+           
+        </label>
+      </div>
+    </div>
+  </fieldset>,
+]
+`;

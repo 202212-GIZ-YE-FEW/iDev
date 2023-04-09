@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
-import { navigation } from "@/constants";
+import { navigation } from "@/utils/constants";
 
 import Subscribe from "./Subscribe";
 function Footer({ t }) {

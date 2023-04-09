@@ -7,13 +7,14 @@ import { useState } from "react";
 
 import Button from "@/components/ui/Button";
 
-import { navigation } from "@/constants";
-
-function LangDropdown(prop) {
+//import { navigation } from "@/constants";
+import { isLoggedIn, Logout } from "@/firebase/firebaseProvidersMethods";
+import { navigation } from "@/utils/constants";
+function LangDropdown(props) {
     const onChangeDir = (locale) => {
         document.dir = locale === "en" ? "ltr" : "rtl";
     };
-    const { setOpenLangDropdown, openLangDropdown, router } = prop;
+    const { setOpenLangDropdown, openLangDropdown, router } = props;
     return (
         <div
             className='relative inline-block'
@@ -150,6 +151,20 @@ function MobileNav(prop) {
                 </Link>
             </div>
             <div className='flex flex-col px-4'>
+                {/* Add user Image to Navbar */}
+                {isLoggedIn ? (
+                    <div className='mt-4 w-14 h-14 sm:left-20 sm:top-40 left-12 top-28 bg-white border-2 border-black rounded-full text-center'>
+                        <Image
+                            className='rounded-full w-14 h-14object-cover'
+                            width={14}
+                            height={14}
+                            alt='userImage'
+                            src={localStorage.getItem("image")}
+                        />
+                    </div>
+                ) : (
+                    <></>
+                )}
                 {navigation.map((nav) => {
                     return (
                         <NavLink
@@ -180,14 +195,28 @@ function MobileNav(prop) {
                         openLangDropdown={openLangDropdown}
                         router={router}
                     />
-                    <Button
-                        content={t("login")}
-                        text-transform='capitalize'
-                        filled='true'
-                        size='large'
-                        fontSize='text-sm md:text-xl'
-                        radius='md'
-                    />
+                    {!isLoggedIn ? (
+                        <Link href='/signup'>
+                            <Button
+                                content={t("login")}
+                                text-transform='capitalize'
+                                filled='true'
+                                size='large'
+                                fontSize='text-sm md:text-xl'
+                                radius='md'
+                            />
+                        </Link>
+                    ) : (
+                        <Button
+                            content={t("Logout")}
+                            text-transform='capitalize'
+                            filled='true'
+                            size='large'
+                            fontSize='text-sm md:text-xl'
+                            radius='md'
+                            onClick={Logout}
+                        />
+                    )}
                 </div>
             </div>
         </div>
@@ -281,16 +310,43 @@ export default function Navbar() {
                             openLangDropdown={openLangDropdown}
                             router={router}
                         />
-                        <Link href='/signup'>
+                        {/* Add Imge */}
+                        {isLoggedIn ? (
+                            <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
+                                <Image
+                                    className='rounded-full w-14 h-14object-cover'
+                                    width={14}
+                                    height={14}
+                                    alt=''
+                                    src={localStorage.getItem("image")}
+                                />
+                            </div>
+                        ) : (
+                            <></>
+                        )}
+                        {/* Add logout Button */}
+                        {!isLoggedIn ? (
+                            <Link href='/signup'>
+                                <Button
+                                    content={t("login")}
+                                    text-transform='capitalize'
+                                    filled='true'
+                                    size='large'
+                                    fontSize='text-sm md:text-xl'
+                                    radius='md'
+                                />
+                            </Link>
+                        ) : (
                             <Button
-                                content={t("login")}
+                                content={t("Logout")}
                                 text-transform='capitalize'
                                 filled='true'
-                                size='small'
-                                fontSize='text-sm md:text-lg'
+                                size='large'
+                                fontSize='text-sm md:text-xl'
                                 radius='md'
+                                onClick={Logout}
                             />
-                        </Link>
+                        )}
                     </div>
                 </div>
             </div>
