@@ -8,21 +8,20 @@ function Dropdown(props) {
         FontWeight = "light",
         WidthSize = "w-full",
         radius = "md",
-        onChange,
     } = props;
     const inputClasses = `${WidthSize} border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius}`;
 
     const handleChange = (event) => {
         const { value } = event.target;
-        onChange(value);
+        // onChange(value);
     };
     return (
         <>
-            {label && (
+            {/* {label && (
                 <label className='font-normal   whitespace-nowrap flex:me-10 flex:self-center'>
                     {label}
                 </label>
-            )}
+            )} */}
 
             <select
                 value={value}
