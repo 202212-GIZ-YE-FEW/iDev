@@ -61,7 +61,7 @@ export default async function handler(req, res) {
                     });
                     return res.status(200).json({
                         success: 0,
-                        message: "your message submitted successfully",
+                        message: "Your message submitted successfully",
                     });
                 } catch {
                     return res
