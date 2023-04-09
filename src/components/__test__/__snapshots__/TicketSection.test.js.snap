@@ -116,11 +116,18 @@ exports[`renders correctly 1`] = `
     <div
       className=""
     >
-      <button
-        className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+      <a
+        href="/therapist"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
-        learnMore
-      </button>
+        <button
+          className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+        >
+          learnMore
+        </button>
+      </a>
     </div>
   </div>
 </div>
