@@ -36,11 +36,13 @@ function Login({ t }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             await logIn(formData.email, formData.password);
-            const users = await getDocument("user");
-            const user = users.find((user) => user.email === formData.email);
-            if (user) {
-                setUserRole(user.role);
-            }
+            const user = await getDocument("user", [
+                "email",
+                "==",
+                formData.email,
+            ]);
+
+            setUserRole(user[0].role);
 
             if (userRole === "user") {
                 const router = require("next/router").default;
