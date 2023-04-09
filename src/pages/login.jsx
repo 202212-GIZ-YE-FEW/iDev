@@ -13,6 +13,8 @@ import {
 } from "@/firebase/firebaseProvidersMethods";
 import { useState } from "react";
 import schema from "@/components/validation/validationSchemalogin";
+import getDocument from "@/firebase/getData";
+
 function Login({ t }) {
     const {
         email = "email",
@@ -21,10 +23,9 @@ function Login({ t }) {
         login = "login",
     } = [];
     const { logIn } = useAuth();
-
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
-
+    const [userRole, setUserRole] = useState("");
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -35,8 +36,19 @@ function Login({ t }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             await logIn(formData.email, formData.password);
-            const router = require("next/router").default;
-            router.push("/appointment");
+            const users = await getDocument("user");
+            const user = users.find((user) => user.email === formData.email);
+            if (user) {
+                setUserRole(user.role);
+            }
+
+            if (userRole === "user") {
+                const router = require("next/router").default;
+                router.push("/about");
+            } else if (userRole === "Therapist") {
+                const router = require("next/router").default;
+                router.push("/");
+            }
         } catch (error) {
             if (error.code === "auth/user-not-found") {
                 setFormErrors({ email: "loginErrorEmailNotExist" });
