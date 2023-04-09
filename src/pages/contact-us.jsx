@@ -4,6 +4,7 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ContactSVG from "public/contactus.svg";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
@@ -27,9 +28,22 @@ function ContactUs({ t, choices }) {
         e.preventDefault();
         try {
             await schema.validate(formData, { abortEarly: false });
-            await sendForm(formData, "contact");
-            setFormData({});
-            setFormErrors({});
+            const response = await sendForm(formData, "contact");
+            if (response.success === 0) {
+                toast(response.message, {
+                    hideProgressBar: true,
+                    autoClose: 2000,
+                    type: "success",
+                });
+                setFormData({});
+                setFormErrors({});
+            } else {
+                toast(response.message, {
+                    hideProgressBar: true,
+                    autoClose: 2000,
+                    type: "error",
+                });
+            }
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
