@@ -13,7 +13,6 @@ import {
 } from "@/firebase/firebaseProvidersMethods";
 import { useState } from "react";
 import schema from "@/components/validation/validationSchemalogin";
-import getDocument from "@/firebase/getData";
 
 function Login({ t }) {
     const {
@@ -25,7 +24,6 @@ function Login({ t }) {
     const { logIn } = useAuth();
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
-    const [userRole, setUserRole] = useState("");
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -36,21 +34,8 @@ function Login({ t }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             await logIn(formData.email, formData.password);
-            const user = await getDocument("user", [
-                "email",
-                "==",
-                formData.email,
-            ]);
-
-            setUserRole(user[0].role);
-
-            if (userRole === "user") {
-                const router = require("next/router").default;
-                router.push("/about");
-            } else if (userRole === "Therapist") {
-                const router = require("next/router").default;
-                router.push("/");
-            }
+            const router = require("next/router").default;
+            router.push("/");
         } catch (error) {
             if (error.code === "auth/user-not-found") {
                 setFormErrors({ email: "loginErrorEmailNotExist" });
@@ -90,6 +75,7 @@ function Login({ t }) {
                     >
                         <div className='mb-[0.8rem]'>
                             <Input
+                                field={t(`${email}`)}
                                 type='email'
                                 name='email'
                                 placeholder={t(`${email}`)}
@@ -102,6 +88,7 @@ function Login({ t }) {
                         </div>
                         <div className='mb-[0.8rem]'>
                             <Input
+                                field={t(`${password}`)}
                                 type='password'
                                 name='password'
                                 placeholder={t(`${password}`)}

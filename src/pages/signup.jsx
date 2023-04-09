@@ -12,8 +12,8 @@ import {
     signInWithFbAccount,
 } from "@/firebase/firebaseProvidersMethods";
 import { useAuth } from "@/components/context/AuthContext";
-import addData from "@/firebase/addData";
-import schema from "@/components/validation/validationSchema";
+import addDocument from "@/firebase/addData";
+import schema from "@/components/validation/validationSchemaSignUp";
 
 function SignUp({ t }) {
     const { signUp, user, sendEmailConfirmation } = useAuth();
@@ -45,10 +45,9 @@ function SignUp({ t }) {
             await schema.validate(formData, { abortEarly: false });
             await signUp(formData.email, formData.password);
             const collection = "user"; // collection name
-            const userId = user.uid; // document ID
             const userData = {
                 active: "true",
-                deleted: "true",
+                deleted: "false",
                 education_level: "",
                 email: formData.email,
                 familySize: "4",
@@ -58,9 +57,9 @@ function SignUp({ t }) {
                 last_name: formData.lastName,
                 date_brith: formData.dateOfBirth,
                 phoneNumber: "",
-                role: "user",
+                isTherapist: "false",
             };
-            addData(collection, userId, userData).then((response) => {
+            addDocument(collection, userData).then((response) => {
                 sendEmailConfirmation();
                 const router = require("next/router").default;
                 router.push({
