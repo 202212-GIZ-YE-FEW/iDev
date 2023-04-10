@@ -7,6 +7,7 @@ import {
     signOut,
 } from "firebase/auth";
 import { auth } from "@/firebase/config";
+import { isLoggedIn } from "@/firebase/firebaseProvidersMethods";
 
 const AuthContext = createContext({});
 
@@ -15,6 +16,7 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthContextProvider({ children }) {
     const [user, setUser] = useState({ email: null, uid: null });
     const [loading, setLoading] = useState(true);
+    const [authenticated, setAuthenticated] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -23,11 +25,13 @@ export function AuthContextProvider({ children }) {
                     email: user.email,
                     uid: user.uid,
                 });
+                setAuthenticated(true);
             } else {
                 setUser({ email: null, uid: null });
+                setAuthenticated(false);
             }
+            setLoading(false);
         });
-        setLoading(false);
 
         return () => unsubscribe();
     }, []);
@@ -42,6 +46,7 @@ export function AuthContextProvider({ children }) {
 
     const logOut = async () => {
         setUser({ email: null, uid: null });
+        setAuthenticated(false);
         await signOut(auth);
     };
     const sendEmailConfirmation = () => {
@@ -53,7 +58,14 @@ export function AuthContextProvider({ children }) {
 
     return (
         <AuthContext.Provider
-            value={{ user, signUp, logIn, logOut, sendEmailConfirmation }}
+            value={{
+                user,
+                authenticated,
+                signUp,
+                logIn,
+                logOut,
+                sendEmailConfirmation,
+            }}
         >
             {loading ? <div>Loading...</div> : children}
         </AuthContext.Provider>
