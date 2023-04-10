@@ -10,8 +10,9 @@ import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import { useState } from "react";
 import addDocument from "@/firebase/addData";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import updateDocumentField from "@/firebase/updateData";
 function Therapist({ t }) {
-    const { authenticated, currentUser } = useAuth();
+    const { authenticated, user } = useAuth();
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
 
@@ -25,17 +26,18 @@ function Therapist({ t }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             const collection = "user"; // collection name
+            const fieldName = "email"; // replace with your field name
+            const fieldValue = user.email; // replace with your field value
             const userData = {
-                userName: "",
-                city: "",
-                LicenseNamber: 7899000,
-                email: currentUser.email,
+                userName: formData.userName,
+                city: formData.city,
+                LicenseNamber: formData.licenseNamber,
             };
-            addDocument(collection, userData).then((response) => {
-                const router = require("next/router").default;
-                router.push({
-                    pathname: "/thanks",
-                });
+
+            updateDocumentField(collection, fieldName, fieldValue, userData);
+            const router = require("next/router").default;
+            router.push({
+                pathname: "/",
             });
         } catch (error) {
             if (error.inner) {
