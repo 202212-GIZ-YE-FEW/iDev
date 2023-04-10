@@ -16,5 +16,8 @@
     "createAnAccount": "Create An Account",
     "or": "or",
     "loggedin": "You are already logged in",
-    "pleaseLogin": "Please login to be able to join"
+    "pleaseLogin": "Please login to be able to join",
+    "selectGender": "Select Gender",
+    "male": "Male",
+    "female": "Female"
 }

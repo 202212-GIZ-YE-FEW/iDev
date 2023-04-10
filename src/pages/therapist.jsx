@@ -4,24 +4,21 @@ import { useAuth } from "@/components/context/AuthContext";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import schema from "@/utils/validationSchemaSignUp";
+import schema from "@/utils/validationSchemaTherapist";
 import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import { useState } from "react";
 import addDocument from "@/firebase/addData";
-function Therapist({ t, choices }) {
-    const { authenticated } = useAuth();
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+function Therapist({ t }) {
+    const { authenticated, currentUser } = useAuth();
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-    const [gender, setGender] = React.useState("male");
 
-    const handleGenderChange = (event) => {
-        setGender(event.target.value);
-    };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -29,21 +26,10 @@ function Therapist({ t, choices }) {
             await schema.validate(formData, { abortEarly: false });
             const collection = "user"; // collection name
             const userData = {
-                active: true,
-                deleted: false,
-                education_level: "",
-                email: formData.email,
-                familySize: 4,
-                first_name: formData.firstName,
-                gender: "",
-                hobbies: "",
-                last_name: formData.lastName,
-                date_brith: formData.dateOfBirth,
-                phoneNumber: "",
-                isTherapist: false,
                 userName: "",
                 city: "",
                 LicenseNamber: 7899000,
+                email: currentUser.email,
             };
             addDocument(collection, userData).then((response) => {
                 const router = require("next/router").default;
@@ -78,8 +64,13 @@ function Therapist({ t, choices }) {
                                 <Input
                                     label={t("userName")}
                                     type='text'
-                                    name='text'
                                     inputWidthSize='w-full'
+                                    field={t("userName")}
+                                    name='userName'
+                                    value={formData.userName || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.userName}
+                                    t={t}
                                 />
                             </div>
                             <div
@@ -89,8 +80,13 @@ function Therapist({ t, choices }) {
                                 <Input
                                     label={t("city")}
                                     type='text'
-                                    name='text'
                                     inputWidthSize='w-full'
+                                    field={t("city")}
+                                    name='city'
+                                    value={formData.city || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.city}
+                                    t={t}
                                 />
                             </div>
                             <div
@@ -100,29 +96,34 @@ function Therapist({ t, choices }) {
                                 <Input
                                     label={t("licenseNamber")}
                                     type='text'
-                                    name='text'
                                     inputWidthSize='w-full'
+                                    field={t("licenseNamber")}
+                                    name='licenseNamber'
+                                    value={formData.licenseNamber || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.licenseNamber}
+                                    t={t}
                                 />
                             </div>
 
                             <div>
-                                <RadioGroup title='Select Gender'>
+                                <RadioGroup title={t("selectGender")}>
                                     <RadioInputItem
                                         id='male'
                                         name='gender'
                                         value='male'
-                                        checked={gender === "male"}
-                                        onChange={handleGenderChange}
-                                        title='Male'
+                                        checked={formData.gender === "male"}
+                                        onChange={handleChange}
+                                        title={t("male")}
                                         asButton
                                     />
                                     <RadioInputItem
                                         id='female'
                                         name='gender'
                                         value='female'
-                                        checked={gender === "female"}
-                                        onChange={handleGenderChange}
-                                        title='Female'
+                                        checked={formData.gender === "female"}
+                                        onChange={handleChange}
+                                        title={t("female")}
                                         asButton
                                     />
                                 </RadioGroup>
@@ -134,6 +135,7 @@ function Therapist({ t, choices }) {
                                     size='medium'
                                     fontSize='lg:text-xl xl xl:text-xl'
                                     radius='md'
+                                    onClick={handleSubmit}
                                 />
                             </div>
                         </form>
@@ -145,5 +147,18 @@ function Therapist({ t, choices }) {
         </div>
     );
 }
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, [
+                "common",
+                "signup",
+                "validation",
+            ])),
 
-export default withTranslation("signup")(Therapist);
+            // Will be passed to the page component as props
+        },
+    };
+}
+
+export default withTranslation(["signup", "validation"])(Therapist);
