@@ -18,7 +18,7 @@ function RequirementsSection({ t, requirements }) {
                 )}
             </div>
             <Button
-                content='Get started'
+                content={t("getStarted")}
                 textTransform='uppercase'
                 filled='true'
                 size='large'
