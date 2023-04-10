@@ -5,7 +5,7 @@ import HeroSection from "./HomePage/HeroSection";
 import RecentBlogSection from "./HomePage/RecentBlogSection";
 import TicketSection from "./HomePage/TicketSection";
 import TrustTherapistSection from "./HomePage/TrustTherapistSection";
-export function HomePage() {
+function HomePage() {
     return (
         <>
             <HeroSection />
