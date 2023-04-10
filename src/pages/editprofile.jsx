@@ -24,7 +24,6 @@ export default function editprofile({ t }) {
                     <Dropdown
                         className='lg:w-8/12'
                         placeholder='select '
-                        name='fullName'
                         data={[
                             { value: 1, label: "Bacholar" },
                             { value: 2, label: "Master" },
@@ -40,7 +39,7 @@ export default function editprofile({ t }) {
                 <div className='flex flex-row my-5 '>
                     <label className='lg:w-3/12 me-4 '>{t("familySize")}</label>
                     <div className='flex'>
-                        <Input type='number' name='FamileSize' />
+                        <Input type='number' name='FamilySize' />
                         <p className='m-5'>{t("Member(s)")}</p>
                     </div>
                 </div>

@@ -4,15 +4,15 @@ function Dropdown(props) {
         placeholder,
         value,
         data,
-        FontSize = "3xl",
+        // FontSize = "3xl",
         FontWeight = "light",
         WidthSize = "w-full",
         radius = "md",
     } = props;
-    const inputClasses = `${WidthSize} border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius}`;
+    const inputClasses = `${WidthSize} border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-sm font-${FontWeight} rounded-${radius}`;
 
     const handleChange = (event) => {
-        const { value } = event.target;
+        event.target;
         // onChange(value);
     };
     return (
