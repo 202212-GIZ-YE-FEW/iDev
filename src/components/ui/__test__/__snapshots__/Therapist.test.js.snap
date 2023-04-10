@@ -107,6 +107,7 @@ exports[`renders correctly 1`] = `
         >
           <button
             className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-xl xl xl:text-xl rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+            disabled={false}
           >
             create
           </button>
