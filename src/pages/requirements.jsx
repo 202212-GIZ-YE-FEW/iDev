@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
-import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RequirementSVG from "public/requirements.svg";
 import { useEffect, useState } from "react";
@@ -12,10 +11,8 @@ import RequirementsSection from "@/components/RequirementsSection";
 
 import getDocument from "@/firebase/getData";
 
-function Requirements({ t, requirements }) {
+function Requirements({ t, i18n, requirements }) {
     const [requirement, setRequirement] = useState([]);
-    const { i18n } = useTranslation("requirements");
-
     useEffect(() => {
         const data = requirements.filter((item) => item.id === i18n.language);
         const dataArr = data[0].content.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
