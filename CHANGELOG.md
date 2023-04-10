@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## 0.1.0 (2023-04-09)
 
-
 ### Features
 
 * **about apge:** about Page ([0fe6d7b](https://github.com/202212-GIZ-YE-FEW/iDev/commit/0fe6d7b7d2224690ea8f8dce7dff08911300bfd0))
@@ -149,7 +148,6 @@ All notable changes to this project will be documented in this file. See [standa
 * wrap field control by form and adding button ([351ffca](https://github.com/202212-GIZ-YE-FEW/iDev/commit/351ffca7a1cc09ef5a88264dc9e4de80a8186c82))
 * write component style ([162042b](https://github.com/202212-GIZ-YE-FEW/iDev/commit/162042b309cfb8e8f1c1f987e87a89c53f775cb7))
 
-
 ### Bug Fixes
 
 * add validation for children component in radio group ([dc46478](https://github.com/202212-GIZ-YE-FEW/iDev/commit/dc46478c2dd68ac9d062745ca3729763e65c5586))
@@ -254,14 +252,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### New Features
 
-- #### Shimmer for NextImage and Skeleton
-    
+* #### Shimmer for NextImage and Skeleton
+
     Addition of shimmer & blur placeholder for NextImage, and new Skeleton Component with shimmer effect.
 
-    https://user-images.githubusercontent.com/55318172/155867729-8c3176ad-ede4-4443-b42b-780517615e5a.mp4
+    <https://user-images.githubusercontent.com/55318172/155867729-8c3176ad-ede4-4443-b42b-780517615e5a.mp4>
 
-
-- #### Support for SVGR
+* #### Support for SVGR
 
     You can directly import SVG like
 
@@ -271,24 +268,24 @@ All notable changes to this project will be documented in this file. See [standa
     <Vercel className='text-5xl' />
     ```
 
-- #### Public Folder Path Mapping
+* #### Public Folder Path Mapping
 
     Easily access public folder with `~/` prefix.
 
-- #### Tailwind CSS Prettier Sorter
+* #### Tailwind CSS Prettier Sorter
 
     ts-nextjs-tailwind-starter now use first-party plugin `prettier-plugin-tailwindcss`
 
 ### Improvements & Bug Fixes
 
-- #### Layout Declared Twice
+* #### Layout Declared Twice
 
     Fix issue where adding elements to Layout ends up rendering them twice
 
-- #### ESLint Curly Brace Rule
+* #### ESLint Curly Brace Rule
 
     New autofixable rule
-    
+
     ```tsx
     props={'hi'}
 
@@ -301,80 +298,77 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### New Features
 
-- #### New Component: PrimaryLink
+* #### New Component: PrimaryLink
 
     Add a link component with accent color on top of UnstyledLink.
 
 ### Improvements & Bug Fixes
 
-- #### Unused Import ESlint Autofix
+* #### Unused Import ESlint Autofix
 
     Unused import will automatically be removed by the ESlint autofix.
 
-- #### Renamed CustomLink to UnderlineLink
+* #### Renamed CustomLink to UnderlineLink
 
     This is to compensate the new PrimaryLink component
 
-- #### Primary Button & ButtonLink Shade
+* #### Primary Button & ButtonLink Shade
 
     The shade of the button is now using the `500` instead of `400`.
-
 
 ## 0.5.1 - 2021-12-26
 
 ### New Features
 
-- #### New Snippets Wrap: clsx and fragment `<></>`
-    
-    You can select text then wrap it with clsx or React.Fragment shorthand.
-    
-    https://user-images.githubusercontent.com/55318172/147401848-3db5dba0-ef71-4f25-9f47-c7908beba69e.mp4
+* #### New Snippets Wrap: clsx and fragment `<></>`
 
+    You can select text then wrap it with clsx or React.Fragment shorthand.
+
+    <https://user-images.githubusercontent.com/55318172/147401848-3db5dba0-ef71-4f25-9f47-c7908beba69e.mp4>
 
 ## 0.5.0 - 2021-12-21
 
 ### New Features
 
-- #### Expansion Pack
+* #### Expansion Pack
+
     You can easily add expansion such as React Hook Form + Components, Storybook, and more just using a single command line.
 
-    https://user-images.githubusercontent.com/55318172/146631994-e1cac137-1664-4cfe-950b-a96decc1eaa6.mp4
+    <https://user-images.githubusercontent.com/55318172/146631994-e1cac137-1664-4cfe-950b-a96decc1eaa6.mp4>
 
     Check out the [expansion pack repository](https://github.com/theodorusclarence/expansion-pack) for the commands
 
 ### Improvements & Bug Fixes
 
-- #### Can't Use Layout Fill on NextImage
+* #### Can't Use Layout Fill on NextImage
 
     Using layout fill will make the width and height optional
 
-- #### Vertically center Button & ButtonLink
+* #### Vertically center Button & ButtonLink
 
     Adds `items-center` to make the button vertically centered
-
 
 ## 0.4.1 - 2021-12-12
 
 ### New Features
 
-- #### Tailwind CSS v3
-    
-    The color palette configuration is also updated accordingly. 
+* #### Tailwind CSS v3
+
+    The color palette configuration is also updated accordingly.
 
 ## 0.4.0 - 2021-12-02
 
 ### New Features
 
-- #### Button & ButtonLink Variants
+* #### Button & ButtonLink Variants
 
-    - New Variant: **Outline** and **Ghost**, you can also add `isDarkBg` prop if you are using these variants with dark background.
-    - Animated Underline style on **Primary**, **Dark**, **Light** is removed
-    - Added `ring-primary-500` on `focus-visible`
+  * New Variant: **Outline** and **Ghost**, you can also add `isDarkBg` prop if you are using these variants with dark background.
+  * Animated Underline style on **Primary**, **Dark**, **Light** is removed
+  * Added `ring-primary-500` on `focus-visible`
 
     ![Button Variants](https://user-images.githubusercontent.com/55318172/144385213-632b3e1f-9a0e-4184-82e0-7905ee3318b4.gif)
 
-- #### ArrowLink
-
+* #### ArrowLink
 
     Adds an animated arrow, this component is Polymorphic, the default element is `CustomLink`, you can extend it with `as` prop.
 
@@ -390,14 +384,15 @@ All notable changes to this project will be documented in this file. See [standa
 
     ![Arrow Link Feature](https://user-images.githubusercontent.com/55318172/144385991-f3521d52-e0a8-49c5-8e87-409231fdd5b6.gif)
 
-- #### Change default theme to white
+* #### Change default theme to white
 
     | ![Home Page](https://user-images.githubusercontent.com/55318172/144386763-00e6c3fd-ee2e-4c9e-87f8-18b036bdc2e1.png) | ![404](https://user-images.githubusercontent.com/55318172/144386764-0e4b4fb0-35a8-4725-a795-f998b06543a1.png) |
+
     | - | - |
 
 ### Improvements & Bug Fixes
 
-- #### Split Next.js Link Props Type
+* #### Split Next.js Link Props Type
 
     Now, to add props to Next.js `<Link>` component, you can use `nextLinkProps`.
 
@@ -414,7 +409,7 @@ All notable changes to this project will be documented in this file. See [standa
 
     The rest of `<a>` props can be directly added as a prop.
 
-- #### Add Motion Safe to Animations
+* #### Add Motion Safe to Animations
 
     All components animation respect user preference about motion.
 
@@ -422,7 +417,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### New Features
 
-- #### Create Branch & Auto Resolve Issue Actions
+* #### Create Branch & Auto Resolve Issue Actions
 
     | ![Create Branch Actions](https://user-images.githubusercontent.com/55318172/144379834-8c3e4d4f-d584-4253-9ad8-b9f1d468ed01.gif) <br> Auto Create Branch | ![Auto Resolve](https://user-images.githubusercontent.com/55318172/144382044-0132e755-9cd5-4805-a756-4086f67b3282.gif) <br> Auto Resolve  |
     | :--: | :--: |
@@ -431,7 +426,7 @@ All notable changes to this project will be documented in this file. See [standa
 
     The branch will be created on **assign** with format `i${number}-${issue_title_lowercase}`.
 
-- #### Custom Tailwind CSS Class Sorter
+* #### Custom Tailwind CSS Class Sorter
 
     Classes are sorted using [prettier-plugin-sort-class-names](https://github.com/PutziSan/prettier-plugin-sort-class-names) with custom class order on [this file](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/prettier-plugin-sort-class-names-order) and custom variant order on [prettierrc](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/.prettierrc.js)
 
@@ -441,11 +436,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### New Features
 
-- #### Jest
+* #### Jest
 
     Jest is configured and will be run every push on Github Actions
 
-- #### Lint Github Action
+* #### Lint Github Action
 
     1. **ESLint** - will fail if there are any warning and error.
     2. **Type Check** - will fail on `tsc` error.
@@ -456,21 +451,20 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### New Features
 
-- #### Installed Packages
+* #### Installed Packages
 
     1. [clsx](https://bundlephobia.com/package/clsx@latest), utility for constructing `className` strings conditionally.
     2. [react-icons](https://bundlephobia.com/package/react-icons@latest), svg react icons of popular icon packs.
 
-- #### UnstyledLink Component
+* #### UnstyledLink Component
 
     Used as a component for Next.js Link. Will render out Next/Link if the href started with `/` or `#`, else will render an `a` tag with `target='_blank'`. Also add a cursor style for outside links
 
-- #### CustomLink Component
+* #### CustomLink Component
 
     ![customlink](https://user-images.githubusercontent.com/55318172/129183546-4e8c2059-0493-4459-a1e9-755fbd32fe39.gif)
 
-
-- #### Absolute Import
+* #### Absolute Import
 
     You can import without using relative path
 
@@ -482,7 +476,7 @@ All notable changes to this project will be documented in this file. See [standa
     import Nav from '@/components/Nav';
     ```
 
-- #### Seo Component
+* #### Seo Component
 
     Configure the default in `src/components/Seo.tsx`. If you want to use the default, just add `<Seo />` on top of your page.
 
@@ -494,15 +488,15 @@ All notable changes to this project will be documented in this file. See [standa
 
     or if you want to still keep the title like `%s | Next.js Tailwind Starter`, you can use `templateTitle` props.
 
-- #### Custom 404 Page
+* #### Custom 404 Page
 
 ![404](https://user-images.githubusercontent.com/55318172/129184274-d90631f2-6688-4ed2-bef2-a4d018a4863c.gif)
 
-- #### Workspace Snippets
+* #### Workspace Snippets
 
 Snippets such as React import, useState, useEffect, React Component. [View more](/.vscode/typescriptreact.code-snippets)
 
-- #### Husky, Prettier, Lint, and Commitlint Configured
+* #### Husky, Prettier, Lint, and Commitlint Configured
 
     3 Husky hooks including:
 
@@ -510,15 +504,15 @@ Snippets such as React import, useState, useEffect, React Component. [View more]
     2. commit-msg, running commitlint to ensure the use of [Conventional Commit](https://theodorusclarence.com/library/conventional-commit-readme) for commit messages
     3. post-merge, running `yarn` every `git pull` or after merge to ensure all new packages are installed and ready to go
 
-- #### Default Favicon Declaration
+* #### Default Favicon Declaration
 
     Use [Favicon Generator](https://www.favicon-generator.org/) and then overwrite the files in `/public/favicon`
 
-- #### Default Tailwind CSS Base Styles
+* #### Default Tailwind CSS Base Styles
 
     There are default styles for responsive heading sizes, and `.layout` to support a max-width for larger screen size. Find more about it on [my blog post](https://theodorusclarence.com/blog/tailwindcss-best-practice#1-using-layout-class-or-container)
 
-- #### Open Graph Generator
+* #### Open Graph Generator
 
     | ![image](https://user-images.githubusercontent.com/55318172/137617070-806a0509-84bd-4cae-a900-2ab17e418d8d.png) | ![image](https://user-images.githubusercontent.com/55318172/137617090-c24f684a-bfe5-41b6-8ba9-fa99bae5cadf.png) |
     | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -527,7 +521,7 @@ Snippets such as React import, useState, useEffect, React Component. [View more]
 
     Check out the [repository](https://github.com/theodorusclarence/og) to see the API parameters.
 
-- #### Preloaded & Self Hosted Inter Fonts
+* #### Preloaded & Self Hosted Inter Fonts
 
     Inter fonts is a variable fonts that is self hosted and preloaded.
 
@@ -642,4 +636,3 @@ Snippets: `reg`
 ```
 
 You should also use [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) extension.
-
