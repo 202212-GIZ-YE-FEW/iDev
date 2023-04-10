@@ -1,10 +1,10 @@
 import { withTranslation } from "next-i18next";
 
-import CommunicateThroughSection from "./HomePage/CommunicateThroughSection";
-import HeroSection from "./HomePage/HeroSection";
-import RecentBlogSection from "./HomePage/RecentBlogSection";
-import TicketSection from "./HomePage/TicketSection";
-import TrustTherapistSection from "./HomePage/TrustTherapistSection";
+import CommunicateThroughSection from "./Homepage/CommunicateThroughSection";
+import HeroSection from "./Homepage/HeroSection";
+import RecentBlogSection from "./Homepage/RecentBlogSection";
+import TicketSection from "./Homepage/TicketSection";
+import TrustTherapistSection from "./Homepage/TrustTherapistSection";
 function HomePage() {
     return (
         <>
