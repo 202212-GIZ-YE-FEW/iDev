@@ -5,7 +5,6 @@ import HeroSection from "@/components/HeroSection";
 import RecentBlogSection from "@/components/RecentBlogSection";
 import TicketSection from "@/components/TicketSection";
 import TrustTherapistSection from "@/components/TrustTherapistSection";
-import Editprofile from "@/pages/editprofile";
 
 export default function HomePage() {
     return (
@@ -20,7 +19,6 @@ export default function HomePage() {
             <section className='bg-light-cyan py-20'>
                 <RecentBlogSection />
             </section>
-            <Editprofile />
             <section className='bg-white py-20'>
                 <TicketSection />
             </section>
