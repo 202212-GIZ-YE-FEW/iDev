@@ -16,13 +16,13 @@ export default function editprofile({ t }) {
                 <PreviewProfile />
             </div>
             <div className='mt-5 max-w-xl md:mx-auto md:shrink-0 xl:w-8/12 lg:w-8/12 md:w-8/12 w-12/12'>
-                <FormTitle title={t("ProfileInfo")} />
+                <FormTitle title={t("profileInfo")} />
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("FullName")}</label>
+                    <label className='w-4/12'>{t("fullName")}</label>
                     <Input className='lg:w-8/12' type='text' name='fullName' />
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("EducationLevel")}</label>
+                    <label className='w-4/12'>{t("educationLevel")}</label>
                     <Dropdown
                         className='lg:w-8/12'
                         placeholder='select '
@@ -40,7 +40,7 @@ export default function editprofile({ t }) {
                     <Input className='lg:w-8/12' type='text' name='Hubbies' />
                 </div>
                 <div className='flex flex-row my-5 '>
-                    <label className='lg:w-3/12 me-4 '>{t("FamilySize")}</label>
+                    <label className='lg:w-3/12 me-4 '>{t("familySize")}</label>
                     <div className='flex'>
                         <Input type='number' name='FamileSize' />
                         <p className='m-5'>{t("Member(s)")}</p>
@@ -60,19 +60,19 @@ export default function editprofile({ t }) {
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
                     <label className='w-4/12'>{t("BirthDate")}</label>
-                    <Input type='date' name='BirthDate' />
+                    <Input type='date' name='birthDate' />
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("email")}</label>
+                    <label className='w-4/12'>{t("Email")}</label>
                     <Input type='email' name='email' />
                 </div>
 
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("PhoneNumber")}</label>
+                    <label className='w-4/12'>{t("phoneNumber")}</label>
                     <Input type='text' name='PhoneNumber' />
                 </div>
                 <div className='flex flex-row my-5 gap-6'>
-                    <label className='w-4/12'>{t("UploadId")}</label>
+                    <label className='w-4/12'>{t("uploadId")}</label>
 
                     <label
                         for='upload'
@@ -88,23 +88,21 @@ export default function editprofile({ t }) {
                     <Input type='name' name='password' />
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("ConfirmPassword")}</label>
+                    <label className='w-4/12'>{t("confirmPassword")}</label>
                     <Input type='password' name='password' />
                 </div>
                 <div className='flex gap-10 my-8'>
                     <Button
-                        content={t("SaveChanges")}
+                        content={t("saveChanges")}
                         filled='true'
                         size='small'
-                        // fontSize='lg:text-md xl:text-sm'
                         radius='md '
                         shadow='shadow-lg'
                     />
                     <Button
-                        content={t("DeleteAccount")}
+                        content={t("deleteAccount")}
                         filled='true'
                         size='small'
-                        // fontSize='lg:text-md xl:text-sm'
                         radius='md '
                         shadow='shadow-lg'
                     />
@@ -112,18 +110,17 @@ export default function editprofile({ t }) {
                         content={t("Cancel")}
                         filled='true'
                         size='small'
-                        // fontSize='lg:text-md xl:text-sm'
                         radius='md '
                         shadow='shadow-lg'
                     />
                 </div>
 
-                <FormTitle title={t("PaymentMethods&Tickets")} />
+                <FormTitle title={t("paymentMethods&Tickets")} />
                 <div className='flex gap-10 my-8'>
                     <div className='flex flex-col gap-5'>
-                        <p>{t("3CardsAdded")}</p>
+                        <p>{t("3cardsAdded")}</p>
                         <Button
-                            content={t("SHowCards")}
+                            content={t("sHowCards")}
                             filled='true'
                             size='small'
                             // fontSize='lg:text-md xl:text-sm'
@@ -132,12 +129,11 @@ export default function editprofile({ t }) {
                         />
                     </div>
                     <div className='flex flex-col gap-5'>
-                        <p>{t("10TicketsRemaining")}</p>
+                        <p>{t("10ticketsRemaining")}</p>
                         <Button
                             content={t("BuyTickets")}
                             filled='true'
                             size='small'
-                            // fontSize='lg:text-md xl:text-sm'
                             radius='md '
                             shadow='shadow-lg'
                         />
@@ -155,7 +151,6 @@ export async function getStaticProps({ locale }) {
                 "editprofile",
                 "common",
             ])),
-            // Will be passed to the page component as props
         },
     };
 }
