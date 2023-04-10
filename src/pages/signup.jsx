@@ -49,18 +49,21 @@ function SignUp({ t }) {
             await signUp(formData.email, formData.password);
             const collection = "user"; // collection name
             const userData = {
-                active: "true",
-                deleted: "false",
+                active: true,
+                deleted: false,
                 education_level: "",
                 email: formData.email,
-                familySize: "4",
+                familySize: 4,
                 first_name: formData.firstName,
                 gender: "",
                 hobbies: "",
                 last_name: formData.lastName,
                 date_brith: formData.dateOfBirth,
                 phoneNumber: "",
-                isTherapist: "false",
+                isTherapist: false,
+                userName: "",
+                city: "",
+                LicenseNamber: 7899000,
             };
             addDocument(collection, userData).then((response) => {
                 sendEmailConfirmation();
