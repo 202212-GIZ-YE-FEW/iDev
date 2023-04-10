@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
-import PageIntro from "./PageIntro";
-import Button from "./ui/Button";
+import PageIntro from "../PageIntro";
+import Button from "../ui/Button";
 function TrustTherapists({ t }) {
     return (
         <>

@@ -3,8 +3,8 @@ import Carousel from "react-multi-carousel";
 
 import "react-multi-carousel/lib/styles.css";
 
-import PageIntro from "./PageIntro";
 import BlogItem from "./RecentBlogItem";
+import PageIntro from "../PageIntro";
 function RecentBlogsSection({ t }) {
     const recentBlogs = [
         {
