@@ -16,7 +16,7 @@ const Input = (props) => {
         inputWidthSize = "w-full",
         radius = "md",
         shadow = "sm",
-        border = "light-gray",
+        touched,
         error,
         t,
     } = props;
@@ -43,7 +43,7 @@ const Input = (props) => {
                 placeholder={placeholder}
                 className={inputClasses}
             />
-            {error && (
+            {error && touched && (
                 <div className='text-red text-sm md:text-base mt-1'>
                     {t(`validation:${error}`, {
                         field: t(`${label}`),

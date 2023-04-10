@@ -1,9 +1,9 @@
+import { useFormik } from "formik";
 import Head from "next/head";
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ContactSVG from "public/contactus.svg";
-import { useState } from "react";
 import { toast } from "react-toastify";
 
 import PageIntro from "@/components/PageIntro";
@@ -16,48 +16,44 @@ import Textarea from "@/components/ui/textarea/Textarea";
 import getDocument from "@/firebase/getData";
 import { postHandler } from "@/utils/api";
 import schema from "@/utils/validationSchema";
-
 function ContactUs({ t, choices }) {
-    const [formData, setFormData] = useState({});
-    const [formErrors, setFormErrors] = useState({});
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await schema.validate(formData, { abortEarly: false });
-            const response = await postHandler("/api/contact", formData);
-            if (response.data.success === 0) {
-                toast(response.data.message, {
-                    hideProgressBar: true,
-                    position: "bottom-left",
-                    autoClose: 2000,
-                    type: "success",
-                });
-                setFormData({});
-                setFormErrors({});
-            } else {
-                toast(response.data.message, {
-                    hideProgressBar: true,
-                    position: "bottom-left",
-                    autoClose: 2000,
-                    type: "error",
-                });
-            }
-        } catch (error) {
-            if (error.inner) {
-                const newErrors = {};
-                error.inner.forEach((e) => {
-                    newErrors[e.path] = e.message;
-                });
-                setFormErrors(newErrors);
-            }
+    const onSubmit = async (values, actions) => {
+        const response = await postHandler("/api/contact", values);
+        if (response.data.success === 0) {
+            toast(response.data.message, {
+                hideProgressBar: true,
+                position: "bottom-left",
+                autoClose: 2000,
+                type: "success",
+            });
+        } else {
+            toast(response.data.message, {
+                hideProgressBar: true,
+                position: "bottom-left",
+                autoClose: 2000,
+                type: "error",
+            });
         }
+        actions.resetForm();
     };
-    const [typeOfContact, setTypeOfContact] = useState("");
-
+    const {
+        values,
+        errors,
+        touched,
+        isSubmitting,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+    } = useFormik({
+        initialValues: {
+            fullName: "",
+            email: "",
+            details: "",
+            typeContact: "",
+        },
+        validationSchema: schema,
+        onSubmit,
+    });
     return (
         <>
             <Head>
@@ -71,6 +67,7 @@ function ContactUs({ t, choices }) {
                 <div className='grid grid-cols-1 xl:grid-cols-2 my-10 gap-28'>
                     <form
                         onSubmit={handleSubmit}
+                        autoComplete='off'
                         className='flex flex-col md:flex-row md:justify-between xl:flex-col gap-x-5 gap-y-16'
                     >
                         <div>
@@ -83,13 +80,13 @@ function ContactUs({ t, choices }) {
                                             name='typeContact'
                                             value={item[0]}
                                             title={item[1]}
-                                            checked={typeOfContact === item[0]}
-                                            onChange={(e) => {
-                                                setTypeOfContact(
-                                                    e.target.value
-                                                );
-                                                handleChange(e);
-                                            }}
+                                            checked={
+                                                values.typeContact === item[0]
+                                            }
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            error={errors.fullName}
+                                            touched={touched.fullName}
                                         />
                                     );
                                 })}
@@ -98,12 +95,14 @@ function ContactUs({ t, choices }) {
                         <div className='min-w-fit md:min-w-[25rem] lg:min-w-[30rem]'>
                             <div className='mb-[1.2rem]'>
                                 <Input
+                                    value={values.fullName}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    error={errors.fullName}
+                                    touched={touched.fullName}
                                     label={t("fullName")}
                                     type='text'
                                     name='fullName'
-                                    value={formData.fullName || ""}
-                                    onChange={handleChange}
-                                    error={formErrors.fullName}
                                     labelColor='text-black'
                                     placeholder={t("enterFullName")}
                                     shadow='md'
@@ -113,12 +112,14 @@ function ContactUs({ t, choices }) {
                             </div>
                             <div className='mb-[1.2rem]'>
                                 <Input
+                                    value={values.email}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    touched={touched.email}
+                                    error={errors.email}
                                     label={t("email")}
                                     type='text'
                                     name='email'
-                                    value={formData.email || ""}
-                                    onChange={handleChange}
-                                    error={formErrors.email}
                                     labelColor='text-black'
                                     placeholder={t("enterEmail")}
                                     shadow='md'
@@ -128,11 +129,13 @@ function ContactUs({ t, choices }) {
                             </div>
                             <div className='mb-[1.8rem]'>
                                 <Textarea
+                                    value={values.details}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    error={errors.details}
+                                    touched={touched.details}
                                     label={t("details")}
                                     name='details'
-                                    value={formData.details || ""}
-                                    onChange={handleChange}
-                                    error={formErrors.details}
                                     labelColor='text-black'
                                     placeholder={t("enterDetails")}
                                     rows='8'
@@ -142,6 +145,7 @@ function ContactUs({ t, choices }) {
                                 />
                             </div>
                             <Button
+                                disabled={isSubmitting}
                                 content={t("submit")}
                                 text-transform='capitalize'
                                 filled='true'
