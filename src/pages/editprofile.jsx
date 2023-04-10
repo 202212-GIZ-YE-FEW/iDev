@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { React, useState } from "react";
 import FormTitle from "@/components/FormTitle";
 import Input from "@/components/ui/Input";
 import Dropdown from "@/components/ui/Dropdown";
@@ -9,7 +7,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import PreviewProfile from "@/components/ui/PreviewProfile";
 
 export default function editprofile({ t }) {
-    // const { t } = useTranslation("editprofile");
+    // const { t } = useTranslation("profile");
     return (
         <div className='g-6 p-5 flex flex-wrap justify-center justify-space '>
             <div className=' p-2 mb-5'>
@@ -59,8 +57,8 @@ export default function editprofile({ t }) {
                     />
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("BirthDate")}</label>
-                    <Input type='date' name='birthDate' />
+                    <label className='w-4/12'>{t("birthDate")}</label>
+                    <Input type='date' name='BirthDate' />
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
                     <label className='w-4/12'>{t("Email")}</label>
@@ -123,7 +121,6 @@ export default function editprofile({ t }) {
                             content={t("sHowCards")}
                             filled='true'
                             size='small'
-                            // fontSize='lg:text-md xl:text-sm'
                             radius='md '
                             shadow='shadow-lg'
                         />
@@ -131,7 +128,7 @@ export default function editprofile({ t }) {
                     <div className='flex flex-col gap-5'>
                         <p>{t("10ticketsRemaining")}</p>
                         <Button
-                            content={t("BuyTickets")}
+                            content={t("buyTickets")}
                             filled='true'
                             size='small'
                             radius='md '
@@ -147,10 +144,7 @@ export default function editprofile({ t }) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, [
-                "editprofile",
-                "common",
-            ])),
+            ...(await serverSideTranslations(locale, ["profile", "common"])),
         },
     };
 }
