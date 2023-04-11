@@ -4,8 +4,6 @@
     "passwordCriteria": "{{ field }} Have at least (one uppercase letter ,one lowercase letter, one number, one special character from the set @$!%*#?&)",
     "passwordLength": "{{ field }} must be 12 character",
     "dateOfBirthFuture": "{{ field }}cannot be in the future",
-    "firstNameSpaceLetter": "{{ field }} must contain only letters and spaces",
-    "LastNameSpaceLetter": "l{{ field }} must contain only letters and spaces",
     "noRepeatCharacters": "{{ field }} must not contain repeating characters",
     "noCommonWords": "{{ field }} must not contain common words",
     "passwordsMustMatch": "{{ field }} must match",
