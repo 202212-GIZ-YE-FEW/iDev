@@ -1,8 +1,7 @@
 import { withTranslation } from "next-i18next";
 
-import PageIntro from "@/components/PageIntro";
-
 import CommunicateThroughItem from "./CommunicateThroughItem";
+import PageIntro from "../PageIntro";
 function CommunicateThroughSection({ t }) {
     const communicationMeans = [
         {

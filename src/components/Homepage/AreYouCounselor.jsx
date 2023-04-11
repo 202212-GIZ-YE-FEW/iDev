@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
 import Button from "@/components/ui/Button";
@@ -11,15 +12,17 @@ function AreYouCounselor({ t }) {
                 <span className='text-base rtl:text-xl text-black'>
                     {t("askCounselor")}
                 </span>
-                <div className=''>
-                    <Button
-                        content={t("learnMore")}
-                        textTransform='uppercase'
-                        filled='true'
-                        size='large'
-                        fontSize='text-lg md:text-xl lg:text-2xl'
-                        radius='md'
-                    />
+                <div>
+                    <Link href='/requirements'>
+                        <Button
+                            content={t("learnMore")}
+                            textTransform='uppercase'
+                            filled='true'
+                            size='large'
+                            fontSize='text-lg md:text-xl lg:text-2xl'
+                            radius='md'
+                        />
+                    </Link>
                 </div>
             </div>
         </>
