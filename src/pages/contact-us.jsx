@@ -179,15 +179,19 @@ function ContactUs({ t, choices }) {
 }
 
 export async function getStaticProps({ locale }) {
-    const typeOfContactData = await getDocument("type_of_contact");
-    // Take only locale row
-    const typeOfContactDataByLang = typeOfContactData.find(
-        (data) => data.id === locale
-    );
+    let choices = [];
+    const typeOfContactData = await getDocument("contact");
+    if (typeOfContactData) {
+        // Take only locale row
+        const typeOfContactDataByLang = typeOfContactData.find(
+            (data) => data.id === locale
+        );
 
-    // Pick up value field in db, and convert to array to pass
-    const choices = Object.entries(typeOfContactDataByLang.value);
-
+        // Pick up value field in db, and convert to array to pass
+        if (typeOfContactDataByLang.typeContact !== undefined) {
+            choices = Object.entries(typeOfContactDataByLang.typeContact);
+        }
+    }
     return {
         props: {
             ...(await serverSideTranslations(locale, [
