@@ -32,18 +32,18 @@ function editProfile({ t }) {
                     />
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("Hubbies")}</label>
-                    <Input className='lg:w-8/12' type='text' name='Hubbies' />
+                    <label className='w-4/12'>{t("hubbies")}</label>
+                    <Input className='lg:w-8/12' type='text' name='hubbies' />
                 </div>
                 <div className='flex flex-row my-5 '>
                     <label className='lg:w-3/12 me-4 '>{t("familySize")}</label>
                     <div className='flex'>
                         <Input type='number' name='FamilySize' />
-                        <p className='m-5'>{t("Member(s)")}</p>
+                        <p className='m-5'>{t("member(s)")}</p>
                     </div>
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("Gender")}</label>
+                    <label className='w-4/12'>{t("gender")}</label>
                     <Dropdown
                         className='lg:w-8/12'
                         placeholder='select '
@@ -78,9 +78,9 @@ function editProfile({ t }) {
                         <input type='file' hidden />
                     </label>
                 </div>
-                <FormTitle title={t("Security")} />
+                <FormTitle title={t("security")} />
                 <div className='flex flex-row justify-center my-5 gap-6'>
-                    <label className='w-4/12'>{t("Password")}</label>
+                    <label className='w-4/12'>{t("password")}</label>
                     <Input type='name' name='password' />
                 </div>
                 <div className='flex flex-row justify-center my-5 gap-6'>
@@ -103,7 +103,7 @@ function editProfile({ t }) {
                         shadow='shadow-lg'
                     />
                     <Button
-                        content={t("Cancel")}
+                        content={t("cancel")}
                         filled='true'
                         size='small'
                         radius='md '
