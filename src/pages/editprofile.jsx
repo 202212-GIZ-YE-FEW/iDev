@@ -146,4 +146,4 @@ export async function getStaticProps({ locale }) {
         },
     };
 }
-export default withTranslation(["editProfile"])(editProfile);
+export default withTranslation(["profile"])(editProfile);
