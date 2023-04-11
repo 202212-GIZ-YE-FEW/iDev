@@ -2,8 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/202212-GIZ-YE-FEW/iDev/compare/v0.1.0...v0.1.1) (2023-04-09)
+
 ## 0.1.0 (2023-04-09)
 
+>>>>>>>
 ### Features
 
 * **about apge:** about Page ([0fe6d7b](https://github.com/202212-GIZ-YE-FEW/iDev/commit/0fe6d7b7d2224690ea8f8dce7dff08911300bfd0))
