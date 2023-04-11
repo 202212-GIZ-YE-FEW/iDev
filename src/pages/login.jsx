@@ -2,14 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import { useAuth } from "@/components/context/AuthContext";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-
 import schema from "@/utils/validationSchemalogin";
 
 function Login({ t }) {
@@ -26,11 +24,18 @@ function Login({ t }) {
         signInWithFbAccount,
         signInWithGoogleAccount,
     } = useAuth();
+
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+    const router = require("next/router").default;
+    useEffect(() => {
+        if (authenticated) {
+            router.push("/");
+        }
+    }, [authenticated, router]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

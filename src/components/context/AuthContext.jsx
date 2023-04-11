@@ -41,10 +41,10 @@ export function AuthContextProvider({ children }) {
     };
 
     const logIn = (email, password) => {
-        setAuthenticated(true);
-
         localStorage.setItem("image", image);
-        return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password).then(() => {
+            setAuthenticated(true);
+        });
     };
 
     const sendEmailConfirmation = () => {
@@ -55,15 +55,14 @@ export function AuthContextProvider({ children }) {
     };
 
     //SignIn with Google account
-    let isLoggedIn = 0; //check if loggedin to Firebase so remove Login btn and show Logout btn
     const signInWithGoogleAccount = async () => {
         //Login with Google account
 
         try {
             await signInWithPopup(auth, googleProvider);
+            setAuthenticated(true);
             window.alert("welcome " + auth.currentUser.email); //show wich email did singIn
             Router.push("/"); // Navigate to homepage.
-            setAuthenticated(true);
 
             localStorage.setItem("image", auth.currentUser.photoURL);
         } catch (error) {
@@ -112,7 +111,6 @@ export function AuthContextProvider({ children }) {
                 logIn,
                 Logout,
                 sendEmailConfirmation,
-                isLoggedIn,
                 signInWithGoogleAccount,
                 signInWithFbAccount,
             }}
