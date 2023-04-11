@@ -142,12 +142,12 @@ function ContactUs({ t, address, reasons }) {
                                 {t("findAt")}
                             </span>
                             <address className='text-gray/40 not-italic'>
-                                {address.map((item) => {
+                                {address.map((item, index) => {
                                     return (
-                                        <>
+                                        <span key={index}>
                                             {item}
                                             <br />
-                                        </>
+                                        </span>
                                     );
                                 })}
                             </address>
