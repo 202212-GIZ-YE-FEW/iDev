@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth, googleProvider, facebookProvider } from "@/firebase/config";
 import Router from "next/router";
-
+import image from "../../../public/blog.png";
 const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
@@ -26,7 +26,6 @@ export function AuthContextProvider({ children }) {
                     email: user.email,
                     uid: user.uid,
                 });
-                setAuthenticated(true);
             } else {
                 setUser({ email: null, uid: null });
                 setAuthenticated(false);
@@ -42,6 +41,9 @@ export function AuthContextProvider({ children }) {
     };
 
     const logIn = (email, password) => {
+        setAuthenticated(true);
+
+        localStorage.setItem("image", image);
         return signInWithEmailAndPassword(auth, email, password);
     };
 
