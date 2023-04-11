@@ -17,6 +17,7 @@ const Input = (props) => {
         radius = "md",
         field = "",
         shadow = "sm",
+        // touched,
         error,
         t,
     } = props;

@@ -10,10 +10,11 @@ export default function Button(props) {
         radius = "6px",
         shadow = "",
         onClick,
+        disabled = false,
     } = props;
-
     return (
         <button
+            disabled={disabled}
             onClick={onClick}
             className={clsx(
                 `font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
@@ -26,6 +27,7 @@ export default function Button(props) {
                         size === "large",
                     "bg-cyan text-black ": filled === "true",
                     "border-2 border-cyan text-cyan": filled === "false",
+                    "bg-light-gray text-gray": disabled === true,
                 }
             )}
         >

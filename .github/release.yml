@@ -1,0 +1,26 @@
+# .github/release.yml
+
+changelog:
+    exclude:
+        - "^chore(release):"
+        - "^docs:"
+        - "^test:"
+        - "^refactor:"
+        - "^build:"
+        - "^ci:"
+    categories:
+        - title: "🚀 Features"
+          labels:
+              - "feature"
+        - title: "🐛 Bug Fixes"
+          labels:
+              - "fix"
+        - title: "📝 Documentation"
+          labels:
+              - "docs"
+        - title: "🔧 Maintenance"
+          labels:
+              - "chore"
+              - "refactor"
+              - "build"
+              - "ci"
