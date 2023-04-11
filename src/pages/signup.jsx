@@ -11,14 +11,15 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 
 import addDocument from "@/firebase/addData";
-import {
-    signInWithFbAccount,
-    signInWithGoogleAccount,
-} from "@/firebase/firebaseProvidersMethods";
 import schema from "@/utils/validationSchemaSignUp";
 
 function SignUp({ t }) {
-    const { signUp, sendEmailConfirmation, authenticated } = useAuth();
+    const {
+        signUp,
+        sendEmailConfirmation,
+        signInWithFbAccount,
+        signInWithGoogleAccount,
+    } = useAuth();
 
     const {
         firstname = "firstName",

@@ -5,9 +5,10 @@ import {
     signInWithEmailAndPassword,
     sendEmailVerification,
     signOut,
+    signInWithPopup,
 } from "firebase/auth";
-import { auth } from "@/firebase/config";
-import { isLoggedIn } from "@/firebase/firebaseProvidersMethods";
+import { auth, googleProvider, facebookProvider } from "@/firebase/config";
+import Router from "next/router";
 
 const AuthContext = createContext({});
 
@@ -44,16 +45,60 @@ export function AuthContextProvider({ children }) {
         return signInWithEmailAndPassword(auth, email, password);
     };
 
-    const logOut = async () => {
-        setUser({ email: null, uid: null });
-        setAuthenticated(false);
-        await signOut(auth);
-    };
     const sendEmailConfirmation = () => {
         const user = auth.currentUser;
         return sendEmailVerification(user)
             .then(() => console.log("Verification email sent."))
             .catch((error) => console.error(error));
+    };
+
+    //SignIn with Google account
+    let isLoggedIn = 0; //check if loggedin to Firebase so remove Login btn and show Logout btn
+    const signInWithGoogleAccount = async () => {
+        //Login with Google account
+
+        try {
+            await signInWithPopup(auth, googleProvider);
+            window.alert("welcome " + auth.currentUser.email); //show wich email did singIn
+            Router.push("/"); // Navigate to homepage.
+            setAuthenticated(true);
+
+            localStorage.setItem("image", auth.currentUser.photoURL);
+        } catch (error) {
+            setAuthenticated(false);
+            Router.push("/404"); // Navigate to 404.
+            setAuthenticated(false);
+        }
+        return true;
+    };
+    //SignIn with FaceBook account
+    const signInWithFbAccount = async () => {
+        //login with FaceBook
+        try {
+            await signInWithPopup(auth, facebookProvider);
+            window.alert("welcome " + auth.currentUser.email); //show wich email did singIn
+            Router.push("/"); // Navigate to homepage.
+            setAuthenticated(true);
+
+            localStorage.setItem("image", auth.currentUser.photoURL);
+        } catch (error) {
+            setAuthenticated(false);
+            Router.push("/404"); // Navigate to 404.
+            setAuthenticated(false);
+        }
+    };
+    const Logout = async () => {
+        try {
+            setUser({ email: null, uid: null });
+            setAuthenticated(false);
+            await auth.signOut(); // Sign-out successful
+            setAuthenticated(false);
+            localStorage.clear();
+            Router.push("/"); // Navigate to homepage
+        } catch (error) {
+            setAuthenticated(true);
+            Router.push("/404"); // Navigate to homepage.
+        }
     };
 
     return (
@@ -63,8 +108,11 @@ export function AuthContextProvider({ children }) {
                 authenticated,
                 signUp,
                 logIn,
-                logOut,
+                Logout,
                 sendEmailConfirmation,
+                isLoggedIn,
+                signInWithGoogleAccount,
+                signInWithFbAccount,
             }}
         >
             {loading ? <div>Loading...</div> : children}

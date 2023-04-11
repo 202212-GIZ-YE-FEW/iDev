@@ -110,9 +110,7 @@ exports[`renders correctly 1`] = `
         <div
           className="flex flex-row items-center justify-center "
         >
-          <button
-            onClick={[Function]}
-          >
+          <button>
             <svg
               className="mr-4"
               fill="none"
@@ -140,9 +138,7 @@ exports[`renders correctly 1`] = `
               </g>
             </svg>
           </button>
-          <button
-            onClick={[Function]}
-          >
+          <button>
             <svg
               fill="none"
               height="50px"
