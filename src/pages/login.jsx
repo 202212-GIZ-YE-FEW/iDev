@@ -16,7 +16,6 @@ function Login({ t }) {
         password = "password",
         signup = "signup",
         login = "login",
-        loggedin = "loggedin",
     } = [];
     const {
         logIn,
