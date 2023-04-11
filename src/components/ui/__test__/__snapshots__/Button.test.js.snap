@@ -3,5 +3,6 @@
 exports[`renders correctly 1`] = `
 <button
   className="font-normal whitespace-nowrap cursor-pointer  capitalize xl rounded-6px px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+  disabled={false}
 />
 `;

@@ -9,6 +9,7 @@ export default function Textarea(props) {
         border = "light-gray/30",
         shadow = "sm",
         error,
+        touched,
         t,
         ...rest
     } = props;
@@ -33,7 +34,7 @@ export default function Textarea(props) {
                 placeholder={placeholder}
                 {...rest}
             />
-            {error && (
+            {error && touched && (
                 <div className='text-red text-sm md:text-base mt-1'>
                     {t(`validation:${error}`, {
                         field: t(`${label}`),
