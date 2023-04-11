@@ -16,7 +16,7 @@ exports[`renders correctly 1`] = `
     className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
     disabled={false}
   >
-    Get started
+    getStarted
   </button>
 </div>
 `;
