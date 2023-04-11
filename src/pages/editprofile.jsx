@@ -1,13 +1,12 @@
-import FormTitle from "@/components/FormTitle";
-import Input from "@/components/ui/Input";
-import Dropdown from "@/components/ui/Dropdown";
-import Button from "@/components/ui/Button";
-// import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import PreviewProfile from "@/components/ui/PreviewProfile";
 
-export default function editprofile({ t }) {
-    // const { t } = useTranslation("profile");
+import FormTitle from "@/components/FormTitle";
+import Button from "@/components/ui/Button";
+import Dropdown from "@/components/ui/Dropdown";
+import Input from "@/components/ui/Input";
+import PreviewProfile from "@/components/ui/PreviewProfile";
+function editProfile({ t }) {
     return (
         <div className='g-6 p-5 flex flex-wrap justify-center justify-space '>
             <div className=' p-2 mb-5'>
@@ -117,7 +116,7 @@ export default function editprofile({ t }) {
                     <div className='flex flex-col gap-5'>
                         <p>{t("3cardsAdded")}</p>
                         <Button
-                            content={t("sHowCards")}
+                            content={t("showCards")}
                             filled='true'
                             size='small'
                             radius='md '
@@ -143,7 +142,8 @@ export default function editprofile({ t }) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["profile", "common"])),
+            ...(await serverSideTranslations(locale, ["common", "profile"])),
         },
     };
 }
+export default withTranslation(["editProfile"])(editProfile);
