@@ -58,7 +58,6 @@ function ContactUs({ t, address, reasons }) {
                         <div>
                             <RadioGroup title={t("typeOfContact")}>
                                 {reasons.map((item, index) => {
-                                    console.log(item);
                                     return (
                                         <RadioInputItem
                                             key={index}
@@ -143,11 +142,14 @@ function ContactUs({ t, address, reasons }) {
                                 {t("findAt")}
                             </span>
                             <address className='text-gray/40 not-italic'>
-                                3rd Floor <br />
-                                Almasbah Street <br />
-                                Taiz, Yemen
-                                <br />
-                                00000
+                                {address.map((item) => {
+                                    return (
+                                        <>
+                                            {item}
+                                            <br />
+                                        </>
+                                    );
+                                })}
                             </address>
                         </div>
                     </div>
@@ -162,10 +164,9 @@ export async function getStaticProps({ locale }) {
     // Take only locale row
     const currentLangInfo = row.find((data) => data.id === locale);
 
-    // Pick up value field in db, and convert to array to pass
-    const address = currentLangInfo.address;
+    // convert ||-separated string in db address to array.
+    const address = currentLangInfo.address.split("||");
     const reasons = currentLangInfo.typeContact;
-    console.log(address, reasons);
     return {
         props: {
             ...(await serverSideTranslations(locale, [
