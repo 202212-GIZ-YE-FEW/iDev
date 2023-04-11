@@ -164,9 +164,10 @@ export async function getStaticProps({ locale }) {
     // Take only locale row
     const currentLangInfo = row.find((data) => data.id === locale);
 
+    const reasons = currentLangInfo.typeContact;
+
     // convert ||-separated string in db address to array.
     const address = currentLangInfo.address.split("||");
-    const reasons = currentLangInfo.typeContact;
     return {
         props: {
             ...(await serverSideTranslations(locale, [
