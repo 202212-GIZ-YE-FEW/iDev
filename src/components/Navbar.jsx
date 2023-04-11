@@ -6,14 +6,14 @@ import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
 import Button from "@/components/ui/Button";
+import { useAuth } from "./context/AuthContext";
 
-//import { navigation } from "@/constants";
-import { isLoggedIn, Logout } from "@/firebase/firebaseProvidersMethods";
 import { navigation } from "@/utils/constants";
 function LangDropdown(props) {
     const onChangeDir = (locale) => {
         document.dir = locale === "en" ? "ltr" : "rtl";
     };
+
     const { setOpenLangDropdown, openLangDropdown, router } = props;
     return (
         <div
@@ -125,6 +125,7 @@ function MobileNav(prop) {
         router,
         t,
     } = prop;
+    const { Logout, authenticated } = useAuth();
     return (
         <div
             className={`lg:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ${
@@ -152,14 +153,14 @@ function MobileNav(prop) {
             </div>
             <div className='flex flex-col px-4'>
                 {/* Add user Image to Navbar */}
-                {isLoggedIn ? (
+                {authenticated ? (
                     <div className='mt-4 w-14 h-14 sm:left-20 sm:top-40 left-12 top-28 bg-white border-2 border-black rounded-full text-center'>
                         <Image
                             className='rounded-full w-14 h-14object-cover'
                             width={14}
                             height={14}
                             alt='userImage'
-                            src={localStorage.getItem("image")}
+                            src={`/${String(localStorage.getItem("image"))}`}
                         />
                     </div>
                 ) : (
@@ -195,7 +196,7 @@ function MobileNav(prop) {
                         openLangDropdown={openLangDropdown}
                         router={router}
                     />
-                    {!isLoggedIn ? (
+                    {!authenticated ? (
                         <Link href='/signup'>
                             <Button
                                 content={t("login")}
@@ -229,6 +230,7 @@ export default function Navbar() {
     const [openHamburger, setOpenHamburger] = useState(false);
     const [openLangDropdown, setOpenLangDropdown] = useState(false);
     const [openAboutDropdown, setOpenAboutDropdown] = useState(false);
+    const { Logout, authenticated } = useAuth();
     return (
         <nav className='bg-light-cyan'>
             <div className='container flex h-20 py-8 items-center'>
@@ -311,21 +313,23 @@ export default function Navbar() {
                             router={router}
                         />
                         {/* Add Imge */}
-                        {isLoggedIn ? (
+                        {authenticated ? (
                             <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
                                 <Image
                                     className='rounded-full w-14 h-14object-cover'
                                     width={14}
                                     height={14}
                                     alt=''
-                                    src={localStorage.getItem("image")}
+                                    src={`/${String(
+                                        localStorage.getItem("image")
+                                    )}`}
                                 />
                             </div>
                         ) : (
                             <></>
                         )}
                         {/* Add logout Button */}
-                        {!isLoggedIn ? (
+                        {!authenticated ? (
                             <Link href='/signup'>
                                 <Button
                                     content={t("login")}
