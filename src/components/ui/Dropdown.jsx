@@ -1,6 +1,6 @@
 function Dropdown(props) {
     const {
-        label,
+        // label,
         placeholder,
         value,
         data,
