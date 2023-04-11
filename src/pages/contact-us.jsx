@@ -182,15 +182,22 @@ function ContactUs({ t, reasons, address }) {
 }
 
 export async function getStaticProps({ locale }) {
-    const row = await getDocument("contact");
-    // Take only locale row
-    const currentLangInfo = row.find((data) => data.id === locale);
+    let address = [];
+    let reasons = [];
+    try {
+        const row = await getDocument("contact");
+        if (row) {
+            // Take only row of current locale
+            const currentLangInfo = row.find((data) => data.id === locale);
 
-    const reasons = currentLangInfo.typeContact;
+            reasons = currentLangInfo.typeContact;
 
-    // convert ||-separated string in db address to array.
-    const address = currentLangInfo.address.split("||");
-
+            // convert ||-separated string in db address to array.
+            address = currentLangInfo.address.split("||");
+        }
+    } catch (error) {
+        //
+    }
     return {
         props: {
             ...(await serverSideTranslations(locale, [
