@@ -49,8 +49,6 @@ function Login({ t }) {
                 setFormErrors({ email: "loginErrorEmailNotExist" });
             } else if (error.code === "auth/wrong-password") {
                 setFormErrors({ password: "loginErrorWrongPassword" });
-            } else {
-                console.error(error);
             }
             if (error.inner) {
                 const newErrors = {};
