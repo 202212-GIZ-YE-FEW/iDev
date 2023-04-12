@@ -319,7 +319,7 @@ export default function Navbar() {
                                     className='rounded-full w-14 h-14object-cover'
                                     width={14}
                                     height={14}
-                                    alt=''
+                                    alt='userImage'
                                     src={`/${String(
                                         localStorage.getItem("image")
                                     )}`}

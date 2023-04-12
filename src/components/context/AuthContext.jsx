@@ -26,9 +26,12 @@ export function AuthContextProvider({ children }) {
                     email: user.email,
                     uid: user.uid,
                 });
+                setAuthenticated(true); // set authenticated state to true
+                localStorage.setItem("image", user.photoURL || image); // save user photoURL to localStorage
             } else {
                 setUser({ email: null, uid: null });
                 setAuthenticated(false);
+                localStorage.removeItem("image"); // remove user photoURL from localStorage
             }
             setLoading(false);
         });
