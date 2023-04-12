@@ -14,11 +14,9 @@ exports[`renders correctly 1`] = `
   >
     askCounselor
   </span>
-  <div
-    className=""
-  >
+  <div>
     <a
-      href="/therapist"
+      href="/requirements"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onTouchStart={[Function]}

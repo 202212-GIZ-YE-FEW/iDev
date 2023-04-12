@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
-import Button from "./ui/Button";
+import Button from "../ui/Button";
 
 function HeroSection({ t }) {
     const style = {
