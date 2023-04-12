@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import { useAuth } from "@/components/context/AuthContext";
@@ -16,7 +16,7 @@ import schema from "@/utils/validationSchemaSignUp";
 function SignUp({ t }) {
     const {
         signUp,
-        sendEmailConfirmation,
+        authenticated,
         signInWithFbAccount,
         signInWithGoogleAccount,
     } = useAuth();
@@ -41,13 +41,18 @@ function SignUp({ t }) {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
+    const router = require("next/router").default;
+    useEffect(() => {
+        if (authenticated) {
+            router.push("/");
+        }
+    }, [authenticated, router]);
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             await schema.validate(formData, { abortEarly: false });
-            await signUp(formData.email, formData.password);
+
             const collection = "user"; // collection name
             const userData = {
                 active: true,
@@ -66,19 +71,21 @@ function SignUp({ t }) {
                 city: "",
                 LicenseNamber: 7899000,
             };
+
             addDocument(collection, userData).then((response) => {
-                sendEmailConfirmation();
+                signUp(formData.email, formData.password);
+
                 const router = require("next/router").default;
                 router.push({
                     pathname: "/thanks",
                     query: {
-                        subtitle: "confirmEmail",
+                        subtitle: "emailVerified",
                     },
                 });
             });
         } catch (error) {
             if (error.code === "auth/email-already-in-use") {
-                setFormErrors({ email: "emailExist" });
+                setFormErrors({ email: "validation:emailExist" });
             }
             if (error.inner) {
                 const newErrors = {};

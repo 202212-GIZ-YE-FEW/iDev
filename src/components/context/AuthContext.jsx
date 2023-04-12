@@ -27,8 +27,14 @@ export function AuthContextProvider({ children }) {
                     email: user.email,
                     uid: user.uid,
                 });
-                setAuthenticated(true); // set authenticated state to true
                 localStorage.setItem("image", user.photoURL || image); // save user photoURL to localStorage
+                sendEmailConfirmation();
+                if (user.emailVerified) {
+                    setAuthenticated(true);
+                } else {
+                    setAuthenticated(false);
+                    auth.signOut(); // Sign out the user if they have not verified their email
+                }
             } else {
                 setUser({ email: null, uid: null });
                 setAuthenticated(false);
