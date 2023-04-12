@@ -9,7 +9,8 @@ import {
 } from "firebase/auth";
 import { auth, googleProvider, facebookProvider } from "@/firebase/config";
 import Router from "next/router";
-import image from "../../../public/blog.png";
+import image from "~/blog.png";
+
 const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
