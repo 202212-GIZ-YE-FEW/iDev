@@ -4,7 +4,6 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendEmailVerification,
-    signOut,
     signInWithPopup,
 } from "firebase/auth";
 import { auth, googleProvider, facebookProvider } from "@/firebase/config";
@@ -34,6 +33,7 @@ export function AuthContextProvider({ children }) {
                 } else {
                     setAuthenticated(false);
                     auth.signOut(); // Sign out the user if they have not verified their email
+                    window.alert("Please verify your email before logging in.");
                 }
             } else {
                 setUser({ email: null, uid: null });
