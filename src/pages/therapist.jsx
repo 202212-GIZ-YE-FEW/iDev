@@ -32,6 +32,7 @@ function Therapist({ t }) {
                 userName: formData.userName,
                 city: formData.city,
                 LicenseNamber: formData.licenseNamber,
+                isTherapist: true,
             };
 
             updateDocumentField(collection, fieldName, fieldValue, userData);
