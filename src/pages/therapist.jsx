@@ -8,7 +8,6 @@ import schema from "@/utils/validationSchemaTherapist";
 import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import { useState } from "react";
-import addDocument from "@/firebase/addData";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import updateDocumentField from "@/firebase/updateData";
 function Therapist({ t }) {
@@ -25,9 +24,9 @@ function Therapist({ t }) {
 
         try {
             await schema.validate(formData, { abortEarly: false });
-            const collection = "user"; // collection name
-            const fieldName = "email"; // replace with your field name
-            const fieldValue = user.email; // replace with your field value
+            const collection = "user";
+            const fieldName = "email";
+            const fieldValue = user.email;
             const userData = {
                 userName: formData.userName,
                 city: formData.city,
