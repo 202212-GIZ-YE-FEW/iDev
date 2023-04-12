@@ -1,16 +1,18 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
 import {
-    onAuthStateChanged,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
+    onAuthStateChanged,
     sendEmailVerification,
-    signOut,
+    signInWithEmailAndPassword,
     signInWithPopup,
 } from "firebase/auth";
-import { auth, googleProvider, facebookProvider } from "@/firebase/config";
+import Image from "next/image";
 import Router from "next/router";
-import image from "~/blog.png";
+import Spinner from "public/spinner.svg";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
+import { auth, facebookProvider, googleProvider } from "@/firebase/config";
+
+import image from "~/blog.png";
 const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
@@ -119,7 +121,18 @@ export function AuthContextProvider({ children }) {
                 signInWithFbAccount,
             }}
         >
-            {loading ? <div>Loading...</div> : children}
+            {loading ? (
+                <div className='flex justify-center items-center h-screen'>
+                    <Image
+                        src={Spinner}
+                        alt='loading'
+                        height={100}
+                        width={100}
+                    />
+                </div>
+            ) : (
+                children
+            )}
         </AuthContext.Provider>
     );
 }
