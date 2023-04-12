@@ -197,7 +197,7 @@ function MobileNav(prop) {
                         router={router}
                     />
                     {!authenticated ? (
-                        <Link href='/signup'>
+                        <Link href='/login'>
                             <Button
                                 content={t("login")}
                                 text-transform='capitalize'
@@ -330,7 +330,7 @@ export default function Navbar() {
                         )}
                         {/* Add logout Button */}
                         {!authenticated ? (
-                            <Link href='/signup'>
+                            <Link href='/login'>
                                 <Button
                                     content={t("login")}
                                     text-transform='capitalize'
