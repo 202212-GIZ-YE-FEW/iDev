@@ -16,7 +16,7 @@ import Textarea from "@/components/ui/textarea/Textarea";
 import getDocument from "@/firebase/getData";
 import { postHandler } from "@/utils/api";
 import schema from "@/utils/validationSchema";
-function ContactUs({ t, choices }) {
+function ContactUs({ t, reasons, address }) {
     const onSubmit = async (values, actions) => {
         const response = await postHandler("/api/contact", values);
         if (response.data.success === 0) {
@@ -72,16 +72,16 @@ function ContactUs({ t, choices }) {
                     >
                         <div>
                             <RadioGroup title={t("typeOfContact")}>
-                                {choices.map((item, index) => {
+                                {reasons.map((item, index) => {
                                     return (
                                         <RadioInputItem
                                             key={index}
-                                            id={item[0]}
+                                            id={item}
                                             name='typeContact'
-                                            value={item[0]}
-                                            title={item[1]}
+                                            value={item}
+                                            title={item}
                                             checked={
-                                                values.typeContact === item[0]
+                                                values.typeContact === item
                                             }
                                             onChange={handleChange}
                                             onBlur={handleBlur}
@@ -164,11 +164,14 @@ function ContactUs({ t, choices }) {
                                 {t("findAt")}
                             </span>
                             <address className='text-gray/40 not-italic'>
-                                3rd Floor <br />
-                                Almasbah Street <br />
-                                Taiz, Yemen
-                                <br />
-                                00000
+                                {address.map((item, index) => {
+                                    return (
+                                        <span key={index}>
+                                            {item}
+                                            <br />
+                                        </span>
+                                    );
+                                })}
                             </address>
                         </div>
                     </div>
@@ -179,15 +182,22 @@ function ContactUs({ t, choices }) {
 }
 
 export async function getStaticProps({ locale }) {
-    const typeOfContactData = await getDocument("type_of_contact");
-    // Take only locale row
-    const typeOfContactDataByLang = typeOfContactData.find(
-        (data) => data.id === locale
-    );
+    let address = [];
+    let reasons = [];
+    try {
+        const row = await getDocument("contact");
+        if (row) {
+            // Take only row of current locale
+            const currentLangInfo = row.find((data) => data.id === locale);
 
-    // Pick up value field in db, and convert to array to pass
-    const choices = Object.entries(typeOfContactDataByLang.value);
+            reasons = currentLangInfo.typeContact;
 
+            // convert ||-separated string in db address to array.
+            address = currentLangInfo.address.split("||");
+        }
+    } catch (error) {
+        //
+    }
     return {
         props: {
             ...(await serverSideTranslations(locale, [
@@ -196,7 +206,8 @@ export async function getStaticProps({ locale }) {
                 "validation",
                 "response",
             ])),
-            choices,
+            address,
+            reasons,
         },
     };
 }
