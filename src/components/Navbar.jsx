@@ -6,12 +6,19 @@ import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
 import Button from "@/components/ui/Button";
-import { useAuth } from "./context/AuthContext";
 
 import { navigation } from "@/utils/constants";
+
+import { useAuth } from "./context/AuthContext";
 function LangDropdown(props) {
     const onChangeDir = (locale) => {
         document.dir = locale === "en" ? "ltr" : "rtl";
+        const url = router.query;
+        const newUrl = {
+            pathname: router.pathname,
+            query: { ...url },
+        };
+        router.push(newUrl);
     };
 
     const { setOpenLangDropdown, openLangDropdown, router } = props;
