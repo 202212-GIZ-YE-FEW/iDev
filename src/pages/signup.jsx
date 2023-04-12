@@ -72,7 +72,7 @@ function SignUp({ t }) {
                 router.push({
                     pathname: "/thanks",
                     query: {
-                        subtitle: "confirmEmail",
+                        subtitle: "emailVerified",
                     },
                 });
             });

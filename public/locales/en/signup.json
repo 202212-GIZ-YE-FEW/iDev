@@ -3,6 +3,7 @@
     "lastName": "Second name   ",
     "email": "Email",
     "confirmEmail": "Confirm email",
+    "emailVerified": "Please Verify your email!",
     "password": "Password",
     "confirmPassword": " Confirm Password",
     "date": " Date Brith",
