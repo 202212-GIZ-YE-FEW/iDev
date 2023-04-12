@@ -8,12 +8,12 @@ const schema = Yup.object().shape({
         .matches(/^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/, "letterSpace")
         .required("required"),
     email: Yup.string()
-        .email("invalidEmailFormat")
-        .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/, "invalidEmailFormat")
+        .email("invalidFormat")
+        .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/, "invalidFormat")
         .required("required"),
 
     confirmEmail: Yup.string()
-        .oneOf([Yup.ref("email"), null], "emailsMustMatch")
+        .oneOf([Yup.ref("email"), null], "mustMatch")
         .required("required"),
     password: Yup.string()
         .required("required")
@@ -39,7 +39,7 @@ const schema = Yup.object().shape({
         }),
 
     confirmPassword: Yup.string()
-        .oneOf([Yup.ref("password"), null], "passwordsMustMatch")
+        .oneOf([Yup.ref("password"), null], "mustMatch")
         .required("required"),
     dateOfBirth: Yup.date()
         .nullable()

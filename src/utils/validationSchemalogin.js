@@ -2,8 +2,8 @@ import * as Yup from "yup";
 
 const schema = Yup.object().shape({
     email: Yup.string()
-        .email("invalidEmailFormat")
-        .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/, "invalidEmailFormat")
+        .email("invalidFormat")
+        .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/, "invalidFormat")
         .required("required"),
     password: Yup.string().required("required"),
 });
