@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
-function editProfile({ t }) {
+function EditProfile({ t }) {
     return (
         <div className='g-6 p-5 flex flex-wrap justify-center justify-space '>
             <div className=' p-2 mb-5'>
@@ -146,4 +146,4 @@ export async function getStaticProps({ locale }) {
         },
     };
 }
-export default withTranslation(["profile"])(editProfile);
+export default withTranslation(["profile"])(EditProfile);
