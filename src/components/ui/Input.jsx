@@ -15,13 +15,14 @@ const Input = (props) => {
         inputFontWeight = "light",
         inputWidthSize = "w-full",
         radius = "md",
+        field = "",
         shadow = "sm",
-        touched,
+        // touched,
         error,
         t,
     } = props;
 
-    const inputClasses = `${inputWidthSize} border text-base text-gray border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    const inputClasses = `${inputWidthSize} border text-base text-light-black border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray  leading-[2.15] px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>
@@ -36,17 +37,16 @@ const Input = (props) => {
             <input
                 onChange={onChange}
                 value={value}
-                id={id}
                 name={name}
                 type={type}
                 required={isRequired}
                 placeholder={placeholder}
                 className={inputClasses}
             />
-            {error && touched && (
+            {error && (
                 <div className='text-red text-sm md:text-base mt-1'>
                     {t(`validation:${error}`, {
-                        field: t(`${label}`),
+                        field: t(`${field}`),
                         count: "3",
                     })}
                 </div>

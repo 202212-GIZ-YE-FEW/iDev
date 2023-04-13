@@ -39,27 +39,32 @@ exports[`renders correctly 1`] = `
       </span>
       <form
         className="shadow-lg px-7 py-11  mt-4 rounded-lg"
+        onSubmit={[Function]}
       >
         <div
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border text-base text-gray border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray  leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="email"
+            onChange={[Function]}
             placeholder="email"
             required={false}
             type="email"
+            value=""
           />
         </div>
         <div
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border text-base text-gray border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray  leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="password"
+            onChange={[Function]}
             placeholder="password"
             required={false}
-            type="name"
+            type="password"
+            value=""
           />
         </div>
         <div
@@ -74,6 +79,7 @@ exports[`renders correctly 1`] = `
             <button
               className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
               disabled={false}
+              onClick={[Function]}
             >
               login
             </button>
@@ -106,9 +112,7 @@ exports[`renders correctly 1`] = `
         <div
           className="flex flex-row items-center justify-center "
         >
-          <button
-            onClick={[Function]}
-          >
+          <button>
             <svg
               className="mr-4"
               fill="none"
@@ -136,9 +140,7 @@ exports[`renders correctly 1`] = `
               </g>
             </svg>
           </button>
-          <button
-            onClick={[Function]}
-          >
+          <button>
             <svg
               fill="none"
               height="50px"
