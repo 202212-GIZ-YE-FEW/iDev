@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Carousel from "react-multi-carousel";
@@ -12,10 +13,6 @@ import MasterCardSVG from "/public/images/master-card.svg";
 import VisaSVG from "/public/images/visa.svg";
 function PaymentMethod({ t }) {
     const responsive = {
-        superLargeDesktop: {
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5,
-        },
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
             items: 3,
@@ -29,6 +26,37 @@ function PaymentMethod({ t }) {
             items: 1,
         },
     };
+    const colors = [
+        { color: "#e62151", bg: "pink" },
+        { color: "#1d40c0", bg: "blue" },
+        { color: "#daa00a", bg: "yellow" },
+    ];
+    const cards = [
+        {
+            type: "mastercard",
+            icon: MasterCardSVG,
+            cardNumber: "xxxx xxxx xxxx 2000",
+            cvv: "123",
+            expireDate: "02/2020",
+            holder: "Abrar",
+        },
+        {
+            type: "visa",
+            icon: VisaSVG,
+            cardNumber: "xxxx xxxx xxxx 1990",
+            cvv: "113",
+            expireDate: "02/2030",
+            holder: "Maha",
+        },
+        {
+            type: "mastercard",
+            icon: MasterCardSVG,
+            cardNumber: "xxxx xxxx xxxx 1980",
+            cvv: "133",
+            expireDate: "02/2040",
+            holder: "Mawaheb",
+        },
+    ];
     return (
         <>
             <div className='container mt-12'>
@@ -36,127 +64,107 @@ function PaymentMethod({ t }) {
                     title={t("selectCard")}
                     subtitle={t("selectCardDesc")}
                 />
-
                 <Carousel
                     infinite='true'
                     className='mt-28'
                     responsive={responsive}
                 >
-                    <div className='me-2'>
-                        <input
-                            className='peer hidden'
-                            id='radio_1'
-                            type='radio'
-                            name='radio'
-                        />
-                        <label class="block relative w-full min-h-[15rem] rounded-md text-white overflow-hidden cursor-pointer transition-all duration-500 bg-[url('/images/pink-overlay.png')] bg-no-repeat bg-cover">
-                            <div class='absolute top-0 left-0 w-full flex flex-col h-full pt-14 pb-7 px-8 from-gray/80 to-gray/20 transition-all duration-100 delay-200 z-20 '>
-                                <Image
-                                    src={MasterCardSVG}
-                                    alt='visa logo'
-                                    className='self-end'
-                                />
-                                <div class='w-full h-full flex flex-col justify-between text-sm'>
-                                    <p id='' aria-label='expire date'>
-                                        20/2030
-                                    </p>
-                                    <p id='' aria-label='card number'>
-                                        xxxx xxxx xxxx 1983
-                                    </p>
-                                    <p id='' aria-label='card holder'>
-                                        Natasha Black
-                                    </p>
-                                </div>
-                                <div className='fit-content self-end'>
-                                    <Button
-                                        content='Delete Card --'
-                                        text-transform='capitalize'
-                                        filled='true'
-                                        size='small'
-                                        fontSize='text-sm md:text-base'
-                                        radius='lg'
+                    {cards.map((item, index) => {
+                        return (
+                            <>
+                                <div className='me-3' key={index}>
+                                    <input
+                                        className='peer hidden'
+                                        id={`${item.name}-id`}
+                                        type='radio'
+                                        name='card'
                                     />
+                                    <label
+                                        htmlFor={`${item.name}-id`}
+                                        className='group block relative w-full min-h-[15rem] rounded-md text-white cursor-pointer transition-all duration-500 peer-checked:border-[3px] peer-checked:border-cyan peer-checked:border-dashed'
+                                    >
+                                        <div
+                                            className={`absolute top-0 left-0 w-full flex flex-col h-full py-7 px-8 transition-all duration-100 delay-200 z-20  bg-[url(/images/${
+                                                colors[index % 3]["bg"]
+                                            }-overlay.png)] bg-no-repeat bg-cover`}
+                                        >
+                                            <Image
+                                                src={item.icon}
+                                                alt={`${item.name} logo`}
+                                                className='self-end'
+                                            />
+                                            <div className='w-full h-full flex flex-col mb-6 justify-between text-sm'>
+                                                <p aria-label='expire date'>
+                                                    {item.expireDate}
+                                                </p>
+                                                <p aria-label='card number'>
+                                                    {item.cardNumber}
+                                                </p>
+                                                <p aria-label='card holder'>
+                                                    {item.holder}
+                                                </p>
+                                            </div>
+                                            <div className='fit-content self-center lg:self-end'>
+                                                <Button
+                                                    content={t("deleteCard")}
+                                                    text-transform='capitalize'
+                                                    filled='true'
+                                                    size='medium'
+                                                    fontSize='text-sm md:text-base'
+                                                    radius='lg'
+                                                />
+                                            </div>
+                                        </div>
+                                        <div
+                                            className={`absolute top-0 left-0 w-full h-full flex flex-col gap-3 justify-center bg-gradient-to-tr bg-[${
+                                                colors[index % 3]["color"]
+                                            }] transition-all z-10`}
+                                        >
+                                            <div className='w-full h-12 bg-black'></div>
+                                            <div className='px-6 flex flex-col gap-6 justify-center'>
+                                                <div className='flex flex-col items-end'>
+                                                    <label for=''>CVV</label>
+                                                    <input
+                                                        type='text'
+                                                        id=''
+                                                        value={item.cvv}
+                                                        readonly
+                                                        className='outline-none rounded text-black w-full h-8 text-right'
+                                                    />
+                                                </div>
+                                                <div className='flex justify-start items-center'>
+                                                    <Image
+                                                        src={item.icon}
+                                                        alt=''
+                                                        className='w-12'
+                                                        width={32}
+                                                        height={32}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </div>
-                            </div>
-                        </label>
-                    </div>
-                    <div class='me-2'>
-                        <input
-                            className='peer hidden'
-                            id='radio_1'
-                            type='radio'
-                            name='radio'
-                        />
-                        <label class="block relative w-full min-h-[15rem] rounded-md text-white overflow-hidden cursor-pointer transition-all duration-500 bg-[url('/images/blue-overlay.png')] bg-no-repeat bg-cover">
-                            <div class='absolute top-0 left-0 w-full flex flex-col h-full pt-14 pb-7 px-8 from-gray/80 to-gray/20 transition-all duration-100 delay-200 z-20 '>
-                                <Image
-                                    src={VisaSVG}
-                                    alt='visa logo'
-                                    className='self-end'
-                                />
-                                <div class='w-full h-full flex flex-col justify-between text-sm'>
-                                    <p id='' aria-label='expire date'>
-                                        20/2030
-                                    </p>
-                                    <p id='' aria-label='card number'>
-                                        xxxx xxxx xxxx 1983
-                                    </p>
-                                    <p id='' aria-label='card holder'>
-                                        Natasha Black
-                                    </p>
-                                </div>
-                                <div className='fit-content self-end'>
-                                    <Button
-                                        content='Delete Card --'
-                                        text-transform='capitalize'
-                                        filled='true'
-                                        size='small'
-                                        fontSize='text-sm md:text-base'
-                                        radius='lg'
-                                    />
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                    <div class='me-2'>
-                        <input
-                            className='peer hidden'
-                            id='radio_1'
-                            type='radio'
-                            name='radio'
-                        />
-                        <label class="block relative w-full min-h-[15rem] rounded-md text-white overflow-hidden cursor-pointer transition-all duration-500 bg-[url('/images/yellow-overlay.png')] bg-no-repeat bg-cover">
-                            <div class='absolute top-0 left-0 w-full flex flex-col h-full pt-14 pb-7 px-8 from-gray/80 to-gray/20 transition-all duration-100 delay-200 z-20 '>
-                                <Image
-                                    src={MasterCardSVG}
-                                    alt='visa logo'
-                                    className='self-end'
-                                />
-                                <div class='w-full h-full flex flex-col justify-between text-sm'>
-                                    <p id='' aria-label='expire date'>
-                                        20/2030
-                                    </p>
-                                    <p id='' aria-label='card number'>
-                                        xxxx xxxx xxxx 1983
-                                    </p>
-                                    <p id='' aria-label='card holder'>
-                                        Natasha Black
-                                    </p>
-                                </div>
-                                <div className='fit-content self-end'>
-                                    <Button
-                                        content='Delete Card --'
-                                        text-transform='capitalize'
-                                        filled='true'
-                                        size='small'
-                                        fontSize='text-sm md:text-base'
-                                        radius='lg'
-                                    />
-                                </div>
-                            </div>
-                        </label>
-                    </div>
+                            </>
+                        );
+                    })}
                 </Carousel>
+                <p className='text-base lg:text-3xl my-20 text-center font-medium'>
+                    {t("confirmBuyDesc", {
+                        count: "5",
+                        price: "$50",
+                    })}
+                </p>
+                <Link href='#' className='block text-center mx-auto my-20'>
+                    <Button
+                        content={t("confirmPurchase")}
+                        textTransform='uppercase'
+                        filled='true'
+                        size='medium'
+                        fontSize='text-sm md:text-xl'
+                        radius='md'
+                    />
+                </Link>
             </div>
         </>
     );
