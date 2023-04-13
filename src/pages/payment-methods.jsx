@@ -81,7 +81,7 @@ function PaymentMethod({ t }) {
                                     />
                                     <label
                                         htmlFor={`${item.name}-id`}
-                                        className='group block relative w-full min-h-[15rem] rounded-md text-white cursor-pointer transition-all duration-500 peer-checked:border-[3px] peer-checked:border-cyan peer-checked:border-dashed'
+                                        className='group block relative w-full min-h-[15rem] rounded-md text-white cursor-pointer peer-checked:border-[3px] peer-checked:border-cyan peer-checked:border-dashed'
                                     >
                                         <div
                                             className={`absolute top-0 left-0 w-full flex flex-col h-full py-7 px-8 transition-all duration-100 delay-200 z-20  bg-[url(/images/${
