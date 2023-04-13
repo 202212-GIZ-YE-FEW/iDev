@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-export default function Button(prop) {
+export default function Button(props) {
     const {
         content,
         size = "large",
@@ -11,7 +11,7 @@ export default function Button(prop) {
         shadow = "",
         onClick,
         disabled = false,
-    } = prop;
+    } = props;
     return (
         <button
             disabled={disabled}

@@ -2,17 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState, useEffect } from "react";
 
 import AuthSocialMedia from "@/components/AuthSocialMedia";
+import { useAuth } from "@/components/context/AuthContext";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 
-import {
-    signInWithFbAccount,
-    signInWithGoogleAccount,
-} from "@/firebase/firebaseProvidersMethods";
+import addDocument from "@/firebase/addData";
+import schema from "@/utils/validationSchemaSignUp";
+
 function SignUp({ t }) {
+    const {
+        signUp,
+        authenticated,
+        signInWithFbAccount,
+        signInWithGoogleAccount,
+    } = useAuth();
+
     const {
         firstname = "firstName",
         lastname = "lastName",
@@ -23,7 +31,71 @@ function SignUp({ t }) {
         datebrith = "date",
         signup = "signup",
         login = "login",
-    } = [];
+        loggedin = "loggedin",
+        confirmEmail = "confirmEmail",
+    } = {};
+
+    const [formData, setFormData] = useState({});
+    const [formErrors, setFormErrors] = useState({});
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    const router = require("next/router").default;
+    useEffect(() => {
+        if (authenticated) {
+            router.push("/");
+        }
+    }, [authenticated, router]);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await schema.validate(formData, { abortEarly: false });
+
+            const collection = "user"; // collection name
+            const userData = {
+                active: true,
+                deleted: false,
+                education_level: "",
+                email: formData.email,
+                familySize: 4,
+                first_name: formData.firstName,
+                gender: "",
+                hobbies: "",
+                last_name: formData.lastName,
+                date_brith: formData.dateOfBirth,
+                phoneNumber: "",
+                isTherapist: false,
+                userName: "",
+                city: "",
+                LicenseNamber: 7899000,
+            };
+
+            addDocument(collection, userData).then((response) => {
+                signUp(formData.email, formData.password);
+
+                const router = require("next/router").default;
+                router.push({
+                    pathname: "/thanks",
+                    query: {
+                        subtitle: "emailVerified",
+                    },
+                });
+            });
+        } catch (error) {
+            if (error.code === "auth/email-already-in-use") {
+                setFormErrors({ email: "validation:emailExist" });
+            }
+            if (error.inner) {
+                const newErrors = {};
+                error.inner.forEach((e) => {
+                    newErrors[e.path] = e.message;
+                });
+                setFormErrors(newErrors);
+            }
+        }
+    };
 
     return (
         <div className='container'>
@@ -40,54 +112,100 @@ function SignUp({ t }) {
                 <div className='max-w-[29rem] lg:justify-self-end'>
                     <FormTitle title={t(`${signup}`)} />
 
-                    <form className='shadow-lg px-7 py-11  mt-4 rounded-lg'>
+                    <form
+                        className='shadow-lg px-7 py-11  mt-4 rounded-lg'
+                        onSubmit={handleSubmit}
+                    >
                         <div className='flex mb-[0.8rem] justify-center space-x-[0.7rem] rtl:space-x-reverse 0.7rem sm:flex-row '>
-                            <Input
-                                type='name'
-                                name='firstname'
-                                placeholder={t(`${firstname}`)}
-                            />
-                            <Input
-                                type='name'
-                                name='lastname'
-                                placeholder={t(`${lastname}`)}
-                            />
+                            <div className='flex-col mt-[0.8rem]'>
+                                <Input
+                                    field={t(`${firstname}`)}
+                                    type='name'
+                                    name='firstName'
+                                    placeholder={t(`${firstname}`)}
+                                    value={formData.firstName || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.firstName}
+                                    t={t}
+                                />
+                            </div>
+                            <div className='flex-col mt-[0.8rem]'>
+                                <Input
+                                    field={t(`${lastname}`)}
+                                    type='name'
+                                    name='lastName'
+                                    placeholder={t(`${lastname}`)}
+                                    value={formData.lastName || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.lastName}
+                                    t={t}
+                                />
+                            </div>
                         </div>
 
                         <div className='mb-[0.8rem]'>
                             <Input
+                                field={t(`${email}`)}
                                 type='email'
                                 name='email'
                                 placeholder={t(`${email}`)}
                                 inputWidthSize='w-full'
+                                value={formData.email || ""}
+                                onChange={handleChange}
+                                error={formErrors.email}
+                                t={t}
                             />
                         </div>
                         <div className='mb-[0.8rem]'>
                             <Input
+                                field={t(`${confirmemail}`)}
                                 type='email'
-                                name='confirm_email'
+                                name='confirmEmail'
                                 placeholder={t(`${confirmemail}`)}
                                 inputWidthSize='w-full'
+                                value={formData.confirmEmail || ""}
+                                onChange={handleChange}
+                                error={formErrors.confirmEmail}
+                                t={t}
                             />
                         </div>
                         <div className='flex mb-[0.8rem] space-x-[0.7rem] rtl:space-x-reverse'>
-                            <Input
-                                type='name'
-                                name='password'
-                                placeholder={t(`${password}`)}
-                            />
-                            <Input
-                                type='name'
-                                name='Confirm Password'
-                                placeholder={t(`${confirmpassword}`)}
-                            />
+                            <div className='flex-col mt-[0.8rem]'>
+                                <Input
+                                    field={t(`${password}`)}
+                                    type='password'
+                                    name='password'
+                                    placeholder={t(`${password}`)}
+                                    value={formData.password || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.password}
+                                    t={t}
+                                />
+                            </div>
+                            <div className='flex-col mt-[0.8rem]'>
+                                <Input
+                                    field={t(`${confirmpassword}`)}
+                                    type='password'
+                                    name='confirmPassword'
+                                    placeholder={t(`${confirmpassword}`)}
+                                    value={formData.confirmPassword || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.confirmPassword}
+                                    t={t}
+                                />
+                            </div>
                         </div>
-                        <div className='flex space-x-[1.5rem] text-center lg:text-start justify-center mb-[0.5rem] rtl:space-x-reverse ext-md font-weight-500'>
+                        <div className='flex-col  text-center lg:text-start justify-center mb-[0.5rem]  ext-md font-weight-500'>
                             <Input
+                                field={t(`${datebrith}`)}
                                 label={t(`${datebrith}`)}
                                 type='date'
-                                name='datebrith'
+                                name='dateOfBirth'
                                 inputWidthSize='w-full'
+                                value={formData.dateOfBirth || ""}
+                                onChange={handleChange}
+                                error={formErrors.dateOfBirth}
+                                t={t}
                             />
                         </div>
                         <div className='flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row'>
@@ -108,6 +226,7 @@ function SignUp({ t }) {
                                     fontSize='lg:text-md xl:text-sm'
                                     radius='md '
                                     shadow='shadow-lg'
+                                    onClick={handleSubmit}
                                 />
                             </Link>
                         </div>
@@ -125,9 +244,15 @@ function SignUp({ t }) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common", "signup"])),
+            ...(await serverSideTranslations(locale, [
+                "common",
+                "signup",
+                "validation",
+            ])),
+
             // Will be passed to the page component as props
         },
     };
 }
-export default withTranslation("signup")(SignUp);
+
+export default withTranslation(["signup", "validation"])(SignUp);

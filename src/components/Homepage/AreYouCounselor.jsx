@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
-
 import Button from "@/components/ui/Button";
 function AreYouCounselor({ t }) {
     return (

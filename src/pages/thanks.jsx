@@ -1,23 +1,25 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
-
-export default function Thanks(props) {
-    const { t } = useTranslation("common");
-    const {
-        subtitle = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
-    } = props;
+export default function Thanks() {
+    const { t } = useTranslation();
+    const router = useRouter();
+    const { subtitle } = router.query;
     return (
         <>
             <Head>
                 <title>{t("thankYou")} | purpose </title>
             </Head>
-            <div className='container -mt-28'>
-                <PageIntro title={t("thankYou")} subtitle={subtitle} />
+            <div className='container'>
+                <PageIntro
+                    title={t("thankYou")}
+                    subtitle={t(`signup:${subtitle}`)}
+                />
                 <Link href='/'>
                     <Button
                         content={t("backToHome")}
@@ -34,7 +36,7 @@ export default function Thanks(props) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            ...(await serverSideTranslations(locale, ["common", "signup"])),
             // Will be passed to the page component as props
         },
     };

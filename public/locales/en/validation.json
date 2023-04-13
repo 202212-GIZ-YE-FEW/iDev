@@ -1,6 +1,17 @@
 {
+    "passwordCriteria": "{{ field }} Have at least (one uppercase letter ,one lowercase letter, one number, one special character from the set @$!%*#?&)",
+    "passwordLength": "{{ field }} must be 12 character",
+    "dateOfBirthFuture": "{{ field }}cannot be in the future",
+    "noRepeatCharacters": "{{ field }} must not contain repeating characters",
+    "noCommonWords": "{{ field }} must not contain common words",
+    "mustMatch": "{{ field }} must match",
+    "exist": "This {{ field }} is already in use",
+    "loginErrorEmailNotExist": "The {{ field }} address you entered does not exist.",
+    "loginErrorWrongPassword": "The {{ field }} you entered is incorrect.",
     "invalidFormat": "{{ field }} is invalid format",
     "letterSpace": "{{ field }} must contain only letters and spaces",
     "min": "{{ field }} must be at least {{ count }} characters long",
-    "required": "{{ field }} is required"
+    "required": "{{ field }} is required",
+    "userName": "{{ field }}  should contain at least 6 characters and should only include letters and numbers.",
+    "licenseNumber": "License number should be exactly 9 digits"
 }

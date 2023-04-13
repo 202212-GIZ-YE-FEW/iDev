@@ -1,6 +1,17 @@
 {
+    "mustMatch": "يجب أن يتطابق {{ field }}",
+    "passwordLength": "يجب أن تتكون {{ field }} من 12 أحرف على الأقل",
+    "passwordCriteria": "{{ field }} تحتوي على الأقل (حرف كبير واحد ، حرف صغير واحد ، رقم واحد ، حرف خاص واحد من المجموعة @ $!٪ * #؟ &)",
+    "dateOfBirthFuture": "لا يمكن أن يكون {{ field }} في المستقبل",
+    "noRepeatCharacters": "يجب ألا تحتوي{{ field }} على أحرف متكررة",
+    "noCommonWords": "يجب ألا تحتوي {{ field }} على كلمات شائعة",
+    "exist": "هذا {{ field }} استخدم من قبل",
+    "loginErrorEmailNotExist": "عنوان {{ field }} الذي أدخلته غير موجود",
+    "loginErrorWrongPassword": "{{ field }}  التي أدخلتها غير صحيحة.",
     "invalidFormat": "حقل {{ field }} بصيغة غير صحيحة.",
     "letterSpace": " حقل {{ field }} يجب أن يحتوي على حروف ومسافات فقط",
     "min": " حقل {{ field }} يجب أن يكون على الأقل {{ count }} حرف ",
-    "required": "حقل {{ field }} مطلوب"
+    "required": "حقل {{ field }} مطلوب",
+    "userName": "يجب أن يحتوي {{ field }} على 6 أحرف على الأقل ويجب أن يتضمن أحرفًا وأرقامًا فقط.",
+    "licenseNumber": "يجب أن يتكون {{ field }} من 9 أرقام بالضبط"
 }
