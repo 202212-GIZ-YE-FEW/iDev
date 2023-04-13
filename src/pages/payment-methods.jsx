@@ -4,14 +4,20 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
+import Carousel from "react-multi-carousel";
+
+import "react-multi-carousel/lib/styles.css";
 
 import MasterCardSVG from "/public/images/master-card.svg";
 import VisaSVG from "/public/images/visa.svg";
-function PaymentMethod() {
+function PaymentMethod({ t }) {
     return (
         <>
-            <div className='container'>
-                <PageIntro title='' />
+            <div className='container mt-10'>
+                <PageIntro
+                    title={t("selectCard")}
+                    subtitle={t("selectCardDesc")}
+                />
                 <div className='grid grid-cols-4 gap-2 w-full'>
                     <div class='w-full h-screen flex flex-col justify-center items-center'>
                         <input
@@ -147,9 +153,9 @@ function PaymentMethod() {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, "common")),
+            ...(await serverSideTranslations(locale, ["common", "payment"])),
             // Will be passed to the page component as props
         },
     };
 }
-export default withTranslation("common")(PaymentMethod);
+export default withTranslation(["common", "payment"])(PaymentMethod);
