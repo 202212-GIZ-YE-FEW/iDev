@@ -115,34 +115,6 @@ function PaymentMethod({ t }) {
                                                 />
                                             </div>
                                         </div>
-                                        <div
-                                            className={`absolute top-0 left-0 w-full h-full flex flex-col gap-3 justify-center bg-gradient-to-tr bg-[${
-                                                colors[index % 3]["color"]
-                                            }] transition-all z-10`}
-                                        >
-                                            <div className='w-full h-12 bg-black'></div>
-                                            <div className='px-6 flex flex-col gap-6 justify-center'>
-                                                <div className='flex flex-col items-end'>
-                                                    <label for=''>CVV</label>
-                                                    <input
-                                                        type='text'
-                                                        id=''
-                                                        value={item.cvv}
-                                                        readonly
-                                                        className='outline-none rounded text-black w-full h-8 text-right'
-                                                    />
-                                                </div>
-                                                <div className='flex justify-start items-center'>
-                                                    <Image
-                                                        src={item.icon}
-                                                        alt=''
-                                                        className='w-12'
-                                                        width={32}
-                                                        height={32}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
                                     </label>
                                 </div>
                             </>
