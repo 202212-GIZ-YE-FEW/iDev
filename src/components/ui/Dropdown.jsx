@@ -4,18 +4,20 @@ function Dropdown(props) {
         placeholder,
         value,
         data,
-        FontSize = "3xl",
+        FontSize = "1xl",
         FontWeight = "light",
         WidthSize = "w-full",
         radius = "md",
         onChange,
     } = props;
-    const inputClasses = `${WidthSize} border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius}`;
+
+    const inputClasses = `${WidthSize} border border-solid self-center text-light-gray border-gray-300 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius}`;
 
     const handleChange = (event) => {
         const { value } = event.target;
         onChange(value);
     };
+
     return (
         <>
             {label && (
@@ -33,7 +35,7 @@ function Dropdown(props) {
                 {data?.map((item, key) => {
                     return (
                         <option key={key} value={item.value}>
-                            {item.lable}
+                            {item.label}
                         </option>
                     );
                 })}
