@@ -10,12 +10,12 @@ function EditProfile({ t }) {
     return (
         <div className='container '>
             <div className='grid grid-cols-1 lg:grid-cols-2  py-20  gap-y-10  gap-x-32'>
-                <div className=' lg:justify-self-end  '>
+                <div className=' lg:justify-self-end md:justify-self-center '>
                     <PreviewProfile />
                 </div>
                 <div className='max-w-[29rem] '>
                     <FormTitle title={t("profileInfo")} />
-                    <div className='flex flex-row justify-center my-5 gap-4'>
+                    <div className='flex flex-row justify-center  my-5 gap-4'>
                         <Input
                             type='text'
                             name='fullName'
