@@ -1,12 +1,24 @@
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
+import { useState } from "react";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
 function EditProfile({ t }) {
+    const [formData, setFormData] = useState({
+        gender: null,
+        educationLevel: null,
+    });
+
+    const handleOptionChange = (name, value) => {
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
     return (
         <div className='container '>
             <div className='grid grid-cols-1 lg:grid-cols-2  py-20  gap-y-10  gap-x-32'>
@@ -32,6 +44,9 @@ function EditProfile({ t }) {
                                 { value: 4, label: "Deploma" },
                             ]}
                             label={t("educationLevel")}
+                            onChange={(value) =>
+                                handleOptionChange("educationLevel", value)
+                            }
                         />
                     </div>
                     <div className='flex flex-row justify-center my-5'>
@@ -52,7 +67,7 @@ function EditProfile({ t }) {
                     </div>
                     <div className='flex flex-row justify-center my-5'>
                         <Dropdown
-                            className='lg:w-8/12'
+                            className='lg:w-8/12 text-light-black'
                             placeholder='select '
                             name='gender'
                             label={t("gender")}
@@ -60,6 +75,9 @@ function EditProfile({ t }) {
                                 { value: 1, label: "Female" },
                                 { value: 2, label: "Male" },
                             ]}
+                            onChange={(value) =>
+                                handleOptionChange("gender", value)
+                            }
                         />
                     </div>
                     <div className='flex flex-row justify-center my-5'>
