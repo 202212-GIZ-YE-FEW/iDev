@@ -19,7 +19,7 @@ function Dropdown(props) {
     return (
         <>
             {label && (
-                <label className='font-normal   whitespace-nowrap flex:me-10 flex:self-center'>
+                <label className='font-normal text-light-gray  whitespace-nowrap flex:me-10 flex:self-center'>
                     {label}
                 </label>
             )}
