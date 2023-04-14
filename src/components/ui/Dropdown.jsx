@@ -13,11 +13,6 @@ function Dropdown(props) {
 
     const inputClasses = `${WidthSize} border border-solid self-center text-light-gray border-gray-300 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius}`;
 
-    const handleChange = (event) => {
-        const { value } = event.target;
-        onChange(value);
-    };
-
     return (
         <>
             {label && (
@@ -28,7 +23,7 @@ function Dropdown(props) {
 
             <select
                 value={value}
-                onChange={handleChange}
+                onChange={onChange}
                 placeholder={placeholder}
                 className={inputClasses}
             >

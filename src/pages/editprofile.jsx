@@ -7,10 +7,7 @@ import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
 function EditProfile({ t }) {
-    const [formData, setFormData] = useState({
-        gender: null,
-        educationLevel: null,
-    });
+    const [formData, setFormData] = useState({});
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,7 +32,6 @@ function EditProfile({ t }) {
                     <div className='flex flex-row justify-center my-5 gap-4'>
                         <Dropdown
                             placeholder='select'
-                            name='educationLevel'
                             data={[
                                 { value: 1, label: "Bacholar" },
                                 { value: 2, label: "Master" },
