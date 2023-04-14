@@ -34,7 +34,7 @@ function EditProfile({ t }) {
                             label={t("fullName")}
                         />
                     </div>
-                    <div className='flex flex-row justify-center my-5'>
+                    <div className='flex flex-row justify-center my-5 gap-4'>
                         <Dropdown
                             placeholder='select'
                             data={[
@@ -49,7 +49,7 @@ function EditProfile({ t }) {
                             }
                         />
                     </div>
-                    <div className='flex flex-row justify-center my-5'>
+                    <div className='flex flex-row justify-center my-5 gap-4'>
                         <Input
                             type='text'
                             name='hubbies'
@@ -65,7 +65,7 @@ function EditProfile({ t }) {
                         />
                         <p className='mt-4'>{t("member(s)")}</p>
                     </div>
-                    <div className='flex flex-row justify-center my-5'>
+                    <div className='flex flex-row justify-center my-5 gap-4'>
                         <Dropdown
                             className='lg:w-8/12 text-light-black'
                             placeholder='select '
@@ -87,11 +87,11 @@ function EditProfile({ t }) {
                             label={t("birthDate")}
                         />
                     </div>
-                    <div className='flex flex-row justify-center my-5'>
+                    <div className='flex flex-row justify-center my-5 gap-4'>
                         <Input type='email' name='email' label={t("Email")} />
                     </div>
 
-                    <div className='flex flex-row justify-center my-5'>
+                    <div className='flex flex-row justify-center my-5 gap-4'>
                         <Input
                             type='text'
                             name='PhoneNumber'
@@ -114,7 +114,7 @@ function EditProfile({ t }) {
                         </label>
                     </div>
                     <FormTitle title={t("security")} />
-                    <div className='flex flex-row justify-center my-5'>
+                    <div className='flex flex-row justify-center my-5 gap-4'>
                         <Input
                             type='name'
                             name='password'
