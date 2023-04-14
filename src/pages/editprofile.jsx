@@ -12,13 +12,9 @@ function EditProfile({ t }) {
         educationLevel: null,
     });
 
-    const handleOptionChange = (name, value) => {
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
     return (
         <div className='container '>
             <div className='grid grid-cols-1 lg:grid-cols-2  py-20  gap-y-10  gap-x-32'>
@@ -32,11 +28,14 @@ function EditProfile({ t }) {
                             type='text'
                             name='fullName'
                             label={t("fullName")}
+                            value={formData.fullName || ""}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='flex flex-row justify-center my-5 gap-4'>
                         <Dropdown
                             placeholder='select'
+                            name='educationLevel'
                             data={[
                                 { value: 1, label: "Bacholar" },
                                 { value: 2, label: "Master" },
@@ -44,9 +43,8 @@ function EditProfile({ t }) {
                                 { value: 4, label: "Deploma" },
                             ]}
                             label={t("educationLevel")}
-                            onChange={(value) =>
-                                handleOptionChange("educationLevel", value)
-                            }
+                            value={formData.educationLevel || ""}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='flex flex-row justify-center my-5 gap-4'>
@@ -54,14 +52,17 @@ function EditProfile({ t }) {
                             type='text'
                             name='hubbies'
                             label={t("hubbies")}
+                            value={formData.hubbies || ""}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='flex my-5 gap-10'>
                         <Input
                             type='number'
-                            name='FamilySize'
+                            name='familySize'
                             label={t("familySize")}
-                            // placeholder= {"member(s)"}
+                            value={formData.familySize || ""}
+                            onChange={handleChange}
                         />
                         <p className='mt-4'>{t("member(s)")}</p>
                     </div>
@@ -75,16 +76,17 @@ function EditProfile({ t }) {
                                 { value: 1, label: "Female" },
                                 { value: 2, label: "Male" },
                             ]}
-                            onChange={(value) =>
-                                handleOptionChange("gender", value)
-                            }
+                            value={formData.gender || ""}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='flex flex-row justify-center my-5'>
                         <Input
                             type='date'
-                            name='BirthDate'
+                            name='birthDate'
                             label={t("birthDate")}
+                            value={formData.birthDate || ""}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='flex flex-row justify-center my-5 gap-4'>
@@ -94,8 +96,10 @@ function EditProfile({ t }) {
                     <div className='flex flex-row justify-center my-5 gap-4'>
                         <Input
                             type='text'
-                            name='PhoneNumber'
+                            name='phoneNumber'
                             label={t("phoneNumber")}
+                            value={formData.phoneNumber || ""}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='flex flex-row my-5'>
@@ -119,13 +123,17 @@ function EditProfile({ t }) {
                             type='name'
                             name='password'
                             label={t("password")}
+                            value={formData.password || ""}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='flex flex-row justify-center my-5'>
                         <Input
                             type='password'
-                            name='password'
+                            name='confirmPassword'
                             label={t("confirmPassword")}
+                            value={formData.confirmPassword || ""}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col gap-2 my-8'>
