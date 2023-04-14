@@ -84,7 +84,7 @@ function PaymentMethod({ t }) {
                                         className='group block relative w-full min-h-[15rem] rounded-md text-white cursor-pointer peer-checked:border-[3px] peer-checked:border-cyan peer-checked:border-dashed'
                                     >
                                         <div
-                                            className={`absolute top-0 left-0 w-full flex flex-col h-full py-7 px-8  z-20  bg-[url(/images/${
+                                            className={`absolute top-0 left-0 w-full flex flex-col h-full py-7 px-8 z-20  bg-[url(/images/${
                                                 colors[index % 3]["bg"]
                                             }-overlay.png)] bg-no-repeat bg-cover`}
                                         >
