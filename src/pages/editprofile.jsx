@@ -38,10 +38,10 @@ function EditProfile({ t }) {
                             <Dropdown
                                 placeholder='select'
                                 data={[
-                                    { value: 1, label: "Bacholar" },
-                                    { value: 2, label: "Master" },
-                                    { value: 3, label: "PhD" },
-                                    { value: 4, label: "Deploma" },
+                                    { value: 1, label: t("bacholar") },
+                                    { value: 2, label: t("master") },
+                                    { value: 3, label: t("PhD") },
+                                    { value: 4, label: t("deploma") },
                                 ]}
                                 label={t("educationLevel")}
                                 labelColor='text-black'
@@ -82,8 +82,8 @@ function EditProfile({ t }) {
                                 label={t("gender")}
                                 labelColor='text-black'
                                 data={[
-                                    { value: 1, label: "Female" },
-                                    { value: 2, label: "Male" },
+                                    { value: 1, label: t("female") },
+                                    { value: 2, label: t("male") },
                                 ]}
                                 value={formData.gender || ""}
                                 onChange={handleChange}
