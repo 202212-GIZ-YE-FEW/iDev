@@ -23,7 +23,7 @@ function EditProfile({ t }) {
                         <legend class='text-3xl font-semibold uppercase'>
                             {t("profileInfo")}
                         </legend>
-                        <div className='flex my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='text'
@@ -34,7 +34,7 @@ function EditProfile({ t }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='flex my-5'>
+                        <div className='flex items-center my-5'>
                             <Dropdown
                                 placeholder='select'
                                 data={[
@@ -49,7 +49,7 @@ function EditProfile({ t }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='flex flex-row my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='text'
@@ -60,7 +60,7 @@ function EditProfile({ t }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='flex my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[1_1_0%]'
                                 type='number'
@@ -70,11 +70,11 @@ function EditProfile({ t }) {
                                 value={formData.familySize || ""}
                                 onChange={handleChange}
                             />
-                            <div className='mt-4 ms-10 flex-[0_1_0%]'>
+                            <div className='ms-10 flex-[0_1_0%]'>
                                 {t("member(s)")}
                             </div>
                         </div>
-                        <div className='flex justify-start my-5'>
+                        <div className='flex items-center my-5'>
                             <Dropdown
                                 className='lg:w-8/12 text-light-black'
                                 placeholder='select '
@@ -89,7 +89,7 @@ function EditProfile({ t }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='flex justify-start my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='date'
@@ -100,7 +100,7 @@ function EditProfile({ t }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='flex justify-start my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='email'
@@ -109,7 +109,7 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                             />
                         </div>
-                        <div className='flex justify-start my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='text'
@@ -120,7 +120,7 @@ function EditProfile({ t }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='flex my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='file'
@@ -136,7 +136,7 @@ function EditProfile({ t }) {
                         <legend class='text-3xl font-semibold'>
                             {t("security")}
                         </legend>
-                        <div className='flex justify-start my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='name'
@@ -147,7 +147,7 @@ function EditProfile({ t }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='flex justify-start my-5'>
+                        <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='password'
