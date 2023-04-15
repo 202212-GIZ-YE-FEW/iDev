@@ -16,12 +16,12 @@ function EditProfile({ t }) {
     return (
         <div className='container '>
             <div className='grid grid-cols-1 lg:grid-cols-2  py-20  gap-y-10  gap-x-32'>
-                <div className=' lg:justify-self-end md:justify-self-center '>
+                <div className='justify-self-center lg:justify-self-end'>
                     <PreviewProfile />
                 </div>
-                <div className='max-w-[29rem] '>
+                <div className='max-w-[29rem] justify-self-center lg:justify-self-end'>
                     <FormTitle title={t("profileInfo")} />
-                    <div className='flex flex-row justify-center  my-5 gap-4'>
+                    <div className='flex justify-center my-5 gap-4'>
                         <Input
                             className='w-8/12'
                             type='text'
@@ -32,7 +32,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex flex-row justify-center my-5 gap-4'>
+                    <div className='flex justify-center my-5 gap-4'>
                         <Dropdown
                             placeholder='select'
                             data={[
@@ -68,7 +68,7 @@ function EditProfile({ t }) {
                         />
                         <p className='mt-4'>{t("member(s)")}</p>
                     </div>
-                    <div className='flex flex-row justify-center my-5 gap-4'>
+                    <div className='flex justify-center my-5 gap-4'>
                         <Dropdown
                             className='lg:w-8/12 text-light-black'
                             placeholder='select '
@@ -83,7 +83,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex flex-row justify-center my-5'>
+                    <div className='flex justify-center my-5'>
                         <Input
                             type='date'
                             name='birthDate'
@@ -93,7 +93,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex flex-row justify-center my-5 gap-4'>
+                    <div className='flex justify-center my-5 gap-4'>
                         <Input
                             type='email'
                             name='email'
@@ -102,7 +102,7 @@ function EditProfile({ t }) {
                         />
                     </div>
 
-                    <div className='flex flex-row justify-center my-5 gap-4'>
+                    <div className='flex justify-center my-5 gap-4'>
                         <Input
                             type='text'
                             name='phoneNumber'
@@ -113,7 +113,7 @@ function EditProfile({ t }) {
                         />
                     </div>
                     <div className='flex flex-row my-5'>
-                        <label className='w-4/12 mt-1 mb-2 text-black whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 font-light flex:self-center capitalize text-sm md:text-base lg:text-lg'>
+                        <label className='w-4/12 mt-1 mb-2 text-black whitespace-wrap flex:me-10 font-light flex:self-center capitalize text-sm md:text-base lg:text-lg'>
                             {t("uploadId")}
                         </label>
 
@@ -126,7 +126,7 @@ function EditProfile({ t }) {
                         </label>
                     </div>
                     <FormTitle title={t("security")} />
-                    <div className='flex flex-row justify-center my-5 gap-4'>
+                    <div className='flex justify-center my-5 gap-4'>
                         <Input
                             type='name'
                             name='password'
@@ -136,7 +136,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex flex-row justify-center my-5'>
+                    <div className='flex justify-center my-5'>
                         <Input
                             type='password'
                             name='confirmPassword'
@@ -146,7 +146,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col gap-2 my-8'>
+                    <div className='flex flex-col sm:flex-row gap-2 my-8'>
                         <Button
                             content={t("saveChanges")}
                             filled='true'
