@@ -2,7 +2,6 @@
 
 exports[`renders correctly 1`] = `
 <select
-  className="w-full border border-solid self-center border-gray-300 px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
-  onChange={[Function]}
+  className="w-full border border-solid self-center text-light-gray border-light-gray/30 px-[20px] py-[10px] min-w-0 text-xl font-light rounded-md shadow-sm"
 />
 `;

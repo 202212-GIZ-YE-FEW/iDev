@@ -1,7 +1,7 @@
 import { withTranslation } from "next-i18next";
 
 import Button from "./ui/Button";
-
+import Link from "next/link";
 function RequirementsSection({ t, requirements }) {
     return (
         <div className='py-8'>
@@ -17,14 +17,16 @@ function RequirementsSection({ t, requirements }) {
                     </ul>
                 )}
             </div>
-            <Button
-                content='Get started'
-                textTransform='uppercase'
-                filled='true'
-                size='large'
-                fontSize='text-lg md:text-xl lg:text-2xl'
-                radius='md'
-            />
+            <Link href='/therapist'>
+                <Button
+                    content='Get started'
+                    textTransform='uppercase'
+                    filled='true'
+                    size='large'
+                    fontSize='text-lg md:text-xl lg:text-2xl'
+                    radius='md'
+                />
+            </Link>
         </div>
     );
 }

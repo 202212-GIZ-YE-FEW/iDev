@@ -12,11 +12,18 @@ exports[`renders correctly 1`] = `
   <div
     className="mb-5 px-5"
   />
-  <button
-    className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-    disabled={false}
+  <a
+    href="/therapist"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
-    Get started
-  </button>
+    <button
+      className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+      disabled={false}
+    >
+      Get started
+    </button>
+  </a>
 </div>
 `;
