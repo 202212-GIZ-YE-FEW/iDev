@@ -232,7 +232,7 @@ Array [
     </div>
   </section>,
   <section
-    className="bg-light-cyan py-20"
+    className="bg-light-cyan py-20 id=\\"recentblog"
   >
     <div
       className="container flex flex-col space-y-20 justify-between"

@@ -15,7 +15,7 @@ function HomePage() {
             <section className='bg-white py-20'>
                 <CommunicateThroughSection />
             </section>
-            <section className='bg-light-cyan py-20'>
+            <section className='bg-light-cyan py-20 id="recentblog'>
                 <RecentBlogSection />
             </section>
             <section className='bg-white py-20'>
