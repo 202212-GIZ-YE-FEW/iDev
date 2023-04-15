@@ -22,9 +22,11 @@ function EditProfile({ t }) {
                     <FormTitle title={t("profileInfo")} />
                     <div className='flex flex-row justify-center  my-5 gap-4'>
                         <Input
+                            className='w-8/12'
                             type='text'
                             name='fullName'
                             label={t("fullName")}
+                            labelColor='text-black'
                             value={formData.fullName || ""}
                             onChange={handleChange}
                         />
@@ -39,6 +41,7 @@ function EditProfile({ t }) {
                                 { value: 4, label: "Deploma" },
                             ]}
                             label={t("educationLevel")}
+                            labelColor='text-black'
                             value={formData.educationLevel || ""}
                             onChange={handleChange}
                         />
@@ -48,6 +51,7 @@ function EditProfile({ t }) {
                             type='text'
                             name='hubbies'
                             label={t("hubbies")}
+                            labelColor='text-black'
                             value={formData.hubbies || ""}
                             onChange={handleChange}
                         />
@@ -57,6 +61,7 @@ function EditProfile({ t }) {
                             type='number'
                             name='familySize'
                             label={t("familySize")}
+                            labelColor='text-black'
                             value={formData.familySize || ""}
                             onChange={handleChange}
                         />
@@ -68,6 +73,7 @@ function EditProfile({ t }) {
                             placeholder='select '
                             name='gender'
                             label={t("gender")}
+                            labelColor='text-black'
                             data={[
                                 { value: 1, label: "Female" },
                                 { value: 2, label: "Male" },
@@ -81,12 +87,18 @@ function EditProfile({ t }) {
                             type='date'
                             name='birthDate'
                             label={t("birthDate")}
+                            labelColor='text-black'
                             value={formData.birthDate || ""}
                             onChange={handleChange}
                         />
                     </div>
                     <div className='flex flex-row justify-center my-5 gap-4'>
-                        <Input type='email' name='email' label={t("Email")} />
+                        <Input
+                            type='email'
+                            name='email'
+                            label={t("Email")}
+                            labelColor='text-black'
+                        />
                     </div>
 
                     <div className='flex flex-row justify-center my-5 gap-4'>
@@ -94,13 +106,14 @@ function EditProfile({ t }) {
                             type='text'
                             name='phoneNumber'
                             label={t("phoneNumber")}
+                            labelColor='text-black'
                             value={formData.phoneNumber || ""}
                             onChange={handleChange}
                         />
                     </div>
                     <div className='flex flex-row my-5'>
                         <label
-                            className={`w-4/12 mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg`}
+                            className={`w-4/12 mt-1 mb-2 text-black whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 font-light flex:self-center capitalize text-sm md:text-base lg:text-lg`}
                         >
                             {t("uploadId")}
                         </label>
@@ -119,6 +132,7 @@ function EditProfile({ t }) {
                             type='name'
                             name='password'
                             label={t("password")}
+                            labelColor='text-black'
                             value={formData.password || ""}
                             onChange={handleChange}
                         />
@@ -128,6 +142,7 @@ function EditProfile({ t }) {
                             type='password'
                             name='confirmPassword'
                             label={t("confirmPassword")}
+                            labelColor='text-black'
                             value={formData.confirmPassword || ""}
                             onChange={handleChange}
                         />
