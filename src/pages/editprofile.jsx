@@ -15,15 +15,14 @@ function EditProfile({ t }) {
     };
     return (
         <div className='container '>
-            <div className='grid grid-cols-1 lg:grid-cols-2  py-20  gap-y-10  gap-x-32'>
-                <div className='justify-self-center lg:justify-self-end'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 py-20 gap-y-10'>
+                <div className='justify-self-center lg:justify-self-start'>
                     <PreviewProfile />
                 </div>
-                <div className='max-w-[29rem] justify-self-center lg:justify-self-end'>
+                <div className='w-full justify-self-center lg:justify-self-end'>
                     <FormTitle title={t("profileInfo")} />
-                    <div className='flex justify-center my-5 gap-4'>
+                    <div className='flex my-5'>
                         <Input
-                            className='w-8/12'
                             type='text'
                             name='fullName'
                             label={t("fullName")}
@@ -32,7 +31,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex justify-center my-5 gap-4'>
+                    <div className='flex my-5'>
                         <Dropdown
                             placeholder='select'
                             data={[
@@ -47,7 +46,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex flex-row justify-center my-5 gap-4'>
+                    <div className='flex flex-row my-5'>
                         <Input
                             type='text'
                             name='hubbies'
@@ -57,7 +56,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex my-5 gap-10'>
+                    <div className='flex my-5 space-s-8'>
                         <Input
                             type='number'
                             name='familySize'
@@ -66,9 +65,9 @@ function EditProfile({ t }) {
                             value={formData.familySize || ""}
                             onChange={handleChange}
                         />
-                        <p className='mt-4'>{t("member(s)")}</p>
+                        <p className='mt-4 ms-10'>{t("member(s)")}</p>
                     </div>
-                    <div className='flex justify-center my-5 gap-4'>
+                    <div className='flex justify-start my-5'>
                         <Dropdown
                             className='lg:w-8/12 text-light-black'
                             placeholder='select '
@@ -83,7 +82,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex justify-center my-5'>
+                    <div className='flex justify-start my-5'>
                         <Input
                             type='date'
                             name='birthDate'
@@ -93,7 +92,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex justify-center my-5 gap-4'>
+                    <div className='flex justify-start my-5'>
                         <Input
                             type='email'
                             name='email'
@@ -101,8 +100,7 @@ function EditProfile({ t }) {
                             labelColor='text-black'
                         />
                     </div>
-
-                    <div className='flex justify-center my-5 gap-4'>
+                    <div className='flex justify-start my-5'>
                         <Input
                             type='text'
                             name='phoneNumber'
@@ -112,21 +110,18 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex flex-row my-5'>
-                        <label className='w-4/12 mt-1 mb-2 text-black whitespace-wrap flex:me-10 font-light flex:self-center capitalize text-sm md:text-base lg:text-lg'>
-                            {t("uploadId")}
-                        </label>
-
-                        <label
-                            for='upload'
-                            className='border rounded-md w-full border-solid self-center border-light-gray/30 text-light-black px-[20px] py-[10px] '
-                        >
-                            <p className='flex justify-end'>+</p>
-                            <input type='file' hidden />
-                        </label>
+                    <div className='flex my-5'>
+                        <Input
+                            type='file'
+                            name='uploadId'
+                            label={t("uploadId")}
+                            labelColor='text-black'
+                            value=''
+                            onChange={handleChange}
+                        />
                     </div>
                     <FormTitle title={t("security")} />
-                    <div className='flex justify-center my-5 gap-4'>
+                    <div className='flex justify-start my-5'>
                         <Input
                             type='name'
                             name='password'
@@ -136,7 +131,7 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex justify-center my-5'>
+                    <div className='flex justify-start my-5'>
                         <Input
                             type='password'
                             name='confirmPassword'

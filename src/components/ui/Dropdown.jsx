@@ -13,13 +13,13 @@ function Dropdown(props) {
         onChange,
     } = props;
 
-    const inputClasses = `${WidthSize} border border-solid self-center text-light-gray border-light-gray/30 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius} shadow-${shadow}`;
+    const inputClasses = `${WidthSize} border border-solid self-center text-light-gray border-light-gray/30 px-[20px] py-[10px] min-w-0 text-${FontSize} font-${FontWeight} rounded-${radius} shadow-${shadow} flex-[2_1_0%]`;
 
     return (
         <>
             {label && (
                 <label
-                    className={`mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-${labelColor} font-light flex:self-center capitalize text-sm md:text-base lg:text-lg`}
+                    className={`mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-${labelColor} font-light flex:self-center capitalize text-sm md:text-base lg:text-lg flex-1`}
                 >
                     {label}
                 </label>
