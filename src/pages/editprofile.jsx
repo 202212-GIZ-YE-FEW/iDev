@@ -56,16 +56,17 @@ function EditProfile({ t }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='flex my-5 space-s-8'>
+                    <div className='flex my-5'>
                         <Input
                             type='number'
                             name='familySize'
+                            inputWidthSize='flex-[1_1_0%]'
                             label={t("familySize")}
                             labelColor='text-black'
                             value={formData.familySize || ""}
                             onChange={handleChange}
                         />
-                        <p className='mt-4 ms-10'>{t("member(s)")}</p>
+                        <span className='mt-4 ms-10'>{t("member(s)")}</span>
                     </div>
                     <div className='flex justify-start my-5'>
                         <Dropdown
