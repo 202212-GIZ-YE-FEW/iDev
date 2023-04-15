@@ -1,6 +1,6 @@
 {
-    "10ticketsRemaining": "10 Tickets Remaining",
-    "3cardsAdded": "3 Cards Added",
+    "ticketsRemaining": "{{count}} Tickets Remaining",
+    "cardsAdded": "{{count}} Cards Added",
     "cancel": "Cancel",
     "hubbies": "Hubbies",
     "security": "Security",

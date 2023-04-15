@@ -96,7 +96,7 @@ function EditProfile({ t }) {
                         <Input
                             type='email'
                             name='email'
-                            label={t("Email")}
+                            label={t("email")}
                             labelColor='text-black'
                         />
                     </div>
@@ -174,7 +174,7 @@ function EditProfile({ t }) {
                     <FormTitle title={t("paymentMethods&Tickets")} />
                     <div className='flex gap-10 my-8'>
                         <div className='flex flex-col gap-5'>
-                            <p>{t("3cardsAdded")}</p>
+                            <p>{t("cardsAdded", { count: 3 })}</p>
                             <Button
                                 content={t("showCards")}
                                 filled='true'
@@ -184,7 +184,7 @@ function EditProfile({ t }) {
                             />
                         </div>
                         <div className='flex flex-col gap-5'>
-                            <p>{t("10ticketsRemaining")}</p>
+                            <p>{t("ticketsRemaining", { count: 10 })}</p>
                             <Button
                                 content={t("buyTickets")}
                                 filled='true'

@@ -1,6 +1,6 @@
 {
-    "10ticketsRemaining": "تبقى عشرة تذاكر",
-    "3cardsAdded": "تم اضافة ثلاثة بطاقات",
+    "ticketsRemaining": "تبقى {{count}} تذاكر",
+    "cardsAdded": "تم اضافة {{count}} بطاقات",
     "email": "البريد الالكتروني",
     "birthDate": "تاريخ الميلاد",
     "buyTickets": "شراء تذاكر",
