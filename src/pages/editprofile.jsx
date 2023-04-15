@@ -2,7 +2,6 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 
-import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
@@ -20,128 +19,147 @@ function EditProfile({ t }) {
                     <PreviewProfile />
                 </div>
                 <div className='w-full justify-self-center lg:justify-self-end'>
-                    <FormTitle title={t("profileInfo")} />
-                    <div className='flex my-5'>
-                        <Input
-                            type='text'
-                            name='fullName'
-                            label={t("fullName")}
-                            labelColor='text-black'
-                            value={formData.fullName || ""}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className='flex my-5'>
-                        <Dropdown
-                            placeholder='select'
-                            data={[
-                                { value: 1, label: "Bacholar" },
-                                { value: 2, label: "Master" },
-                                { value: 3, label: "PhD" },
-                                { value: 4, label: "Deploma" },
-                            ]}
-                            label={t("educationLevel")}
-                            labelColor='text-black'
-                            value={formData.educationLevel || ""}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className='flex flex-row my-5'>
-                        <Input
-                            type='text'
-                            name='hubbies'
-                            label={t("hubbies")}
-                            labelColor='text-black'
-                            value={formData.hubbies || ""}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className='flex my-5'>
-                        <Input
-                            type='number'
-                            name='familySize'
-                            inputWidthSize='flex-[1_1_0%]'
-                            label={t("familySize")}
-                            labelColor='text-black'
-                            value={formData.familySize || ""}
-                            onChange={handleChange}
-                        />
-                        <span className='mt-4 ms-10'>{t("member(s)")}</span>
-                    </div>
-                    <div className='flex justify-start my-5'>
-                        <Dropdown
-                            className='lg:w-8/12 text-light-black'
-                            placeholder='select '
-                            name='gender'
-                            label={t("gender")}
-                            labelColor='text-black'
-                            data={[
-                                { value: 1, label: "Female" },
-                                { value: 2, label: "Male" },
-                            ]}
-                            value={formData.gender || ""}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className='flex justify-start my-5'>
-                        <Input
-                            type='date'
-                            name='birthDate'
-                            label={t("birthDate")}
-                            labelColor='text-black'
-                            value={formData.birthDate || ""}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className='flex justify-start my-5'>
-                        <Input
-                            type='email'
-                            name='email'
-                            label={t("email")}
-                            labelColor='text-black'
-                        />
-                    </div>
-                    <div className='flex justify-start my-5'>
-                        <Input
-                            type='text'
-                            name='phoneNumber'
-                            label={t("phoneNumber")}
-                            labelColor='text-black'
-                            value={formData.phoneNumber || ""}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className='flex my-5'>
-                        <Input
-                            type='file'
-                            name='uploadId'
-                            label={t("uploadId")}
-                            labelColor='text-black'
-                            value=''
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <FormTitle title={t("security")} />
-                    <div className='flex justify-start my-5'>
-                        <Input
-                            type='name'
-                            name='password'
-                            label={t("password")}
-                            labelColor='text-black'
-                            value={formData.password || ""}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className='flex justify-start my-5'>
-                        <Input
-                            type='password'
-                            name='confirmPassword'
-                            label={t("confirmPassword")}
-                            labelColor='text-black'
-                            value={formData.confirmPassword || ""}
-                            onChange={handleChange}
-                        />
-                    </div>
+                    <fieldset>
+                        <legend class='text-3xl font-semibold uppercase'>
+                            {t("profileInfo")}
+                        </legend>
+                        <div className='flex my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='text'
+                                name='fullName'
+                                label={t("fullName")}
+                                labelColor='text-black'
+                                value={formData.fullName || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex my-5'>
+                            <Dropdown
+                                placeholder='select'
+                                data={[
+                                    { value: 1, label: "Bacholar" },
+                                    { value: 2, label: "Master" },
+                                    { value: 3, label: "PhD" },
+                                    { value: 4, label: "Deploma" },
+                                ]}
+                                label={t("educationLevel")}
+                                labelColor='text-black'
+                                value={formData.educationLevel || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex flex-row my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='text'
+                                name='hubbies'
+                                label={t("hubbies")}
+                                labelColor='text-black'
+                                value={formData.hubbies || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex my-5'>
+                            <Input
+                                inputWidthSize='flex-[1_1_0%]'
+                                type='number'
+                                name='familySize'
+                                label={t("familySize")}
+                                labelColor='text-black'
+                                value={formData.familySize || ""}
+                                onChange={handleChange}
+                            />
+                            <div className='mt-4 ms-10 flex-[0_1_0%]'>
+                                {t("member(s)")}
+                            </div>
+                        </div>
+                        <div className='flex justify-start my-5'>
+                            <Dropdown
+                                className='lg:w-8/12 text-light-black'
+                                placeholder='select '
+                                name='gender'
+                                label={t("gender")}
+                                labelColor='text-black'
+                                data={[
+                                    { value: 1, label: "Female" },
+                                    { value: 2, label: "Male" },
+                                ]}
+                                value={formData.gender || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex justify-start my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='date'
+                                name='birthDate'
+                                label={t("birthDate")}
+                                labelColor='text-black'
+                                value={formData.birthDate || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex justify-start my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='email'
+                                name='email'
+                                label={t("email")}
+                                labelColor='text-black'
+                            />
+                        </div>
+                        <div className='flex justify-start my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='text'
+                                name='phoneNumber'
+                                label={t("phoneNumber")}
+                                labelColor='text-black'
+                                value={formData.phoneNumber || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='file'
+                                name='uploadId'
+                                label={t("uploadId")}
+                                labelColor='text-black'
+                                value=''
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </fieldset>
+                    <fieldset className='mt-8'>
+                        <legend class='text-3xl font-semibold'>
+                            {t("security")}
+                        </legend>
+                        <div className='flex justify-start my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='name'
+                                name='password'
+                                label={t("password")}
+                                labelColor='text-black'
+                                value={formData.password || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex justify-start my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='password'
+                                name='confirmPassword'
+                                label={t("confirmPassword")}
+                                labelColor='text-black'
+                                value={formData.confirmPassword || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </fieldset>
+
                     <div className='flex flex-col sm:flex-row gap-2 my-8'>
                         <Button
                             content={t("saveChanges")}
@@ -165,30 +183,33 @@ function EditProfile({ t }) {
                             shadow='shadow-lg'
                         />
                     </div>
-
-                    <FormTitle title={t("paymentMethods&Tickets")} />
-                    <div className='flex gap-10 my-8'>
-                        <div className='flex flex-col gap-5'>
-                            <p>{t("cardsAdded", { count: 3 })}</p>
-                            <Button
-                                content={t("showCards")}
-                                filled='true'
-                                size='small'
-                                radius='md '
-                                shadow='shadow-lg'
-                            />
+                    <fieldset className='my-12'>
+                        <legend class='text-3xl font-semibold mb-12'>
+                            {t("paymentMethods&Tickets")}
+                        </legend>
+                        <div className='flex gap-10'>
+                            <div className='flex flex-col gap-5'>
+                                <p>{t("cardsAdded", { count: 3 })}</p>
+                                <Button
+                                    content={t("showCards")}
+                                    filled='true'
+                                    size='small'
+                                    radius='md '
+                                    shadow='shadow-lg'
+                                />
+                            </div>
+                            <div className='flex flex-col gap-5'>
+                                <p>{t("ticketsRemaining", { count: 10 })}</p>
+                                <Button
+                                    content={t("buyTickets")}
+                                    filled='true'
+                                    size='small'
+                                    radius='md '
+                                    shadow='shadow-lg'
+                                />
+                            </div>
                         </div>
-                        <div className='flex flex-col gap-5'>
-                            <p>{t("ticketsRemaining", { count: 10 })}</p>
-                            <Button
-                                content={t("buyTickets")}
-                                filled='true'
-                                size='small'
-                                radius='md '
-                                shadow='shadow-lg'
-                            />
-                        </div>
-                    </div>
+                    </fieldset>
                 </div>
             </div>
         </div>

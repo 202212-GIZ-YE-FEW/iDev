@@ -22,7 +22,7 @@ const Input = (props) => {
         t,
     } = props;
 
-    const inputClasses = `${inputWidthSize} border text-base text-light-black border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius} flex-[2_1_0%]`;
+    const inputClasses = `${inputWidthSize} border text-base text-light-black border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
 
     return (
         <>

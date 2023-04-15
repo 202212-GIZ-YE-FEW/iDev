@@ -47,7 +47,7 @@ exports[`renders correctly 1`] = `
             className="flex-col mt-[0.8rem]"
           >
             <input
-              className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md flex-[2_1_0%]"
+              className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
               name="firstName"
               onChange={[Function]}
               placeholder="firstName"
@@ -60,7 +60,7 @@ exports[`renders correctly 1`] = `
             className="flex-col mt-[0.8rem]"
           >
             <input
-              className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md flex-[2_1_0%]"
+              className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
               name="lastName"
               onChange={[Function]}
               placeholder="lastName"
@@ -74,7 +74,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md flex-[2_1_0%]"
+            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="email"
             onChange={[Function]}
             placeholder="email"
@@ -87,7 +87,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md flex-[2_1_0%]"
+            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="confirmEmail"
             onChange={[Function]}
             placeholder="confirmEmail"
@@ -103,7 +103,7 @@ exports[`renders correctly 1`] = `
             className="flex-col mt-[0.8rem]"
           >
             <input
-              className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md flex-[2_1_0%]"
+              className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
               name="password"
               onChange={[Function]}
               placeholder="password"
@@ -116,7 +116,7 @@ exports[`renders correctly 1`] = `
             className="flex-col mt-[0.8rem]"
           >
             <input
-              className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md flex-[2_1_0%]"
+              className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
               name="confirmPassword"
               onChange={[Function]}
               placeholder="confirmPassword"
@@ -135,7 +135,7 @@ exports[`renders correctly 1`] = `
             date
           </label>
           <input
-            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md flex-[2_1_0%]"
+            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="dateOfBirth"
             onChange={[Function]}
             required={false}
