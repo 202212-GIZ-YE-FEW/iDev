@@ -1,29 +1,77 @@
 import Image from "next/image";
-import { withTranslation } from "next-i18next";
+import { withTranslation, useTranslation } from "next-i18next";
+import { collection, getDocs } from "firebase/firestore";
+import { auth, db, storage } from "@/firebase/config";
+import { useEffect, useState } from "react";
+import {
+    uploadBytes,
+    getDownloadURL,
+    storageRef,
+    listAll,
+    ref,
+} from "firebase/storage";
 
-function BlogItem({ title, thumbnail, isOdd }) {
+import { useRouter } from "next/navigation";
+function BlogItem({
+    en_title,
+    ar_title,
+    en_article,
+    ar_article,
+    thumbnail,
+    isOdd,
+}) {
+    const router = useRouter();
+    const [imageUrl, setImageUrl] = useState(null);
+    const { i18n } = useTranslation("common");
+
+    useEffect(() => {
+        const imageRef = ref(storage, `blogImages/${thumbnail}.jpeg`);
+
+        getDownloadURL(imageRef)
+            .then((url) => {
+                setImageUrl(url);
+                console.log(url);
+                // do something with the URL, e.g. display the image using an <img> tag
+            })
+            .catch((error) => {
+                console.log(error);
+                // handle the error
+            });
+    }, []);
+    const handleBlogClick = () => {
+        router.push({
+            pathname: "/blog",
+            query: { en_title },
+        });
+    };
+
     return (
         <>
             <div className='relative mx-3'>
-                <Image
-                    src={`/home/${thumbnail}.svg`}
-                    alt={`${title} svg`}
-                    width={200}
-                    height={160}
-                    sizes='(max-width: 768px) 100vw,
-                        (max-width: 1200px) 50vw,
-                        33vw'
-                    className='w-full h-full'
-                />
+                <a onClick={() => handleBlogClick()}>
+                    <div className=' border border-gray max-h-250'>
+                        {" "}
+                        <img
+                            src={imageUrl}
+                            width={200}
+                            height={140}
+                            sizes='(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw'
+                            className='w-full max-w-100%   md:max-h-[315px] sm:max-h-[208px]'
+                        />{" "}
+                    </div>{" "}
+                </a>
+
                 {isOdd ? (
                     <div className='w-32 absolute bottom-2 left-2'>
                         <p className='uppercase text-base box-decoration-clone inline leading-7 bg-light-gray text-white px-2'>
-                            {title}
+                            {i18n.language == "ar"
+                                ? `${ar_title}`
+                                : `${en_title}`}
                         </p>
                     </div>
                 ) : (
                     <p className='uppercase absolute top-2 left-2 text-base bg-light-gray text-white px-2'>
-                        {title}
+                        {i18n.language == "ar" ? `${ar_title}` : `${en_title}`}
                     </p>
                 )}
             </div>

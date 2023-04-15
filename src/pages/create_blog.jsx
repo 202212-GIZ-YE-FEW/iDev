@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 import PageIntro from "@/components/PageIntro";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export const extractFirstName = (str) => {
     const firstSpaceIndex = str.indexOf(" ");
