@@ -164,22 +164,25 @@ function EditProfile({ t }) {
                         <Button
                             content={t("saveChanges")}
                             filled='true'
-                            size='small'
-                            radius='md '
+                            size='medium'
+                            radius='md'
+                            textTransform='uppercase'
                             shadow='shadow-lg'
                         />
                         <Button
                             content={t("deleteAccount")}
                             filled='true'
-                            size='small'
-                            radius='md '
+                            size='medium'
+                            radius='md'
+                            textTransform='uppercase'
                             shadow='shadow-lg'
                         />
                         <Button
                             content={t("cancel")}
                             filled='true'
-                            size='small'
-                            radius='md '
+                            size='medium'
+                            radius='md'
+                            textTransform='uppercase'
                             shadow='shadow-lg'
                         />
                     </div>
@@ -193,8 +196,9 @@ function EditProfile({ t }) {
                                 <Button
                                     content={t("showCards")}
                                     filled='true'
-                                    size='small'
-                                    radius='md '
+                                    size='medium'
+                                    radius='md'
+                                    textTransform='uppercase'
                                     shadow='shadow-lg'
                                 />
                             </div>
@@ -203,8 +207,9 @@ function EditProfile({ t }) {
                                 <Button
                                     content={t("buyTickets")}
                                     filled='true'
-                                    size='small'
-                                    radius='md '
+                                    size='medium'
+                                    radius='md'
+                                    textTransform='uppercase'
                                     shadow='shadow-lg'
                                 />
                             </div>
