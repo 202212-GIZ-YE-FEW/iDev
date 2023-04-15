@@ -6,7 +6,7 @@ import RadioInputItem from "../ui/radiogroup/RadioInputItem";
 const RelationshipStatus = ({ t, name, relationshipStatus, onChange }) => {
     return (
         <>
-            <RadioGroup title={t("whatRelationshipStatus")} asButton={true}>
+            <RadioGroup title={t("whatRelationshipStatus")} as='button'>
                 <RadioInputItem
                     id='single'
                     name={name}

@@ -8,7 +8,7 @@ export default {
     component: RadioGroup,
     argsTypes: {
         title: { control: "text" },
-        asButton: { control: "boolean" },
+        as: { control: "text" },
     },
 };
 
@@ -16,7 +16,7 @@ const Template = (args) => <RadioGroup {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     title: "Radio Group",
-    asButton: false,
+    as: "standard",
     children: [
         <RadioInputItem
             key={1}
@@ -42,10 +42,10 @@ Default.args = {
     ],
 };
 
-export const AsButton = Template.bind({});
-AsButton.args = {
+export const As = Template.bind({});
+As.args = {
     title: "Radio Group",
-    asButton: true,
+    as: "standard",
     children: [
         <RadioInputItem
             key={1}

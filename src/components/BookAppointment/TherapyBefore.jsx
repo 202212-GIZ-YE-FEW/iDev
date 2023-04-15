@@ -6,7 +6,7 @@ import RadioInputItem from "../ui/radiogroup/RadioInputItem";
 const TherapyBefore = ({ t, name, therapyBefore, onChange }) => {
     return (
         <>
-            <RadioGroup title={t("therapyBefore")} asButton={true}>
+            <RadioGroup title={t("therapyBefore")} as='button'>
                 <RadioInputItem
                     id='yes'
                     name={name}

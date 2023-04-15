@@ -6,7 +6,7 @@ exports[`renders correctly 1`] = `
 >
   <input
     checked={false}
-    className="w-5 h-5 bg-black border-black"
+    className=""
     type="radio"
   />
 </div>
