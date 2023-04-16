@@ -33,11 +33,6 @@ function PaymentMethod({ t }) {
             items: 1,
         },
     };
-    const colors = [
-        { color: "#e62151", bg: "pink" },
-        { color: "#1d40c0", bg: "blue" },
-        { color: "#daa00a", bg: "yellow" },
-    ];
     const cards = [
         {
             type: "mastercard",
@@ -46,6 +41,7 @@ function PaymentMethod({ t }) {
             cvv: "123",
             expireDate: "02/2020",
             holder: "Abrar",
+            bg: "pink",
         },
         {
             type: "visa",
@@ -54,6 +50,7 @@ function PaymentMethod({ t }) {
             cvv: "113",
             expireDate: "02/2030",
             holder: "Maha",
+            bg: "blue",
         },
         {
             type: "paypal",
@@ -62,6 +59,7 @@ function PaymentMethod({ t }) {
             cvv: "133",
             expireDate: "02/2040",
             holder: "Mawaheb",
+            bg: "yellow",
         },
         {
             type: "konafa",
@@ -70,6 +68,7 @@ function PaymentMethod({ t }) {
             cvv: "133",
             expireDate: "02/2040",
             holder: "Mawaheb",
+            bg: "pink",
         },
     ];
     return (
@@ -93,9 +92,10 @@ function PaymentMethod({ t }) {
                             value={item.type}
                             title={
                                 <div
-                                    className={`w-full h-full flex flex-col text-white justify-between py-7 px-8 rounded-md bg-[url(/images/${
-                                        colors[index % 3]["bg"]
-                                    }-overlay.png)] bg-no-repeat bg-cover`}
+                                    className='w-full h-full flex flex-col text-white justify-between py-7 px-8 rounded-md bg-no-repeat bg-cover'
+                                    style={{
+                                        backgroundImage: `url(/images/${item.bg}-overlay.png)`,
+                                    }}
                                 >
                                     <Image
                                         src={item.icon}
