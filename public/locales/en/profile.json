@@ -26,5 +26,7 @@
     "security": "Security",
     "showCards": "SHow Cards",
     "ticketsRemaining": "{{count}} Tickets Remaining",
-    "uploadId": "Upload Id"
+    "uploadId": "Upload Id",
+    "bio": "Bio",
+    "therapistP": "therapist Profile"
 }

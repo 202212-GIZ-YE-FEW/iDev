@@ -26,5 +26,8 @@
     "security": "الامان",
     "showCards": "إظهار البطاقات",
     "ticketsRemaining": "تبقى {{count}} تذاكر",
-    "uploadId": "البطاقة التعريفية"
+    "uploadId": "البطاقة التعريفية",
+    "bio": "السيرة الذاتية",
+    "therapistP": "معلومات المعالج"
+
 }

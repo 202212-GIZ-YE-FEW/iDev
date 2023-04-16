@@ -8,6 +8,8 @@ export default function Textarea(props) {
         radius = "md",
         border = "light-gray/30",
         shadow = "sm",
+        labelFontWeight = "medium",
+        inputWidthSize = "w-full",
         error,
         touched,
         t,
@@ -15,7 +17,7 @@ export default function Textarea(props) {
     } = props;
 
     const inputClasses = `
-    block p-2.5 w-full px-4 py-2 text-base text-gray bg-gray
+    block p-2.5 ${inputWidthSize} px-4 py-2 text-base text-gray bg-gray
     h-${height} ${size} rounded-${radius} placeholder-light-gray text-gray bg-white resize-none
     border-${border} shadow-${shadow} border-[1px]
     `;
@@ -24,7 +26,7 @@ export default function Textarea(props) {
         <>
             {label && (
                 <label
-                    className={`block mb-2 font-medium text-sm md:text-base lg:text-lg text-${labelColor} capitalize`}
+                    className={`block mb-2 font-${labelFontWeight} text-sm md:text-base lg:text-lg text-${labelColor} capitalize`}
                 >
                     {label}
                 </label>
