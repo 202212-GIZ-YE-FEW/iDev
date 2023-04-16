@@ -9,7 +9,7 @@ import { useAuth } from "@/components/context/AuthContext";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-
+import setDocument from "@/firebase/setData";
 import addDocument from "@/firebase/addData";
 import schema from "@/utils/validationSchemaSignUp";
 
@@ -56,33 +56,58 @@ function SignUp({ t }) {
             const collection = "user"; // collection name
             const userData = {
                 active: true,
-                deleted: false,
-                education_level: "",
+
                 email: formData.email,
                 familySize: 4,
                 first_name: formData.firstName,
-                gender: "",
                 hobbies: "",
                 last_name: formData.lastName,
                 date_brith: formData.dateOfBirth,
-                phoneNumber: "",
-                isTherapist: false,
-                userName: "",
-                city: "",
-                LicenseNamber: 7899000,
+                gender: "",
             };
 
-            addDocument(collection, userData).then((response) => {
-                signUp(formData.email, formData.password);
+            addDocument(collection, userData)
+                .then((docRef) => {
+                    const userId = docRef.result;
+                    const personalData = "Personal data";
+                    const profileData = {
+                        deleted: false,
+                        hobbies: "",
+                        familySize: 80,
+                        education_level: "",
+                        phoneNumber: 7778989898,
+                        gender: "",
+                    };
 
-                const router = require("next/router").default;
-                router.push({
-                    pathname: "/thanks",
-                    query: {
-                        subtitle: "emailVerified",
-                    },
+                    // Create the "profile" sub-collection
+                    return setDocument(
+                        `${collection}/${userId}/${personalData}/profile`,
+                        profileData
+                    ).then(() => {
+                        // Create the "therapist" sub-collection
+                        const therapistData = {
+                            isTherapist: false,
+                            userName: "",
+                            city: "",
+                            LicenseNumber: 7899000,
+                        };
+                        return setDocument(
+                            `${collection}/${userId}/${personalData}/therapist`,
+                            therapistData
+                        );
+                    });
+                })
+
+                .then(() => {
+                    signUp(formData.email, formData.password);
+                    const router = require("next/router").default;
+                    router.push({
+                        pathname: "/thanks",
+                        query: {
+                            subtitle: "emailVerified",
+                        },
+                    });
                 });
-            });
         } catch (error) {
             if (error.code === "auth/email-already-in-use") {
                 setFormErrors({ email: "validation:emailExist" });
