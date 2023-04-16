@@ -29,7 +29,6 @@ Array [
           htmlFor="individual"
         >
           individualCounseling
-           
         </label>
       </div>
       <div
@@ -48,7 +47,6 @@ Array [
           htmlFor="teen"
         >
           teenCounseling
-           
         </label>
       </div>
     </div>

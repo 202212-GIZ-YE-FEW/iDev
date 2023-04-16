@@ -29,7 +29,6 @@ Array [
           htmlFor="male-counselor"
         >
           maleCounselor
-           
         </label>
       </div>
       <div
@@ -48,7 +47,6 @@ Array [
           htmlFor="female-counselor"
         >
           femaleCounselor
-           
         </label>
       </div>
       <div
@@ -67,7 +65,6 @@ Array [
           htmlFor="older-counselor"
         >
           olderCounselor
-           
         </label>
       </div>
       <div
@@ -86,7 +83,6 @@ Array [
           htmlFor="non-religious-counselor"
         >
           nonReligiousCounselor
-           
         </label>
       </div>
     </div>

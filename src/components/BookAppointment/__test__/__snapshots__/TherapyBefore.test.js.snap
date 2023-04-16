@@ -29,7 +29,6 @@ Array [
           htmlFor="yes"
         >
           yes
-           
         </label>
       </div>
       <div
@@ -48,7 +47,6 @@ Array [
           htmlFor="no"
         >
           no
-           
         </label>
       </div>
     </div>
