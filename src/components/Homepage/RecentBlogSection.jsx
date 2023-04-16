@@ -1,24 +1,22 @@
 import { withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
-
 import "react-multi-carousel/lib/styles.css";
 import { db } from "@/firebase/config";
 import { extractFirstName } from "@/pages/create_blog";
 import PageIntro from "@/components/PageIntro";
 import BlogItem from "@/components/Homepage/RecentBlogItem";
-import { collection, getDocs } from "firebase/firestore";
+import { collection } from "firebase/firestore";
+import getDocument from "@/firebase/getData";
 function RecentBlogsSection({ t }) {
     const [blogsList, setBlogList] = useState([]);
     const collectionBlogsRef = collection(db, "blogs");
     useEffect(() => {
-        const getBlogs = async () => {
-            const data = await getDocs(collectionBlogsRef);
-            setBlogList(
-                data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-            );
+        const fetchData = async () => {
+            const data = await getDocument("blogs");
+            setBlogList(data);
         };
-        getBlogs();
+        fetchData();
     }, []);
 
     const recentBlogs = blogsList.map((blog) => {

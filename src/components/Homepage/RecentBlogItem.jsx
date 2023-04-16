@@ -1,15 +1,7 @@
-import Image from "next/image";
 import { withTranslation, useTranslation } from "next-i18next";
-import { collection, getDocs } from "firebase/firestore";
-import { auth, db, storage } from "@/firebase/config";
+import { storage } from "@/firebase/config";
 import { useEffect, useState } from "react";
-import {
-    uploadBytes,
-    getDownloadURL,
-    storageRef,
-    listAll,
-    ref,
-} from "firebase/storage";
+import { getDownloadURL, ref } from "firebase/storage";
 
 import { useRouter } from "next/navigation";
 function BlogItem({
@@ -30,11 +22,9 @@ function BlogItem({
         getDownloadURL(imageRef)
             .then((url) => {
                 setImageUrl(url);
-                console.log(url);
                 // do something with the URL, e.g. display the image using an <img> tag
             })
             .catch((error) => {
-                console.log(error);
                 // handle the error
             });
     }, []);
@@ -50,15 +40,14 @@ function BlogItem({
             <div className='relative mx-3'>
                 <a onClick={() => handleBlogClick()}>
                     <div className=' border border-gray max-h-250'>
-                        {" "}
                         <img
                             src={imageUrl}
                             width={200}
                             height={140}
                             sizes='(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw'
                             className='w-full max-w-100%   md:max-h-[315px] sm:max-h-[208px]'
-                        />{" "}
-                    </div>{" "}
+                        />
+                    </div>
                 </a>
 
                 {isOdd ? (

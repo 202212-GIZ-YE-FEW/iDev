@@ -1,6 +1,10 @@
 {
     "upload": "رفع",
     "uploadYourArticle": "أرفع مقالك",
-    "AddYouArticleToOurBlogs": "أضف مقالك إلى المدونة الخاصة بالموقع",
-    "UploadArticleImage": "إرفع صورة المقال"
+    "addYouArticleToOurBlogs": "أضف مقالك إلى المدونة الخاصة بالموقع",
+    "uploadArticleImage": "إرفع صورة المقال",
+    "englishTitle": "العنزان بالإنجليزية",
+    "articleInEnglish": "المقال بالإنجليزية",
+    "arabicTitle": "العنزان بالعربي",
+    "articleInArabic": "المقال بالعربي"
 }

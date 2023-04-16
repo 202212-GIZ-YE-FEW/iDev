@@ -1,6 +1,10 @@
 {
     "upload": "upload",
     "uploadYourArticle": "UPLOAD YOUR ARTICEL",
-    "AddYouArticleToOurBlogs": "Add you article to our Blogs",
-    "UploadArticleImage": "Upload Article Image"
+    "addYouArticleToOurBlogs": "Add you article to our Blogs",
+    "uploadArticleImage": "Upload Article Image",
+    "englishTitle": "English Title",
+    "articleInEnglish": "article in English",
+    "arabicTitle": "arabic Title",
+    "articleInArabic": "article in arabic"
 }

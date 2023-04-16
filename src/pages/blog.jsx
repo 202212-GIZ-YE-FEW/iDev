@@ -1,17 +1,15 @@
 import PageIntro from "@/components/PageIntro";
 import Image from "next/image";
-import { db, storage } from "@/firebase/config";
+import { db } from "@/firebase/config";
 import { useEffect, useState } from "react";
 import { collection, query, where, onSnapshot } from "@firebase/firestore";
-import { getDownloadURL, ref } from "firebase/storage";
 import Subscribe from "@/components/Subscribe";
-import "firebase/database";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { extractFirstName } from "@/pages/create_blog";
 import { useRouter } from "next/router";
 import RecentBlogSection from "@/components/Homepage/RecentBlogSection";
-
+import downloadImage from "@/firebase/getImage";
 const Blog = () => {
     const router = useRouter();
     const { en_title } = router.query;
@@ -32,20 +30,10 @@ const Blog = () => {
             });
             setBlogData(blogs);
         });
-
-        const imageRef = ref(
-            storage,
-            `blogImages/${extractFirstName(title)}.jpeg`
-        );
-
-        getDownloadURL(imageRef)
-            .then((url) => {
-                setImageUrl(url);
-                console.log(url);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        const ImageName = extractFirstName(title);
+        downloadImage(ImageName, "blogImages").then((url) => {
+            setImageUrl(url);
+        });
     }, [title]);
 
     return (
