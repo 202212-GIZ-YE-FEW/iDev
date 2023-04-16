@@ -16,7 +16,7 @@ export default function RadioInputItem(props) {
             as === "standard",
         "w-full flex cursor-pointer rounded-md p-4 text-base md:text-xl lg:text-2xl shadow-md border-[1px] border-light-gray/80 hover:border-gray peer-checked:border-none peer-checked:bg-cyan peer-checked:text-white":
             as === "button",
-        "block w-full h-full cursor-pointer peer-checked:border-[3px] peer-checked:border-cyan peer-checked:border-dashed":
+        "block w-full h-full cursor-pointer peer-checked:border-[5px] peer-checked:border-cyan peer-checked:border-dashed peer-checked:rounded-lg":
             as === "card",
     });
 

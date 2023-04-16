@@ -4,6 +4,7 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import Carousel from "react-multi-carousel";
+
 import "react-multi-carousel/lib/styles.css";
 
 import PageIntro from "@/components/PageIntro";
@@ -78,7 +79,11 @@ function PaymentMethod({ t }) {
                     title={t("selectCard")}
                     subtitle={t("selectCardDesc")}
                 />
-                <Carousel itemClass='pe-3' responsive={responsive}>
+                <Carousel
+                    itemClass='pe-3'
+                    className='mt-28'
+                    responsive={responsive}
+                >
                     {cards.map((item, index) => (
                         <RadioInputItem
                             key={index}
