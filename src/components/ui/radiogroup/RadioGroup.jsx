@@ -14,7 +14,6 @@ export default function RadioGroup(props) {
                 <div className='text-9xl font-normal text-black'>
                     {Children.map(children, (child) => {
                         return React.cloneElement(child, { as });
-                        // return React.cloneElement(child);
                     })}
                 </div>
             </fieldset>

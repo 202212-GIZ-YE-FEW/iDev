@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex items-center"
+  className=""
 >
   <input
     checked={false}

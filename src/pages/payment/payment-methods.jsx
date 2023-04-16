@@ -2,16 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 import Carousel from "react-multi-carousel";
-
 import "react-multi-carousel/lib/styles.css";
 
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
+import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 
 import MasterCardSVG from "/public/images/master-card.svg";
 import VisaSVG from "/public/images/visa.svg";
 function PaymentMethod({ t }) {
+    const [paymentMethod, setPaymentMethod] = useState("mastercard");
+
+    const handleChange = ({ target }) => {
+        setPaymentMethod(() => target.value);
+    };
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -49,7 +55,15 @@ function PaymentMethod({ t }) {
             holder: "Maha",
         },
         {
-            type: "mastercard",
+            type: "paypal",
+            icon: MasterCardSVG,
+            cardNumber: "xxxx xxxx xxxx 1980",
+            cvv: "133",
+            expireDate: "02/2040",
+            holder: "Mawaheb",
+        },
+        {
+            type: "konafa",
             icon: MasterCardSVG,
             cardNumber: "xxxx xxxx xxxx 1980",
             cvv: "133",
@@ -64,62 +78,42 @@ function PaymentMethod({ t }) {
                     title={t("selectCard")}
                     subtitle={t("selectCardDesc")}
                 />
-                <Carousel
-                    infinite='true'
-                    className='mt-28'
-                    responsive={responsive}
-                >
-                    {cards.map((item, index) => {
-                        return (
-                            <>
-                                <div className='me-3' key={index}>
-                                    <input
-                                        className='peer hidden'
-                                        id={`${item.name}-id`}
-                                        type='radio'
-                                        name='card'
+                <Carousel itemClass='pe-3' responsive={responsive}>
+                    {cards.map((item, index) => (
+                        <RadioInputItem
+                            key={index}
+                            id={index}
+                            as='card'
+                            name='payment_method'
+                            value={item.type}
+                            title={
+                                <div
+                                    className={`w-full h-full flex flex-col text-white justify-between py-7 px-8 rounded-md bg-[url(/images/${
+                                        colors[index % 3]["bg"]
+                                    }-overlay.png)] bg-no-repeat bg-cover`}
+                                >
+                                    <Image
+                                        src={item.icon}
+                                        alt={`${item.name} logo`}
+                                        className='self-end'
                                     />
-                                    <label
-                                        htmlFor={`${item.name}-id`}
-                                        className='group block relative w-full min-h-[15rem] rounded-md text-white cursor-pointer peer-checked:border-[3px] peer-checked:border-cyan peer-checked:border-dashed'
-                                    >
-                                        <div
-                                            className={`absolute top-0 left-0 w-full flex flex-col h-full py-7 px-8 z-20  bg-[url(/images/${
-                                                colors[index % 3]["bg"]
-                                            }-overlay.png)] bg-no-repeat bg-cover`}
-                                        >
-                                            <Image
-                                                src={item.icon}
-                                                alt={`${item.name} logo`}
-                                                className='self-end'
-                                            />
-                                            <div className='w-full h-full flex flex-col mb-6 justify-between text-sm'>
-                                                <p aria-label='expire date'>
-                                                    {item.expireDate}
-                                                </p>
-                                                <p aria-label='card number'>
-                                                    {item.cardNumber}
-                                                </p>
-                                                <p aria-label='card holder'>
-                                                    {item.holder}
-                                                </p>
-                                            </div>
-                                            <div className='fit-content self-center lg:self-end'>
-                                                <Button
-                                                    content={t("deleteCard")}
-                                                    text-transform='capitalize'
-                                                    filled='true'
-                                                    size='medium'
-                                                    fontSize='text-sm md:text-base'
-                                                    radius='lg'
-                                                />
-                                            </div>
-                                        </div>
-                                    </label>
+                                    <div className='w-full h-full flex flex-col mb-6 justify-between text-sm'>
+                                        <p aria-label='expire date'>
+                                            {item.expireDate}
+                                        </p>
+                                        <p aria-label='card number'>
+                                            {item.cardNumber}
+                                        </p>
+                                        <p aria-label='card holder'>
+                                            {item.holder}
+                                        </p>
+                                    </div>
                                 </div>
-                            </>
-                        );
-                    })}
+                            }
+                            checked={paymentMethod === item.type}
+                            onChange={(e) => handleChange(e)}
+                        />
+                    ))}
                 </Carousel>
                 <p className='text-base lg:text-3xl my-20 text-center font-medium'>
                     {t("confirmBuyDesc", {

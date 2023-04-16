@@ -12,16 +12,20 @@ export default function RadioInputItem(props) {
     };
 
     const labelClassNames = clsx({
-        "w-full flex cursor-pointer rounded-md p-4 text-base md:text-xl lg:text-2xl shadow-md border-[1px] border-light-gray/80 hover:border-gray peer-checked:border-none peer-checked:bg-cyan peer-checked:text-white":
-            as === "button",
         "w-full py-2 ms-2 text-base lg:text-xl font-medium text-black ps-3":
             as === "standard",
+        "w-full flex cursor-pointer rounded-md p-4 text-base md:text-xl lg:text-2xl shadow-md border-[1px] border-light-gray/80 hover:border-gray peer-checked:border-none peer-checked:bg-cyan peer-checked:text-white":
+            as === "button",
+        "block w-full h-full cursor-pointer peer-checked:border-[3px] peer-checked:border-cyan peer-checked:border-dashed":
+            as === "card",
     });
 
     return (
         <div
-            className={clsx("flex items-center", {
-                "space-y-4": as === "button",
+            className={clsx("", {
+                "flex items-center": as === "standard",
+                "flex items-center space-y-4": as === "button",
+                "h-full rounded-md min-h-[14rem]": as === "card",
             })}
         >
             <input
@@ -30,6 +34,7 @@ export default function RadioInputItem(props) {
                 className={clsx({
                     "w-5 h-5 bg-black border-black": as === "standard",
                     "peer hidden": as === "button",
+                    "hidden peer": as === "card",
                 })}
             />
             {title && (
