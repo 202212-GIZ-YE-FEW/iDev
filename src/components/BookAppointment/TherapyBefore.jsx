@@ -11,7 +11,7 @@ const TherapyBefore = ({ t, name, therapyBefore, onChange }) => {
                     id='yes'
                     name={name}
                     value='yes'
-                    title={t("yes")}
+                    content={t("yes")}
                     checked={therapyBefore === "yes"}
                     onChange={(e) => onChange(e)}
                 />
@@ -19,7 +19,7 @@ const TherapyBefore = ({ t, name, therapyBefore, onChange }) => {
                     id='no'
                     name={name}
                     value='no'
-                    title={t("no")}
+                    content={t("no")}
                     checked={therapyBefore === "no"}
                     onChange={(e) => onChange(e)}
                 />

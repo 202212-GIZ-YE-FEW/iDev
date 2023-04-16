@@ -118,7 +118,7 @@ function Therapist({ t }) {
                                         value='male'
                                         checked={formData.gender === "male"}
                                         onChange={handleChange}
-                                        title={t("male")}
+                                        content={t("male")}
                                         as='standard'
                                     />
                                     <RadioInputItem
@@ -127,7 +127,7 @@ function Therapist({ t }) {
                                         value='female'
                                         checked={formData.gender === "female"}
                                         onChange={handleChange}
-                                        title={t("female")}
+                                        content={t("female")}
                                         as='standard'
                                     />
                                 </RadioGroup>

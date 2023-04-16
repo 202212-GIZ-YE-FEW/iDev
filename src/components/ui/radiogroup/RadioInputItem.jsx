@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 export default function RadioInputItem(props) {
-    const { id, name, value, checked = false, onChange, title, as } = props;
+    const { id, name, value, checked = false, onChange, content, as } = props;
 
     const inputProps = {
         id,
@@ -37,9 +37,9 @@ export default function RadioInputItem(props) {
                     "hidden peer": as === "card",
                 })}
             />
-            {title && (
+            {content && (
                 <label htmlFor={id} className={labelClassNames}>
-                    {title}
+                    {content}
                 </label>
             )}
         </div>

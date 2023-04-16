@@ -90,7 +90,7 @@ function PaymentMethod({ t }) {
                             as='card'
                             name='payment_method'
                             value={item.type}
-                            title={
+                            content={
                                 <div
                                     className='w-full h-full flex flex-col text-white justify-between py-7 px-8 rounded-md bg-no-repeat bg-cover'
                                     style={{

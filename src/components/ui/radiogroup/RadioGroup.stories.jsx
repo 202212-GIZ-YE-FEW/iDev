@@ -23,21 +23,21 @@ Default.args = {
             id='1'
             name='radio'
             value='1'
-            title='Option 1'
+            content='Option 1'
         />,
         <RadioInputItem
             key={2}
             id='2'
             name='radio'
             value='2'
-            title='Option 2'
+            content='Option 2'
         />,
         <RadioInputItem
             key={3}
             id='3'
             name='radio'
             value='3'
-            title='Option 3'
+            content='Option 3'
         />,
     ],
 };
@@ -52,21 +52,21 @@ As.args = {
             id='1'
             name='radio'
             value='1'
-            title='Option 1'
+            content='Option 1'
         />,
         <RadioInputItem
             key={2}
             id='2'
             name='radio'
             value='2'
-            title='Option 2'
+            content='Option 2'
         />,
         <RadioInputItem
             key={3}
             id='3'
             name='radio'
             value='3'
-            title='Option 3'
+            content='Option 3'
         />,
     ],
 };

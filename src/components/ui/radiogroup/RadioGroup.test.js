@@ -31,7 +31,7 @@ it("renders title correctly", () => {
 it("does not render title if not passed", () => {
     const { queryByText } = render(
         <RadioGroup>
-            <RadioInputItem title='test title for child' />
+            <RadioInputItem content='test title for child' />
         </RadioGroup>
     );
     expect(queryByText("test title")).not.toBeInTheDocument();

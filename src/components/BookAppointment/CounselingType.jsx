@@ -11,7 +11,7 @@ const CounselingType = ({ t, name, counselingType, onChange }) => {
                     id='individual'
                     name={name}
                     value='individual'
-                    title={t("individualCounseling")}
+                    content={t("individualCounseling")}
                     checked={counselingType === "individual"}
                     onChange={(e) => onChange(e)}
                 />
@@ -19,7 +19,7 @@ const CounselingType = ({ t, name, counselingType, onChange }) => {
                     id='teen'
                     name={name}
                     value='teen'
-                    title={t("teenCounseling")}
+                    content={t("teenCounseling")}
                     checked={counselingType === "teen"}
                     onChange={(e) => onChange(e)}
                 />
