@@ -33,8 +33,7 @@ export default function RadioInputItem(props) {
                 {...inputProps}
                 className={clsx({
                     "w-5 h-5 bg-black border-black": as === "standard",
-                    "peer hidden": as === "button",
-                    "hidden peer": as === "card",
+                    "peer hidden": as === "button" || as === "card",
                 })}
             />
             {content && (
