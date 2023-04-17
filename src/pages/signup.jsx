@@ -110,7 +110,7 @@ function SignUp({ t }) {
                 });
         } catch (error) {
             if (error.code === "auth/email-already-in-use") {
-                setFormErrors({ email: "validation:emailExist" });
+                setFormErrors({ email: "validation:exist" });
             }
             if (error.inner) {
                 const newErrors = {};
