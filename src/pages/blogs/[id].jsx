@@ -71,7 +71,7 @@ function Blog({ blog }) {
         </div>
     );
 }
-export async function getStaticPaths({ locale }) {
+export async function getStaticPaths() {
     let blogs = [];
     try {
         blogs = await getDocument("blogs");
@@ -91,10 +91,11 @@ export async function getStaticPaths({ locale }) {
         fallback: false,
     };
 }
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ locale, params }) {
     let blog = null;
     try {
         blog = await getSingleDoc("blogs", params.id);
+        console.log(blog);
     } catch (error) {
         //
     }

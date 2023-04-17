@@ -1,5 +1,5 @@
+import Link from "next/link";
 import { useTranslation, withTranslation } from "next-i18next";
-
 function BlogItem({
     en_title,
     ar_title,
@@ -35,7 +35,7 @@ function BlogItem({
     return (
         <>
             <div className='relative mx-3'>
-                <a href={`/blogs/${id}`}>
+                <Link href={`blogs/${id}`}>
                     <div className=' border border-gray max-h-250'>
                         <img
                             src={`/home/${thumbnail}.svg`}
@@ -45,7 +45,7 @@ function BlogItem({
                             className='w-full max-w-100%   md:max-h-[315px] sm:max-h-[208px]'
                         />
                     </div>
-                </a>
+                </Link>
 
                 {isOdd ? (
                     <div className='w-32 absolute bottom-2 left-2'>
