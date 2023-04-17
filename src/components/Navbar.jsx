@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 import { useState } from "react";
 
 import Button from "@/components/ui/Button";
@@ -11,15 +11,14 @@ import { navigation } from "@/utils/constants";
 
 import { useAuth } from "./context/AuthContext";
 function LangDropdown(props) {
-    //TODO: Delete onChangeDir function
     const onChangeDir = (locale) => {
-        // document.dir = locale === "en" ? "ltr" : "rtl";
-        // const url = router.query;
-        // const newUrl = {
-        //     pathname: router.pathname,
-        //     query: { ...url },
-        // };
-        // router.push(newUrl);
+        document.dir = locale === "en" ? "ltr" : "rtl";
+        const url = router.query;
+        const newUrl = {
+            pathname: router.pathname,
+            query: { ...url },
+        };
+        router.push(newUrl);
     };
 
     const { setOpenLangDropdown, openLangDropdown, router } = props;
@@ -232,8 +231,7 @@ function MobileNav(prop) {
     );
 }
 
-export default function Navbar() {
-    const { t } = useTranslation("common");
+function Navbar({ t }) {
     const router = useRouter();
     const [openHamburger, setOpenHamburger] = useState(false);
     const [openLangDropdown, setOpenLangDropdown] = useState(false);
@@ -365,3 +363,4 @@ export default function Navbar() {
         </nav>
     );
 }
+export default withTranslation("common")(Navbar);
