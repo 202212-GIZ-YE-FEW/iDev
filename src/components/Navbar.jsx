@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { withTranslation } from "next-i18next";
 import { useState } from "react";
 
@@ -11,8 +11,10 @@ import { navigation } from "@/utils/constants";
 
 import { useAuth } from "./context/AuthContext";
 function LangDropdown(props) {
-    const onChangeDir = (locale) => {
-        document.dir = locale === "en" ? "ltr" : "rtl";
+    const { setOpenLangDropdown, openLangDropdown, router } = props;
+    //TODO: delete this function
+    const onChangeDir = (dir) => {
+        document.dir = dir;
         const url = router.query;
         const newUrl = {
             pathname: router.pathname,
@@ -20,8 +22,6 @@ function LangDropdown(props) {
         };
         router.push(newUrl);
     };
-
-    const { setOpenLangDropdown, openLangDropdown, router } = props;
     return (
         <div
             className='relative inline-block'
