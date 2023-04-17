@@ -11,14 +11,15 @@ import { navigation } from "@/utils/constants";
 
 import { useAuth } from "./context/AuthContext";
 function LangDropdown(props) {
+    //TODO: Delete onChangeDir function
     const onChangeDir = (locale) => {
-        document.dir = locale === "en" ? "ltr" : "rtl";
-        const url = router.query;
-        const newUrl = {
-            pathname: router.pathname,
-            query: { ...url },
-        };
-        router.push(newUrl);
+        // document.dir = locale === "en" ? "ltr" : "rtl";
+        // const url = router.query;
+        // const newUrl = {
+        //     pathname: router.pathname,
+        //     query: { ...url },
+        // };
+        // router.push(newUrl);
     };
 
     const { setOpenLangDropdown, openLangDropdown, router } = props;
@@ -38,7 +39,7 @@ function LangDropdown(props) {
                         href={router.pathname}
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                         locale='en'
-                        onClick={() => onChangeDir("en")}
+                        onClick={() => (document.dir = "ltr")}
                     >
                         English
                     </Link>
@@ -46,7 +47,7 @@ function LangDropdown(props) {
                         href={router.pathname}
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                         locale='ar'
-                        onClick={() => onChangeDir("ar")}
+                        onClick={() => (document.dir = "rtl")}
                     >
                         العربية
                     </Link>
