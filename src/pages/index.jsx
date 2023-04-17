@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import HomePage from "@/components/HomePage";
@@ -6,10 +5,9 @@ import HomePage from "@/components/HomePage";
 import getDocument from "@/firebase/getData";
 
 export default function Index({ blogs }) {
-    const { t } = useTranslation("home");
     return (
         <>
-            <HomePage t={t} blogs={blogs} />
+            <HomePage blogs={blogs} />
         </>
     );
 }
