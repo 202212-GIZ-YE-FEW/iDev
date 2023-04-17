@@ -1,25 +1,22 @@
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import HomePage from "@/components/HomePage";
 
 import getDocument from "@/firebase/getData";
 
-export default function Index() {
+export default function Index({ blogs }) {
+    const { t } = useTranslation("home");
     return (
         <>
-            <HomePage />
+            <HomePage t={t} blogs={blogs} />
         </>
     );
 }
 export async function getStaticProps({ locale }) {
     let blogs = [];
     try {
-        const blogDocs = await getDocument("blogs");
-        if (blogDocs) {
-            blogs = blogDocs.docs.map((blog) => {
-                return { ...blog.data(), id: blog.id };
-            });
-        }
+        blogs = await getDocument("blogs");
     } catch (error) {
         //
     }

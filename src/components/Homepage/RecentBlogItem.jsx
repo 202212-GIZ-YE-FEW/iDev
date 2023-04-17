@@ -1,47 +1,44 @@
-import { withTranslation, useTranslation } from "next-i18next";
-import { storage } from "@/firebase/config";
-import { useEffect, useState } from "react";
-import { getDownloadURL, ref } from "firebase/storage";
+import { useTranslation, withTranslation } from "next-i18next";
 
-import { useRouter } from "next/navigation";
 function BlogItem({
     en_title,
     ar_title,
-    en_article,
-    ar_article,
+    // en_article,
+    // ar_article,
+    id,
     thumbnail,
     isOdd,
 }) {
-    const router = useRouter();
-    const [imageUrl, setImageUrl] = useState(null);
+    // const router = useRouter();
+    // const [imageUrl, setImageUrl] = useState(null);
     const { i18n } = useTranslation("common");
 
-    useEffect(() => {
-        const imageRef = ref(storage, `blogImages/${thumbnail}.jpeg`);
+    // useEffect(() => {
+    //     const imageRef = ref(storage, `blogImages/${thumbnail}.jpeg`);
 
-        getDownloadURL(imageRef)
-            .then((url) => {
-                setImageUrl(url);
-                // do something with the URL, e.g. display the image using an <img> tag
-            })
-            .catch((error) => {
-                // handle the error
-            });
-    }, []);
-    const handleBlogClick = () => {
-        router.push({
-            pathname: "/blog",
-            query: { en_title },
-        });
-    };
+    //     getDownloadURL(imageRef)
+    //         .then((url) => {
+    //             setImageUrl(url);
+    //             // do something with the URL, e.g. display the image using an <img> tag
+    //         })
+    //         .catch((error) => {
+    //             // handle the error
+    //         });
+    // }, []);
+    // const handleBlogClick = () => {
+    //     router.push({
+    //         pathname: "/blog",
+    //         query: { en_title },
+    //     });
+    // };
 
     return (
         <>
             <div className='relative mx-3'>
-                <a onClick={() => handleBlogClick()}>
+                <a href={`/blogs/${id}`}>
                     <div className=' border border-gray max-h-250'>
                         <img
-                            src={imageUrl}
+                            src={`/home/${thumbnail}.svg`}
                             width={200}
                             height={140}
                             sizes='(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw'
