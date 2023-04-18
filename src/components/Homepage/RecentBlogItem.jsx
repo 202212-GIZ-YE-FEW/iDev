@@ -5,7 +5,7 @@ function BlogItem({
     ar_title,
     // en_article,
     // ar_article,
-    id,
+    id = "k",
     thumbnail,
     isOdd,
 }) {
@@ -35,12 +35,7 @@ function BlogItem({
     return (
         <>
             <div className='relative mx-3'>
-                <Link
-                    href={{
-                        pathname: "[locale]/blogs/[id]",
-                        query: { locale: i18n.language, id: id },
-                    }}
-                >
+                <Link href={`/blogs/${id}`}>
                     <div className=' border border-gray max-h-250'>
                         <img
                             src={`/home/${thumbnail}.svg`}
