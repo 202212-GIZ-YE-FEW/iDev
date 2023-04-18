@@ -13,6 +13,5 @@ module.exports = {
             "lh3.googleusercontent.com",
             "firebasestorage.googleapis.com",
         ],
-        domains: ["firebasestorage.googleapis.com"],
     },
 };

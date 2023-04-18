@@ -5,7 +5,7 @@ import TopProgress from "@/components/TopProgressBar";
 export default function Layout({ children }) {
     return (
         <>
-            <TopProgress />
+            {/* <TopProgress /> */}
             <Navbar />
             {children}
             <Footer />

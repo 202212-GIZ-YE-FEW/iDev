@@ -35,7 +35,12 @@ function BlogItem({
     return (
         <>
             <div className='relative mx-3'>
-                <Link href={`blogs/${id}`}>
+                <Link
+                    href={{
+                        pathname: "[locale]/blogs/[id]",
+                        query: { locale: i18n.language, id: id },
+                    }}
+                >
                     <div className=' border border-gray max-h-250'>
                         <img
                             src={`/home/${thumbnail}.svg`}
