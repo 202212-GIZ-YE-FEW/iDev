@@ -36,58 +36,7 @@ const Blog = () => {
         });
     }, [title]);
 
-    return (
-        <>
-            <div className=' container parent-div flex flex-col justify-center items-center'>
-                <div className='m-8 child-div-1 w-full max-h-[700px]  '>
-                    {imageUrl && (
-                        <Image
-                            className=' object-cover w-full h-full'
-                            src={imageUrl}
-                            alt='Blog.png'
-                            width={700}
-                            height={250}
-                        />
-                    )}
-                </div>
-
-                {i18n.language == "en" ? (
-                    <>
-                        {" "}
-                        <div className='  child-div-2 flex center text-center sm:justify-center word-wrap:break-word  '>
-                            <div className='  text-center justify-center '>
-                                <PageIntro title={blogData[0]?.en_title} />
-                            </div>
-                        </div>
-                        <div className='child-div-3 flex-none w-full'>
-                            <PageIntro subtitle={blogData[0]?.en_article} />
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        {" "}
-                        <div className='  child-div-2 flex center text-center sm:justify-center word-wrap:break-word  '>
-                            <div className='  text-center justify-center '>
-                                <PageIntro title={blogData[0]?.ar_title} />
-                            </div>
-                        </div>
-                        <div className='child-div-3 flex-none w-full'>
-                            <PageIntro subtitle={blogData[0]?.ar_article} />
-                        </div>
-                    </>
-                )}
-
-                <div className='child-div-3 flex-none w-full m-4'>
-                    <div className='flex justify-start'>
-                        <Subscribe />
-                    </div>
-                </div>
-            </div>
-            <section className='p-8 ' id='recentblog'>
-                <RecentBlogSection />
-            </section>
-        </>
-    );
+    return <></>;
 };
 
 export default Blog;
