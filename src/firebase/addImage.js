@@ -1,8 +1,19 @@
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/firebase/config";
-export default async function uploadImage(imageUpload, imageName, path) {
+
+async function uploadImage(imageUpload, imageName, path) {
     if (!imageUpload) return;
     const imageRef = ref(storage, `${path}/${imageName}.jpeg`);
-    await uploadBytes(imageRef, imageUpload);
-    alert("Image uploaded");
+    try {
+        await uploadBytes(imageRef, imageUpload);
+        alert("Image uploaded");
+    } catch (error) {
+        console.error(
+            `Error uploading image ${imageName} to Firebase Storage:`,
+            error
+        );
+        // handle error
+    }
 }
+
+export default uploadImage;
