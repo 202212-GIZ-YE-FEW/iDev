@@ -1,10 +1,15 @@
 {
-    "upload": "رفع",
-    "uploadYourArticle": "أرفع مقالك",
     "addYouArticleToOurBlogs": "أضف مقالك إلى المدونة الخاصة بالموقع",
-    "uploadArticleImage": "إرفع صورة المقال",
-    "englishTitle": "العنزان بالإنجليزية",
-    "articleInEnglish": "المقال بالإنجليزية",
+    "arabicArticle": "المقال بالعربي",
     "arabicTitle": "العنزان بالعربي",
-    "articleInArabic": "المقال بالعربي"
+    "createBlog": "إضافة مقال جديد",
+    "englishArticle": "المقال بالإنجليزية",
+    "englishTitle": "العنزان بالإنجليزية",
+    "enterArabicArticle": "ادخل المقال بالعربية",
+    "enterArabicTitle": "ادخل عنوان المقال بالعربية",
+    "enterEnglishArticle": "ادخل المقال بالانجليزية",
+    "enterEnglishTitle": "ادخل عنوان المقال بالانجليزية",
+    "upload": "رفع",
+    "uploadArticleImage": "إرفع صورة المقال",
+    "uploadYourArticle": "أرفع مقالك"
 }

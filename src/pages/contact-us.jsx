@@ -147,7 +147,7 @@ function ContactUs({ t, reasons, address }) {
                             <Button
                                 disabled={isSubmitting}
                                 content={t("submit")}
-                                text-transform='capitalize'
+                                textTransform='capitalize'
                                 filled='true'
                                 size='large'
                                 fontSize='text-sm md:text-xl'

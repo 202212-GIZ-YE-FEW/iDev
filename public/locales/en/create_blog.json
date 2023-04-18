@@ -1,10 +1,15 @@
 {
-    "upload": "upload",
-    "uploadYourArticle": "UPLOAD YOUR ARTICEL",
     "addYouArticleToOurBlogs": "Add you article to our Blogs",
-    "uploadArticleImage": "Upload Article Image",
-    "englishTitle": "English Title",
-    "articleInEnglish": "article in English",
+    "arabicArticle": "article in arabic",
     "arabicTitle": "arabic Title",
-    "articleInArabic": "article in arabic"
+    "createBlog": "Create New Blog",
+    "englishArticle": "article in English",
+    "englishTitle": "English Title",
+    "enterArabicArticle": "enter article in arabic",
+    "enterArabicTitle": "enter article title in arabic",
+    "enterEnglishArticle": "enter article in english",
+    "enterEnglishTitle": "enter article title in english",
+    "upload": "upload",
+    "uploadArticleImage": "Upload Article Image",
+    "uploadYourArticle": "UPLOAD YOUR ARTICEL"
 }
