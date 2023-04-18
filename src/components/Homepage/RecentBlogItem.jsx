@@ -5,7 +5,7 @@ function BlogItem({
     ar_title,
     // en_article,
     // ar_article,
-    id = "k",
+    id,
     thumbnail,
     isOdd,
 }) {
@@ -37,13 +37,13 @@ function BlogItem({
             <div className='relative mx-3'>
                 <Link href={`/blogs/${id}`}>
                     <div className=' border border-gray max-h-250'>
-                        {/* <img
+                        <img
                             src={`/home/${thumbnail}.svg`}
                             width={200}
                             height={140}
                             sizes='(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw'
                             className='w-full max-w-100%   md:max-h-[315px] sm:max-h-[208px]'
-                        /> */}
+                        />
                     </div>
                 </Link>
 
