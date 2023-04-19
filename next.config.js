@@ -12,6 +12,7 @@ module.exports = {
         domains: [
             "lh3.googleusercontent.com",
             "firebasestorage.googleapis.com",
+            "developers.elementor.com", // placeholder
         ],
     },
 };

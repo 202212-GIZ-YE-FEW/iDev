@@ -1,48 +1,39 @@
+import { getDownloadURL, ref } from "firebase/storage";
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslation, withTranslation } from "next-i18next";
-function BlogItem({
-    en_title,
-    ar_title,
-    // en_article,
-    // ar_article,
-    id,
-    thumbnail,
-    isOdd,
-}) {
-    // const router = useRouter();
-    // const [imageUrl, setImageUrl] = useState(null);
-    const { i18n } = useTranslation("common");
+import { useEffect, useState } from "react";
 
-    // useEffect(() => {
-    //     const imageRef = ref(storage, `blogImages/${thumbnail}.jpeg`);
+import { storage } from "@/firebase/config";
+function BlogItem({ en_title, ar_title, id, isOdd }) {
+    const [imageUrl, setImageUrl] = useState(null);
+    const { i18n } = useTranslation();
 
-    //     getDownloadURL(imageRef)
-    //         .then((url) => {
-    //             setImageUrl(url);
-    //             // do something with the URL, e.g. display the image using an <img> tag
-    //         })
-    //         .catch((error) => {
-    //             // handle the error
-    //         });
-    // }, []);
-    // const handleBlogClick = () => {
-    //     router.push({
-    //         pathname: "/blog",
-    //         query: { en_title },
-    //     });
-    // };
-
+    useEffect(() => {
+        const imageRef = ref(storage, `blogImages/${id}`);
+        getDownloadURL(imageRef)
+            .then((url) => {
+                setImageUrl(url);
+            })
+            .catch((error) => {
+                // handle the error
+            });
+    }, [id]);
     return (
         <>
             <div className='relative mx-3'>
                 <Link href={`/blogs/${id}`}>
-                    <div className=' border border-gray max-h-250'>
-                        <img
-                            src={`/home/${thumbnail}.svg`}
+                    <div className='h-60'>
+                        <Image
+                            src={
+                                imageUrl ||
+                                "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                            }
                             width={200}
                             height={140}
-                            sizes='(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw'
-                            className='w-full max-w-100%   md:max-h-[315px] sm:max-h-[208px]'
+                            alt={`${en_title} thumbnail`}
+                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                            className='w-full h-full'
                         />
                     </div>
                 </Link>

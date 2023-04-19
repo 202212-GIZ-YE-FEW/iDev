@@ -5,7 +5,6 @@ import "react-multi-carousel/lib/styles.css";
 
 import BlogItem from "@/components/Homepage/RecentBlogItem";
 import PageIntro from "@/components/PageIntro";
-
 const RecentBlogsSection = ({ t, recentBlogs = [] }) => {
     // const blogs = [];
     // const recentBlogs = [];
@@ -56,12 +55,9 @@ const RecentBlogsSection = ({ t, recentBlogs = [] }) => {
                         return (
                             <BlogItem
                                 key={index}
-                                ar_title={item.ar_title}
-                                en_title={item.en_title}
-                                // en_article={item.en_article}
-                                // ar_article={item.ar_article}
+                                ar_title={item.body.ar_title}
+                                en_title={item.body.en_title}
                                 id={item.id}
-                                // thumbnail={item.thumbnail}
                                 isOdd={index % 2 === 0 ? false : true}
                             />
                         );

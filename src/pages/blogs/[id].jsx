@@ -10,7 +10,7 @@ import getSingleDoc from "@/firebase/getDocument";
 function Blog({ blog }) {
     return (
         <div className='container parent-div flex flex-col justify-center items-center'>
-            <div className='m-8 w-full max-h-[700px]'>dfdfdf</div>
+            <div className='m-8 w-full max-h-[700px]'>{i18n.language}</div>
 
             {i18n.language == "en" ? (
                 <>

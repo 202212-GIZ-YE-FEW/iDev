@@ -1,4 +1,5 @@
-import { ref, getDownloadURL } from "firebase/storage";
+import { getDownloadURL, ref } from "firebase/storage";
+
 import { storage } from "@/firebase/config";
 export default async function downloadImage(imageName, imagePath) {
     const imageRef = ref(storage, `${imagePath}/${imageName}.jpeg`);
