@@ -13,6 +13,15 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth, facebookProvider, googleProvider } from "@/firebase/config";
 
 import image from "~/blog.png";
+import {
+    setDoc,
+    doc,
+    getFirestore,
+    collection,
+    addDoc,
+} from "firebase/firestore";
+
+const db = getFirestore();
 const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
@@ -30,14 +39,6 @@ export function AuthContextProvider({ children }) {
                     uid: user.uid,
                 });
                 localStorage.setItem("image", user.photoURL || image); // save user photoURL to localStorage
-                sendEmailConfirmation();
-                if (user.emailVerified) {
-                    setAuthenticated(true);
-                } else {
-                    setAuthenticated(false);
-                    auth.signOut(); // Sign out the user if they have not verified their email
-                    window.alert("Please verify your email before logging in.");
-                }
             } else {
                 setUser({ email: null, uid: null });
                 setAuthenticated(false);
@@ -49,8 +50,25 @@ export function AuthContextProvider({ children }) {
         return () => unsubscribe();
     }, []);
 
-    const signUp = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
+    const signUp = (email, password, userData, profileData, therapistData) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(async (result) => {
+                const userRef = doc(db, "users", result.user.uid);
+                const userDocRef = await setDoc(userRef, { userData });
+                const profileColRef = collection(userRef, "profile");
+                const profileDocRef = await addDoc(profileColRef, {
+                    profileData,
+                });
+                const therapistColRef = collection(userRef, "therapist");
+                const therapistDocRef = await addDoc(therapistColRef, {
+                    therapistData,
+                });
+            })
+            .catch((error) => {
+                if (error.code === "auth/email-already-in-use") {
+                    window.alert("error");
+                }
+            });
     };
 
     const logIn = (email, password) => {
