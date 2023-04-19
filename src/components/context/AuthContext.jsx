@@ -63,6 +63,7 @@ export function AuthContextProvider({ children }) {
                 const therapistDocRef = await addDoc(therapistColRef, {
                     therapistData,
                 });
+                await sendEmailConfirmation();
             })
             .catch((error) => {
                 if (error.code === "auth/email-already-in-use") {
