@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import Head from "next/head";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 import PageIntro from "@/components/PageIntro";
@@ -9,26 +10,39 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/textarea/Textarea";
 
+import uploadImage from "@/firebase/addImage";
 import { postHandler } from "@/utils/api";
-import schema from "@/utils/validationSchema";
-export const extractFirstName = (str) => {
-    //this fn to rename the Img to first word of the Title
-    const firstSpaceIndex = str.indexOf(" ");
-    if (firstSpaceIndex === -1) {
-        return str;
-    }
-    return str.slice(0, firstSpaceIndex).toLowerCase();
-};
+
 const CreateBlog = ({ t }) => {
+    const [imageUpload, setImageUpload] = useState(null);
     const onSubmit = async (values, actions) => {
         const response = await postHandler("/api/create_blog", values);
         if (response.data.success === 0) {
-            toast(response.data.message, {
-                hideProgressBar: true,
-                position: "bottom-left",
-                autoClose: 2000,
-                type: "success",
-            });
+            // after successfully submit data to firestore database,
+            //we will save image in storage according to id of document( response.data.refID)
+            try {
+                await uploadImage(
+                    imageUpload,
+                    response.data.refID,
+                    "blogImages/"
+                );
+                toast(response.data.message, {
+                    hideProgressBar: true,
+                    position: "bottom-left",
+                    autoClose: 2000,
+                    type: "success",
+                });
+            } catch (error) {
+                toast(
+                    "Form submitted successfully, but image failed to upload!",
+                    {
+                        hideProgressBar: true,
+                        position: "bottom-left",
+                        autoClose: 2000,
+                        type: "error",
+                    }
+                );
+            }
         } else {
             toast(response.data.message, {
                 hideProgressBar: true,
@@ -144,15 +158,17 @@ const CreateBlog = ({ t }) => {
                                     t={t}
                                 />
                             </div>
-                            {/* <label className='mt-4 block mb-2 text-sm font-medium text-gray-900 items-center'>
+                            <label className='mt-4 block mb-2 text-sm font-medium text-gray-900 items-center'>
                                 {t("uploadArticleImage")}
                             </label>
                             <input
                                 className='block w-full text-sm text-gray-900 border border-gray-300  rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'
                                 id='file_input'
                                 type='file'
-                                onChange={(e) => setImageUpload(e.target.files[0])}
-                            /> */}
+                                onChange={(e) =>
+                                    setImageUpload(e.target.files[0])
+                                }
+                            />
                         </div>
                     </div>
                     <div className='w-full p-4 flex items-center justify-center'>
