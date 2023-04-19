@@ -1,4 +1,5 @@
 {
+    "Logout": "Logout",
     "about": "About",
     "backToHome": "back to home",
     "blogs": "Blogs",
@@ -7,9 +8,10 @@
     "enterEmail": "Enter your e-mail",
     "home": "Home",
     "login": "log in",
+    "recentBlogsTitle": "recent blogs",
     "signup": "sign up",
     "subscribe": "subscribe",
     "test": "Hello",
     "thankYou": "Thank you!",
-    "Logout": "Logout"
+    "recommendedForYou": "recommended for you"
 }

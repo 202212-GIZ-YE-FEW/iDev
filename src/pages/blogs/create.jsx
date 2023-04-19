@@ -5,7 +5,7 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import UploadImageSVG from "/public/images/upload-image.svg";
+
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -13,6 +13,8 @@ import Textarea from "@/components/ui/textarea/Textarea";
 
 import uploadImage from "@/firebase/addImage";
 import { postHandler } from "@/utils/api";
+
+import UploadImageSVG from "/public/images/upload-image.svg";
 
 const CreateBlog = ({ t }) => {
     const [imageUpload, setImageUpload] = useState(null);
@@ -76,7 +78,7 @@ const CreateBlog = ({ t }) => {
     return (
         <>
             <Head>
-                <title>{t("create_blog:createBlog")}</title>
+                <title>{t("blog:createBlog")}</title>
             </Head>
             <div className='container mt-10'>
                 <PageIntro
@@ -219,11 +221,11 @@ export async function getStaticProps({ locale }) {
         props: {
             ...(await serverSideTranslations(locale, [
                 "common",
-                "create_blog",
+                "blog",
                 "validation",
             ])),
             // Will be passed to the page component as props
         },
     };
 }
-export default withTranslation(["create_blog", "validation"])(CreateBlog);
+export default withTranslation(["blog", "validation"])(CreateBlog);

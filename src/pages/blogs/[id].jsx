@@ -1,48 +1,81 @@
+import { getDownloadURL, ref } from "firebase/storage";
+import Image from "next/image";
 import { i18n } from "next-i18next";
+import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useEffect, useState } from "react";
 
-import RecentBlogSection from "@/components/Homepage/RecentBlogSection";
+import BlogsSection from "@/components/BlogsSection";
 import PageIntro from "@/components/PageIntro";
 import Subscribe from "@/components/Subscribe";
 
+import { storage } from "@/firebase/config";
 import getDocument from "@/firebase/getData";
-import getSingleDoc from "@/firebase/getDocument";
+import getDocById from "@/firebase/getDocById";
 function Blog({ blog }) {
+    const [imageUrl, setImageUrl] = useState(null);
+    const [relatedBlogs, setRelatedBlogs] = useState([]);
+    useEffect(() => {
+        const imageRef = ref(storage, `blogImages/${blog?.id}`);
+        const getRelatedBlogs = async () => {
+            try {
+                setRelatedBlogs(await getDocument("blogs"));
+            } catch (e) {
+                console.error("error while fetching events data ", e);
+            }
+        };
+        getRelatedBlogs();
+        getDownloadURL(imageRef)
+            .then((url) => {
+                setImageUrl(url);
+            })
+            .catch((error) => {
+                // handle the error
+            });
+    }, [blog.id]);
     return (
-        <div className='container parent-div flex flex-col justify-center items-center'>
-            <div className='m-8 w-full max-h-[700px]'>{i18n.language}</div>
-
+        <div className='container flex flex-col justify-center items-center'>
+            <section className='w-full max-h-[500px] my-16'>
+                <Image
+                    className='object-cover w-full h-full rounded-3xl'
+                    src={
+                        imageUrl ||
+                        "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                    }
+                    alt='Blog.png'
+                    width={700}
+                    height={250}
+                />
+            </section>
             {i18n.language == "en" ? (
-                <>
-                    <div className='flex center text-center sm:justify-center word-wrap:break-word  '>
-                        <div className='text-center justify-center '>
-                            <PageIntro title={blog?.en_title} />
-                        </div>
+                <section>
+                    <div className='flex text-center justify-center word-wrap:break-word'>
+                        <PageIntro title={blog?.body.en_title} />
                     </div>
-                    <div className='flex-none w-full'>
-                        <PageIntro subtitle={blog?.en_article} />
+                    <div className='w-full text-black font-light text-base md:text-lg lg:text-xl uppercase !leading-[32px]'>
+                        {blog?.body.en_article}
                     </div>
-                </>
+                </section>
             ) : (
-                <>
-                    <div className='flex center text-center sm:justify-center word-wrap:break-word  '>
-                        <div className='  text-center justify-center '>
-                            <PageIntro title={blog?.ar_title} />
-                        </div>
+                <section>
+                    <div className='flex text-center justify-center word-wrap:break-word'>
+                        <PageIntro title={blog?.body.ar_title} />
                     </div>
-                    <div className='flex-none w-full'>
-                        <PageIntro subtitle={blog?.ar_article} />
+                    <div className='w-full text-black font-light text-base md:text-lg lg:text-xl uppercase !leading-[32px]'>
+                        {blog?.body.ar_article}
                     </div>
-                </>
+                </section>
             )}
 
-            <div className='flex-none w-full m-4'>
-                <div className='flex justify-start'>
-                    <Subscribe />
-                </div>
-            </div>
-            <section className='p-8'>
-                <RecentBlogSection />
+            <section className='w-full my-16'>
+                <Subscribe title='signUpForBlog' />
+            </section>
+            <section className='self-start container px-0 my-16'>
+                <BlogsSection
+                    textSize='text-xl md:text-2xl rtl:md:text-xl lg:text-3xl rtl:lg:text-2xl'
+                    title='recommendedForYou'
+                    blogs={relatedBlogs}
+                />
             </section>
         </div>
     );
@@ -69,7 +102,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ locale, params }) {
     let blog = null;
     try {
-        blog = await getSingleDoc("blogs", params.id);
+        blog = await getDocById("blogs", params.id);
     } catch (error) {
         //
     }
@@ -82,4 +115,4 @@ export async function getStaticProps({ locale, params }) {
     };
 }
 
-export default Blog;
+export default withTranslation()(Blog);

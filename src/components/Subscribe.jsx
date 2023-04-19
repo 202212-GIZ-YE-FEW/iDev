@@ -1,10 +1,10 @@
 import { withTranslation } from "next-i18next";
-function Subscribe({ t }, prop) {
+function Subscribe({ t }, props) {
     const {
         title = "subscribe",
         subtitle = "emailCommitment",
         placeholder = "enterEmail",
-    } = prop;
+    } = props;
     return (
         <>
             <div className='flex flex-col'>
