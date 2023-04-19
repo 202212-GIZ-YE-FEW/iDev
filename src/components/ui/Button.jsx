@@ -1,4 +1,7 @@
 import clsx from "clsx";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Button(props) {
     const {
@@ -12,12 +15,20 @@ export default function Button(props) {
         onClick,
         disabled = false,
     } = props;
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 1000,
+        });
+    }, []);
     return (
         <button
+            data-aos='fade-right'
             disabled={disabled}
             onClick={onClick}
             className={clsx(
-                `font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
+                `transform hover:bg-yellow transition duration-500 hover:scale-75 
+                font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
                 {
                     "px-[10px] lg:px-[28px] py-[4.7px]": size === "small",
                     /// for medium size button

@@ -2,7 +2,9 @@
 
 exports[`renders correctly 1`] = `
 <button
-  className="font-normal whitespace-nowrap cursor-pointer  capitalize xl rounded-6px px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+  className="transform hover:bg-yellow transition duration-500 hover:scale-75 
+                font-normal whitespace-nowrap cursor-pointer  capitalize xl rounded-6px px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+  data-aos="fade-right"
   disabled={false}
 />
 `;
