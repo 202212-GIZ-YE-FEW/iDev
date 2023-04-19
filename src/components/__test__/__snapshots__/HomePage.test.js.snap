@@ -35,7 +35,8 @@ Array [
           onTouchStart={[Function]}
         >
           <button
-            className="transform hover:bg-yellow transition duration-500 hover:scale-75 
+            className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
+                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
             data-aos="fade-right"
             disabled={false}
@@ -114,7 +115,8 @@ Array [
         onTouchStart={[Function]}
       >
         <button
-          className="transform hover:bg-yellow transition duration-500 hover:scale-75 
+          className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
+                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
           data-aos="fade-right"
           disabled={false}
@@ -318,7 +320,8 @@ Array [
             className="w-fit"
           >
             <button
-              className="transform hover:bg-yellow transition duration-500 hover:scale-75 
+              className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
+                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               data-aos="fade-right"
               disabled={false}
@@ -347,7 +350,8 @@ Array [
             className="w-fit"
           >
             <button
-              className="transform hover:bg-yellow transition duration-500 hover:scale-75 
+              className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
+                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               data-aos="fade-right"
               disabled={false}
@@ -376,7 +380,8 @@ Array [
             className="w-fit"
           >
             <button
-              className="transform hover:bg-yellow transition duration-500 hover:scale-75 
+              className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
+                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               data-aos="fade-right"
               disabled={false}
@@ -407,7 +412,8 @@ Array [
             onTouchStart={[Function]}
           >
             <button
-              className="transform hover:bg-yellow transition duration-500 hover:scale-75 
+              className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
+                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               data-aos="fade-right"
               disabled={false}

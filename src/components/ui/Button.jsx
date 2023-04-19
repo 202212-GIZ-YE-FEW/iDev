@@ -18,7 +18,7 @@ export default function Button(props) {
     useEffect(() => {
         AOS.init({
             duration: 1000,
-            delay: 1000,
+            delay: 0,
         });
     }, []);
     return (
@@ -27,7 +27,8 @@ export default function Button(props) {
             disabled={disabled}
             onClick={onClick}
             className={clsx(
-                `transform hover:bg-yellow transition duration-500 hover:scale-75 
+                `transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
+                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
                 {
                     "px-[10px] lg:px-[28px] py-[4.7px]": size === "small",
