@@ -77,7 +77,7 @@ const CreateBlog = ({ t }) => {
             <Head>
                 <title>{t("create_blog:createBlog")}</title>
             </Head>
-            <div className='container'>
+            <div className='container mt-10'>
                 <PageIntro
                     title={t("uploadYourArticle")}
                     subtitle={t("addYouArticleToOurBlogs")}
@@ -161,7 +161,7 @@ const CreateBlog = ({ t }) => {
                             </div>
                         </div>
                     </div>
-                    <div class='flex flex-col text-center mt-10 mx-auto'>
+                    <div class='flex flex-col text-center mt-10 mx-auto p-4 bg-light-cyan'>
                         <label className='mb-5'>
                             {t("uploadArticleImage")}
                         </label>
