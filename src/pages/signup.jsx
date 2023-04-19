@@ -95,41 +95,6 @@ function SignUp({ t }) {
                     subtitle: "emailVerified",
                 },
             });
-            //     .then((docRef) => {
-            //         const userId = docRef.result;
-            //         const personalData = "Personal data";
-            //         const profileData = {
-            //             deleted: false,
-            //             hobbies: "",
-            //             familySize: 80,
-            //             education_level: "",
-            //             phoneNumber: 7778989898,
-            //             gender: "",
-            //         };
-
-            //         // Create the "profile" sub-collection
-            //         return setDocument(
-            //             `${collection}/${userId}/${personalData}/profile`,
-            //             profileData
-            //         ).then(() => {
-            //             // Create the "therapist" sub-collection
-            //             const therapistData = {
-            //                 isTherapist: false,
-            //                 userName: "",
-            //                 city: "",
-            //                 LicenseNumber: 7899000,
-            //             };
-            //             return setDocument(
-            //                 `${collection}/${userId}/${personalData}/therapist`,
-            //                 therapistData
-            //             );
-            //         });
-            //     })
-
-            //     .then(() => {
-            //         signUp(formData.email, formData.password);
-            //
-            //     });
         } catch (error) {
             if (error.code === "auth/email-already-in-use") {
                 setFormErrors({ email: "validation:exist" });
