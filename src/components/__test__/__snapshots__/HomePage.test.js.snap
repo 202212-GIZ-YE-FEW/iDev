@@ -240,7 +240,7 @@ Array [
       <p
         className="text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xlfont-normal block uppercase break-words"
       >
-        recentBlogsTitle
+        common:recentBlogsTitle
       </p>
       <div
         className="react-multi-carousel-list  "

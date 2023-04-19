@@ -16,7 +16,7 @@ const HomePage = ({ blogs = [] }) => {
                 <CommunicateThroughSection />
             </section>
             <section className='bg-light-cyan py-20 container'>
-                <BlogsSection title='recentBlogsTitle' blogs={blogs} />
+                <BlogsSection title='common:recentBlogsTitle' blogs={blogs} />
             </section>
             <section className='bg-white py-20'>
                 <TicketSection />

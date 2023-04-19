@@ -4,11 +4,14 @@ function Subscribe({
     title = "subscribe",
     subtitle = "emailCommitment",
     placeholder = "enterEmail",
+    titleTextTransform = "capitalize",
 }) {
     return (
         <>
             <div className='flex flex-col'>
-                <span className='text-xl md:text-3xl capitalize font-medium mb-[12px]'>
+                <span
+                    className={`text-xl md:text-3xl font-medium mb-[12px] ${titleTextTransform}`}
+                >
                     {t(`${title}`)}
                 </span>
                 <p className='text-sm md:text-lg lg:text-xl text-light-gray'>

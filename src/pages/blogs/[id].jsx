@@ -71,6 +71,7 @@ function Blog({ blog }) {
                 <Subscribe
                     title='signUpForBlog'
                     subtitle='newsletterEncourage'
+                    titleTextTransform='uppercase'
                 />
             </section>
             <section className='self-start container px-0 my-16'>

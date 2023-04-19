@@ -7,7 +7,7 @@ import BlogItem from "@/components/BlogItem";
 const BlogsSection = ({
     t,
     textSize = "text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl",
-    title = "recentBlogsTitle",
+    title = "common:recentBlogsTitle",
     blogs = [],
 }) => {
     const responsive = {
