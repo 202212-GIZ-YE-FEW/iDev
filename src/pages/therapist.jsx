@@ -1,15 +1,17 @@
 import { withTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+import { useState } from "react";
+
 import { useAuth } from "@/components/context/AuthContext";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import schema from "@/utils/validationSchemaTherapist";
 import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
-import { useState } from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 import updateDocumentField from "@/firebase/updateData";
+import schema from "@/utils/validationSchemaTherapist";
 function Therapist({ t }) {
     const { authenticated, user } = useAuth();
     const [formData, setFormData] = useState({});
@@ -116,8 +118,8 @@ function Therapist({ t }) {
                                         value='male'
                                         checked={formData.gender === "male"}
                                         onChange={handleChange}
-                                        title={t("male")}
-                                        asButton
+                                        content={t("male")}
+                                        as='standard'
                                     />
                                     <RadioInputItem
                                         id='female'
@@ -125,8 +127,8 @@ function Therapist({ t }) {
                                         value='female'
                                         checked={formData.gender === "female"}
                                         onChange={handleChange}
-                                        title={t("female")}
-                                        asButton
+                                        content={t("female")}
+                                        as='standard'
                                     />
                                 </RadioGroup>
                             </div>

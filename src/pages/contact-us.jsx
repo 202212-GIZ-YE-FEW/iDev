@@ -79,7 +79,7 @@ function ContactUs({ t, reasons, address }) {
                                             id={item}
                                             name='typeContact'
                                             value={item}
-                                            title={item}
+                                            content={item}
                                             checked={
                                                 values.typeContact === item
                                             }

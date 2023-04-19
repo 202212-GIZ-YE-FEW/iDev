@@ -29,7 +29,6 @@ Array [
           htmlFor="single"
         >
           single
-           
         </label>
       </div>
       <div
@@ -48,7 +47,6 @@ Array [
           htmlFor="married"
         >
           married
-           
         </label>
       </div>
       <div
@@ -67,7 +65,6 @@ Array [
           htmlFor="divorced"
         >
           divorced
-           
         </label>
       </div>
     </div>
