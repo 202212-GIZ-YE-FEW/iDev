@@ -1,21 +1,22 @@
 import { getDownloadURL, ref } from "firebase/storage";
 
 import { storage } from "@/firebase/config";
-export default async function downloadImage(imageName, imagePath) {
+async function downloadImage(imageName, imagePath) {
     const imageRef = ref(storage, `${imagePath}/${imageName}.jpeg`);
 
-    return getDownloadURL(imageRef)
-        .then((url) => {
-            return url;
-        })
-        .catch((error) => {
-            console.error(
-                `Error getting image ${imageName} from Firebase Storage:`,
-                error
-            );
-            return null;
-        });
+    try {
+        const url = await getDownloadURL(imageRef);
+        return url;
+    } catch (error) {
+        console.error(
+            `Error getting image ${imageName} from Firebase Storage:`,
+            error
+        );
+        return null;
+    }
 }
+
+export default downloadImage;
 //Example of using this function
 // const ImageName = "user1"
 // downloadImage(ImageName, 'UsersImages')
