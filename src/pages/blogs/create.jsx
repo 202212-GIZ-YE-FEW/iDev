@@ -27,6 +27,7 @@ const CreateBlog = ({ t }) => {
                     response.data.refID,
                     "blogImages/"
                 );
+                setImageUpload(null);
                 toast(response.data.message, {
                     hideProgressBar: true,
                     position: "bottom-left",
