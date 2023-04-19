@@ -18,7 +18,7 @@ export default function Button(props) {
     useEffect(() => {
         AOS.init({
             duration: 1000,
-            delay: 0,
+            delay: 500,
         });
     }, []);
     return (
