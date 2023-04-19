@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import Head from "next/head";
+import Image from "next/image";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
@@ -158,67 +159,50 @@ const CreateBlog = ({ t }) => {
                                     t={t}
                                 />
                             </div>
-                            {/* <label className='mt-4 block mb-2 text-sm font-medium text-gray-900 items-center'>
-                                {t("uploadArticleImage")}
-                            </label>
-                            <input
-                                className='block w-full text-sm text-gray-900 border border-gray-300  rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'
-                                id='file_input'
-                                type='file'
-                                onChange={(e) =>
-                                    setImageUpload(e.target.files[0])
-                                }
-                            /> */}
                         </div>
                     </div>
-                    <div class=' z-10 top-0 w-full h-full flex bg-black bg-opacity-60'>
-                        <div class='extraOutline p-4 bg-white w-max bg-whtie m-auto rounded-lg'>
-                            <div
-                                class='file_upload p-5 relative border-4 border-dotted border-gray-300 rounded-lg'
-                                style={{ width: "450px" }}
-                            >
-                                {imageUpload ? (
-                                    <img
-                                        src={imageUpload}
-                                        alt='blog image preview'
-                                    />
-                                ) : (
-                                    <svg
-                                        class='text-indigo-500 w-24 mx-auto mb-4'
-                                        xmlns='http://www.w3.org/2000/svg'
-                                        fill='none'
-                                        viewBox='0 0 24 24'
-                                        stroke='currentColor'
-                                    >
-                                        <path
-                                            stroke-linecap='round'
-                                            stroke-linejoin='round'
-                                            stroke-width='2'
-                                            d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'
+                    <div class='flex flex-col text-center mt-10 mx-auto'>
+                        <label className='mb-5'>
+                            {t("uploadArticleImage")}
+                        </label>
+                        <div class='flex items-center justify-center w-1/3 p-5 border-4 border-gray/70 rounded-lg mx-auto h-80'>
+                            <label className='h-full'>
+                                <input
+                                    class='text-sm cursor-pointer w-36 hidden'
+                                    type='file'
+                                    onChange={(e) =>
+                                        setImageUpload(e.target.files[0])
+                                    }
+                                />
+                                <div class='text-light-gray h-full flex rounded font-semibold cursor-pointer p-1 px-3'>
+                                    {imageUpload ? (
+                                        <Image
+                                            src={URL.createObjectURL(
+                                                imageUpload
+                                            )}
+                                            alt='blog image preview'
+                                            className='object-cover w-full h-full'
+                                            width='288'
+                                            height='288'
                                         />
-                                    </svg>
-                                )}
-                                <div class='input_field flex flex-col w-max mx-auto text-center'>
-                                    <label>
-                                        <input
-                                            class='text-sm cursor-pointer w-36 hidden'
-                                            type='file'
-                                            onChange={(e) =>
-                                                setImageUpload(
-                                                    e.target.files[0]
-                                                )
-                                            }
-                                        />
-                                        <div class='text bg-indigo-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-indigo-500'>
-                                            Select
-                                        </div>
-                                    </label>
-
-                                    <div class='title text-indigo-500 uppercase'>
-                                        or drop files here
-                                    </div>
+                                    ) : (
+                                        <svg
+                                            class='w-24 mx-auto mb-4'
+                                            xmlns='http://www.w3.org/2000/svg'
+                                            fill='none'
+                                            viewBox='0 0 24 24'
+                                            stroke='currentColor'
+                                        >
+                                            <path
+                                                stroke-linecap='round'
+                                                stroke-linejoin='round'
+                                                stroke-width='2'
+                                                d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'
+                                            />
+                                        </svg>
+                                    )}
                                 </div>
-                            </div>
+                            </label>
                         </div>
                     </div>
                     <div className='w-full p-4 flex items-center justify-center'>
