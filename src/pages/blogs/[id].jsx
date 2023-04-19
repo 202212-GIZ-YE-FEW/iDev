@@ -14,29 +14,29 @@ function Blog({ blog }) {
 
             {i18n.language == "en" ? (
                 <>
-                    <div className='  child-div-2 flex center text-center sm:justify-center word-wrap:break-word  '>
-                        <div className='  text-center justify-center '>
+                    <div className='flex center text-center sm:justify-center word-wrap:break-word  '>
+                        <div className='text-center justify-center '>
                             <PageIntro title={blog?.en_title} />
                         </div>
                     </div>
-                    <div className='child-div-3 flex-none w-full'>
+                    <div className='flex-none w-full'>
                         <PageIntro subtitle={blog?.en_article} />
                     </div>
                 </>
             ) : (
                 <>
-                    <div className='  child-div-2 flex center text-center sm:justify-center word-wrap:break-word  '>
+                    <div className='flex center text-center sm:justify-center word-wrap:break-word  '>
                         <div className='  text-center justify-center '>
                             <PageIntro title={blog?.ar_title} />
                         </div>
                     </div>
-                    <div className='child-div-3 flex-none w-full'>
+                    <div className='flex-none w-full'>
                         <PageIntro subtitle={blog?.ar_article} />
                     </div>
                 </>
             )}
 
-            <div className='child-div-3 flex-none w-full m-4'>
+            <div className='flex-none w-full m-4'>
                 <div className='flex justify-start'>
                     <Subscribe />
                 </div>
