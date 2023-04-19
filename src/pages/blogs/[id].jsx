@@ -21,7 +21,7 @@ function Blog({ blog }) {
             try {
                 setRelatedBlogs(await getDocument("blogs"));
             } catch (e) {
-                console.error("error while fetching events data ", e);
+                //
             }
         };
         getRelatedBlogs();
@@ -68,12 +68,15 @@ function Blog({ blog }) {
             )}
 
             <section className='w-full my-16'>
-                <Subscribe title='signUpForBlog' />
+                <Subscribe
+                    title='signUpForBlog'
+                    subtitle='newsletterEncourage'
+                />
             </section>
             <section className='self-start container px-0 my-16'>
                 <BlogsSection
                     textSize='text-xl md:text-2xl rtl:md:text-xl lg:text-3xl rtl:lg:text-2xl'
-                    title='recommendedForYou'
+                    title='common:recommendedForYou'
                     blogs={relatedBlogs}
                 />
             </section>
@@ -109,10 +112,10 @@ export async function getStaticProps({ locale, params }) {
 
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common"])),
+            ...(await serverSideTranslations(locale, ["common", "blog"])),
             blog,
         },
     };
 }
 
-export default withTranslation()(Blog);
+export default withTranslation("blog")(Blog);

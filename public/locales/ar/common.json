@@ -8,10 +8,12 @@
     "enterEmail": "ادخل بريدك الالكتروني",
     "home": "الصفحة الرئيسية",
     "login": "تسجيل دخول",
+    "newsletterEncourage": "مدونة أسبوعية خالية من الإعلانات تساعدك على البقاء على اطلاع.",
     "recentBlogsTitle": "آخر المدونات",
+    "recommendedForYou": "موصى به لك",
+    "signUpForBlog": "قم بتسجيل حساب للمشاركة في المدونات",
     "signup": "انشاء حساب",
     "subscribe": "اشتراك",
     "test": "مرحبا",
-    "thankYou": "شكرا لك",
-    "recommendedForYou": "موصى به لك"
+    "thankYou": "شكرا لك"
 }

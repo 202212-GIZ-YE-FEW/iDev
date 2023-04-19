@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="flex flex-col space-y-16 justify-between"
+>
+  <p
+    className="text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xlfont-normal block uppercase break-words"
+  >
+    recentBlogsTitle
+  </p>
+  <div
+    className="react-multi-carousel-list  "
+    dir="ltr"
+  >
+    <ul
+      className="react-multi-carousel-track "
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "overflow": "unset",
+          "transform": "translate3d(0px,0,0)",
+          "transition": "none",
+        }
+      }
+    />
+  </div>
+</div>
+`;
