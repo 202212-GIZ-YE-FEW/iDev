@@ -199,7 +199,7 @@ const CreateBlog = ({ t }) => {
                     <div className='w-full p-4 flex items-center justify-center'>
                         <Button
                             disabled={isSubmitting}
-                            content={t("upload")}
+                            content={t("save")}
                             textTransform='capitalize'
                             filled='true'
                             size='large'
