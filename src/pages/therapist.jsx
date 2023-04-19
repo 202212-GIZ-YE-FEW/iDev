@@ -8,6 +8,9 @@ import schema from "@/utils/validationSchemaTherapist";
 import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import { useState } from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import updateDocumentField from "@/firebase/updateData";
 function Therapist({ t }) {
@@ -24,17 +27,23 @@ function Therapist({ t }) {
 
         try {
             await schema.validate(formData, { abortEarly: false });
-            const collection = "user";
-            const fieldName = "email";
-            const fieldValue = user.email;
+            const firestore = firebase.firestore();
+            const collectionRef = firestore.collection("user");
+
+            // Add a new document to the collection and get its reference
+            const docRef = collectionRef.doc();
+
+            const collection = "user/" + docRef + "/Personal data/therapist";
+
             const userData = {
                 userName: formData.userName,
                 city: formData.city,
                 LicenseNamber: formData.licenseNamber,
                 isTherapist: true,
+                gender: formData.gender,
             };
 
-            updateDocumentField(collection, fieldName, fieldValue, userData);
+            updateDocumentField(collection, userData);
             const router = require("next/router").default;
             router.push({
                 pathname: "/",
@@ -49,6 +58,7 @@ function Therapist({ t }) {
             }
         }
     };
+
     return (
         <div className='container py-20'>
             {authenticated ? (
