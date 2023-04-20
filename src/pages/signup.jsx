@@ -76,9 +76,8 @@ function SignUp({ t }) {
             };
             const therapistData = {
                 isTherapist: false,
-                userName: "",
-                city: "",
-                LicenseNumber: 7899000,
+                userName: "j",
+                city: "k",
             };
             signUp(
                 formData.email,
