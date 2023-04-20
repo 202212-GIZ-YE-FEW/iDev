@@ -1,4 +1,5 @@
 {
+    "Logout": "Logout",
     "about": "About",
     "backToHome": "back to home",
     "blogs": "Blogs",
@@ -7,9 +8,12 @@
     "enterEmail": "Enter your e-mail",
     "home": "Home",
     "login": "log in",
+    "newsletterEncourage": "A weekly, ad-free Blog that helps you stay in the know.",
+    "recentBlogsTitle": "recent blogs",
+    "recommendedForYou": "recommended for you",
+    "signUpForBlog": "sign up for the Healing blog",
     "signup": "sign up",
     "subscribe": "subscribe",
     "test": "Hello",
-    "thankYou": "Thank you!",
-    "Logout": "Logout"
+    "thankYou": "Thank you!"
 }

@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import RecentBlogItem from "../RecentBlogItem";
+import BlogItem from "../BlogItem";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<RecentBlogItem />).toJSON();
+    const tree = renderer.create(<BlogItem />).toJSON();
     expect(tree).toMatchSnapshot();
 });

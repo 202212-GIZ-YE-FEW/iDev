@@ -5,7 +5,7 @@ exports[`renders correctly 1`] = `
   className="flex flex-col"
 >
   <span
-    className="text-xl md:text-3xl capitalize font-medium mb-[12px]"
+    className="text-xl md:text-3xl font-medium mb-[12px] capitalize"
   >
     subscribe
   </span>

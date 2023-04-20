@@ -3,23 +3,13 @@ import Carousel from "react-multi-carousel";
 
 import "react-multi-carousel/lib/styles.css";
 
-import BlogItem from "./RecentBlogItem";
-import PageIntro from "../PageIntro";
-function RecentBlogsSection({ t }) {
-    const recentBlogs = [
-        {
-            title: t("blog1Title"),
-            thumbnail: "blog1",
-        },
-        {
-            title: t("blog2Title"),
-            thumbnail: "blog2",
-        },
-        {
-            title: t("blog3Title"),
-            thumbnail: "blog3",
-        },
-    ];
+import BlogItem from "@/components/BlogItem";
+const BlogsSection = ({
+    t,
+    textSize = "text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl",
+    title = "common:recentBlogsTitle",
+    blogs = [],
+}) => {
     const responsive = {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 3000 },
@@ -40,15 +30,22 @@ function RecentBlogsSection({ t }) {
     };
     return (
         <>
-            <div className='container flex flex-col space-y-20 justify-between'>
-                <PageIntro title={t("recentBlogsTitle")} />
+            <div className='flex flex-col space-y-16 justify-between'>
+                <p
+                    className={
+                        textSize + "font-normal block uppercase break-words"
+                    }
+                >
+                    {t(`${title}`)}
+                </p>
                 <Carousel infinite='true' responsive={responsive}>
-                    {recentBlogs.map((item, index) => {
+                    {blogs?.map((item, index) => {
                         return (
                             <BlogItem
                                 key={index}
-                                title={item.title}
-                                thumbnail={item.thumbnail}
+                                ar_title={item.body.ar_title}
+                                en_title={item.body.en_title}
+                                id={item.id}
                                 isOdd={index % 2 === 0 ? false : true}
                             />
                         );
@@ -57,5 +54,5 @@ function RecentBlogsSection({ t }) {
             </div>
         </>
     );
-}
-export default withTranslation("home")(RecentBlogsSection);
+};
+export default withTranslation("blog")(BlogsSection);
