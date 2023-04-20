@@ -5,14 +5,14 @@ import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import schema from "@/utils/validationSchemaTherapist";
-import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
-import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
+
 import { useState } from "react";
-import firebase from "firebase/app";
+import { doc, collection, getFirestore } from "firebase/firestore";
+
 import "firebase/auth";
 import "firebase/firestore";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import updateDocumentField from "@/firebase/updateData";
+import updateDocument from "@/firebase/updateSubCollection";
 function Therapist({ t }) {
     const { authenticated, user } = useAuth();
     const [formData, setFormData] = useState({});
@@ -27,23 +27,30 @@ function Therapist({ t }) {
 
         try {
             await schema.validate(formData, { abortEarly: false });
-            const firestore = firebase.firestore();
-            const collectionRef = firestore.collection("user");
+            const db = getFirestore();
+            const userId = user.uid;
+            const parentDocRef = doc(db, "users", userId);
+            const childCollectionRef = collection(
+                parentDocRef,
+                "Personal_data"
+            );
+            const childCollectionPath = childCollectionRef.path;
 
-            // Add a new document to the collection and get its reference
-            const docRef = collectionRef.doc();
-
-            const collection = "user/" + docRef + "/Personal data/therapist";
-
-            const userData = {
+            console.log(childCollectionPath); // outputs "parentCollection/parentDocId/childCollection"
+            // console.log(collection);
+            const data = {
                 userName: formData.userName,
                 city: formData.city,
                 LicenseNamber: formData.licenseNamber,
                 isTherapist: true,
-                gender: formData.gender,
             };
-
-            updateDocumentField(collection, userData);
+            const therapist = "therapist";
+            await updateDocument(childCollectionPath, therapist, data);
+            // if (updateSuccessful) {
+            //     alert("Update successful");
+            // } else {
+            //     alert("Update failed");
+            // }
             const router = require("next/router").default;
             router.push({
                 pathname: "/",
@@ -118,28 +125,6 @@ function Therapist({ t }) {
                                 />
                             </div>
 
-                            <div>
-                                <RadioGroup title={t("selectGender")}>
-                                    <RadioInputItem
-                                        id='male'
-                                        name='gender'
-                                        value='male'
-                                        checked={formData.gender === "male"}
-                                        onChange={handleChange}
-                                        title={t("male")}
-                                        asButton
-                                    />
-                                    <RadioInputItem
-                                        id='female'
-                                        name='gender'
-                                        value='female'
-                                        checked={formData.gender === "female"}
-                                        onChange={handleChange}
-                                        title={t("female")}
-                                        asButton
-                                    />
-                                </RadioGroup>
-                            </div>
                             <div className='mt-12'>
                                 <Button
                                     content={t("create")}
