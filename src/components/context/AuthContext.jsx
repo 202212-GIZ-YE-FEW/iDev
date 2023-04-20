@@ -20,7 +20,7 @@ import {
     collection,
     addDoc,
 } from "firebase/firestore";
-
+import setDocument from "@/firebase/setData";
 const db = getFirestore();
 const AuthContext = createContext({});
 
@@ -53,16 +53,19 @@ export function AuthContextProvider({ children }) {
     const signUp = (email, password, userData, profileData, therapistData) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(async (result) => {
+                const userId = result.user.uid;
+                const personalData = "Personal_data";
                 const userRef = doc(db, "users", result.user.uid);
                 const userDocRef = await setDoc(userRef, { userData });
-                const profileColRef = collection(userRef, "profile");
-                const profileDocRef = await addDoc(profileColRef, {
-                    profileData,
-                });
-                const therapistColRef = collection(userRef, "therapist");
-                const therapistDocRef = await addDoc(therapistColRef, {
-                    therapistData,
-                });
+                const therapistDoc = await setDocument(
+                    `users/${userId}/${personalData}/therapist`,
+                    therapistData
+                );
+                const profileDoc = await setDocument(
+                    `users/${userId}/${personalData}/profile`,
+                    profileData
+                );
+
                 await sendEmailConfirmation();
             })
             .catch((error) => {
