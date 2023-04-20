@@ -6,12 +6,12 @@ import RadioInputItem from "../ui/radiogroup/RadioInputItem";
 const RelationshipStatus = ({ t, name, relationshipStatus, onChange }) => {
     return (
         <>
-            <RadioGroup title={t("whatRelationshipStatus")} asButton={true}>
+            <RadioGroup title={t("whatRelationshipStatus")} as='button'>
                 <RadioInputItem
                     id='single'
                     name={name}
                     value='single'
-                    title={t("single")}
+                    content={t("single")}
                     checked={relationshipStatus === "single"}
                     onChange={(e) => onChange(e)}
                 />
@@ -19,7 +19,7 @@ const RelationshipStatus = ({ t, name, relationshipStatus, onChange }) => {
                     id='married'
                     name={name}
                     value='married'
-                    title={t("married")}
+                    content={t("married")}
                     checked={relationshipStatus === "married"}
                     onChange={(e) => onChange(e)}
                 />
@@ -27,7 +27,7 @@ const RelationshipStatus = ({ t, name, relationshipStatus, onChange }) => {
                     id='divorced'
                     name={name}
                     value='divorced'
-                    title={t("divorced")}
+                    content={t("divorced")}
                     checked={relationshipStatus === "divorced"}
                     onChange={(e) => onChange(e)}
                 />

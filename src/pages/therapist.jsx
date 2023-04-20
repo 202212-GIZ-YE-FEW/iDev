@@ -1,17 +1,17 @@
 import { withTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+import { useState } from "react";
+
 import { useAuth } from "@/components/context/AuthContext";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import schema from "@/utils/validationSchemaTherapist";
-
-import { useState } from "react";
 import { doc, collection, getFirestore } from "firebase/firestore";
 
 import "firebase/auth";
 import "firebase/firestore";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import updateDocument from "@/firebase/updateSubCollection";
 function Therapist({ t }) {
     const { authenticated, user } = useAuth();

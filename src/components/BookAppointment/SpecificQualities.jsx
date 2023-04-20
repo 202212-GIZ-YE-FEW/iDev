@@ -10,7 +10,7 @@ const SpecificQualities = ({ t, name, specificQualities, onChange }) => {
                 <RadioInputItem
                     id='male-counselor'
                     name={name}
-                    title={t("maleCounselor")}
+                    content={t("maleCounselor")}
                     value='maleCounselor'
                     checked={specificQualities === "maleCounselor"}
                     onChange={(e) => onChange(e)}
@@ -18,7 +18,7 @@ const SpecificQualities = ({ t, name, specificQualities, onChange }) => {
                 <RadioInputItem
                     id='female-counselor'
                     name={name}
-                    title={t("femaleCounselor")}
+                    content={t("femaleCounselor")}
                     value='femaleCounselor'
                     checked={specificQualities === "femaleCounselor"}
                     onChange={(e) => onChange(e)}
@@ -26,7 +26,7 @@ const SpecificQualities = ({ t, name, specificQualities, onChange }) => {
                 <RadioInputItem
                     id='older-counselor'
                     name={name}
-                    title={t("olderCounselor")}
+                    content={t("olderCounselor")}
                     value='olderCounselor'
                     checked={specificQualities === "olderCounselor"}
                     onChange={(e) => onChange(e)}
@@ -34,7 +34,7 @@ const SpecificQualities = ({ t, name, specificQualities, onChange }) => {
                 <RadioInputItem
                     id='non-religious-counselor'
                     name={name}
-                    title={t("nonReligiousCounselor")}
+                    content={t("nonReligiousCounselor")}
                     value='nonReligiousCounselor'
                     checked={specificQualities === "nonReligiousCounselor"}
                     onChange={(e) => onChange(e)}
