@@ -9,7 +9,6 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import schema from "@/utils/validationSchemaTherapist";
 import { doc, collection, getFirestore } from "firebase/firestore";
-
 import "firebase/auth";
 import "firebase/firestore";
 import updateDocument from "@/firebase/updateSubCollection";
