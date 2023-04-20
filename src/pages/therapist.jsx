@@ -34,10 +34,7 @@ function Therapist({ t }) {
                 parentDocRef,
                 "Personal_data"
             );
-            const childCollectionPath = childCollectionRef.path;
-
-            console.log(childCollectionPath); // outputs "parentCollection/parentDocId/childCollection"
-            // console.log(collection);
+            const childCollectionPath = childCollectionRef.path; // outputs "parentCollection/parentDocId/childCollection"
             const data = {
                 userName: formData.userName,
                 city: formData.city,
@@ -46,11 +43,6 @@ function Therapist({ t }) {
             };
             const therapist = "therapist";
             await updateDocument(childCollectionPath, therapist, data);
-            // if (updateSuccessful) {
-            //     alert("Update successful");
-            // } else {
-            //     alert("Update failed");
-            // }
             const router = require("next/router").default;
             router.push({
                 pathname: "/",
