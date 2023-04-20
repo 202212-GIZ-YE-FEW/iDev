@@ -12,17 +12,6 @@ import { navigation } from "@/utils/constants";
 import { useAuth } from "./context/AuthContext";
 function LangDropdown(props) {
     const { setOpenLangDropdown, openLangDropdown, to } = props;
-    //TODO: delete this function
-    // const onChangeDir = (dir) => {
-    //     document.dir = dir;
-    //     const url = router.query;
-    //     const newUrl = {
-    //         pathname: router.pathname,
-    //         query: { ...url },
-    //     };
-    //     router.push(newUrl);
-    // };
-
     return (
         <div
             className='relative inline-block'
