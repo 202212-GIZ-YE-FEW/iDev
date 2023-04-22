@@ -46,6 +46,17 @@ const schema = Yup.object().shape({
     phoneNumber: Yup.string()
         .matches(/^(73|77|71)\d{7}$/, "Phone number is invalid")
         .required("Phone number is required"),
+    uploadId: Yup.mixed()
+        .required("required")
+        .test(
+            "fileFormat",
+            "File format not supported",
+            (value) =>
+                value &&
+                ["image/png", "image/jpeg", "application/pdf"].includes(
+                    value.type
+                )
+        ),
 });
 
 export default schema;
