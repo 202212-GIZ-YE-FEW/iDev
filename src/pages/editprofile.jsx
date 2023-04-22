@@ -65,127 +65,124 @@ function EditProfile({ t }) {
                     <PreviewProfile />
                 </div>
                 <div className='w-full justify-self-center lg:justify-self-end'>
-                    <fieldset>
-                        <legend class='text-3xl font-semibold uppercase'>
-                            {t("profileInfo")}
-                        </legend>
-                        <form
-                            className='  mt-[8px]  w-full'
-                            onSubmit={handleSubmit}
-                        >
-                            <div className='flex items-center my-5'>
-                                <Input
-                                    inputWidthSize='flex-[2_1_0%]'
-                                    type='text'
-                                    name='fullName'
-                                    label={t("fullName")}
-                                    labelColor='text-black'
-                                    value={formData.fullName || ""}
-                                    onChange={handleChange}
-                                />
+                    <legend class='text-3xl font-semibold uppercase'>
+                        {t("profileInfo")}
+                    </legend>
+                    <form
+                        className='  mt-[8px]  w-full'
+                        onSubmit={handleSubmit}
+                    >
+                        <div className='flex items-center my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='text'
+                                name='fullName'
+                                label={t("fullName")}
+                                labelColor='text-black'
+                                value={formData.fullName || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex items-center my-5'>
+                            <Dropdown
+                                placeholder='select'
+                                data={[
+                                    { value: 1, label: t("bacholar") },
+                                    { value: 2, label: t("master") },
+                                    { value: 3, label: t("PhD") },
+                                    { value: 4, label: t("deploma") },
+                                ]}
+                                label={t("educationLevel")}
+                                labelColor='text-black'
+                                value={formData.educationLevel || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex items-center my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='text'
+                                name='hubbies'
+                                label={t("hubbies")}
+                                labelColor='text-black'
+                                value={formData.hubbies || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex items-center my-5'>
+                            <Input
+                                inputWidthSize='flex-[1_1_0%]'
+                                type='number'
+                                name='familySize'
+                                label={t("familySize")}
+                                labelColor='text-black'
+                                value={formData.familySize || ""}
+                                onChange={handleChange}
+                            />
+                            <div className='ms-10 flex-[0_1_0%]'>
+                                {t("member(s)")}
                             </div>
-                            <div className='flex items-center my-5'>
-                                <Dropdown
-                                    placeholder='select'
-                                    data={[
-                                        { value: 1, label: t("bacholar") },
-                                        { value: 2, label: t("master") },
-                                        { value: 3, label: t("PhD") },
-                                        { value: 4, label: t("deploma") },
-                                    ]}
-                                    label={t("educationLevel")}
-                                    labelColor='text-black'
-                                    value={formData.educationLevel || ""}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className='flex items-center my-5'>
-                                <Input
-                                    inputWidthSize='flex-[2_1_0%]'
-                                    type='text'
-                                    name='hubbies'
-                                    label={t("hubbies")}
-                                    labelColor='text-black'
-                                    value={formData.hubbies || ""}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className='flex items-center my-5'>
-                                <Input
-                                    inputWidthSize='flex-[1_1_0%]'
-                                    type='number'
-                                    name='familySize'
-                                    label={t("familySize")}
-                                    labelColor='text-black'
-                                    value={formData.familySize || ""}
-                                    onChange={handleChange}
-                                />
-                                <div className='ms-10 flex-[0_1_0%]'>
-                                    {t("member(s)")}
-                                </div>
-                            </div>
-                            <div className='flex items-center my-5'>
-                                <Dropdown
-                                    className='lg:w-8/12 text-light-black'
-                                    placeholder='select '
-                                    name='gender'
-                                    label={t("gender")}
-                                    labelColor='text-black'
-                                    data={[
-                                        { value: 1, label: t("female") },
-                                        { value: 2, label: t("male") },
-                                    ]}
-                                    value={formData.gender || ""}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className='flex items-center my-5'>
-                                <Input
-                                    inputWidthSize='flex-[2_1_0%]'
-                                    type='date'
-                                    name='birthDate'
-                                    label={t("birthDate")}
-                                    labelColor='text-black'
-                                    value={formData.birthDate || ""}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className='flex items-center my-5'>
-                                <Input
-                                    inputWidthSize='flex-[2_1_0%]'
-                                    type='email'
-                                    name='email'
-                                    label={t("email")}
-                                    labelColor='text-black'
-                                    value={formData.email || ""}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className='flex items-center my-5'>
-                                <Input
-                                    inputWidthSize='flex-[2_1_0%]'
-                                    type='text'
-                                    name='phoneNumber'
-                                    label={t("phoneNumber")}
-                                    labelColor='text-black'
-                                    value={formData.phoneNumber || ""}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className='flex items-center my-5'>
-                                <Input
-                                    inputWidthSize='flex-[2_1_0%]'
-                                    type='file'
-                                    name='uploadId'
-                                    label={t("uploadId")}
-                                    labelColor='text-black'
-                                    value=''
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </form>
-                    </fieldset>
-                    <fieldset className='mt-8'>
+                        </div>
+                        <div className='flex items-center my-5'>
+                            <Dropdown
+                                className='lg:w-8/12 text-light-black'
+                                placeholder='select '
+                                name='gender'
+                                label={t("gender")}
+                                labelColor='text-black'
+                                data={[
+                                    { value: 1, label: t("female") },
+                                    { value: 2, label: t("male") },
+                                ]}
+                                value={formData.gender || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex items-center my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='date'
+                                name='birthDate'
+                                label={t("birthDate")}
+                                labelColor='text-black'
+                                value={formData.birthDate || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex items-center my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='email'
+                                name='email'
+                                label={t("email")}
+                                labelColor='text-black'
+                                value={formData.email || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex items-center my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='text'
+                                name='phoneNumber'
+                                label={t("phoneNumber")}
+                                labelColor='text-black'
+                                value={formData.phoneNumber || ""}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='flex items-center my-5'>
+                            <Input
+                                inputWidthSize='flex-[2_1_0%]'
+                                type='file'
+                                name='uploadId'
+                                label={t("uploadId")}
+                                labelColor='text-black'
+                                value=''
+                                onChange={handleChange}
+                            />
+                        </div>
+
                         <legend class='text-3xl font-semibold'>
                             {t("security")}
                         </legend>
@@ -211,8 +208,7 @@ function EditProfile({ t }) {
                                 onChange={handleChange}
                             />
                         </div>
-                    </fieldset>
-
+                    </form>
                     <div className='flex flex-col sm:flex-row gap-2 my-8'>
                         <Button
                             content={t("saveChanges")}
