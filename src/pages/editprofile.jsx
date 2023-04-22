@@ -21,6 +21,7 @@ function EditProfile({ t }) {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -43,8 +44,8 @@ function EditProfile({ t }) {
                 phoneNumber: formData.phoneNumber,
                 gender: formData.gender,
             };
-            const therapist = "profile";
-            await updateDocument(childCollectionPath, therapist, data);
+            const profile = "profile";
+            await updateDocument(childCollectionPath, profile, data);
             const router = require("next/router").default;
             router.push({
                 pathname: "/",
@@ -88,17 +89,23 @@ function EditProfile({ t }) {
                         </div>
                         <div className='flex items-center my-5'>
                             <Dropdown
+                                name='educationLevel'
                                 placeholder='select'
                                 data={[
-                                    { value: 1, label: t("bacholar") },
-                                    { value: 2, label: t("master") },
-                                    { value: 3, label: t("PhD") },
-                                    { value: 4, label: t("deploma") },
+                                    { value: "bacholar", label: t("bacholar") },
+                                    { value: "master", label: t("master") },
+                                    { value: "PhD", label: t("PhD") },
+                                    { value: "deploma", label: t("deploma") },
                                 ]}
                                 label={t("educationLevel")}
                                 labelColor='text-black'
-                                value={formData.educationLevel || ""}
-                                onChange={handleChange}
+                                value={formData.educationLevel}
+                                onChange={(e) =>
+                                    setFormData({
+                                        ...formData,
+                                        educationLevel: e.target.value,
+                                    })
+                                }
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -128,6 +135,7 @@ function EditProfile({ t }) {
                                 t={t}
                                 field={t("familySize")}
                             />
+
                             <div className='ms-10 flex-[0_1_0%]'>
                                 {t("member(s)")}
                             </div>
@@ -140,11 +148,16 @@ function EditProfile({ t }) {
                                 label={t("gender")}
                                 labelColor='text-black'
                                 data={[
-                                    { value: 1, label: t("female") },
-                                    { value: 2, label: t("male") },
+                                    { value: "female", label: t("female") },
+                                    { value: "male", label: t("male") },
                                 ]}
-                                value={formData.gender || ""}
-                                onChange={handleChange}
+                                value={formData.gender}
+                                onChange={(e) =>
+                                    setFormData({
+                                        ...formData,
+                                        gender: e.target.value,
+                                    })
+                                }
                             />
                         </div>
                         <div className='flex items-center my-5'>
