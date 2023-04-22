@@ -321,17 +321,19 @@ export default function Navbar() {
                         />
                         {/* Add Imge */}
                         {authenticated ? (
-                            <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
-                                <Image
-                                    className='rounded-full w-14 h-14object-cover'
-                                    width={14}
-                                    height={14}
-                                    alt='userImage'
-                                    src={`/${String(
-                                        localStorage.getItem("image")
-                                    )}`}
-                                />
-                            </div>
+                            <Link href='/editprofile'>
+                                <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
+                                    <Image
+                                        className='rounded-full w-14 h-14object-cover'
+                                        width={14}
+                                        height={14}
+                                        alt='userImage'
+                                        src={`/${String(
+                                            localStorage.getItem("image")
+                                        )}`}
+                                    />
+                                </div>
+                            </Link>
                         ) : (
                             <></>
                         )}
