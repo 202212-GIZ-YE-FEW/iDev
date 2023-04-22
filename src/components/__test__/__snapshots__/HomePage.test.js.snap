@@ -50,6 +50,7 @@ Array [
         <img
           alt=""
           className="max-w-full lg:min-w-[20rem] lg:max-w-[27rem] xl:min-w-[40rem]"
+          data-aos="zoom-in-up"
           data-nimg="1"
           decoding="async"
           height={200}
@@ -144,6 +145,7 @@ Array [
       >
         <div
           className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <img
             alt="voiceCall svg"
@@ -174,6 +176,7 @@ Array [
         </div>
         <div
           className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <img
             alt="chat svg"
@@ -204,6 +207,7 @@ Array [
         </div>
         <div
           className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <img
             alt="videoCall svg"
@@ -295,7 +299,8 @@ Array [
         className="grid sm:grid-cols-1 md:grid-cols-2 my-10 lg:grid-cols-3 gap-7"
       >
         <div
-          className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <span
             className="uppercase text-4xl"
@@ -324,7 +329,8 @@ Array [
           </div>
         </div>
         <div
-          className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <span
             className="uppercase text-4xl"
@@ -353,7 +359,8 @@ Array [
           </div>
         </div>
         <div
-          className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <span
             className="uppercase text-4xl"

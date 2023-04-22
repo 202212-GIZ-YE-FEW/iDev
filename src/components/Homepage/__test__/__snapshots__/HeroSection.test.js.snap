@@ -49,6 +49,7 @@ exports[`renders correctly 1`] = `
       <img
         alt=""
         className="max-w-full lg:min-w-[20rem] lg:max-w-[27rem] xl:min-w-[40rem]"
+        data-aos="zoom-in-up"
         data-nimg="1"
         decoding="async"
         height={200}

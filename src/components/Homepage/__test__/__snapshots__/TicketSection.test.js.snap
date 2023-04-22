@@ -22,7 +22,8 @@ exports[`renders correctly 1`] = `
     className="grid sm:grid-cols-1 md:grid-cols-2 my-10 lg:grid-cols-3 gap-7"
   >
     <div
-      className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      data-aos="flip-down"
     >
       <span
         className="uppercase text-4xl"
@@ -51,7 +52,8 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      data-aos="flip-down"
     >
       <span
         className="uppercase text-4xl"
@@ -80,7 +82,8 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      data-aos="flip-down"
     >
       <span
         className="uppercase text-4xl"

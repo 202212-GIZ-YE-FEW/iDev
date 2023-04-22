@@ -2,7 +2,8 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+  className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+  data-aos="flip-down"
 >
   <span
     className="uppercase text-4xl"
