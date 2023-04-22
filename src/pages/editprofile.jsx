@@ -99,9 +99,6 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.educationLevel || ""}
                                 onChange={handleChange}
-                                error={formErrors.educationLevel}
-                                t={t}
-                                field={t("educationLevel")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -148,9 +145,6 @@ function EditProfile({ t }) {
                                 ]}
                                 value={formData.gender || ""}
                                 onChange={handleChange}
-                                error={formErrors.gender}
-                                t={t}
-                                field={t("gender")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
