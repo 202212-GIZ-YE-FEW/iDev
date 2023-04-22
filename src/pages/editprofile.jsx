@@ -7,11 +7,12 @@ import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
 import { useAuth } from "@/components/context/AuthContext";
-import schema from "@/utils/validationSchemaTherapist";
+import schema from "@/utils/validationSchemaProfile";
 import { doc, collection, getFirestore } from "firebase/firestore";
 import "firebase/auth";
 import "firebase/firestore";
 import updateDocument from "@/firebase/updateSubCollection";
+import PageIntro from "@/components/PageIntro";
 function EditProfile({ t }) {
     const [formData, setFormData] = useState({});
     const { user } = useAuth();
@@ -66,9 +67,7 @@ function EditProfile({ t }) {
                     <PreviewProfile />
                 </div>
                 <div className='w-full justify-self-center lg:justify-self-end'>
-                    <legend class='text-3xl font-semibold uppercase'>
-                        {t("profileInfo")}
-                    </legend>
+                    <PageIntro title={t("profileInfo")} />
                     <form
                         className='  mt-[8px]  w-full'
                         onSubmit={handleSubmit}
@@ -211,9 +210,7 @@ function EditProfile({ t }) {
                             />
                         </div>
 
-                        <legend class='text-3xl font-semibold'>
-                            {t("security")}
-                        </legend>
+                        <PageIntro title={t("security")} />
                         <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
