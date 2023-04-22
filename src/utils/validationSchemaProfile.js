@@ -43,7 +43,9 @@ const schema = Yup.object().shape({
         .max(new Date(), "dateOfBirthFuture")
         .required("required"),
     familySize: Yup.number().required("required"),
-    phoneNumber: Yup.number().required("required"),
+    phoneNumber: Yup.string()
+        .matches(/^(73|77|71)\d{7}$/, "Phone number is invalid")
+        .required("Phone number is required"),
 });
 
 export default schema;
