@@ -16,6 +16,7 @@ function EditProfile({ t }) {
     const [formData, setFormData] = useState({});
     const { user } = useAuth();
     const [formErrors, setFormErrors] = useState({});
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -81,6 +82,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.fullName || ""}
                                 onChange={handleChange}
+                                error={formErrors.fullName}
+                                t={t}
+                                field={t("fullName")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -96,6 +100,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.educationLevel || ""}
                                 onChange={handleChange}
+                                error={formErrors.educationLevel}
+                                t={t}
+                                field={t("educationLevel")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -107,6 +114,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.hubbies || ""}
                                 onChange={handleChange}
+                                error={formErrors.hubbies}
+                                t={t}
+                                field={t("hubbies")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -118,6 +128,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.familySize || ""}
                                 onChange={handleChange}
+                                error={formErrors.familySize}
+                                t={t}
+                                field={t("familySize")}
                             />
                             <div className='ms-10 flex-[0_1_0%]'>
                                 {t("member(s)")}
@@ -136,6 +149,9 @@ function EditProfile({ t }) {
                                 ]}
                                 value={formData.gender || ""}
                                 onChange={handleChange}
+                                error={formErrors.gender}
+                                t={t}
+                                field={t("gender")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -147,6 +163,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.birthDate || ""}
                                 onChange={handleChange}
+                                error={formErrors.birthDate}
+                                t={t}
+                                field={t("birthDate")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -158,6 +177,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.email || ""}
                                 onChange={handleChange}
+                                error={formErrors.email}
+                                t={t}
+                                field={t("email")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -169,6 +191,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.phoneNumber || ""}
                                 onChange={handleChange}
+                                error={formErrors.phoneNumber}
+                                t={t}
+                                field={t("phoneNumber")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -180,6 +205,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value=''
                                 onChange={handleChange}
+                                error={formErrors.uploadId}
+                                t={t}
+                                field={t("uploadId")}
                             />
                         </div>
 
@@ -195,6 +223,9 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.password || ""}
                                 onChange={handleChange}
+                                error={formErrors.password}
+                                t={t}
+                                field={t("password")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
@@ -206,64 +237,68 @@ function EditProfile({ t }) {
                                 labelColor='text-black'
                                 value={formData.confirmPassword || ""}
                                 onChange={handleChange}
+                                error={formErrors.confirmPassword}
+                                t={t}
+                                field={t("confirmPassword")}
+                            />
+                        </div>
+
+                        <div className='flex flex-col sm:flex-row gap-2 my-8'>
+                            <Button
+                                content={t("saveChanges")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                                onClick={handleSubmit}
+                            />
+                            <Button
+                                content={t("deleteAccount")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                            />
+                            <Button
+                                content={t("cancel")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
                             />
                         </div>
                     </form>
-                    <div className='flex flex-col sm:flex-row gap-2 my-8'>
-                        <Button
-                            content={t("saveChanges")}
-                            filled='true'
-                            size='medium'
-                            radius='md'
-                            textTransform='uppercase'
-                            shadow='shadow-lg'
-                        />
-                        <Button
-                            content={t("deleteAccount")}
-                            filled='true'
-                            size='medium'
-                            radius='md'
-                            textTransform='uppercase'
-                            shadow='shadow-lg'
-                        />
-                        <Button
-                            content={t("cancel")}
-                            filled='true'
-                            size='medium'
-                            radius='md'
-                            textTransform='uppercase'
-                            shadow='shadow-lg'
-                        />
-                    </div>
-                    <fieldset className='my-12'>
-                        <legend class='text-3xl font-semibold mb-12'>
-                            {t("paymentMethods&Tickets")}
-                        </legend>
-                        <div className='flex gap-10'>
-                            <div className='flex flex-col gap-5'>
-                                <p>{t("cardsAdded", { count: 3 })}</p>
-                                <Button
-                                    content={t("showCards")}
-                                    filled='true'
-                                    size='medium'
-                                    radius='md'
-                                    textTransform='uppercase'
-                                    shadow='shadow-lg'
-                                />
-                            </div>
-                            <div className='flex flex-col gap-5'>
-                                <p>{t("ticketsRemaining", { count: 10 })}</p>
-                                <Button
-                                    content={t("buyTickets")}
-                                    filled='true'
-                                    size='medium'
-                                    radius='md'
-                                    textTransform='uppercase'
-                                    shadow='shadow-lg'
-                                />
-                            </div>
+
+                    <legend class='text-3xl font-semibold mb-12'>
+                        {t("paymentMethods&Tickets")}
+                    </legend>
+                    <div className='flex gap-10'>
+                        <div className='flex flex-col gap-5'>
+                            <p>{t("cardsAdded", { count: 3 })}</p>
+                            <Button
+                                content={t("showCards")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                            />
                         </div>
-                    </fieldset>
+                        <div className='flex flex-col gap-5'>
+                            <p>{t("ticketsRemaining", { count: 10 })}</p>
+                            <Button
+                                content={t("buyTickets")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
