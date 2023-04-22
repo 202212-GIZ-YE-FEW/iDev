@@ -122,6 +122,7 @@ function Login({ t }) {
                                     fontSize='lg:text-md xl:text-sm'
                                     radius='md'
                                     onClick={handleSubmit}
+                                    interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                                 />
                             </Link>
                             <Link href='/signup'>
@@ -132,6 +133,7 @@ function Login({ t }) {
                                     fontSize='lg:text-md xl:text-sm'
                                     radius='md '
                                     shadow='shadow-lg'
+                                    interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                                 />
                             </Link>
                         </div>

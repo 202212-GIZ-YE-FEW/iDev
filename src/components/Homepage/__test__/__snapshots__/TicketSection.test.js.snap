@@ -42,8 +42,7 @@ exports[`renders correctly 1`] = `
         className="w-fit"
       >
         <button
-          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
           disabled={false}
         >
@@ -72,8 +71,7 @@ exports[`renders correctly 1`] = `
         className="w-fit"
       >
         <button
-          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
           disabled={false}
         >
@@ -102,8 +100,7 @@ exports[`renders correctly 1`] = `
         className="w-fit"
       >
         <button
-          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
           disabled={false}
         >
@@ -133,8 +130,7 @@ exports[`renders correctly 1`] = `
         onTouchStart={[Function]}
       >
         <button
-          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
           disabled={false}
         >

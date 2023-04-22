@@ -346,6 +346,7 @@ export default function Navbar() {
                                     size='large'
                                     fontSize='text-sm md:text-xl'
                                     radius='md'
+                                    interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                                 />
                             </Link>
                         ) : (
@@ -357,6 +358,7 @@ export default function Navbar() {
                                 fontSize='text-sm md:text-xl'
                                 radius='md'
                                 onClick={Logout}
+                                interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                             />
                         )}
                     </div>

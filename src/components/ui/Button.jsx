@@ -11,6 +11,7 @@ export default function Button(props) {
         shadow = "",
         onClick,
         disabled = false,
+        interaction = "transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan",
     } = props;
 
     return (
@@ -18,8 +19,7 @@ export default function Button(props) {
             disabled={disabled}
             onClick={onClick}
             className={clsx(
-                `transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                `${interaction}
                 font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
                 {
                     "px-[10px] lg:px-[28px] py-[4.7px]": size === "small",
