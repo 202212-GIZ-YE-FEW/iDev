@@ -301,4 +301,4 @@ export async function getStaticProps({ locale }) {
         },
     };
 }
-export default withTranslation(["profile"])(EditProfile);
+export default withTranslation(["profile", "validation"])(EditProfile);

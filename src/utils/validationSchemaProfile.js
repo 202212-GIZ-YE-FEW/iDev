@@ -44,13 +44,13 @@ const schema = Yup.object().shape({
         .required("required"),
     familySize: Yup.number().required("required"),
     phoneNumber: Yup.string()
-        .matches(/^(73|77|71)\d{7}$/, "Phone number is invalid")
-        .required("Phone number is required"),
+        .matches(/^(73|77|71)\d{7}$/, "phoneNumber")
+        .required("required"),
     uploadId: Yup.mixed()
         .required("required")
         .test(
             "fileFormat",
-            "File format not supported",
+            "uploadId",
             (value) =>
                 value &&
                 ["image/png", "image/jpeg", "application/pdf"].includes(
