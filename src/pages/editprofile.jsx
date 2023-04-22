@@ -269,9 +269,7 @@ function EditProfile({ t }) {
                         </div>
                     </form>
 
-                    <legend class='text-3xl font-semibold mb-12'>
-                        {t("paymentMethods&Tickets")}
-                    </legend>
+                    <PageIntro title={t("paymentMethods&Tickets")} />
                     <div className='flex gap-10'>
                         <div className='flex flex-col gap-5'>
                             <p>{t("cardsAdded", { count: 3 })}</p>
