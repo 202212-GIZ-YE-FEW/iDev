@@ -18,7 +18,6 @@
     "male": "ذكر",
     "master": "ماجستير",
     "member(s)": "أفراد",
-    "password": "كلمة المرور",
     "paymentMethods&Tickets": "طرق الدفع والتذاكر",
     "phoneNumber": "رقم الهاتف",
     "profileInfo": " معلومات الملف الشخصي",
@@ -26,5 +25,7 @@
     "security": "الامان",
     "showCards": "إظهار البطاقات",
     "ticketsRemaining": "تبقى {{count}} تذاكر",
-    "uploadId": "البطاقة التعريفية"
+    "uploadId": "البطاقة التعريفية",
+    "newPassword":"كلمة السر الجديدة",
+    "Current Password":"كلمة السر الحالية"
 }

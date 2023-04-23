@@ -26,7 +26,7 @@ function EditProfile({ t }) {
         e.preventDefault();
 
         try {
-            await schema.validate(formData, { abortEarly: false });
+            // await schema.validate(formData, { abortEarly: false });
             const db = getFirestore();
             const userId = user.uid;
             const parentDocRef = doc(db, "users", userId);
@@ -222,28 +222,28 @@ function EditProfile({ t }) {
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='name'
-                                name='password'
-                                label={t("password")}
+                                name='currentPassword'
+                                label={t(" currentPassword")}
                                 labelColor='text-black'
-                                value={formData.password || ""}
+                                value={formData.currentPassword || ""}
                                 onChange={handleChange}
-                                error={formErrors.password}
+                                error={formErrors.currentPassword}
                                 t={t}
-                                field={t("password")}
+                                field={t("currentPassword")}
                             />
                         </div>
                         <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='password'
-                                name='confirmPassword'
-                                label={t("confirmPassword")}
+                                name=' newPassword'
+                                label={t("newPassword")}
                                 labelColor='text-black'
-                                value={formData.confirmPassword || ""}
+                                value={formData.newPassword || ""}
                                 onChange={handleChange}
-                                error={formErrors.confirmPassword}
+                                error={formErrors.newPassword}
                                 t={t}
-                                field={t("confirmPassword")}
+                                field={t("newPassword")}
                             />
                         </div>
 

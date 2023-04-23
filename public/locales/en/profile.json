@@ -18,7 +18,6 @@
     "male": "Male",
     "master": "Master",
     "member(s)": "Member(s)",
-    "password": "Password",
     "paymentMethods&Tickets": "Payment Methods & Tickets",
     "phoneNumber": "Phone Number",
     "profileInfo": "Profile Info",
@@ -26,5 +25,7 @@
     "security": "Security",
     "showCards": "SHow Cards",
     "ticketsRemaining": "{{count}} Tickets Remaining",
-    "uploadId": "Upload Id"
+    "uploadId": "Upload Id",
+    "newPassword":"New Password",
+    "currentPassword":"Current Password"
 }
