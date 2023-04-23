@@ -16,4 +16,5 @@
     "licenseNumber": "License number should be exactly 9 digits",
     "phoneNumber": "{{ field }} must start with 73/77/71 and have 7 number after it ",
     "uploadId": "File format not supported"
+  
 }
