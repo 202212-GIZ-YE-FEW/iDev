@@ -59,12 +59,9 @@ function SignUp({ t }) {
             const userData = {
                 active: true,
                 email: formData.email,
-                familySize: 4,
                 first_name: formData.firstName,
-                hobbies: "",
                 last_name: formData.lastName,
                 date_brith: formData.dateOfBirth,
-                gender: "",
             };
             const profileData = {
                 deleted: false,
