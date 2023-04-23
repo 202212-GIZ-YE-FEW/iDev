@@ -56,7 +56,7 @@ export function AuthContextProvider({ children }) {
                 const userId = result.user.uid;
                 const personalData = "Personal_data";
                 const userRef = doc(db, "users", result.user.uid);
-                const userDocRef = await setDoc(userRef, { userData });
+                const userDocRef = await setDoc(userRef, userData);
                 const therapistDoc = await setDocument(
                     `users/${userId}/${personalData}/therapist`,
                     therapistData
