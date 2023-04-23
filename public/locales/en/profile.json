@@ -26,6 +26,7 @@
     "showCards": "SHow Cards",
     "ticketsRemaining": "{{count}} Tickets Remaining",
     "uploadId": "Upload Id",
-    "newPassword":"New Password",
-    "currentPassword":"Current Password"
+    "newPassword": "New Password",
+    "currentPassword": "Current Password",
+    "select": "select"
 }

@@ -26,6 +26,7 @@
     "showCards": "إظهار البطاقات",
     "ticketsRemaining": "تبقى {{count}} تذاكر",
     "uploadId": "البطاقة التعريفية",
-    "newPassword":"كلمة السر الجديدة",
-    "Current Password":"كلمة السر الحالية"
+    "newPassword": "كلمة السر الجديدة",
+    "Current Password": "كلمة السر الحالية",
+    "select": "اختار"
 }
