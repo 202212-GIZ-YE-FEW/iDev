@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import downloadImage from "@/firebase/getImage";
 import getDocument from "@/firebase/getData";
 import BlogCard from "@/components/BlogCard";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const Blogs = ({ t }) => {
     const [blogs, setBlogs] = useState([]);
     function getFirst80Chars(str) {
@@ -37,6 +39,11 @@ const Blogs = ({ t }) => {
                                         getFirst80Chars(blog.body.en_article) +
                                         "..."
                                     }
+                                    ar_title={blog.body.ar_title}
+                                    ar_article={
+                                        getFirst80Chars(blog.body.ar_article) +
+                                        "..."
+                                    }
                                     id={blog.id}
                                 />
                             </div>
@@ -48,3 +55,10 @@ const Blogs = ({ t }) => {
     );
 };
 export default withTranslation("blog")(Blogs);
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common", "blog"])),
+        },
+    };
+}

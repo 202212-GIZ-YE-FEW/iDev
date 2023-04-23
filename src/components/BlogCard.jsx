@@ -3,7 +3,8 @@ import { useTranslation, withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { storage } from "@/firebase/config";
 import Button from "@/components/ui/Button";
-function BlogCard({ en_title, ar_title, id, isOdd, ar_article, en_article }) {
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+function BlogCard({ en_title, ar_title, id, ar_article, en_article, t }) {
     const [imageUrl, setImageUrl] = useState(null);
     const { i18n } = useTranslation();
 
@@ -14,7 +15,7 @@ function BlogCard({ en_title, ar_title, id, isOdd, ar_article, en_article }) {
                 setImageUrl(url);
             })
             .catch((error) => {
-                // handle the error
+                alert(error);
             });
     }, [id]);
 
@@ -46,7 +47,7 @@ function BlogCard({ en_title, ar_title, id, isOdd, ar_article, en_article }) {
                     <div className='absolute bottom-0 right-0 pr-1 pb-1'>
                         <div className='mt-auto '>
                             <Button
-                                content={"read More"}
+                                content={t("readMore")}
                                 filled='true'
                                 size='small'
                                 textTransform='uppercase'
@@ -60,4 +61,12 @@ function BlogCard({ en_title, ar_title, id, isOdd, ar_article, en_article }) {
     );
 }
 
-export default BlogCard;
+export default withTranslation("blog")(BlogCard);
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ["common", "blog"])),
+            // Will be passed to the page component as props
+        },
+    };
+}
