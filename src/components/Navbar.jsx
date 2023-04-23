@@ -11,6 +11,7 @@ import { navigation } from "@/utils/constants";
 
 import { useAuth } from "./context/AuthContext";
 function LangDropdown(props) {
+    const { i18n } = useTranslation();
     const onChangeDir = (locale) => {
         document.dir = locale === "en" ? "ltr" : "rtl";
         const url = router.query;

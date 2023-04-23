@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="relative mx-3"
+>
+  <a
+    href="/blogs/undefined"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
+  >
+    <div
+      className="h-60"
+    >
+      <img
+        alt="undefined thumbnail"
+        className="w-full h-full"
+        data-nimg="1"
+        decoding="async"
+        height={140}
+        loading="lazy"
+        onError={[Function]}
+        onLoad={[Function]}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        src="/_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=3840&q=75"
+        srcSet="/_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=256&q=75 256w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=384&q=75 384w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=640&q=75 640w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=750&q=75 750w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=828&q=75 828w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=1080&q=75 1080w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=1200&q=75 1200w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=1920&q=75 1920w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=2048&q=75 2048w, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=3840&q=75 3840w"
+        style={
+          Object {
+            "color": "transparent",
+          }
+        }
+        width={200}
+      />
+    </div>
+  </a>
+  <p
+    className="uppercase absolute top-2 left-2 text-base bg-light-gray text-white px-2"
+  >
+    undefined
+  </p>
+</div>
+`;
