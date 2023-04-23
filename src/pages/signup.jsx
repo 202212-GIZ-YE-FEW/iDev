@@ -9,8 +9,6 @@ import { useAuth } from "@/components/context/AuthContext";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import setDocument from "@/firebase/setData";
-import addDocument from "@/firebase/addData";
 import schema from "@/utils/validationSchemaSignUp";
 
 function SignUp({ t }) {
