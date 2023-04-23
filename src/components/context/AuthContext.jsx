@@ -16,7 +16,6 @@ import {
     googleProvider,
     EmailAuthProvider,
 } from "@/firebase/config";
-
 import image from "~/blog.png";
 import { setDoc, doc, getFirestore } from "firebase/firestore";
 import setDocument from "@/firebase/setData";
@@ -137,20 +136,17 @@ export function AuthContextProvider({ children }) {
     };
     const changePassword = (currentPassword, newPassword) => {
         const user = auth.currentUser;
-        console.log(user);
+        console.log("user", user);
 
-        const credential = EmailAuthProvider.credential(
+        const credential = auth.EmailAuthProvider.credential(
             user.email,
             currentPassword
         );
-        console.log(credential);
-        // Reauthenticate the user with their current password
+        console.log("credential", credential);
         user.reauthenticateWithCredential(credential)
             .then(() => {
-                // Password is correct, update the password
                 user.updatePassword(newPassword)
                     .then(() => {
-                        // Password updated successfully
                         console.log("Password updated successfully");
                     })
                     .catch((error) => {
