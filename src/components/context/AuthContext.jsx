@@ -10,16 +10,15 @@ import Router from "next/router";
 import Spinner from "public/spinner.svg";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-import { auth, facebookProvider, googleProvider } from "@/firebase/config";
+import {
+    auth,
+    facebookProvider,
+    googleProvider,
+    EmailAuthProvider,
+} from "@/firebase/config";
 
 import image from "~/blog.png";
-import {
-    setDoc,
-    doc,
-    getFirestore,
-    collection,
-    addDoc,
-} from "firebase/firestore";
+import { setDoc, doc, getFirestore } from "firebase/firestore";
 import setDocument from "@/firebase/setData";
 const db = getFirestore();
 const AuthContext = createContext({});
@@ -136,6 +135,34 @@ export function AuthContextProvider({ children }) {
             Router.push("/404"); // Navigate to homepage.
         }
     };
+    const changePassword = (currentPassword, newPassword) => {
+        const user = auth.currentUser;
+        console.log(user);
+
+        const credential = EmailAuthProvider.credential(
+            user.email,
+            currentPassword
+        );
+        console.log(credential);
+        // Reauthenticate the user with their current password
+        user.reauthenticateWithCredential(credential)
+            .then(() => {
+                // Password is correct, update the password
+                user.updatePassword(newPassword)
+                    .then(() => {
+                        // Password updated successfully
+                        console.log("Password updated successfully");
+                    })
+                    .catch((error) => {
+                        // An error occurred while updating the password
+                        console.error(error);
+                    });
+            })
+            .catch((error) => {
+                // Incorrect password, show an error message
+                console.error(error);
+            });
+    };
 
     return (
         <AuthContext.Provider
@@ -148,6 +175,7 @@ export function AuthContextProvider({ children }) {
                 sendEmailConfirmation,
                 signInWithGoogleAccount,
                 signInWithFbAccount,
+                changePassword,
             }}
         >
             {loading ? (

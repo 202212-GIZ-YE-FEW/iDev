@@ -9,15 +9,14 @@ import PreviewProfile from "@/components/ui/PreviewProfile";
 import { useAuth } from "@/components/context/AuthContext";
 import schema from "@/utils/validationSchemaProfile";
 import { doc, collection, getFirestore } from "firebase/firestore";
-import "firebase/auth";
+
 import "firebase/firestore";
 import updateDocument from "@/firebase/updateSubCollection";
-import updateDocumentField from "@/firebase/updateData";
 import PageIntro from "@/components/PageIntro";
 
 function EditProfile({ t }) {
     const [formData, setFormData] = useState({});
-    const { user } = useAuth();
+    const { user, changePassword } = useAuth();
     const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {
@@ -49,10 +48,13 @@ function EditProfile({ t }) {
             const userData = {
                 date_brith: formData.birthDate,
             };
+            const currentPassword = formData.currentPassword;
+            const newPassword = formData.newPassword;
 
             const profile = "profile";
             await updateDocument(childCollectionPath, profile, data);
             await updateDocument("users", userId, userData);
+            await changePassword(currentPassword, newPassword);
             const router = require("next/router").default;
             router.push({
                 pathname: "/",
