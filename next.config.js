@@ -9,6 +9,10 @@ module.exports = {
     reactStrictMode: true,
     //to make Image from google account works
     images: {
-        domains: ["lh3.googleusercontent.com"],
+        domains: [
+            "lh3.googleusercontent.com",
+            "firebasestorage.googleapis.com",
+            "developers.elementor.com", // placeholder
+        ],
     },
 };
