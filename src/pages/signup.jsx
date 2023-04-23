@@ -31,8 +31,6 @@ function SignUp({ t }) {
         datebrith = "date",
         signup = "signup",
         login = "login",
-        loggedin = "loggedin",
-        confirmEmail = "confirmEmail",
     } = {};
 
     const [formData, setFormData] = useState({});
