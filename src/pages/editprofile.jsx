@@ -12,7 +12,9 @@ import { doc, collection, getFirestore } from "firebase/firestore";
 import "firebase/auth";
 import "firebase/firestore";
 import updateDocument from "@/firebase/updateSubCollection";
+import updateDocumentField from "@/firebase/updateData";
 import PageIntro from "@/components/PageIntro";
+
 function EditProfile({ t }) {
     const [formData, setFormData] = useState({});
     const { user } = useAuth();
@@ -44,8 +46,13 @@ function EditProfile({ t }) {
                 phoneNumber: formData.phoneNumber,
                 gender: formData.gender,
             };
+            const userData = {
+                date_brith: formData.birthDate,
+            };
+
             const profile = "profile";
             await updateDocument(childCollectionPath, profile, data);
+            await updateDocument("users", userId, userData);
             const router = require("next/router").default;
             router.push({
                 pathname: "/",
@@ -60,7 +67,6 @@ function EditProfile({ t }) {
             }
         }
     };
-
     return (
         <div className='container '>
             <div className='grid grid-cols-1 lg:grid-cols-2 py-20 gap-y-10'>
@@ -92,6 +98,7 @@ function EditProfile({ t }) {
                                 name='educationLevel'
                                 placeholder='select'
                                 data={[
+                                    { value: "select", label: t("select") },
                                     { value: "bacholar", label: t("bacholar") },
                                     { value: "master", label: t("master") },
                                     { value: "PhD", label: t("PhD") },
@@ -148,6 +155,7 @@ function EditProfile({ t }) {
                                 label={t("gender")}
                                 labelColor='text-black'
                                 data={[
+                                    { value: "select", label: t("select") },
                                     { value: "female", label: t("female") },
                                     { value: "male", label: t("male") },
                                 ]}
@@ -181,7 +189,7 @@ function EditProfile({ t }) {
                                 name='email'
                                 label={t("email")}
                                 labelColor='text-black'
-                                value={formData.email || ""}
+                                value={user.email || ""}
                                 onChange={handleChange}
                                 error={formErrors.email}
                                 t={t}
@@ -221,9 +229,9 @@ function EditProfile({ t }) {
                         <div className='flex items-center my-5'>
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
-                                type='name'
+                                type='password'
                                 name='currentPassword'
-                                label={t(" currentPassword")}
+                                label={t("currentPassword")}
                                 labelColor='text-black'
                                 value={formData.currentPassword || ""}
                                 onChange={handleChange}
@@ -236,7 +244,7 @@ function EditProfile({ t }) {
                             <Input
                                 inputWidthSize='flex-[2_1_0%]'
                                 type='password'
-                                name=' newPassword'
+                                name='newPassword'
                                 label={t("newPassword")}
                                 labelColor='text-black'
                                 value={formData.newPassword || ""}
@@ -310,7 +318,11 @@ function EditProfile({ t }) {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common", "profile"])),
+            ...(await serverSideTranslations(locale, [
+                "common",
+                "profile",
+                "validation",
+            ])),
         },
     };
 }
