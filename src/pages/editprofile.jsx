@@ -27,7 +27,7 @@ function EditProfile({ t }) {
         e.preventDefault();
 
         try {
-            // await schema.validate(formData, { abortEarly: false });
+            await schema.validate(formData, { abortEarly: false });
             const db = getFirestore();
             const userId = user.uid;
             const parentDocRef = doc(db, "users", userId);
