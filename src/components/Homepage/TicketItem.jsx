@@ -1,10 +1,22 @@
 import { withTranslation } from "next-i18next";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import Button from "@/components/ui/Button";
 function TicketItem({ t, numberOfTickets, price }) {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+    }, []);
     return (
         <>
-            <div className='bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg'>
+            <div
+                data-aos='flip-down'
+                className='bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg'
+            >
                 <span className='uppercase text-4xl'>
                     {numberOfTickets} {t("ticket")}
                 </span>

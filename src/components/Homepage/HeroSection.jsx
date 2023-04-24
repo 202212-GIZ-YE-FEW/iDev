@@ -2,9 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Button from "../ui/Button";
 
 function HeroSection({ t }) {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+    }, []);
+
     const style = {
         backgroundImage: "url(/header.png)",
         minHeight: "calc(100vh - 5rem)",
@@ -40,6 +51,7 @@ function HeroSection({ t }) {
                         height={200}
                         alt=''
                         className='max-w-full lg:min-w-[20rem] lg:max-w-[27rem] xl:min-w-[40rem]'
+                        data-aos='zoom-in-up'
                     />
                 </div>
             </div>

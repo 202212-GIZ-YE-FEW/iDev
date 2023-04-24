@@ -9,7 +9,18 @@ import SnoorMadih from "public/team/SnoorMadih.png";
 
 import PageIntro from "@/components/PageIntro";
 import TeamMember from "@/components/TeamMember";
+
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function Team({ t }) {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+    }, []);
     const teamMembers = [
         {
             id: 1,
@@ -56,7 +67,10 @@ function Team({ t }) {
                     <p className='text-[30px] w-full mb-8 text-center md:text-start'>
                         {t("meetTeam")}
                     </p>
-                    <div className='flex justify-between flex-wrap items-center gap-x-1 gap-y-7'>
+                    <div
+                        data-aos='zoom-in-up'
+                        className='flex justify-between flex-wrap items-center gap-x-1 gap-y-7'
+                    >
                         {teamMembers.map((member) => {
                             return (
                                 <TeamMember

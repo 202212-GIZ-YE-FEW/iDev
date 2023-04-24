@@ -16,7 +16,18 @@ import Textarea from "@/components/ui/textarea/Textarea";
 import getDocument from "@/firebase/getData";
 import { postHandler } from "@/utils/api";
 import schema from "@/utils/validationSchema";
+
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function ContactUs({ t, reasons, address }) {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+    }, []);
     const onSubmit = async (values, actions) => {
         const response = await postHandler("/api/contact", values);
         if (response.data.success === 0) {
@@ -157,7 +168,11 @@ function ContactUs({ t, reasons, address }) {
                     </form>
                     <div className='grid md:grid-cols-2 xl:grid-cols-1 gap-10'>
                         <div className='mx-auto max-w-[28rem]'>
-                            <Image src={ContactSVG} alt='contact us image' />
+                            <Image
+                                data-aos='zoom-in-up'
+                                src={ContactSVG}
+                                alt='contact us image'
+                            />
                         </div>
                         <div className='bg-light-cyan p-8 rounded-3xl self-start'>
                             <span className='text-lg lg:text-2xl capitalize'>
