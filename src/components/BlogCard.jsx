@@ -1,13 +1,11 @@
 import { getDownloadURL, ref } from "firebase/storage";
-import { useTranslation, withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { storage } from "@/firebase/config";
 import Button from "@/components/ui/Button";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-function BlogCard({ en_title, ar_title, id, ar_article, en_article, t }) {
+import { useTranslation } from "next-i18next";
+function BlogCard({ en_title, ar_title, id, ar_article, en_article }) {
     const [imageUrl, setImageUrl] = useState(null);
-    const { i18n } = useTranslation();
-
+    const { i18n, t } = useTranslation("blog", "common");
     useEffect(() => {
         const imageRef = ref(storage, `blogImages/${id}`);
         getDownloadURL(imageRef)
@@ -18,7 +16,7 @@ function BlogCard({ en_title, ar_title, id, ar_article, en_article, t }) {
                 alert(error);
             });
     }, [id]);
-
+    // console.log(i18n?.language)
     return (
         <div className='  py-9 grid place-items-center bg-indigo-400 font-mono'>
             <div className='bg-yellow h-[360px] w-64 rounded-md relative '>
@@ -34,12 +32,12 @@ function BlogCard({ en_title, ar_title, id, ar_article, en_article, t }) {
                 <div className='p-3'>
                     <div>
                         <p className='block mb-1 font-extralight'>
-                            {i18n.language == "ar"
+                            {i18n?.language == "ar"
                                 ? `${ar_title}`
                                 : `${en_title}`}
                         </p>
                         <p className='text-xs tracking-tighter text-gray-600'>
-                            {i18n.language == "ar"
+                            {i18n?.language == "ar"
                                 ? `${ar_article}`
                                 : `${en_article}`}
                         </p>
@@ -52,7 +50,7 @@ function BlogCard({ en_title, ar_title, id, ar_article, en_article, t }) {
                                 size='small'
                                 textTransform='uppercase'
                                 shadow='shadow-lg'
-                            />{" "}
+                            />
                         </div>
                     </div>
                 </div>
@@ -61,12 +59,4 @@ function BlogCard({ en_title, ar_title, id, ar_article, en_article, t }) {
     );
 }
 
-export default withTranslation("blog")(BlogCard);
-export async function getStaticProps({ locale }) {
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common", "blog"])),
-            // Will be passed to the page component as props
-        },
-    };
-}
+export default BlogCard;

@@ -1,13 +1,10 @@
-import { withTranslation } from "next-i18next";
-
 import "react-multi-carousel/lib/styles.css";
-
 import { useEffect, useState } from "react";
 import downloadImage from "@/firebase/getImage";
 import getDocument from "@/firebase/getData";
 import BlogCard from "@/components/BlogCard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
+import { useTranslation } from "next-i18next";
 const Blogs = ({ t }) => {
     const [blogs, setBlogs] = useState([]);
     function getFirst80Chars(str) {
@@ -45,6 +42,7 @@ const Blogs = ({ t }) => {
                                         "..."
                                     }
                                     id={blog.id}
+                                    t={t}
                                 />
                             </div>
                         </div>
@@ -54,11 +52,14 @@ const Blogs = ({ t }) => {
         </div>
     );
 };
-export default withTranslation("blog")(Blogs);
+
+export default Blogs;
+
 export async function getStaticProps({ locale }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common", "blog"])),
+            // Will be passed to the page component as props
         },
     };
 }
