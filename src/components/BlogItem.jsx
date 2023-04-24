@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useTranslation, withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import { storage } from "@/firebase/config";
 function BlogItem({ en_title, ar_title, id, isOdd, t }) {
@@ -11,6 +13,11 @@ function BlogItem({ en_title, ar_title, id, isOdd, t }) {
     const { i18n } = useTranslation();
 
     useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+
         const imageRef = ref(storage, `blogImages/${id}`);
         getDownloadURL(imageRef)
             .then((url) => {
@@ -37,13 +44,13 @@ function BlogItem({ en_title, ar_title, id, isOdd, t }) {
                     />
                 </div>
                 <div className='absolute h-full w-full bg-black/70 text-yellow flex flex-col items-center justify-center bottom-0 opacity-0 hover:bottom-0  hover:opacity-100 transition-all duration-1000'>
-                    <p className='mb-5'>
+                    <p data-aos='fade-top' className='mb-5'>
                         {i18n.language == "ar" ? `${ar_title}` : `${en_title}`}
                     </p>
                     <Link href={`/blogs/${id}`}>
                         <Button
                             content={t("more")}
-                            // text-transform='capitalize'
+                            text-transform='capitalize'
                             filled='false'
                             size='large'
                             fontSize='text-sm md:text-xl'
