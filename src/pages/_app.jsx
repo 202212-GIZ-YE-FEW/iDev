@@ -6,15 +6,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { AuthContextProvider } from "@/components/context/AuthContext";
 
-import Layout from "@/layout/Layout";
+// import Layout from "@/layout/Layout";
 
 function MyApp({ Component, pageProps }) {
     return (
         <AuthContextProvider>
-            <Layout>
-                <Component {...pageProps} />
-                <ToastContainer />
-            </Layout>
+            {/* <Layout> */}
+            <Component {...pageProps} />
+            <ToastContainer />
+            {/* </Layout> */}
         </AuthContextProvider>
     );
 }
