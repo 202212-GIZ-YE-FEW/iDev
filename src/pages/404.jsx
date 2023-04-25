@@ -13,7 +13,7 @@ export default function NotFoundPage() {
     return (
         <>
             <div className='bg-light-cyan min-w-screen min-h-screen p-5 md:p-10 lg:p-20'>
-                <div className='container min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 md:p-15 lg:p-20 md:flex items-center text-center md:text-left'>
+                <div className='container min-h-full min-w-full rounded-3xl bg-light-white shadow-xl p-10 md:p-15 lg:p-20 md:flex items-center text-center md:text-left'>
                     <div className='w-full md:w-1/2'>
                         {/* <div className="mb-10 lg:mb-20">
                         <Link className="text-2xl font-semibold flex items-center space-s-4" href="/">
@@ -22,8 +22,8 @@ export default function NotFoundPage() {
                                 Healing</span>
                         </Link>
                     </div> */}
-                        <div className='mb-10 md:mb-20 text-gray-600 font-light'>
-                            <h1 className='font-black uppercase text-3xl lg:text-5xl text-yellow-500 mb-10'>
+                        <div className='mb-10 md:mb-20 font-light'>
+                            <h1 className='font-black uppercase text-3xl lg:text-5xl mb-10'>
                                 {t("seemYouLost")}
                             </h1>
                             <p className='text-light-gray'>{t("desc")}</p>

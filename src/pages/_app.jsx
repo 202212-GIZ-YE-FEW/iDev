@@ -9,7 +9,6 @@ import { AuthContextProvider } from "@/components/context/AuthContext";
 import Layout from "@/layout/Layout";
 
 function MyApp({ Component, pageProps }) {
-    console.log(Component.getLayout);
     if (Component.getLayout) {
         // customized layout
         return (
