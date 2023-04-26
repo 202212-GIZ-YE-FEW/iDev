@@ -5,6 +5,8 @@ import getDocument from "@/firebase/getData";
 import BlogCard from "@/components/BlogCard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import PageIntro from "@/components/PageIntro";
+
 const Blogs = ({ t }) => {
     const [blogs, setBlogs] = useState([]);
     function getFirst80Chars(str) {
