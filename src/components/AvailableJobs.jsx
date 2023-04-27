@@ -1,6 +1,6 @@
 import { withTranslation } from "next-i18next";
 
-import SecondCareerSection from "./SecondCareerSection";
+import JobsTable from "./JobsTable";
 
 const jobsAvailable = [
     {
@@ -71,7 +71,7 @@ const jobsAvailable = [
     },
 ];
 
-function ThirdCareerSection({ t }) {
+function AvailableJobs({ t }) {
     return (
         <div>
             <div className='lg:text-5xl md:text-3xl text-2xl leading-6 lg:mt-12 mt-4 lg:pt-12 pt-8 lg:ms-28 ms-10 text-gray-700 uppercase'>
@@ -84,7 +84,7 @@ function ThirdCareerSection({ t }) {
                 <div className=' overflow-y-auto mb-12 lg:ms-24 ms-10 mt-6 lg:me-20 me-10 h-[35em] '>
                     {jobsAvailable.map((job, index) => {
                         return (
-                            <SecondCareerSection
+                            <JobsTable
                                 key={index}
                                 jobTitle={t(`${job.jobTitle}`)}
                                 description={t(`${job.description}`)}
@@ -98,4 +98,4 @@ function ThirdCareerSection({ t }) {
     );
 }
 
-export default withTranslation("career")(ThirdCareerSection);
+export default withTranslation("career")(AvailableJobs);

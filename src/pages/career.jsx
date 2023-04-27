@@ -1,8 +1,9 @@
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import FirstCareerSection from "@/components/FirstCareerSection";
+
+import AvailableJobs from "@/components/AvailableJobs";
+import CareerPhilosophy from "@/components/CareerPhilosophy";
 import PageIntro from "@/components/PageIntro";
-import ThirdCareerSection from "@/components/ThirdCareerSection";
 
 function career({ t }) {
     return (
@@ -15,10 +16,10 @@ function career({ t }) {
                 />
             </div>
             <div className='flex flex-col'>
-                <FirstCareerSection t={t} />
+                <CareerPhilosophy t={t} />
             </div>
             <div className='flex flex-col'>
-                <ThirdCareerSection t={t} />
+                <AvailableJobs t={t} />
             </div>
         </div>
     );

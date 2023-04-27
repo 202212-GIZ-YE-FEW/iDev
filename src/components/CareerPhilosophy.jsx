@@ -2,7 +2,7 @@ import { withTranslation } from "next-i18next";
 
 import Button from "./ui/Button";
 
-const FirstCareerSection = ({ t }) => {
+const CareerPhilosophy = ({ t }) => {
     return (
         <div>
             <div className='lg:text-xl text-base leading-6 lg:mt-24 mt-16 lg:ms-28 ms-10 lg:me-52 md:me-20 me-10 text-[#696f72]'>
@@ -36,4 +36,4 @@ const FirstCareerSection = ({ t }) => {
     );
 };
 
-export default withTranslation("career")(FirstCareerSection);
+export default withTranslation("career")(CareerPhilosophy);

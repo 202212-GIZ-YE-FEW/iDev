@@ -1,6 +1,6 @@
 import { withTranslation } from "next-i18next";
 
-function SecondCareerSection({ jobTitle, description, department, t }) {
+function JobsTable({ jobTitle, description, department, t }) {
     return (
         <div className=' p-4 flex flex-row cursor-pointer shadow-sm '>
             <div className='basis-3/4 flex flex-col'>
@@ -24,4 +24,4 @@ function SecondCareerSection({ jobTitle, description, department, t }) {
     );
 }
 
-export default withTranslation("career")(SecondCareerSection);
+export default withTranslation("career")(JobsTable);
