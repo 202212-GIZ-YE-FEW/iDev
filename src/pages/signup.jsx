@@ -58,19 +58,20 @@ function SignUp({ t }) {
                 first_name: formData.firstName,
                 last_name: formData.lastName,
                 date_brith: formData.dateOfBirth,
+                isTherapist: false,
             };
             const profileData = {
                 deleted: false,
-                hobbies: "",
+                hobbies: "Play Football",
                 familySize: 80,
-                education_level: "",
+                education_level: "Master",
                 phoneNumber: 7778989898,
-                gender: "",
+                gender: "male",
             };
             const therapistData = {
-                isTherapist: false,
-                userName: "j",
-                city: "k",
+                LicenseNamber: "767676767",
+                userName: "jej",
+                city: "Taiz",
             };
             signUp(
                 formData.email,
