@@ -30,12 +30,6 @@ exports[`renders correctly 1`] = `
   <div
     className="absolute h-full w-full bg-black/70 text-yellow flex flex-col items-center justify-center bottom-0 opacity-0 hover:bottom-0  hover:opacity-100 transition-all duration-1000"
   >
-    <p
-      className="mb-5"
-      data-aos="fade-top"
-    >
-      undefined
-    </p>
     <a
       href="/blogs/undefined"
       onClick={[Function]}
@@ -51,5 +45,10 @@ exports[`renders correctly 1`] = `
       </button>
     </a>
   </div>
+  <p
+    className="uppercase absolute top-2 left-2 text-base bg-light-gray text-white px-2"
+  >
+    undefined
+  </p>
 </div>
 `;

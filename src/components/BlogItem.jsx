@@ -44,9 +44,9 @@ function BlogItem({ en_title, ar_title, id, isOdd, t }) {
                     />
                 </div>
                 <div className='absolute h-full w-full bg-black/70 text-yellow flex flex-col items-center justify-center bottom-0 opacity-0 hover:bottom-0  hover:opacity-100 transition-all duration-1000'>
-                    <p data-aos='fade-top' className='mb-5'>
+                    {/* <p data-aos='fade-top' className='mb-5'>
                         {i18n.language == "ar" ? `${ar_title}` : `${en_title}`}
-                    </p>
+                    </p> */}
                     <Link href={`/blogs/${id}`}>
                         <Button
                             content={t("more")}
@@ -59,7 +59,7 @@ function BlogItem({ en_title, ar_title, id, isOdd, t }) {
                     </Link>
                 </div>
 
-                {/* {isOdd ? (
+                {isOdd ? (
                     <div className='w-32 absolute bottom-2 left-2'>
                         <p className='uppercase text-base box-decoration-clone inline leading-7 bg-light-gray text-white px-2'>
                             {i18n.language == "ar"
@@ -71,7 +71,7 @@ function BlogItem({ en_title, ar_title, id, isOdd, t }) {
                     <p className='uppercase absolute top-2 left-2 text-base bg-light-gray text-white px-2'>
                         {i18n.language == "ar" ? `${ar_title}` : `${en_title}`}
                     </p>
-                )} */}
+                )}
             </div>
         </>
     );
