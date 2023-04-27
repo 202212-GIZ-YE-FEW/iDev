@@ -1,6 +1,6 @@
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Button from "@/components/ui/Button";
 import Dropdown from "@/components/ui/Dropdown";
@@ -8,16 +8,40 @@ import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
 import { useAuth } from "@/components/context/AuthContext";
 import schema from "@/utils/validationSchemaProfile";
-import { doc, collection, getFirestore } from "firebase/firestore";
+import { doc, collection, getFirestore, getDocs } from "firebase/firestore";
 
 import "firebase/firestore";
 import updateDocument from "@/firebase/updateSubCollection";
 import PageIntro from "@/components/PageIntro";
 
 function EditProfile({ t }) {
-    const [formData, setFormData] = useState({});
     const { user, changePassword, authenticated } = useAuth();
     const [formErrors, setFormErrors] = useState({});
+    const [formData, setFormData] = useState({
+        fullName: "",
+        hobbies: "",
+        familySize: "",
+        educationLevel: "",
+        phoneNumber: "",
+        gender: "",
+    });
+    const db = getFirestore();
+    const userId = user.uid;
+    const parentDocRef = doc(db, "users", userId);
+    const childCollectionRef = collection(parentDocRef, "Personal_data");
+    const profile = "profile";
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const datafetch = {};
+            const querySnapshot = await getDocs(childCollectionRef);
+            querySnapshot.forEach((doc) => {
+                datafetch[doc.id] = doc.data();
+            });
+            setFormData(datafetch[profile]);
+        };
+        fetchData();
+    }, []);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,15 +51,7 @@ function EditProfile({ t }) {
         e.preventDefault();
 
         try {
-            await schema.validate(formData, { abortEarly: false });
-            const db = getFirestore();
-            const userId = user.uid;
-            const parentDocRef = doc(db, "users", userId);
-            const childCollectionRef = collection(
-                parentDocRef,
-                "Personal_data"
-            );
-            const childCollectionPath = childCollectionRef.path; // outputs "parentCollection/parentDocId/childCollection"
+            // await schema.validate(formData, { abortEarly: false });
             const data = {
                 Fullname: formData.fullName,
                 deleted: false,
@@ -51,14 +67,10 @@ function EditProfile({ t }) {
             const currentPassword = formData.currentPassword;
             const newPassword = formData.newPassword;
 
-            const profile = "profile";
-            await updateDocument(childCollectionPath, profile, data);
+            await updateDocument(childCollectionRef.path, profile, data);
             await updateDocument("users", userId, userData);
-            await changePassword(currentPassword, newPassword);
-            const router = require("next/router").default;
-            router.push({
-                pathname: "/",
-            });
+            alert("update data successfully");
+            // await changePassword(currentPassword, newPassword);
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
@@ -69,6 +81,7 @@ function EditProfile({ t }) {
             }
         }
     };
+
     return (
         <div className='container '>
             {authenticated ? (
