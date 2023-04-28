@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <button
-  className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+  className="transform hover:bg-yellow transition duration-500 hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  capitalize xl rounded-6px px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
   disabled={false}
 />
