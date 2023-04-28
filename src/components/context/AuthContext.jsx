@@ -84,7 +84,15 @@ export function AuthContextProvider({ children }) {
     const logIn = (email, password) => {
         localStorage.setItem("image", image);
         return signInWithEmailAndPassword(auth, email, password).then(() => {
-            setAuthenticated(true);
+            const user = auth.currentUser;
+            if (user && user.emailVerified) {
+                setAuthenticated(true);
+            } else {
+                // If the user's email is not verified, log them out and show an error message
+                auth.signOut(); // Sign-out successful
+                setAuthenticated(false);
+                alert("Please verify your email before logging in.");
+            }
         });
     };
 
