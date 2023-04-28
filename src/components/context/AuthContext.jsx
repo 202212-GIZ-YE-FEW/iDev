@@ -4,18 +4,16 @@ import {
     sendEmailVerification,
     signInWithPopup,
     signInWithEmailAndPassword,
+    reauthenticateWithCredential,
+    EmailAuthProvider,
+    updatePassword,
 } from "firebase/auth";
 import Image from "next/image";
 import Router from "next/router";
 import Spinner from "public/spinner.svg";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-import {
-    auth,
-    facebookProvider,
-    googleProvider,
-    EmailAuthProvider,
-} from "@/firebase/config";
+import { auth, facebookProvider, googleProvider } from "@/firebase/config";
 import image from "~/blog.png";
 import { setDoc, doc, getFirestore } from "firebase/firestore";
 import setDocument from "@/firebase/setData";
@@ -76,7 +74,7 @@ export function AuthContextProvider({ children }) {
             })
             .catch((error) => {
                 if (error.code === "auth/email-already-in-use") {
-                    window.alert("error");
+                    window.alert("email-already-in-use");
                 }
             });
     };
@@ -154,16 +152,16 @@ export function AuthContextProvider({ children }) {
         const user = auth.currentUser;
         console.log("user", user);
 
-        const credential = auth.EmailAuthProvider.credential(
+        const credential = EmailAuthProvider.credential(
             user.email,
             currentPassword
         );
         console.log("credential", credential);
-        user.reauthenticateWithCredential(credential)
+        reauthenticateWithCredential(user, credential)
             .then(() => {
-                user.updatePassword(newPassword)
+                updatePassword(user, newPassword)
                     .then(() => {
-                        console.log("Password updated successfully");
+                        alert("Password updated successfully");
                     })
                     .catch((error) => {
                         // An error occurred while updating the password

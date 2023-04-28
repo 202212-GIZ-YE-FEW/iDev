@@ -26,9 +26,6 @@ function EditProfile({ t }) {
         phoneNumber: "",
         gender: "",
     });
-    const currentPassword = formData.currentPassword;
-    const newPassword = formData.newPassword;
-
     const data = {
         Fullname: formData.fullName,
         deleted: false,
@@ -84,7 +81,10 @@ function EditProfile({ t }) {
             // await schema.validate(formData, { abortEarly: false });
             await updateDocument(childCollectionRef.path, profile, data);
             await updateDocument("users", userId, userData);
-            await changePassword(currentPassword, newPassword);
+            await changePassword(
+                formData.currentPassword,
+                formData.newPassword
+            );
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
