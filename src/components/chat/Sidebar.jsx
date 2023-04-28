@@ -1,12 +1,27 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { withTranslation } from "next-i18next";
-import { useEffect } from "react";
-const Sidebar = ({ chatsOfCurrentUser }) => {
+import { useEffect, useState } from "react";
+
+import { useAuth } from "@/components/context/AuthContext";
+
+import getDocument from "@/firebase/getData";
+const Sidebar = () => {
+    const { user } = useAuth();
+    const [chatsOfCurrentUser, setChatsOfCurrentUser] = useState([]);
     const router = useRouter();
     const redirect = (id) => {
         router.push(`/chat/${id}`);
     };
+    useEffect(() => {
+        const chatList = async () => {
+            let chats = await getDocument("chats");
+            setChatsOfCurrentUser(
+                chats.filter((chat) => chat.users.includes(user.email))
+            );
+        };
+        chatList();
+    }, []);
     return (
         <div className='flex flex-col py-8 px-6 lg:w-1/4 bg-white flex-shrink-0'>
             <div className='me-2 font-bold text-xl text-center'>
