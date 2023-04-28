@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
@@ -15,6 +16,8 @@ import MasterCardSVG from "/public/images/master-card.svg";
 import VisaSVG from "/public/images/visa.svg";
 function PaymentMethod({ t }) {
     const [paymentMethod, setPaymentMethod] = useState("mastercard");
+    const router = useRouter();
+    const query = router.query;
 
     const handleChange = ({ target }) => {
         setPaymentMethod(() => target.value);
@@ -122,8 +125,8 @@ function PaymentMethod({ t }) {
                 </Carousel>
                 <p className='text-base lg:text-3xl my-20 text-center font-medium'>
                     {t("confirmBuyDesc", {
-                        count: "5",
-                        price: "$50",
+                        count: query.numberOfTickets,
+                        price: `${query.numberOfTickets * 100}$`,
                     })}
                 </p>
                 <Link href='#' className='block text-center mx-auto my-20'>
