@@ -1,7 +1,32 @@
+import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useEffect, useState } from "react";
+
+import { db } from "../../firebase/config";
 function Chatroom({ t }) {
+    const [input, setInput] = useState("");
+    const sendMessage = async (e) => {
+        e.preventDefault();
+        await addDoc(collection(db, `chats/HLTXHvruo3KuhR91WGzQ/messages`), {
+            text: input,
+            sender: "abrar.abdulwahed@gmail.com",
+            timestamp: serverTimestamp(),
+        });
+        setInput("");
+    };
+    useEffect(() => {
+        const newChat = async () => {
+            await addDoc(collection(db, "chats"), {
+                users: [
+                    "abrar.abdulwahed@gmail.com",
+                    "abrar_abdulwahed@yahoo.com",
+                ],
+            });
+        };
+        newChat();
+    }, [input]);
     return (
         <div class='flex antialiased'>
             <div class='flex flex-col lg:flex-row h-full w-full overflow-x-hidden'>
@@ -139,10 +164,14 @@ function Chatroom({ t }) {
                     </div>
                     <div class='flex flex-row items-center h-16 rounded-xl bg-white w-full px-4'>
                         <div class='flex-grow ms-4'>
-                            <input
-                                type='text'
-                                class='w-full border rounded-xl focus:outline-none px-4 h-10'
-                            />
+                            <form onSubmit={sendMessage}>
+                                <input
+                                    value={input}
+                                    onChange={(e) => setInput(e.target.value)}
+                                    type='text'
+                                    class='w-full border rounded-xl focus:outline-none px-4 h-10'
+                                />
+                            </form>
                         </div>
                         <div class='ms-4'>
                             <button class='flex items-center justify-center h-10 cursor-pointer bg-cyan hover:bg-light-cyan rounded-xl text-black px-4 py-1 flex-shrink-0'>
@@ -171,13 +200,12 @@ function Chatroom({ t }) {
         </div>
     );
 }
-
 export async function getStaticProps({ locale }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common", "chatroom"])),
-            // Will be passed to the page component as props
         },
     };
 }
+
 export default withTranslation("chatroom")(Chatroom);
