@@ -2,31 +2,39 @@ import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+import { useAuth } from "@/components/context/AuthContext";
+
+import getChatsByUser from "@/utils/getChats";
+import getTherapists from "@/utils/getTherapists";
 
 import { db } from "../../firebase/config";
 function Chatroom({ t }) {
+    const { user, changePassword, authenticated } = useAuth();
     const [input, setInput] = useState("");
     const sendMessage = async (e) => {
         e.preventDefault();
-        await addDoc(collection(db, `chats/HLTXHvruo3KuhR91WGzQ/messages`), {
+        await addDoc(collection(db, `chats/cJRmbJL9pY64LNUoCeOU/messages`), {
             text: input,
-            sender: "abrar.abdulwahed@gmail.com",
+            sender: user.email,
             timestamp: serverTimestamp(),
         });
         setInput("");
     };
-    useEffect(() => {
-        const newChat = async () => {
-            await addDoc(collection(db, "chats"), {
-                users: [
-                    "abrar.abdulwahed@gmail.com",
-                    "abrar_abdulwahed@yahoo.com",
-                ],
-            });
-        };
-        newChat();
-    }, [input]);
+    const therapists = getTherapists();
+    const chatsOfCurrentUser = getChatsByUser(user);
+    // useEffect(() => {
+    //     const newChat = async () => {
+    //         await addDoc(collection(db, "chats"), {
+    //             users: [
+    //                 "abrar.abdulwahed@gmail.com",
+    //                 "abrar_abdulwahed@yahoo.com",
+    //             ],
+    //         });
+    //     };
+    //     newChat();
+    // }, [input]);
     return (
         <div class='flex antialiased'>
             <div class='flex flex-col lg:flex-row h-full w-full overflow-x-hidden'>
