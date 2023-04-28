@@ -37,13 +37,21 @@ export function AuthContextProvider({ children }) {
                     uid: user.uid,
                 });
                 localStorage.setItem("image", user.photoURL || image); // save user photoURL to localStorage
+                localStorage.setItem("authenticated", true); // save authentication status to localStorage
             } else {
                 setUser({ email: null, uid: null });
                 setAuthenticated(false);
                 localStorage.removeItem("image"); // remove user photoURL from localStorage
+                localStorage.removeItem("authenticated"); // remove authentication status from localStorage
             }
             setLoading(false);
         });
+
+        const authenticatedFromLocalStorage =
+            localStorage.getItem("authenticated");
+        if (authenticatedFromLocalStorage) {
+            setAuthenticated(true);
+        }
 
         return () => unsubscribe();
     }, []);
