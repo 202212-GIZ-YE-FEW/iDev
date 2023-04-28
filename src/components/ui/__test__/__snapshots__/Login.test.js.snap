@@ -108,7 +108,7 @@ exports[`renders correctly 1`] = `
           className="text-cyan mt-3 text-center cursor-pointer"
           onClick={[Function]}
         >
-          forgot password
+          forgotPassword
         </p>
       </form>
       <div>

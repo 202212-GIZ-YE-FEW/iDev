@@ -16,6 +16,7 @@ function Login({ t }) {
         password = "password",
         signup = "signup",
         login = "login",
+        forgotPassword = "forgotPassword",
     } = [];
     const {
         logIn,
@@ -140,7 +141,7 @@ function Login({ t }) {
                             onClick={handleResetPassword}
                             className='text-cyan mt-3 text-center cursor-pointer'
                         >
-                            forgot password
+                            {t(`${forgotPassword}`)}
                         </p>
                     </form>
 
