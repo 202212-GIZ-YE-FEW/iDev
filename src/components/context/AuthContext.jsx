@@ -7,6 +7,7 @@ import {
     reauthenticateWithCredential,
     EmailAuthProvider,
     updatePassword,
+    sendPasswordResetEmail,
 } from "firebase/auth";
 import Image from "next/image";
 import Router from "next/router";
@@ -175,7 +176,13 @@ export function AuthContextProvider({ children }) {
                 }
             });
     };
-
+    const resetPassword = async (email) => {
+        try {
+            await sendPasswordResetEmail(auth, email);
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <AuthContext.Provider
             value={{
@@ -188,6 +195,7 @@ export function AuthContextProvider({ children }) {
                 signInWithGoogleAccount,
                 signInWithFbAccount,
                 changePassword,
+                resetPassword,
             }}
         >
             {loading ? (

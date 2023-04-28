@@ -103,6 +103,12 @@ exports[`renders correctly 1`] = `
               signup
             </button>
           </a>
+          <p
+            className="text-blue-500 cursor-pointer"
+            onClick={[Function]}
+          >
+            forgot password
+          </p>
         </div>
       </form>
       <div>
