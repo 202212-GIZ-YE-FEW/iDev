@@ -4,7 +4,17 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import PageIntro from "@/components/PageIntro";
 
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const About = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+    }, []);
     const { t } = useTranslation("about");
 
     return (
@@ -27,6 +37,7 @@ const About = () => {
                 <div className='container flex flex-col md:flex-row md:space-s-9'>
                     <div className='hidden md:block md:w-1/3'>
                         <Image
+                            data-aos='zoom-in-up'
                             src='/ourFounding.svg'
                             alt='founding image'
                             width={300}

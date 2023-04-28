@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+  data-aos="flip-down"
 >
   <img
     alt="undefined svg"

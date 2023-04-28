@@ -35,7 +35,8 @@ Array [
           onTouchStart={[Function]}
         >
           <button
-            className="font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+            className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
             disabled={false}
           >
             bookAppointment
@@ -48,6 +49,7 @@ Array [
         <img
           alt=""
           className="max-w-full lg:min-w-[20rem] lg:max-w-[27rem] xl:min-w-[40rem]"
+          data-aos="zoom-in-up"
           data-nimg="1"
           decoding="async"
           height={200}
@@ -112,7 +114,8 @@ Array [
         onTouchStart={[Function]}
       >
         <button
-          className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
           disabled={false}
         >
           bookAppointment
@@ -140,6 +143,7 @@ Array [
       >
         <div
           className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <img
             alt="voiceCall svg"
@@ -170,6 +174,7 @@ Array [
         </div>
         <div
           className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <img
             alt="chat svg"
@@ -200,6 +205,7 @@ Array [
         </div>
         <div
           className="bg-light-white flex flex-col items-center justify-center text-center p-9 rounded-3xl space-y-3 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <img
             alt="videoCall svg"
@@ -232,20 +238,16 @@ Array [
     </div>
   </section>,
   <section
-    className="bg-light-cyan py-20"
+    className="bg-light-cyan py-20 container"
   >
     <div
-      className="container flex flex-col space-y-20 justify-between"
+      className="flex flex-col space-y-16 justify-between"
     >
-      <div
-        className="mb-5 text-start"
+      <p
+        className="text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xlfont-normal block uppercase break-words"
       >
-        <span
-          className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl uppercase break-words"
-        >
-          recentBlogsTitle
-        </span>
-      </div>
+        common:recentBlogsTitle
+      </p>
       <div
         className="react-multi-carousel-list  "
         dir="ltr"
@@ -295,7 +297,8 @@ Array [
         className="grid sm:grid-cols-1 md:grid-cols-2 my-10 lg:grid-cols-3 gap-7"
       >
         <div
-          className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <span
             className="uppercase text-4xl"
@@ -314,7 +317,8 @@ Array [
             className="w-fit"
           >
             <button
-              className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               disabled={false}
             >
               purchase
@@ -322,7 +326,8 @@ Array [
           </div>
         </div>
         <div
-          className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <span
             className="uppercase text-4xl"
@@ -341,7 +346,8 @@ Array [
             className="w-fit"
           >
             <button
-              className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               disabled={false}
             >
               purchase
@@ -349,7 +355,8 @@ Array [
           </div>
         </div>
         <div
-          className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+          data-aos="flip-down"
         >
           <span
             className="uppercase text-4xl"
@@ -368,7 +375,8 @@ Array [
             className="w-fit"
           >
             <button
-              className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               disabled={false}
             >
               purchase
@@ -397,7 +405,8 @@ Array [
             onTouchStart={[Function]}
           >
             <button
-              className="font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               disabled={false}
             >
               learnMore

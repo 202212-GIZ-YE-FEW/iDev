@@ -13,6 +13,7 @@ exports[`renders correctly 1`] = `
       <img
         alt="signup image"
         className="w-full lg:min-w-[27rem] lg:max-w-[33rem] xl:min-w-[34rem]"
+        data-aos="zoom-in-up"
         data-nimg="1"
         decoding="async"
         height={300}
@@ -45,7 +46,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray  leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="email"
             onChange={[Function]}
             placeholder="email"
@@ -58,7 +59,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray  leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
+            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
             name="password"
             onChange={[Function]}
             placeholder="password"
@@ -77,7 +78,8 @@ exports[`renders correctly 1`] = `
             onTouchStart={[Function]}
           >
             <button
-              className="font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
+              className="transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
               disabled={false}
               onClick={[Function]}
             >
@@ -91,7 +93,8 @@ exports[`renders correctly 1`] = `
             onTouchStart={[Function]}
           >
             <button
-              className="font-normal whitespace-nowrap cursor-pointer shadow-lg capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+              className="transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer shadow-lg capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
               disabled={false}
             >
               signup

@@ -29,7 +29,6 @@ Array [
           htmlFor="depression"
         >
           depression
-           
         </label>
       </div>
       <div
@@ -48,7 +47,6 @@ Array [
           htmlFor="stress-anxiety"
         >
           stressAnxiety
-           
         </label>
       </div>
       <div
@@ -67,7 +65,6 @@ Array [
           htmlFor="relationship-issues"
         >
           relationshipIssues
-           
         </label>
       </div>
       <div
@@ -86,7 +83,6 @@ Array [
           htmlFor="family-conflicts"
         >
           familyConflicts
-           
         </label>
       </div>
       <div
@@ -105,7 +101,6 @@ Array [
           htmlFor="trauma-abuse"
         >
           traumaAbuse
-           
         </label>
       </div>
       <div
@@ -124,7 +119,6 @@ Array [
           htmlFor="eating-disorders"
         >
           eatingDisorders
-           
         </label>
       </div>
     </div>

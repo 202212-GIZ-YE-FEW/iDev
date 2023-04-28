@@ -2,7 +2,7 @@ import React from "react";
 import { Children } from "react";
 
 export default function RadioGroup(props) {
-    const { title, children, asButton = false } = props;
+    const { title, children, as = "standard" } = props;
     return (
         <>
             {title && (
@@ -13,7 +13,7 @@ export default function RadioGroup(props) {
             <fieldset className='space-y-4'>
                 <div className='text-9xl font-normal text-black'>
                     {Children.map(children, (child) => {
-                        return React.cloneElement(child, { asButton });
+                        return React.cloneElement(child, { as });
                     })}
                 </div>
             </fieldset>

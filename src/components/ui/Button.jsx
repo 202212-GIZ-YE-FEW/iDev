@@ -11,13 +11,16 @@ export default function Button(props) {
         shadow = "",
         onClick,
         disabled = false,
+        interaction = "transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan",
     } = props;
+
     return (
         <button
             disabled={disabled}
             onClick={onClick}
             className={clsx(
-                `font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
+                `${interaction}
+                font-normal whitespace-nowrap cursor-pointer ${shadow} ${textTransform} ${fontSize} rounded-${radius}`,
                 {
                     "px-[10px] lg:px-[28px] py-[4.7px]": size === "small",
                     /// for medium size button
