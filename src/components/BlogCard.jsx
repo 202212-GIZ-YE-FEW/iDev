@@ -4,20 +4,28 @@ import { storage } from "@/firebase/config";
 import Button from "@/components/ui/Button";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-function BlogCard({ en_title, ar_title, id, ar_article, en_article }) {
-    const [imageUrl, setImageUrl] = useState(null);
+function BlogCard({
+    en_title,
+    ar_title,
+    id,
+    ar_article,
+    en_article,
+    imageUrl,
+}) {
+    // const [imageUrl, setImageUrl] = useState(null);
     const { i18n, t } = useTranslation("blog", "common");
-    useEffect(() => {
-        const imageRef = ref(storage, `blogImages/${id}`);
-        getDownloadURL(imageRef)
-            .then((url) => {
-                setImageUrl(url);
-            })
-            .catch((error) => {
-                alert(error);
-            });
-    }, [id]);
+    // useEffect(() => {
+    //     const imageRef = ref(storage, `blogImages/${id}`);
+    //     getDownloadURL(imageRef)
+    //         .then((url) => {
+    //             setImageUrl(url);
+    //         })
+    //         .catch((error) => {
+    //             alert(error);
+    //         });
+    // }, [id]);
     // console.log(i18n?.language)
+
     return (
         <div className='  py-9 grid place-items-center bg-indigo-400 font-mono'>
             <div className='bg-yellow h-[360px] w-64 rounded-md relative '>
@@ -62,6 +70,24 @@ function BlogCard({ en_title, ar_title, id, ar_article, en_article }) {
             </div>
         </div>
     );
+}
+export async function getStaticProps({ params }) {
+    const { id } = params;
+    const imageRef = ref(storage, `blogImages/${id}`);
+    try {
+        const url = await getDownloadURL(imageRef);
+        return {
+            props: {
+                imageUrl: url,
+            },
+        };
+    } catch (error) {
+        return {
+            props: {
+                error: error.message,
+            },
+        };
+    }
 }
 
 export default BlogCard;
