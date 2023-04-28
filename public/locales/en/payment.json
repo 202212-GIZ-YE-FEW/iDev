@@ -3,5 +3,10 @@
     "confirmPurchase": "confirm purchase",
     "deleteCard": "delete card",
     "selectCard": "select card",
-    "selectCardDesc": "Please select the card you want to buy the tickets with"
+    "selectCardDesc": "Please select the card you want to buy the tickets with",
+    "addNewCard": "Add new card",
+    "yourSavedCards": "Your saved cards",
+    "yourSavedCardsDesc": "We only support cards as a payment method at the moment!",
+    "addCardDetails": "Add card details",
+    "addCardDetailsDesc": "Please make sure all of the info you enter are the same as your card registration info."
 }
