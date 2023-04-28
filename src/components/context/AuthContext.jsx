@@ -170,7 +170,9 @@ export function AuthContextProvider({ children }) {
             })
             .catch((error) => {
                 // Incorrect password, show an error message
-                console.error(error);
+                if (error.code === "auth/wrong-password") {
+                    alert("The current password is incorrect");
+                }
             });
     };
 
