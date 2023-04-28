@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 import getDocument from "@/firebase/getData";
 import getChatsByUser from "@/utils/getChats";
@@ -11,7 +11,8 @@ import getTherapists from "@/utils/getTherapists";
 
 import { db } from "../../firebase/config";
 function Chatroom({ t }) {
-    const { user, changePassword, authenticated } = useAuth();
+    const { user } = useAuth();
+    const [chatsOfCurrentUser, setChatsOfCurrentUser] = useState([]);
     const [input, setInput] = useState("");
     const router = useRouter();
     const redirect = (id) => {
@@ -27,27 +28,16 @@ function Chatroom({ t }) {
         setInput("");
     };
     // const therapists = getTherapists();
+    useEffect(() => {
+        const chatList = async () => {
+            let chats = await getDocument("chats");
+            setChatsOfCurrentUser(
+                chats.filter((chat) => chat.users.includes(user.email))
+            );
+        };
+        chatList();
+    }, []);
 
-    const chatList = async () => {
-        let chats = await getDocument("chats");
-        const chatsOfCurrentUser = chats.filter((chat) =>
-            chat.users.includes(user.email)
-        );
-        return chatsOfCurrentUser.map((chat) => (
-            <button
-                key={Math.random()}
-                onClick={() => redirect(chat.id)}
-                className='flex flex-row items-center hover:bg-gray-100 rounded-xl p-2'
-            >
-                {/* <div className='flex items-center justify-center h-8 w-8 bg-[#872] rounded-full'>
-                    H
-                </div> */}
-                <div className='ml-2 text-sm font-semibold'>
-                    {chat.users[1]}
-                </div>
-            </button>
-        ));
-    };
     // useEffect(() => {
     //     const newChat = async () => {
     //         await addDoc(collection(db, "chats"), {
@@ -91,7 +81,20 @@ function Chatroom({ t }) {
                             </span>
                         </div>
                         <div className='flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto'>
-                            {chatList}
+                            {chatsOfCurrentUser.map((chat) => (
+                                <button
+                                    key={Math.random()}
+                                    onClick={() => redirect(chat.id)}
+                                    className='flex flex-row items-center hover:bg-gray-100 rounded-xl p-2'
+                                >
+                                    {/* <div className='flex items-center justify-center h-8 w-8 bg-[#872] rounded-full'>
+                                        H
+                                    </div> */}
+                                    <div className='ml-2 text-sm font-semibold'>
+                                        {chat.users[1]}
+                                    </div>
+                                </button>
+                            ))}
                         </div>
                         <div className='flex flex-row items-center justify-between text-xs mt-6'>
                             <span className='font-bold'>Archivied</span>
