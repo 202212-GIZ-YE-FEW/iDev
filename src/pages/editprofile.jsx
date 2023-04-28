@@ -26,6 +26,22 @@ function EditProfile({ t }) {
         phoneNumber: "",
         gender: "",
     });
+    const currentPassword = formData.currentPassword;
+    const newPassword = formData.newPassword;
+
+    const data = {
+        Fullname: formData.fullName,
+        deleted: false,
+        hobbies: formData.hubbies,
+        familySize: formData.familySize,
+        education_level: formData.educationLevel,
+        phoneNumber: formData.phoneNumber,
+        gender: formData.gender,
+    };
+    const userData = {
+        date_brith: formData.birthDate,
+    };
+
     const db = getFirestore();
     const userId = user?.uid;
     const parentDocRef = userId ? doc(db, "users", userId) : null;
@@ -66,21 +82,6 @@ function EditProfile({ t }) {
 
         try {
             // await schema.validate(formData, { abortEarly: false });
-            const data = {
-                Fullname: formData.fullName,
-                deleted: false,
-                hobbies: formData.hubbies,
-                familySize: formData.familySize,
-                education_level: formData.educationLevel,
-                phoneNumber: formData.phoneNumber,
-                gender: formData.gender,
-            };
-            const userData = {
-                date_brith: formData.birthDate,
-            };
-            const currentPassword = formData.currentPassword;
-            const newPassword = formData.newPassword;
-
             await updateDocument(childCollectionRef.path, profile, data);
             await updateDocument("users", userId, userData);
             await changePassword(currentPassword, newPassword);
