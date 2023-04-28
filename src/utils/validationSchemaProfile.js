@@ -15,8 +15,32 @@ const schema = Yup.object().shape({
         .nullable()
         .max(new Date(), "dateOfBirthFuture")
         .required("required"),
+
+    newPassword: Yup.string()
+        .required("required")
+        .min(12, "passwordLength")
+        .matches(
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{12,}$/,
+            "passwordCriteria"
+        )
+        .test("no-repeat-characters", "noRepeatCharacters", function (value) {
+            const regex = /(.)\1{2,}/;
+            return !regex.test(value);
+        })
+        .test("no-common-words", "noCommonWords", function (value) {
+            const commonWords = [
+                "password",
+                "123456",
+                "qwerty",
+                "letmein",
+                "admin",
+            ];
+            const regex = new RegExp(`(${commonWords.join("|")})`, "i");
+            return !regex.test(value);
+        }),
+    currentPassword: Yup.number().required("required"),
     familySize: Yup.number().required("required"),
-    phoneNumber: Yup.string()
+    phoneNumber: Yup.number()
         .matches(/^(73|77|71)\d{7}$/, "phoneNumber")
         .required("required"),
     uploadId: Yup.mixed()
