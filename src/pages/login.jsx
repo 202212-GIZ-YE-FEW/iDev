@@ -135,13 +135,13 @@ function Login({ t }) {
                                     shadow='shadow-lg'
                                 />
                             </Link>
-                            <p
-                                onClick={handleResetPassword}
-                                className='text-blue-500 cursor-pointer'
-                            >
-                                forgot password
-                            </p>
                         </div>
+                        <p
+                            onClick={handleResetPassword}
+                            className='text-cyan mt-3 text-center cursor-pointer'
+                        >
+                            forgot password
+                        </p>
                     </form>
 
                     <AuthSocialMedia
