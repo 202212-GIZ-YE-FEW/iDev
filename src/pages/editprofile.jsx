@@ -13,9 +13,10 @@ import { doc, collection, getFirestore, getDocs } from "firebase/firestore";
 import "firebase/firestore";
 import updateDocument from "@/firebase/updateSubCollection";
 import PageIntro from "@/components/PageIntro";
-
+import uploadImage from "@/firebase/addImage";
 function EditProfile({ t }) {
     const { user, changePassword, authenticated } = useAuth();
+    const [imgfile, uploadimg] = useState("");
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({
         fullName: "",
@@ -26,25 +27,38 @@ function EditProfile({ t }) {
         gender: "",
     });
     const db = getFirestore();
-    const userId = user.uid;
-    const parentDocRef = doc(db, "users", userId);
-    const childCollectionRef = collection(parentDocRef, "Personal_data");
+    const userId = user?.uid;
+    const parentDocRef = userId ? doc(db, "users", userId) : null;
+    const childCollectionRef = parentDocRef
+        ? collection(parentDocRef, "Personal_data")
+        : null;
     const profile = "profile";
 
     useEffect(() => {
         const fetchData = async () => {
-            const datafetch = {};
-            const querySnapshot = await getDocs(childCollectionRef);
-            querySnapshot.forEach((doc) => {
-                datafetch[doc.id] = doc.data();
-            });
-            setFormData(datafetch[profile]);
+            if (childCollectionRef) {
+                const datafetch = {};
+                const querySnapshot = await getDocs(childCollectionRef);
+                querySnapshot.forEach((doc) => {
+                    datafetch[doc.id] = doc.data();
+                });
+                setFormData(datafetch[profile]);
+            }
         };
         fetchData();
     }, []);
 
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        // const file = e.target.files[0];
+        // console.log(file)
+        // const imageName = file.name;
+        // console.log(imageName)
+        // const userId = user.uid;
+        // const path = "UploadId/" + userId;
+        // uploadimg(URL.createObjectURL(file));
+        //     await uploadImage(file, imageName, path);
+        //     console.log("File uploaded successfully!");
     };
 
     const handleSubmit = async (e) => {
@@ -69,8 +83,7 @@ function EditProfile({ t }) {
 
             await updateDocument(childCollectionRef.path, profile, data);
             await updateDocument("users", userId, userData);
-            alert("update data successfully");
-            // await changePassword(currentPassword, newPassword);
+            await changePassword(currentPassword, newPassword);
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
@@ -239,7 +252,7 @@ function EditProfile({ t }) {
                                     name='uploadId'
                                     label={t("uploadId")}
                                     labelColor='text-black'
-                                    value=''
+                                    value={formErrors.uploadId}
                                     onChange={handleChange}
                                     error={formErrors.uploadId}
                                     t={t}

@@ -27,7 +27,11 @@ function Therapist({ t }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             const db = getFirestore();
-            const userId = user.uid;
+            const userId = user?.uid;
+            if (!userId) {
+                // handle the case where the user is not logged in
+                return <p>You need to log in to access this page.</p>;
+            }
             const parentDocRef = doc(db, "users", userId);
             const childCollectionRef = collection(
                 parentDocRef,
