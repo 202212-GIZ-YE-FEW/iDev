@@ -19,9 +19,9 @@ const Input = (props) => {
         radius = "md",
         field = "",
         shadow = "sm",
-        // touched,
         error,
         className = "",
+        suffixIcon,
         ...rest
     } = props;
 
@@ -47,6 +47,11 @@ const Input = (props) => {
                 className={inputClasses}
                 {...rest}
             />
+            {suffixIcon && (
+                <span className='absolute mt-5 -ms-8 transform -translate-y-1/2 text-sm md:text-base lg:text-lg'>
+                    {suffixIcon}
+                </span>
+            )}
             {error && (
                 <div className='text-red text-sm md:text-base mt-1'>
                     {t(`validation:${error}`, {
