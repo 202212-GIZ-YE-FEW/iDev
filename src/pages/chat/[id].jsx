@@ -1,9 +1,22 @@
-import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
+import {
+    addDoc,
+    collection,
+    doc,
+    orderBy,
+    query,
+    serverTimestamp,
+} from "firebase/firestore";
 import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import {
+    useCollectionData,
+    useDocumentData,
+} from "react-firebase-hooks/firestore";
 
+import Received from "@/components/Chat/Received";
+import Sent from "@/components/Chat/Sent";
 import Sidebar from "@/components/Chat/Sidebar";
 import { useAuth } from "@/components/context/AuthContext";
 
@@ -12,6 +25,12 @@ function Chatroom({ t }) {
     const { user } = useAuth();
     const router = useRouter();
     const { id } = router.query;
+    const [chat] = useDocumentData(doc(db, "chats", id));
+    const q = query(
+        collection(db, `chats/${id}/messages`),
+        orderBy("timestamp")
+    );
+    const [messages] = useCollectionData(q);
     const [input, setInput] = useState("");
     // const [messages, setMessages] = useState([]);
     const sendMessage = async (e) => {
@@ -37,24 +56,27 @@ function Chatroom({ t }) {
     //     };
     //     chatList();
     // }, []);
-    const getMessages = () => {};
-    // messages?.map((msg) => {
-    //     const sender = msg.sender === user.email;
-    //     return (
-    //         <Flex
-    //             key={Math.random()}
-    //             alignSelf={sender ? "flex-start" : "flex-end"}
-    //             bg={sender ? "blue.100" : "green.100"}
-    //             w='fit-content'
-    //             minWidth='100px'
-    //             borderRadius='lg'
-    //             p={3}
-    //             m={1}
-    //         >
-    //             <Text>{msg.text}</Text>
-    //         </Flex>
-    //     );
-    // });
+    const getMessages = () =>
+        messages?.map((msg, index) => {
+            const sender = msg.sender === user.email;
+            if (sender) {
+                return (
+                    <Sent
+                        key={index}
+                        sender={user.fullname || "A"}
+                        message={msg.text}
+                    />
+                );
+            } else {
+                return (
+                    <Received
+                        key={index}
+                        sender={user.fullname || "A"}
+                        message={msg.text}
+                    />
+                );
+            }
+        });
     // const therapists = getTherapists();
 
     // useEffect(() => {
@@ -73,115 +95,7 @@ function Chatroom({ t }) {
             <div className='flex flex-col lg:flex-row h-full w-full overflow-x-hidden'>
                 <Sidebar />
                 <div className='flex flex-col flex-auto lg:w-3/4 flex-shrink-0 bg-background p-4'>
-                    <div className='flex flex-col'>
-                        <div className='w-2/3 self-start p-3 rounded-lg'>
-                            <div className='flex items-center'>
-                                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray'>
-                                    A
-                                </div>
-                                <div className='relative ms-3 text-sm bg-light-cyan py-2 px-4 shadow rounded-xl'>
-                                    <div>Hey How are you today?</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-2/3 self-start p-3 rounded-lg'>
-                            <div className='flex items-center'>
-                                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0'>
-                                    A
-                                </div>
-                                <div className='relative ms-3 text-sm bg-light-cyan py-2 px-4 shadow rounded-xl'>
-                                    <div>
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Vel ipsa commodi illum
-                                        saepe numquam maxime asperiores
-                                        voluptate sit, minima perspiciatis.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-2/3 self-end p-3 rounded-lg'>
-                            <div className='flex items-center flex-row-reverse'>
-                                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0'>
-                                    A
-                                </div>
-                                <div className='relative me-3 text-sm bg-yellow py-2 px-4 shadow rounded-xl'>
-                                    <div>Im ok what about you?</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-2/3 self-end p-3 rounded-lg'>
-                            <div className='flex items-center flex-row-reverse'>
-                                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0'>
-                                    A
-                                </div>
-                                <div className='relative me-3 text-sm bg-yellow py-2 px-4 shadow rounded-xl'>
-                                    <div>
-                                        ومن هنا وجب على المصمم أن يضع نصوصا
-                                        مؤقتة على التصميم ليظهر للعميل الشكل
-                                        كاملاً
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-2/3 self-start p-3 rounded-lg'>
-                            <div className='flex items-center'>
-                                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0'>
-                                    A
-                                </div>
-                                <div className='relative ms-3 text-sm bg-light-cyan py-2 px-4 shadow rounded-xl'>
-                                    <div>Lorem ipsum dolor sit amet !</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-2/3 self-end p-3 rounded-lg'>
-                            <div className='flex items-center flex-row-reverse'>
-                                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0'>
-                                    A
-                                </div>
-                                <div className='relative me-3 text-sm bg-yellow py-2 px-4 shadow rounded-xl'>
-                                    <div>
-                                        Lorem ipsum dolor sit, amet consectetur
-                                        adipisicing. ?
-                                    </div>
-                                    <div className='absolute text-xs bottom-0 right-0 -mb-5 me-2 text-gray-500'>
-                                        Seen
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-2/3 self-start p-3 rounded-lg'>
-                            <div className='flex items-center'>
-                                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0'>
-                                    A
-                                </div>
-                                <div className='relative ms-3 text-sm bg-light-cyan py-2 px-4 shadow rounded-xl'>
-                                    <div>
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Perspiciatis, in.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='w-2/3 self-start p-3 rounded-lg'>
-                            <div className='flex items-center'>
-                                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0'>
-                                    A
-                                </div>
-                                <div className='relative ms-3 text-sm bg-light-cyan py-2 px-4 shadow rounded-xl'>
-                                    <div>
-                                        هذا النص هو مثال لنص يمكن أن يستبدل في
-                                        نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل
-                                        هذا النص أو العديد من النصوص الأخرى
-                                        إضافة إلى زيادة عدد الحروف التى يولدها
-                                        التطبيق. إذا كنت تحتاج إلى عدد أكبر من
-                                        الفقرات يتيح لك مولد النص العربى زيادة
-                                        عدد الفقرات كما تريد
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div className='flex flex-col'>{getMessages()}</div>
                     <div className='flex flex-row items-center h-16 rounded-xl bg-white w-full px-4'>
                         <div className='flex-grow ms-4'>
                             <form onSubmit={sendMessage}>
