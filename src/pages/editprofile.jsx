@@ -20,7 +20,7 @@ function EditProfile({ t }) {
                 </div>
                 <div className='w-full justify-self-center lg:justify-self-end'>
                     <fieldset>
-                        <legend class='text-3xl font-semibold uppercase'>
+                        <legend className='text-3xl font-semibold uppercase'>
                             {t("profileInfo")}
                         </legend>
                         <div className='flex items-center my-5'>
@@ -133,7 +133,7 @@ function EditProfile({ t }) {
                         </div>
                     </fieldset>
                     <fieldset className='mt-8'>
-                        <legend class='text-3xl font-semibold'>
+                        <legend className='text-3xl font-semibold'>
                             {t("security")}
                         </legend>
                         <div className='flex items-center my-5'>
@@ -187,7 +187,7 @@ function EditProfile({ t }) {
                         />
                     </div>
                     <fieldset className='my-12'>
-                        <legend class='text-3xl font-semibold mb-12'>
+                        <legend className='text-3xl font-semibold mb-12'>
                             {t("paymentMethods&Tickets")}
                         </legend>
                         <div className='flex gap-10'>

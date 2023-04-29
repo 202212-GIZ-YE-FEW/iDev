@@ -28,19 +28,23 @@ function PaymentMethod({ t }) {
         return result;
     };
 
+    const cardData = (data) => {
+        const result = data.map((item) => ({
+            ...item,
+            cardNumber: item.cardNumber.replace(
+                /^(\d{4}\s){3}/,
+                "xxxx xxxx xxxx "
+            ),
+            icon: item.type === "mastercard" ? MasterCardSVG : VisaSVG,
+        }));
+        setCards(result);
+    };
+
     useEffect(() => {
         async function getPaymentMethods() {
             try {
                 const result = await fetchPaymentMethods();
-                const data = result.map((item) => ({
-                    ...item,
-                    cardNumber: item.cardNumber.replace(
-                        /^(\d{4}\s){3}/,
-                        "xxxx xxxx xxxx "
-                    ),
-                    icon: item.type === "mastercard" ? MasterCardSVG : VisaSVG,
-                }));
-                setCards(data);
+                cardData(result);
                 setLoading(false);
             } catch (error) {
                 setLoading(false);
@@ -75,7 +79,8 @@ function PaymentMethod({ t }) {
         e.stopPropagation();
         await deleteDocument("user_payment_methods", id);
         alert("Card deleted successfully");
-        fetchPaymentMethods();
+        const updatedCards = await fetchPaymentMethods();
+        cardData(updatedCards);
     };
 
     return (
@@ -89,9 +94,9 @@ function PaymentMethod({ t }) {
                     subtitle={t("yourSavedCardsDesc")}
                 />
                 {loading ? (
-                    <div class='text-center'>
+                    <div className='text-center'>
                         <div
-                            class='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-cyan motion-reduce:animate-[spin_1.5s_linear_infinite]'
+                            className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-cyan motion-reduce:animate-[spin_1.5s_linear_infinite]'
                             role='status'
                         ></div>
                     </div>

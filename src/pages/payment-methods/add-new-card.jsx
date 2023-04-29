@@ -243,7 +243,7 @@ function AddNewCard({ t }) {
                             />
                         </div>
                     </form>
-                    <div className='grid md:grid-cols-2 xl:grid-cols-1 gap-10'>
+                    <div className='grid md:grid-cols-2 xl:grid-cols-1 gap-24'>
                         <div className='mx-auto max-w-[28rem]'>
                             <Image
                                 data-aos='zoom-in-up'
