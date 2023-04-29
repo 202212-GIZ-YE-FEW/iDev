@@ -9,8 +9,16 @@ import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import schema from "@/utils/validationSchemalogin";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Login({ t }) {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+    }, []);
     const {
         email = "email",
         password = "password",
@@ -81,6 +89,7 @@ function Login({ t }) {
                         width={500}
                         height={300}
                         alt='signup image'
+                        data-aos='zoom-in-up'
                     />
                 </div>
                 <div className='max-w-[29rem] lg:justify-self-end'>
@@ -124,6 +133,7 @@ function Login({ t }) {
                                     fontSize='lg:text-md xl:text-sm'
                                     radius='md'
                                     onClick={handleSubmit}
+                                    interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                                 />
                             </Link>
                             <Link href='/signup'>
@@ -134,6 +144,7 @@ function Login({ t }) {
                                     fontSize='lg:text-md xl:text-sm'
                                     radius='md '
                                     shadow='shadow-lg'
+                                    interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                                 />
                             </Link>
                         </div>

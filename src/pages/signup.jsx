@@ -11,7 +11,16 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import schema from "@/utils/validationSchemaSignUp";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function SignUp({ t }) {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+    }, []);
     const {
         signUp,
         authenticated,
@@ -112,6 +121,7 @@ function SignUp({ t }) {
                         width={500}
                         height={300}
                         alt='signup image'
+                        data-aos='zoom-in-up'
                     />
                 </div>
                 <div className='max-w-[29rem] lg:justify-self-end'>

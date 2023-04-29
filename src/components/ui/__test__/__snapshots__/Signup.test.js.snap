@@ -13,6 +13,7 @@ exports[`renders correctly 1`] = `
       <img
         alt="signup image"
         className="w-full lg:min-w-[27rem] lg:max-w-[33rem] xl:min-w-[34rem]"
+        data-aos="zoom-in-up"
         data-nimg="1"
         decoding="async"
         height={300}
@@ -153,10 +154,8 @@ exports[`renders correctly 1`] = `
             onTouchStart={[Function]}
           >
             <button
-              className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-md xl:text-sm rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] border-2 border-cyan text-cyan"
-              data-aos="fade-right"
               disabled={false}
             >
               login
@@ -169,10 +168,8 @@ exports[`renders correctly 1`] = `
             onTouchStart={[Function]}
           >
             <button
-              className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer shadow-lg capitalize lg:text-md xl:text-sm rounded-md  px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
-              data-aos="fade-right"
               disabled={false}
               onClick={[Function]}
             >

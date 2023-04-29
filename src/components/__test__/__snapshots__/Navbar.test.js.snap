@@ -1,0 +1,314 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<nav
+  className="bg-light-cyan"
+>
+  <div
+    className="container flex h-20 py-8 items-center"
+  >
+    <div
+      className="lg:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ltr:-translate-x-full rtl:translate-x-full opacity-0 transition-transform duration-300 ease-in-out"
+    >
+      <div
+        className="flex items-center justify-between bg-light-cyan h-20 px-4"
+      >
+        <a
+          className="text-2xl font-semibold flex items-center space-s-4"
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          <img
+            alt="Healing Logo"
+            data-nimg="1"
+            decoding="async"
+            height={30}
+            onError={[Function]}
+            onLoad={[Function]}
+            src="/logo.svg"
+            style={
+              Object {
+                "color": "transparent",
+              }
+            }
+            width={30}
+          />
+          <span
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase"
+          >
+            Healing
+          </span>
+        </a>
+      </div>
+      <div
+        className="flex flex-col px-4"
+      >
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          home
+        </a>
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="#recentblog"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          blogs
+        </a>
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="#"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          <div
+            className="relative"
+            onClick={[Function]}
+          >
+            <div
+              className="flex"
+            >
+              <img
+                alt=""
+                data-nimg="1"
+                decoding="async"
+                height={15}
+                onError={[Function]}
+                onLoad={[Function]}
+                src="/arrow.svg"
+                style={
+                  Object {
+                    "color": "transparent",
+                  }
+                }
+                width={15}
+              />
+              <span
+                className="inline-block ms-1"
+              >
+                about
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="/contact-us"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          contactUs
+        </a>
+        <div
+          className="flex space-s-10"
+        >
+          <div
+            className="relative inline-block"
+            onClick={[Function]}
+          >
+            <button
+              className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none mx-3"
+            >
+              <img
+                alt=""
+                data-nimg="1"
+                decoding="async"
+                height={23}
+                onError={[Function]}
+                onLoad={[Function]}
+                src="/lang.svg"
+                style={
+                  Object {
+                    "color": "transparent",
+                  }
+                }
+                width={23}
+              />
+            </button>
+          </div>
+          <a
+            href="/login"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            <button
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  capitalize text-sm md:text-xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              disabled={false}
+            >
+              login
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="w-3/12 flex items-center"
+    >
+      <a
+        className="text-2xl font-semibold flex items-center space-s-4"
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onTouchStart={[Function]}
+      >
+        <img
+          alt="Healing Logo"
+          data-nimg="1"
+          decoding="async"
+          height={30}
+          onError={[Function]}
+          onLoad={[Function]}
+          src="/logo.svg"
+          style={
+            Object {
+              "color": "transparent",
+            }
+          }
+          width={30}
+        />
+        <span
+          className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase"
+        >
+          Healing
+        </span>
+      </a>
+    </div>
+    <div
+      className="w-9/12 flex justify-end items-center"
+    >
+      <div
+        className="z-50 flex relative w-8 h-5 flex-col justify-between items-center lg:hidden"
+        onClick={[Function]}
+      >
+        <span
+          className="h-1 w-full bg-black rounded-lg transform transition duration-300 ease-in-out "
+        />
+        <span
+          className="h-1 w-full bg-black rounded-lg transition-all duration-300 ease-in-out w-full"
+        />
+        <span
+          className="h-1 w-full bg-black rounded-lg transform transition duration-300 ease-in-out "
+        />
+      </div>
+      <div
+        className="hidden lg:flex items-center"
+      >
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          home
+        </a>
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="#recentblog"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          blogs
+        </a>
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="#"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          <div
+            className="relative"
+            onClick={[Function]}
+          >
+            <div
+              className="flex"
+            >
+              <img
+                alt=""
+                data-nimg="1"
+                decoding="async"
+                height={15}
+                onError={[Function]}
+                onLoad={[Function]}
+                src="/arrow.svg"
+                style={
+                  Object {
+                    "color": "transparent",
+                  }
+                }
+                width={15}
+              />
+              <span
+                className="inline-block ms-1"
+              >
+                about
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="/contact-us"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          contactUs
+        </a>
+        <div
+          className="relative inline-block"
+          onClick={[Function]}
+        >
+          <button
+            className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none mx-3"
+          >
+            <img
+              alt=""
+              data-nimg="1"
+              decoding="async"
+              height={23}
+              onError={[Function]}
+              onLoad={[Function]}
+              src="/lang.svg"
+              style={
+                Object {
+                  "color": "transparent",
+                }
+              }
+              width={23}
+            />
+          </button>
+        </div>
+        <a
+          href="/login"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          <button
+            className="transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  capitalize text-sm md:text-xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+            disabled={false}
+          >
+            login
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
