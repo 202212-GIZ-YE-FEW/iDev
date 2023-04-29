@@ -57,7 +57,6 @@ function Chatroom({ t }) {
                 );
             }
         });
-    // const therapists = getTherapists();
 
     // useEffect(() => {
     //     const newChat = async () => {
