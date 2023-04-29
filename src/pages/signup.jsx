@@ -1,8 +1,11 @@
+import AOS from "aos";
 import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import "aos/dist/aos.css";
 
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import { useAuth } from "@/components/context/AuthContext";
@@ -12,9 +15,6 @@ import Input from "@/components/ui/Input";
 
 import addDocument from "@/firebase/addData";
 import schema from "@/utils/validationSchemaSignUp";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function SignUp({ t }) {
     useEffect(() => {

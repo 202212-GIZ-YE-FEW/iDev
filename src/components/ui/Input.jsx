@@ -2,6 +2,7 @@ import React from "react";
 
 const Input = (props) => {
     const {
+        t,
         onChange,
         value,
         id,
@@ -14,15 +15,17 @@ const Input = (props) => {
         inputFontSize = "sm",
         inputFontWeight = "light",
         inputWidthSize = "w-full",
+        inputHeightSize = "h-auto",
         radius = "md",
         field = "",
         shadow = "sm",
         // touched,
         error,
-        t,
+        className = "",
+        ...rest
     } = props;
 
-    const inputClasses = `${inputWidthSize} border text-base text-light-black border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius}`;
+    const inputClasses = `${inputWidthSize} ${inputHeightSize} border text-base text-light-black border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-${inputFontSize} font-${inputFontWeight} rounded-${radius} ${className}`;
 
     return (
         <>
@@ -42,6 +45,7 @@ const Input = (props) => {
                 required={isRequired}
                 placeholder={placeholder}
                 className={inputClasses}
+                {...rest}
             />
             {error && (
                 <div className='text-red text-sm md:text-base mt-1'>
@@ -60,11 +64,9 @@ export default Input;
 {
     /* <Input
 label="email"
- type="name"
- name="name"
- placeholder="name"
- inputWidthSize="w-full" 
-
-
+type="name"
+name="name"
+placeholder="name"
+inputWidthSize="w-full" 
 /> */
 }

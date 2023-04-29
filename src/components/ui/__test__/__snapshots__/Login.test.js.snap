@@ -46,7 +46,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
+            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
             name="email"
             onChange={[Function]}
             placeholder="email"
@@ -59,7 +59,7 @@ exports[`renders correctly 1`] = `
           className="mb-[0.8rem]"
         >
           <input
-            className="w-full border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md"
+            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
             name="password"
             onChange={[Function]}
             placeholder="password"
