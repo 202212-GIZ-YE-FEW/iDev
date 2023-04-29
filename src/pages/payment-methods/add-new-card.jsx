@@ -139,7 +139,7 @@ function AddNewCard({ t }) {
                                     <div className='flex space-x-[0.7rem] rtl:space-x-reverse'>
                                         <div className='flex-col mt-[0.8rem] w-1/2'>
                                             <Input
-                                                field='Expiry Date'
+                                                field={expiryDate}
                                                 label={t("expiryDate")}
                                                 type='month'
                                                 name='expiryDate'
@@ -154,7 +154,7 @@ function AddNewCard({ t }) {
                                         </div>
                                         <div className='flex-col mt-[0.8rem]'>
                                             <Input
-                                                field='CVV'
+                                                field={cvv}
                                                 label={t("cvv")}
                                                 placeholder='***'
                                                 type='text'
@@ -170,7 +170,7 @@ function AddNewCard({ t }) {
                                     </div>
                                     <div className='flex-col mt-[0.8rem]'>
                                         <Input
-                                            field='Name on Card'
+                                            field={nameOnCard}
                                             label={t("nameOnCard")}
                                             placeholder='Irene Ramos'
                                             type='text'
@@ -195,7 +195,7 @@ function AddNewCard({ t }) {
                                     </div>
                                     <div className='flex-col mt-[0.8rem]'>
                                         <Input
-                                            field='ZIP Code'
+                                            field={zipCode}
                                             label={t("zipCode")}
                                             placeholder='17121-1300'
                                             type='text'
@@ -217,7 +217,7 @@ function AddNewCard({ t }) {
                                     </div>
                                     <div className='flex-col mt-[0.8rem]'>
                                         <Input
-                                            field='Address'
+                                            field={address}
                                             label={t("address")}
                                             placeholder='509 Adele Mills Suite 833'
                                             type='text'
