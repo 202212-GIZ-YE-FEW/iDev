@@ -7,17 +7,12 @@ const schema = Yup.object().shape({
     hubbies: Yup.string()
         .matches(/^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/, "letterSpace")
         .required("required"),
-    email: Yup.string()
-        .email("invalidFormat")
-        .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/, "invalidFormat")
-        .required("required"),
-    dateOfBirth: Yup.date()
+    birthDate: Yup.date()
         .nullable()
         .max(new Date(), "dateOfBirthFuture")
         .required("required"),
-
     newPassword: Yup.string()
-        .required("required")
+        // .required("required")
         .min(12, "passwordLength")
 
         .matches(
@@ -39,22 +34,22 @@ const schema = Yup.object().shape({
             const regex = new RegExp(`(${commonWords.join("|")})`, "i");
             return !regex.test(value);
         }),
-    currentPassword: Yup.number().required("required"),
+
     familySize: Yup.number().required("required"),
     phoneNumber: Yup.string()
         .matches(/^(73|77|71)\d{7}$/, "phoneNumber")
         .required("required"),
-    uploadId: Yup.mixed()
-        .required("required")
-        .test(
-            "fileFormat",
-            "uploadId",
-            (value) =>
-                value &&
-                ["image/png", "image/jpeg", "application/pdf"].includes(
-                    value.type
-                )
-        ),
+    // uploadId: Yup.mixed()
+    //     .required("required")
+    //     .test(
+    //         "fileFormat",
+    //         "uploadId",
+    //         (value) =>
+    //             value &&
+    //             ["image/png", "image/jpeg", "application/pdf"].includes(
+    //                 value.type
+    //             )
+    //     ),
 });
 
 export default schema;

@@ -9,7 +9,6 @@ import PreviewProfile from "@/components/ui/PreviewProfile";
 import { useAuth } from "@/components/context/AuthContext";
 import schema from "@/utils/validationSchemaProfile";
 import { doc, collection, getFirestore, getDocs } from "firebase/firestore";
-
 import "firebase/firestore";
 import updateDocument from "@/firebase/updateSubCollection";
 import PageIntro from "@/components/PageIntro";
