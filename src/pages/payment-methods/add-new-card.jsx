@@ -36,7 +36,7 @@ function AddNewCard({ t }) {
     return (
         <>
             <Head>
-                <title>{t("payment:addNewPayment")}</title>
+                <title>{t("payment:addNewPaymentMethod")}</title>
             </Head>
             <div className='container mt-12'>
                 <PageIntro
