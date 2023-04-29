@@ -8,5 +8,6 @@
     "yourSavedCards": "Your saved cards",
     "yourSavedCardsDesc": "We only support cards as a payment method at the moment!",
     "addCardDetails": "Add card details",
-    "addCardDetailsDesc": "Please make sure all of the info you enter are the same as your card registration info."
+    "addCardDetailsDesc": "Please make sure all of the info you enter are the same as your card registration info.",
+    "noPaymentMethodsFound": "No payment methods found"
 }
