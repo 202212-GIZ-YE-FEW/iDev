@@ -43,7 +43,6 @@ function PaymentMethod({ t, paymentMethods }) {
         const data = paymentMethods.map((item) => {
             return {
                 ...item,
-                // update the cardNumber value to seprate between each 4 digits with space and take the value and replace the first 12 digits with x and between each 4 digits add a space
                 cardNumber: item.cardNumber.replace(
                     /^(\d{4}\s){3}/,
                     "xxxx xxxx xxxx "
