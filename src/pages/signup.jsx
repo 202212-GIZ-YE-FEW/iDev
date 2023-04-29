@@ -65,7 +65,7 @@ function SignUp({ t }) {
                 hobbies: "Play Football",
                 familySize: 80,
                 education_level: "Master",
-                phoneNumber: 7778989898,
+                phoneNumber: 777898989,
                 gender: "male",
             };
             const therapistData = {

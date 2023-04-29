@@ -19,6 +19,7 @@ const schema = Yup.object().shape({
     newPassword: Yup.string()
         .required("required")
         .min(12, "passwordLength")
+
         .matches(
             /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{12,}$/,
             "passwordCriteria"
@@ -40,7 +41,7 @@ const schema = Yup.object().shape({
         }),
     currentPassword: Yup.number().required("required"),
     familySize: Yup.number().required("required"),
-    phoneNumber: Yup.number()
+    phoneNumber: Yup.string()
         .matches(/^(73|77|71)\d{7}$/, "phoneNumber")
         .required("required"),
     uploadId: Yup.mixed()

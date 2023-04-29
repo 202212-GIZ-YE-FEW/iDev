@@ -78,7 +78,7 @@ function EditProfile({ t }) {
         e.preventDefault();
 
         try {
-            // await schema.validate(formData, { abortEarly: false });
+            await schema.validate(formData, { abortEarly: false });
             await updateDocument(childCollectionRef.path, profile, data);
             await updateDocument("users", userId, userData);
             await changePassword(
