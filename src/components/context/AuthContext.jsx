@@ -72,6 +72,13 @@ export function AuthContextProvider({ children }) {
                 );
 
                 await sendEmailConfirmation();
+                const router = require("next/router").default;
+                router.push({
+                    pathname: "/thanks",
+                    query: {
+                        subtitle: "emailVerified",
+                    },
+                });
             })
             .catch((error) => {
                 if (error.code === "auth/email-already-in-use") {

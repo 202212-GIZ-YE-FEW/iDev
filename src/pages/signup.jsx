@@ -89,18 +89,7 @@ function SignUp({ t }) {
                 profileData,
                 therapistData
             );
-            // sendEmailConfirmation();
-            const router = require("next/router").default;
-            router.push({
-                pathname: "/thanks",
-                query: {
-                    subtitle: "emailVerified",
-                },
-            });
         } catch (error) {
-            if (error.code === "auth/email-already-in-use") {
-                setFormErrors({ email: "validation:exist" });
-            }
             if (error.inner) {
                 const newErrors = {};
                 error.inner.forEach((e) => {
