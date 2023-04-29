@@ -102,7 +102,7 @@ function AddNewCard({ t }) {
                             <div className='grid grid-cols-1 xl:grid-cols-2 my-10 gap-24'>
                                 <div className='flex flex-col gap-5'>
                                     <div className='flex-col mt-[0.8rem] mb-2'>
-                                        <span className='mb-2 whitespace-wrap md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm flex-1'>
+                                        <span className='mb-2 whitespace-wrap md:text-base lg:text-lg flex:me-10 text-grayish-cyan font-light flex:self-center capitalize text-sm flex-1'>
                                             {t("supportedCardTypes")}
                                         </span>
                                         <div className='flex mt-1'>
@@ -122,6 +122,7 @@ function AddNewCard({ t }) {
                                         <Input
                                             field={cardNumber}
                                             label={t("cardNumber")}
+                                            labelColor='grayish-cyan'
                                             placeholder='4287  8874 9511 3263'
                                             type='text'
                                             name='cardNumber'
@@ -141,6 +142,7 @@ function AddNewCard({ t }) {
                                             <Input
                                                 field={expiryDate}
                                                 label={t("expiryDate")}
+                                                labelColor='grayish-cyan'
                                                 type='month'
                                                 name='expiryDate'
                                                 inputHeightSize='h-10'
@@ -156,6 +158,7 @@ function AddNewCard({ t }) {
                                             <Input
                                                 field={cvv}
                                                 label={t("cvv")}
+                                                labelColor='grayish-cyan'
                                                 placeholder='***'
                                                 type='text'
                                                 name='cvv'
@@ -172,6 +175,7 @@ function AddNewCard({ t }) {
                                         <Input
                                             field={nameOnCard}
                                             label={t("nameOnCard")}
+                                            labelColor='grayish-cyan'
                                             placeholder='Irene Ramos'
                                             type='text'
                                             name='nameOnCard'
@@ -187,6 +191,7 @@ function AddNewCard({ t }) {
                                     <div className='flex-col mt-[0.8rem]'>
                                         <Select
                                             label={t("country")}
+                                            labelColor='grayish-cyan'
                                             placeholder='select'
                                             options={countries}
                                             heightSize='h-10'
@@ -197,6 +202,7 @@ function AddNewCard({ t }) {
                                         <Input
                                             field={zipCode}
                                             label={t("zipCode")}
+                                            labelColor='grayish-cyan'
                                             placeholder='17121-1300'
                                             type='text'
                                             name='zipCode'
@@ -210,6 +216,7 @@ function AddNewCard({ t }) {
                                     <div className='flex-col mt-[0.8rem]'>
                                         <Select
                                             label={t("city")}
+                                            labelColor='grayish-cyan'
                                             placeholder='select'
                                             options={cities}
                                             heightSize='h-10'
@@ -219,6 +226,7 @@ function AddNewCard({ t }) {
                                         <Input
                                             field={address}
                                             label={t("address")}
+                                            labelColor='grayish-cyan'
                                             placeholder='509 Adele Mills Suite 833'
                                             type='text'
                                             name='address'
