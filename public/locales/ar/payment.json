@@ -9,5 +9,17 @@
     "yourSavedCardsDesc": "نحن ندعم البطاقات فقط كوسيلة دفع في الوقت الحالي!",
     "addCardDetails": "إضافة تفاصيل البطاقة",
     "addCardDetailsDesc": "يرجى التأكد من أن جميع المعلومات التي تدخلها هي نفسها معلومات تسجيل بطاقتك.",
-    "noPaymentMethodsFound.": "لم يتم العثور على طرق الدفع."
+    "noPaymentMethodsFound.": "لم يتم العثور على طرق الدفع.",
+    "addNewPaymentMethod": "إضافة طريقة دفع جديدة",
+    "yourPaymentMethods": "طرق الدفع الخاصة بك",
+    "supportedCardTypes": "أنواع البطاقات المدعومة",
+    "cardNumber": "رقم البطاقة",
+    "expiryDate": "تاريخ الانتهاء",
+    "cvv": "CVV",
+    "nameOnCard": "الاسم على البطاقة",
+    "country": "البلد",
+    "zipCode": "الرمز البريدي",
+    "city": "المدينة",
+    "address": "العنوان",
+    "addCard": "إضافة بطاقة"
 }

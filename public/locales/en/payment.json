@@ -9,5 +9,17 @@
     "yourSavedCardsDesc": "We only support cards as a payment method at the moment!",
     "addCardDetails": "Add card details",
     "addCardDetailsDesc": "Please make sure all of the info you enter are the same as your card registration info.",
-    "noPaymentMethodsFound": "No payment methods found"
+    "noPaymentMethodsFound": "No payment methods found",
+    "addNewPaymentMethod": "Add new payment method",
+    "yourPaymentMethods": "Your payment methods",
+    "supportedCardTypes": "Supported Card types",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiry Date",
+    "cvv": "CVV",
+    "nameOnCard": "Name on card",
+    "country": "Country",
+    "zipCode": "ZIP Code",
+    "city": "City",
+    "address": "Address",
+    "addCard": "Add card"
 }

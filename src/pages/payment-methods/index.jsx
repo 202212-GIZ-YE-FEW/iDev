@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
@@ -79,6 +80,9 @@ function PaymentMethod({ t }) {
 
     return (
         <>
+            <Head>
+                <title>{t("payment:yourPaymentMethods")}</title>
+            </Head>
             <div className='container mt-12'>
                 <PageIntro
                     title={t("yourSavedCards")}
