@@ -1,7 +1,6 @@
 import {
     addDoc,
     collection,
-    doc,
     orderBy,
     query,
     serverTimestamp,
@@ -10,10 +9,7 @@ import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
-import {
-    useCollectionData,
-    useDocumentData,
-} from "react-firebase-hooks/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 import Received from "@/components/Chat/Received";
 import Sent from "@/components/Chat/Sent";
@@ -25,14 +21,12 @@ function Chatroom({ t }) {
     const { user } = useAuth();
     const router = useRouter();
     const { id } = router.query;
-    const [chat] = useDocumentData(doc(db, "chats", id));
     const q = query(
         collection(db, `chats/${id}/messages`),
         orderBy("timestamp")
     );
     const [messages] = useCollectionData(q);
     const [input, setInput] = useState("");
-    // const [messages, setMessages] = useState([]);
     const sendMessage = async (e) => {
         e.preventDefault();
         await addDoc(collection(db, `chats/${id}/messages`), {
@@ -42,20 +36,6 @@ function Chatroom({ t }) {
         });
         setInput("");
     };
-    // useEffect(() => {
-    //     const chatList = async () => {
-    //         let chats = [];
-    //         try {
-    //             chats = await getDocument("chats");
-    //             setChatsOfCurrentUser(
-    //                 chats.filter((chat) => chat.users.includes(user.email))
-    //             );
-    //         } catch (error) {
-    //             //
-    //         }
-    //     };
-    //     chatList();
-    // }, []);
     const getMessages = () =>
         messages?.map((msg, index) => {
             const sender = msg.sender === user.email;
@@ -63,7 +43,7 @@ function Chatroom({ t }) {
                 return (
                     <Sent
                         key={index}
-                        sender={user.fullname || "A"}
+                        sender={`${user.email[0]}`}
                         message={msg.text}
                     />
                 );
@@ -71,7 +51,7 @@ function Chatroom({ t }) {
                 return (
                     <Received
                         key={index}
-                        sender={user.fullname || "A"}
+                        sender={`${user.email[0]}`}
                         message={msg.text}
                     />
                 );
