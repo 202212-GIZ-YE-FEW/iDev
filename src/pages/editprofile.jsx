@@ -1,7 +1,6 @@
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect } from "react";
-
 import Button from "@/components/ui/Button";
 import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
@@ -62,15 +61,19 @@ function EditProfile({ t }) {
 
     const handleChange = async (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        // const file = e.target.files[0];
-        // console.log(file)
-        // const imageName = file.name;
-        // console.log(imageName)
-        // const userId = user.uid;
-        // const path = "UploadId/" + userId;
-        // uploadimg(URL.createObjectURL(file));
-        //     await uploadImage(file, imageName, path);
-        //     console.log("File uploaded successfully!");
+        const file = e.target.files && e.target.files[0];
+        console.log(file);
+
+        if (file) {
+            const imageName = file.name;
+            const userId = user.uid;
+            const path = "UploadId/" + userId + "/" + file.name;
+            uploadimg(URL.createObjectURL(file));
+            await uploadImage(file, imageName, path);
+            console.log("File uploaded successfully!");
+        } else {
+            console.error("No file selected.");
+        }
     };
 
     const handleSubmit = async (e) => {
