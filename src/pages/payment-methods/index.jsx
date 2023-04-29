@@ -4,6 +4,7 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { MdOutlinePayment } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 
 import "react-multi-carousel/lib/styles.css";
@@ -11,12 +12,41 @@ import "react-multi-carousel/lib/styles.css";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 
+import deleteDocument from "@/firebase/deleteData";
 import getDocument from "@/firebase/getData";
 
 import MasterCardSVG from "/public/images/master-card.svg";
 import VisaSVG from "/public/images/visa.svg";
-function PaymentMethod({ t, paymentMethods }) {
+
+function PaymentMethod({ t }) {
     const [cards, setCards] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchPaymentMethods = async () => {
+        const result = await getDocument("user_payment_methods");
+        return result;
+    };
+
+    useEffect(() => {
+        async function getPaymentMethods() {
+            try {
+                const result = await fetchPaymentMethods();
+                const data = result.map((item) => ({
+                    ...item,
+                    cardNumber: item.cardNumber.replace(
+                        /^(\d{4}\s){3}/,
+                        "xxxx xxxx xxxx "
+                    ),
+                    icon: item.type === "mastercard" ? MasterCardSVG : VisaSVG,
+                }));
+                setCards(data);
+                setLoading(false);
+            } catch (error) {
+                setLoading(false);
+            }
+        }
+        getPaymentMethods();
+    }, []);
 
     const responsive = {
         desktop: {
@@ -25,7 +55,7 @@ function PaymentMethod({ t, paymentMethods }) {
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 2,
+            items: cards.length > 1 ? 2 : 1,
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
@@ -33,32 +63,20 @@ function PaymentMethod({ t, paymentMethods }) {
         },
     };
 
-    const colors = [
-        { color: "#e62151", bg: "pink" },
-        { color: "#1d40c0", bg: "blue" },
-        { color: "#daa00a", bg: "yellow" },
-    ];
-
-    useEffect(() => {
-        const data = paymentMethods.map((item) => {
-            return {
-                ...item,
-                cardNumber: item.cardNumber.replace(
-                    /^(\d{4}\s){3}/,
-                    "xxxx xxxx xxxx "
-                ),
-                icon: item.type === "mastercard" ? MasterCardSVG : VisaSVG,
-            };
-        });
-        setCards(data);
-    }, [paymentMethods]);
-
     const buttonContent = (
         <div className='flex items-center space-x-2'>
             <span>{t("addNewCard")}</span>
             <AiOutlinePlus className='text-2xl' />
         </div>
     );
+
+    const deleteCard = async (e, id) => {
+        e.stopPropagation();
+        await deleteDocument("user_payment_methods", id);
+        alert("Card deleted successfully");
+        fetchPaymentMethods();
+    };
+
     return (
         <>
             <div className='container mt-12'>
@@ -66,66 +84,80 @@ function PaymentMethod({ t, paymentMethods }) {
                     title={t("yourSavedCards")}
                     subtitle={t("yourSavedCardsDesc")}
                 />
-                <Carousel
-                    itemClass='pe-3'
-                    className='mt-28'
-                    responsive={responsive}
-                >
-                    {cards.map((item, index) => {
-                        return (
-                            <>
-                                <div className='me-3' key={index}>
-                                    <input
-                                        className='peer hidden'
-                                        id={`${item.name}-id`}
-                                        type='radio'
-                                        name='card'
-                                    />
-                                    <label
-                                        htmlFor={`${item.name}-id`}
-                                        className='group block relative w-full min-h-[15rem] rounded-md text-white cursor-pointer'
-                                    >
-                                        <div
-                                            className={`absolute top-0 left-0 w-full flex flex-col h-full py-7 px-8 z-20  bg-[url(/images/${
-                                                colors[index % 3]["bg"]
-                                            }-overlay.png)] bg-no-repeat bg-cover`}
-                                            style={{
-                                                backgroundImage: `url(/images/${item.bg}-overlay.png)`,
-                                            }}
-                                        >
-                                            <Image
-                                                src={item.icon}
-                                                alt={`${item.name} logo`}
-                                                className='self-end'
-                                            />
-                                            <div className='w-full h-full flex flex-col mb-6 justify-between text-sm'>
-                                                <p aria-label='expire date'>
-                                                    {item.expireDate}
-                                                </p>
-                                                <p aria-label='card number'>
-                                                    {item.cardNumber}
-                                                </p>
-                                                <p aria-label='card holder'>
-                                                    {item.holder}
-                                                </p>
-                                            </div>
-                                            <div className='fit-content self-center lg:self-end'>
-                                                <Button
-                                                    content={t("deleteCard")}
-                                                    text-transform='capitalize'
-                                                    filled='true'
-                                                    size='medium'
-                                                    fontSize='text-sm md:text-base'
-                                                    radius='lg'
-                                                />
+                {loading ? (
+                    <div class='text-center'>
+                        <div
+                            class='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-cyan motion-reduce:animate-[spin_1.5s_linear_infinite]'
+                            role='status'
+                        ></div>
+                    </div>
+                ) : (
+                    <>
+                        {cards.length > 0 ? (
+                            <Carousel
+                                itemClass='pe-3'
+                                className='mt-28'
+                                responsive={responsive}
+                            >
+                                {cards.map((item, index) => {
+                                    return (
+                                        <div className='me-3' key={index}>
+                                            <div className='group block relative w-full min-h-[15rem] rounded-md text-white cursor-pointer'>
+                                                <div
+                                                    className='w-full h-full flex flex-col text-white justify-between py-7 px-8 rounded-md bg-no-repeat bg-cover'
+                                                    style={{
+                                                        backgroundImage: `url(/images/${item.bg}-overlay.png)`,
+                                                    }}
+                                                >
+                                                    <Image
+                                                        src={item.icon}
+                                                        alt={`${item.name} logo`}
+                                                        className='self-end'
+                                                    />
+                                                    <div className='w-full h-full flex flex-col mb-6 justify-between text-sm'>
+                                                        <p aria-label='expire date'>
+                                                            {item.expireDate}
+                                                        </p>
+                                                        <p aria-label='card number'>
+                                                            {item.cardNumber}
+                                                        </p>
+                                                        <p aria-label='card holder'>
+                                                            {item.holder}
+                                                        </p>
+                                                    </div>
+                                                    <div className='fit-content self-end lg:self-end md:self-end'>
+                                                        <Button
+                                                            content={t(
+                                                                "deleteCard"
+                                                            )}
+                                                            text-transform='capitalize'
+                                                            filled='true'
+                                                            size='medium'
+                                                            fontSize='text-sm md:text-base'
+                                                            radius='lg'
+                                                            useConfirm={true}
+                                                            onClick={(e) =>
+                                                                deleteCard(
+                                                                    e,
+                                                                    item.id
+                                                                )
+                                                            }
+                                                        />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </label>
-                                </div>
-                            </>
-                        );
-                    })}
-                </Carousel>
+                                    );
+                                })}
+                            </Carousel>
+                        ) : (
+                            <div className='flex flex-col items-center justify-center mt-28'>
+                                <MdOutlinePayment className='text-6xl text-gray mx-auto' />
+                                {t("noPaymentMethodsFound")}
+                            </div>
+                        )}
+                    </>
+                )}
                 <Link
                     href='/payment-methods/add-new-card'
                     className='block mx-auto my-20'
@@ -143,11 +175,10 @@ function PaymentMethod({ t, paymentMethods }) {
         </>
     );
 }
+
 export async function getStaticProps({ locale }) {
-    const paymentMethods = await getDocument("user_payment_methods");
     return {
         props: {
-            paymentMethods,
             ...(await serverSideTranslations(locale, ["common", "payment"])),
         },
     };
