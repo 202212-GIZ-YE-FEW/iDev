@@ -127,6 +127,9 @@ module.exports = {
                 "3xl": "25px",
                 "4xl": "35px",
             },
+            animation: {
+                "spin-slow": "spin 3s linear infinite",
+            },
         },
     },
 };
