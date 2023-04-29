@@ -1,4 +1,5 @@
 import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
+import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
@@ -9,11 +10,13 @@ import { useAuth } from "@/components/context/AuthContext";
 import { db } from "../../firebase/config";
 function Chatroom({ t }) {
     const { user } = useAuth();
+    const router = useRouter();
+    const { id } = router.query;
     const [input, setInput] = useState("");
     // const [messages, setMessages] = useState([]);
     const sendMessage = async (e) => {
         e.preventDefault();
-        await addDoc(collection(db, `chats/cJRmbJL9pY64LNUoCeOU/messages`), {
+        await addDoc(collection(db, `chats/${id}/messages`), {
             text: input,
             sender: user.email,
             timestamp: serverTimestamp(),
