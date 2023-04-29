@@ -1,19 +1,16 @@
 import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
 import { withTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 
 import Sidebar from "@/components/Chat/Sidebar";
 import { useAuth } from "@/components/context/AuthContext";
 
-import getDocument from "@/firebase/getData";
-import getDocById from "@/firebase/getDocById";
-
 import { db } from "../../firebase/config";
 function Chatroom({ t }) {
     const { user } = useAuth();
     const [input, setInput] = useState("");
-
+    // const [messages, setMessages] = useState([]);
     const sendMessage = async (e) => {
         e.preventDefault();
         await addDoc(collection(db, `chats/cJRmbJL9pY64LNUoCeOU/messages`), {
@@ -23,6 +20,38 @@ function Chatroom({ t }) {
         });
         setInput("");
     };
+    // useEffect(() => {
+    //     const chatList = async () => {
+    //         let chats = [];
+    //         try {
+    //             chats = await getDocument("chats");
+    //             setChatsOfCurrentUser(
+    //                 chats.filter((chat) => chat.users.includes(user.email))
+    //             );
+    //         } catch (error) {
+    //             //
+    //         }
+    //     };
+    //     chatList();
+    // }, []);
+    const getMessages = () => {};
+    // messages?.map((msg) => {
+    //     const sender = msg.sender === user.email;
+    //     return (
+    //         <Flex
+    //             key={Math.random()}
+    //             alignSelf={sender ? "flex-start" : "flex-end"}
+    //             bg={sender ? "blue.100" : "green.100"}
+    //             w='fit-content'
+    //             minWidth='100px'
+    //             borderRadius='lg'
+    //             p={3}
+    //             m={1}
+    //         >
+    //             <Text>{msg.text}</Text>
+    //         </Flex>
+    //     );
+    // });
     // const therapists = getTherapists();
 
     // useEffect(() => {
@@ -189,38 +218,38 @@ function Chatroom({ t }) {
     );
 }
 
-export async function getStaticPaths() {
-    let chats = [];
-    try {
-        chats = await getDocument("chats");
-    } catch (error) {
-        //
-    }
-    const paths = chats.map((chat) => {
-        return {
-            params: {
-                id: chat.id,
-            },
-        };
-    });
-    return {
-        paths,
-        fallback: false,
-    };
-}
-export async function getStaticProps({ locale, params }) {
-    let chat = null;
-    try {
-        chat = await getDocById("chats", params.id);
-    } catch (error) {
-        //
-    }
-    return {
-        props: {
-            ...(await serverSideTranslations(locale, ["common", "chatroom"])),
-            chat,
-        },
-    };
-}
+// export async function getStaticPaths() {
+//     let chats = [];
+//     try {
+//         chats = await getDocument("chats");
+//     } catch (error) {
+//         //
+//     }
+//     const paths = chats.map((chat) => {
+//         return {
+//             params: {
+//                 id: chat.id,
+//             },
+//         };
+//     });
+//     return {
+//         paths,
+//         fallback: false,
+//     };
+// }
+// export async function getStaticProps({ locale, params }) {
+//     let chat = null;
+//     try {
+//         chat = await getDocById("chats", params.id);
+//     } catch (error) {
+//         //
+//     }
+//     return {
+//         props: {
+//             ...(await serverSideTranslations(locale, ["common", "chatroom"])),
+//             chat,
+//         },
+//     };
+// }
 
 export default withTranslation("chatroom")(Chatroom);

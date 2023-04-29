@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
@@ -12,19 +11,19 @@ const Sidebar = () => {
     const [chatsOfCurrentUser, setChatsOfCurrentUser] = useState([]);
     const router = useRouter();
     const redirect = (id) => {
-        router.push(`./chat/${id}`);
+        router.push(`/chat/${id}`);
     };
     useEffect(() => {
         const chatList = async () => {
             let chats = [];
             try {
                 chats = await getDocument("chats");
+                setChatsOfCurrentUser(
+                    chats.filter((chat) => chat.users.includes(user.email))
+                );
             } catch (error) {
                 //
             }
-            setChatsOfCurrentUser(
-                chats.filter((chat) => chat.users.includes(user.email))
-            );
         };
         chatList();
     }, []);
@@ -58,21 +57,19 @@ const Sidebar = () => {
                     </span>
                 </div>
                 <div className='flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto'>
-                    {console.log("chatsOfCurrentUser", chatsOfCurrentUser)}
                     {chatsOfCurrentUser &&
                         chatsOfCurrentUser.map((chat) => {
                             if (chat.users.includes(user.email)) {
                                 return (
-                                    <Link
-                                        href={`/chat/${chat.id}`}
+                                    <button
                                         key={Math.random()}
-                                        // onClick={() => redirect(chat.id)}
+                                        onClick={() => redirect(chat.id)}
                                         className='flex flex-row items-center hover:bg-gray-100 rounded-xl p-2'
                                     >
                                         <div className='ml-2 text-sm font-semibold'>
                                             {chat.users[1]}
                                         </div>
-                                    </Link>
+                                    </button>
                                 );
                             }
                         })}
