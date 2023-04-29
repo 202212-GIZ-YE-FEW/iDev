@@ -34,13 +34,18 @@ Array [
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
-          <button
-            className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-            disabled={false}
+          <div
+            className="relative self-center"
           >
-            bookAppointment
-          </button>
+            <button
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              disabled={false}
+              onClick={[Function]}
+            >
+              bookAppointment
+            </button>
+          </div>
         </a>
       </div>
       <div
@@ -113,13 +118,18 @@ Array [
         onMouseEnter={[Function]}
         onTouchStart={[Function]}
       >
-        <button
-          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-          disabled={false}
+        <div
+          className="relative self-center"
         >
-          bookAppointment
-        </button>
+          <button
+            className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+            disabled={false}
+            onClick={[Function]}
+          >
+            bookAppointment
+          </button>
+        </div>
       </a>
     </div>
   </section>,
@@ -322,13 +332,18 @@ Array [
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              <button
-                className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-                disabled={false}
+              <div
+                className="relative self-center"
               >
-                purchase
-              </button>
+                <button
+                  className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  purchase
+                </button>
+              </div>
             </a>
           </div>
         </div>
@@ -358,13 +373,18 @@ Array [
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              <button
-                className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-                disabled={false}
+              <div
+                className="relative self-center"
               >
-                purchase
-              </button>
+                <button
+                  className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  purchase
+                </button>
+              </div>
             </a>
           </div>
         </div>
@@ -394,13 +414,18 @@ Array [
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              <button
-                className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-                disabled={false}
+              <div
+                className="relative self-center"
               >
-                purchase
-              </button>
+                <button
+                  className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  purchase
+                </button>
+              </div>
             </a>
           </div>
         </div>
@@ -425,13 +450,18 @@ Array [
             onMouseEnter={[Function]}
             onTouchStart={[Function]}
           >
-            <button
-              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-              disabled={false}
+            <div
+              className="relative self-center"
             >
-              learnMore
-            </button>
+              <button
+                className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+                disabled={false}
+                onClick={[Function]}
+              >
+                learnMore
+              </button>
+            </div>
           </a>
         </div>
       </div>
