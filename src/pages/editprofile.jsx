@@ -16,14 +16,7 @@ function EditProfile({ t }) {
     const { user, changePassword, authenticated } = useAuth();
     const [imgfile, uploadimg] = useState("");
     const [formErrors, setFormErrors] = useState({});
-    const [formData, setFormData] = useState({
-        fullName: "",
-        hobbies: "",
-        familySize: "",
-        educationLevel: "",
-        phoneNumber: "",
-        gender: "",
-    });
+    const [formData, setFormData] = useState({});
     const data = {
         Fullname: formData.fullName,
         deleted: false,
