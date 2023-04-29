@@ -1,6 +1,8 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Sidebar from "@/components/Chat/Sidebar";
+
+import LayoutChat from "@/layout/LayoutChat";
 const Chat = () => {
     return (
         <div className='flex antialiased'>
@@ -12,6 +14,7 @@ const Chat = () => {
     );
 };
 export default Chat;
+Chat.getLayout = LayoutChat;
 export async function getStaticProps({ locale }) {
     return {
         props: {

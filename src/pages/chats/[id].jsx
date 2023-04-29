@@ -15,7 +15,7 @@ import Received from "@/components/Chat/Received";
 import Sent from "@/components/Chat/Sent";
 import Sidebar from "@/components/Chat/Sidebar";
 import { useAuth } from "@/components/context/AuthContext";
-
+import LayoutChat from "@/layout/LayoutChat";
 import { db } from "../../firebase/config";
 function Chatroom({ t }) {
     const { user } = useAuth();
@@ -147,5 +147,6 @@ function Chatroom({ t }) {
 //         },
 //     };
 // }
+Chatroom.getLayout = LayoutChat;
 
 export default withTranslation("chatroom")(Chatroom);

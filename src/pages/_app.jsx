@@ -12,9 +12,11 @@ function MyApp({ Component, pageProps }) {
     if (Component.getLayout) {
         // customized layout
         return (
-            <Component.getLayout>
-                <Component {...pageProps} />
-            </Component.getLayout>
+            <AuthContextProvider>
+                <Component.getLayout>
+                    <Component {...pageProps} />
+                </Component.getLayout>
+            </AuthContextProvider>
         );
     } else {
         // default layout
