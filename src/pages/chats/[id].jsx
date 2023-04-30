@@ -126,24 +126,6 @@ function Chatroom({ t }) {
                                     type='button'
                                     className='inline-flex items-center justify-center cursor-pointer rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
                                 >
-                                    <span
-                                        className={
-                                            isEmojiPickerVisible
-                                                ? "block relative end-60"
-                                                : "hidden"
-                                        }
-                                    >
-                                        <Picker
-                                            data={data}
-                                            previewPosition='none'
-                                            onEmojiSelect={(e) => {
-                                                setInput(e.native);
-                                                setEmojiPickerVisible(
-                                                    !isEmojiPickerVisible
-                                                );
-                                            }}
-                                        />
-                                    </span>
                                     <Image src={EmojiSVG} alt='' />
                                 </button>
                                 <button
@@ -155,6 +137,20 @@ function Chatroom({ t }) {
                             </div>
                         </div>
                     </div>
+                    {isEmojiPickerVisible && (
+                        <div className='mt-5 inline-flex justify-center items-center'>
+                            <Picker
+                                data={data}
+                                previewPosition='none'
+                                onEmojiSelect={(e) => {
+                                    setInput(e.native);
+                                    setEmojiPickerVisible(
+                                        !isEmojiPickerVisible
+                                    );
+                                }}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
