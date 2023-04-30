@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 import CameraSVG from "public/images/camera.svg";
 import EmojiSVG from "public/images/emoji.svg";
+import EmptyChatGIF from "public/images/empty-chat.gif";
 import PinSVG from "public/images/pin.svg";
 import VoiceSVG from "public/images/voice.svg";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -26,7 +27,7 @@ import { useAuth } from "@/components/context/AuthContext";
 import LayoutChat from "@/layout/LayoutChat";
 
 import { db } from "../../firebase/config";
-function Chatroom({ t }) {
+const Chatroom = () => {
     const [isEmojiPickerVisible, setEmojiPickerVisible] = useState(false);
     const { user } = useAuth();
     const router = useRouter();
@@ -46,27 +47,30 @@ function Chatroom({ t }) {
         });
         setInput("");
     };
-    const getMessages = () =>
-        messages?.map((msg, index) => {
-            const sender = msg.sender === user.email;
-            if (sender) {
-                return (
-                    <Sent
-                        key={index}
-                        sender={`${user.email[0]}`}
-                        message={msg.text}
-                    />
-                );
-            } else {
-                return (
-                    <Received
-                        key={index}
-                        sender={`${user.email[0]}`}
-                        message={msg.text}
-                    />
-                );
-            }
-        });
+    const getMessages = () => {
+        if (messages?.length !== 0)
+            return messages?.map((msg, index) => {
+                const sender = msg.sender === user.email;
+                if (sender) {
+                    return (
+                        <Sent
+                            key={index}
+                            sender={`${user.email[0]}`}
+                            message={msg.text}
+                        />
+                    );
+                } else {
+                    return (
+                        <Received
+                            key={index}
+                            sender={`${user.email[0]}`}
+                            message={msg.text}
+                        />
+                    );
+                }
+            });
+        return <Image src={EmptyChatGIF} alt='' width={300} height={300} />;
+    };
 
     // useEffect(() => {
     //     const newChat = async () => {
@@ -80,82 +84,78 @@ function Chatroom({ t }) {
     //     newChat();
     // }, [input]);
     return (
-        <div className='flex antialiased'>
-            <div className='flex flex-col lg:flex-row h-full w-full overflow-x-hidden'>
-                <Sidebar />
-                <div className='flex flex-col justify-between flex-auto lg:w-3/4 flex-shrink-0 bg-background p-4'>
-                    <div className='flex flex-col'>{getMessages()}</div>
-                    <div className='border-t-2 border-gray/20  px-4 pt-4 mb-2 sm:mb-0'>
-                        <div className='relative flex'>
-                            <span className='absolute inset-y-0 flex items-center'>
-                                <button
-                                    type='button'
-                                    className='inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
-                                >
-                                    <Image src={VoiceSVG} alt='' />
-                                </button>
-                            </span>
-                            <form onSubmit={sendMessage} className='w-full'>
-                                <input
-                                    placeholder='Write your message!'
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    type='text'
-                                    className='w-full focus:outline-none focus:placeholder-gray/40 text-gray placeholder-gray/60 ps-12 pe-60 bg-white rounded-md py-3'
-                                />
-                            </form>
-                            <div className='absolute end-0 items-center inset-y-0 hidden sm:flex'>
-                                <button
-                                    type='button'
-                                    className='inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
-                                >
-                                    <Image src={PinSVG} alt='' />
-                                </button>
-                                <button
-                                    type='button'
-                                    className='inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
-                                >
-                                    <Image src={CameraSVG} alt='' />
-                                </button>
-                                <button
-                                    onClick={() =>
-                                        setEmojiPickerVisible(
-                                            !isEmojiPickerVisible
-                                        )
-                                    }
-                                    type='button'
-                                    className='inline-flex items-center justify-center cursor-pointer rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
-                                >
-                                    <Image src={EmojiSVG} alt='' />
-                                </button>
-                                <button
-                                    type='button'
-                                    className='inline-flex items-center justify-center cursor-pointer rounded-md px-4 py-3 transition duration-500 ease-in-out text-black bg-cyan hover:bg-light-cyan focus:outline-none'
-                                >
-                                    <span className='font-bold'>Send</span>
-                                </button>
-                            </div>
+        <div className='flex flex-col lg:flex-row h-full w-full overflow-x-hidden antialiased'>
+            <Sidebar />
+            <div className='flex flex-col justify-between overflow-y-auto lg:w-3/4 flex-shrink-0 bg-background p-4'>
+                <div className='flex flex-col items-center justify-center'>
+                    {getMessages()}
+                </div>
+                <div className='border-t-2 border-gray/20  px-4 pt-4 mb-2 sm:mb-0'>
+                    <div className='relative flex'>
+                        <span className='absolute inset-y-0 flex items-center'>
+                            <button
+                                type='button'
+                                className='inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
+                            >
+                                <Image src={VoiceSVG} alt='' />
+                            </button>
+                        </span>
+                        <form onSubmit={sendMessage} className='w-full'>
+                            <input
+                                placeholder='Write your message!'
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                type='text'
+                                className='w-full focus:outline-none focus:placeholder-gray/40 text-gray placeholder-gray/60 ps-12 pe-60 bg-white rounded-md py-3'
+                            />
+                        </form>
+                        <div className='absolute end-0 items-center inset-y-0 hidden sm:flex'>
+                            <button
+                                type='button'
+                                className='inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
+                            >
+                                <Image src={PinSVG} alt='' />
+                            </button>
+                            <button
+                                type='button'
+                                className='inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
+                            >
+                                <Image src={CameraSVG} alt='' />
+                            </button>
+                            <button
+                                onClick={() =>
+                                    setEmojiPickerVisible(!isEmojiPickerVisible)
+                                }
+                                type='button'
+                                className='inline-flex items-center justify-center cursor-pointer rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
+                            >
+                                <Image src={EmojiSVG} alt='' />
+                            </button>
+                            <button
+                                type='button'
+                                className='inline-flex items-center justify-center cursor-pointer rounded-md px-4 py-3 transition duration-500 ease-in-out text-black bg-cyan hover:bg-light-cyan focus:outline-none'
+                            >
+                                <span className='font-bold'>Send</span>
+                            </button>
                         </div>
                     </div>
-                    {isEmojiPickerVisible && (
-                        <div className='mt-5 inline-flex justify-center items-center'>
-                            <Picker
-                                data={data}
-                                previewPosition='none'
-                                onEmojiSelect={(e) => {
-                                    setInput(e.native);
-                                    setEmojiPickerVisible(
-                                        !isEmojiPickerVisible
-                                    );
-                                }}
-                            />
-                        </div>
-                    )}
                 </div>
+                {isEmojiPickerVisible && (
+                    <div className='mt-5 inline-flex justify-center items-center'>
+                        <Picker
+                            data={data}
+                            previewPosition='none'
+                            onEmojiSelect={(e) => {
+                                setInput(e.native);
+                                setEmojiPickerVisible(!isEmojiPickerVisible);
+                            }}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );
-}
+};
 
 // export async function getStaticPaths() {
 //     let chats = [];
@@ -192,4 +192,4 @@ function Chatroom({ t }) {
 // }
 Chatroom.getLayout = LayoutChat;
 
-export default withTranslation("chatroom")(Chatroom);
+export default Chatroom;
