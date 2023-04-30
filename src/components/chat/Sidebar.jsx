@@ -14,7 +14,7 @@ const Sidebar = () => {
         router.push(`/chats/${id}`);
     };
     const getPeer = (users) => {
-        return users?.filter((user) => user !== user.email)[0];
+        return users?.find((email) => email !== user.email);
     };
     useEffect(() => {
         const chatList = async () => {

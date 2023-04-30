@@ -1,3 +1,5 @@
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 import {
     addDoc,
     collection,
@@ -25,6 +27,7 @@ import LayoutChat from "@/layout/LayoutChat";
 
 import { db } from "../../firebase/config";
 function Chatroom({ t }) {
+    const [isEmojiPickerVisible, setEmojiPickerVisible] = useState(false);
     const { user } = useAuth();
     const router = useRouter();
     const { id } = router.query;
@@ -115,9 +118,32 @@ function Chatroom({ t }) {
                                     <Image src={CameraSVG} alt='' />
                                 </button>
                                 <button
+                                    onClick={() =>
+                                        setEmojiPickerVisible(
+                                            !isEmojiPickerVisible
+                                        )
+                                    }
                                     type='button'
-                                    className='inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
+                                    className='inline-flex items-center justify-center cursor-pointer rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none'
                                 >
+                                    <span
+                                        className={
+                                            isEmojiPickerVisible
+                                                ? "block relative end-60"
+                                                : "hidden"
+                                        }
+                                    >
+                                        <Picker
+                                            data={data}
+                                            previewPosition='none'
+                                            onEmojiSelect={(e) => {
+                                                setInput(e.native);
+                                                setEmojiPickerVisible(
+                                                    !isEmojiPickerVisible
+                                                );
+                                            }}
+                                        />
+                                    </span>
                                     <Image src={EmojiSVG} alt='' />
                                 </button>
                                 <button
