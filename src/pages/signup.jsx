@@ -70,6 +70,7 @@ function SignUp({ t }) {
                 isTherapist: false,
             };
             const profileData = {
+                Fullname: formData.firstName + " " + formData.lastName,
                 deleted: false,
                 hobbies: "Play Football",
                 familySize: 80,
@@ -78,9 +79,9 @@ function SignUp({ t }) {
                 gender: "male",
             };
             const therapistData = {
-                LicenseNamber: "767676767",
-                userName: "jej",
-                city: "Taiz",
+                LicenseNamber: "",
+                userName: "",
+                city: "",
             };
             signUp(
                 formData.email,
@@ -99,7 +100,6 @@ function SignUp({ t }) {
             }
         }
     };
-
     return (
         <div className='container'>
             <div className='grid grid-cols-1 lg:grid-cols-2 justify-items-center py-20 items-center gap-y-10 gap-x-32'>

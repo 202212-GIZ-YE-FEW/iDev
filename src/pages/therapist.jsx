@@ -16,7 +16,9 @@ function Therapist({ t }) {
     const { authenticated, user } = useAuth();
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
-
+    const userData = {
+        isTherapist: true,
+    };
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -42,10 +44,10 @@ function Therapist({ t }) {
                 userName: formData.userName,
                 city: formData.city,
                 LicenseNamber: formData.licenseNamber,
-                isTherapist: true,
             };
             const therapist = "therapist";
             await updateDocument(childCollectionPath, therapist, data);
+            await updateDocument("users", userId, userData);
             const router = require("next/router").default;
             router.push({
                 pathname: "/",
