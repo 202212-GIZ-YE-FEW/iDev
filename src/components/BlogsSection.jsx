@@ -55,4 +55,5 @@ const BlogsSection = ({
         </>
     );
 };
+
 export default withTranslation("blog")(BlogsSection);

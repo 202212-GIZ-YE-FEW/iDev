@@ -79,6 +79,7 @@
         "husky": "^7.0.4",
         "jest": "^27.5.1",
         "lint-staged": "^12.5.0",
+        "next-router-mock": "^0.9.3",
         "next-sitemap": "^2.5.28",
         "postcss": "^8.4.21",
         "postcss-loader": "^7.0.1",

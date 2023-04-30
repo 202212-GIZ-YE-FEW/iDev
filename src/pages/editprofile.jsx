@@ -3,9 +3,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 
 import Button from "@/components/ui/Button";
-import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
+import Select from "@/components/ui/Select";
 function EditProfile({ t }) {
     const [formData, setFormData] = useState({});
 
@@ -20,7 +20,7 @@ function EditProfile({ t }) {
                 </div>
                 <div className='w-full justify-self-center lg:justify-self-end'>
                     <fieldset>
-                        <legend class='text-3xl font-semibold uppercase'>
+                        <legend className='text-3xl font-semibold uppercase'>
                             {t("profileInfo")}
                         </legend>
                         <div className='flex items-center my-5'>
@@ -35,9 +35,9 @@ function EditProfile({ t }) {
                             />
                         </div>
                         <div className='flex items-center my-5'>
-                            <Dropdown
+                            <Select
                                 placeholder='select'
-                                data={[
+                                options={[
                                     { value: 1, label: t("bacholar") },
                                     { value: 2, label: t("master") },
                                     { value: 3, label: t("PhD") },
@@ -75,13 +75,13 @@ function EditProfile({ t }) {
                             </div>
                         </div>
                         <div className='flex items-center my-5'>
-                            <Dropdown
+                            <Select
                                 className='lg:w-8/12 text-light-black'
                                 placeholder='select '
                                 name='gender'
                                 label={t("gender")}
                                 labelColor='text-black'
-                                data={[
+                                options={[
                                     { value: 1, label: t("female") },
                                     { value: 2, label: t("male") },
                                 ]}
@@ -133,7 +133,7 @@ function EditProfile({ t }) {
                         </div>
                     </fieldset>
                     <fieldset className='mt-8'>
-                        <legend class='text-3xl font-semibold'>
+                        <legend className='text-3xl font-semibold'>
                             {t("security")}
                         </legend>
                         <div className='flex items-center my-5'>
@@ -187,7 +187,7 @@ function EditProfile({ t }) {
                         />
                     </div>
                     <fieldset className='my-12'>
-                        <legend class='text-3xl font-semibold mb-12'>
+                        <legend className='text-3xl font-semibold mb-12'>
                             {t("paymentMethods&Tickets")}
                         </legend>
                         <div className='flex gap-10'>

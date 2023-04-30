@@ -164,20 +164,20 @@ const CreateBlog = ({ t }) => {
                             </div>
                         </div>
                     </div>
-                    <div class='flex flex-col text-center mt-10 mx-auto p-4 bg-light-cyan'>
+                    <div className='flex flex-col text-center mt-10 mx-auto p-4 bg-light-cyan'>
                         <label className='mb-5'>
                             {t("uploadArticleImage")}
                         </label>
-                        <div class='flex items-center justify-center w-1/3 p-5 border-4 border-gray/70 rounded-lg mx-auto h-80'>
+                        <div className='flex items-center justify-center w-1/3 p-5 border-4 border-gray/70 rounded-lg mx-auto h-80'>
                             <label className='h-full'>
                                 <input
-                                    class='text-sm cursor-pointer w-36 hidden'
+                                    className='text-sm cursor-pointer w-36 hidden'
                                     type='file'
                                     onChange={(e) =>
                                         setImageUpload(e.target.files[0])
                                     }
                                 />
-                                <div class='text-light-gray h-full flex rounded font-semibold cursor-pointer p-1 px-3'>
+                                <div className='text-light-gray h-full flex rounded font-semibold cursor-pointer p-1 px-3'>
                                     {imageUpload ? (
                                         <Image
                                             src={URL.createObjectURL(
