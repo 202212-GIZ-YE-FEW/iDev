@@ -13,7 +13,7 @@ const Sidebar = () => {
     const redirect = (id) => {
         router.push(`/chats/${id}`);
     };
-    const getOtherEmails = (users) => {
+    const getPeer = (users) => {
         return users?.filter((user) => user !== user.email)[0];
     };
     useEffect(() => {
@@ -67,7 +67,7 @@ const Sidebar = () => {
                                         className='flex flex-row items-center hover:bg-gray-100 rounded-xl p-2'
                                     >
                                         <div className='ml-2 text-sm font-semibold'>
-                                            {getOtherEmails(chat.users)}
+                                            {getPeer(chat.users)}
                                         </div>
                                     </button>
                                 );
