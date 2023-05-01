@@ -62,7 +62,6 @@ function EditProfile({ t }) {
             const imageName = `${userId}${file.name.substring(
                 file.name.lastIndexOf(".")
             )}`;
-            console.log(imageName);
             const path = "UploadId/";
             uploadimg(URL.createObjectURL(file));
             await uploadImage(file, imageName, path);
