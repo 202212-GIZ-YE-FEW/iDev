@@ -88,7 +88,7 @@ function SignUp({ t }) {
                 router.push({
                     pathname: "/thanks",
                     query: {
-                        subtitle: "emailVerified",
+                        subtitle: "signup:emailVerified",
                     },
                 });
             });
