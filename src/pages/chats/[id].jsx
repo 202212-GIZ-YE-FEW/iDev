@@ -9,7 +9,6 @@ import {
 } from "firebase/firestore";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { withTranslation } from "next-i18next";
 import CameraSVG from "public/images/camera.svg";
 import EmojiSVG from "public/images/emoji.svg";
 import EmptyChatGIF from "public/images/empty-chat.gif";
@@ -17,6 +16,7 @@ import PinSVG from "public/images/pin.svg";
 import VoiceSVG from "public/images/voice.svg";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import { useEffect, useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 import Received from "@/components/Chat/Received";
@@ -25,7 +25,7 @@ import Sidebar from "@/components/Chat/Sidebar";
 import { useAuth } from "@/components/context/AuthContext";
 
 import LayoutChat from "@/layout/LayoutChat";
-import { useRef, useEffect } from "react";
+
 import { db } from "../../firebase/config";
 const Chatroom = () => {
     const [isEmojiPickerVisible, setEmojiPickerVisible] = useState(false);
