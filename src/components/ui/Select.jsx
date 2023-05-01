@@ -3,6 +3,7 @@ import clsx from "clsx";
 function Select(props) {
     const {
         label,
+        name,
         placeholder,
         value,
         options,
@@ -13,7 +14,8 @@ function Select(props) {
         heightSize = "h-auto",
         radius = "md",
         shadow = "sm",
-        onChange = () => {},
+        onChange,
+        register,
         className = "",
     } = props;
 
@@ -36,7 +38,10 @@ function Select(props) {
 
             <select
                 value={value}
-                onChange={(e) => onChange(e)}
+                name={name}
+                onChange={register ? register.onChange : onChange}
+                onBlur={register ? register.onBlur : undefined}
+                ref={register ? register.ref : undefined}
                 placeholder={placeholder}
                 className={inputClasses}
             >

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 
 const Input = (props) => {
@@ -5,6 +6,7 @@ const Input = (props) => {
         t,
         onChange,
         value,
+        register,
         id,
         name,
         type,
@@ -20,6 +22,7 @@ const Input = (props) => {
         field = "",
         shadow = "sm",
         error,
+        errors,
         className = "",
         suffixIcon,
         ...rest
@@ -38,18 +41,34 @@ const Input = (props) => {
                 </label>
             )}
             <input
-                onChange={onChange}
                 value={value}
                 name={name}
                 type={type}
                 required={isRequired}
                 placeholder={placeholder}
-                className={inputClasses}
+                className={clsx(
+                    `${inputClasses}`,
+                    errors &&
+                        errors[name] &&
+                        errors[name].type === "required" &&
+                        "border-red"
+                )}
+                onChange={register ? register.onChange : onChange}
+                onBlur={register ? register.onBlur : undefined}
+                ref={register ? register.ref : undefined}
                 {...rest}
             />
             {suffixIcon && (
                 <span className='absolute mt-5 -ms-8 transform -translate-y-1/2 text-sm md:text-base lg:text-lg'>
                     {suffixIcon}
+                </span>
+            )}
+            {errors && errors[name] && errors[name].message && (
+                <span
+                    className='text-red text-sm md:text-base mt-1'
+                    role='alert'
+                >
+                    {errors[name].message}
                 </span>
             )}
             {error && (
