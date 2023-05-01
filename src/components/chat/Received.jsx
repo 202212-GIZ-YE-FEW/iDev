@@ -1,4 +1,4 @@
-export default function Received(props) {
+function Received(props) {
     const { sender, message } = props;
 
     return (
@@ -14,3 +14,4 @@ export default function Received(props) {
         </div>
     );
 }
+export default Received;

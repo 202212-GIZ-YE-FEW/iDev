@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 
 import { useAuth } from "@/components/context/AuthContext";
@@ -81,4 +80,4 @@ const Sidebar = () => {
     );
 };
 
-export default withTranslation("chat")(Sidebar);
+export default Sidebar;
