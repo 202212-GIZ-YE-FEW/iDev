@@ -2,7 +2,6 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
-import Dropdown from "@/components/ui/Dropdown";
 import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
 import { useAuth } from "@/components/context/AuthContext";
@@ -12,22 +11,23 @@ import "firebase/firestore";
 import updateDocument from "@/firebase/updateSubCollection";
 import PageIntro from "@/components/PageIntro";
 import uploadImage from "@/firebase/addImage";
+import Select from "@/components/ui/Select";
 function EditProfile({ t }) {
     const { user, changePassword, authenticated } = useAuth();
     const [imgfile, uploadimg] = useState("");
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({});
     const data = {
-        Fullname: formData.fullName,
+        Fullname: formData.Fullname,
         deleted: false,
-        hobbies: formData.hubbies,
+        hobbies: formData.hobbies,
         familySize: formData.familySize,
-        education_level: formData.educationLevel,
+        educationLevel: formData.educationLevel,
         phoneNumber: formData.phoneNumber,
         gender: formData.gender,
     };
     const userData = {
-        date_brith: formData.birthDate,
+        dateOfBirth: formData.dateOfBirth,
     };
 
     const db = getFirestore();
@@ -58,9 +58,12 @@ function EditProfile({ t }) {
         console.log(file);
 
         if (file) {
-            const imageName = file.name;
             const userId = user.uid;
-            const path = "UploadId/" + userId + "/" + file.name;
+            const imageName = `${userId}${file.name.substring(
+                file.name.lastIndexOf(".")
+            )}`;
+            console.log(imageName);
+            const path = "UploadId/";
             uploadimg(URL.createObjectURL(file));
             await uploadImage(file, imageName, path);
             console.log("File uploaded successfully!");
@@ -108,21 +111,22 @@ function EditProfile({ t }) {
                                 <Input
                                     inputWidthSize='flex-[2_1_0%]'
                                     type='text'
-                                    name='fullName'
-                                    label={t("fullName")}
+                                    name='Fullname'
+                                    label={t("Fullname")}
                                     labelColor='text-black'
-                                    value={formData.fullName || ""}
+                                    value={formData.Fullname || ""}
                                     onChange={handleChange}
-                                    error={formErrors.fullName}
+                                    error={formErrors.Fullname}
                                     t={t}
-                                    field={t("fullName")}
+                                    field={t("Fullname")}
                                 />
                             </div>
                             <div className='flex items-center my-5'>
-                                <Dropdown
+                                <Select
+                                    className='lg:w-8/12 text-light-black'
                                     name='educationLevel'
                                     placeholder='select'
-                                    data={[
+                                    options={[
                                         { value: "select", label: t("select") },
                                         {
                                             value: "bacholar",
@@ -150,14 +154,14 @@ function EditProfile({ t }) {
                                 <Input
                                     inputWidthSize='flex-[2_1_0%]'
                                     type='text'
-                                    name='hubbies'
-                                    label={t("hubbies")}
+                                    name='hobbies'
+                                    label={t("hobbies")}
                                     labelColor='text-black'
-                                    value={formData.hubbies || ""}
+                                    value={formData.hobbies || ""}
                                     onChange={handleChange}
-                                    error={formErrors.hubbies}
+                                    error={formErrors.hobbies}
                                     t={t}
-                                    field={t("hubbies")}
+                                    field={t("hobbies")}
                                 />
                             </div>
                             <div className='flex items-center my-5'>
@@ -179,13 +183,13 @@ function EditProfile({ t }) {
                                 </div>
                             </div>
                             <div className='flex items-center my-5'>
-                                <Dropdown
+                                <Select
                                     className='lg:w-8/12 text-light-black'
                                     placeholder='select '
                                     name='gender'
                                     label={t("gender")}
                                     labelColor='text-black'
-                                    data={[
+                                    options={[
                                         { value: "select", label: t("select") },
                                         { value: "female", label: t("female") },
                                         { value: "male", label: t("male") },
@@ -203,14 +207,14 @@ function EditProfile({ t }) {
                                 <Input
                                     inputWidthSize='flex-[2_1_0%]'
                                     type='date'
-                                    name='birthDate'
-                                    label={t("birthDate")}
+                                    name='dateOfBirth'
+                                    label={t("dateOfBirth")}
                                     labelColor='text-black'
-                                    value={formData.birthDate || ""}
+                                    value={formData.dateOfBirth || ""}
                                     onChange={handleChange}
-                                    error={formErrors.birthDate}
+                                    error={formErrors.dateOfBirth}
                                     t={t}
-                                    field={t("birthDate")}
+                                    field={t("dateOfBirth")}
                                 />
                             </div>
                             <div className='flex items-center my-5'>

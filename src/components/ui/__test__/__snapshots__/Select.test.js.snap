@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<select
+  className="w-full h-auto block border text-sm border-solid self-center text-light-gray border-light-gray/30 px-[10px] min-w-0 font-light rounded-md shadow-sm flex-[2_1_0%]  text-xl"
+/>
+`;

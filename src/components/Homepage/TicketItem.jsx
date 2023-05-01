@@ -1,6 +1,8 @@
+import AOS from "aos";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import React, { useEffect } from "react";
-import AOS from "aos";
+
 import "aos/dist/aos.css";
 
 import Button from "@/components/ui/Button";
@@ -24,14 +26,28 @@ function TicketItem({ t, numberOfTickets, price }) {
                     {price}$
                 </span>
                 <div className='w-fit'>
-                    <Button
-                        content={t("purchase")}
-                        textTransform='uppercase'
-                        filled='true'
-                        size='large'
-                        fontSize='text-lg md:text-xl lg:text-2xl'
-                        radius='md'
-                    />
+                    <Link
+                        href={{
+                            pathname: "/payment",
+                            query: {
+                                numberOfTickets: numberOfTickets,
+                                price: price,
+                            },
+                            state: {
+                                numberOfTickets: numberOfTickets,
+                                price: price,
+                            },
+                        }}
+                    >
+                        <Button
+                            content={t("purchase")}
+                            textTransform='uppercase'
+                            filled='true'
+                            size='large'
+                            fontSize='text-lg md:text-xl lg:text-2xl'
+                            radius='md'
+                        />
+                    </Link>
                 </div>
             </div>
         </>

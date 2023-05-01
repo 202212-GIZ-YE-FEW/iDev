@@ -1,8 +1,11 @@
+import AOS from "aos";
 import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import "aos/dist/aos.css";
 
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import { useAuth } from "@/components/context/AuthContext";
@@ -10,9 +13,6 @@ import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import schema from "@/utils/validationSchemaSignUp";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function SignUp({ t }) {
     useEffect(() => {
@@ -66,7 +66,7 @@ function SignUp({ t }) {
                 email: formData.email,
                 first_name: formData.firstName,
                 last_name: formData.lastName,
-                date_brith: formData.dateOfBirth,
+                dateOfBirth: formData.dateOfBirth,
                 isTherapist: false,
             };
             const profileData = {
@@ -74,7 +74,7 @@ function SignUp({ t }) {
                 deleted: false,
                 hobbies: "Play Football",
                 familySize: 80,
-                education_level: "Master",
+                educationLevel: "Master",
                 phoneNumber: 777898989,
                 gender: "male",
             };
