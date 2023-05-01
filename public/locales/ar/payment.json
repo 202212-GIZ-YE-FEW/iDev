@@ -25,5 +25,6 @@
     "cardNumberNotSupported": "رقم البطاقة غير مدعوم.",
     "cardAddedSuccessfully": "تمت إضافة البطاقة بنجاح.",
     "errorOccurred": "حدث خطأ ما.",
-    "cvvMustBe3Digits": "يجب أن يكون CVV 3 أرقام."
+    "cvvMustBe3Digits": "يجب أن يكون CVV 3 أرقام.",
+    "cardNumberNotValid": "رقم البطاقة غير صالح."
 }

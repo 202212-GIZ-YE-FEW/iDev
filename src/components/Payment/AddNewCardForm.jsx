@@ -190,6 +190,9 @@ function AddNewCardForm({ t }) {
                                                     "cardNumberNotSupported"
                                                 );
                                             }
+                                            if (value.length < 19) {
+                                                return t("cardNumberNotValid");
+                                            }
                                         },
                                     })}
                                     errors={errors}
