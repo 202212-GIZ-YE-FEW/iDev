@@ -19,9 +19,9 @@ import { useState } from "react";
 import { useEffect, useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
-import Received from "@/components/Chat/Received";
-import Sent from "@/components/Chat/Sent";
-import Sidebar from "@/components/Chat/Sidebar";
+import Received from "@/components/Chat/ChatReceived";
+import Sent from "@/components/Chat/ChatSent";
+import Sidebar from "@/components/ChatSidebar";
 import { useAuth } from "@/components/context/AuthContext";
 
 import LayoutChat from "@/layout/LayoutChat";

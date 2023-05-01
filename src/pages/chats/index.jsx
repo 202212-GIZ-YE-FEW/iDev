@@ -1,6 +1,6 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import Sidebar from "@/components/Chat/Sidebar";
+import Sidebar from "@/components/ChatSidebar";
 
 import LayoutChat from "@/layout/LayoutChat";
 const Chat = () => {
