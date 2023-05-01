@@ -2,9 +2,10 @@ import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import {
     addDoc,
+    updateDoc,
     collection,
-    orderBy,
     doc,
+    orderBy,
     query,
     serverTimestamp,
 } from "firebase/firestore";
@@ -37,12 +38,16 @@ const Chatroom = () => {
     const router = useRouter();
     const bottomOfChat = useRef();
     const { id } = router.query;
-    const q = query(
+    const q_messages = query(
         collection(db, `chats/${id}/messages`),
         orderBy("timestamp")
     );
+    // const q_chats = query(
+    //     collection(db, collectionName),
+    //     where('lastMsg', "==", fieldValue)
+    // );
     const [chat] = useDocumentData(doc(db, "chats", id));
-    const [messages] = useCollectionData(q);
+    const [messages] = useCollectionData(q_messages);
     const [input, setInput] = useState("");
 
     const sendMessage = async (e) => {
@@ -52,6 +57,13 @@ const Chatroom = () => {
             sender: user.email,
             timestamp: serverTimestamp(),
         });
+        try {
+            const docRef = doc(db, `chats`, id);
+            await updateDoc(docRef, { lastMsg: input });
+            console.log("Update successful");
+        } catch (error) {
+            console.error("Error updating document:", error);
+        }
         setInput("");
     };
     const getMessages = () =>
@@ -98,7 +110,7 @@ const Chatroom = () => {
                 className='shadow-xl rounded-md w-full lg:w-11/12 lg:mx-auto flex'
                 style={{ height: "calc(100vh - 110px)" }}
             >
-                <ChatSidebar />
+                <ChatSidebar lastMsg={chat?.lastMsg} />
                 <div class='hidden w-5/6 bg-white h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
                     <div class='flex flex-row items-center justify-between px-3 py-2 bg-gray/5 bg-opacity-40 border-b-2 border-gray/10'>
                         <h2 class='font-medium'>

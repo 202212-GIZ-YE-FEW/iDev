@@ -5,7 +5,8 @@ import getPeer from "@/utils/getPeer";
 import { useAuth } from "@/components/context/AuthContext";
 
 import getDocument from "@/firebase/getData";
-const ChatSidebar = () => {
+const ChatSidebar = (props) => {
+    const { lastMsg } = props;
     const { user } = useAuth();
     const [chatsOfCurrentUser, setChatsOfCurrentUser] = useState([]);
     const router = useRouter();
@@ -80,9 +81,7 @@ const ChatSidebar = () => {
                                                     </div>
                                                     <div class='flex flex-row justify-between items-center'>
                                                         <p class='text-xs text-gray-500'>
-                                                            On projection
-                                                            apartments
-                                                            unsatiable...
+                                                            {lastMsg}
                                                         </p>
                                                         <span class='text-sm bg-blue-500 rounded-full w-5 h-5 text-center text-white font-bold'>
                                                             4
