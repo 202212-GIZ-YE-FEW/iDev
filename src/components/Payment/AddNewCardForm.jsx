@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -25,6 +26,7 @@ function AddNewCardForm({ t }) {
         watch,
         formState: { errors },
     } = useForm();
+    const router = useRouter();
 
     const [cities, setCities] = useState([]);
     const countries = getAllCountries().map((country) => ({
@@ -91,6 +93,12 @@ function AddNewCardForm({ t }) {
                     position: "bottom-left",
                     autoClose: 2000,
                     type: "success",
+                });
+                router.push({
+                    pathname: "/thanks",
+                    query: {
+                        subtitle: "paymentUnderReview",
+                    },
                 });
             });
         } catch (error) {
