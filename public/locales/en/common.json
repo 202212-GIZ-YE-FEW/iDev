@@ -18,5 +18,8 @@
     "thankYou": "Thank you!",
     "more": "More",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "deletedSuccessfully": "Deleted Successfully",
+    "seemYouAreNotPermitted": "Seem you are not permitted",
+    "permittedDesc": "To access this page, you must be registered on the site and have the appropriate permission"
 }

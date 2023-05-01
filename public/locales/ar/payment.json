@@ -21,5 +21,8 @@
     "zipCode": "الرمز البريدي",
     "city": "المدينة",
     "address": "العنوان",
-    "addCard": "إضافة بطاقة"
+    "addCard": "إضافة بطاقة",
+    "cardNumberNotSupported": "رقم البطاقة غير مدعوم.",
+    "cardAddedSuccessfully": "تمت إضافة البطاقة بنجاح.",
+    "errorOccurred": "حدث خطأ ما."
 }

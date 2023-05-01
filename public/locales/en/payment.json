@@ -21,5 +21,8 @@
     "zipCode": "ZIP Code",
     "city": "City",
     "address": "Address",
-    "addCard": "Add card"
+    "addCard": "Add card",
+    "cardNumberNotSupported": "Card number not supported",
+    "cardAddedSuccessfully": "Card added successfully",
+    "errorOccurred": "Error occurred"
 }
