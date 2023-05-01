@@ -1,14 +1,19 @@
 function ChatReceived(props) {
-    const { sender, message } = props;
+    const { message, time } = props;
 
     return (
-        <div className='w-2/3 self-end p-3 rounded-lg'>
-            <div className='flex items-center flex-row-reverse'>
-                <div className='inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0'>
-                    {sender}
-                </div>
-                <div className='relative me-3 text-sm bg-yellow py-2 px-4 shadow rounded-xl'>
-                    <div>{message}</div>
+        <div class='flex flex-row p-2 justify-start'>
+            <div class='w-1/12 py-2 flex flex-shrink-0'>
+                <img
+                    src='https://www.statnews.com/wp-content/uploads/2018/01/AdobeStock_107381486-645x645.jpeg'
+                    class='h-12 w-12 md:h-9 md:w-9 lg:h-12 lg:w-12 min-w-fit rounded-full self-end'
+                    alt=''
+                />
+            </div>
+            <div class='bg-gray/10 px-3 p-3 rounded-xl mt-2 relative'>
+                <p class='text-sm'>{message}</p>
+                <div class='ml-2 flex justify-end items-end'>
+                    <span class='text-xs mr-1 text-gray/50'>{time}</span>
                 </div>
             </div>
         </div>

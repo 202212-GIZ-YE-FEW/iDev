@@ -2,64 +2,31 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex flex-col py-8 px-6 lg:w-1/4 bg-white flex-shrink-0 relative top-0 bottom-0"
+  class="w-full lg:w-3/6 xl:w-2/6 flex flex-col justify-start items-stretch  bg-white bg-opacity-80 rounded-md lg:rounded-none lg:rounded-l-md p-3"
 >
   <div
-    className="me-2 font-bold text-xl text-center"
-  >
-    LKJF87KJKJL4123jlkJL
-  </div>
-  <div
-    className="flex flex-col items-center w-1/2 mx-auto lg:w-full bg-white border border-gray/20 mt-4 py-6 px-4 rounded-lg"
+    class="flex-auto flex flex-col"
   >
     <div
-      className="h-20 w-20 rounded-full border overflow-hidden"
+      class="flex-auto flex flex-row"
     >
-      <img
-        alt="Blog.png"
-        className="object-cover w-full h-full rounded-3xl"
-        data-nimg="1"
-        decoding="async"
-        height={250}
-        loading="lazy"
-        onError={[Function]}
-        onLoad={[Function]}
-        src="/_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=1920&q=75"
-        srcSet="/_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=750&q=75 1x, /_next/image?url=https%3A%2F%2Fdevelopers.elementor.com%2Fdocs%2Fassets%2Fimg%2Felementor-placeholder-image.png&w=1920&q=75 2x"
-        style={
-          Object {
-            "color": "transparent",
-          }
-        }
-        width={700}
-      />
-    </div>
-    <div
-      className="text-sm font-semibold mt-2"
-    >
-      Abrar Abdulwahed
-    </div>
-    <div
-      className="text-xs text-gray-500"
-    >
-      Fullstack web developer
-    </div>
-  </div>
-  <div
-    className="flex flex-col mt-8"
-  >
-    <div
-      className="flex flex-row items-center justify-between text-xs"
-    >
-      <span
-        className="font-bold"
+      <div
+        class="w-full p-1"
       >
-        Conversations
-      </span>
+        <div
+          class="w-full p-1"
+        >
+          <input
+            class="search-input bg-gray-600 bg-opacity-10 placeholder-gray-500 text-gray-400 text-sm py-1 px-10 rounded-md outline-none w-full focus:outline-none focus:ring"
+            placeholder="Search"
+            type="text"
+          />
+        </div>
+        <ul
+          class="overflow-y-auto"
+        />
+      </div>
     </div>
-    <div
-      className="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto"
-    />
   </div>
 </div>
 `;

@@ -2,18 +2,29 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="w-2/3 self-end p-3 rounded-lg"
+  class="flex flex-row p-2 justify-start"
 >
   <div
-    className="flex items-center flex-row-reverse"
+    class="w-1/12 py-2 flex flex-shrink-0"
   >
-    <div
-      className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-light-gray flex-shrink-0"
+    <img
+      alt=""
+      class="h-12 w-12 md:h-9 md:w-9 lg:h-12 lg:w-12 min-w-fit rounded-full self-end"
+      src="https://www.statnews.com/wp-content/uploads/2018/01/AdobeStock_107381486-645x645.jpeg"
+    />
+  </div>
+  <div
+    class="bg-gray/10 px-3 p-3 rounded-xl mt-2 relative"
+  >
+    <p
+      class="text-sm"
     />
     <div
-      className="relative me-3 text-sm bg-yellow py-2 px-4 shadow rounded-xl"
+      class="ml-2 flex justify-end items-end"
     >
-      <div />
+      <span
+        class="text-xs mr-1 text-gray/50"
+      />
     </div>
   </div>
 </div>
