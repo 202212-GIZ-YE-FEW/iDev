@@ -42,27 +42,25 @@ const Chatroom = () => {
         collection(db, `chats/${id}/messages`),
         orderBy("timestamp")
     );
-    // const q_chats = query(
-    //     collection(db, collectionName),
-    //     where('lastMsg', "==", fieldValue)
-    // );
     const [chat] = useDocumentData(doc(db, "chats", id));
     const [messages] = useCollectionData(q_messages);
     const [input, setInput] = useState("");
 
     const sendMessage = async (e) => {
         e.preventDefault();
-        await addDoc(collection(db, `chats/${id}/messages`), {
-            text: input,
-            sender: user.email,
-            timestamp: serverTimestamp(),
-        });
+        const lastMsgRef = await addDoc(
+            collection(db, `chats/${id}/messages`),
+            {
+                text: input,
+                sender: user.email,
+                timestamp: serverTimestamp(),
+            }
+        );
         try {
             const docRef = doc(db, `chats`, id);
-            await updateDoc(docRef, { lastMsg: input });
-            console.log("Update successful");
+            await updateDoc(docRef, { lastMsg: lastMsgRef.id });
         } catch (error) {
-            console.error("Error updating document:", error);
+            // console.error("Error updating document:", error);
         }
         setInput("");
     };
@@ -107,8 +105,8 @@ const Chatroom = () => {
     return (
         <div class='h-screen overflow-hidden'>
             <div
-                className='shadow-xl rounded-md w-full lg:w-11/12 lg:mx-auto flex'
-                style={{ height: "calc(100vh - 110px)" }}
+                className='shadow-xl rounded-md w-full lg:w-full lg:mx-auto flex'
+                style={{ height: "calc(100vh - 80px)" }}
             >
                 <ChatSidebar lastMsg={chat?.lastMsg} />
                 <div class='hidden w-5/6 bg-white h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
