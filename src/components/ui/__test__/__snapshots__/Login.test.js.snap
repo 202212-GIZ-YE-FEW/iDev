@@ -110,6 +110,12 @@ exports[`renders correctly 1`] = `
             </div>
           </a>
         </div>
+        <p
+          className="text-cyan mt-3 text-center cursor-pointer"
+          onClick={[Function]}
+        >
+          forgotPassword
+        </p>
       </form>
       <div>
         <div
