@@ -88,7 +88,7 @@ const Chatroom = () => {
             }
         });
     const ScrollToBottom = () => {
-        bottomOfChat.current.scrollIntoView({
+        bottomOfChat?.current?.scrollIntoView({
             behavior: "smooth",
         });
     };
@@ -105,7 +105,7 @@ const Chatroom = () => {
     //     newChat();
     // }, [input]);
     return (
-        <div class='h-screen p-5 overflow-hidden'>
+        <div class='h-screen overflow-hidden'>
             <div
                 className='shadow-xl rounded-md w-full lg:w-11/12 lg:mx-auto flex'
                 style={{ height: "calc(100vh - 110px)" }}
@@ -114,7 +114,7 @@ const Chatroom = () => {
                 <div class='hidden w-5/6 bg-white h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
                     <div class='flex flex-row items-center justify-between px-3 py-2 bg-gray/5 bg-opacity-40 border-b-2 border-gray/10'>
                         <h2 class='font-medium'>
-                            {getPeer(chat?.users, user.email)}
+                            {getPeer(chat?.users, user)}
                         </h2>
                     </div>
                     <div class='flex-auto flex flex-col justify-between overflow-y-auto'>

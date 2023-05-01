@@ -5,8 +5,8 @@ function ChatReceived(props) {
         <div class='flex flex-row p-2 justify-start'>
             <div class='w-1/12 py-2 flex flex-shrink-0'>
                 <img
-                    src='https://www.statnews.com/wp-content/uploads/2018/01/AdobeStock_107381486-645x645.jpeg'
-                    class='h-12 w-12 md:h-9 md:w-9 lg:h-12 lg:w-12 min-w-fit rounded-full self-end'
+                    src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+                    class='h-12 w-12 md:h-9 md:w-9 lg:h-12 lg:w-12 rounded-full self-end'
                     alt=''
                 />
             </div>

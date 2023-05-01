@@ -52,7 +52,7 @@ const ChatSidebar = (props) => {
                                                 class='my-2 p-2 flex flex-row cursor-pointer rounded-lg hover:bg-gray-50 hover:bg-opacity-50'
                                             >
                                                 <img
-                                                    src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-997145684-1547233351.jpg?crop=1xw:1xh;center,top&resize=480:*'
+                                                    src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
                                                     class='h-12 w-12 rounded-full mr-4'
                                                     alt=''
                                                 />
@@ -61,7 +61,7 @@ const ChatSidebar = (props) => {
                                                         <h2 class='text-xs font-bold'>
                                                             {getPeer(
                                                                 chat.users,
-                                                                user.email
+                                                                user
                                                             )}
                                                         </h2>
                                                         <div class='text-xs flex flex-row'>
