@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
         // default layout
         return (
             <AuthContextProvider>
-                <Layout>
+                <Layout requireAuth={pageProps.requireAuth || false}>
                     <Component {...pageProps} />
                     <ToastContainer />
                 </Layout>

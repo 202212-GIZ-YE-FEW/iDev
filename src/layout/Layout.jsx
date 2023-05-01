@@ -1,13 +1,16 @@
+import { useAuth } from "@/components/context/AuthContext";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import NotPermitted from "@/components/NotPermitted";
 import TopProgress from "@/components/TopProgressBar";
 
-export default function Layout({ children }) {
+export default function Layout({ children, requireAuth }) {
+    const { authenticated } = useAuth();
     return (
         <>
             <TopProgress />
             <Navbar />
-            {children}
+            {authenticated || !requireAuth ? children : <NotPermitted />}
             <Footer />
         </>
     );
