@@ -25,12 +25,13 @@ import Sidebar from "@/components/Chat/Sidebar";
 import { useAuth } from "@/components/context/AuthContext";
 
 import LayoutChat from "@/layout/LayoutChat";
-
+import { useRef, useEffect } from "react";
 import { db } from "../../firebase/config";
 const Chatroom = () => {
     const [isEmojiPickerVisible, setEmojiPickerVisible] = useState(false);
     const { user } = useAuth();
     const router = useRouter();
+    const bottomOfChat = useRef();
     const { id } = router.query;
     const q = query(
         collection(db, `chats/${id}/messages`),
@@ -68,7 +69,12 @@ const Chatroom = () => {
                 );
             }
         });
-
+    const ScrollToBottom = () => {
+        bottomOfChat.current.scrollIntoView({
+            behavior: "smooth",
+        });
+    };
+    useEffect(ScrollToBottom, [messages]);
     // useEffect(() => {
     //     const newChat = async () => {
     //         await addDoc(collection(db, "chats"), {
@@ -88,6 +94,7 @@ const Chatroom = () => {
                     {messages?.length !== 0 ? (
                         <div className='flex flex-col items-center justify-center'>
                             {getMessages()}
+                            <div ref={bottomOfChat}></div>
                         </div>
                     ) : (
                         <Image
