@@ -40,18 +40,18 @@ const ChatSidebar = (props) => {
         chatList();
     }, []);
     return (
-        <div class='w-full lg:w-3/6 xl:w-2/6 flex flex-col justify-start items-stretch  bg-white bg-opacity-80 rounded-md lg:rounded-none lg:rounded-l-md p-3'>
-            <div class='flex-auto flex flex-col'>
-                <div class='flex-auto flex flex-row'>
-                    <div class='w-full p-1'>
-                        <div class='w-full p-1'>
+        <div className='w-full lg:w-3/6 xl:w-2/6 flex flex-col justify-start items-stretch  bg-white bg-opacity-80 rounded-md lg:rounded-none lg:rounded-l-md p-3'>
+            <div className='flex-auto flex flex-col'>
+                <div className='flex-auto flex flex-row'>
+                    <div className='w-full p-1'>
+                        <div className='w-full p-1'>
                             <input
                                 type='text'
                                 placeholder='Search'
-                                class='search-input bg-gray-600 bg-opacity-10 placeholder-gray-500 text-gray-400 text-sm py-1 px-10 rounded-md outline-none w-full focus:outline-none focus:ring'
+                                className='search-input bg-gray-600 bg-opacity-10 placeholder-gray-500 text-gray-400 text-sm py-1 px-10 rounded-md outline-none w-full focus:outline-none focus:ring'
                             />
                         </div>
-                        <ul class='overflow-y-auto'>
+                        <ul className='overflow-y-auto'>
                             {chatsOfCurrentUser &&
                                 chatsOfCurrentUser.map((chat) => {
                                     {
@@ -65,27 +65,27 @@ const ChatSidebar = (props) => {
                                                 onClick={() =>
                                                     redirect(chat.id)
                                                 }
-                                                class='my-2 p-2 flex flex-row cursor-pointer rounded-lg hover:bg-gray-50 hover:bg-opacity-50'
+                                                className='my-2 p-2 flex flex-row cursor-pointer rounded-lg hover:bg-gray-50 hover:bg-opacity-50'
                                             >
                                                 <img
                                                     src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
-                                                    class='h-12 w-12 rounded-full mr-4'
+                                                    className='h-12 w-12 rounded-full mr-4'
                                                     alt=''
                                                 />
-                                                <div class='w-full flex flex-col justify-center'>
-                                                    <div class='flex flex-row justify-between items-center'>
-                                                        <h2 class='text-xs font-bold'>
+                                                <div className='w-full flex flex-col justify-center'>
+                                                    <div className='flex flex-row justify-between items-center'>
+                                                        <h2 className='text-xs font-bold'>
                                                             {getPeer(
                                                                 chat.users,
                                                                 user
                                                             )}
                                                         </h2>
-                                                        <div class='text-xs flex flex-row'>
+                                                        <div className='text-xs flex flex-row'>
                                                             {/* if sender of last message is the current user */}
                                                             {user.email ===
                                                                 lastMsgInfo?.sender && (
                                                                 <svg
-                                                                    class='w-4 h-4 text-[#F0FFFF] fill-current mr-1'
+                                                                    className='w-4 h-4 text-[#F0FFFF] fill-current mr-1'
                                                                     viewBox='0 0 19 14'
                                                                 >
                                                                     <path
@@ -94,7 +94,7 @@ const ChatSidebar = (props) => {
                                                                     ></path>
                                                                 </svg>
                                                             )}
-                                                            <span class='text-gray/60'>
+                                                            <span className='text-gray/60'>
                                                                 {new Date(
                                                                     lastMsgInfo?.timestamp *
                                                                         1000
@@ -102,7 +102,7 @@ const ChatSidebar = (props) => {
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <p class='text-xs text-gray/80'>
+                                                    <p className='text-xs text-gray/80'>
                                                         {lastMsgInfo?.text}
                                                     </p>
                                                 </div>

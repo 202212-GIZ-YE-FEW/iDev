@@ -2,13 +2,13 @@ function ChatSent(props) {
     const { message, time } = props;
 
     return (
-        <div class='flex flex-row p-2 justify-end'>
-            <div class='bg-light-cyan text-black px-3 p-3 rounded-xl mt-2 relative'>
-                <p class='text-sm'>{message}</p>
-                <div class='ml-2 flex justify-end items-end'>
-                    <span class='text-xs mr-1 text-gray/50'>{time}</span>
+        <div className='flex flex-row p-2 justify-end'>
+            <div className='bg-light-cyan text-black px-3 p-3 rounded-xl mt-2 relative'>
+                <p className='text-sm'>{message}</p>
+                <div className='ml-2 flex justify-end items-end'>
+                    <span className='text-xs mr-1 text-gray/50'>{time}</span>
                     <svg
-                        class='w-4 h-4 text-gray/50 fill-current mr-1'
+                        className='w-4 h-4 text-gray/50 fill-current mr-1'
                         viewBox='0 0 19 14'
                     >
                         <path

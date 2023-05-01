@@ -103,27 +103,27 @@ const Chatroom = () => {
     //     newChat();
     // }, [input]);
     return (
-        <div class='h-screen overflow-hidden'>
+        <div className='h-screen overflow-hidden'>
             <div
                 className='shadow-xl rounded-md w-full lg:w-full lg:mx-auto flex'
                 style={{ height: "calc(100vh - 80px)" }}
             >
                 <ChatSidebar lastMsg={chat?.lastMsg} />
-                <div class='hidden w-5/6 bg-white h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
-                    <div class='flex flex-row items-center justify-between px-3 py-2 bg-gray/5 bg-opacity-40 border-b-2 border-gray/10'>
-                        <h2 class='font-medium'>
+                <div className='hidden w-5/6 bg-white h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
+                    <div className='flex flex-row items-center justify-between px-3 py-2 bg-gray/5 bg-opacity-40 border-b-2 border-gray/10'>
+                        <h2 className='font-medium'>
                             {getPeer(chat?.users, user)}
                         </h2>
                     </div>
-                    <div class='flex-auto flex flex-col justify-between overflow-y-auto'>
+                    <div className='flex-auto flex flex-col justify-between overflow-y-auto'>
                         {messages?.length !== 0 ? (
-                            <div class='flex flex-col'>
+                            <div className='flex flex-col'>
                                 {getMessages()}
                                 <div ref={bottomOfChat}></div>
                             </div>
                         ) : (
                             <Image
-                                class='self-center'
+                                className='self-center'
                                 src={EmptyChatGIF}
                                 alt=''
                                 width={300}
@@ -131,41 +131,41 @@ const Chatroom = () => {
                             />
                         )}
                     </div>
-                    <div class='flex flex-row justify-between items-center p-3'>
-                        <div class=''>
+                    <div className='flex flex-row justify-between items-center p-3'>
+                        <div className=''>
                             <button
                                 type='button'
-                                class='p-2 text-gray/40 rounded-full hover:text-gray/60 hover:bg-gray/10 focus:outline-none'
+                                className='p-2 text-gray/40 rounded-full hover:text-gray/60 hover:bg-gray/10 focus:outline-none'
                                 aria-label='Upload a files'
                             >
                                 <Image src={PinSVG} alt='' />
                             </button>
                         </div>
-                        <div class='flex-1 px-3'>
+                        <div className='flex-1 px-3'>
                             <form onSubmit={sendMessage} className='w-full'>
                                 <input
                                     placeholder='Write your message!'
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     type='text'
-                                    class='w-full border-2 border-gray/10 rounded-full px-4 py-1 outline-none text-gray focus:outline-none'
+                                    className='w-full border-2 border-gray/10 rounded-full px-4 py-1 outline-none text-gray focus:outline-none'
                                 />
                             </form>
                         </div>
-                        <div class='flex flex-row'>
+                        <div className='flex flex-row'>
                             <button
                                 onClick={() =>
                                     setEmojiPickerVisible(!isEmojiPickerVisible)
                                 }
                                 type='button'
-                                class='p-2 text-gray/40 rounded-full hover:text-gray/60 hover:bg-gray/10 focus:outline-none'
+                                className='p-2 text-gray/40 rounded-full hover:text-gray/60 hover:bg-gray/10 focus:outline-none'
                                 aria-label='Show emojis'
                             >
                                 <Image src={EmojiSVG} alt='' />
                             </button>
                             <button
                                 type='button'
-                                class='p-2 ml-2 text-gray/40 rounded-full hover:text-gray/60 hover:bg-gray/10 focus:outline-none'
+                                className='p-2 ml-2 text-gray/40 rounded-full hover:text-gray/60 hover:bg-gray/10 focus:outline-none'
                                 aria-label='Record a voice'
                             >
                                 <Image src={VoiceSVG} alt='' />

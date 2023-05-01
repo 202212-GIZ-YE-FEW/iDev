@@ -2,22 +2,22 @@
 
 exports[`renders correctly 1`] = `
 <div
-  class="flex flex-row p-2 justify-end"
+  className="flex flex-row p-2 justify-end"
 >
   <div
-    class="bg-light-cyan text-black px-3 p-3 rounded-xl mt-2 relative"
+    className="bg-light-cyan text-black px-3 p-3 rounded-xl mt-2 relative"
   >
     <p
-      class="text-sm"
+      className="text-sm"
     />
     <div
-      class="ml-2 flex justify-end items-end"
+      className="ml-2 flex justify-end items-end"
     >
       <span
-        class="text-xs mr-1 text-gray/50"
+        className="text-xs mr-1 text-gray/50"
       />
       <svg
-        class="w-4 h-4 text-gray/50 fill-current mr-1"
+        className="w-4 h-4 text-gray/50 fill-current mr-1"
         viewBox="0 0 19 14"
       >
         <path
