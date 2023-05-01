@@ -16,11 +16,11 @@
     body {
         @apply h-full;
     }
-    section#root {
+    /* section#root {
         width: 100vw !important;
         background-color: red;
     }
     .scroll.flex-grow.padding-lr > div {
         width: 100%;
-    }
+    } */
 }

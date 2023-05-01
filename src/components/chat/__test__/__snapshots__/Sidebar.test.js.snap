@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex flex-col py-8 px-6 lg:w-1/4 bg-white flex-shrink-0"
+  className="flex flex-col py-8 px-6 lg:w-1/4 bg-white flex-shrink-0 relative top-0 bottom-0"
 >
   <div
     className="me-2 font-bold text-xl text-center"
