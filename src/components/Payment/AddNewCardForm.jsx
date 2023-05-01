@@ -217,6 +217,16 @@ function AddNewCardForm({ t }) {
                                         inputHeightSize='h-10'
                                         register={register("cvv", {
                                             required: true,
+                                            validate: (value) => {
+                                                if (
+                                                    value.length < 3 ||
+                                                    value.length > 3
+                                                ) {
+                                                    return t(
+                                                        "cvvMustBe3Digits"
+                                                    );
+                                                }
+                                            },
                                         })}
                                         errors={errors}
                                         maxLength='3'

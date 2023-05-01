@@ -24,5 +24,6 @@
     "addCard": "Add card",
     "cardNumberNotSupported": "Card number not supported",
     "cardAddedSuccessfully": "Card added successfully",
-    "errorOccurred": "Error occurred"
+    "errorOccurred": "Error occurred",
+    "cvvMustBe3Digits": "CVV must be 3 digits"
 }
