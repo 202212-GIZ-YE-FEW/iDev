@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdOutlinePayment } from "react-icons/md";
 import Carousel from "react-multi-carousel";
+import { toast } from "react-toastify";
 
 import "react-multi-carousel/lib/styles.css";
 
+import { useAuth } from "@/components/context/AuthContext";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 
@@ -20,11 +22,14 @@ import MasterCardSVG from "/public/images/master-card.svg";
 import VisaSVG from "/public/images/visa.svg";
 
 function PaymentMethod({ t }) {
+    const { user } = useAuth();
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const collectionPath = `users/${user.uid}/Personal_data/payment_methods/data`;
+
     const fetchPaymentMethods = async () => {
-        const result = await getDocument("user_payment_methods");
+        const result = await getDocument(collectionPath);
         return result;
     };
 
@@ -51,7 +56,7 @@ function PaymentMethod({ t }) {
             }
         }
         getPaymentMethods();
-    }, []);
+    });
 
     const responsive = {
         desktop: {
@@ -77,8 +82,13 @@ function PaymentMethod({ t }) {
 
     const deleteCard = async (e, id) => {
         e.stopPropagation();
-        await deleteDocument("user_payment_methods", id);
-        alert("Card deleted successfully");
+        await deleteDocument(collectionPath, id);
+        toast(t("common:deletedSuccessfully"), {
+            hideProgressBar: true,
+            position: "bottom-left",
+            autoClose: 2000,
+            type: "success",
+        });
         const updatedCards = await fetchPaymentMethods();
         cardData(updatedCards);
     };
@@ -125,13 +135,13 @@ function PaymentMethod({ t }) {
                                                     />
                                                     <div className='w-full h-full flex flex-col mb-6 justify-between text-sm'>
                                                         <p aria-label='expire date'>
-                                                            {item.expireDate}
+                                                            {item.expiryDate}
                                                         </p>
                                                         <p aria-label='card number'>
                                                             {item.cardNumber}
                                                         </p>
                                                         <p aria-label='card holder'>
-                                                            {item.holder}
+                                                            {item.nameOnCard}
                                                         </p>
                                                     </div>
                                                     <div className='fit-content self-end lg:self-end md:self-end'>
@@ -189,6 +199,7 @@ export async function getStaticProps({ locale }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common", "payment"])),
+            requireAuth: true,
         },
     };
 }
