@@ -19,9 +19,9 @@ import { useState } from "react";
 import { useEffect, useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
-import Received from "@/components/ChatReceived";
-import Sent from "@/components/ChatSent";
-import Sidebar from "@/components/ChatSidebar";
+import ChatReceived from "@/components/ChatReceived";
+import ChatSent from "@/components/ChatSent";
+import ChatSidebar from "@/components/ChatSidebar";
 import { useAuth } from "@/components/context/AuthContext";
 
 import LayoutChat from "@/layout/LayoutChat";
@@ -53,7 +53,7 @@ const Chatroom = () => {
             const sender = msg.sender === user.email;
             if (sender) {
                 return (
-                    <Sent
+                    <ChatSent
                         key={index}
                         sender={`${user.email[0]}`}
                         message={msg.text}
@@ -61,7 +61,7 @@ const Chatroom = () => {
                 );
             } else {
                 return (
-                    <Received
+                    <ChatReceived
                         key={index}
                         sender={`${user.email[0]}`}
                         message={msg.text}
@@ -89,7 +89,7 @@ const Chatroom = () => {
     return (
         <div className='flex h-screen antialiased'>
             <div className='flex flex-col lg:flex-row h-full w-full overflow-y-auto lg:overflow-y-hidden overflow-x-hidden'>
-                <Sidebar />
+                <ChatSidebar />
                 <div className='flex flex-col justify-between overflow-y-auto lg:w-3/4 flex-1 bg-background p-4'>
                     {messages?.length !== 0 ? (
                         <div className='flex flex-col items-center justify-center'>

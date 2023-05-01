@@ -1,13 +1,13 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import Sidebar from "@/components/ChatSidebar";
+import ChatSidebar from "@/components/ChatSidebar";
 
 import LayoutChat from "@/layout/LayoutChat";
 const Chat = () => {
     return (
         <div className='flex antialiased'>
             <div className='flex flex-col lg:flex-row h-full w-full overflow-x-hidden'>
-                <Sidebar />
+                <ChatSidebar />
                 <div className='flex flex-col flex-auto lg:w-3/4 flex-shrink-0 bg-background p-4'></div>
             </div>
         </div>
