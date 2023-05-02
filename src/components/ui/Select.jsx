@@ -13,7 +13,7 @@ function Select(props) {
         heightSize = "h-auto",
         radius = "md",
         shadow = "sm",
-        onChange = () => {},
+        onChange,
         className = "",
     } = props;
 
@@ -36,7 +36,7 @@ function Select(props) {
 
             <select
                 value={value}
-                onChange={(e) => onChange(e)}
+                onChange={onChange}
                 placeholder={placeholder}
                 className={inputClasses}
             >
