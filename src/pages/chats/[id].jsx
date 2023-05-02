@@ -210,7 +210,7 @@ const Chatroom = () => {
                         </div>
                     </div>
                     {isEmojiPickerVisible && (
-                        <div className='mt-5 inline-flex justify-center items-center'>
+                        <div className='pt-5 inline-flex justify-center items-center bg-background'>
                             <Picker
                                 data={data}
                                 previewPosition='none'
