@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdOutlinePayment } from "react-icons/md";
 import Carousel from "react-multi-carousel";
+import { useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 
 import "react-multi-carousel/lib/styles.css";
@@ -23,18 +23,21 @@ import VisaSVG from "/public/images/visa.svg";
 
 function PaymentMethod({ t }) {
     const { user } = useAuth();
-    const [cards, setCards] = useState([]);
-    const [loading, setLoading] = useState(true);
 
     const collectionPath = `users/${user.uid}/Personal_data/payment_methods/data`;
 
-    const fetchPaymentMethods = async () => {
-        const result = await getDocument(collectionPath);
-        return result;
-    };
+    const {
+        isLoading,
+        error,
+        data: result,
+    } = useQuery("paymentMethods", async () => {
+        const data = await getDocument(collectionPath);
+        return cardData(data);
+    });
+    const queryClient = useQueryClient();
 
     const cardData = (data) => {
-        const result = data.map((item) => ({
+        return data.map((item) => ({
             ...item,
             cardNumber: item.cardNumber.replace(
                 /^(\d{4}\s){3}/,
@@ -42,21 +45,7 @@ function PaymentMethod({ t }) {
             ),
             icon: item.type === "mastercard" ? MasterCardSVG : VisaSVG,
         }));
-        setCards(result);
     };
-
-    useEffect(() => {
-        async function getPaymentMethods() {
-            try {
-                const result = await fetchPaymentMethods();
-                cardData(result);
-                setLoading(false);
-            } catch (error) {
-                setLoading(false);
-            }
-        }
-        getPaymentMethods();
-    });
 
     const responsive = {
         desktop: {
@@ -65,7 +54,7 @@ function PaymentMethod({ t }) {
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: cards.length > 1 ? 2 : 1,
+            items: result?.length > 1 ? 2 : 1,
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
@@ -89,8 +78,8 @@ function PaymentMethod({ t }) {
             autoClose: 2000,
             type: "success",
         });
-        const updatedCards = await fetchPaymentMethods();
-        cardData(updatedCards);
+        const updatedData = result.filter((item) => item.id !== id);
+        queryClient.setQueryData("paymentMethods", updatedData);
     };
 
     return (
@@ -103,7 +92,7 @@ function PaymentMethod({ t }) {
                     title={t("yourSavedCards")}
                     subtitle={t("yourSavedCardsDesc")}
                 />
-                {loading ? (
+                {isLoading ? (
                     <div className='text-center'>
                         <div
                             className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-cyan motion-reduce:animate-[spin_1.5s_linear_infinite]'
@@ -112,13 +101,13 @@ function PaymentMethod({ t }) {
                     </div>
                 ) : (
                     <>
-                        {cards.length > 0 ? (
+                        {result?.length > 0 ? (
                             <Carousel
                                 itemClass='pe-3'
                                 className='mt-28'
                                 responsive={responsive}
                             >
-                                {cards.map((item, index) => {
+                                {result?.map((item, index) => {
                                     return (
                                         <div className='me-3' key={index}>
                                             <div className='group block relative w-full min-h-[15rem] rounded-md text-white cursor-pointer'>
