@@ -9,7 +9,6 @@ import {
     serverTimestamp,
     updateDoc,
 } from "firebase/firestore";
-import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
 import Image from "next/image";
 import { useRouter } from "next/router";
 // import { withTranslation } from "next-i18next";
@@ -25,12 +24,14 @@ import {
     useDocumentData,
 } from "react-firebase-hooks/firestore";
 
+import ChatLabel from "@/components/ChatLabel";
 import ChatReceived from "@/components/ChatReceived";
 import ChatSent from "@/components/ChatSent";
 import ChatSidebar from "@/components/ChatSidebar";
 import { useAuth } from "@/components/context/AuthContext";
 
 import LayoutChat from "@/layout/LayoutChat";
+import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
 import getPeer from "@/utils/getPeer";
 
 import { db } from "../../firebase/config";
@@ -73,27 +74,48 @@ const Chatroom = () => {
         }
         setInput("");
     };
-    const getMessages = () =>
-        messages?.map((msg, index) => {
+    const getMessages = () => {
+        let label = null;
+        let newDay = "";
+        return messages?.map((msg, index) => {
+            if (index === 0) {
+                newDay = convertFirebaseTimestamp(msg.timestamp)[0];
+                label = <ChatLabel label={newDay} />;
+            } else {
+                if (convertFirebaseTimestamp(msg.timestamp)[0] > newDay) {
+                    newDay = convertFirebaseTimestamp(msg.timestamp)[0];
+                    label = <ChatLabel label={newDay} />;
+                } else {
+                    label = "";
+                }
+            }
             const sender = msg.sender === user.email;
             if (sender) {
                 return (
-                    <ChatSent
-                        key={index}
-                        message={msg.text}
-                        time={convertFirebaseTimestamp(msg.timestamp)[2]}
-                    />
+                    <>
+                        {label}
+                        <ChatSent
+                            key={index}
+                            message={msg.text}
+                            time={convertFirebaseTimestamp(msg.timestamp)[1]}
+                        />
+                    </>
                 );
             } else {
                 return (
-                    <ChatReceived
-                        key={index}
-                        message={msg.text}
-                        time={convertFirebaseTimestamp(msg.timestamp)[2]}
-                    />
+                    <>
+                        {label}
+                        <ChatReceived
+                            key={index}
+                            message={msg.text}
+                            time={convertFirebaseTimestamp(msg.timestamp)[1]}
+                        />
+                    </>
                 );
             }
         });
+    };
+
     const ScrollToBottom = () => {
         bottomOfChat?.current?.scrollIntoView({
             behavior: "smooth",
