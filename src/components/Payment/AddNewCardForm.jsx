@@ -256,6 +256,17 @@ function AddNewCardForm({ t }) {
                                     inputHeightSize='h-10'
                                     register={register("nameOnCard", {
                                         required: true,
+                                        validate: (value) => {
+                                            if (
+                                                !value.match(
+                                                    /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+                                                ) ||
+                                                value.length < 3 ||
+                                                value.length > 21
+                                            ) {
+                                                return t("nameOnCardNotValid");
+                                            }
+                                        },
                                     })}
                                     errors={errors}
                                     t={t}
