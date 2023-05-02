@@ -13,9 +13,7 @@ export default function PreviewProfile() {
     const imgFilehandler = async (e) => {
         const file = e.target.files[0];
         const userId = user.uid;
-        const imageName = `${userId}${file.name.substring(
-            file.name.lastIndexOf(".")
-        )}`;
+        const imageName = `${userId}`;
         const path = "ProfilesImages/";
         uploadimg(URL.createObjectURL(file));
 

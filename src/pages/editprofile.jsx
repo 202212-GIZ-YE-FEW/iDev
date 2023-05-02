@@ -55,13 +55,10 @@ function EditProfile({ t }) {
     const handleChange = async (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         const file = e.target.files && e.target.files[0];
-        console.log(file);
 
         if (file) {
             const userId = user.uid;
-            const imageName = `${userId}${file.name.substring(
-                file.name.lastIndexOf(".")
-            )}`;
+            const imageName = `${userId}`;
             const path = "UploadId/";
             uploadimg(URL.createObjectURL(file));
             await uploadImage(file, imageName, path);
