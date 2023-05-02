@@ -78,11 +78,17 @@ const ChatSidebar = (props) => {
                                                             </svg>
                                                         )}
                                                         <span className='text-gray/60'>
-                                                            {new Date(
-                                                                chat.lastMsg
-                                                                    ?.time *
-                                                                    1000
-                                                            ).toDateString()}
+                                                            {chat.id === chatRef
+                                                                ? new Date(
+                                                                      lastMsgLive?.time *
+                                                                          1000
+                                                                  ).toDateString()
+                                                                : new Date(
+                                                                      chat
+                                                                          .lastMsg
+                                                                          ?.time *
+                                                                          1000
+                                                                  ).toDateString()}
                                                         </span>
                                                     </div>
                                                 </div>
