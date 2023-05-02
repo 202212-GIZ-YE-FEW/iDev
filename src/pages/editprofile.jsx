@@ -12,6 +12,7 @@ import updateDocument from "@/firebase/updateSubCollection";
 import PageIntro from "@/components/PageIntro";
 import uploadImage from "@/firebase/addImage";
 import Select from "@/components/ui/Select";
+import getDocument from "@/firebase/getData";
 function EditProfile({ t }) {
     const { user, changePassword, authenticated } = useAuth();
     const [imgfile, uploadimg] = useState("");
@@ -46,6 +47,7 @@ function EditProfile({ t }) {
                 querySnapshot.forEach((doc) => {
                     datafetch[doc.id] = doc.data();
                 });
+
                 setFormData(datafetch[profile]);
             }
         };
