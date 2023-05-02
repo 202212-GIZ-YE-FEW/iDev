@@ -6,7 +6,6 @@ import ProfileEditSVG from "public/edit-profile-icon.svg";
 import ProfilePreviewSVG from "public/profile-icon.svg";
 import uploadImage from "@/firebase/addImage";
 import { useAuth } from "../context/AuthContext";
-import { getDownloadURL } from "firebase/storage";
 export default function PreviewProfile() {
     const [imgfile, uploadimg] = useState("");
     const { user } = useAuth();
@@ -23,10 +22,6 @@ export default function PreviewProfile() {
         try {
             await uploadImage(file, imageName, path);
             console.log("File uploaded successfully!");
-
-            const imageRef = ref(storage, `${path}${imageName}`);
-            const downloadURL = await getDownloadURL(imageRef);
-            console.log("Download URL:", downloadURL);
         } catch (error) {
             console.error(error);
         }
