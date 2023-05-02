@@ -2,15 +2,16 @@ import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import {
     addDoc,
-    updateDoc,
     collection,
     doc,
     orderBy,
     query,
     serverTimestamp,
+    updateDoc,
 } from "firebase/firestore";
 import Image from "next/image";
 import { useRouter } from "next/router";
+// import { withTranslation } from "next-i18next";
 import EmojiSVG from "public/images/emoji.svg";
 import EmptyChatGIF from "public/images/empty-chat.gif";
 import PinSVG from "public/images/pin.svg";
@@ -116,7 +117,7 @@ const Chatroom = () => {
                 style={{ height: "calc(100vh - 80px)" }}
             >
                 <ChatSidebar chatRef={id} lastMsgLive={chat?.lastMsg} />
-                <div className='hidden w-5/6 bg-white h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
+                <div className='hidden w-5/6 bg-background h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
                     <div className='flex flex-row items-center justify-between px-3 py-2 bg-gray/5 bg-opacity-40 border-b-2 border-gray/10'>
                         <h2 className='font-medium'>
                             {getPeer(chat?.users, user)}
@@ -155,7 +156,7 @@ const Chatroom = () => {
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     type='text'
-                                    className='w-full border-2 border-gray/10 rounded-full px-4 py-1 outline-none text-gray focus:outline-none'
+                                    className='w-full border-2 border-gray/10 rounded-md px-4 py-3 outline-none text-gray focus:outline-none'
                                 />
                             </form>
                         </div>
@@ -185,7 +186,7 @@ const Chatroom = () => {
                                 data={data}
                                 previewPosition='none'
                                 onEmojiSelect={(e) => {
-                                    setInput(e.native);
+                                    setInput((prev) => prev + e.native);
                                     setEmojiPickerVisible(
                                         !isEmojiPickerVisible
                                     );
@@ -199,5 +200,5 @@ const Chatroom = () => {
     );
 };
 Chatroom.getLayout = LayoutChat;
-
 export default Chatroom;
+// export default withTranslation(["chatroom", "common"])(Chatroom);

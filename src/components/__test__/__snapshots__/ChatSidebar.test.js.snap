@@ -17,8 +17,8 @@ exports[`renders correctly 1`] = `
           className="w-full p-1"
         >
           <input
-            className="search-input bg-gray-600 bg-opacity-10 placeholder-gray-500 text-gray-400 text-sm py-1 px-10 rounded-md outline-none w-full focus:outline-none focus:ring"
-            placeholder="Search"
+            className="border-2 border-gray/30  placeholder-gray/50 text-gray/80 text-sm py-2 px-10 rounded-md outline-none w-full focus:outline-none"
+            placeholder="search"
             type="text"
           />
         </div>
