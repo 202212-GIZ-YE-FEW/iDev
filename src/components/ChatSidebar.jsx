@@ -1,15 +1,19 @@
+import { doc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useDocumentData } from "react-firebase-hooks/firestore";
 
 import { useAuth } from "@/components/context/AuthContext";
 
 import getDocument from "@/firebase/getData";
 import getDocById from "@/firebase/getDocById";
 import getPeer from "@/utils/getPeer";
-
+import { db } from "../firebase/config";
 const ChatSidebar = (props) => {
-    const { lastMsg } = props;
+    const { chatRef, lastMsgLive } = props;
     const { user } = useAuth();
+    const [chats, setChats] = useState([]);
     const [chatsOfCurrentUser, setChatsOfCurrentUser] = useState([]);
 
     const router = useRouter();
@@ -17,19 +21,10 @@ const ChatSidebar = (props) => {
         router.push(`/chats/${id}`);
     };
 
-    // To show last message info in sidebar lists
-    const [lastMsgInfo, setLastMsgInfo] = useState(null);
-    const getLastMsgInfo = (chat_id, msg_id) => {
-        getDocById(`chats/${chat_id}/messages`, msg_id).then((msgInstance) =>
-            setLastMsgInfo(msgInstance)
-        );
-    };
-
     useEffect(() => {
         const chatList = async () => {
-            let chats = [];
             try {
-                chats = await getDocument("chats");
+                const chats = await getDocument("chats");
                 setChatsOfCurrentUser(
                     chats.filter((chat) => chat.users.includes(user.email))
                 );
@@ -54,61 +49,55 @@ const ChatSidebar = (props) => {
                         <ul className='overflow-y-auto'>
                             {chatsOfCurrentUser &&
                                 chatsOfCurrentUser.map((chat) => {
-                                    {
-                                        lastMsg === chat.lastMsg &&
-                                            getLastMsgInfo(chat.id, lastMsg);
-                                    }
-                                    if (chat.users.includes(user.email)) {
-                                        return (
-                                            <li
-                                                key={Math.random()}
-                                                onClick={() =>
-                                                    redirect(chat.id)
-                                                }
-                                                className='my-2 p-2 flex flex-row cursor-pointer rounded-lg hover:bg-gray-50 hover:bg-opacity-50'
-                                            >
-                                                <img
-                                                    src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
-                                                    className='h-12 w-12 rounded-full mr-4'
-                                                    alt=''
-                                                />
-                                                <div className='w-full flex flex-col justify-center'>
-                                                    <div className='flex flex-row justify-between items-center'>
-                                                        <h2 className='text-xs font-bold'>
-                                                            {getPeer(
-                                                                chat.users,
-                                                                user
-                                                            )}
-                                                        </h2>
-                                                        <div className='text-xs flex flex-row'>
-                                                            {/* if sender of last message is the current user */}
-                                                            {user.email ===
-                                                                lastMsgInfo?.sender && (
-                                                                <svg
-                                                                    className='w-4 h-4 text-[#F0FFFF] fill-current mr-1'
-                                                                    viewBox='0 0 19 14'
-                                                                >
-                                                                    <path
-                                                                        fill-rule='nonzero'
-                                                                        d='M4.96833846,10.0490996 L11.5108251,2.571972 C11.7472185,2.30180819 12.1578642,2.27443181 12.428028,2.51082515 C12.6711754,2.72357915 12.717665,3.07747757 12.5522007,3.34307913 L12.4891749,3.428028 L5.48917485,11.428028 C5.2663359,11.6827011 4.89144111,11.7199091 4.62486888,11.5309823 L4.54038059,11.4596194 L1.54038059,8.45961941 C1.2865398,8.20577862 1.2865398,7.79422138 1.54038059,7.54038059 C1.7688373,7.31192388 2.12504434,7.28907821 2.37905111,7.47184358 L2.45961941,7.54038059 L4.96833846,10.0490996 L11.5108251,2.571972 L4.96833846,10.0490996 Z M9.96833846,10.0490996 L16.5108251,2.571972 C16.7472185,2.30180819 17.1578642,2.27443181 17.428028,2.51082515 C17.6711754,2.72357915 17.717665,3.07747757 17.5522007,3.34307913 L17.4891749,3.428028 L10.4891749,11.428028 C10.2663359,11.6827011 9.89144111,11.7199091 9.62486888,11.5309823 L9.54038059,11.4596194 L8.54038059,10.4596194 C8.2865398,10.2057786 8.2865398,9.79422138 8.54038059,9.54038059 C8.7688373,9.31192388 9.12504434,9.28907821 9.37905111,9.47184358 L9.45961941,9.54038059 L9.96833846,10.0490996 L16.5108251,2.571972 L9.96833846,10.0490996 Z'
-                                                                    ></path>
-                                                                </svg>
-                                                            )}
-                                                            <span className='text-gray/60'>
-                                                                {new Date(
-                                                                    lastMsgInfo?.timestamp *
-                                                                        1000
-                                                                ).toDateString()}
-                                                            </span>
-                                                        </div>
+                                    return (
+                                        <li
+                                            key={Math.random()}
+                                            onClick={() => redirect(chat.id)}
+                                            className='my-2 p-2 flex flex-row cursor-pointer rounded-lg hover:bg-gray-50 hover:bg-opacity-50'
+                                        >
+                                            <img
+                                                src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+                                                className='h-12 w-12 rounded-full mr-4'
+                                                alt=''
+                                            />
+                                            <div className='w-full flex flex-col justify-center'>
+                                                <div className='flex flex-row justify-between items-center'>
+                                                    <h2 className='text-xs font-bold'>
+                                                        {getPeer(
+                                                            chat.users,
+                                                            user
+                                                        )}
+                                                    </h2>
+                                                    <div className='text-xs flex flex-row'>
+                                                        {/* if sender of last message is the current user */}
+                                                        {
+                                                            <svg
+                                                                className='w-4 h-4 text-[#F0FFFF] fill-current mr-1'
+                                                                viewBox='0 0 19 14'
+                                                            >
+                                                                <path
+                                                                    fillRule='nonzero'
+                                                                    d='M4.96833846,10.0490996 L11.5108251,2.571972 C11.7472185,2.30180819 12.1578642,2.27443181 12.428028,2.51082515 C12.6711754,2.72357915 12.717665,3.07747757 12.5522007,3.34307913 L12.4891749,3.428028 L5.48917485,11.428028 C5.2663359,11.6827011 4.89144111,11.7199091 4.62486888,11.5309823 L4.54038059,11.4596194 L1.54038059,8.45961941 C1.2865398,8.20577862 1.2865398,7.79422138 1.54038059,7.54038059 C1.7688373,7.31192388 2.12504434,7.28907821 2.37905111,7.47184358 L2.45961941,7.54038059 L4.96833846,10.0490996 L11.5108251,2.571972 L4.96833846,10.0490996 Z M9.96833846,10.0490996 L16.5108251,2.571972 C16.7472185,2.30180819 17.1578642,2.27443181 17.428028,2.51082515 C17.6711754,2.72357915 17.717665,3.07747757 17.5522007,3.34307913 L17.4891749,3.428028 L10.4891749,11.428028 C10.2663359,11.6827011 9.89144111,11.7199091 9.62486888,11.5309823 L9.54038059,11.4596194 L8.54038059,10.4596194 C8.2865398,10.2057786 8.2865398,9.79422138 8.54038059,9.54038059 C8.7688373,9.31192388 9.12504434,9.28907821 9.37905111,9.47184358 L9.45961941,9.54038059 L9.96833846,10.0490996 L16.5108251,2.571972 L9.96833846,10.0490996 Z'
+                                                                ></path>
+                                                            </svg>
+                                                        }
+                                                        <span className='text-gray/60'>
+                                                            {new Date(
+                                                                chat.lastMsg
+                                                                    ?.time *
+                                                                    1000
+                                                            ).toDateString()}
+                                                        </span>
                                                     </div>
-                                                    <p className='text-xs text-gray/80'>
-                                                        {lastMsgInfo?.text}
-                                                    </p>
                                                 </div>
-                                            </li>
-                                        );
-                                    }
+                                                <p className='text-xs text-gray/80'>
+                                                    {chat.id === chatRef
+                                                        ? lastMsgLive?.text
+                                                        : chat.lastMsg?.text}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    );
                                 })}
                         </ul>
                     </div>

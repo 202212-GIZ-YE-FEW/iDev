@@ -58,7 +58,14 @@ const Chatroom = () => {
         );
         try {
             const docRef = doc(db, `chats`, id);
-            await updateDoc(docRef, { lastMsg: lastMsgRef.id });
+            await updateDoc(docRef, {
+                lastMsg: {
+                    id: lastMsgRef.id,
+                    sender: user.email,
+                    text: input,
+                    time: serverTimestamp(),
+                },
+            });
         } catch (error) {
             // console.error("Error updating document:", error);
         }
@@ -108,7 +115,7 @@ const Chatroom = () => {
                 className='shadow-xl rounded-md w-full lg:w-full lg:mx-auto flex'
                 style={{ height: "calc(100vh - 80px)" }}
             >
-                <ChatSidebar lastMsg={chat?.lastMsg} />
+                <ChatSidebar chatRef={id} lastMsgLive={chat?.lastMsg} />
                 <div className='hidden w-5/6 bg-white h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
                     <div className='flex flex-row items-center justify-between px-3 py-2 bg-gray/5 bg-opacity-40 border-b-2 border-gray/10'>
                         <h2 className='font-medium'>
