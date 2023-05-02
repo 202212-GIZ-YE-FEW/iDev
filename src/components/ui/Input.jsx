@@ -65,7 +65,7 @@ const Input = (props) => {
             )}
             {errors && errors[name] && errors[name].message && (
                 <span
-                    className='text-red text-sm md:text-base mt-1'
+                    className='text-red text-sm md:text-base mt-1 capitalize'
                     role='alert'
                 >
                     {errors[name].message}
