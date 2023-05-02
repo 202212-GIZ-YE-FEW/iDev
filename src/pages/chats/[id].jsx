@@ -140,8 +140,14 @@ const Chatroom = () => {
                 style={{ height: "calc(100vh - 80px)" }}
             >
                 <ChatSidebar chatRef={id} lastMsgLive={chat?.lastMsg} />
-                <div className='hidden w-5/6 bg-background h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
-                    <div className='flex flex-row items-center justify-between px-3 py-2 bg-gray/5 bg-opacity-40 border-b-2 border-gray/10'>
+                <div
+                    className='hidden w-5/6 bg-background h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10'
+                    style={{
+                        background:
+                            "linear-gradient(rgba(254,232,158, 0.3), rgba(45,211,227, 0.1)), url(/images/chat-texture.jpg)",
+                    }}
+                >
+                    <div className='flex flex-row items-center justify-between px-3 py-2 bg-white/80 border-b-2 border-gray/10'>
                         <h2 className='font-medium'>
                             {getPeer(chat?.users, user)}
                         </h2>

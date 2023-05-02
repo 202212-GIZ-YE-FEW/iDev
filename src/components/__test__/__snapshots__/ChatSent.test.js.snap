@@ -2,16 +2,16 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex flex-row p-2 justify-end"
+  className="flex p-2 justify-end"
 >
   <div
-    className="bg-light-cyan text-black px-3 p-3 rounded-xl mt-2 relative"
+    className="bg-light-cyan shadow-sm border-2 border-gray/10 text-black p-3 rounded-xl mt-2"
   >
     <p
       className="text-sm"
     />
     <div
-      className="ml-2 flex justify-end items-end"
+      className="flex justify-end items-end"
     >
       <span
         className="text-xs mr-1 text-gray/50"
