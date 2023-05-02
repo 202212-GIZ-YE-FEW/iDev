@@ -1,10 +1,12 @@
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { withTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
+
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useAuth } from "@/components/context/AuthContext";
 
 import getDocument from "@/firebase/getData";
+import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
 import getPeer from "@/utils/getPeer";
 const ChatSidebar = (props) => {
     const { chatRef, lastMsgLive, t } = props;
@@ -86,16 +88,14 @@ const ChatSidebar = (props) => {
                                                             <span className='text-gray/60'>
                                                                 {chat.id ===
                                                                 chatRef
-                                                                    ? new Date(
-                                                                          lastMsgLive?.time *
-                                                                              1000
-                                                                      ).toDateString()
-                                                                    : new Date(
+                                                                    ? convertFirebaseTimestamp(
+                                                                          lastMsgLive?.time
+                                                                      )[0]
+                                                                    : convertFirebaseTimestamp(
                                                                           chat
                                                                               .lastMsg
-                                                                              ?.time *
-                                                                              1000
-                                                                      ).toDateString()}
+                                                                              ?.time
+                                                                      )[0]}
                                                             </span>
                                                         </div>
                                                     </div>

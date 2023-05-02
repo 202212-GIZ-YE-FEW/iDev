@@ -9,6 +9,7 @@ import {
     serverTimestamp,
     updateDoc,
 } from "firebase/firestore";
+import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
 import Image from "next/image";
 import { useRouter } from "next/router";
 // import { withTranslation } from "next-i18next";
@@ -80,7 +81,7 @@ const Chatroom = () => {
                     <ChatSent
                         key={index}
                         message={msg.text}
-                        time={new Date(msg.timestamp * 1000).toDateString()}
+                        time={convertFirebaseTimestamp(msg.timestamp)[2]}
                     />
                 );
             } else {
@@ -88,7 +89,7 @@ const Chatroom = () => {
                     <ChatReceived
                         key={index}
                         message={msg.text}
-                        time={new Date(msg.timestamp * 1000).toDateString()}
+                        time={convertFirebaseTimestamp(msg.timestamp)[2]}
                     />
                 );
             }
