@@ -27,5 +27,6 @@
     "errorOccurred": "Error occurred",
     "cvvMustBe3Digits": "CVV must be 3 digits",
     "cardNumberNotValid": "Card number not valid",
-    "nameOnCardNotValid": "Name on card not valid"
+    "nameOnCardNotValid": "Name on card not valid",
+    "cardAlreadyExists": "Card already exists please try another one!"
 }

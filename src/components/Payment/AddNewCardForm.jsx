@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { FaCcMastercard, FaCcVisa } from "react-icons/fa";
+import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 
 import "react-multi-carousel/lib/styles.css";
@@ -15,18 +16,27 @@ import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 
 import addDocument from "@/firebase/addData";
+import getDocument from "@/firebase/getData";
 import getCitiesOfCountry from "@/utils/city";
 import { getAllCountries, getCountryByCode } from "@/utils/country";
 
 function AddNewCardForm({ t }) {
     const { user } = useAuth();
+    const collectionPath = `users/${user.uid}/Personal_data/payment_methods/data`;
+
+    const { data: cards } = useQuery("paymentMethods", async () => {
+        const data = await getDocument(collectionPath);
+        return data;
+    });
+
     const {
         register,
         handleSubmit,
         watch,
-        formState: { errors },
+        formState: { isDirty, errors },
     } = useForm();
     const router = useRouter();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [cities, setCities] = useState([]);
     const countries = getAllCountries().map((country) => ({
@@ -76,11 +86,20 @@ function AddNewCardForm({ t }) {
         e.target.value = cardNumber || "";
     };
 
-    const collectionPath = `users/${user.uid}/Personal_data/payment_methods/data`;
-
     const cardColors = ["yellow", "pink", "blue"];
 
     const onSubmit = (data) => {
+        setIsSubmitting(true);
+        if (cards?.some((card) => card.cardNumber === data.cardNumber)) {
+            toast(t("cardAlreadyExists"), {
+                hideProgressBar: true,
+                position: "bottom-left",
+                autoClose: 2000,
+                type: "error",
+            });
+            setIsSubmitting(false);
+            return;
+        }
         const cardData = {
             ...data,
             country: getCountryByCode(data.country).name,
@@ -108,6 +127,7 @@ function AddNewCardForm({ t }) {
                 autoClose: 2000,
                 type: "error",
             });
+            setIsSubmitting(false);
         }
     };
 
@@ -339,6 +359,7 @@ function AddNewCardForm({ t }) {
                         size='large'
                         fontSize='text-sm md:text-xl'
                         radius='md'
+                        disabled={!isDirty || isSubmitting}
                     />
                 </div>
             </form>
