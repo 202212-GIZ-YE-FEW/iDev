@@ -12,9 +12,9 @@
     "email": "البريد الالكتروني",
     "familySize": "عدد افراد العائلة",
     "female": "أنثى",
-    "fullName": "الاسم الكامل",
+    "Fullname": "الاسم الكامل",
     "gender": "الجنس",
-    "hubbies": "الهوايات",
+    "hobbies": "الهوايات",
     "male": "ذكر",
     "master": "ماجستير",
     "member(s)": "أفراد",
@@ -27,6 +27,7 @@
     "ticketsRemaining": "تبقى {{count}} تذاكر",
     "uploadId": "البطاقة التعريفية",
     "newPassword": "كلمة السر الجديدة",
-    "Current Password": "كلمة السر الحالية",
-    "select": "اختار"
+    "currentPassword": "كلمة السر الحالية",
+    "select": "اختار",
+    "dateOfBirth":"تاريخ الميلاد"
 }

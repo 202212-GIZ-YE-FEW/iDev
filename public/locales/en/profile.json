@@ -12,9 +12,9 @@
     "email": "Email",
     "familySize": "Family Size",
     "female": "Female",
-    "fullName": "Full Name",
+    "Fullname": "Full Name",
     "gender": "Gender",
-    "hubbies": "Hubbies",
+    "hobbies": "Hubbies",
     "male": "Male",
     "master": "Master",
     "member(s)": "Member(s)",
@@ -28,5 +28,6 @@
     "uploadId": "Upload Id",
     "newPassword": "New Password",
     "currentPassword": "Current Password",
-    "select": "select"
+    "select": "select",
+    "dateOfBirth":"Date Of Birth"
 }

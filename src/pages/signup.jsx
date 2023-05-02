@@ -37,7 +37,7 @@ function SignUp({ t }) {
         confirmemail = "confirmEmail",
         password = "password",
         confirmpassword = "confirmPassword",
-        datebrith = "date",
+        datebrith = "dateOfBirth",
         signup = "signup",
         login = "login",
     } = {};
