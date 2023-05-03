@@ -1,3 +1,4 @@
+import { where } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
@@ -22,7 +23,7 @@ const ChatSidebar = (props) => {
             try {
                 const chats = await getDocument(
                     "chats",
-                    `where ("users", "array-contains", ${user?.email})`
+                    where("users", "array-contains", user?.email)
                 );
                 setChatsOfCurrentUser(chats);
             } catch (error) {
