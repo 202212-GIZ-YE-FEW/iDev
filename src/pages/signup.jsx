@@ -12,6 +12,7 @@ import { useAuth } from "@/components/context/AuthContext";
 import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+
 import schema from "@/utils/validationSchemaSignUp";
 
 function SignUp({ t }) {
