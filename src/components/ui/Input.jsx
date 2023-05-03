@@ -31,38 +31,37 @@ const Input = (props) => {
         <>
             {label && (
                 <label
-                    className={`mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-${labelColor} font-light flex:self-center capitalize text-sm md:text-base lg:text-lg w-4/12`}
+                    className={`mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-${labelColor} font-light flex:self-center capitalize text-sm md:text-base lg:text-lg flex-1`}
                     htmlFor={id}
                 >
                     {label}
                 </label>
             )}
-            <div>
-                <input
-                    onChange={onChange}
-                    value={value}
-                    name={name}
-                    type={type}
-                    required={isRequired}
-                    placeholder={placeholder}
-                    className={inputClasses}
-                    {...rest}
-                />
-                {suffixIcon && (
-                    <span className='absolute mt-5 -ms-8 transform -translate-y-1/2 text-sm md:text-base lg:text-lg'>
-                        {suffixIcon}
-                    </span>
-                )}
 
-                {error && (
-                    <div className=' text-red text-sm md:text-base mt-1 '>
-                        {t(`validation:${error}`, {
-                            field: t(`${field}`),
-                            count: "3",
-                        })}
-                    </div>
-                )}
-            </div>
+            <input
+                onChange={onChange}
+                value={value}
+                name={name}
+                type={type}
+                required={isRequired}
+                placeholder={placeholder}
+                className={inputClasses}
+                {...rest}
+            />
+            {suffixIcon && (
+                <span className='absolute mt-5 -ms-8 transform -translate-y-1/2 text-sm md:text-base lg:text-lg'>
+                    {suffixIcon}
+                </span>
+            )}
+
+            {error && (
+                <div className=' text-red text-sm md:text-base mt-1 '>
+                    {t(`validation:${error}`, {
+                        field: t(`${field}`),
+                        count: "3",
+                    })}
+                </div>
+            )}
         </>
     );
 };

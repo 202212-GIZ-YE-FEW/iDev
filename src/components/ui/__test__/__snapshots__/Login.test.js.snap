@@ -45,32 +45,28 @@ exports[`renders correctly 1`] = `
         <div
           className="mb-[0.8rem]"
         >
-          <div>
-            <input
-              className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-              name="email"
-              onChange={[Function]}
-              placeholder="email"
-              required={false}
-              type="email"
-              value=""
-            />
-          </div>
+          <input
+            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+            name="email"
+            onChange={[Function]}
+            placeholder="email"
+            required={false}
+            type="email"
+            value=""
+          />
         </div>
         <div
           className="mb-[0.8rem]"
         >
-          <div>
-            <input
-              className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-              name="password"
-              onChange={[Function]}
-              placeholder="password"
-              required={false}
-              type="password"
-              value=""
-            />
-          </div>
+          <input
+            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+            name="password"
+            onChange={[Function]}
+            placeholder="password"
+            required={false}
+            type="password"
+            value=""
+          />
         </div>
         <div
           className="flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row"
