@@ -1,30 +1,9 @@
 import "react-multi-carousel/lib/styles.css";
-import { useEffect, useState } from "react";
-import downloadImage from "@/firebase/getImage";
 import getDocument from "@/firebase/getData";
 import BlogCard from "@/components/BlogCard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
-import PageIntro from "@/components/PageIntro";
 
-const Blogs = ({ t }) => {
-    const [blogs, setBlogs] = useState([]);
-    function getFirst80Chars(str) {
-        return str.slice(0, 170);
-    }
-    useEffect(() => {
-        downloadImage();
-        const fetchData = async () => {
-            try {
-                setBlogs(await getDocument("blogs"));
-            } catch (e) {
-                //
-            }
-        };
-
-        fetchData();
-    }, []);
-
+const Blogs = ({ blogs }) => {
     return (
         <div className='container'>
             <div className='flex flex-wrap justify-around  '>
@@ -43,7 +22,6 @@ const Blogs = ({ t }) => {
                                     "..."
                                 }
                                 id={blog.id}
-                                t={t}
                             />
                         </div>
                     </div>
@@ -54,11 +32,21 @@ const Blogs = ({ t }) => {
 };
 
 export default Blogs;
-
+function getFirst80Chars(str) {
+    return str.slice(0, 170);
+}
 export async function getStaticProps({ locale }) {
+    let blogs = [];
+    try {
+        blogs = await getDocument("blogs");
+    } catch (error) {
+        //
+    }
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common", "blog"])),
+            ...(await serverSideTranslations(locale, "common")),
+            blogs,
+
             // Will be passed to the page component as props
         },
     };
