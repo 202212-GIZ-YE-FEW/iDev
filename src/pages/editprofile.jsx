@@ -107,7 +107,6 @@ function EditProfile({ t }) {
                         >
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[2_1_0%]'
                                     type='text'
                                     name='Fullname'
                                     label={t("Fullname")}
@@ -150,7 +149,6 @@ function EditProfile({ t }) {
                             </div>
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[2_1_0%]'
                                     type='text'
                                     name='hobbies'
                                     label={t("hobbies")}
@@ -164,7 +162,6 @@ function EditProfile({ t }) {
                             </div>
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[1_1_0%]'
                                     type='number'
                                     name='familySize'
                                     label={t("familySize")}
@@ -203,7 +200,6 @@ function EditProfile({ t }) {
                             </div>
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[2_1_0%]'
                                     type='date'
                                     name='dateOfBirth'
                                     label={t("dateOfBirth")}
@@ -217,7 +213,6 @@ function EditProfile({ t }) {
                             </div>
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[2_1_0%]'
                                     type='email'
                                     name='email'
                                     label={t("email")}
@@ -231,7 +226,6 @@ function EditProfile({ t }) {
                             </div>
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[2_1_0%]'
                                     type='text'
                                     name='phoneNumber'
                                     label={t("phoneNumber")}
@@ -245,7 +239,6 @@ function EditProfile({ t }) {
                             </div>
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[2_1_0%]'
                                     type='file'
                                     name='uploadId'
                                     label={t("uploadId")}
@@ -261,7 +254,6 @@ function EditProfile({ t }) {
                             <PageIntro title={t("security")} />
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[2_1_0%]'
                                     type='password'
                                     name='currentPassword'
                                     label={t("currentPassword")}
@@ -275,7 +267,6 @@ function EditProfile({ t }) {
                             </div>
                             <div className='flex items-center my-5'>
                                 <Input
-                                    inputWidthSize='flex-[2_1_0%]'
                                     type='password'
                                     name='newPassword'
                                     label={t("newPassword")}

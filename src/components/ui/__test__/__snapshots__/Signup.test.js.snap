@@ -47,26 +47,45 @@ exports[`renders correctly 1`] = `
           <div
             className="flex-col mt-[0.8rem]"
           >
-            <input
-              className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-              name="firstName"
-              onChange={[Function]}
-              placeholder="firstName"
-              required={false}
-              type="name"
-              value=""
-            />
+            <div>
+              <input
+                className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+                name="firstName"
+                onChange={[Function]}
+                placeholder="firstName"
+                required={false}
+                type="name"
+                value=""
+              />
+            </div>
           </div>
           <div
             className="flex-col mt-[0.8rem]"
           >
+            <div>
+              <input
+                className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+                name="lastName"
+                onChange={[Function]}
+                placeholder="lastName"
+                required={false}
+                type="name"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="mb-[0.8rem]"
+        >
+          <div>
             <input
               className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-              name="lastName"
+              name="email"
               onChange={[Function]}
-              placeholder="lastName"
+              placeholder="email"
               required={false}
-              type="name"
+              type="email"
               value=""
             />
           </div>
@@ -74,28 +93,17 @@ exports[`renders correctly 1`] = `
         <div
           className="mb-[0.8rem]"
         >
-          <input
-            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-            name="email"
-            onChange={[Function]}
-            placeholder="email"
-            required={false}
-            type="email"
-            value=""
-          />
-        </div>
-        <div
-          className="mb-[0.8rem]"
-        >
-          <input
-            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-            name="confirmEmail"
-            onChange={[Function]}
-            placeholder="confirmEmail"
-            required={false}
-            type="email"
-            value=""
-          />
+          <div>
+            <input
+              className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+              name="confirmEmail"
+              onChange={[Function]}
+              placeholder="confirmEmail"
+              required={false}
+              type="email"
+              value=""
+            />
+          </div>
         </div>
         <div
           className="flex mb-[0.8rem] space-x-[0.7rem] rtl:space-x-reverse"
@@ -103,46 +111,52 @@ exports[`renders correctly 1`] = `
           <div
             className="flex-col mt-[0.8rem]"
           >
-            <input
-              className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-              name="password"
-              onChange={[Function]}
-              placeholder="password"
-              required={false}
-              type="password"
-              value=""
-            />
+            <div>
+              <input
+                className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+                name="password"
+                onChange={[Function]}
+                placeholder="password"
+                required={false}
+                type="password"
+                value=""
+              />
+            </div>
           </div>
           <div
             className="flex-col mt-[0.8rem]"
           >
-            <input
-              className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-              name="confirmPassword"
-              onChange={[Function]}
-              placeholder="confirmPassword"
-              required={false}
-              type="password"
-              value=""
-            />
+            <div>
+              <input
+                className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+                name="confirmPassword"
+                onChange={[Function]}
+                placeholder="confirmPassword"
+                required={false}
+                type="password"
+                value=""
+              />
+            </div>
           </div>
         </div>
         <div
           className="flex-col  text-center lg:text-start justify-center mb-[0.5rem]  ext-md font-weight-500"
         >
           <label
-            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg flex-1"
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg w-4/12"
           >
             dateOfBirth
           </label>
-          <input
-            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
-            name="dateOfBirth"
-            onChange={[Function]}
-            required={false}
-            type="date"
-            value=""
-          />
+          <div>
+            <input
+              className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+              name="dateOfBirth"
+              onChange={[Function]}
+              required={false}
+              type="date"
+              value=""
+            />
+          </div>
         </div>
         <div
           className="flex justify-center mt-5 space-x-[0.5rem] rtl:space-x-reverse 1.4rem sm:flex-row"

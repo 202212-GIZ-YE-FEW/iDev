@@ -18,7 +18,7 @@ function Select(props) {
     } = props;
 
     const inputClasses = clsx(
-        `${widthSize} ${heightSize} block border text-sm border-solid self-center text-light-gray border-light-gray/30 px-[10px] min-w-0 font-${fontWeight} rounded-${radius} shadow-${shadow} flex-[2_1_0%] ${className}`,
+        `${widthSize} ${heightSize} border text-base text-light-black border-solid border-light-gray/30 shadow-${shadow} self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-${widthSize} font-${fontWeight} rounded-${radius} ${className}`,
         {
             [`text-${fontSize}`]: heightSize === "h-auto",
         }
