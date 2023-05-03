@@ -16,5 +16,6 @@
     "subscribe": "subscribe",
     "test": "Hello",
     "thankYou": "Thank you!",
-    "more": "More"
+    "more": "More",
+    "Subscription": "Subscription done successfully!"
 }

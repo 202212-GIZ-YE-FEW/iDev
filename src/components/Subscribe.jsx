@@ -1,6 +1,9 @@
 import { withTranslation } from "next-i18next";
-import React, { useRef } from "react";
+
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import addDocument from "@/firebase/addData";
+import schema from "@/utils/validationSchemaSubscription";
 function Subscribe({
     t,
     title = "subscribe",
@@ -8,9 +11,14 @@ function Subscribe({
     placeholder = "enterEmail",
     titleTextTransform = "capitalize",
 }) {
+    const [formData, setFormData] = useState({});
+    const [formErrors, setFormErrors] = useState({});
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
     const form = useRef();
 
-    const sendEmail = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         e.target.reset();
 
@@ -30,6 +38,32 @@ function Subscribe({
                     console.log(error.text);
                 }
             );
+        try {
+            await schema.validate(formData, { abortEarly: false });
+
+            const collection = "newsletter"; // collection name
+            const userData = {
+                email: formData.user_email,
+            };
+
+            addDocument(collection, userData);
+
+            const router = require("next/router").default;
+            router.push({
+                pathname: "/thanks",
+                query: {
+                    subtitle1: "Subscription",
+                },
+            });
+        } catch (error) {
+            if (error.inner) {
+                const newErrors = {};
+                error.inner.forEach((e) => {
+                    newErrors[e.path] = e.message;
+                });
+                setFormErrors(newErrors);
+            }
+        }
     };
     return (
         <>
@@ -42,7 +76,7 @@ function Subscribe({
                 <p className='text-sm md:text-lg lg:text-xl text-light-gray'>
                     {t(`${subtitle}`)}
                 </p>
-                <form className='mt-[24px]' ref={form} onSubmit={sendEmail}>
+                <form className='mt-[24px]' ref={form} onSubmit={handleSubmit}>
                     <label htmlFor='subscribe-newsletter' className='sr-only'>
                         {t(`${title}`)}
                     </label>
@@ -53,6 +87,8 @@ function Subscribe({
                             id='subscribe-newsletter'
                             className='block flex-1 min-w-0 w-full focus:outline-none text-sm py-2.5 px-3 bg-transparent'
                             placeholder={t(`${placeholder}`)}
+                            onChange={handleChange}
+                            error={formErrors.user_email}
                         />
                         <button type='submit' value='Send'>
                             <span className='inline-flex items-center text-2xl px-3 bg-cyan border-s-2 border-light-gray/80 text-light-black rounded-e-1.5'>

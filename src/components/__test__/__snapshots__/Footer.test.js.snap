@@ -37,6 +37,7 @@ exports[`renders correctly 1`] = `
             className="block flex-1 min-w-0 w-full focus:outline-none text-sm py-2.5 px-3 bg-transparent"
             id="subscribe-newsletter"
             name="user_email"
+            onChange={[Function]}
             placeholder="enterEmail"
             type="email"
           />
