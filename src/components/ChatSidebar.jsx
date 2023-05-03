@@ -20,10 +20,11 @@ const ChatSidebar = (props) => {
     useEffect(() => {
         const chatList = async () => {
             try {
-                const chats = await getDocument(
-                    "chats",
-                    "where('email', '!=', user?.email)"
-                );
+                const chats = await getDocument("chats", [
+                    "email",
+                    "!=",
+                    `${user?.email}`,
+                ]);
                 setChatsOfCurrentUser(chats);
             } catch (error) {
                 //
