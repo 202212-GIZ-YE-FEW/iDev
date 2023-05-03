@@ -21,5 +21,12 @@
     "zipCode": "ZIP Code",
     "city": "City",
     "address": "Address",
-    "addCard": "Add card"
+    "addCard": "Add card",
+    "cardNumberNotSupported": "Card number not supported",
+    "cardAddedSuccessfully": "Card added successfully",
+    "errorOccurred": "Error occurred",
+    "cvvMustBe3Digits": "CVV must be 3 digits",
+    "cardNumberNotValid": "Card number not valid",
+    "nameOnCardNotValid": "Name on card not valid",
+    "cardAlreadyExists": "Card already exists please try another one!"
 }

@@ -9,7 +9,6 @@ exports[`renders correctly 1`] = `
     data-nimg="1"
     decoding="async"
     height={190}
-    loading="lazy"
     onError={[Function]}
     onLoad={[Function]}
     src=""

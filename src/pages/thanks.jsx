@@ -16,10 +16,7 @@ export default function Thanks() {
                 <title>{t("thankYou")} | purpose </title>
             </Head>
             <div className='container'>
-                <PageIntro
-                    title={t("thankYou")}
-                    subtitle={t(`signup:${subtitle}`)}
-                />
+                <PageIntro title={t("thankYou")} subtitle={t(`${subtitle}`)} />
                 <Link href='/'>
                     <Button
                         content={t("backToHome")}
