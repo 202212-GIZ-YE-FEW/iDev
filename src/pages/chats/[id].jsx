@@ -147,10 +147,12 @@ const Chatroom = () => {
                             "linear-gradient(rgba(254,232,158, 0.3), rgba(45,211,227, 0.1)), url(/images/chat-texture.jpg)",
                     }}
                 >
-                    <div className='flex flex-row items-center justify-between px-3 py-2 bg-white/80 border-b-2 border-gray/10'>
+                    <div className='flex items-center justify-between px-3 py-2 bg-white/80 border-b-2 border-gray/10'>
                         <h2 className='font-medium'>
                             {getPeer(chat?.users, user)}
                         </h2>
+                        {console.log("hi", user.uid, "li")}
+                        {user.isTherapist && <button>Eliminate Chat</button>}
                     </div>
                     <div className='flex-auto flex flex-col justify-between overflow-y-auto'>
                         {messages?.length !== 0 ? (
