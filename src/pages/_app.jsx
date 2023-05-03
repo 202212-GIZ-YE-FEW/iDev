@@ -14,9 +14,11 @@ function MyApp({ Component, pageProps }) {
         // customized layout
         return (
             <AuthContextProvider>
-                <Component.getLayout>
-                    <Component {...pageProps} />
-                </Component.getLayout>
+                <QueryClientProvider client={new QueryClient()}>
+                    <Component.getLayout>
+                        <Component {...pageProps} />
+                    </Component.getLayout>
+                </QueryClientProvider>
             </AuthContextProvider>
         );
     } else {

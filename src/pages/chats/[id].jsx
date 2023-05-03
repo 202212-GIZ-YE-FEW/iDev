@@ -32,7 +32,7 @@ import { useAuth } from "@/components/context/AuthContext";
 
 import LayoutChat from "@/layout/LayoutChat";
 import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
-import getPeer from "@/utils/getPeer";
+import { getMyPeer, getPeerData } from "@/utils/getPeer";
 
 import { db } from "../../firebase/config";
 const Chatroom = () => {
@@ -149,7 +149,8 @@ const Chatroom = () => {
                 >
                     <div className='flex justify-between px-3 py-[1.25rem] bg-white/80 border-b-2 border-gray/10'>
                         <h2 className='font-medium'>
-                            {getPeer(chat?.users, user)}
+                            {/* {console.log(getPeerData(chat?.users, user), 'hi')} */}
+                            {getPeerData(chat?.users, user).id}
                         </h2>
                         {user.isTherapist && <button>Eliminate Chat</button>}
                     </div>
