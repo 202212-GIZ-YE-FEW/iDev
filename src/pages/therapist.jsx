@@ -7,16 +7,18 @@ import { useAuth } from "@/components/context/AuthContext";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import RadioGroup from "@/components/ui/radiogroup/RadioGroup";
-import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
-
-import updateDocumentField from "@/firebase/updateData";
 import schema from "@/utils/validationSchemaTherapist";
+import { doc, collection, getFirestore } from "firebase/firestore";
+import "firebase/auth";
+import "firebase/firestore";
+import updateDocument from "@/firebase/updateSubCollection";
 function Therapist({ t }) {
     const { authenticated, user } = useAuth();
     const [formData, setFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
-
+    const userData = {
+        isTherapist: true,
+    };
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -26,17 +28,26 @@ function Therapist({ t }) {
 
         try {
             await schema.validate(formData, { abortEarly: false });
-            const collection = "user";
-            const fieldName = "email";
-            const fieldValue = user.email;
-            const userData = {
+            const db = getFirestore();
+            const userId = user?.uid;
+            if (!userId) {
+                // handle the case where the user is not logged in
+                return <p>You need to log in to access this page.</p>;
+            }
+            const parentDocRef = doc(db, "users", userId);
+            const childCollectionRef = collection(
+                parentDocRef,
+                "Personal_data"
+            );
+            const childCollectionPath = childCollectionRef.path; // outputs "parentCollection/parentDocId/childCollection"
+            const data = {
                 userName: formData.userName,
                 city: formData.city,
                 LicenseNamber: formData.licenseNamber,
-                isTherapist: true,
             };
-
-            updateDocumentField(collection, fieldName, fieldValue, userData);
+            const therapist = "therapist";
+            await updateDocument(childCollectionPath, therapist, data);
+            await updateDocument("users", userId, userData);
             const router = require("next/router").default;
             router.push({
                 pathname: "/",
@@ -51,6 +62,7 @@ function Therapist({ t }) {
             }
         }
     };
+
     return (
         <div className='container py-20'>
             {authenticated ? (
@@ -110,28 +122,6 @@ function Therapist({ t }) {
                                 />
                             </div>
 
-                            <div>
-                                <RadioGroup title={t("selectGender")}>
-                                    <RadioInputItem
-                                        id='male'
-                                        name='gender'
-                                        value='male'
-                                        checked={formData.gender === "male"}
-                                        onChange={handleChange}
-                                        content={t("male")}
-                                        as='standard'
-                                    />
-                                    <RadioInputItem
-                                        id='female'
-                                        name='gender'
-                                        value='female'
-                                        checked={formData.gender === "female"}
-                                        onChange={handleChange}
-                                        content={t("female")}
-                                        as='standard'
-                                    />
-                                </RadioGroup>
-                            </div>
                             <div className='mt-12'>
                                 <Button
                                     content={t("create")}

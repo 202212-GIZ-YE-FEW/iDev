@@ -13,5 +13,7 @@
     "min": "{{ field }} must be at least {{ count }} characters long",
     "required": "{{ field }} is required",
     "userName": "{{ field }}  should contain at least 6 characters and should only include letters and numbers.",
-    "licenseNumber": "License number should be exactly 9 digits"
+    "licenseNumber": "License number should be exactly 9 digits",
+    "phoneNumber": "{{ field }} must start with 73/77/71 and have 7 number after it ",
+    "uploadId": "File format not supported"
 }
