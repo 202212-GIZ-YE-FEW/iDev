@@ -24,12 +24,14 @@ function Login({ t }) {
         password = "password",
         signup = "signup",
         login = "login",
+        forgotPassword = "forgotPassword",
     } = [];
     const {
         logIn,
         authenticated,
         signInWithFbAccount,
         signInWithGoogleAccount,
+        resetPassword,
     } = useAuth();
 
     const [formData, setFormData] = useState({});
@@ -67,7 +69,16 @@ function Login({ t }) {
             }
         }
     };
+    const handleResetPassword = async (e) => {
+        e.preventDefault();
 
+        const email = prompt("Please enter your email address");
+
+        if (email) {
+            await resetPassword(email);
+            alert("Password reset email sent!");
+        }
+    };
     return (
         <div className='container'>
             <div className='grid grid-cols-1 lg:grid-cols-2 justify-items-center py-20 items-center gap-y-10 gap-x-32'>
@@ -137,7 +148,14 @@ function Login({ t }) {
                                 />
                             </Link>
                         </div>
+                        <p
+                            onClick={handleResetPassword}
+                            className='text-cyan mt-3 text-center cursor-pointer'
+                        >
+                            {t(`${forgotPassword}`)}
+                        </p>
                     </form>
+
                     <AuthSocialMedia
                         googleLogoOnclick={signInWithGoogleAccount}
                         FbLogoOnClick={signInWithFbAccount}

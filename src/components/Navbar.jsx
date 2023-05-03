@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 import { useState } from "react";
 
@@ -12,6 +13,9 @@ import { navigation } from "@/utils/constants";
 import { useAuth } from "./context/AuthContext";
 function LangDropdown(props) {
     const { setOpenLangDropdown, openLangDropdown, to } = props;
+    const router = useRouter();
+    const query = router.query;
+
     return (
         <div
             className='relative inline-block'
@@ -25,7 +29,10 @@ function LangDropdown(props) {
             {openLangDropdown ? (
                 <div className='absolute start-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl'>
                     <Link
-                        href={to}
+                        href={{
+                            pathname: to,
+                            query: query,
+                        }}
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                         locale='en'
                         onClick={() => (document.dir = "ltr")}
@@ -33,7 +40,10 @@ function LangDropdown(props) {
                         English
                     </Link>
                     <Link
-                        href={to}
+                        href={{
+                            pathname: to,
+                            query: query,
+                        }}
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                         locale='ar'
                         onClick={() => (document.dir = "rtl")}
@@ -105,7 +115,12 @@ function NavLink({ to, children }) {
     return (
         <Link
             href={to}
-            className='my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow'
+            className={clsx(
+                "my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow",
+                {
+                    "text-yellow font-semibold underline": usePathname() === to,
+                }
+            )}
         >
             {children}
         </Link>
@@ -310,17 +325,19 @@ function Navbar({ t }) {
                         />
                         {/* Add Imge */}
                         {authenticated ? (
-                            <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
-                                <Image
-                                    className='rounded-full w-14 h-14object-cover'
-                                    width={14}
-                                    height={14}
-                                    alt='userImage'
-                                    src={`/${String(
-                                        localStorage.getItem("image")
-                                    )}`}
-                                />
-                            </div>
+                            <Link href='/editprofile'>
+                                <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
+                                    <Image
+                                        className='rounded-full w-14 h-14object-cover'
+                                        width={14}
+                                        height={14}
+                                        alt='userImage'
+                                        src={`/${String(
+                                            localStorage.getItem("image")
+                                        )}`}
+                                    />
+                                </div>
+                            </Link>
                         ) : (
                             <></>
                         )}

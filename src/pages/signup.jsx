@@ -1,8 +1,11 @@
+import AOS from "aos";
 import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import "aos/dist/aos.css";
 
 import AuthSocialMedia from "@/components/AuthSocialMedia";
 import { useAuth } from "@/components/context/AuthContext";
@@ -10,11 +13,7 @@ import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 
-import addDocument from "@/firebase/addData";
 import schema from "@/utils/validationSchemaSignUp";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function SignUp({ t }) {
     useEffect(() => {
@@ -28,6 +27,8 @@ function SignUp({ t }) {
         authenticated,
         signInWithFbAccount,
         signInWithGoogleAccount,
+        user,
+        sendEmailConfirmation,
     } = useAuth();
 
     const {
@@ -40,8 +41,6 @@ function SignUp({ t }) {
         datebrith = "date",
         signup = "signup",
         login = "login",
-        loggedin = "loggedin",
-        confirmEmail = "confirmEmail",
     } = {};
 
     const [formData, setFormData] = useState({});
@@ -65,37 +64,34 @@ function SignUp({ t }) {
             const collection = "user"; // collection name
             const userData = {
                 active: true,
-                deleted: false,
-                education_level: "",
                 email: formData.email,
-                familySize: 4,
                 first_name: formData.firstName,
-                gender: "",
-                hobbies: "",
                 last_name: formData.lastName,
-                date_brith: formData.dateOfBirth,
-                phoneNumber: "",
+                dateOfBirth: formData.dateOfBirth,
                 isTherapist: false,
+            };
+            const profileData = {
+                Fullname: formData.firstName + " " + formData.lastName,
+                deleted: false,
+                hobbies: "Play Football",
+                familySize: 80,
+                educationLevel: "Master",
+                phoneNumber: 777898989,
+                gender: "male",
+            };
+            const therapistData = {
+                LicenseNamber: "",
                 userName: "",
                 city: "",
-                LicenseNamber: 7899000,
             };
-
-            addDocument(collection, userData).then((response) => {
-                signUp(formData.email, formData.password);
-
-                const router = require("next/router").default;
-                router.push({
-                    pathname: "/thanks",
-                    query: {
-                        subtitle: "emailVerified",
-                    },
-                });
-            });
+            signUp(
+                formData.email,
+                formData.password,
+                userData,
+                profileData,
+                therapistData
+            );
         } catch (error) {
-            if (error.code === "auth/email-already-in-use") {
-                setFormErrors({ email: "validation:emailExist" });
-            }
             if (error.inner) {
                 const newErrors = {};
                 error.inner.forEach((e) => {
@@ -105,7 +101,6 @@ function SignUp({ t }) {
             }
         }
     };
-
     return (
         <div className='container'>
             <div className='grid grid-cols-1 lg:grid-cols-2 justify-items-center py-20 items-center gap-y-10 gap-x-32'>
