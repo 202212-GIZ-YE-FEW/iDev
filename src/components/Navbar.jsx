@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
+import { withTranslation } from "next-i18next";
 import { useState } from "react";
 
 import Button from "@/components/ui/Button";
@@ -11,18 +12,10 @@ import { navigation } from "@/utils/constants";
 
 import { useAuth } from "./context/AuthContext";
 function LangDropdown(props) {
-    const { i18n } = useTranslation();
-    const onChangeDir = (locale) => {
-        document.dir = locale === "en" ? "ltr" : "rtl";
-        const url = router.query;
-        const newUrl = {
-            pathname: router.pathname,
-            query: { ...url },
-        };
-        router.push(newUrl);
-    };
+    const { setOpenLangDropdown, openLangDropdown, to } = props;
+    const router = useRouter();
+    const query = router.query;
 
-    const { setOpenLangDropdown, openLangDropdown, router } = props;
     return (
         <div
             className='relative inline-block'
@@ -36,18 +29,24 @@ function LangDropdown(props) {
             {openLangDropdown ? (
                 <div className='absolute start-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl'>
                     <Link
-                        href={router.pathname}
+                        href={{
+                            pathname: to,
+                            query: query,
+                        }}
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                         locale='en'
-                        onClick={() => onChangeDir("en")}
+                        onClick={() => (document.dir = "ltr")}
                     >
                         English
                     </Link>
                     <Link
-                        href={router.pathname}
+                        href={{
+                            pathname: to,
+                            query: query,
+                        }}
                         className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                         locale='ar'
-                        onClick={() => onChangeDir("ar")}
+                        onClick={() => (document.dir = "rtl")}
                     >
                         العربية
                     </Link>
@@ -116,7 +115,12 @@ function NavLink({ to, children }) {
     return (
         <Link
             href={to}
-            className='my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow'
+            className={clsx(
+                "my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow",
+                {
+                    "text-yellow font-semibold underline": usePathname() === to,
+                }
+            )}
         >
             {children}
         </Link>
@@ -130,7 +134,7 @@ function MobileNav(prop) {
         setOpenLangDropdown,
         openAboutDropdown,
         setOpenAboutDropdown,
-        router,
+        to,
         t,
     } = prop;
     const { Logout, authenticated } = useAuth();
@@ -202,7 +206,7 @@ function MobileNav(prop) {
                     <LangDropdown
                         setOpenLangDropdown={setOpenLangDropdown}
                         openLangDropdown={openLangDropdown}
-                        router={router}
+                        to={to}
                     />
                     {!authenticated ? (
                         <Link href='/login'>
@@ -232,9 +236,8 @@ function MobileNav(prop) {
     );
 }
 
-export default function Navbar() {
-    const { t } = useTranslation("common");
-    const router = useRouter();
+function Navbar({ t }) {
+    const path = usePathname();
     const [openHamburger, setOpenHamburger] = useState(false);
     const [openLangDropdown, setOpenLangDropdown] = useState(false);
     const [openAboutDropdown, setOpenAboutDropdown] = useState(false);
@@ -249,7 +252,7 @@ export default function Navbar() {
                     openLangDropdown={openLangDropdown}
                     openAboutDropdown={openAboutDropdown}
                     setOpenAboutDropdown={setOpenAboutDropdown}
-                    router={router}
+                    to={path}
                     t={t}
                 />
                 <div className='w-3/12 flex items-center'>
@@ -318,21 +321,23 @@ export default function Navbar() {
                         <LangDropdown
                             setOpenLangDropdown={setOpenLangDropdown}
                             openLangDropdown={openLangDropdown}
-                            router={router}
+                            to={path}
                         />
                         {/* Add Imge */}
                         {authenticated ? (
-                            <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
-                                <Image
-                                    className='rounded-full w-14 h-14object-cover'
-                                    width={14}
-                                    height={14}
-                                    alt='userImage'
-                                    src={`/${String(
-                                        localStorage.getItem("image")
-                                    )}`}
-                                />
-                            </div>
+                            <Link href='/editprofile'>
+                                <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
+                                    <Image
+                                        className='rounded-full w-14 h-14object-cover'
+                                        width={14}
+                                        height={14}
+                                        alt='userImage'
+                                        src={`/${String(
+                                            localStorage.getItem("image")
+                                        )}`}
+                                    />
+                                </div>
+                            </Link>
                         ) : (
                             <></>
                         )}
@@ -346,6 +351,7 @@ export default function Navbar() {
                                     size='large'
                                     fontSize='text-sm md:text-xl'
                                     radius='md'
+                                    interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                                 />
                             </Link>
                         ) : (
@@ -357,6 +363,7 @@ export default function Navbar() {
                                 fontSize='text-sm md:text-xl'
                                 radius='md'
                                 onClick={Logout}
+                                interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                             />
                         )}
                     </div>
@@ -365,3 +372,4 @@ export default function Navbar() {
         </nav>
     );
 }
+export default withTranslation("common")(Navbar);

@@ -1,4 +1,5 @@
 import { appWithTranslation } from "next-i18next";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
 
 import "@/styles/globals.css";
@@ -9,14 +10,26 @@ import { AuthContextProvider } from "@/components/context/AuthContext";
 import Layout from "@/layout/Layout";
 
 function MyApp({ Component, pageProps }) {
-    return (
-        <AuthContextProvider>
-            <Layout>
+    if (Component.getLayout) {
+        // customized layout
+        return (
+            <Component.getLayout>
                 <Component {...pageProps} />
-                <ToastContainer />
-            </Layout>
-        </AuthContextProvider>
-    );
+            </Component.getLayout>
+        );
+    } else {
+        // default layout
+        return (
+            <AuthContextProvider>
+                <QueryClientProvider client={new QueryClient()}>
+                    <Layout requireAuth={pageProps.requireAuth || false}>
+                        <Component {...pageProps} />
+                        <ToastContainer />
+                    </Layout>
+                </QueryClientProvider>
+            </AuthContextProvider>
+        );
+    }
 }
 
 export default appWithTranslation(MyApp);

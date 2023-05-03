@@ -22,7 +22,8 @@ exports[`renders correctly 1`] = `
     className="grid sm:grid-cols-1 md:grid-cols-2 my-10 lg:grid-cols-3 gap-7"
   >
     <div
-      className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      data-aos="flip-down"
     >
       <span
         className="uppercase text-4xl"
@@ -40,19 +41,30 @@ exports[`renders correctly 1`] = `
       <div
         className="w-fit"
       >
-        <button
-          className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-          data-aos="fade-right"
-          disabled={false}
+        <a
+          href="/payment?numberOfTickets=5&price=10"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
-          purchase
-        </button>
+          <div
+            className="relative self-center"
+          >
+            <button
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              disabled={false}
+              onClick={[Function]}
+            >
+              purchase
+            </button>
+          </div>
+        </a>
       </div>
     </div>
     <div
-      className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      data-aos="flip-down"
     >
       <span
         className="uppercase text-4xl"
@@ -70,19 +82,30 @@ exports[`renders correctly 1`] = `
       <div
         className="w-fit"
       >
-        <button
-          className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-          data-aos="fade-right"
-          disabled={false}
+        <a
+          href="/payment?numberOfTickets=25&price=40"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
-          purchase
-        </button>
+          <div
+            className="relative self-center"
+          >
+            <button
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              disabled={false}
+              onClick={[Function]}
+            >
+              purchase
+            </button>
+          </div>
+        </a>
       </div>
     </div>
     <div
-      className="bg-light-white flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
+      data-aos="flip-down"
     >
       <span
         className="uppercase text-4xl"
@@ -100,15 +123,25 @@ exports[`renders correctly 1`] = `
       <div
         className="w-fit"
       >
-        <button
-          className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-          data-aos="fade-right"
-          disabled={false}
+        <a
+          href="/payment?numberOfTickets=50&price=70"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
-          purchase
-        </button>
+          <div
+            className="relative self-center"
+          >
+            <button
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+              disabled={false}
+              onClick={[Function]}
+            >
+              purchase
+            </button>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -132,15 +165,18 @@ exports[`renders correctly 1`] = `
         onMouseEnter={[Function]}
         onTouchStart={[Function]}
       >
-        <button
-          className="transform hover:bg-yellow transition duration-500 hover:scale-75 hover:animate-bounce
-                active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-          data-aos="fade-right"
-          disabled={false}
+        <div
+          className="relative self-center"
         >
-          learnMore
-        </button>
+          <button
+            className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+            disabled={false}
+            onClick={[Function]}
+          >
+            learnMore
+          </button>
+        </div>
       </a>
     </div>
   </div>

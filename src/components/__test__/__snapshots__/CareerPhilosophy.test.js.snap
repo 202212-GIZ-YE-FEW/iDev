@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="lg:text-xl text-base leading-6 lg:mt-24 mt-16 lg:ms-28 ms-10 lg:me-52 md:me-20 me-10 text-[#696f72]"
+  >
+    ourSeoSoftware
+  </div>
+  <div
+    className="lg:text-2xl text-lg leading-6 mt-20 lg:ms-28 ms-10 text-[#696f72]"
+  >
+    <h3>
+      whatRole
+    </h3>
+  </div>
+  <div
+    className=" mt-4 lg:ms-28 mb-8 ms-10 "
+  >
+    <div
+      className="relative self-center"
+    >
+      <button
+        className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  uppercase text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
+        disabled={false}
+        onClick={[Function]}
+      >
+        SeeOurOpenList
+      </button>
+    </div>
+  </div>
+  <div
+    className="text-[#696f72] bg-yellow"
+  >
+    <div
+      className="lg:text-5xl md:text-3xl text-2xl leading-6 mt-10 lg:ms-28 ms-10"
+    >
+      <h1>
+        ourHiringPhi
+      </h1>
+    </div>
+    <div
+      className="lg:text-lg text-base leading-6 mt-6 lg:ms-28 ms-10 lg:me-52 md:me-20 me-10 mb-8"
+    >
+      toBuildTheVeryBestSeo
+    </div>
+  </div>
+</div>
+`;

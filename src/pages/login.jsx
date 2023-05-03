@@ -9,19 +9,29 @@ import FormTitle from "@/components/FormTitle";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import schema from "@/utils/validationSchemalogin";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Login({ t }) {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+        });
+    }, []);
     const {
         email = "email",
         password = "password",
         signup = "signup",
         login = "login",
+        forgotPassword = "forgotPassword",
     } = [];
     const {
         logIn,
         authenticated,
         signInWithFbAccount,
         signInWithGoogleAccount,
+        resetPassword,
     } = useAuth();
 
     const [formData, setFormData] = useState({});
@@ -59,7 +69,16 @@ function Login({ t }) {
             }
         }
     };
+    const handleResetPassword = async (e) => {
+        e.preventDefault();
 
+        const email = prompt("Please enter your email address");
+
+        if (email) {
+            await resetPassword(email);
+            alert("Password reset email sent!");
+        }
+    };
     return (
         <div className='container'>
             <div className='grid grid-cols-1 lg:grid-cols-2 justify-items-center py-20 items-center gap-y-10 gap-x-32'>
@@ -70,6 +89,7 @@ function Login({ t }) {
                         width={500}
                         height={300}
                         alt='signup image'
+                        data-aos='zoom-in-up'
                     />
                 </div>
                 <div className='max-w-[29rem] lg:justify-self-end'>
@@ -113,6 +133,7 @@ function Login({ t }) {
                                     fontSize='lg:text-md xl:text-sm'
                                     radius='md'
                                     onClick={handleSubmit}
+                                    interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                                 />
                             </Link>
                             <Link href='/signup'>
@@ -123,10 +144,18 @@ function Login({ t }) {
                                     fontSize='lg:text-md xl:text-sm'
                                     radius='md '
                                     shadow='shadow-lg'
+                                    interaction='transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan'
                                 />
                             </Link>
                         </div>
+                        <p
+                            onClick={handleResetPassword}
+                            className='text-cyan mt-3 text-center cursor-pointer'
+                        >
+                            {t(`${forgotPassword}`)}
+                        </p>
                     </form>
+
                     <AuthSocialMedia
                         googleLogoOnclick={signInWithGoogleAccount}
                         FbLogoOnClick={signInWithFbAccount}
