@@ -2,7 +2,7 @@ function ChatSent(props) {
     const { message, time } = props;
 
     return (
-        <div className='flex p-2 justify-end'>
+        <div className='flex me-4 justify-end'>
             <div className='bg-light-cyan shadow-sm border-2 border-gray/10 text-black p-3 rounded-xl mt-2'>
                 <p className='text-sm'>{message}</p>
                 <div className='flex justify-end items-end'>

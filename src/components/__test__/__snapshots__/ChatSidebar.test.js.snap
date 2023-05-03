@@ -2,31 +2,19 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="w-full lg:w-3/6 xl:w-2/6 flex flex-col justify-start items-stretch  bg-white bg-opacity-80 rounded-md lg:rounded-none lg:rounded-l-md p-3"
+  className="w-full lg:w-3/6 xl:w-2/6 flex flex-col justify-start items-stretch  bg-white bg-opacity-80 rounded-md lg:rounded-none lg:rounded-l-md"
 >
   <div
-    className="flex-auto flex flex-col"
+    className="w-full bg-background/80 border-b-[3px] border-gray/20 px-5 h-[4rem] inline-flex items-center justify-center"
   >
-    <div
-      className="flex-auto flex flex-row"
-    >
-      <div
-        className="w-full p-1"
-      >
-        <div
-          className="w-full p-1"
-        >
-          <input
-            className="border-2 border-gray/30  placeholder-gray/50 text-gray/80 text-sm py-2 px-10 rounded-md outline-none w-full focus:outline-none"
-            placeholder="search"
-            type="text"
-          />
-        </div>
-        <ul
-          className="overflow-y-auto"
-        />
-      </div>
-    </div>
+    <input
+      className=" placeholder-gray/50 text-gray/80 text-sm py-2 px-10 rounded-full outline-none w-full focus:outline-none"
+      placeholder="search"
+      type="text"
+    />
   </div>
+  <ul
+    className="overflow-y-auto"
+  />
 </div>
 `;

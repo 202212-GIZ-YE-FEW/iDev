@@ -141,17 +141,16 @@ const Chatroom = () => {
             >
                 <ChatSidebar chatRef={id} lastMsgLive={chat?.lastMsg} />
                 <div
-                    className='hidden w-5/6 bg-background h-full lg:flex flex-col justify-start items-stretch border-r-2 border-l-2 border-gray/10'
+                    className='hidden w-5/6 bg-background h-full lg:flex flex-col justify-start items-stretch border-gray/10'
                     style={{
                         background:
                             "linear-gradient(rgba(254,232,158, 0.3), rgba(45,211,227, 0.1)), url(/images/chat-texture.jpg)",
                     }}
                 >
-                    <div className='flex items-center justify-between px-3 py-2 bg-white/80 border-b-2 border-gray/10'>
+                    <div className='flex justify-between px-3 py-[1.25rem] bg-white/80 border-b-2 border-gray/10'>
                         <h2 className='font-medium'>
                             {getPeer(chat?.users, user)}
                         </h2>
-                        {console.log("hi", user.uid, "li")}
                         {user.isTherapist && <button>Eliminate Chat</button>}
                     </div>
                     <div className='flex-auto flex flex-col justify-between overflow-y-auto'>
@@ -170,7 +169,7 @@ const Chatroom = () => {
                             />
                         )}
                     </div>
-                    <div className='flex flex-row justify-between items-center p-3'>
+                    <div className='flex bg-background mt-3 shadow-to-xl justify-between items-center p-3'>
                         <div className=''>
                             <button
                                 type='button'
@@ -187,7 +186,7 @@ const Chatroom = () => {
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     type='text'
-                                    className='w-full border-2 border-gray/10 rounded-md px-4 py-3 outline-none text-gray focus:outline-none'
+                                    className='w-full border-2 border-gray/10 rounded-full px-4 py-3 outline-none text-gray focus:outline-none'
                                 />
                             </form>
                         </div>

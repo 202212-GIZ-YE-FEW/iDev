@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex p-2 justify-end"
+  className="flex me-4 justify-end"
 >
   <div
     className="bg-light-cyan shadow-sm border-2 border-gray/10 text-black p-3 rounded-xl mt-2"
