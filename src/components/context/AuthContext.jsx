@@ -16,8 +16,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { auth, facebookProvider, googleProvider } from "@/firebase/config";
 import image from "~/blog.png";
-import { setDoc, doc, getFirestore } from "firebase/firestore";
+import { setDoc, doc, updateDoc, getFirestore } from "firebase/firestore";
 import setDocument from "@/firebase/setData";
+import { serverTimestamp } from "@firebase/firestore";
 const db = getFirestore();
 const AuthContext = createContext({});
 
@@ -92,6 +93,10 @@ export function AuthContextProvider({ children }) {
         return signInWithEmailAndPassword(auth, email, password).then(() => {
             const user = auth.currentUser;
             if (user && user.emailVerified) {
+                const docRef = doc(db, `users`, user.uid);
+                updateDoc(docRef, {
+                    last_seen: serverTimestamp(),
+                });
                 setAuthenticated(true);
             } else {
                 // If the user's email is not verified, log them out and show an error message

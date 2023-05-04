@@ -96,7 +96,8 @@ const Chatroom = ({ chat, id, t }) => {
                 );
             } else {
                 if (
-                    moment(msg.timestamp.toDate()).format("MM-DD-YYYY") > newDay
+                    moment(msg?.timestamp?.toDate()).format("MM-DD-YYYY") >
+                    newDay
                 ) {
                     newDay = moment(msg.timestamp.toDate()).format(
                         "MM-DD-YYYY"
@@ -118,7 +119,7 @@ const Chatroom = ({ chat, id, t }) => {
                         <ChatSent
                             key={index}
                             message={msg.text}
-                            time={moment(msg?.timestamp.seconds * 1000).format(
+                            time={moment(msg?.timestamp?.seconds * 1000).format(
                                 "LT"
                             )}
                         />
@@ -131,7 +132,7 @@ const Chatroom = ({ chat, id, t }) => {
                         <ChatReceived
                             key={index}
                             message={msg.text}
-                            time={moment(msg?.timestamp.seconds * 1000).format(
+                            time={moment(msg?.timestamp?.seconds * 1000).format(
                                 "LT"
                             )}
                         />
@@ -173,9 +174,14 @@ const Chatroom = ({ chat, id, t }) => {
                     }}
                 >
                     <div className='flex justify-between px-3 py-[1.25rem] bg-white/80 border-b-2 border-gray/10'>
-                        <h2 className='font-medium'>
-                            {`${peer?.first_name} ${peer?.last_name}`}
-                        </h2>
+                        <div className='font-medium'>
+                            <span className="'font-medium'">{`${peer?.first_name} ${peer?.last_name}`}</span>
+                            <br />
+                            <span>
+                                Last seen:{" "}
+                                {moment(peer?.last_seen.toDate()).fromNow()}
+                            </span>
+                        </div>
                         {user.isTherapist && <button>Eliminate Chat</button>}
                     </div>
                     <div className='flex-auto flex flex-col justify-between overflow-y-auto'>
