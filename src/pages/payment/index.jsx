@@ -4,20 +4,45 @@ import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import { MdOutlinePayment } from "react-icons/md";
 import Carousel from "react-multi-carousel";
+import { useQuery } from "react-query";
 
 import "react-multi-carousel/lib/styles.css";
 
+import { useAuth } from "@/components/context/AuthContext";
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 
-import MasterCardSVG from "/public/images/master-card.svg";
-import VisaSVG from "/public/images/visa.svg";
-function PaymentMethod({ t }) {
-    const [paymentMethod, setPaymentMethod] = useState("mastercard");
+import getDocument from "@/firebase/getData";
+import getDocById from "@/firebase/getDocById";
+import { checkout } from "@/pages/api/checkout";
+import parseCardData from "@/utils/payment";
+
+function Payment({ t }) {
+    const { user } = useAuth();
+    const [paymentMethod, setPaymentMethod] = useState("");
     const router = useRouter();
     const query = router.query;
+
+    const collectionPath = `users/${user.uid}/Personal_data/payment_methods/data`;
+
+    const cardsQuery = useQuery({
+        queryKey: "paymentMethods",
+        queryFn: async () => {
+            const data = await getDocument(collectionPath);
+            return parseCardData(data);
+        },
+    });
+
+    const ticketQuery = useQuery({
+        queryKey: "ticket",
+        queryFn: async () => {
+            const ticket = await getDocById("tickets", query.id);
+            return ticket;
+        },
+    });
 
     const handleChange = ({ target }) => {
         setPaymentMethod(() => target.value);
@@ -36,44 +61,8 @@ function PaymentMethod({ t }) {
             items: 1,
         },
     };
-    const cards = [
-        {
-            type: "mastercard",
-            icon: MasterCardSVG,
-            cardNumber: "xxxx xxxx xxxx 2000",
-            cvv: "123",
-            expireDate: "02/2020",
-            holder: "Abrar",
-            bg: "pink",
-        },
-        {
-            type: "visa",
-            icon: VisaSVG,
-            cardNumber: "xxxx xxxx xxxx 1990",
-            cvv: "113",
-            expireDate: "02/2030",
-            holder: "Maha",
-            bg: "blue",
-        },
-        {
-            type: "paypal",
-            icon: MasterCardSVG,
-            cardNumber: "xxxx xxxx xxxx 1980",
-            cvv: "133",
-            expireDate: "02/2040",
-            holder: "Mawaheb",
-            bg: "yellow",
-        },
-        {
-            type: "konafa",
-            icon: MasterCardSVG,
-            cardNumber: "xxxx xxxx xxxx 1980",
-            cvv: "133",
-            expireDate: "02/2040",
-            holder: "Mawaheb",
-            bg: "pink",
-        },
-    ];
+    console.log(ticketQuery.data);
+
     return (
         <>
             <div className='container mt-12'>
@@ -81,64 +70,126 @@ function PaymentMethod({ t }) {
                     title={t("selectCard")}
                     subtitle={t("selectCardDesc")}
                 />
-                <Carousel
-                    itemClass='pe-3'
-                    className='mt-28'
-                    responsive={responsive}
-                >
-                    {cards.map((item, index) => (
-                        <RadioInputItem
-                            key={index}
-                            id={index}
-                            as='card'
-                            name='payment_method'
-                            value={item.type}
-                            content={
-                                <div
-                                    className='w-full h-full flex flex-col text-white justify-between py-7 px-8 rounded-md bg-no-repeat bg-cover'
-                                    style={{
-                                        backgroundImage: `url(/images/${item.bg}-overlay.png)`,
-                                    }}
-                                >
-                                    <Image
-                                        src={item.icon}
-                                        alt={`${item.name} logo`}
-                                        className='self-end'
+                {cardsQuery.isLoading ? (
+                    <div className='text-center'>
+                        <div
+                            className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-cyan motion-reduce:animate-[spin_1.5s_linear_infinite]'
+                            role='status'
+                        ></div>
+                    </div>
+                ) : (
+                    <>
+                        {cardsQuery.data?.length > 0 ? (
+                            <Carousel
+                                itemClass='pe-3'
+                                className='mt-28'
+                                responsive={responsive}
+                            >
+                                {cardsQuery.data?.map((item, index) => (
+                                    <RadioInputItem
+                                        key={index}
+                                        id={index}
+                                        as='card'
+                                        name='payment_method'
+                                        value={item.cardNumber}
+                                        content={
+                                            <div
+                                                className='w-full h-full flex flex-col text-white justify-between py-7 px-8 rounded-md bg-no-repeat bg-cover'
+                                                style={{
+                                                    backgroundImage: `url(/images/${item.bg}-overlay.png)`,
+                                                }}
+                                            >
+                                                <Image
+                                                    src={item.icon}
+                                                    alt={`${item.name} logo`}
+                                                    className='self-end'
+                                                />
+                                                <div className='w-full h-full flex flex-col mb-6 justify-between text-sm'>
+                                                    <p aria-label='expire date'>
+                                                        {item.expiryDate}
+                                                    </p>
+                                                    <p aria-label='card number'>
+                                                        {item.cardNumber}
+                                                    </p>
+                                                    <p aria-label='card holder'>
+                                                        {item.nameOnCard}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        }
+                                        checked={
+                                            paymentMethod === item.cardNumber
+                                        }
+                                        onChange={(e) => handleChange(e)}
                                     />
-                                    <div className='w-full h-full flex flex-col mb-6 justify-between text-sm'>
-                                        <p aria-label='expire date'>
-                                            {item.expireDate}
-                                        </p>
-                                        <p aria-label='card number'>
-                                            {item.cardNumber}
-                                        </p>
-                                        <p aria-label='card holder'>
-                                            {item.holder}
-                                        </p>
-                                    </div>
-                                </div>
-                            }
-                            checked={paymentMethod === item.type}
-                            onChange={(e) => handleChange(e)}
+                                ))}
+                            </Carousel>
+                        ) : (
+                            <div className='flex flex-col items-center justify-center mt-28'>
+                                <MdOutlinePayment className='text-6xl text-gray mx-auto' />
+                                {t("noPaymentMethodsFound")}
+                            </div>
+                        )}
+                    </>
+                )}
+                {!ticketQuery.isLoading && (
+                    <p className='text-base lg:text-3xl my-20 text-center font-medium'>
+                        {t("confirmBuyDesc", {
+                            count: ticketQuery.data.number_of_tickets,
+                            price: `${
+                                ticketQuery.data.number_of_tickets *
+                                ticketQuery.data.price
+                            }$`,
+                        })}
+                    </p>
+                )}
+                <div className='flex items-center space-x-4'>
+                    <div className='flex items-center'>
+                        <Link
+                            href='#'
+                            className='block text-center mx-auto my-20'
+                        >
+                            <Button
+                                content={t("confirmPurchase")}
+                                textTransform='uppercase'
+                                filled='true'
+                                size='medium'
+                                fontSize='text-sm md:text-xl'
+                                radius='md'
+                            />
+                        </Link>
+                    </div>
+                    <div className='flex items-center'>
+                        <span className='text-gray-400 text-sm md:text-xl uppercase'>
+                            {t("or")}
+                        </span>
+                    </div>
+                    <div className='flex items-center'>
+                        <Button
+                            content={t("payWithOtherCard")}
+                            textTransform='uppercase'
+                            filled='true'
+                            size='medium'
+                            fontSize='text-sm md:text-xl'
+                            radius='md'
+                            onClick={() => {
+                                checkout({
+                                    customerEmail: user.email,
+                                    lineItems: [
+                                        {
+                                            price: ticketQuery.data.price_id,
+                                            quantity: parseInt(
+                                                ticketQuery.data
+                                                    .number_of_tickets
+                                            ),
+                                        },
+                                    ],
+                                    successUrl: `${window.location.origin}/success`,
+                                });
+                            }}
                         />
-                    ))}
-                </Carousel>
-                <p className='text-base lg:text-3xl my-20 text-center font-medium'>
-                    {t("confirmBuyDesc", {
-                        count: query.numberOfTickets,
-                        price: `${query.numberOfTickets * 100}$`,
-                    })}
-                </p>
-                <Link href='#' className='block text-center mx-auto my-20'>
-                    <Button
-                        content={t("confirmPurchase")}
-                        textTransform='uppercase'
-                        filled='true'
-                        size='medium'
-                        fontSize='text-sm md:text-xl'
-                        radius='md'
-                    />
-                </Link>
+                    </div>
+                </div>
             </div>
         </>
     );
@@ -147,8 +198,8 @@ export async function getStaticProps({ locale }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common", "payment"])),
-            // Will be passed to the page component as props
+            requireAuth: true,
         },
     };
 }
-export default withTranslation(["payment"])(PaymentMethod);
+export default withTranslation(["payment"])(Payment);
