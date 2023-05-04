@@ -1,5 +1,11 @@
 import countryList from "public/country.json";
 
-export default function getAllCountries() {
+function getAllCountries() {
     return countryList;
 }
+
+function getCountryByCode(isoCode) {
+    return countryList.find((country) => country.isoCode === isoCode);
+}
+
+export { getAllCountries, getCountryByCode };
