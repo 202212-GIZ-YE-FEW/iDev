@@ -1,7 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
 // import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useQuery } from "react-query";
-
+import moment from "moment/moment";
 import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
 import { getPeerData } from "@/utils/getPeer";
 import truncate from "@/utils/truncate";
@@ -55,9 +55,9 @@ const ChatItem = (props) => {
                         )}
                         <span className='text-gray/60'>
                             {lastMsgInfo &&
-                                convertFirebaseTimestamp(
-                                    lastMsgInfo?.timestamp
-                                )[0]}
+                                moment(
+                                    lastMsgInfo?.timestamp.toDate()
+                                ).fromNow()}
                         </span>
                     </div>
                 </div>
