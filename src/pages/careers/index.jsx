@@ -2,8 +2,8 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import AvailableJobs from "@/components/AvailableJobs";
 import CareerPhilosophy from "@/components/CareerPhilosophy";
-import PageIntro from "@/components/PageIntro";
 import getDocument from "@/firebase/getData";
+import PageIntro from "@/components/PageIntro";
 
 function career({ t }) {
     return (
