@@ -1,5 +1,5 @@
-import { doc } from "firebase/firestore";
-import { useDocumentData } from "react-firebase-hooks/firestore";
+import { doc, getDoc } from "firebase/firestore";
+// import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useQuery } from "react-query";
 
 import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
@@ -10,14 +10,23 @@ import { db } from "../firebase/config";
 const ChatItem = (props) => {
     const { chat, currentUser, lastMsg } = props;
     const { data: peer } = useQuery(
-        ["setPeerData", "sidebar", chat.id],
+        ["setPeerData", "sidebar", chat?.id],
         async () => {
             const d = getPeerData(chat.users, currentUser.uid);
             return d;
         }
     );
-    const [lastMsgInfo] = useDocumentData(
-        doc(db, `chats/${chat.id}/messages`, lastMsg)
+    // const [lastMsgInfo] = useDocumentData(
+    //     doc(db, `chats/${chat?.id}/messages`, lastMsg)
+    // );
+
+    const { data: lastMsgInfo } = useQuery(
+        ["getLastMsg", lastMsg],
+        async () => {
+            const docRef = doc(db, `chats/${chat.id}/messages`, lastMsg);
+            const docSnap = await getDoc(docRef);
+            return docSnap.data();
+        }
     );
     return (
         <>
@@ -33,7 +42,7 @@ const ChatItem = (props) => {
                     </h2>
                     <div className='text-xs flex flex-row'>
                         {/* if sender of last message is the current user */}
-                        {lastMsgInfo?.sender === currentUser.uid && (
+                        {lastMsgInfo?.sender === currentUser?.uid && (
                             <svg
                                 className='w-4 h-4 text-[#F0FFFF] fill-current mr-1'
                                 viewBox='0 0 19 14'
