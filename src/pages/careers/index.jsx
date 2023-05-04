@@ -3,6 +3,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import AvailableJobs from "@/components/AvailableJobs";
 import CareerPhilosophy from "@/components/CareerPhilosophy";
 import PageIntro from "@/components/PageIntro";
+import getDocument from "@/firebase/getData";
+
 function career({ t }) {
     return (
         <div>
@@ -22,10 +24,19 @@ function career({ t }) {
         </div>
     );
 }
+
 export async function getStaticProps({ locale }) {
+    let careers = [];
+    try {
+        careers = await getDocument("current_jobs");
+    } catch (error) {
+        //
+    }
     return {
         props: {
             ...(await serverSideTranslations(locale, ["common", "career"])),
+            careers,
+
             // Will be passed to the page component as props
         },
     };
