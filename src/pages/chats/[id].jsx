@@ -1,4 +1,5 @@
 import data from "@emoji-mart/data";
+import moment from "moment/moment";
 import Picker from "@emoji-mart/react";
 import {
     addDoc,
@@ -87,12 +88,24 @@ const Chatroom = ({ chat, id, t }) => {
         let newDay = "";
         return messages?.map((msg, index) => {
             if (index === 0) {
-                newDay = convertFirebaseTimestamp(msg.timestamp)[0];
-                label = <ChatLabel label={newDay} />;
+                newDay = moment(msg.timestamp.toDate()).format("MM-DD-YYYY");
+                label = (
+                    <ChatLabel
+                        label={convertFirebaseTimestamp(msg.timestamp)[0]}
+                    />
+                );
             } else {
-                if (convertFirebaseTimestamp(msg.timestamp)[0] > newDay) {
-                    newDay = convertFirebaseTimestamp(msg.timestamp)[0];
-                    label = <ChatLabel label={newDay} />;
+                if (
+                    moment(msg.timestamp.toDate()).format("MM-DD-YYYY") > newDay
+                ) {
+                    newDay = moment(msg.timestamp.toDate()).format(
+                        "MM-DD-YYYY"
+                    );
+                    label = (
+                        <ChatLabel
+                            label={convertFirebaseTimestamp(msg.timestamp)[0]}
+                        />
+                    );
                 } else {
                     label = "";
                 }
@@ -105,7 +118,9 @@ const Chatroom = ({ chat, id, t }) => {
                         <ChatSent
                             key={index}
                             message={msg.text}
-                            time={convertFirebaseTimestamp(msg.timestamp)[1]}
+                            time={moment(msg?.timestamp.seconds * 1000).format(
+                                "LT"
+                            )}
                         />
                     </Fragment>
                 );
@@ -116,7 +131,9 @@ const Chatroom = ({ chat, id, t }) => {
                         <ChatReceived
                             key={index}
                             message={msg.text}
-                            time={convertFirebaseTimestamp(msg.timestamp)[1]}
+                            time={moment(msg?.timestamp.seconds * 1000).format(
+                                "LT"
+                            )}
                         />
                     </Fragment>
                 );

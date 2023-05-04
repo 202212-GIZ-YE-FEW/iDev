@@ -36,6 +36,7 @@
         "formik": "^2.2.9",
         "i18next": "^21.10.0",
         "i18next-browser-languagedetector": "^7.0.1",
+        "moment": "^2.29.4",
         "next": "^13.3.4",
         "next-i18next": "^11.3.0",
         "ngrok": "^4.3.3",
