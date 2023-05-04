@@ -8,13 +8,19 @@ import {
     EmailAuthProvider,
     updatePassword,
     sendPasswordResetEmail,
+    updateProfile,
 } from "firebase/auth";
 import Image from "next/image";
 import Router from "next/router";
 import Spinner from "public/spinner.svg";
 import React, { createContext, useContext, useEffect, useState } from "react";
-
-import { auth, facebookProvider, googleProvider } from "@/firebase/config";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+    auth,
+    facebookProvider,
+    googleProvider,
+    storage,
+} from "@/firebase/config";
 import image from "~/blog.png";
 import { setDoc, doc, getFirestore } from "firebase/firestore";
 import setDocument from "@/firebase/setData";
@@ -34,6 +40,7 @@ export function AuthContextProvider({ children }) {
                 setUser({
                     email: user.email,
                     uid: user.uid,
+                    photoURL: user.photoURL || image,
                 });
                 localStorage.setItem("image", user.photoURL || image); // save user photoURL to localStorage
                 localStorage.setItem("authenticated", true); // save authentication status to localStorage
@@ -190,6 +197,19 @@ export function AuthContextProvider({ children }) {
             console.error(error);
         }
     };
+    const upload = async (file, currentUser, setLoading) => {
+        const user = auth.currentUser;
+        const fileref = ref(storage, currentUser + ".png");
+        setLoading(true);
+        const snapshote = await uploadBytes(fileref, file);
+        const photoURL = await getDownloadURL(fileref);
+        console.log(photoURL);
+        updateProfile(user, { photoURL });
+        setLoading(false);
+
+        alert("upload file!");
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -203,6 +223,7 @@ export function AuthContextProvider({ children }) {
                 signInWithFbAccount,
                 changePassword,
                 resetPassword,
+                upload,
             }}
         >
             {loading ? (
