@@ -197,17 +197,10 @@ export function AuthContextProvider({ children }) {
             console.error(error);
         }
     };
-    const upload = async (file, currentUser, setLoading) => {
+    const updateProfilePhoto = async (photoURL) => {
         const user = auth.currentUser;
-        const fileref = ref(storage, "ProfilesImages/" + currentUser);
-        setLoading(true);
-        const snapshote = await uploadBytes(fileref, file);
-        const photoURL = await getDownloadURL(fileref);
         console.log(photoURL);
         updateProfile(user, { photoURL });
-        setLoading(false);
-
-        alert("upload file!");
     };
 
     return (
@@ -223,7 +216,7 @@ export function AuthContextProvider({ children }) {
                 signInWithFbAccount,
                 changePassword,
                 resetPassword,
-                upload,
+                updateProfilePhoto,
             }}
         >
             {loading ? (
