@@ -13,12 +13,12 @@ const Blogs = ({ blogs }) => {
                             <BlogCard
                                 en_title={blog.body.en_title}
                                 en_article={
-                                    getFirst80Chars(blog.body.en_article) +
+                                    blog.body.en_article.substring(0, 170) +
                                     "..."
                                 }
                                 ar_title={blog.body.ar_title}
                                 ar_article={
-                                    getFirst80Chars(blog.body.ar_article) +
+                                    blog.body.ar_article.substring(0, 170) +
                                     "..."
                                 }
                                 id={blog.id}
@@ -32,9 +32,7 @@ const Blogs = ({ blogs }) => {
 };
 
 export default Blogs;
-function getFirst80Chars(str) {
-    return str.slice(0, 170);
-}
+
 export async function getStaticProps({ locale }) {
     let blogs = [];
     try {
