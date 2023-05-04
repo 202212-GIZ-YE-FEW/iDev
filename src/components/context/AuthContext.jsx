@@ -21,7 +21,7 @@ import {
     googleProvider,
     storage,
 } from "@/firebase/config";
-import image from "~/blog.png";
+import image from "public/profile-icon.svg";
 import { setDoc, doc, getFirestore } from "firebase/firestore";
 import setDocument from "@/firebase/setData";
 const db = getFirestore();
@@ -199,7 +199,7 @@ export function AuthContextProvider({ children }) {
     };
     const upload = async (file, currentUser, setLoading) => {
         const user = auth.currentUser;
-        const fileref = ref(storage, currentUser + ".png");
+        const fileref = ref(storage, "ProfilesImages/" + currentUser);
         setLoading(true);
         const snapshote = await uploadBytes(fileref, file);
         const photoURL = await getDownloadURL(fileref);
