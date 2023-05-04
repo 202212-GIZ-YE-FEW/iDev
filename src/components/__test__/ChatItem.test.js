@@ -1,9 +1,7 @@
-import renderer from "react-test-renderer";
 import { QueryClient, QueryClientProvider } from "react-query";
-import ChatItem from "../ChatItem";
-import { doc } from "firebase/firestore";
+import renderer from "react-test-renderer";
 
-import { db } from "../../firebase/config";
+import ChatItem from "../ChatItem";
 
 it("renders correctly", () => {
     const tree = renderer
