@@ -22,5 +22,6 @@
     "deletedSuccessfully": "Deleted Successfully",
     "seemYouAreNotPermitted": "Seem you are not permitted",
     "permittedDesc": "To access this page, you must be registered on the site and have the appropriate permission",
-    "paymentUnderReview": "Your new payment method is under review, you will receive an email soon when your card is confirmed. Otherwise, you will get a notification telling you what went wrong and how to add a new card."
+    "paymentUnderReview": "Your new payment method is under review, you will receive an email soon when your card is confirmed. Otherwise, you will get a notification telling you what went wrong and how to add a new card.",
+    "careers":"careers"
 }

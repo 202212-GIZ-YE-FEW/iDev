@@ -112,6 +112,18 @@ exports[`renders correctly 1`] = `
               contactUs
             </a>
           </li>
+          <li
+            className="mx-6"
+          >
+            <a
+              href="/careers"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              careers
+            </a>
+          </li>
         </ul>
       </nav>
       <div
