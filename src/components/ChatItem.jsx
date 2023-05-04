@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 const ChatItem = (props) => {
     const { chat, currentUser } = props;
-    const { data: peer } = useQuery("getPeerData", async () => {
+    const { data: peer } = useQuery(["setPeerData", chat.id], async () => {
         const d = getPeerData(chat.users, currentUser);
         return d;
     });
@@ -38,8 +38,7 @@ const ChatItem = (props) => {
             <div className='w-full flex flex-col justify-center'>
                 <div className='flex flex-row justify-between items-center'>
                     <h2 className='text-xs font-bold'>
-                        {/* {`${peer?.first_name} ${peer?.last_name}`} */}
-                        {peer}
+                        {`${peer?.first_name} ${peer?.last_name}`}
                     </h2>
                     <div className='text-xs flex flex-row'>
                         {/* if sender of last message is the current user */}

@@ -1,37 +1,38 @@
 import { where } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { withTranslation } from "next-i18next";
-import { useEffect, useState } from "react";
-import ChatItem from "./ChatItem";
+import { useEffect } from "react";
+import { useQuery } from "react-query";
+
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useAuth } from "@/components/context/AuthContext";
 
 import getDocument from "@/firebase/getData";
-import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
-import { getMyPeer, getPeerData } from "@/utils/getPeer";
+import { getMyPeer } from "@/utils/getPeer";
+
+import ChatItem from "./ChatItem";
 const ChatSidebar = (props) => {
     const { chatRef, lastMsgLive, t } = props;
     const { user } = useAuth();
-    const [chatsOfCurrentUser, setChatsOfCurrentUser] = useState([]);
     const router = useRouter();
     const redirect = (id) => {
         router.push(`/chats/${id}`);
     };
-
-    useEffect(() => {
-        const chatList = async () => {
+    const { data: chatsOfCurrentUser } = useQuery(
+        "setChatsOfCurrentUser",
+        async () => {
             try {
                 const chats = await getDocument(
                     "chats",
                     where("users", "array-contains", user?.uid)
                 );
-                setChatsOfCurrentUser(chats);
+                return chats;
             } catch (error) {
                 //
             }
-        };
-        chatList();
-    }, []);
+        }
+    );
+
     return (
         <div className='w-full lg:w-3/6 xl:w-2/6 flex flex-col justify-start items-stretch  bg-white bg-opacity-80 rounded-md lg:rounded-none lg:rounded-l-md'>
             <div className='w-full bg-background/80 border-b-[3px] border-gray/20 px-5 h-[4rem] inline-flex items-center justify-center'>
@@ -59,9 +60,7 @@ const ChatSidebar = (props) => {
                                         currentUser={user}
                                     />
                                 </li>
-                                <li className='border-b-2 border-light-gray/20'>
-                                    {getMyPeer(chat.users, user)}
-                                </li>
+                                <li className='border-b-2 border-light-gray/20'></li>
                             </>
                         );
                     })}

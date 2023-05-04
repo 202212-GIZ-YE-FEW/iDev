@@ -12,7 +12,7 @@ function ChatReceived(props) {
             </div> */}
             <div className='px-3 rounded-xl'>
                 <p className='text-sm'>{message}</p>
-                <div className='ml-2 flex justify-end items-end'>
+                <div className='me-2 flex justify-end items-end'>
                     <span className='text-xs mr-1 text-gray/50'>{time}</span>
                 </div>
             </div>

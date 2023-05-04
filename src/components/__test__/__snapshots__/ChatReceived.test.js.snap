@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
       className="text-sm"
     />
     <div
-      className="ml-2 flex justify-end items-end"
+      className="me-2 flex justify-end items-end"
     >
       <span
         className="text-xs mr-1 text-gray/50"
