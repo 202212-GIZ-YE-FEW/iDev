@@ -4,8 +4,11 @@ import AvailableJobs from "@/components/AvailableJobs";
 import CareerPhilosophy from "@/components/CareerPhilosophy";
 import getDocument from "@/firebase/getData";
 import PageIntro from "@/components/PageIntro";
+function career({ t, careers }) {
+    //   console.log(careers.map((blog) => (
+    //     blog.arDescrption
 
-function career({ t }) {
+    // )))
     return (
         <div>
             <div className=' lg:ms-28 mt-10 ms-10 '>
@@ -19,7 +22,7 @@ function career({ t }) {
                 <CareerPhilosophy t={t} />
             </div>
             <div className='flex flex-col'>
-                <AvailableJobs t={t} />
+                <AvailableJobs t={t} careers={careers} />
             </div>
         </div>
     );
