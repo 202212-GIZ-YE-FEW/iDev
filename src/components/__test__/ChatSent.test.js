@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer";
 
-import Sent from "../ChatSent";
+import ChatReceived from "../ChatSent";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<Sent />).toJSON();
+    const tree = renderer.create(<ChatReceived />).toJSON();
     expect(tree).toMatchSnapshot();
 });

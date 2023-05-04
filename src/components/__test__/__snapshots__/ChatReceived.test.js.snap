@@ -2,16 +2,16 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex ms-8 py-2 justify-start relative tri-right left-top max-w-fit min-w-2xl h-auto mt-2 bg-white rounded-xl shadow-sm border-2 border-gray/10"
+  className="flex ms-8 py-2 justify-start relative left-top w-fit lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl h-auto mt-2 bg-white rounded-xl shadow-sm border-2 border-gray/10"
 >
   <div
     className="px-3 rounded-xl"
   >
     <p
-      className="text-sm"
+      className="text-sm break-all"
     />
     <div
-      className="me-2 flex justify-end items-end"
+      className="ms-2 flex justify-end items-end"
     >
       <span
         className="text-xs mr-1 text-gray/50"

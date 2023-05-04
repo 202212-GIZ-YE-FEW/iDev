@@ -5,7 +5,7 @@ import firebase_app from "../firebase/config";
 
 const db = getFirestore(firebase_app);
 export const getMyPeer = (users, currentUser) => {
-    return users?.find((user) => user !== currentUser?.uid);
+    return users?.find((user) => user !== currentUser);
 };
 
 export const getPeerData = async (users, currentUser) => {

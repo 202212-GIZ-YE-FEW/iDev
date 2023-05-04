@@ -2,19 +2,19 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="flex me-4 justify-end  relative tri-left right-bottom max-w-fit min-w-2xl h-auto mt-2 bg-light-cyan rounded-xl shadow-sm border-2 border-gray/10"
+  className="inline-flex mx-auto me-8 py-2 justify-end relative right-bottom w-fit lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl h-auto mt-2 bg-light-cyan rounded-xl shadow-md"
 >
   <div
     className="px-3 rounded-xl"
   >
     <p
-      className="text-sm"
+      className="text-sm break-all"
     />
     <div
       className="flex justify-end items-end"
     >
       <span
-        className="text-xs mr-1 text-gray/50"
+        className="text-xs me-1 text-gray/50"
       />
       <svg
         className="w-4 h-4 text-gray/50 fill-current mr-1"

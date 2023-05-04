@@ -1,33 +1,24 @@
-import { getMyPeer, getPeerData } from "@/utils/getPeer";
+import { doc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import {
-    addDoc,
-    collection,
-    doc,
-    getDoc,
-    orderBy,
-    query,
-    serverTimestamp,
-    updateDoc,
-} from "firebase/firestore";
-import { db } from "../firebase/config";
-import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+
+import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
+import { getPeerData } from "@/utils/getPeer";
+import truncate from "@/utils/truncate";
+
+import { db } from "../firebase/config";
 const ChatItem = (props) => {
-    const { chat, currentUser } = props;
-    const { data: peer } = useQuery(["setPeerData", chat.id], async () => {
-        const d = getPeerData(chat.users, currentUser);
-        return d;
-    });
-    // const {
-    //     data: lastMsg,
-    // } = useQuery("getLastMsg", async () => {
-    //       // console.log('to test inside query', peerId);
-    //       // const docRef = doc(db, "users", peerId);
-    //       // const docSnap = await getDoc(docRef);
-    //       // return docSnap.data();
-    //       return chat.lastMsg;
-    // });
+    const { chat, currentUser, lastMsg } = props;
+    const { data: peer } = useQuery(
+        ["setPeerData", "sidebar", chat.id],
+        async () => {
+            const d = getPeerData(chat.users, currentUser.uid);
+            return d;
+        }
+    );
+    const [lastMsgInfo] = useDocumentData(
+        doc(db, `chats/${chat.id}/messages`, lastMsg)
+    );
     return (
         <>
             <img
@@ -42,7 +33,7 @@ const ChatItem = (props) => {
                     </h2>
                     <div className='text-xs flex flex-row'>
                         {/* if sender of last message is the current user */}
-                        {chat.lastMsg?.sender === currentUser.email && (
+                        {lastMsgInfo?.sender === currentUser.uid && (
                             <svg
                                 className='w-4 h-4 text-[#F0FFFF] fill-current mr-1'
                                 viewBox='0 0 19 14'
@@ -54,22 +45,15 @@ const ChatItem = (props) => {
                             </svg>
                         )}
                         <span className='text-gray/60'>
-                            {/* {chat.id === chatRef
-                          ? convertFirebaseTimestamp(
-                                lastMsgLive?.time
-                            )[0]
-                          : convertFirebaseTimestamp(
-                                chat.lastMsg?.time
-                            )[0]
-                      } */}
-                            {chat?.lastMsg.text}
+                            {lastMsgInfo &&
+                                convertFirebaseTimestamp(
+                                    lastMsgInfo?.timestamp
+                                )[0]}
                         </span>
                     </div>
                 </div>
                 <p className='text-xs text-gray/80'>
-                    {/* {chat.id === chatRef
-                  ? lastMsgLive?.text
-                  : chat.lastMsg?.text} */}
+                    {lastMsgInfo && truncate(lastMsgInfo?.text, 30)}
                 </p>
             </div>
         </>

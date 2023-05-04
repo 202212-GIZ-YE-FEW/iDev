@@ -1,23 +1,17 @@
 import { where } from "firebase/firestore";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
-import { useEffect } from "react";
 import { useQuery } from "react-query";
 
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useAuth } from "@/components/context/AuthContext";
 
 import getDocument from "@/firebase/getData";
-import { getMyPeer } from "@/utils/getPeer";
 
 import ChatItem from "./ChatItem";
 const ChatSidebar = (props) => {
-    const { chatRef, lastMsgLive, t } = props;
+    const { chatRef, t } = props;
     const { user } = useAuth();
-    const router = useRouter();
-    const redirect = (id) => {
-        router.push(`/chats/${id}`);
-    };
     const { data: chatsOfCurrentUser } = useQuery(
         "setChatsOfCurrentUser",
         async () => {
@@ -42,29 +36,26 @@ const ChatSidebar = (props) => {
                     className=' placeholder-gray/50 text-gray/80 text-sm py-2 px-10 rounded-full outline-none w-full focus:outline-none'
                 />
             </div>
-            <ul className='overflow-y-auto'>
+            <div className='overflow-y-auto'>
                 {chatsOfCurrentUser &&
                     chatsOfCurrentUser.map((chat) => {
                         return (
-                            <>
-                                <li
-                                    key={Math.random()}
-                                    onClick={() => redirect(chat.id)}
-                                    className={`py-2 px-5 flex flex-row cursor-pointer hover:bg-gray/20 ${
-                                        chat.id === chatRef && "bg-cyan/60"
-                                    }`}
-                                >
-                                    <ChatItem
-                                        chat={chat}
-                                        peerId={getMyPeer(chat.users, user)}
-                                        currentUser={user}
-                                    />
-                                </li>
-                                <li className='border-b-2 border-light-gray/20'></li>
-                            </>
+                            <Link
+                                key={chat.id}
+                                href={`/chats/${chat.id}`}
+                                className={`py-2 px-5 flex flex-row cursor-pointer border-b-2 border-gray/30 hover:bg-gray/20 ${
+                                    chat.id === chatRef && "bg-cyan/60"
+                                }`}
+                            >
+                                <ChatItem
+                                    chat={chat}
+                                    currentUser={user}
+                                    lastMsg={chat.lastMsg}
+                                />
+                            </Link>
                         );
                     })}
-            </ul>
+            </div>
         </div>
     );
 };

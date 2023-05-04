@@ -4,13 +4,13 @@ import {
     addDoc,
     collection,
     doc,
+    getDoc,
     orderBy,
     query,
     serverTimestamp,
     updateDoc,
 } from "firebase/firestore";
 import Image from "next/image";
-import { useRouter } from "next/router";
 // import { withTranslation } from "next-i18next";
 import EmojiSVG from "public/images/emoji.svg";
 import EmptyChatGIF from "public/images/empty-chat.gif";
@@ -19,10 +19,9 @@ import VoiceSVG from "public/images/voice.svg";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { useEffect, useRef } from "react";
-import {
-    useCollectionData,
-    useDocumentData,
-} from "react-firebase-hooks/firestore";
+import { Fragment } from "react";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
 import ChatLabel from "@/components/ChatLabel";
 import ChatReceived from "@/components/ChatReceived";
@@ -32,20 +31,34 @@ import { useAuth } from "@/components/context/AuthContext";
 
 import LayoutChat from "@/layout/LayoutChat";
 import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
-import { getMyPeer, getPeerData } from "@/utils/getPeer";
+import { getPeerData } from "@/utils/getPeer";
 
 import { db } from "../../firebase/config";
-const Chatroom = () => {
+const Chatroom = ({ chat, id, t }) => {
+    chat = JSON.parse(chat);
     const [isEmojiPickerVisible, setEmojiPickerVisible] = useState(false);
     const { user } = useAuth();
-    const router = useRouter();
     const bottomOfChat = useRef();
-    const { id } = router.query;
+    const { data: peer } = useQuery(
+        ["setPeerData", "chatroom", id],
+        async () => {
+            const d = getPeerData(chat.users, user.uid);
+            return d;
+        }
+    );
+
+    const queryClient = useQueryClient();
+    const newMessage = useMutation({
+        mutationFn: (e) => sendMessage(e),
+        onSuccess: () => {
+            queryClient.invalidateQueries(["setMessages"]);
+        },
+    });
+
     const q_messages = query(
         collection(db, `chats/${id}/messages`),
         orderBy("timestamp")
     );
-    const [chat] = useDocumentData(doc(db, "chats", id));
     const [messages] = useCollectionData(q_messages);
     const [input, setInput] = useState("");
 
@@ -55,19 +68,14 @@ const Chatroom = () => {
             collection(db, `chats/${id}/messages`),
             {
                 text: input,
-                sender: user.email,
+                sender: user.uid,
                 timestamp: serverTimestamp(),
             }
         );
         try {
             const docRef = doc(db, `chats`, id);
             await updateDoc(docRef, {
-                lastMsg: {
-                    id: lastMsgRef.id,
-                    sender: user.email,
-                    text: input,
-                    time: serverTimestamp(),
-                },
+                lastMsg: lastMsgRef.id,
             });
         } catch (error) {
             // console.error("Error updating document:", error);
@@ -89,28 +97,28 @@ const Chatroom = () => {
                     label = "";
                 }
             }
-            const sender = msg.sender === user.email;
+            const sender = msg.sender === user.uid;
             if (sender) {
                 return (
-                    <>
+                    <Fragment key={msg.id}>
                         {label}
                         <ChatSent
                             key={index}
                             message={msg.text}
                             time={convertFirebaseTimestamp(msg.timestamp)[1]}
                         />
-                    </>
+                    </Fragment>
                 );
             } else {
                 return (
-                    <>
+                    <Fragment key={msg.id}>
                         {label}
                         <ChatReceived
                             key={index}
                             message={msg.text}
                             time={convertFirebaseTimestamp(msg.timestamp)[1]}
                         />
-                    </>
+                    </Fragment>
                 );
             }
         });
@@ -149,8 +157,7 @@ const Chatroom = () => {
                 >
                     <div className='flex justify-between px-3 py-[1.25rem] bg-white/80 border-b-2 border-gray/10'>
                         <h2 className='font-medium'>
-                            {/* {console.log(getPeerData(chat?.users, user), 'hi')} */}
-                            {getPeerData(chat?.users, user).id}
+                            {`${peer?.first_name} ${peer?.last_name}`}
                         </h2>
                         {user.isTherapist && <button>Eliminate Chat</button>}
                     </div>
@@ -181,7 +188,10 @@ const Chatroom = () => {
                             </button>
                         </div>
                         <div className='flex-1 px-3'>
-                            <form onSubmit={sendMessage} className='w-full'>
+                            <form
+                                onSubmit={newMessage.mutate}
+                                className='w-full'
+                            >
                                 <input
                                     placeholder='Write your message!'
                                     value={input}
@@ -232,4 +242,16 @@ const Chatroom = () => {
 };
 Chatroom.getLayout = LayoutChat;
 export default Chatroom;
+export async function getServerSideProps(context) {
+    const id = context.query.id;
+    const docRef = doc(db, "chats", id);
+    const docSnap = await getDoc(docRef);
+    return {
+        props: {
+            // ...(await serverSideTranslations(["chatroom", "common"])),
+            chat: JSON.stringify(docSnap.data()),
+            id,
+        },
+    };
+}
 // export default withTranslation(["chatroom", "common"])(Chatroom);
