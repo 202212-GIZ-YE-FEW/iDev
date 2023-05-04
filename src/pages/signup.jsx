@@ -64,7 +64,7 @@ function SignUp({ t }) {
 
             const collection = "user"; // collection name
             const userData = {
-                active: true,
+                active: false,
                 email: formData.email,
                 first_name: formData.firstName,
                 last_name: formData.lastName,

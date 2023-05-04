@@ -95,6 +95,7 @@ export function AuthContextProvider({ children }) {
             if (user && user.emailVerified) {
                 const docRef = doc(db, `users`, user.uid);
                 updateDoc(docRef, {
+                    active: true,
                     last_seen: serverTimestamp(),
                 });
                 setAuthenticated(true);
@@ -150,7 +151,13 @@ export function AuthContextProvider({ children }) {
     };
     const Logout = async () => {
         try {
-            setUser({ email: null, uid: null });
+            // setUser({ email: null, uid: null });
+            // to update the status of user (active & last seen)
+            const docRef = doc(db, `users`, user.uid);
+            updateDoc(docRef, {
+                active: false,
+                last_seen: serverTimestamp(),
+            });
             setAuthenticated(false);
             await auth.signOut(); // Sign-out successful
             setAuthenticated(false);

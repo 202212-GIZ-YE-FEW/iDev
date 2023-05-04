@@ -84,6 +84,7 @@ const Chatroom = ({ chat, id, t }) => {
         setInput("");
     };
     const getMessages = () => {
+        // label & newDay: to show date of message every new day
         let label = null;
         let newDay = "";
         return messages?.map((msg, index) => {
@@ -117,7 +118,6 @@ const Chatroom = ({ chat, id, t }) => {
                     <Fragment key={msg.id}>
                         {label}
                         <ChatSent
-                            key={index}
                             message={msg.text}
                             time={moment(msg?.timestamp?.seconds * 1000).format(
                                 "LT"
@@ -130,7 +130,6 @@ const Chatroom = ({ chat, id, t }) => {
                     <Fragment key={msg.id}>
                         {label}
                         <ChatReceived
-                            key={index}
                             message={msg.text}
                             time={moment(msg?.timestamp?.seconds * 1000).format(
                                 "LT"
@@ -173,11 +172,11 @@ const Chatroom = ({ chat, id, t }) => {
                             "linear-gradient(rgba(254,232,158, 0.3), rgba(45,211,227, 0.1)), url(/images/chat-texture.jpg)",
                     }}
                 >
-                    <div className='flex justify-between px-3 py-[1.25rem] bg-white/80 border-b-2 border-gray/10'>
+                    <div className='flex justify-between px-3 py-[.4rem] bg-white/80 border-b-2 border-gray/10'>
                         <div className='font-medium'>
                             <span className="'font-medium'">{`${peer?.first_name} ${peer?.last_name}`}</span>
                             <br />
-                            <span>
+                            <span className='text-gray/50 text-sm'>
                                 Last seen:{" "}
                                 {moment(peer?.last_seen.toDate()).fromNow()}
                             </span>
