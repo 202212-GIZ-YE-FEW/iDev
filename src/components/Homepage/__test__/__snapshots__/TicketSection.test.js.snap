@@ -5,14 +5,6 @@ exports[`renders correctly 1`] = `
   className="container flex flex-col justify-between"
 >
   <div
-    className="text-center"
-  >
-    <div
-      className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-cyan motion-reduce:animate-[spin_1.5s_linear_infinite]"
-      role="status"
-    />
-  </div>
-  <div
     className="bg-light-white flex flex-col items-center justify-center text-center py-10 px-5 rounded-md space-y-6 drop-shadow-lg"
   >
     <span
