@@ -151,13 +151,13 @@ export function AuthContextProvider({ children }) {
     };
     const Logout = async () => {
         try {
-            // setUser({ email: null, uid: null });
             // to update the status of user (active & last seen)
             const docRef = doc(db, `users`, user.uid);
             updateDoc(docRef, {
                 active: false,
                 last_seen: serverTimestamp(),
             });
+            setUser({ email: null, uid: null });
             setAuthenticated(false);
             await auth.signOut(); // Sign-out successful
             setAuthenticated(false);

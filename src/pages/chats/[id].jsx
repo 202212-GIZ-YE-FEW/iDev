@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import Image from "next/image";
 // import { withTranslation } from "next-i18next";
+import OnlineSVG from "public/images/green-circle.svg";
 import EmojiSVG from "public/images/emoji.svg";
 import EmptyChatGIF from "public/images/empty-chat.gif";
 import PinSVG from "public/images/pin.svg";
@@ -176,10 +177,19 @@ const Chatroom = ({ chat, id, t }) => {
                         <div className='font-medium'>
                             <span className="'font-medium'">{`${peer?.first_name} ${peer?.last_name}`}</span>
                             <br />
-                            <span className='text-gray/50 text-sm'>
-                                Last seen:{" "}
-                                {moment(peer?.last_seen.toDate()).fromNow()}
-                            </span>
+                            {peer?.active ? (
+                                <div className='flex space-s-1'>
+                                    <Image src={OnlineSVG} alt='' width={15} />{" "}
+                                    <span className='text-gray/50 text-sm'>
+                                        Online
+                                    </span>
+                                </div>
+                            ) : (
+                                <span className='text-gray/50 text-sm'>
+                                    Last seen:{" "}
+                                    {moment(peer?.last_seen.toDate()).fromNow()}
+                                </span>
+                            )}
                         </div>
                         {user.isTherapist && <button>Eliminate Chat</button>}
                     </div>
