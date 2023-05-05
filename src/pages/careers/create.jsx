@@ -2,11 +2,19 @@ import Input from "@/components/ui/Input";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Button from "@/components/ui/Button";
+import PageIntro from "@/components/PageIntro";
 
 const Add_Career = ({ t }) => {
     return (
         <>
             <>
+                {" "}
+                <div className='container'>
+                    <PageIntro
+                        title={t("addNewJob")}
+                        subtitle={t("addNewJobToOurwebsiteCareer")}
+                    />
+                </div>
                 <div className='bg-light-cyan'>
                     <div className='container'>
                         <div className='flex'>
@@ -61,7 +69,6 @@ const Add_Career = ({ t }) => {
                         </div>
                     </div>
                 </div>
-
                 <div className='w-full p-4 flex items-center justify-center'>
                     <Button
                         content={t("Add New Job")}
