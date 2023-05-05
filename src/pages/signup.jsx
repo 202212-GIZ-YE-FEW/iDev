@@ -27,8 +27,6 @@ function SignUp({ t }) {
         authenticated,
         signInWithFbAccount,
         signInWithGoogleAccount,
-        user,
-        sendEmailConfirmation,
     } = useAuth();
 
     const {
@@ -60,8 +58,6 @@ function SignUp({ t }) {
 
         try {
             await schema.validate(formData, { abortEarly: false });
-
-            const collection = "user"; // collection name
             const userData = {
                 active: true,
                 email: formData.email,
