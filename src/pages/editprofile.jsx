@@ -121,7 +121,7 @@ function EditProfile({ t }) {
                                     name='Fullname'
                                     label={t("Fullname")}
                                     labelColor='text-black'
-                                    value={formData.Fullname || ""}
+                                    value={formData?.Fullname || ""}
                                     onChange={handleChange}
                                     error={formErrors.Fullname}
                                     t={t}
@@ -148,7 +148,7 @@ function EditProfile({ t }) {
                                     ]}
                                     label={t("educationLevel")}
                                     labelColor='text-black'
-                                    value={formData.educationLevel}
+                                    value={formData?.educationLevel}
                                     onChange={(e) =>
                                         setFormData({
                                             ...formData,
@@ -164,7 +164,7 @@ function EditProfile({ t }) {
                                     name='hobbies'
                                     label={t("hobbies")}
                                     labelColor='text-black'
-                                    value={formData.hobbies || ""}
+                                    value={formData?.hobbies || ""}
                                     onChange={handleChange}
                                     error={formErrors.hobbies}
                                     t={t}
@@ -178,7 +178,7 @@ function EditProfile({ t }) {
                                     name='familySize'
                                     label={t("familySize")}
                                     labelColor='text-black'
-                                    value={formData.familySize || ""}
+                                    value={formData?.familySize || ""}
                                     onChange={handleChange}
                                     error={formErrors.familySize}
                                     t={t}
@@ -217,7 +217,7 @@ function EditProfile({ t }) {
                                     name='dateOfBirth'
                                     label={t("dateOfBirth")}
                                     labelColor='text-black'
-                                    value={formData.dateOfBirth || ""}
+                                    value={formData?.dateOfBirth || ""}
                                     onChange={handleChange}
                                     error={formErrors.dateOfBirth}
                                     t={t}
@@ -245,7 +245,7 @@ function EditProfile({ t }) {
                                     name='phoneNumber'
                                     label={t("phoneNumber")}
                                     labelColor='text-black'
-                                    value={formData.phoneNumber || ""}
+                                    value={formData?.phoneNumber || ""}
                                     onChange={handleChange}
                                     error={formErrors.phoneNumber}
                                     t={t}
@@ -275,7 +275,7 @@ function EditProfile({ t }) {
                                     name='currentPassword'
                                     label={t("currentPassword")}
                                     labelColor='text-black'
-                                    value={formData.currentPassword || ""}
+                                    value={formData?.currentPassword || ""}
                                     onChange={handleChange}
                                     error={formErrors.currentPassword}
                                     t={t}
@@ -289,7 +289,7 @@ function EditProfile({ t }) {
                                     name='newPassword'
                                     label={t("newPassword")}
                                     labelColor='text-black'
-                                    value={formData.newPassword || ""}
+                                    value={formData?.newPassword || ""}
                                     onChange={handleChange}
                                     error={formErrors.newPassword}
                                     t={t}
