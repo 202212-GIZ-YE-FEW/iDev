@@ -24,7 +24,7 @@ const CareerPhilosophy = ({ t }) => {
                 />
             </div>
 
-            <div className='text-[#696f72] bg-yellow'>
+            <div className='text-gray bg-yellow pt-4 pb-4'>
                 <div className='lg:text-5xl md:text-3xl text-2xl leading-6 mt-10 lg:ms-28 ms-10'>
                     <h1>{t("ourHiringPhi")}</h1>
                 </div>
