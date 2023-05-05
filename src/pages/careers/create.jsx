@@ -21,29 +21,6 @@ const Add_Career = ({ t }) => {
     const [enOccupation, setEnOccupation] = useState("");
     const [arOccupation, setArOccupation] = useState("");
 
-    const router = useRouter();
-
-    const setData = async () => {
-        try {
-            await addDocument("current_jobs", {
-                enTitle: enTitle,
-                arTitle: arTitle,
-                enDescrption: enDescrption,
-                arDescrption: arDescrption,
-                enSpecialization: enSpecialization,
-                arSpecialization: arSpecialization,
-                enOccupation: enOccupation,
-                arOccupation: arOccupation,
-            });
-
-            await router.push({
-                pathname: "/careers",
-            });
-        } catch (error) {
-            router.push("/404");
-        }
-    };
-
     return (
         <>
             <div className='container'>
