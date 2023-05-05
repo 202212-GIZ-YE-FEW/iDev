@@ -47,71 +47,72 @@ const Add_Career = ({ t }) => {
         <>
             <div className='container'>
                 <PageIntro
-                    title={t("addNewJob")}
-                    subtitle={t("addNewJobToOurwebsiteCareer")}
+                    title={t("AddYourJob")}
+                    subtitle={t("weAreHiringDescrption")}
                 />
             </div>
             <div className='bg-light-cyan'>
                 <div className='container'>
-                    <div className='flex'>
-                        <div className='flex-1 pr-10'>
+                    <div className='flex' dir='ltr'>
+                        <div className='flex-1 pr-10' dir='ltr'>
                             <Input
-                                label={t("titleOfJobEn")}
-                                placeholder={t("enterTitleOfJobEn")}
+                                label='Title of Job'
+                                placeholder='Ex: Business Intelligence Manager'
                                 inputWidthSize='w-full'
                                 onChange={(e) => SetEnTitle(e.target.value)}
                             />
                             <Input
-                                label={t("descrptionOfJobEn")}
-                                placeholder={t("enterDescrptionOfJobEn")}
+                                label='Descrption of Job'
+                                placeholder='Ex: Moz is looking for a Senior Software ...'
                                 inputWidthSize='w-full'
                                 onChange={(e) =>
                                     setEnDescrption(e.target.value)
                                 }
                             />
                             <Input
-                                label={t("specializationOfJobEn")}
-                                placeholder={t("enterSpecializationOfJobEn")}
+                                label='specialization of job in english'
+                                placeholder='Ex: Engineering'
                                 inputWidthSize='w-full'
                                 onChange={(e) =>
                                     setEnSpecialization(e.target.value)
                                 }
                             />
                             <Input
-                                label={t("enterOccupationOfJobEn")}
-                                placeholder={t("occupationOfJobEn")}
+                                label='Enter Occupation of Job English'
+                                placeholder='Ex: Application Development'
                                 inputWidthSize='w-full'
                                 onChange={(e) =>
                                     setEnOccupation(e.target.value)
                                 }
                             />
                         </div>
-                        <div className='flex-1 pl-10'>
+                        <div className='flex-1 pl-10 ' dir='rtl'>
                             <Input
-                                label={t("titleOfJobAr")}
-                                placeholder={t("enterTitleOfJobAr")}
+                                label='المسمى الوظيفي'
+                                placeholder='مثال: مدير ذكاء الأعمال'
                                 inputWidthSize='w-full'
                                 onChange={(e) => setArTitle(e.target.value)}
+                                direction='rtl'
                             />
                             <Input
-                                label={t("descrptionOfJobAr")}
-                                placeholder={t("enterDescrptionOfJobAr")}
+                                label='وصف الوظيفة '
+                                placeholder='...مثال:مطور برامج أول للإنضمام'
                                 inputWidthSize='w-full'
                                 onChange={(e) =>
                                     setArDescrption(e.target.value)
                                 }
                             />
                             <Input
-                                label={t("specializationOfJobAr")}
-                                placeholder={t("enterSpecializationOfJobAr")}
+                                label='التخصص الوظيفي'
+                                placeholder='...مثال:مهندس'
                                 inputWidthSize='w-full'
                                 onChange={(e) =>
                                     setArSpecialization(e.target.value)
                                 }
                             />
                             <Input
-                                label={t("occupationOfJobAr")}
-                                placeholder={t("enterOccupationOfJobAr")}
+                                label='المنصب الوظيفي'
+                                placeholder='...مثال:النماذج الأولية السريعة'
                                 inputWidthSize='w-full'
                                 onChange={(e) =>
                                     setArOccupation(e.target.value)
@@ -124,7 +125,7 @@ const Add_Career = ({ t }) => {
 
             <div className='w-full p-4 flex items-center justify-center'>
                 <Button
-                    content={t("Add New Job")}
+                    content={t("addNewJob")}
                     size={"large"}
                     filled={"true"}
                     textTransform={"capitalize"}
@@ -141,9 +142,9 @@ const Add_Career = ({ t }) => {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ["common", "careers"])),
+            ...(await serverSideTranslations(locale, ["common", "career"])),
             // Will be passed to the page component as props
         },
     };
 }
-export default withTranslation("careers")(Add_Career);
+export default withTranslation("career")(Add_Career);

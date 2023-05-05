@@ -1,19 +1,14 @@
 {
+    "AddYourJob": "Add your job",
+    "addNewJob": "Add new job",
+    "weAreHiringDescrption": "we'll bring you the best candidates for the position!",
     "careerAtHealing": "career at healing",
     "bringHopeThroughTherapy": "Bring hope through therapy",
     "whatRole": "What role will you play ?",
     "ourSeoSoftware": "Our SEO software cuts through mountains of data to surface critical insights. We build and maintain systems that process massive amounts of data (we're talking 36 trillion records per day and multiple petabytes of storage) We model transparent and empathetic marketing for the world. We educate our community, making every effort to help them improve their skill. And we do it all by fostering a culture that encourages accountability, empathy, and transparency.",
     "SeeOurOpenList": "See Our open list",
     "ourHiringPhi": "OUR HIRING PHILOSOPHY",
-    "toBuildTheVeryBestSeo": "OUR HIRING PHILOSOPHY",
+    "toBuildTheVeryBestSeo": "To build the very best SEO tools, we need a workforce that reflects the diversity of our communities and customers. We want Online Therapy to be a place where everyone feels welcome and engaged, bar none. It's our mission and promise to interview a diverse and representative slate of candidates before making an offer for our open roles.",
     "cuurentOpenPosition": "CURRENT OPEN POSITIONS",
-    "pleaseSendUsEmail": "Please send us an email with the application title as the subject with an attached CV in PDF format!",
-    "titleOfJobEn": "title Of Job in English",
-    "enterTitleOfJobEn": "Ex: Senior Software Developer...",
-    "descrptionOfJobEn": "descrption of Job in English",
-    "enterDescrptionOfJobEn": "Ex: Moz is looking for a Senior Software ...",
-    "specializationOfJobEn": "specialization of job in english",
-    "enterSpecializationOfJobEn": "Ex: Engineering",
-    "enterOccupationOfJobEn": "Enter Occupation of Job English",
-    "occupationOfJobEn": "Ex: Application Development"
+    "pleaseSendUsEmail": "Please send us an email with the application title as the subject with an attached CV in PDF format!"
 }
