@@ -90,7 +90,7 @@ const Chatroom = ({ chat, id, t }) => {
         let newDay = "";
         return messages?.map((msg, index) => {
             if (index === 0) {
-                newDay = moment(msg.timestamp.toDate()).format("MM-DD-YYYY");
+                newDay = moment(msg.timestamp?.toDate()).format("MM-DD-YYYY");
                 label = (
                     <ChatLabel
                         label={convertFirebaseTimestamp(msg.timestamp)[0]}
@@ -101,7 +101,7 @@ const Chatroom = ({ chat, id, t }) => {
                     moment(msg?.timestamp?.toDate()).format("MM-DD-YYYY") >
                     newDay
                 ) {
-                    newDay = moment(msg.timestamp.toDate()).format(
+                    newDay = moment(msg.timestamp?.toDate()).format(
                         "MM-DD-YYYY"
                     );
                     label = (
@@ -162,12 +162,12 @@ const Chatroom = ({ chat, id, t }) => {
     return (
         <div className='h-screen overflow-hidden'>
             <div
-                className='shadow-xl rounded-md w-full lg:w-full lg:mx-auto flex'
+                className='shadow-xl rounded-md w-full lg:mx-auto flex'
                 style={{ height: "calc(100vh - 80px)" }}
             >
                 <ChatSidebar chatRef={id} lastMsgLive={chat?.lastMsg} />
                 <div
-                    className='hidden w-5/6 bg-background h-full lg:flex flex-col justify-start items-stretch border-gray/10'
+                    className='w-full bg-background h-full flex flex-col justify-between items-stretch border-gray/10'
                     style={{
                         background:
                             "linear-gradient(rgba(254,232,158, 0.3), rgba(45,211,227, 0.1)), url(/images/chat-texture.jpg)",
@@ -179,7 +179,7 @@ const Chatroom = ({ chat, id, t }) => {
                             <br />
                             {peer?.active ? (
                                 <div className='flex space-s-1'>
-                                    <Image src={OnlineSVG} alt='' width={15} />{" "}
+                                    <Image src={OnlineSVG} alt='' width={10} />{" "}
                                     <span className='text-gray/50 text-sm'>
                                         Online
                                     </span>
@@ -193,7 +193,7 @@ const Chatroom = ({ chat, id, t }) => {
                         </div>
                         {user.isTherapist && <button>Eliminate Chat</button>}
                     </div>
-                    <div className='flex-auto flex flex-col justify-between overflow-y-auto'>
+                    <div className='flex flex-col justify-between overflow-y-auto'>
                         {messages?.length !== 0 ? (
                             <div className='flex flex-col'>
                                 {getMessages()}

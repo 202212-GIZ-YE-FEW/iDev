@@ -14,7 +14,7 @@ Array [
       className="flex flex-row justify-between items-center"
     >
       <h2
-        className="text-xs font-bold"
+        className="text-sm font-bold"
       >
         undefined undefined
       </h2>

@@ -2,7 +2,7 @@ function ChatSent(props) {
     const { message, time } = props;
 
     return (
-        <div className='inline-flex mx-auto me-8 py-2 justify-end relative right-bottom w-fit lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl h-auto mt-2 bg-light-cyan rounded-xl shadow-md'>
+        <div className='inline-flex mx-auto me-8 py-2 justify-end relative right-bottom w-fit max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl h-auto mt-2 bg-light-cyan rounded-xl shadow-md'>
             <div className='px-3 rounded-xl'>
                 <p className='text-sm break-all'>{message}</p>
                 <div className='flex justify-end items-end'>

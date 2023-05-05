@@ -28,7 +28,11 @@ const ChatSidebar = (props) => {
     );
 
     return (
-        <div className='w-full lg:w-3/6 xl:w-2/6 flex flex-col justify-start items-stretch  bg-white bg-opacity-80 rounded-md lg:rounded-none lg:rounded-l-md'>
+        <div
+            className={`${
+                chatRef ? "sm:hidden lg:block" : "w-full"
+            }  lg:w-3/6 xl:w-2/6 flex flex-col justify-start items-stretch bg-white rounded-md lg:rounded-none lg:rounded-l-md z-50`}
+        >
             <div className='w-full bg-background/80 border-b-[3px] border-gray/20 px-5 h-[4rem] inline-flex items-center justify-center'>
                 <input
                     type='text'

@@ -37,7 +37,7 @@ const ChatItem = (props) => {
             />
             <div className='w-full flex flex-col justify-center'>
                 <div className='flex flex-row justify-between items-center'>
-                    <h2 className='text-xs font-bold'>
+                    <h2 className='text-sm font-bold'>
                         {`${peer?.first_name} ${peer?.last_name}`}
                     </h2>
                     <div className='text-xs flex flex-row'>
