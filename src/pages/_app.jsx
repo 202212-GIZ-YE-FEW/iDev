@@ -8,13 +8,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContextProvider } from "@/components/context/AuthContext";
 
 import Layout from "@/layout/Layout";
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
     if (Component.getLayout) {
         // customized layout
         return (
             <AuthContextProvider>
-                <QueryClientProvider client={new QueryClient()}>
+                <QueryClientProvider client={queryClient}>
                     <Component.getLayout>
                         <Component {...pageProps} />
                     </Component.getLayout>
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }) {
         // default layout
         return (
             <AuthContextProvider>
-                <QueryClientProvider client={new QueryClient()}>
+                <QueryClientProvider client={queryClient}>
                     <Layout requireAuth={pageProps.requireAuth || false}>
                         <Component {...pageProps} />
                         <ToastContainer />
