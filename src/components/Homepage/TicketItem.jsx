@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import "aos/dist/aos.css";
 
 import Button from "@/components/ui/Button";
-function TicketItem({ t, numberOfTickets, price }) {
+function TicketItem({ t, ticketID, numberOfTickets, price }) {
     useEffect(() => {
         AOS.init({
             duration: 1000,
@@ -30,12 +30,7 @@ function TicketItem({ t, numberOfTickets, price }) {
                         href={{
                             pathname: "/payment",
                             query: {
-                                numberOfTickets: numberOfTickets,
-                                price: price,
-                            },
-                            state: {
-                                numberOfTickets: numberOfTickets,
-                                price: price,
+                                id: ticketID,
                             },
                         }}
                     >

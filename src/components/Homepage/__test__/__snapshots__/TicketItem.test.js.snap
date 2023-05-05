@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
     className="w-fit"
   >
     <a
-      href="/payment?numberOfTickets=&price="
+      href="/payment?id="
       onClick={[Function]}
       onMouseEnter={[Function]}
       onTouchStart={[Function]}
