@@ -5,7 +5,6 @@ import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/navigation";
 import addDocument from "@/firebase/addData";
-import Textarea from "@/components/ui/textarea/Textarea";
 import Input from "@/components/ui/Input";
 
 const Add_Career = ({ t }) => {
