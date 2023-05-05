@@ -7,5 +7,13 @@
     "ourHiringPhi": "OUR HIRING PHILOSOPHY",
     "toBuildTheVeryBestSeo": "OUR HIRING PHILOSOPHY",
     "cuurentOpenPosition": "CURRENT OPEN POSITIONS",
-    "pleaseSendUsEmail": "Please send us an email with the application title as the subject with an attached CV in PDF format!"
+    "pleaseSendUsEmail": "Please send us an email with the application title as the subject with an attached CV in PDF format!",
+    "titleOfJobEn": "title Of Job in English",
+    "enterTitleOfJobEn": "Ex: Senior Software Developer...",
+    "descrptionOfJobEn": "descrption of Job in English",
+    "enterDescrptionOfJobEn": "Ex: Moz is looking for a Senior Software ...",
+    "specializationOfJobEn": "specialization of job in english",
+    "enterSpecializationOfJobEn": "Ex: Engineering",
+    "enterOccupationOfJobEn": "Enter Occupation of Job English",
+    "occupationOfJobEn": "Ex: Application Development"
 }
