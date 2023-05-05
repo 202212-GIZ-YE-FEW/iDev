@@ -21,6 +21,29 @@ const Add_Career = ({ t }) => {
     const [enOccupation, setEnOccupation] = useState("");
     const [arOccupation, setArOccupation] = useState("");
 
+    const router = useRouter();
+
+    const setData = async () => {
+        try {
+            await addDocument("current_jobs", {
+                enTitle: enTitle,
+                arTitle: arTitle,
+                enDescrption: enDescrption,
+                arDescrption: arDescrption,
+                enSpecialization: enSpecialization,
+                arSpecialization: arSpecialization,
+                enOccupation: enOccupation,
+                arOccupation: arOccupation,
+            });
+
+            await router.push({
+                pathname: "/careers",
+            });
+        } catch (error) {
+            router.push("/404");
+        }
+    };
+
     return (
         <>
             <div className='container'>
@@ -100,7 +123,18 @@ const Add_Career = ({ t }) => {
                 </div>
             </div>
 
-            <div className='w-full p-4 flex items-center justify-center'></div>
+            <div className='w-full p-4 flex items-center justify-center'>
+                <Button
+                    content={t("Add New Job")}
+                    size={"large"}
+                    filled={"true"}
+                    textTransform={"capitalize"}
+                    fontSize={"2xl"}
+                    radius={"6px"}
+                    shadow={"2px"}
+                    onClick={setData}
+                />
+            </div>
         </>
     );
 };
