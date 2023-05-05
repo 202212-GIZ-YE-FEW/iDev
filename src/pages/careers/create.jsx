@@ -131,7 +131,7 @@ const Add_Career = ({ t }) => {
                     textTransform={"capitalize"}
                     fontSize={"2xl"}
                     radius={"6px"}
-                    shadow={"2px"}
+                    shadow={"4px"}
                     onClick={setData}
                 />
             </div>
