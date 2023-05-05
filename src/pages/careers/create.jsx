@@ -40,7 +40,7 @@ const Add_Career = ({ t }) => {
                 pathname: "/careers",
             });
         } catch (error) {
-            console.log("Erorr");
+            router.push("/404");
         }
     };
 
