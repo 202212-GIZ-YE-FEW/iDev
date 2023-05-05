@@ -11,6 +11,7 @@ import Input from "@/components/ui/Input";
 import schema from "@/utils/validationSchemalogin";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import toastr from "toastr";
 
 function Login({ t }) {
     useEffect(() => {
@@ -76,7 +77,11 @@ function Login({ t }) {
 
         if (email) {
             await resetPassword(email);
-            alert("Password reset email sent!");
+            toastr.info("Password reset email sent!.", "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
         }
     };
     return (

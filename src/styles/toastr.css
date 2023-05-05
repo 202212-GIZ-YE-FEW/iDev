@@ -1,0 +1,28 @@
+/* styles/toastr.css */
+
+/* Import Toastr styles */
+@import "~toastr/build/toastr.min.css";
+
+/* Apply Tailwind CSS classes to Toastr elements */
+@layer toastr {
+    .toast {
+        @apply bg-toastr-base text-toastr-text;
+        .bg-toastr-base {
+            background-color: #1c7cd1;
+        }
+        .text-toastr-text {
+            background-color: #a3841d;
+        }
+    }
+
+    .toast-error {
+        @apply bg-toastr-error text-toastr-error-text;
+
+        .bg-toastr-error {
+            background-color: #1c7cd1;
+        }
+        .text-toastr-error-text {
+            background-color: #1c7cd1;
+        }
+    }
+}

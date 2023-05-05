@@ -24,6 +24,8 @@ import {
 import image from "public/profile-icon.svg";
 import { setDoc, doc, getFirestore } from "firebase/firestore";
 import setDocument from "@/firebase/setData";
+import toastr from "toastr";
+
 const db = getFirestore();
 const AuthContext = createContext({});
 
@@ -89,7 +91,11 @@ export function AuthContextProvider({ children }) {
             })
             .catch((error) => {
                 if (error.code === "auth/email-already-in-use") {
-                    window.alert("email-already-in-use");
+                    toastr.error("The current password is incorrect", "", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
                 }
             });
     };
@@ -104,7 +110,15 @@ export function AuthContextProvider({ children }) {
                 // If the user's email is not verified, log them out and show an error message
                 auth.signOut(); // Sign-out successful
                 setAuthenticated(false);
-                alert("Please verify your email before logging in.");
+                toastr.warning(
+                    "Please verify your email before logging in.",
+                    "",
+                    {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    }
+                );
             }
         });
     };
@@ -176,7 +190,11 @@ export function AuthContextProvider({ children }) {
             .then(() => {
                 updatePassword(user, newPassword)
                     .then(() => {
-                        alert("Password updated successfully");
+                        toastr.success("Password updated successfully.", "", {
+                            closeButton: true,
+                            progressBar: true,
+                            positionClass: "toast-top-right",
+                        });
                     })
                     .catch((error) => {
                         // An error occurred while updating the password
@@ -186,7 +204,11 @@ export function AuthContextProvider({ children }) {
             .catch((error) => {
                 // Incorrect password, show an error message
                 if (error.code === "auth/wrong-password") {
-                    alert("The current password is incorrect");
+                    toastr.error("The current password is incorrect", "", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
                 }
             });
     };

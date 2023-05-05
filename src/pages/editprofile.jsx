@@ -12,7 +12,8 @@ import updateDocument from "@/firebase/updateSubCollection";
 import PageIntro from "@/components/PageIntro";
 import uploadImage from "@/firebase/addImage";
 import Select from "@/components/ui/Select";
-import getDocument from "@/firebase/getData";
+import toastr from "toastr";
+
 function EditProfile({ t }) {
     const { user, changePassword, authenticated } = useAuth();
     const [imgfile, uploadimg] = useState("");
@@ -64,9 +65,17 @@ function EditProfile({ t }) {
             const path = "UploadId/";
             uploadimg(URL.createObjectURL(file));
             await uploadImage(file, imageName, path);
-            console.log("File uploaded successfully!");
+            toastr.success("Your File uploaded successfully!.", "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
         } else {
-            console.error("No file selected.");
+            toastr.error("No file selected.", "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
         }
     };
 

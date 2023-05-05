@@ -7,6 +7,7 @@ import ProfilePreviewSVG from "public/profile-icon.svg";
 import uploadImage from "@/firebase/addImage";
 import { useAuth } from "../context/AuthContext";
 import { getDownloadURL } from "firebase/storage";
+import toastr from "toastr";
 export default function PreviewProfile() {
     const [photo, uploadimg] = useState("");
     const { user, updateProfilePhoto } = useAuth();
@@ -20,12 +21,21 @@ export default function PreviewProfile() {
 
         try {
             await uploadImage(file, imageName, path);
-            console.log("File uploaded successfully!");
+            toastr.success("Your File uploaded successfully!", "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
             const imageRef = ref(storage, `${path}${imageName}`);
             const downloadURL = await getDownloadURL(imageRef);
             updateProfilePhoto(downloadURL);
         } catch (error) {
             console.error(error);
+            toastr.error(error, "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
         }
     };
 
