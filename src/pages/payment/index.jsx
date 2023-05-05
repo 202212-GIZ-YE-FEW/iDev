@@ -144,26 +144,32 @@ function Payment({ t }) {
                     </p>
                 )}
                 <div className='flex items-center space-x-4'>
-                    <div className='flex items-center'>
-                        <Link
-                            href='#'
-                            className='block text-center mx-auto my-20'
-                        >
-                            <Button
-                                content={t("confirmPurchase")}
-                                textTransform='uppercase'
-                                filled='true'
-                                size='medium'
-                                fontSize='text-sm md:text-xl'
-                                radius='md'
-                            />
-                        </Link>
-                    </div>
-                    <div className='flex items-center'>
-                        <span className='text-gray-400 text-sm md:text-xl uppercase'>
-                            {t("or")}
-                        </span>
-                    </div>
+                    {cardsQuery.data?.length > 0 ? (
+                        <>
+                            <div className='flex items-center'>
+                                <Link
+                                    href='#'
+                                    className='block text-center mx-auto my-20'
+                                >
+                                    <Button
+                                        content={t("confirmPurchase")}
+                                        textTransform='uppercase'
+                                        filled='true'
+                                        size='medium'
+                                        fontSize='text-sm md:text-xl'
+                                        radius='md'
+                                    />
+                                </Link>
+                            </div>
+                            <div className='flex items-center'>
+                                <span className='text-gray-400 text-sm md:text-xl uppercase'>
+                                    {t("or")}
+                                </span>
+                            </div>
+                        </>
+                    ) : (
+                        <></>
+                    )}
                     <div className='flex items-center'>
                         <Button
                             content={t("payWithOtherCard")}
