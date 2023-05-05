@@ -103,6 +103,12 @@ function AboutDropdown(prop) {
                     >
                         Team
                     </Link>
+                    <Link
+                        href='/careers'
+                        className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
+                    >
+                        careers
+                    </Link>
                 </div>
             ) : (
                 ""
