@@ -126,8 +126,21 @@ export function AuthContextProvider({ children }) {
     const sendEmailConfirmation = () => {
         const user = auth.currentUser;
         return sendEmailVerification(user)
-            .then(() => console.log("Verification email sent."))
-            .catch((error) => console.error(error));
+            .then(() => {
+                toastr.info("Verification email sent.", "", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                });
+            })
+
+            .catch((error) => {
+                toastr.error(error, "", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                });
+            });
     };
 
     //SignIn with Google account
@@ -198,7 +211,11 @@ export function AuthContextProvider({ children }) {
                     })
                     .catch((error) => {
                         // An error occurred while updating the password
-                        console.error(error);
+                        toastr.error(error, "", {
+                            closeButton: true,
+                            progressBar: true,
+                            positionClass: "toast-top-right",
+                        });
                     });
             })
             .catch((error) => {
@@ -235,8 +252,18 @@ export function AuthContextProvider({ children }) {
                     // the user has been reauthenticated
                     user.delete()
                         .then(() => {
-                            console.log(
-                                `User account with email ${email} and uid ${uid} deleted successfully.`
+                            toastr.success(
+                                "User account with email " +
+                                    email +
+                                    " and uid " +
+                                    uid +
+                                    "deleted successfully.",
+                                "",
+                                {
+                                    closeButton: true,
+                                    progressBar: true,
+                                    positionClass: "toast-top-right",
+                                }
                             );
                         })
                         .catch((error) => {

@@ -65,79 +65,75 @@ function Therapist({ t }) {
 
     return (
         <div className='container py-20'>
-            {authenticated ? (
-                <div className='max-w-[29rem] lg:justify-self-end '>
-                    <PageIntro title={t("createAnAccount")} />
-                    <div className='w-full'>
-                        <form
-                            className='  mt-[8px]  w-full'
-                            onSubmit={handleSubmit}
+            <div className='max-w-[29rem] lg:justify-self-end '>
+                <PageIntro title={t("createAnAccount")} />
+                <div className='w-full'>
+                    <form
+                        className='  mt-[8px]  w-full'
+                        onSubmit={handleSubmit}
+                    >
+                        <div
+                            className='relative mb-[0.9rem]'
+                            data-te-input-wrapper-init
                         >
-                            <div
-                                className='relative mb-[0.9rem]'
-                                data-te-input-wrapper-init
-                            >
-                                <Input
-                                    label={t("userName")}
-                                    type='text'
-                                    inputWidthSize='w-full'
-                                    field={t("userName")}
-                                    name='userName'
-                                    value={formData.userName || ""}
-                                    onChange={handleChange}
-                                    error={formErrors.userName}
-                                    t={t}
-                                />
-                            </div>
-                            <div
-                                className='relative mb-[0.9rem]'
-                                data-te-input-wrapper-init
-                            >
-                                <Input
-                                    label={t("city")}
-                                    type='text'
-                                    inputWidthSize='w-full'
-                                    field={t("city")}
-                                    name='city'
-                                    value={formData.city || ""}
-                                    onChange={handleChange}
-                                    error={formErrors.city}
-                                    t={t}
-                                />
-                            </div>
-                            <div
-                                className='relative mb-[0.9rem]'
-                                data-te-input-wrapper-init
-                            >
-                                <Input
-                                    label={t("licenseNamber")}
-                                    type='text'
-                                    inputWidthSize='w-full'
-                                    field={t("licenseNamber")}
-                                    name='licenseNamber'
-                                    value={formData.licenseNamber || ""}
-                                    onChange={handleChange}
-                                    error={formErrors.licenseNamber}
-                                    t={t}
-                                />
-                            </div>
+                            <Input
+                                label={t("userName")}
+                                type='text'
+                                inputWidthSize='w-full'
+                                field={t("userName")}
+                                name='userName'
+                                value={formData.userName || ""}
+                                onChange={handleChange}
+                                error={formErrors.userName}
+                                t={t}
+                            />
+                        </div>
+                        <div
+                            className='relative mb-[0.9rem]'
+                            data-te-input-wrapper-init
+                        >
+                            <Input
+                                label={t("city")}
+                                type='text'
+                                inputWidthSize='w-full'
+                                field={t("city")}
+                                name='city'
+                                value={formData.city || ""}
+                                onChange={handleChange}
+                                error={formErrors.city}
+                                t={t}
+                            />
+                        </div>
+                        <div
+                            className='relative mb-[0.9rem]'
+                            data-te-input-wrapper-init
+                        >
+                            <Input
+                                label={t("licenseNamber")}
+                                type='text'
+                                inputWidthSize='w-full'
+                                field={t("licenseNamber")}
+                                name='licenseNamber'
+                                value={formData.licenseNamber || ""}
+                                onChange={handleChange}
+                                error={formErrors.licenseNamber}
+                                t={t}
+                            />
+                        </div>
 
-                            <div className='mt-12'>
-                                <Button
-                                    content={t("create")}
-                                    filled='true'
-                                    size='medium'
-                                    fontSize='lg:text-xl xl xl:text-xl'
-                                    radius='md'
-                                    onClick={handleSubmit}
-                                />
-                            </div>
-                        </form>
-                    </div>
+                        <div className='mt-12'>
+                            <Button
+                                content={t("create")}
+                                filled='true'
+                                size='medium'
+                                fontSize='lg:text-xl xl xl:text-xl'
+                                radius='md'
+                                onClick={handleSubmit}
+                            />
+                        </div>
+                    </form>
                 </div>
-            ) : (
-                <p>{t("pleaseLogin")}</p>
-            )}
+            </div>
         </div>
     );
 }
@@ -149,7 +145,7 @@ export async function getStaticProps({ locale }) {
                 "signup",
                 "validation",
             ])),
-
+            requireAuth: true,
             // Will be passed to the page component as props
         },
     };
