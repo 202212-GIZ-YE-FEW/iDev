@@ -98,7 +98,7 @@ function EditProfile({ t }) {
     };
     const handleDeleteAccount = async (e) => {
         e.preventDefault();
-        await deleteuser(formData.Password);
+        await deleteuser(formData.password);
     };
     return (
         <div className='container '>
@@ -283,8 +283,9 @@ function EditProfile({ t }) {
                             </fieldset>
                             <fieldset className='mt-8'>
                                 <legend class='text-3xl font-semibold'>
-                                    {t("UpdatePassword")}
+                                    {t("security")}
                                 </legend>
+                                {t("UpdatePassword")}
                                 <div className='flex items-center my-5'>
                                     <Input
                                         inputWidthSize='flex-[2_1_0%]'
@@ -316,34 +317,20 @@ function EditProfile({ t }) {
                             </fieldset>
                             <fieldset className='mt-8'>
                                 <legend class='text-3xl font-semibold'>
-                                    {t("security")}
+                                    {t("ConfirmDelete")}
                                 </legend>
                                 <div className='flex items-center my-5'>
                                     <Input
                                         inputWidthSize='flex-[2_1_0%]'
                                         type='password'
-                                        name='Password'
-                                        label={t("Password")}
+                                        name='password'
+                                        label={t("password")}
                                         labelColor='text-black'
-                                        value={formData?.Password || ""}
+                                        value={formData?.password || ""}
                                         onChange={handleChange}
-                                        error={formErrors.Password}
+                                        error={formErrors.password}
                                         t={t}
-                                        field={t("Password")}
-                                    />
-                                </div>
-                                <div className='flex items-center my-5'>
-                                    <Input
-                                        inputWidthSize='flex-[2_1_0%]'
-                                        type='password'
-                                        name='confirmPassword'
-                                        label={t("confirmPassword")}
-                                        labelColor='text-black'
-                                        value={formData?.confirmPassword || ""}
-                                        onChange={handleChange}
-                                        error={formErrors.confirmPassword}
-                                        t={t}
-                                        field={t("confirmPassword")}
+                                        field={t("password")}
                                     />
                                 </div>
                             </fieldset>
