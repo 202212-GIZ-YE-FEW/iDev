@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import addDocument from "@/firebase/addData";
 import getDocument from "@/firebase/getData";
-import schema from "@/utils/validationSchemaSubscription";
 
 function Subscribe({
     t,
@@ -21,27 +20,9 @@ function Subscribe({
     const [formErrors, setFormErrors] = useState({});
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        e.target.reset();
-
-        emailjs
-            .sendForm(
-                "service_jv7251u",
-                "template_348izhd",
-                form.current,
-                "emXiZkH_auFjA1mtI"
-            )
-            .then(
-                (result) => {
-                    console.log(result.text);
-                    alert("Subscription done!");
-                },
-                (error) => {
-                    console.log(error.text);
-                }
-            );
         try {
-            // await schema.validate(formData, { abortEarly: false });
+            e.preventDefault();
+            e.target.reset();
 
             const collection = "newsletter"; // collection name
             const userData = {
@@ -54,9 +35,36 @@ function Subscribe({
             }
             console.log(arr);
             const result = arr.includes(formData.user_email);
-            if (result === true) {
+            if (!formData.user_email) {
+                alert("! Please enter an email ! الرجاء ادخال ايميل ");
+            } else if (
+                !formData.user_email
+                    .trim()
+                    .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i)
+            ) {
+                alert("! Please enter a valid email ! الرجاء ادخال ايميل صحيح");
+            } else if (result === true) {
                 alert("! This email already exist ! هذا الايميل موجود بالفعل ");
             } else {
+                emailjs
+                    .sendForm(
+                        "service_jv7251u",
+                        "template_348izhd",
+                        form.current,
+                        "emXiZkH_auFjA1mtI"
+                    )
+                    .then(
+                        (result) => {
+                            console.log(result.text);
+                            alert(
+                                "Subscription done! تمت عملية الاشتراك بنجاح!"
+                            );
+                        },
+                        (error) => {
+                            console.log(error.text);
+                        }
+                    );
+
                 addDocument(collection, userData);
 
                 const router = require("next/router").default;
@@ -67,8 +75,6 @@ function Subscribe({
                     },
                 });
             }
-
-            // }
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
@@ -96,14 +102,12 @@ function Subscribe({
                     </label>
                     <div className='flex max-w-[20rem] bg-white border-2 border-light-gray/80 rounded-md'>
                         <input
-                            type='email'
+                            type='text'
                             name='user_email'
                             id='subscribe-newsletter'
                             className='block flex-1 min-w-0 w-full focus:outline-none text-sm py-2.5 px-3 bg-transparent'
                             placeholder={t(`${placeholder}`)}
                             onChange={handleChange}
-                            // error={formErrors.user_email}
-                            required
                         />
                         <button type='submit' value='Send'>
                             <span className='inline-flex items-center text-2xl px-3 bg-cyan border-s-2 border-light-gray/80 text-light-black rounded-e-1.5'>

@@ -33,8 +33,7 @@ exports[`renders correctly 1`] = `
         name="user_email"
         onChange={[Function]}
         placeholder="enterEmail"
-        required={true}
-        type="email"
+        type="text"
       />
       <button
         type="submit"
