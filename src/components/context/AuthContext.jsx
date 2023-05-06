@@ -240,17 +240,30 @@ export function AuthContextProvider({ children }) {
                             );
                         })
                         .catch((error) => {
-                            console.error(
+                            toastr.error(
                                 "Error deleting user account:",
-                                error
+                                error,
+                                {
+                                    closeButton: true,
+                                    progressBar: true,
+                                    positionClass: "toast-top-right",
+                                }
                             );
                         });
                 })
                 .catch((error) => {
-                    console.error("Error reauthenticating user:", error);
+                    toastr.error(error, "Error reauthenticating user:", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
                 });
         } else {
-            console.error("No user signed in.");
+            toastr.error("No user signed in.", "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
         }
     };
 
