@@ -29,5 +29,6 @@
     "newPassword": "كلمة السر الجديدة",
     "currentPassword": "كلمة السر الحالية",
     "select": "اختار",
-    "dateOfBirth": "تاريخ الميلاد"
+    "dateOfBirth": "تاريخ الميلاد",
+    "UpdatePassword":"تغير كلمه المرور"
 }
