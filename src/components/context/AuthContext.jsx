@@ -91,7 +91,7 @@ export function AuthContextProvider({ children }) {
             })
             .catch((error) => {
                 if (error.code === "auth/email-already-in-use") {
-                    toastr.error("The current password is incorrect", "", {
+                    toastr.error("Email-already-in-use", "", {
                         closeButton: true,
                         progressBar: true,
                         positionClass: "toast-top-right",

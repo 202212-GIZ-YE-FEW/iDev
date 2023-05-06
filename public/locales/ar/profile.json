@@ -31,5 +31,6 @@
     "select": "اختار",
     "dateOfBirth": "تاريخ الميلاد",
     "UpdatePassword": "تغير كلمه المرور",
-    "ConfirmDelete": "لتاكيد الحذف "
+    "ConfirmDelete": "لتاكيد الحذف ",
+    "fileUploaded": "تم تحميل ملفك بنجاح"
 }

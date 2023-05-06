@@ -77,7 +77,7 @@ function Login({ t }) {
 
         if (email) {
             await resetPassword(email);
-            toastr.info("Password reset email sent!.", "", {
+            toastr.info(t("passwordResetEmail"), "", {
                 closeButton: true,
                 progressBar: true,
                 positionClass: "toast-top-right",

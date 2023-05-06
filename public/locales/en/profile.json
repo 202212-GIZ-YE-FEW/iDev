@@ -31,5 +31,6 @@
     "select": "select",
     "dateOfBirth": "Date Of Birth",
     "UpdatePassword": "Change Password",
-    "ConfirmDelete": "Confirm Delete"
+    "ConfirmDelete": "Confirm Delete",
+    "fileUploaded": "Your File uploaded successfully!."
 }

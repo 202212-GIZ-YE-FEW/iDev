@@ -66,7 +66,7 @@ function EditProfile({ t }) {
             const path = "UploadId/";
             uploadimg(URL.createObjectURL(file));
             await uploadImage(file, imageName, path);
-            toastr.success("Your File uploaded successfully!.", "", {
+            toastr.success(t("fileUploaded"), "", {
                 closeButton: true,
                 progressBar: true,
                 positionClass: "toast-top-right",

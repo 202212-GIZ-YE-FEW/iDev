@@ -21,5 +21,6 @@
     "selectGender": "Select Gender",
     "male": "Male",
     "female": "Female",
-    "forgotPassword": " Forgot Password  "
+    "forgotPassword": " Forgot Password ",
+    "passwordResetEmail": "Password reset email sent!."
 }
