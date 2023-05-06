@@ -15,7 +15,7 @@ import Select from "@/components/ui/Select";
 import toastr from "toastr";
 
 function EditProfile({ t }) {
-    const { user, changePassword, authenticated } = useAuth();
+    const { user, changePassword, authenticated, deleteuser } = useAuth();
     const [imgfile, uploadimg] = useState("");
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({});
@@ -100,7 +100,10 @@ function EditProfile({ t }) {
             }
         }
     };
-
+    const handleDeleteAccount = async (e) => {
+        e.preventDefault();
+        await deleteuser(formData.Password);
+    };
     return (
         <div className='container '>
             {authenticated ? (
@@ -267,7 +270,7 @@ function EditProfile({ t }) {
                                 />
                             </div>
 
-                            <PageIntro title={t("security")} />
+                            <PageIntro title={t("Change Password")} />
                             <div className='flex items-center my-5'>
                                 <Input
                                     inputWidthSize='flex-[2_1_0%]'
@@ -296,6 +299,38 @@ function EditProfile({ t }) {
                                     field={t("newPassword")}
                                 />
                             </div>
+                            <PageIntro
+                                title={t("security")}
+                                subtitle='To delete your account'
+                            />
+                            <div className='flex items-center my-5'>
+                                <Input
+                                    inputWidthSize='flex-[2_1_0%]'
+                                    type='password'
+                                    name='Password'
+                                    label={t("Password")}
+                                    labelColor='text-black'
+                                    value={formData?.Password || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.Password}
+                                    t={t}
+                                    field={t("Password")}
+                                />
+                            </div>
+                            <div className='flex items-center my-5'>
+                                <Input
+                                    inputWidthSize='flex-[2_1_0%]'
+                                    type='password'
+                                    name='confirmPassword'
+                                    label={t("confirmPassword")}
+                                    labelColor='text-black'
+                                    value={formData?.confirmPassword || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.confirmPassword}
+                                    t={t}
+                                    field={t("confirmPassword")}
+                                />
+                            </div>
 
                             <div className='flex flex-col sm:flex-row gap-2 my-8'>
                                 <Button
@@ -314,6 +349,7 @@ function EditProfile({ t }) {
                                     radius='md'
                                     textTransform='uppercase'
                                     shadow='shadow-lg'
+                                    onClick={handleDeleteAccount}
                                 />
                                 <Button
                                     content={t("cancel")}

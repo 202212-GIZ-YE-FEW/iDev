@@ -225,6 +225,35 @@ export function AuthContextProvider({ children }) {
         updateProfile(user, { photoURL });
     };
 
+    const deleteuser = async (password) => {
+        const user = auth.currentUser;
+        if (user) {
+            const { uid, email } = user;
+            const credential = EmailAuthProvider.credential(email, password);
+            reauthenticateWithCredential(user, credential)
+                .then(() => {
+                    // the user has been reauthenticated
+                    user.delete()
+                        .then(() => {
+                            console.log(
+                                `User account with email ${email} and uid ${uid} deleted successfully.`
+                            );
+                        })
+                        .catch((error) => {
+                            console.error(
+                                "Error deleting user account:",
+                                error
+                            );
+                        });
+                })
+                .catch((error) => {
+                    console.error("Error reauthenticating user:", error);
+                });
+        } else {
+            console.error("No user signed in.");
+        }
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -239,6 +268,7 @@ export function AuthContextProvider({ children }) {
                 changePassword,
                 resetPassword,
                 updateProfilePhoto,
+                deleteuser,
             }}
         >
             {loading ? (
