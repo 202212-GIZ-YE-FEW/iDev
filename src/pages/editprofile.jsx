@@ -13,6 +13,7 @@ import PageIntro from "@/components/PageIntro";
 import uploadImage from "@/firebase/addImage";
 import Select from "@/components/ui/Select";
 import toastr from "toastr";
+import deleteDocument from "@/firebase/deleteData";
 
 function EditProfile({ t }) {
     const { user, changePassword, authenticated, deleteuser } = useAuth();
@@ -99,6 +100,7 @@ function EditProfile({ t }) {
     const handleDeleteAccount = async (e) => {
         e.preventDefault();
         await deleteuser(formData.password);
+        await deleteDocument("users", user.uid);
     };
     return (
         <div className='container '>
