@@ -1,22 +1,24 @@
 import { withTranslation } from "next-i18next";
-
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import addDocument from "@/firebase/addData";
+import getDocument from "@/firebase/getData";
 import schema from "@/utils/validationSchemaSubscription";
+
 function Subscribe({
     t,
     title = "subscribe",
     subtitle = "emailCommitment",
     placeholder = "enterEmail",
     titleTextTransform = "capitalize",
+    exist = "exist",
 }) {
-    const [formData, setFormData] = useState({});
-    const [formErrors, setFormErrors] = useState({});
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
     const form = useRef();
+    const [formData, setFormData] = useState({});
+    const [formErrors, setFormErrors] = useState({});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,22 +41,34 @@ function Subscribe({
                 }
             );
         try {
-            await schema.validate(formData, { abortEarly: false });
+            // await schema.validate(formData, { abortEarly: false });
 
             const collection = "newsletter"; // collection name
             const userData = {
                 email: formData.user_email,
             };
+            const newsletter = await getDocument(collection);
+            var arr = [];
+            for (var i = 0; i < newsletter.length; i++) {
+                arr.push(newsletter[i].email);
+            }
+            console.log(arr);
+            const result = arr.includes(formData.user_email);
+            if (result === true) {
+                alert("! This email already exist ! هذا الايميل موجود بالفعل ");
+            } else {
+                addDocument(collection, userData);
 
-            addDocument(collection, userData);
+                const router = require("next/router").default;
+                router.push({
+                    pathname: "/thanks",
+                    query: {
+                        subtitle1: "Subscription",
+                    },
+                });
+            }
 
-            const router = require("next/router").default;
-            router.push({
-                pathname: "/thanks",
-                query: {
-                    subtitle1: "Subscription",
-                },
-            });
+            // }
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
@@ -88,7 +102,8 @@ function Subscribe({
                             className='block flex-1 min-w-0 w-full focus:outline-none text-sm py-2.5 px-3 bg-transparent'
                             placeholder={t(`${placeholder}`)}
                             onChange={handleChange}
-                            error={formErrors.user_email}
+                            // error={formErrors.user_email}
+                            required
                         />
                         <button type='submit' value='Send'>
                             <span className='inline-flex items-center text-2xl px-3 bg-cyan border-s-2 border-light-gray/80 text-light-black rounded-e-1.5'>
