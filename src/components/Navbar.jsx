@@ -137,7 +137,12 @@ function MobileNav(prop) {
         to,
         t,
     } = prop;
-    const { Logout, authenticated } = useAuth();
+    const { Logout, authenticated, user } = useAuth();
+    const [photo, uploadimg] = useState("");
+
+    useEffect(() => {
+        uploadimg(user.photoURL);
+    }, [user]);
     return (
         <div
             className={`lg:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ${
@@ -172,7 +177,7 @@ function MobileNav(prop) {
                             width={14}
                             height={14}
                             alt='userImage'
-                            src={`/${String(localStorage.getItem("image"))}`}
+                            src={photo}
                         />
                     </div>
                 ) : (
