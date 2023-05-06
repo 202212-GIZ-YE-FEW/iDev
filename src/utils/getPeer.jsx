@@ -1,5 +1,5 @@
 import getDocById from "@/firebase/getDocById";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 import firebase_app from "../firebase/config";
 
@@ -11,11 +11,8 @@ export const getMyPeer = (users, currentUser) => {
 export const getPeerData = async (users, currentUser) => {
     const peerId = getMyPeer(users, currentUser);
     try {
-        const docRef = doc(db, "users", peerId);
-        const docSnap = await getDoc(docRef);
-        // const data =  await getDocById("users", peerId);
-        return docSnap.data();
-        // return data;
+        const data = await getDocById("users", peerId);
+        return data;
     } catch {
         //
     }

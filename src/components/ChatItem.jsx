@@ -5,21 +5,10 @@ import moment from "moment/moment";
 import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
 import { getPeerData } from "@/utils/getPeer";
 import truncate from "@/utils/truncate";
-
+import { getFullName } from "@/utils/getFullName";
 import { db } from "../firebase/config";
 const ChatItem = (props) => {
-    const { chat, currentUser, lastMsg } = props;
-    const { data: peer } = useQuery(
-        ["setPeerData", "sidebar", chat?.id],
-        async () => {
-            const d = getPeerData(chat.users, currentUser.uid);
-            return d;
-        }
-    );
-    // const [lastMsgInfo] = useDocumentData(
-    //     doc(db, `chats/${chat?.id}/messages`, lastMsg)
-    // );
-
+    const { chat, currentUser, peer, lastMsg } = props;
     const { data: lastMsgInfo } = useQuery(
         ["getLastMsg", lastMsg],
         async () => {
@@ -38,7 +27,7 @@ const ChatItem = (props) => {
             <div className='w-full flex flex-col justify-center'>
                 <div className='flex flex-row justify-between items-center'>
                     <h2 className='text-sm font-bold'>
-                        {`${peer?.first_name} ${peer?.last_name}`}
+                        {getFullName(peer?.first_name, peer?.last_name)}
                     </h2>
                     <div className='text-xs flex flex-row'>
                         {/* if sender of last message is the current user */}

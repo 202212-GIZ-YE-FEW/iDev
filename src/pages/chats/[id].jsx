@@ -1,5 +1,4 @@
 import data from "@emoji-mart/data";
-import moment from "moment/moment";
 import Picker from "@emoji-mart/react";
 import {
     addDoc,
@@ -11,11 +10,12 @@ import {
     serverTimestamp,
     updateDoc,
 } from "firebase/firestore";
+import moment from "moment/moment";
 import Image from "next/image";
-// import { withTranslation } from "next-i18next";
-import OnlineSVG from "public/images/green-circle.svg";
 import EmojiSVG from "public/images/emoji.svg";
 import EmptyChatGIF from "public/images/empty-chat.gif";
+// import { withTranslation } from "next-i18next";
+import OnlineSVG from "public/images/green-circle.svg";
 import PinSVG from "public/images/pin.svg";
 import VoiceSVG from "public/images/voice.svg";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -34,11 +34,13 @@ import { useAuth } from "@/components/context/AuthContext";
 import LayoutChat from "@/layout/LayoutChat";
 import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
 import { getPeerData } from "@/utils/getPeer";
-
+import { getFullName } from "@/utils/getFullName";
 import { db } from "../../firebase/config";
 const Chatroom = ({ chat, id, t }) => {
     chat = JSON.parse(chat);
     const [isEmojiPickerVisible, setEmojiPickerVisible] = useState(false);
+    const [input, setInput] = useState("");
+
     const { user } = useAuth();
     const bottomOfChat = useRef();
     const { data: peer } = useQuery(
@@ -62,7 +64,6 @@ const Chatroom = ({ chat, id, t }) => {
         orderBy("timestamp")
     );
     const [messages] = useCollectionData(q_messages);
-    const [input, setInput] = useState("");
 
     const sendMessage = async (e) => {
         e.preventDefault();
@@ -175,7 +176,10 @@ const Chatroom = ({ chat, id, t }) => {
                 >
                     <div className='flex justify-between px-3 py-[.4rem] bg-white/80 border-b-2 border-gray/10'>
                         <div className='font-medium'>
-                            <span className="'font-medium'">{`${peer?.first_name} ${peer?.last_name}`}</span>
+                            <span className="'font-medium'">{`${getFullName(
+                                peer?.first_name,
+                                peer?.last_name
+                            )}`}</span>
                             <br />
                             {peer?.active ? (
                                 <div className='flex space-s-1'>
