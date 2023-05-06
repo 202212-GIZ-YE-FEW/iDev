@@ -30,5 +30,6 @@
     "currentPassword": "كلمة السر الحالية",
     "select": "اختار",
     "dateOfBirth": "تاريخ الميلاد",
-    "UpdatePassword": "تغير كلمه المرور"
+    "UpdatePassword": "تغير كلمه المرور",
+    "ConfirmDelete": "لتاكيد الحذف "
 }

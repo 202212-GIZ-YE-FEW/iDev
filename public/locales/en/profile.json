@@ -30,5 +30,6 @@
     "currentPassword": "Current Password",
     "select": "select",
     "dateOfBirth": "Date Of Birth",
-    "UpdatePassword": "Change Password"
+    "UpdatePassword": "Change Password",
+    "ConfirmDelete": "Confirm Delete"
 }
