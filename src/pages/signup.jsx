@@ -87,6 +87,7 @@ function SignUp({ t }) {
                 profileData,
                 therapistData
             );
+            setFormErrors({});
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};

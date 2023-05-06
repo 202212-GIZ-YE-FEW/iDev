@@ -48,6 +48,7 @@ function Therapist({ t }) {
             const therapist = "therapist";
             await updateDocument(childCollectionPath, therapist, data);
             await updateDocument("users", userId, userData);
+            setFormErrors({});
             const router = require("next/router").default;
             router.push({
                 pathname: "/",

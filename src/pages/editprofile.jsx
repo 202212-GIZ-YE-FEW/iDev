@@ -87,6 +87,7 @@ function EditProfile({ t }) {
                 formData.currentPassword,
                 formData.newPassword
             );
+            setFormErrors({});
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
