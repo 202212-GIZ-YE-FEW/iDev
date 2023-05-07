@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 import { useState } from "react";
-
+import { useEffect } from "react";
 import Button from "@/components/ui/Button";
 
 import { navigation } from "@/utils/constants";
@@ -137,7 +137,12 @@ function MobileNav(prop) {
         to,
         t,
     } = prop;
-    const { Logout, authenticated } = useAuth();
+    const { Logout, authenticated, user } = useAuth();
+    const [photo, uploadimg] = useState("");
+
+    useEffect(() => {
+        uploadimg(user.photoURL);
+    }, [user]);
     return (
         <div
             className={`lg:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ${
@@ -172,7 +177,7 @@ function MobileNav(prop) {
                             width={14}
                             height={14}
                             alt='userImage'
-                            src={`/${String(localStorage.getItem("image"))}`}
+                            src={photo}
                         />
                     </div>
                 ) : (
@@ -241,7 +246,12 @@ function Navbar({ t }) {
     const [openHamburger, setOpenHamburger] = useState(false);
     const [openLangDropdown, setOpenLangDropdown] = useState(false);
     const [openAboutDropdown, setOpenAboutDropdown] = useState(false);
-    const { Logout, authenticated } = useAuth();
+    const { Logout, authenticated, user } = useAuth();
+    const [photo, uploadimg] = useState("");
+
+    useEffect(() => {
+        uploadimg(user.photoURL);
+    }, [user]);
     return (
         <nav className='bg-light-cyan'>
             <div className='container flex h-20 py-8 items-center'>
@@ -326,15 +336,13 @@ function Navbar({ t }) {
                         {/* Add Imge */}
                         {authenticated ? (
                             <Link href='/editprofile'>
-                                <div className='m-4  w-14 h-14  border-2 border-black rounded-full text-center '>
+                                <div className='m-4  w-14 h-14   rounded-full text-center '>
                                     <Image
-                                        className='rounded-full w-14 h-14object-cover'
+                                        className='rounded-full w-full h-full object-contain'
                                         width={14}
                                         height={14}
                                         alt='userImage'
-                                        src={`/${String(
-                                            localStorage.getItem("image")
-                                        )}`}
+                                        src={photo}
                                     />
                                 </div>
                             </Link>

@@ -4,8 +4,97 @@ exports[`renders correctly 1`] = `
 <div
   className="container py-20"
 >
-  <p>
-    pleaseLogin
-  </p>
+  <div
+    className="max-w-[29rem] lg:justify-self-end "
+  >
+    <div
+      className="mb-5 text-start"
+    >
+      <span
+        className="font-normal block text-3xl md:text-4xl rtl:md:text-3xl lg:text-5xl rtl:lg:text-4xl uppercase break-words"
+      >
+        createAnAccount
+      </span>
+    </div>
+    <div
+      className="w-full"
+    >
+      <form
+        className="  mt-[8px]  w-full"
+        onSubmit={[Function]}
+      >
+        <div
+          className="relative mb-[0.9rem]"
+          data-te-input-wrapper-init={true}
+        >
+          <label
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg flex-1"
+          >
+            userName
+          </label>
+          <input
+            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+            name="userName"
+            onChange={[Function]}
+            required={false}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="relative mb-[0.9rem]"
+          data-te-input-wrapper-init={true}
+        >
+          <label
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg flex-1"
+          >
+            city
+          </label>
+          <input
+            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+            name="city"
+            onChange={[Function]}
+            required={false}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="relative mb-[0.9rem]"
+          data-te-input-wrapper-init={true}
+        >
+          <label
+            className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg flex-1"
+          >
+            licenseNamber
+          </label>
+          <input
+            className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
+            name="licenseNamber"
+            onChange={[Function]}
+            required={false}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="mt-12"
+        >
+          <div
+            className="relative self-center"
+          >
+            <button
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  capitalize lg:text-xl xl xl:text-xl rounded-md px-[15px] md:px-[25px] lg:px-[35px] py-[7px] bg-cyan text-black "
+              disabled={false}
+              onClick={[Function]}
+            >
+              create
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 `;

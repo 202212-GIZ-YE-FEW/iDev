@@ -133,7 +133,7 @@ exports[`renders correctly 1`] = `
           <label
             className="mt-1 mb-2 whitespace-wrap text-sm md:text-base lg:text-lg flex:me-10 text-light-gray font-light flex:self-center capitalize text-sm md:text-base lg:text-lg flex-1"
           >
-            date
+            dateOfBirth
           </label>
           <input
             className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-sm font-light rounded-md "
