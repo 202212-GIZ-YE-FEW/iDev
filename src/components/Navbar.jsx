@@ -24,7 +24,7 @@ function LangDropdown(props) {
                 setOpenLangDropdown(!openLangDropdown);
             }}
         >
-            <button className='relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none mx-3'>
+            <button className='relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3'>
                 <Image priority src='/lang.svg' width={23} height={23} alt='' />
             </button>
             {openLangDropdown ? (
@@ -75,7 +75,6 @@ function NavLink({ to, children }) {
     );
 }
 function MobileNav(prop) {
-    const [photo, uploadimg] = useState("");
     const {
         openHamburger,
         setOpenHamburger,
@@ -122,6 +121,7 @@ function MobileNav(prop) {
                         <Dropdown
                             openDropdown={openAboutDropdown}
                             links={nav.links}
+                            mobile={true}
                             setOpenDropdown={setOpenAboutDropdown}
                             icon={
                                 <div className='flex'>
@@ -234,7 +234,7 @@ function Navbar({ t }) {
                             }`}
                         />
                     </div>
-                    <div className='hidden lg:flex items-center'>
+                    <div className='hidden lg:flex items-center text-end'>
                         {navigation.map((nav) => {
                             return nav.name === "about" ? (
                                 <Dropdown

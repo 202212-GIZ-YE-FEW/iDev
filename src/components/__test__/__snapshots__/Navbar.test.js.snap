@@ -58,7 +58,7 @@ exports[`renders correctly 1`] = `
         />
       </div>
       <div
-        className="hidden lg:flex items-center"
+        className="hidden lg:flex items-center text-end"
       >
         <a
           className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
@@ -122,7 +122,7 @@ exports[`renders correctly 1`] = `
           onClick={[Function]}
         >
           <button
-            className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none mx-3"
+            className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3"
           >
             <img
               alt=""
@@ -272,7 +272,7 @@ exports[`renders correctly 1`] = `
           onClick={[Function]}
         >
           <button
-            className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none mx-3"
+            className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3"
           >
             <img
               alt=""
