@@ -16,7 +16,9 @@ function MyApp({ Component, pageProps }) {
         return (
             <AuthContextProvider>
                 <QueryClientProvider client={queryClient}>
-                    <Component.getLayout>
+                    <Component.getLayout
+                        requireAuth={pageProps.requireAuth || false}
+                    >
                         <Component {...pageProps} />
                     </Component.getLayout>
                 </QueryClientProvider>

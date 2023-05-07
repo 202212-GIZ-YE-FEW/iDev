@@ -33,8 +33,9 @@ import { useAuth } from "@/components/context/AuthContext";
 
 import LayoutChat from "@/layout/LayoutChat";
 import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
-import { getPeerData } from "@/utils/getPeer";
 import { getFullName } from "@/utils/getFullName";
+import { getPeerData } from "@/utils/getPeer";
+
 import { db } from "../../firebase/config";
 const Chatroom = ({ chat, id, t }) => {
     chat = JSON.parse(chat);
@@ -76,6 +77,7 @@ const Chatroom = ({ chat, id, t }) => {
             }
         );
         try {
+            setInput("");
             const docRef = doc(db, `chats`, id);
             await updateDoc(docRef, {
                 lastMsg: lastMsgRef.id,
@@ -83,7 +85,6 @@ const Chatroom = ({ chat, id, t }) => {
         } catch (error) {
             // console.error("Error updating document:", error);
         }
-        setInput("");
     };
     const getMessages = () => {
         // label & newDay: to show date of message every new day
@@ -117,7 +118,7 @@ const Chatroom = ({ chat, id, t }) => {
             const sender = msg.sender === user.uid;
             if (sender) {
                 return (
-                    <Fragment key={msg.id}>
+                    <Fragment key={index}>
                         {label}
                         <ChatSent
                             message={msg.text}
@@ -129,7 +130,7 @@ const Chatroom = ({ chat, id, t }) => {
                 );
             } else {
                 return (
-                    <Fragment key={msg.id}>
+                    <Fragment key={index}>
                         {label}
                         <ChatReceived
                             message={msg.text}
@@ -149,6 +150,7 @@ const Chatroom = ({ chat, id, t }) => {
         });
     };
     useEffect(ScrollToBottom, [messages]);
+
     // useEffect(() => {
     //     const newChat = async () => {
     //         await addDoc(collection(db, "chats"), {
@@ -195,7 +197,7 @@ const Chatroom = ({ chat, id, t }) => {
                                 </span>
                             )}
                         </div>
-                        {user.isTherapist && <button>Eliminate Chat</button>}
+                        {/* {user.isTherapist && <button>Eliminate Chat</button>} */}
                     </div>
                     <div className='flex flex-col justify-between overflow-y-auto'>
                         {messages?.length !== 0 ? (
@@ -287,6 +289,7 @@ export async function getServerSideProps(context) {
             // ...(await serverSideTranslations(["chatroom", "common"])),
             chat: JSON.stringify(docSnap.data()),
             id,
+            requireAuth: true,
         },
     };
 }

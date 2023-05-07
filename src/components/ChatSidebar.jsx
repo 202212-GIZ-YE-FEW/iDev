@@ -63,7 +63,7 @@ const ChatSidebar = (props) => {
                     type='text'
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder={t("search")}
+                    placeholder='Search by fullname or email'
                     className=' placeholder-gray/50 text-gray/80 text-sm py-2 px-10 rounded-full outline-none w-full focus:outline-none'
                 />
             </div>
@@ -86,24 +86,6 @@ const ChatSidebar = (props) => {
                         </Link>
                     );
                 })}
-                {/* {chatsOfCurrentUser &&
-                    chatsOfCurrentUser.map((chat) => {
-                        return (
-                            <Link
-                                key={chat.id}
-                                href={`/chats/${chat.id}`}
-                                className={`py-2 px-5 flex flex-row cursor-pointer border-b-2 border-gray/30 hover:bg-gray/20 ${
-                                    chat.id === chatRef && "bg-cyan/60"
-                                }`}
-                            >
-                                <ChatItem
-                                    chat={chat}
-                                    currentUser={user}
-                                    lastMsg={chat.lastMsg}
-                                />
-                            </Link>
-                        );
-                    })} */}
             </div>
         </div>
     );
