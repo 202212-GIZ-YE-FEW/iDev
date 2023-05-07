@@ -19,7 +19,6 @@ function career({ t, careers }) {
                 <PageIntro
                     title={t("careerAtHealing")}
                     subtitle={t("bringHopeThroughTherapy")}
-                    t={t}
                 />
             </div>
             <div className='flex flex-col'>
