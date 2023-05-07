@@ -10,7 +10,6 @@ function Subscribe({
     subtitle = "emailCommitment",
     placeholder = "enterEmail",
     titleTextTransform = "capitalize",
-    exist = "exist",
 }) {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -71,7 +70,7 @@ function Subscribe({
                 router.push({
                     pathname: "/thanks",
                     query: {
-                        subtitle1: "Subscription",
+                        subtitle: "Subscription",
                     },
                 });
             }

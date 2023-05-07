@@ -9,7 +9,7 @@ import Button from "@/components/ui/Button";
 export default function Thanks() {
     const { t } = useTranslation();
     const router = useRouter();
-    const { subtitle, subtitle1 } = router.query;
+    const { subtitle } = router.query;
     return (
         <>
             <Head>
@@ -19,7 +19,6 @@ export default function Thanks() {
                 <PageIntro
                     title={t("thankYou")}
                     subtitle={t(`signup:${subtitle}`)}
-                    subtitle1={t(`Subscription:${subtitle1}`)}
                 />
                 <Link href='/'>
                     <Button
