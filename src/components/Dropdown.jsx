@@ -1,10 +1,9 @@
-import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
+
 import { useAuth } from "./context/AuthContext";
 function Dropdown(prop) {
     const { Logout } = useAuth();
-    const { setOpenDropdown, openDropdown, icon, mobile = false, links } = prop;
+    const { setOpenDropdown, openDropdown, icon, links } = prop;
     return (
         <div
             className='relative z-20'
@@ -14,14 +13,7 @@ function Dropdown(prop) {
         >
             {icon}
             {openDropdown ? (
-                <div
-                    className={clsx(
-                        "w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl",
-                        {
-                            "absolute start-0 z-20": mobile === false,
-                        }
-                    )}
-                >
+                <div className='w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl absolute end-0 z-20'>
                     {links.map((link) => {
                         return link.name === "logout" ? (
                             <Link

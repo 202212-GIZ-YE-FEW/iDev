@@ -80,8 +80,6 @@ function MobileNav(prop) {
         openHamburger,
         setOpenHamburger,
         openLangDropdown,
-        openAuthenticatedDropdown,
-        setOpenAuthenticatedDropdown,
         setOpenLangDropdown,
         openAboutDropdown,
         setOpenAboutDropdown,
@@ -116,31 +114,6 @@ function MobileNav(prop) {
                         </span>
                     </Link>
                 </div>
-                {/* {authenticated && (
-                    <Dropdown
-                        openDropdown={
-                            openAuthenticatedDropdown
-                        }
-                        links={authenticatedDropdown}
-                        name="profile"
-                        setOpenDropdown={
-                            setOpenAuthenticatedDropdown
-                        }
-                        icon={
-                            (
-                                <div className='m-4 w-14 h-14 rounded-full text-center '>
-                                    <Image
-                                        className='rounded-full w-full h-full object-contain'
-                                        width={14}
-                                        height={14}
-                                        alt='userImage'
-                                        src={photo}
-                                    />
-                                </div>
-                            )
-                        }
-                    />
-                )} */}
             </div>
             {/* Dropdown panel */}
             <div className='container flex flex-col bg-background'>
@@ -316,9 +289,9 @@ function Navbar({ t }) {
                             name='profile'
                             setOpenDropdown={setOpenAuthenticatedDropdown}
                             icon={
-                                <div className='m-4 w-14 h-14 rounded-full text-center '>
+                                <div className='mx-4 w-9 max-w-14 max-h-14 rounded-full'>
                                     <Image
-                                        className='rounded-full w-full h-full object-contain'
+                                        className='rounded-full w-full h-full object-cover'
                                         width={14}
                                         height={14}
                                         alt='userImage'
