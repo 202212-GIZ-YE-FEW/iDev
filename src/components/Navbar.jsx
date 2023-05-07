@@ -4,8 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/ui/Button";

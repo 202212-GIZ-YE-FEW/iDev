@@ -40,6 +40,7 @@ const Input = (props) => {
                     {label}
                 </label>
             )}
+
             <input
                 value={value}
                 name={name}
@@ -72,7 +73,7 @@ const Input = (props) => {
                 </span>
             )}
             {error && (
-                <div className='text-red text-sm md:text-base mt-1'>
+                <div className=' text-red text-sm md:text-base mt-1 '>
                     {t(`validation:${error}`, {
                         field: t(`${field}`),
                         count: "3",

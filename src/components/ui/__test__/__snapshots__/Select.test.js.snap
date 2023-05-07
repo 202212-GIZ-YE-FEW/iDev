@@ -2,6 +2,6 @@
 
 exports[`renders correctly 1`] = `
 <select
-  className="w-full h-auto block border text-sm border-solid self-center text-light-gray border-light-gray/30 px-[10px] min-w-0 font-light rounded-md shadow-sm flex-[2_1_0%]  text-xl"
+  className="w-full h-auto border text-base text-light-black border-solid border-light-gray/30 shadow-sm self-center placeholder-light-gray leading-[2.15] px-[20px] py-[10px] min-w-0 text-w-full font-light rounded-md  text-xl"
 />
 `;
