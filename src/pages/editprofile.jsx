@@ -98,6 +98,11 @@ function EditProfile({ t }) {
             }
         }
     };
+    const handelCancel = async (e) => {
+        e.preventDefault();
+        setFormData({});
+        setFormErrors({});
+    };
     const handleDeleteAccount = async (e) => {
         e.preventDefault();
         await deleteuser(formData.password);
@@ -362,6 +367,7 @@ function EditProfile({ t }) {
                                 radius='md'
                                 textTransform='uppercase'
                                 shadow='shadow-lg'
+                                onClick={handelCancel}
                             />
                         </div>
                     </form>
