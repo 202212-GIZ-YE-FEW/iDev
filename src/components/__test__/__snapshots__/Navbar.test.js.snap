@@ -8,161 +8,7 @@ exports[`renders correctly 1`] = `
     className="container flex h-20 py-8 items-center"
   >
     <div
-      className="lg:hidden absolute top-0 right-0 h-full w-full z-20 bg-background transform ltr:-translate-x-full rtl:translate-x-full opacity-0 transition-transform duration-300 ease-in-out"
-    >
-      <div
-        className="flex items-center justify-between bg-light-cyan h-20 px-4"
-      >
-        <a
-          className="text-2xl font-semibold flex items-center space-s-4"
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
-        >
-          <img
-            alt="Healing Logo"
-            data-nimg="1"
-            decoding="async"
-            fetchpriority="high"
-            height={30}
-            onError={[Function]}
-            onLoad={[Function]}
-            src="/logo.svg"
-            style={
-              Object {
-                "color": "transparent",
-              }
-            }
-            width={30}
-          />
-          <span
-            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase"
-          >
-            Healing
-          </span>
-        </a>
-      </div>
-      <div
-        className="flex flex-col px-4"
-      >
-        <a
-          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
-        >
-          home
-        </a>
-        <a
-          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-          href="blogs"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
-        >
-          blogs
-        </a>
-        <a
-          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-          href="#"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
-        >
-          <div
-            className="relative"
-            onClick={[Function]}
-          >
-            <div
-              className="flex"
-            >
-              <img
-                alt=""
-                data-nimg="1"
-                decoding="async"
-                fetchpriority="high"
-                height={15}
-                onError={[Function]}
-                onLoad={[Function]}
-                src="/arrow.svg"
-                style={
-                  Object {
-                    "color": "transparent",
-                  }
-                }
-                width={15}
-              />
-              <span
-                className="inline-block ms-1"
-              >
-                about
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-          href="/contact-us"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
-        >
-          contactUs
-        </a>
-        <div
-          className="flex space-s-10"
-        >
-          <div
-            className="relative inline-block"
-            onClick={[Function]}
-          >
-            <button
-              className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none mx-3"
-            >
-              <img
-                alt=""
-                data-nimg="1"
-                decoding="async"
-                fetchpriority="high"
-                height={23}
-                onError={[Function]}
-                onLoad={[Function]}
-                src="/lang.svg"
-                style={
-                  Object {
-                    "color": "transparent",
-                  }
-                }
-                width={23}
-              />
-            </button>
-          </div>
-          <a
-            href="/login"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="relative self-center"
-            >
-              <button
-                className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  capitalize text-sm md:text-xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-                disabled={false}
-                onClick={[Function]}
-              >
-                login
-              </button>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div
-      className="w-3/12 flex items-center"
+      className="w-4/12 flex items-center"
     >
       <a
         className="text-2xl font-semibold flex items-center space-s-4"
@@ -195,10 +41,10 @@ exports[`renders correctly 1`] = `
       </a>
     </div>
     <div
-      className="w-9/12 flex justify-end items-center"
+      className="w-8/12 justify-end flex items-center"
     >
       <div
-        className="z-50 flex relative w-8 h-5 flex-col justify-between items-center lg:hidden"
+        className="flex relative z-20 order-last w-8 h-5 flex-col justify-between items-center lg:hidden"
         onClick={[Function]}
       >
         <span
@@ -232,44 +78,36 @@ exports[`renders correctly 1`] = `
         >
           blogs
         </a>
-        <a
-          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-          href="#"
+        <div
+          className="relative z-20"
           onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
         >
           <div
-            className="relative"
-            onClick={[Function]}
+            className="flex"
           >
-            <div
-              className="flex"
-            >
-              <img
-                alt=""
-                data-nimg="1"
-                decoding="async"
-                fetchpriority="high"
-                height={15}
-                onError={[Function]}
-                onLoad={[Function]}
-                src="/arrow.svg"
-                style={
-                  Object {
-                    "color": "transparent",
-                  }
+            <img
+              alt=""
+              data-nimg="1"
+              decoding="async"
+              fetchpriority="high"
+              height={15}
+              onError={[Function]}
+              onLoad={[Function]}
+              src="/arrow.svg"
+              style={
+                Object {
+                  "color": "transparent",
                 }
-                width={15}
-              />
-              <span
-                className="inline-block ms-1"
-              >
-                about
-              </span>
-            </div>
+              }
+              width={15}
+            />
+            <span
+              className="inline-block ms-1"
+            >
+              about
+            </span>
           </div>
-        </a>
+        </div>
         <a
           className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
           href="/contact-us"
@@ -315,6 +153,156 @@ exports[`renders correctly 1`] = `
           >
             <button
               className="transform hover:bg-yellow transition hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  capitalize text-sm md:text-base rounded-md px-[10px] lg:px-[28px] py-[4.7px] bg-cyan text-black "
+              disabled={false}
+              onClick={[Function]}
+            >
+              login
+            </button>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="lg:hidden absolute top-0 right-0 h-full w-full z-10 bg-background transform hidden transition-transform duration-300 ease-in-out"
+  >
+    <div
+      className="container flex items-center bg-light-cyan h-20"
+    >
+      <div
+        className="flex items-center"
+      >
+        <a
+          className="text-2xl font-semibold flex items-center space-s-4"
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          <img
+            alt="Healing Logo"
+            data-nimg="1"
+            decoding="async"
+            fetchpriority="high"
+            height={30}
+            onError={[Function]}
+            onLoad={[Function]}
+            src="/logo.svg"
+            style={
+              Object {
+                "color": "transparent",
+              }
+            }
+            width={30}
+          />
+          <span
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase"
+          >
+            Healing
+          </span>
+        </a>
+      </div>
+    </div>
+    <div
+      className="container flex flex-col bg-background"
+    >
+      <a
+        className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onTouchStart={[Function]}
+      >
+        home
+      </a>
+      <a
+        className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+        href="blogs"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onTouchStart={[Function]}
+      >
+        blogs
+      </a>
+      <div
+        className="relative z-20"
+        onClick={[Function]}
+      >
+        <div
+          className="flex"
+        >
+          <img
+            alt=""
+            data-nimg="1"
+            decoding="async"
+            fetchpriority="high"
+            height={15}
+            onError={[Function]}
+            onLoad={[Function]}
+            src="/arrow.svg"
+            style={
+              Object {
+                "color": "transparent",
+              }
+            }
+            width={15}
+          />
+          <span
+            className="inline-block ms-1"
+          >
+            about
+          </span>
+        </div>
+      </div>
+      <a
+        className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+        href="/contact-us"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onTouchStart={[Function]}
+      >
+        contactUs
+      </a>
+      <div
+        className="flex space-s-10"
+      >
+        <div
+          className="relative inline-block"
+          onClick={[Function]}
+        >
+          <button
+            className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none mx-3"
+          >
+            <img
+              alt=""
+              data-nimg="1"
+              decoding="async"
+              fetchpriority="high"
+              height={23}
+              onError={[Function]}
+              onLoad={[Function]}
+              src="/lang.svg"
+              style={
+                Object {
+                  "color": "transparent",
+                }
+              }
+              width={23}
+            />
+          </button>
+        </div>
+        <a
+          href="/login"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          <div
+            className="relative self-center"
+          >
+            <button
+              className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
                 font-normal whitespace-nowrap cursor-pointer  capitalize text-sm md:text-xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
               disabled={false}
               onClick={[Function]}
