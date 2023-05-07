@@ -8,33 +8,30 @@ import addDocument from "@/firebase/addData";
 import Input from "@/components/ui/Input";
 
 const Add_Career = ({ t }) => {
-    const [enTitle, SetEnTitle] = useState("");
-    const [arTitle, setArTitle] = useState("");
-
-    const [enDescrption, setEnDescrption] = useState("");
-    const [arDescrption, setArDescrption] = useState("");
-
-    const [enSpecialization, setEnSpecialization] = useState("");
-    const [arSpecialization, setArSpecialization] = useState("");
-
-    const [enOccupation, setEnOccupation] = useState("");
-    const [arOccupation, setArOccupation] = useState("");
+    const [formData, setFormData] = useState({
+        enTitle: "",
+        arTitle: "",
+        enDescrption: "",
+        arDescrption: "",
+        enSpecialization: "",
+        arSpecialization: "",
+        enOccupation: "",
+        arOccupation: "",
+    });
 
     const router = useRouter();
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
+
     const setData = async () => {
         try {
-            await addDocument("current_jobs", {
-                enTitle: enTitle,
-                arTitle: arTitle,
-                enDescrption: enDescrption,
-                arDescrption: arDescrption,
-                enSpecialization: enSpecialization,
-                arSpecialization: arSpecialization,
-                enOccupation: enOccupation,
-                arOccupation: arOccupation,
-            });
-
+            await addDocument("current_jobs", formData);
             await router.push({
                 pathname: "/careers",
             });
@@ -59,31 +56,33 @@ const Add_Career = ({ t }) => {
                                 label='Title of Job'
                                 placeholder='Ex: Business Intelligence Manager'
                                 inputWidthSize='w-full'
-                                onChange={(e) => SetEnTitle(e.target.value)}
+                                name='enTitle'
+                                value={formData.enTitle}
+                                onChange={handleChange}
                             />
                             <Input
                                 label='Descrption of Job'
                                 placeholder='Ex: Moz is looking for a Senior Software ...'
                                 inputWidthSize='w-full'
-                                onChange={(e) =>
-                                    setEnDescrption(e.target.value)
-                                }
+                                name='enDescrption'
+                                value={formData.enDescrption}
+                                onChange={handleChange}
                             />
                             <Input
                                 label='specialization of job in english'
                                 placeholder='Ex: Engineering'
                                 inputWidthSize='w-full'
-                                onChange={(e) =>
-                                    setEnSpecialization(e.target.value)
-                                }
+                                name='enSpecialization'
+                                value={formData.enSpecialization}
+                                onChange={handleChange}
                             />
                             <Input
                                 label='Enter Occupation of Job English'
                                 placeholder='Ex: Application Development'
                                 inputWidthSize='w-full'
-                                onChange={(e) =>
-                                    setEnOccupation(e.target.value)
-                                }
+                                name='enOccupation'
+                                value={formData.enOccupation}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='flex-1 pl-10 ' dir='rtl'>
@@ -91,32 +90,34 @@ const Add_Career = ({ t }) => {
                                 label='المسمى الوظيفي'
                                 placeholder='مثال: مدير ذكاء الأعمال'
                                 inputWidthSize='w-full'
-                                onChange={(e) => setArTitle(e.target.value)}
+                                name='arTitle'
+                                value={formData.arTitle}
+                                onChange={handleChange}
                                 direction='rtl'
                             />
                             <Input
                                 label='وصف الوظيفة '
                                 placeholder='...مثال:مطور برامج أول للإنضمام'
                                 inputWidthSize='w-full'
-                                onChange={(e) =>
-                                    setArDescrption(e.target.value)
-                                }
+                                name='arDescrption'
+                                value={formData.arDescrption}
+                                onChange={handleChange}
                             />
                             <Input
                                 label='التخصص الوظيفي'
                                 placeholder='...مثال:مهندس'
                                 inputWidthSize='w-full'
-                                onChange={(e) =>
-                                    setArSpecialization(e.target.value)
-                                }
+                                name='arSpecialization'
+                                value={formData.arSpecialization}
+                                onChange={handleChange}
                             />
                             <Input
                                 label='المنصب الوظيفي'
                                 placeholder='...مثال:النماذج الأولية السريعة'
                                 inputWidthSize='w-full'
-                                onChange={(e) =>
-                                    setArOccupation(e.target.value)
-                                }
+                                name='arOccupation'
+                                value={formData.arOccupation}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -147,4 +148,5 @@ export async function getStaticProps({ locale }) {
         },
     };
 }
+
 export default withTranslation("career")(Add_Career);
