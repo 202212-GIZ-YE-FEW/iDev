@@ -40,19 +40,18 @@ function EditProfile({ t }) {
         ? collection(parentDocRef, "Personal_data")
         : null;
     const profile = "profile";
+    const fetchData = async () => {
+        if (childCollectionRef) {
+            const datafetch = {};
+            const querySnapshot = await getDocs(childCollectionRef);
+            querySnapshot.forEach((doc) => {
+                datafetch[doc.id] = doc.data();
+            });
 
+            setFormData(datafetch[profile]);
+        }
+    };
     useEffect(() => {
-        const fetchData = async () => {
-            if (childCollectionRef) {
-                const datafetch = {};
-                const querySnapshot = await getDocs(childCollectionRef);
-                querySnapshot.forEach((doc) => {
-                    datafetch[doc.id] = doc.data();
-                });
-
-                setFormData(datafetch[profile]);
-            }
-        };
         fetchData();
     }, []);
 
@@ -100,7 +99,7 @@ function EditProfile({ t }) {
     };
     const handelCancel = async (e) => {
         e.preventDefault();
-        setFormData({});
+        fetchData();
         setFormErrors({});
     };
     const handleDeleteAccount = async (e) => {
