@@ -2,14 +2,13 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
-import { useState, useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/ui/Button";
 
-import { authenticatedDropdown, navigation, langs } from "@/utils/constants";
+import { authenticatedDropdown, langs, navigation } from "@/utils/constants";
 
 import { useAuth } from "./context/AuthContext";
 
