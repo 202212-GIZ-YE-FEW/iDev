@@ -11,10 +11,10 @@ exports[`renders correctly 1`] = `
   }
 >
   <div
-    className="container h-full flex flex-col justify-center lg:flex-row gap-y-10 lg:justify-between items-center"
+    className="container h-full flex flex-col lg:flex-row gap-y-10 justify-between items-center"
   >
     <div
-      className="flex flex-col justify-center text-center lg:text-start"
+      className="flex flex-col mt-10 lg:mt-0 text-center lg:text-start"
     >
       <h1
         className="text-xl sm:text-3xl lg:text-5xl uppercase"

@@ -43,7 +43,7 @@ function Dropdown(prop) {
                                   locale={link.locale}
                                   onClick={() => {
                                       document.dir = link.dir;
-                                      i18n.changeLanguage("ar");
+                                      i18n.changeLanguage(link.locale);
                                   }}
                               >
                                   {link.name}

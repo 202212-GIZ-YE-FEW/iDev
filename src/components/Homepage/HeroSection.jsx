@@ -22,8 +22,8 @@ function HeroSection({ t }) {
     };
     return (
         <header style={style} className='min-w-[96vw] bg-cover'>
-            <div className='container h-full flex flex-col justify-center lg:flex-row gap-y-10 lg:justify-between items-center'>
-                <div className='flex flex-col justify-center text-center lg:text-start'>
+            <div className='container h-full flex flex-col lg:flex-row gap-y-10 justify-between items-center'>
+                <div className='flex flex-col mt-10 lg:mt-0 text-center lg:text-start'>
                     <h1 className='text-xl sm:text-3xl lg:text-5xl uppercase'>
                         {t("weAreHereTo")}
                     </h1>
