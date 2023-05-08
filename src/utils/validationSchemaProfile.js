@@ -1,18 +1,17 @@
 import * as Yup from "yup";
 
 const schema = Yup.object().shape({
-    fullName: Yup.string()
+    Fullname: Yup.string()
         .matches(/^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/, "letterSpace")
         .required("required"),
-    hubbies: Yup.string()
+    hobbies: Yup.string()
         .matches(/^[\u0621-\u064A\u0660-\u0669 a-zA-Z\s]+$/, "letterSpace")
         .required("required"),
-    birthDate: Yup.date()
+    dateOfBirth: Yup.date()
         .nullable()
         .max(new Date(), "dateOfBirthFuture")
         .required("required"),
     newPassword: Yup.string()
-        // .required("required")
         .min(12, "passwordLength")
 
         .matches(
@@ -39,17 +38,6 @@ const schema = Yup.object().shape({
     phoneNumber: Yup.string()
         .matches(/^(73|77|71)\d{7}$/, "phoneNumber")
         .required("required"),
-    // uploadId: Yup.mixed()
-    //     .required("required")
-    //     .test(
-    //         "fileFormat",
-    //         "uploadId",
-    //         (value) =>
-    //             value &&
-    //             ["image/png", "image/jpeg", "application/pdf"].includes(
-    //                 value.type
-    //             )
-    //     ),
 });
 
 export default schema;

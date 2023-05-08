@@ -5,7 +5,7 @@ import CommunicateThroughSection from "./Homepage/CommunicateThroughSection";
 import HeroSection from "./Homepage/HeroSection";
 import TicketSection from "./Homepage/TicketSection";
 import TrustTherapistSection from "./Homepage/TrustTherapistSection";
-const HomePage = ({ blogs = [] }) => {
+const HomePage = ({ blogs = [], tickets = [] }) => {
     return (
         <>
             <HeroSection />
@@ -19,7 +19,7 @@ const HomePage = ({ blogs = [] }) => {
                 <BlogsSection title='common:recentBlogsTitle' blogs={blogs} />
             </section>
             <section className='bg-white py-20'>
-                <TicketSection />
+                <TicketSection tickets={tickets} />
             </section>
         </>
     );

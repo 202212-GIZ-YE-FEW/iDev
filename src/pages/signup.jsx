@@ -27,8 +27,6 @@ function SignUp({ t }) {
         authenticated,
         signInWithFbAccount,
         signInWithGoogleAccount,
-        user,
-        sendEmailConfirmation,
     } = useAuth();
 
     const {
@@ -38,7 +36,7 @@ function SignUp({ t }) {
         confirmemail = "confirmEmail",
         password = "password",
         confirmpassword = "confirmPassword",
-        datebrith = "date",
+        datebrith = "dateOfBirth",
         signup = "signup",
         login = "login",
     } = {};
@@ -60,8 +58,6 @@ function SignUp({ t }) {
 
         try {
             await schema.validate(formData, { abortEarly: false });
-
-            const collection = "user"; // collection name
             const userData = {
                 active: true,
                 email: formData.email,
@@ -73,11 +69,11 @@ function SignUp({ t }) {
             const profileData = {
                 Fullname: formData.firstName + " " + formData.lastName,
                 deleted: false,
-                hobbies: "Play Football",
-                familySize: 80,
-                educationLevel: "Master",
-                phoneNumber: 777898989,
-                gender: "male",
+                hobbies: "",
+                familySize: 0,
+                educationLevel: "",
+                phoneNumber: 0,
+                gender: "",
             };
             const therapistData = {
                 LicenseNamber: "",
@@ -91,6 +87,7 @@ function SignUp({ t }) {
                 profileData,
                 therapistData
             );
+            setFormErrors({});
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};

@@ -1,6 +1,6 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "./config";
-
+import toastr from "toastr";
 /**
  * Updates a specific Firestore document
  *
@@ -14,9 +14,19 @@ export default async function updateDocument(collectionPath, docId, data) {
         const docRef = doc(db, collectionPath, docId);
         await updateDoc(docRef, data);
         console.log("Update successful");
+        toastr.success("Your data has been Update successfully.", "", {
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-top-right",
+        });
         return true;
     } catch (error) {
         console.error("Error updating document:", error);
+        toastr.error("Please verify your email before logging in.", error, {
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-top-right",
+        });
         return false;
     }
 }

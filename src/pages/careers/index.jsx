@@ -9,7 +9,7 @@ import CreateVacancy from "@/components/CreateVacancy";
 function career({ t, careers }) {
     return (
         <div>
-            <div className=' lg:ms-28 mt-10 ms-10 '>
+            <div className='lg:ms-28 mt-10 ms-10'>
                 <PageIntro
                     title={t("careerAtHealing")}
                     subtitle={t("bringHopeThroughTherapy")}

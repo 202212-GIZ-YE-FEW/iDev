@@ -8,16 +8,24 @@ import {
     EmailAuthProvider,
     updatePassword,
     sendPasswordResetEmail,
+    updateProfile,
 } from "firebase/auth";
 import Image from "next/image";
 import Router from "next/router";
 import Spinner from "public/spinner.svg";
 import React, { createContext, useContext, useEffect, useState } from "react";
-
-import { auth, facebookProvider, googleProvider } from "@/firebase/config";
-import image from "~/blog.png";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+    auth,
+    facebookProvider,
+    googleProvider,
+    storage,
+} from "@/firebase/config";
+import image from "public/profile-icon.svg";
 import { setDoc, doc, getFirestore } from "firebase/firestore";
 import setDocument from "@/firebase/setData";
+import toastr from "toastr";
+
 const db = getFirestore();
 const AuthContext = createContext({});
 
@@ -34,6 +42,7 @@ export function AuthContextProvider({ children }) {
                 setUser({
                     email: user.email,
                     uid: user.uid,
+                    photoURL: user.photoURL || image,
                 });
                 localStorage.setItem("image", user.photoURL || image); // save user photoURL to localStorage
                 localStorage.setItem("authenticated", true); // save authentication status to localStorage
@@ -74,15 +83,16 @@ export function AuthContextProvider({ children }) {
                 await sendEmailConfirmation();
                 const router = require("next/router").default;
                 router.push({
-                    pathname: "/thanks",
-                    query: {
-                        subtitle: "emailVerified",
-                    },
+                    pathname: "/login",
                 });
             })
             .catch((error) => {
                 if (error.code === "auth/email-already-in-use") {
-                    window.alert("email-already-in-use");
+                    toastr.error("Email-already-in-use", "", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
                 }
             });
     };
@@ -97,7 +107,15 @@ export function AuthContextProvider({ children }) {
                 // If the user's email is not verified, log them out and show an error message
                 auth.signOut(); // Sign-out successful
                 setAuthenticated(false);
-                alert("Please verify your email before logging in.");
+                toastr.warning(
+                    "Please verify your email before logging in.",
+                    "",
+                    {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    }
+                );
             }
         });
     };
@@ -105,8 +123,21 @@ export function AuthContextProvider({ children }) {
     const sendEmailConfirmation = () => {
         const user = auth.currentUser;
         return sendEmailVerification(user)
-            .then(() => console.log("Verification email sent."))
-            .catch((error) => console.error(error));
+            .then(() => {
+                toastr.info("Verification email sent.", "", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                });
+            })
+
+            .catch((error) => {
+                toastr.error(error, "", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                });
+            });
     };
 
     //SignIn with Google account
@@ -169,17 +200,29 @@ export function AuthContextProvider({ children }) {
             .then(() => {
                 updatePassword(user, newPassword)
                     .then(() => {
-                        alert("Password updated successfully");
+                        toastr.success("Password updated successfully.", "", {
+                            closeButton: true,
+                            progressBar: true,
+                            positionClass: "toast-top-right",
+                        });
                     })
                     .catch((error) => {
                         // An error occurred while updating the password
-                        console.error(error);
+                        toastr.error(error, "", {
+                            closeButton: true,
+                            progressBar: true,
+                            positionClass: "toast-top-right",
+                        });
                     });
             })
             .catch((error) => {
                 // Incorrect password, show an error message
                 if (error.code === "auth/wrong-password") {
-                    alert("The current password is incorrect");
+                    toastr.error("The current password is incorrect", "", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
                 }
             });
     };
@@ -190,6 +233,64 @@ export function AuthContextProvider({ children }) {
             console.error(error);
         }
     };
+    const updateProfilePhoto = async (photoURL) => {
+        const user = auth.currentUser;
+        console.log(photoURL);
+        updateProfile(user, { photoURL });
+    };
+
+    const deleteuser = async (password) => {
+        const user = auth.currentUser;
+        if (user) {
+            const { uid, email } = user;
+            const credential = EmailAuthProvider.credential(email, password);
+            reauthenticateWithCredential(user, credential)
+                .then(() => {
+                    // the user has been reauthenticated
+                    user.delete()
+                        .then(() => {
+                            toastr.success(
+                                "User account with email " +
+                                    email +
+                                    " and uid " +
+                                    uid +
+                                    "deleted successfully.",
+                                "",
+                                {
+                                    closeButton: true,
+                                    progressBar: true,
+                                    positionClass: "toast-top-right",
+                                }
+                            );
+                        })
+                        .catch((error) => {
+                            toastr.error(
+                                "Error deleting user account:",
+                                error,
+                                {
+                                    closeButton: true,
+                                    progressBar: true,
+                                    positionClass: "toast-top-right",
+                                }
+                            );
+                        });
+                })
+                .catch((error) => {
+                    toastr.error(error, "Error reauthenticating user:", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
+                });
+        } else {
+            toastr.error("No user signed in.", "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
+        }
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -203,6 +304,8 @@ export function AuthContextProvider({ children }) {
                 signInWithFbAccount,
                 changePassword,
                 resetPassword,
+                updateProfilePhoto,
+                deleteuser,
             }}
         >
             {loading ? (

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
-import { navigationFooter } from "@/utils/constants";
+import { navigation } from "@/utils/constants";
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -22,7 +22,7 @@ function Footer({ t }) {
                     <div className='flex flex-col space-y-10 justify-center'>
                         <nav>
                             <ul className='flex flex-wrap text-light-gray text-sm md:text-lg lg:text-xl'>
-                                {navigationFooter.map((nav) => {
+                                {navigation.map((nav) => {
                                     return (
                                         <li key={nav.name} className='mx-6'>
                                             <Link href={nav.href}>

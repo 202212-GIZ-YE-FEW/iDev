@@ -1,16 +1,28 @@
 // for Navbar
 export const navigation = [
     { name: "home", href: "/" },
+    {
+        name: "about",
+        href: "#",
+        links: [
+            { name: "team", href: "/team" },
+            { name: "about", href: "/about" },
+            { name: "therapists", href: "therapists" },
+        ],
+    },
     { name: "blogs", href: "blogs" },
-    { name: "about", href: "#" },
+    { name: "careers", href: "/careers" },
     { name: "contactUs", href: "/contact-us" },
 ];
 
-// for Footer
-export const navigationFooter = [
-    { name: "home", href: "/" },
-    { name: "blogs", href: "blogs" },
-    { name: "about", href: "#" },
-    { name: "contactUs", href: "/contact-us" },
-    { name: "careers", href: "/careers" },
+export const authenticatedDropdown = [
+    { name: "profile", href: "/editprofile" },
+    { name: "chatbox", href: "/chats" },
+    { name: "paymentCards", href: "/payment-methods" },
+    { name: "logout", href: "" },
+];
+
+export const langs = [
+    { name: "English", locale: "en", dir: "ltr" },
+    { name: "العربية", locale: "ar", dir: "rtl" },
 ];

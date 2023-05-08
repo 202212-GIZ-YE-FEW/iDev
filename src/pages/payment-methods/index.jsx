@@ -17,9 +17,7 @@ import Button from "@/components/ui/Button";
 
 import deleteDocument from "@/firebase/deleteData";
 import getDocument from "@/firebase/getData";
-
-import MasterCardSVG from "/public/images/master-card.svg";
-import VisaSVG from "/public/images/visa.svg";
+import parseCardData from "@/utils/payment";
 
 function PaymentMethod({ t }) {
     const { user } = useAuth();
@@ -32,20 +30,9 @@ function PaymentMethod({ t }) {
         data: result,
     } = useQuery("paymentMethods", async () => {
         const data = await getDocument(collectionPath);
-        return cardData(data);
+        return parseCardData(data);
     });
     const queryClient = useQueryClient();
-
-    const cardData = (data) => {
-        return data.map((item) => ({
-            ...item,
-            cardNumber: item.cardNumber.replace(
-                /^(\d{4}\s){3}/,
-                "xxxx xxxx xxxx "
-            ),
-            icon: item.type === "mastercard" ? MasterCardSVG : VisaSVG,
-        }));
-    };
 
     const responsive = {
         desktop: {
