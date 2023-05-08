@@ -19,9 +19,7 @@ exports[`renders correctly 1`] = `
   >
     <h3
       className="lg:text-xl text-base leading-8 self-end text-[#06b6d4]"
-    >
-      Engineering
-    </h3>
+    />
     <p
       className=" self-end lg:text-base text-sm text-[#b2a7a7]"
     />
