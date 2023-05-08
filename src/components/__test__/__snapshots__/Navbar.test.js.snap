@@ -69,15 +69,6 @@ exports[`renders correctly 1`] = `
         >
           home
         </a>
-        <a
-          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-          href="blogs"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
-        >
-          blogs
-        </a>
         <div
           className="relative z-20"
           onClick={[Function]}
@@ -108,6 +99,24 @@ exports[`renders correctly 1`] = `
             </span>
           </button>
         </div>
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="blogs"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          blogs
+        </a>
+        <a
+          className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+          href="/careers"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          careers
+        </a>
         <a
           className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
           href="/contact-us"
@@ -216,15 +225,6 @@ exports[`renders correctly 1`] = `
       >
         home
       </a>
-      <a
-        className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-        href="blogs"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
-        onTouchStart={[Function]}
-      >
-        blogs
-      </a>
       <div
         className="relative z-20"
         onClick={[Function]}
@@ -255,6 +255,24 @@ exports[`renders correctly 1`] = `
           </span>
         </button>
       </div>
+      <a
+        className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+        href="blogs"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onTouchStart={[Function]}
+      >
+        blogs
+      </a>
+      <a
+        className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
+        href="/careers"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onTouchStart={[Function]}
+      >
+        careers
+      </a>
       <a
         className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
         href="/contact-us"

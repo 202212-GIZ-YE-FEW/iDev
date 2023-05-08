@@ -1,23 +1,24 @@
 export const navigation = [
     { name: "home", href: "/" },
-    { name: "blogs", href: "blogs" },
     {
         name: "about",
         href: "#",
         links: [
             { name: "team", href: "/team" },
             { name: "about", href: "/about" },
-            { name: "careers", href: "careers" },
+            { name: "therapists", href: "therapists" },
         ],
     },
+    { name: "blogs", href: "blogs" },
+    { name: "careers", href: "/careers" },
     { name: "contactUs", href: "/contact-us" },
 ];
 
 export const authenticatedDropdown = [
     { name: "profile", href: "/editprofile" },
-    { name: "chats", href: "/chats" },
-    { name: "cards", href: "/payment-methods" },
-    { name: "logout", href: "/payment-methods" },
+    { name: "chatbox", href: "/chats" },
+    { name: "paymentCards", href: "/payment-methods" },
+    { name: "logout", href: "" },
 ];
 
 export const langs = [

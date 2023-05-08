@@ -84,6 +84,7 @@ function MobileNav(prop) {
                                     </span>
                                 </button>
                             }
+                            t={t}
                         />
                     ) : (
                         <NavLink key={nav.name} to={nav.href}>
@@ -210,6 +211,7 @@ function Navbar({ t, i18n }) {
                                             </span>
                                         </button>
                                     }
+                                    t={t}
                                 />
                             ) : (
                                 <NavLink key={nav.name} to={nav.href}>
@@ -269,6 +271,7 @@ function Navbar({ t, i18n }) {
                                     />
                                 </button>
                             }
+                            t={t}
                         />
                     )}
                 </div>

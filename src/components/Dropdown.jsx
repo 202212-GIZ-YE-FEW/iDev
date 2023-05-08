@@ -13,6 +13,7 @@ function Dropdown(prop) {
         activeDropdown,
         i18n,
         to = "/",
+        t = null,
     } = prop;
     const handleDropdownClick = (dropdownName) => {
         setActiveDropdown(
@@ -46,7 +47,7 @@ function Dropdown(prop) {
                                       i18n.changeLanguage(link.locale);
                                   }}
                               >
-                                  {link.name}
+                                  {t(`${link.name}`)}
                               </Link>
                           ))
                         : links?.map((link) => {
@@ -57,7 +58,7 @@ function Dropdown(prop) {
                                       onClick={Logout}
                                       className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                                   >
-                                      {link.name}
+                                      {t(`${link.name}`)}
                                   </Link>
                               ) : (
                                   <Link
@@ -65,7 +66,7 @@ function Dropdown(prop) {
                                       href={link.href}
                                       className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                                   >
-                                      {link.name}
+                                      {t(`${link.name}`)}
                                   </Link>
                               );
                           })}

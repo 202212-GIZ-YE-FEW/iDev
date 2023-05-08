@@ -1,6 +1,12 @@
 {
     "Logout": "Logout",
     "about": "About",
+    "profile": "Profile",
+    "chatbox": "Chatbox",
+    "paymentCards": "Payment Cards",
+    "team": "Team",
+    "therapists": "Therapists", 
+    "careers": "Careers",
     "backToHome": "back to home",
     "blogs": "Blogs",
     "contactUs": "Contact Us",
