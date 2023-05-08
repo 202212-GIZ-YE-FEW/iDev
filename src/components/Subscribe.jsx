@@ -109,7 +109,7 @@ function Subscribe({
                             onChange={handleChange}
                         />
                         <button type='submit' value='Send'>
-                            <span className='inline-flex items-center text-2xl px-3 bg-cyan border-s-2 border-light-gray/80 text-light-black rounded-e-1.5'>
+                            <span className='h-full inline-flex items-center text-2xl px-3 bg-cyan border-s-2 border-light-gray/80 text-light-black rounded-e-1.5'>
                                 <svg
                                     width='20'
                                     height='20'
