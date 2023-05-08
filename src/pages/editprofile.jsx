@@ -12,8 +12,11 @@ import updateDocument from "@/firebase/updateSubCollection";
 import PageIntro from "@/components/PageIntro";
 import uploadImage from "@/firebase/addImage";
 import Select from "@/components/ui/Select";
+import toastr from "toastr";
+import deleteDocument from "@/firebase/deleteData";
+
 function EditProfile({ t }) {
-    const { user, changePassword, authenticated } = useAuth();
+    const { user, changePassword, authenticated, deleteuser } = useAuth();
     const [imgfile, uploadimg] = useState("");
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({});
@@ -37,37 +40,38 @@ function EditProfile({ t }) {
         ? collection(parentDocRef, "Personal_data")
         : null;
     const profile = "profile";
+    const fetchData = async () => {
+        if (childCollectionRef) {
+            const datafetch = {};
+            const querySnapshot = await getDocs(childCollectionRef);
+            querySnapshot.forEach((doc) => {
+                datafetch[doc.id] = doc.data();
+            });
 
+            setFormData(datafetch[profile]);
+        }
+    };
     useEffect(() => {
-        const fetchData = async () => {
-            if (childCollectionRef) {
-                const datafetch = {};
-                const querySnapshot = await getDocs(childCollectionRef);
-                querySnapshot.forEach((doc) => {
-                    datafetch[doc.id] = doc.data();
-                });
-                setFormData(datafetch[profile]);
-            }
-        };
         fetchData();
     }, []);
 
     const handleChange = async (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         const file = e.target.files && e.target.files[0];
-        console.log(file);
 
         if (file) {
             const userId = user.uid;
-            const imageName = `${userId}${file.name.substring(
-                file.name.lastIndexOf(".")
-            )}`;
+            const imageName = `${userId}`;
             const path = "UploadId/";
             uploadimg(URL.createObjectURL(file));
             await uploadImage(file, imageName, path);
-            console.log("File uploaded successfully!");
+            toastr.success(t("fileUploaded"), "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
         } else {
-            console.error("No file selected.");
+            console.log("no file upload");
         }
     };
 
@@ -82,6 +86,7 @@ function EditProfile({ t }) {
                 formData.currentPassword,
                 formData.newPassword
             );
+            setFormErrors({});
         } catch (error) {
             if (error.inner) {
                 const newErrors = {};
@@ -92,20 +97,31 @@ function EditProfile({ t }) {
             }
         }
     };
-
+    const handelCancel = async (e) => {
+        e.preventDefault();
+        fetchData();
+        setFormErrors({});
+    };
+    const handleDeleteAccount = async (e) => {
+        e.preventDefault();
+        await deleteuser(formData.password);
+        await deleteDocument("users", user.uid);
+    };
     return (
         <div className='container '>
-            {authenticated ? (
-                <div className='grid grid-cols-1 lg:grid-cols-2 py-20 gap-y-10'>
-                    <div className='justify-self-center lg:justify-self-start'>
-                        <PreviewProfile />
-                    </div>
-                    <div className='w-full justify-self-center lg:justify-self-end'>
-                        <PageIntro title={t("profileInfo")} />
-                        <form
-                            className='  mt-[8px]  w-full'
-                            onSubmit={handleSubmit}
-                        >
+            <div className='grid grid-cols-1 lg:grid-cols-2 py-20 gap-y-10'>
+                <div className='justify-self-center lg:justify-self-start'>
+                    <PreviewProfile />
+                </div>
+                <div className='w-full justify-self-center lg:justify-self-end'>
+                    <form
+                        className='  mt-[8px]  w-full'
+                        onSubmit={handleSubmit}
+                    >
+                        <fieldset>
+                            <legend class='text-3xl font-semibold uppercase'>
+                                {t("profileInfo")}
+                            </legend>
                             <div className='flex items-center my-5'>
                                 <Input
                                     inputWidthSize='flex-[2_1_0%]'
@@ -113,7 +129,7 @@ function EditProfile({ t }) {
                                     name='Fullname'
                                     label={t("Fullname")}
                                     labelColor='text-black'
-                                    value={formData.Fullname || ""}
+                                    value={formData?.Fullname || ""}
                                     onChange={handleChange}
                                     error={formErrors.Fullname}
                                     t={t}
@@ -126,12 +142,18 @@ function EditProfile({ t }) {
                                     name='educationLevel'
                                     placeholder='select'
                                     options={[
-                                        { value: "select", label: t("select") },
+                                        {
+                                            value: "select",
+                                            label: t("select"),
+                                        },
                                         {
                                             value: "bacholar",
                                             label: t("bacholar"),
                                         },
-                                        { value: "master", label: t("master") },
+                                        {
+                                            value: "master",
+                                            label: t("master"),
+                                        },
                                         { value: "PhD", label: t("PhD") },
                                         {
                                             value: "deploma",
@@ -140,7 +162,7 @@ function EditProfile({ t }) {
                                     ]}
                                     label={t("educationLevel")}
                                     labelColor='text-black'
-                                    value={formData.educationLevel}
+                                    value={formData?.educationLevel}
                                     onChange={(e) =>
                                         setFormData({
                                             ...formData,
@@ -156,7 +178,7 @@ function EditProfile({ t }) {
                                     name='hobbies'
                                     label={t("hobbies")}
                                     labelColor='text-black'
-                                    value={formData.hobbies || ""}
+                                    value={formData?.hobbies || ""}
                                     onChange={handleChange}
                                     error={formErrors.hobbies}
                                     t={t}
@@ -170,7 +192,7 @@ function EditProfile({ t }) {
                                     name='familySize'
                                     label={t("familySize")}
                                     labelColor='text-black'
-                                    value={formData.familySize || ""}
+                                    value={formData?.familySize || ""}
                                     onChange={handleChange}
                                     error={formErrors.familySize}
                                     t={t}
@@ -189,8 +211,14 @@ function EditProfile({ t }) {
                                     label={t("gender")}
                                     labelColor='text-black'
                                     options={[
-                                        { value: "select", label: t("select") },
-                                        { value: "female", label: t("female") },
+                                        {
+                                            value: "select",
+                                            label: t("select"),
+                                        },
+                                        {
+                                            value: "female",
+                                            label: t("female"),
+                                        },
                                         { value: "male", label: t("male") },
                                     ]}
                                     value={formData.gender}
@@ -209,7 +237,7 @@ function EditProfile({ t }) {
                                     name='dateOfBirth'
                                     label={t("dateOfBirth")}
                                     labelColor='text-black'
-                                    value={formData.dateOfBirth || ""}
+                                    value={formData?.dateOfBirth || ""}
                                     onChange={handleChange}
                                     error={formErrors.dateOfBirth}
                                     t={t}
@@ -237,7 +265,7 @@ function EditProfile({ t }) {
                                     name='phoneNumber'
                                     label={t("phoneNumber")}
                                     labelColor='text-black'
-                                    value={formData.phoneNumber || ""}
+                                    value={formData?.phoneNumber || ""}
                                     onChange={handleChange}
                                     error={formErrors.phoneNumber}
                                     t={t}
@@ -258,8 +286,12 @@ function EditProfile({ t }) {
                                     field={t("uploadId")}
                                 />
                             </div>
-
-                            <PageIntro title={t("security")} />
+                        </fieldset>
+                        <fieldset className='mt-8'>
+                            <legend class='text-3xl font-semibold'>
+                                {t("security")}
+                            </legend>
+                            {t("UpdatePassword")}
                             <div className='flex items-center my-5'>
                                 <Input
                                     inputWidthSize='flex-[2_1_0%]'
@@ -267,7 +299,7 @@ function EditProfile({ t }) {
                                     name='currentPassword'
                                     label={t("currentPassword")}
                                     labelColor='text-black'
-                                    value={formData.currentPassword || ""}
+                                    value={formData?.currentPassword || ""}
                                     onChange={handleChange}
                                     error={formErrors.currentPassword}
                                     t={t}
@@ -281,73 +313,91 @@ function EditProfile({ t }) {
                                     name='newPassword'
                                     label={t("newPassword")}
                                     labelColor='text-black'
-                                    value={formData.newPassword || ""}
+                                    value={formData?.newPassword || ""}
                                     onChange={handleChange}
                                     error={formErrors.newPassword}
                                     t={t}
                                     field={t("newPassword")}
                                 />
                             </div>
+                        </fieldset>
+                        <fieldset className='mt-8'>
+                            <legend class='text-3xl font-semibold'>
+                                {t("ConfirmDelete")}
+                            </legend>
+                            <div className='flex items-center my-5'>
+                                <Input
+                                    inputWidthSize='flex-[2_1_0%]'
+                                    type='password'
+                                    name='password'
+                                    label={t("password")}
+                                    labelColor='text-black'
+                                    value={formData?.password || ""}
+                                    onChange={handleChange}
+                                    error={formErrors.password}
+                                    t={t}
+                                    field={t("password")}
+                                />
+                            </div>
+                        </fieldset>
+                        <div className='flex flex-col sm:flex-row gap-2 my-8'>
+                            <Button
+                                content={t("saveChanges")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                                onClick={handleSubmit}
+                            />
+                            <Button
+                                content={t("deleteAccount")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                                onClick={handleDeleteAccount}
+                            />
+                            <Button
+                                content={t("cancel")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                                onClick={handelCancel}
+                            />
+                        </div>
+                    </form>
 
-                            <div className='flex flex-col sm:flex-row gap-2 my-8'>
-                                <Button
-                                    content={t("saveChanges")}
-                                    filled='true'
-                                    size='medium'
-                                    radius='md'
-                                    textTransform='uppercase'
-                                    shadow='shadow-lg'
-                                    onClick={handleSubmit}
-                                />
-                                <Button
-                                    content={t("deleteAccount")}
-                                    filled='true'
-                                    size='medium'
-                                    radius='md'
-                                    textTransform='uppercase'
-                                    shadow='shadow-lg'
-                                />
-                                <Button
-                                    content={t("cancel")}
-                                    filled='true'
-                                    size='medium'
-                                    radius='md'
-                                    textTransform='uppercase'
-                                    shadow='shadow-lg'
-                                />
-                            </div>
-                        </form>
-
-                        <PageIntro title={t("paymentMethods&Tickets")} />
-                        <div className='flex gap-10'>
-                            <div className='flex flex-col gap-5'>
-                                <p>{t("cardsAdded", { count: 3 })}</p>
-                                <Button
-                                    content={t("showCards")}
-                                    filled='true'
-                                    size='medium'
-                                    radius='md'
-                                    textTransform='uppercase'
-                                    shadow='shadow-lg'
-                                />
-                            </div>
-                            <div className='flex flex-col gap-5'>
-                                <p>{t("ticketsRemaining", { count: 10 })}</p>
-                                <Button
-                                    content={t("buyTickets")}
-                                    filled='true'
-                                    size='medium'
-                                    radius='md'
-                                    textTransform='uppercase'
-                                    shadow='shadow-lg'
-                                />
-                            </div>
+                    <PageIntro title={t("paymentMethods&Tickets")} />
+                    <div className='flex gap-10'>
+                        <div className='flex flex-col gap-5'>
+                            <p>{t("cardsAdded", { count: 3 })}</p>
+                            <Button
+                                content={t("showCards")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                            />
+                        </div>
+                        <div className='flex flex-col gap-5'>
+                            <p>{t("ticketsRemaining", { count: 10 })}</p>
+                            <Button
+                                content={t("buyTickets")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                            />
                         </div>
                     </div>
                 </div>
-            ) : (
-                <p>{t("pleaseLogin")}</p>
-            )}
+            </div>
         </div>
     );
 }
@@ -361,6 +411,7 @@ export async function getStaticProps({ locale }) {
                 "validation",
                 "signup",
             ])),
+            requireAuth: true,
         },
     };
 }

@@ -3,10 +3,33 @@ module.exports = {
     content: ["./src/pages/**/*.{js,jsx}", "./src/components/**/*.{js,jsx}"],
     darkMode: "class", // or 'media' or 'class'
     variants: {
-        extend: {},
+        extend: {
+            zIndex: {
+                toastr: 9999,
+            },
+            backgroundColor: {
+                "toastr-base": "#fff3cd",
+                "toastr-error": "#fde7e9",
+            },
+            textColor: {
+                "toastr-text": "#e53e3e",
+            },
+            borderRadius: {
+                toastr: "0.25rem",
+            },
+            padding: {
+                toastr: "1rem",
+            },
+        },
     },
+
     plugins: [require("tailwindcss-rtl")],
     theme: {
+        layers: {
+            toastr: {
+                // Define toastr layer variants here
+            },
+        },
         screens: {
             sm: "480px",
             md: "768px",
@@ -14,6 +37,7 @@ module.exports = {
             xl: "1440px",
             "2xl": "1536px",
         },
+
         container: {
             padding: {
                 DEFAULT: "1.7rem",
