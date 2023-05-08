@@ -11,6 +11,7 @@ import {
     updateDoc,
 } from "firebase/firestore";
 import moment from "moment/moment";
+import image from "public/profile-icon.svg";
 import Image from "next/image";
 import EmojiSVG from "public/images/emoji.svg";
 import EmptyChatGIF from "public/images/empty-chat.gif";
@@ -176,7 +177,14 @@ const Chatroom = ({ chat, id, t }) => {
                             "linear-gradient(rgba(254,232,158, 0.3), rgba(45,211,227, 0.1)), url(/images/chat-texture.jpg)",
                     }}
                 >
-                    <div className='flex justify-between px-3 py-[.4rem] bg-white/80 border-b-2 border-gray/10'>
+                    <div className='flex px-3 py-[.4rem] bg-white/80 border-b-2 border-gray/10'>
+                        <Image
+                            src={peer?.photoURL || image}
+                            className='h-12 w-12 rounded-full me-4'
+                            alt=''
+                            width={12}
+                            height={12}
+                        />
                         <div className='font-medium'>
                             <span className="'font-medium'">{`${getFullName(
                                 peer?.first_name,
@@ -185,15 +193,17 @@ const Chatroom = ({ chat, id, t }) => {
                             <br />
                             {peer?.active ? (
                                 <div className='flex space-s-1'>
-                                    <Image src={OnlineSVG} alt='' width={10} />{" "}
+                                    <Image src={OnlineSVG} alt='' width={10} />
                                     <span className='text-gray/50 text-sm'>
                                         Online
                                     </span>
                                 </div>
                             ) : (
                                 <span className='text-gray/50 text-sm'>
-                                    Last seen:{" "}
-                                    {moment(peer?.last_seen.toDate()).fromNow()}
+                                    Last seen:
+                                    {moment(
+                                        peer?.last_seen?.toDate()
+                                    ).fromNow()}
                                 </span>
                             )}
                         </div>

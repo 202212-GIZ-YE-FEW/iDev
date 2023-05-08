@@ -1,11 +1,13 @@
 import { doc, getDoc } from "firebase/firestore";
+import moment from "moment/moment";
+import Image from "next/image";
+import image from "public/profile-icon.svg";
 // import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useQuery } from "react-query";
-import moment from "moment/moment";
-import convertFirebaseTimestamp from "@/utils/convertFirebaseTimestamp";
-import { getPeerData } from "@/utils/getPeer";
-import truncate from "@/utils/truncate";
+
 import { getFullName } from "@/utils/getFullName";
+import truncate from "@/utils/truncate";
+
 import { db } from "../firebase/config";
 const ChatItem = (props) => {
     const { chat, currentUser, peer, lastMsg } = props;
@@ -19,10 +21,12 @@ const ChatItem = (props) => {
     );
     return (
         <>
-            <img
-                src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+            <Image
+                src={peer?.photoURL || image}
                 className='h-12 w-12 rounded-full me-4'
                 alt=''
+                width={12}
+                height={12}
             />
             <div className='w-full flex flex-col justify-center'>
                 <div className='flex flex-row justify-between items-center'>

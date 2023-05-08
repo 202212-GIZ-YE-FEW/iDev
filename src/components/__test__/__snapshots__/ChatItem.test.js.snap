@@ -5,7 +5,20 @@ Array [
   <img
     alt=""
     className="h-12 w-12 rounded-full me-4"
-    src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+    data-nimg="1"
+    decoding="async"
+    height={12}
+    loading="lazy"
+    onError={[Function]}
+    onLoad={[Function]}
+    src="/_next/image?url=%2Fimg.jpg&w=32&q=75"
+    srcSet="/_next/image?url=%2Fimg.jpg&w=16&q=75 1x, /_next/image?url=%2Fimg.jpg&w=32&q=75 2x"
+    style={
+      Object {
+        "color": "transparent",
+      }
+    }
+    width={12}
   />,
   <div
     className="w-full flex flex-col justify-center"

@@ -102,6 +102,7 @@ export function AuthContextProvider({ children }) {
                 updateDoc(docRef, {
                     active: true,
                     last_seen: serverTimestamp(),
+                    photoURL: user.photoURL,
                 });
                 setAuthenticated(true);
             } else {
