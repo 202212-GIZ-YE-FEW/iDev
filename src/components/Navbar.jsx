@@ -198,7 +198,7 @@ function Navbar({ t, i18n }) {
                                     item='about'
                                     setActiveDropdown={setActiveDropdown}
                                     icon={
-                                        <button className='flex items-center'>
+                                        <button className='flex items-center md:mx-2 xl:mx-6'>
                                             <Image
                                                 priority
                                                 src='/arrow.svg'
@@ -228,7 +228,7 @@ function Navbar({ t, i18n }) {
                             i18n={i18n}
                             setActiveDropdown={setActiveDropdown}
                             icon={
-                                <button className='p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3'>
+                                <button className='p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-2'>
                                     <Image
                                         priority
                                         src='/lang.svg'
@@ -261,7 +261,7 @@ function Navbar({ t, i18n }) {
                             item='profile'
                             setActiveDropdown={setActiveDropdown}
                             icon={
-                                <button className='mx-4 w-9 max-w-14 max-h-14 rounded-full items-center'>
+                                <button className='mx-2 w-9 max-w-14 max-h-14 rounded-full items-center'>
                                     <Image
                                         className='rounded-full w-full h-full object-cover'
                                         width={14}

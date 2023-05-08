@@ -74,7 +74,7 @@ exports[`renders correctly 1`] = `
           onClick={[Function]}
         >
           <button
-            className="flex items-center"
+            className="flex items-center md:mx-2 xl:mx-6"
           >
             <img
               alt=""
@@ -131,7 +131,7 @@ exports[`renders correctly 1`] = `
           onClick={[Function]}
         >
           <button
-            className="p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3"
+            className="p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-2"
           >
             <img
               alt=""
