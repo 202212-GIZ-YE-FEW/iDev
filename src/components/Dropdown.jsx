@@ -47,7 +47,7 @@ function Dropdown(prop) {
                                       i18n.changeLanguage(link.locale);
                                   }}
                               >
-                                  {t(`${link.name}`)}
+                                  {link.name}
                               </Link>
                           ))
                         : links?.map((link) => {
