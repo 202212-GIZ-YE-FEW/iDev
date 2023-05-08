@@ -65,6 +65,7 @@ function MobileNav(prop) {
                 {navigation.map((nav) => {
                     return nav.name === "about" ? (
                         <Dropdown
+                            key={nav.name}
                             activeDropdown={activeDropdown}
                             links={nav.links}
                             item='about'
@@ -193,6 +194,7 @@ function Navbar({ t, i18n }) {
                         {navigation.map((nav) => {
                             return nav.name === "about" ? (
                                 <Dropdown
+                                    key={nav.link}
                                     activeDropdown={activeDropdown}
                                     links={nav.links}
                                     item='about'
