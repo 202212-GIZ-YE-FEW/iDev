@@ -35,7 +35,7 @@ function Dropdown(prop) {
                     )}
                 >
                     {item === "langs"
-                        ? links.map((link) => (
+                        ? links?.map((link) => (
                               <Link
                                   key={link.name}
                                   href={to}
@@ -49,7 +49,7 @@ function Dropdown(prop) {
                                   {link.name}
                               </Link>
                           ))
-                        : links.map((link) => {
+                        : links?.map((link) => {
                               return link.name === "logout" ? (
                                   <Link
                                       key={link.name}

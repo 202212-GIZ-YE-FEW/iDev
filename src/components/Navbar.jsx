@@ -35,7 +35,7 @@ function MobileNav(prop) {
         <div
             className={`lg:hidden absolute top-0 right-0 h-full w-full z-10 bg-background transform ${
                 openHamburger
-                    ? "ltr:translate-x-0 rtl:-translate-x-0 opacity-100"
+                    ? "ltr:translate-x-0 rtl:-translate-x-0"
                     : "hidden"
             } transition-transform duration-300 ease-in-out`}
         >
