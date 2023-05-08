@@ -9,7 +9,7 @@ exports[`renders correctly 1`] = `
   >
     <img
       alt="undefined thumbnail"
-      className="w-full h-full"
+      className="w-full h-full rounded-3xl"
       data-nimg="1"
       decoding="async"
       height={140}
@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
     />
   </div>
   <div
-    className="absolute h-full w-full bg-black/70 text-yellow flex flex-col items-center justify-center bottom-0 opacity-0 hover:bottom-0  hover:opacity-100 transition-all duration-1000"
+    className="absolute h-full w-full bg-black/70 text-yellow flex flex-col items-center justify-center bottom-0 opacity-0 rounded-3xl hover:bottom-0  hover:opacity-100 transition-all duration-1000"
   >
     <a
       href="/blogs/undefined"
@@ -36,13 +36,18 @@ exports[`renders correctly 1`] = `
       onMouseEnter={[Function]}
       onTouchStart={[Function]}
     >
-      <button
-        className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  capitalize text-sm md:text-xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium border-2 border-cyan text-cyan"
-        disabled={false}
+      <div
+        className="relative self-center"
       >
-        more
-      </button>
+        <button
+          className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
+                font-normal whitespace-nowrap cursor-pointer  capitalize text-sm md:text-xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium border-2 border-cyan text-cyan"
+          disabled={false}
+          onClick={[Function]}
+        >
+          more
+        </button>
+      </div>
     </a>
   </div>
   <p

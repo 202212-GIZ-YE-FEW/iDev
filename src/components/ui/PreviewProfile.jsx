@@ -1,17 +1,53 @@
+import { storage } from "@/firebase/config";
+import { ref } from "firebase/storage";
+import { React, useEffect, useState } from "react";
 import Image from "next/image";
 import ProfileEditSVG from "public/edit-profile-icon.svg";
 import ProfilePreviewSVG from "public/profile-icon.svg";
-import { React, useState } from "react";
+import uploadImage from "@/firebase/addImage";
+import { useAuth } from "../context/AuthContext";
+import { getDownloadURL } from "firebase/storage";
+import toastr from "toastr";
 export default function PreviewProfile() {
-    const [imgfile, uploadimg] = useState("");
-    const imgFilehandler = (e) => {
-        uploadimg(URL.createObjectURL(e.target.files[0]));
+    const [photo, uploadimg] = useState("");
+    const { user, updateProfilePhoto } = useAuth();
+
+    const handler = async (e) => {
+        const file = e.target.files[0];
+        const userId = user.uid;
+        const imageName = `${userId}`;
+        const path = "ProfilesImages/";
+        uploadimg(URL.createObjectURL(file));
+
+        try {
+            await uploadImage(file, imageName, path);
+            toastr.success("Your File uploaded successfully!", "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
+            const imageRef = ref(storage, `${path}${imageName}`);
+            const downloadURL = await getDownloadURL(imageRef);
+            updateProfilePhoto(downloadURL);
+        } catch (error) {
+            console.error(error);
+            toastr.error(error, "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
+        }
     };
+
+    useEffect(() => {
+        uploadimg(user.photoURL);
+    }, [user]);
+
     return (
         <>
             <div className='relative inline-flex justify-center w-[14rem] h-[14rem] lg:w-[20rem] lg:h-[20rem] xl:w-[18rem] xl:h-[18rem] rounded-full'>
                 <Image
-                    src={imgfile || ProfilePreviewSVG}
+                    src={photo || ProfilePreviewSVG}
                     alt='profile preview'
                     width={315}
                     height={315}
@@ -26,12 +62,7 @@ export default function PreviewProfile() {
                         alt='profile edit icon'
                         className='p-2'
                     />
-                    <input
-                        type='file'
-                        onChange={imgFilehandler}
-                        hidden
-                        id='upload'
-                    />
+                    <input type='file' onChange={handler} hidden id='upload' />
                 </label>
             </div>
         </>

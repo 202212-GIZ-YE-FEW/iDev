@@ -1,13 +1,35 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: ["./src/pages/**/*.{js,jsx}", "./src/components/**/*.{js,jsx}"],
-    purge: ["./src/pages/**/*.{js,jsx}", "./src/components/**/*.{js,jsx}"],
-    darkMode: false, // or 'media' or 'class'
+    darkMode: "class", // or 'media' or 'class'
     variants: {
-        extend: {},
+        extend: {
+            zIndex: {
+                toastr: 9999,
+            },
+            backgroundColor: {
+                "toastr-base": "#fff3cd",
+                "toastr-error": "#fde7e9",
+            },
+            textColor: {
+                "toastr-text": "#e53e3e",
+            },
+            borderRadius: {
+                toastr: "0.25rem",
+            },
+            padding: {
+                toastr: "1rem",
+            },
+        },
     },
+
     plugins: [require("tailwindcss-rtl")],
     theme: {
+        layers: {
+            toastr: {
+                // Define toastr layer variants here
+            },
+        },
         screens: {
             sm: "480px",
             md: "768px",
@@ -15,6 +37,7 @@ module.exports = {
             xl: "1440px",
             "2xl": "1536px",
         },
+
         container: {
             padding: {
                 DEFAULT: "1.7rem",
@@ -34,6 +57,7 @@ module.exports = {
             "light-black": "#1A1A1A",
             gray: "#424A4F",
             "light-gray": "#718096",
+            "grayish-cyan": "#94AFB6",
             phosphorescent: "#6BD24D",
             background: "#E5E5E5",
             white: "#FFF",
@@ -126,6 +150,9 @@ module.exports = {
                 "2xl": "16px",
                 "3xl": "25px",
                 "4xl": "35px",
+            },
+            animation: {
+                "spin-slow": "spin 3s linear infinite",
             },
         },
     },

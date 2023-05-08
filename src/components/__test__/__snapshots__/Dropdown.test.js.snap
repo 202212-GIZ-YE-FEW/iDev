@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="relative z-20"
+  onClick={[Function]}
+>
+  <div
+    className="w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl absolute end-0 z-20"
+  />
+</div>
+`;

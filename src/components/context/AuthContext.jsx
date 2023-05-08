@@ -4,15 +4,29 @@ import {
     sendEmailVerification,
     signInWithPopup,
     signInWithEmailAndPassword,
+    reauthenticateWithCredential,
+    EmailAuthProvider,
+    updatePassword,
+    sendPasswordResetEmail,
+    updateProfile,
 } from "firebase/auth";
 import Image from "next/image";
 import Router from "next/router";
 import Spinner from "public/spinner.svg";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+    auth,
+    facebookProvider,
+    googleProvider,
+    storage,
+} from "@/firebase/config";
+import image from "public/profile-icon.svg";
+import { setDoc, doc, getFirestore } from "firebase/firestore";
+import setDocument from "@/firebase/setData";
+import toastr from "toastr";
 
-import { auth, facebookProvider, googleProvider } from "@/firebase/config";
-
-import image from "~/blog.png";
+const db = getFirestore();
 const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
@@ -28,43 +42,102 @@ export function AuthContextProvider({ children }) {
                 setUser({
                     email: user.email,
                     uid: user.uid,
+                    photoURL: user.photoURL || image,
                 });
                 localStorage.setItem("image", user.photoURL || image); // save user photoURL to localStorage
-                sendEmailConfirmation();
-                if (user.emailVerified) {
-                    setAuthenticated(true);
-                } else {
-                    setAuthenticated(false);
-                    auth.signOut(); // Sign out the user if they have not verified their email
-                    window.alert("Please verify your email before logging in.");
-                }
+                localStorage.setItem("authenticated", true); // save authentication status to localStorage
             } else {
                 setUser({ email: null, uid: null });
                 setAuthenticated(false);
                 localStorage.removeItem("image"); // remove user photoURL from localStorage
+                localStorage.removeItem("authenticated"); // remove authentication status from localStorage
             }
             setLoading(false);
         });
 
+        const authenticatedFromLocalStorage =
+            localStorage.getItem("authenticated");
+        if (authenticatedFromLocalStorage) {
+            setAuthenticated(true);
+        }
+
         return () => unsubscribe();
     }, []);
 
-    const signUp = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
+    const signUp = (email, password, userData, profileData, therapistData) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(async (result) => {
+                const userId = result.user.uid;
+                const personalData = "Personal_data";
+                const userRef = doc(db, "users", result.user.uid);
+                const userDocRef = await setDoc(userRef, userData);
+                const therapistDoc = await setDocument(
+                    `users/${userId}/${personalData}/therapist`,
+                    therapistData
+                );
+                const profileDoc = await setDocument(
+                    `users/${userId}/${personalData}/profile`,
+                    profileData
+                );
+
+                await sendEmailConfirmation();
+                const router = require("next/router").default;
+                router.push({
+                    pathname: "/login",
+                });
+            })
+            .catch((error) => {
+                if (error.code === "auth/email-already-in-use") {
+                    toastr.error("Email-already-in-use", "", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
+                }
+            });
     };
 
     const logIn = (email, password) => {
         localStorage.setItem("image", image);
         return signInWithEmailAndPassword(auth, email, password).then(() => {
-            setAuthenticated(true);
+            const user = auth.currentUser;
+            if (user && user.emailVerified) {
+                setAuthenticated(true);
+            } else {
+                // If the user's email is not verified, log them out and show an error message
+                auth.signOut(); // Sign-out successful
+                setAuthenticated(false);
+                toastr.warning(
+                    "Please verify your email before logging in.",
+                    "",
+                    {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    }
+                );
+            }
         });
     };
 
     const sendEmailConfirmation = () => {
         const user = auth.currentUser;
         return sendEmailVerification(user)
-            .then(() => console.log("Verification email sent."))
-            .catch((error) => console.error(error));
+            .then(() => {
+                toastr.info("Verification email sent.", "", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                });
+            })
+
+            .catch((error) => {
+                toastr.error(error, "", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                });
+            });
     };
 
     //SignIn with Google account
@@ -114,6 +187,109 @@ export function AuthContextProvider({ children }) {
             Router.push("/404"); // Navigate to homepage.
         }
     };
+    const changePassword = (currentPassword, newPassword) => {
+        const user = auth.currentUser;
+        console.log("user", user);
+
+        const credential = EmailAuthProvider.credential(
+            user.email,
+            currentPassword
+        );
+        console.log("credential", credential);
+        reauthenticateWithCredential(user, credential)
+            .then(() => {
+                updatePassword(user, newPassword)
+                    .then(() => {
+                        toastr.success("Password updated successfully.", "", {
+                            closeButton: true,
+                            progressBar: true,
+                            positionClass: "toast-top-right",
+                        });
+                    })
+                    .catch((error) => {
+                        // An error occurred while updating the password
+                        toastr.error(error, "", {
+                            closeButton: true,
+                            progressBar: true,
+                            positionClass: "toast-top-right",
+                        });
+                    });
+            })
+            .catch((error) => {
+                // Incorrect password, show an error message
+                if (error.code === "auth/wrong-password") {
+                    toastr.error("The current password is incorrect", "", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
+                }
+            });
+    };
+    const resetPassword = async (email) => {
+        try {
+            await sendPasswordResetEmail(auth, email);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const updateProfilePhoto = async (photoURL) => {
+        const user = auth.currentUser;
+        console.log(photoURL);
+        updateProfile(user, { photoURL });
+    };
+
+    const deleteuser = async (password) => {
+        const user = auth.currentUser;
+        if (user) {
+            const { uid, email } = user;
+            const credential = EmailAuthProvider.credential(email, password);
+            reauthenticateWithCredential(user, credential)
+                .then(() => {
+                    // the user has been reauthenticated
+                    user.delete()
+                        .then(() => {
+                            toastr.success(
+                                "User account with email " +
+                                    email +
+                                    " and uid " +
+                                    uid +
+                                    "deleted successfully.",
+                                "",
+                                {
+                                    closeButton: true,
+                                    progressBar: true,
+                                    positionClass: "toast-top-right",
+                                }
+                            );
+                        })
+                        .catch((error) => {
+                            toastr.error(
+                                "Error deleting user account:",
+                                error,
+                                {
+                                    closeButton: true,
+                                    progressBar: true,
+                                    positionClass: "toast-top-right",
+                                }
+                            );
+                        });
+                })
+                .catch((error) => {
+                    toastr.error(error, "Error reauthenticating user:", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                    });
+                });
+        } else {
+            toastr.error("No user signed in.", "", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+            });
+        }
+    };
 
     return (
         <AuthContext.Provider
@@ -126,6 +302,10 @@ export function AuthContextProvider({ children }) {
                 sendEmailConfirmation,
                 signInWithGoogleAccount,
                 signInWithFbAccount,
+                changePassword,
+                resetPassword,
+                updateProfilePhoto,
+                deleteuser,
             }}
         >
             {loading ? (

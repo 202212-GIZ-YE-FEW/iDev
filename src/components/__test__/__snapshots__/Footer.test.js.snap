@@ -88,7 +88,19 @@ exports[`renders correctly 1`] = `
             className="mx-6"
           >
             <a
-              href="#recentblog"
+              href="#"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onTouchStart={[Function]}
+            >
+              about
+            </a>
+          </li>
+          <li
+            className="mx-6"
+          >
+            <a
+              href="blogs"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
@@ -100,12 +112,12 @@ exports[`renders correctly 1`] = `
             className="mx-6"
           >
             <a
-              href="#"
+              href="/careers"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              about
+              careers
             </a>
           </li>
           <li
