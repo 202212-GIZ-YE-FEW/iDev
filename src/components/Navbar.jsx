@@ -4,60 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/ui/Button";
 
-import { authenticatedDropdown, navigation } from "@/utils/constants";
+import { authenticatedDropdown, navigation, langs } from "@/utils/constants";
 
 import { useAuth } from "./context/AuthContext";
-function LangDropdown(props) {
-    const { setOpenLangDropdown, openLangDropdown, to } = props;
-    const router = useRouter();
-    const query = router.query;
-
-    return (
-        <div
-            className='relative inline-block'
-            onClick={() => {
-                setOpenLangDropdown(!openLangDropdown);
-            }}
-        >
-            <button className='relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3'>
-                <Image priority src='/lang.svg' width={23} height={23} alt='' />
-            </button>
-            {openLangDropdown ? (
-                <div className='absolute start-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl'>
-                    <Link
-                        href={{
-                            pathname: to,
-                            query: query,
-                        }}
-                        className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
-                        locale='en'
-                        onClick={() => (document.dir = "ltr")}
-                    >
-                        English
-                    </Link>
-                    <Link
-                        href={{
-                            pathname: to,
-                            query: query,
-                        }}
-                        className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
-                        locale='ar'
-                        onClick={() => (document.dir = "rtl")}
-                    >
-                        العربية
-                    </Link>
-                </div>
-            ) : (
-                ""
-            )}
-        </div>
-    );
-}
 
 function NavLink({ to, children }) {
     return (
@@ -75,16 +29,8 @@ function NavLink({ to, children }) {
     );
 }
 function MobileNav(prop) {
-    const {
-        openHamburger,
-        setOpenHamburger,
-        openLangDropdown,
-        setOpenLangDropdown,
-        openAboutDropdown,
-        setOpenAboutDropdown,
-        to,
-        t,
-    } = prop;
+    const { openHamburger, setActiveDropdown, activeDropdown, i18n, path, t } =
+        prop;
     const { authenticated } = useAuth();
     return (
         <div
@@ -116,15 +62,17 @@ function MobileNav(prop) {
             </div>
             {/* Dropdown panel */}
             <div className='container flex flex-col bg-background'>
+                {/* Navigation links */}
                 {navigation.map((nav) => {
                     return nav.name === "about" ? (
                         <Dropdown
-                            openDropdown={openAboutDropdown}
+                            activeDropdown={activeDropdown}
                             links={nav.links}
+                            item='about'
                             mobile={true}
-                            setOpenDropdown={setOpenAboutDropdown}
+                            setActiveDropdown={setActiveDropdown}
                             icon={
-                                <div className='flex'>
+                                <button className='flex items-center'>
                                     <Image
                                         priority
                                         src='/arrow.svg'
@@ -135,28 +83,36 @@ function MobileNav(prop) {
                                     <span className='inline-block ms-1'>
                                         {t(`${nav.name}`)}
                                     </span>
-                                </div>
+                                </button>
                             }
                         />
                     ) : (
-                        <NavLink
-                            key={nav.name}
-                            to={nav.href}
-                            onClick={() =>
-                                setTimeout(() => {
-                                    setOpenHamburger(!openHamburger);
-                                }, 100)
-                            }
-                        >
+                        <NavLink key={nav.name} to={nav.href}>
                             {t(`${nav.name}`)}
                         </NavLink>
                     );
                 })}
                 <div className='flex space-s-10'>
-                    <LangDropdown
-                        setOpenLangDropdown={setOpenLangDropdown}
-                        openLangDropdown={openLangDropdown}
-                        to={to}
+                    {/* Langs Dropdown */}
+                    <Dropdown
+                        activeDropdown={activeDropdown}
+                        links={langs}
+                        mobile={true}
+                        item='langs'
+                        to={path}
+                        i18n={i18n}
+                        setActiveDropdown={setActiveDropdown}
+                        icon={
+                            <button className='p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3'>
+                                <Image
+                                    priority
+                                    src='/lang.svg'
+                                    width={23}
+                                    height={23}
+                                    alt=''
+                                />
+                            </button>
+                        }
                     />
                     {!authenticated && (
                         <Link href='/login'>
@@ -176,14 +132,12 @@ function MobileNav(prop) {
     );
 }
 
-function Navbar({ t }) {
-    const path = usePathname();
+function Navbar({ t, i18n }) {
+    const path = usePathname() || "/";
+
     const [openHamburger, setOpenHamburger] = useState(false);
-    const [openLangDropdown, setOpenLangDropdown] = useState(false);
-    const [openAboutDropdown, setOpenAboutDropdown] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
     const { authenticated, user } = useAuth();
-    const [openAuthenticatedDropdown, setOpenAuthenticatedDropdown] =
-        useState(false);
     const [photo, uploadimg] = useState("");
 
     useEffect(() => {
@@ -211,7 +165,7 @@ function Navbar({ t }) {
                     </Link>
                 </div>
                 <div className='w-8/12 justify-end flex items-center'>
-                    {/* hamburger button */}
+                    {/* Hamburger button */}
                     <div
                         className='flex relative z-20 order-last w-8 h-5 flex-col justify-between items-center lg:hidden'
                         onClick={() => setOpenHamburger(!openHamburger)}
@@ -235,14 +189,16 @@ function Navbar({ t }) {
                         />
                     </div>
                     <div className='hidden lg:flex items-center text-end'>
+                        {/* Navigation links */}
                         {navigation.map((nav) => {
                             return nav.name === "about" ? (
                                 <Dropdown
-                                    openDropdown={openAboutDropdown}
+                                    activeDropdown={activeDropdown}
                                     links={nav.links}
-                                    setOpenDropdown={setOpenAboutDropdown}
+                                    item='about'
+                                    setActiveDropdown={setActiveDropdown}
                                     icon={
-                                        <div className='flex'>
+                                        <button className='flex items-center'>
                                             <Image
                                                 priority
                                                 src='/arrow.svg'
@@ -253,7 +209,7 @@ function Navbar({ t }) {
                                             <span className='inline-block ms-1'>
                                                 {t(`${nav.name}`)}
                                             </span>
-                                        </div>
+                                        </button>
                                     }
                                 />
                             ) : (
@@ -262,10 +218,25 @@ function Navbar({ t }) {
                                 </NavLink>
                             );
                         })}
-                        <LangDropdown
-                            setOpenLangDropdown={setOpenLangDropdown}
-                            openLangDropdown={openLangDropdown}
+                        {/* Langs Dropdown */}
+                        <Dropdown
+                            activeDropdown={activeDropdown}
+                            links={langs}
                             to={path}
+                            item='langs'
+                            i18n={i18n}
+                            setActiveDropdown={setActiveDropdown}
+                            icon={
+                                <button className='p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3'>
+                                    <Image
+                                        priority
+                                        src='/lang.svg'
+                                        width={23}
+                                        height={23}
+                                        alt=''
+                                    />
+                                </button>
+                            }
                         />
                         {!authenticated && (
                             <Link href='/login'>
@@ -284,12 +255,12 @@ function Navbar({ t }) {
                     {/* Dropdown for authenticated user */}
                     {authenticated && (
                         <Dropdown
-                            openDropdown={openAuthenticatedDropdown}
+                            activeDropdown={activeDropdown}
                             links={authenticatedDropdown}
-                            name='profile'
-                            setOpenDropdown={setOpenAuthenticatedDropdown}
+                            item='profile'
+                            setActiveDropdown={setActiveDropdown}
                             icon={
-                                <div className='mx-4 w-9 max-w-14 max-h-14 rounded-full'>
+                                <button className='mx-4 w-9 max-w-14 max-h-14 rounded-full items-center'>
                                     <Image
                                         className='rounded-full w-full h-full object-cover'
                                         width={14}
@@ -297,7 +268,7 @@ function Navbar({ t }) {
                                         alt='userImage'
                                         src={photo}
                                     />
-                                </div>
+                                </button>
                             }
                         />
                     )}
@@ -305,13 +276,11 @@ function Navbar({ t }) {
             </div>
             <MobileNav
                 openHamburger={openHamburger}
-                setOpenHamburger={setOpenHamburger}
-                setOpenLangDropdown={setOpenLangDropdown}
-                openLangDropdown={openLangDropdown}
-                openAboutDropdown={openAboutDropdown}
-                setOpenAboutDropdown={setOpenAboutDropdown}
-                to={path}
+                activeDropdown={activeDropdown}
+                setActiveDropdown={setActiveDropdown}
+                i18n={i18n}
                 t={t}
+                path={path}
             />
         </nav>
     );

@@ -19,3 +19,8 @@ export const authenticatedDropdown = [
     { name: "cards", href: "/payment-methods" },
     { name: "logout", href: "/payment-methods" },
 ];
+
+export const langs = [
+    { name: "English", locale: "en", dir: "ltr" },
+    { name: "العربية", locale: "ar", dir: "rtl" },
+];

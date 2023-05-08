@@ -82,8 +82,8 @@ exports[`renders correctly 1`] = `
           className="relative z-20"
           onClick={[Function]}
         >
-          <div
-            className="flex"
+          <button
+            className="flex items-center"
           >
             <img
               alt=""
@@ -106,7 +106,7 @@ exports[`renders correctly 1`] = `
             >
               about
             </span>
-          </div>
+          </button>
         </div>
         <a
           className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
@@ -118,11 +118,11 @@ exports[`renders correctly 1`] = `
           contactUs
         </a>
         <div
-          className="relative inline-block"
+          className="relative z-20"
           onClick={[Function]}
         >
           <button
-            className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3"
+            className="p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3"
           >
             <img
               alt=""
@@ -229,8 +229,8 @@ exports[`renders correctly 1`] = `
         className="relative z-20"
         onClick={[Function]}
       >
-        <div
-          className="flex"
+        <button
+          className="flex items-center"
         >
           <img
             alt=""
@@ -253,7 +253,7 @@ exports[`renders correctly 1`] = `
           >
             about
           </span>
-        </div>
+        </button>
       </div>
       <a
         className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
@@ -268,11 +268,11 @@ exports[`renders correctly 1`] = `
         className="flex space-s-10"
       >
         <div
-          className="relative inline-block"
+          className="relative z-20"
           onClick={[Function]}
         >
           <button
-            className="relative z-10 block p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3"
+            className="p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3"
           >
             <img
               alt=""
