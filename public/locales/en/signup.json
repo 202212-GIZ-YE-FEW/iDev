@@ -21,10 +21,7 @@
     "selectGender": "Select Gender",
     "male": "Male",
     "female": "Female",
-<<<<<<< HEAD
-    "Subscription": "Subscription done successfully!"
-=======
+    "Subscription": "Subscription done successfully!",
     "forgotPassword": " Forgot Password ",
     "passwordResetEmail": "Password reset email sent!."
->>>>>>> a4b2c891f95ac48ab5a570a601045775e5b5d808
 }

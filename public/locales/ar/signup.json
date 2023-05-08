@@ -21,10 +21,7 @@
     "selectGender": "حدد نوع الجنس",
     "male": "ذكر",
     "female": "انثى",
-<<<<<<< HEAD
-    "Subscription": "تمت عملية الاشتراك بنجاح!"
-=======
+    "Subscription": "تمت عملية الاشتراك بنجاح!",
     "forgotPassword": "هل نسيت كلمه المرور؟",
     "passwordResetEmail": "ايميل استعاده كلمه المرور تم ارساله "
->>>>>>> a4b2c891f95ac48ab5a570a601045775e5b5d808
 }
