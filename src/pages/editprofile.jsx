@@ -1,19 +1,21 @@
+import { collection, doc, getDocs, getFirestore } from "firebase/firestore";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import toastr from "toastr";
+import "firebase/firestore";
+
+import { useAuth } from "@/components/context/AuthContext";
+import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
-import { useAuth } from "@/components/context/AuthContext";
-import schema from "@/utils/validationSchemaProfile";
-import { doc, collection, getFirestore, getDocs } from "firebase/firestore";
-import "firebase/firestore";
-import updateDocument from "@/firebase/updateSubCollection";
-import PageIntro from "@/components/PageIntro";
-import uploadImage from "@/firebase/addImage";
 import Select from "@/components/ui/Select";
-import toastr from "toastr";
+
+import uploadImage from "@/firebase/addImage";
 import deleteDocument from "@/firebase/deleteData";
+import updateDocument from "@/firebase/updateSubCollection";
+import schema from "@/utils/validationSchemaProfile";
 
 function EditProfile({ t }) {
     const { user, changePassword, authenticated, deleteuser } = useAuth();
@@ -21,16 +23,16 @@ function EditProfile({ t }) {
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({});
     const data = {
-        Fullname: formData.Fullname,
+        Fullname: formData?.Fullname,
         deleted: false,
-        hobbies: formData.hobbies,
-        familySize: formData.familySize,
-        educationLevel: formData.educationLevel,
-        phoneNumber: formData.phoneNumber,
-        gender: formData.gender,
+        hobbies: formData?.hobbies,
+        familySize: formData?.familySize,
+        educationLevel: formData?.educationLevel,
+        phoneNumber: formData?.phoneNumber,
+        gender: formData?.gender,
     };
     const userData = {
-        dateOfBirth: formData.dateOfBirth,
+        dateOfBirth: formData?.dateOfBirth,
     };
 
     const db = getFirestore();
@@ -221,7 +223,7 @@ function EditProfile({ t }) {
                                         },
                                         { value: "male", label: t("male") },
                                     ]}
-                                    value={formData.gender}
+                                    value={formData?.gender}
                                     onChange={(e) =>
                                         setFormData({
                                             ...formData,

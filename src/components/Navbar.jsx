@@ -65,6 +65,7 @@ function MobileNav(prop) {
                 {navigation.map((nav) => {
                     return nav.name === "about" ? (
                         <Dropdown
+                            key={nav.name}
                             activeDropdown={activeDropdown}
                             links={nav.links}
                             item='about'
@@ -193,6 +194,7 @@ function Navbar({ t, i18n }) {
                         {navigation.map((nav) => {
                             return nav.name === "about" ? (
                                 <Dropdown
+                                    key={nav.name}
                                     activeDropdown={activeDropdown}
                                     links={nav.links}
                                     item='about'
@@ -261,14 +263,16 @@ function Navbar({ t, i18n }) {
                             item='profile'
                             setActiveDropdown={setActiveDropdown}
                             icon={
-                                <button className='mx-2 w-9 max-w-14 max-h-14 rounded-full items-center'>
-                                    <Image
-                                        className='rounded-full w-full h-full object-cover'
-                                        width={14}
-                                        height={14}
-                                        alt='userImage'
-                                        src={photo}
-                                    />
+                                <button className='mx-2 w-9 max-w-14 max-h-14 rounded-full items-center my-4'>
+                                    {photo && (
+                                        <Image
+                                            className='rounded-full w-full h-full object-cover'
+                                            width={14}
+                                            height={14}
+                                            alt='userImage'
+                                            src={photo}
+                                        />
+                                    )}
                                 </button>
                             }
                             t={t}
