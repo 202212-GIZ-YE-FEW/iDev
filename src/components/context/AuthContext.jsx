@@ -9,6 +9,7 @@ import {
     updatePassword,
     sendPasswordResetEmail,
     updateProfile,
+    signInWithRedirect,
 } from "firebase/auth";
 import Image from "next/image";
 import Router from "next/router";
@@ -145,7 +146,7 @@ export function AuthContextProvider({ children }) {
         //Login with Google account
 
         try {
-            await signInWithPopup(auth, googleProvider);
+            await signInWithRedirect(auth, googleProvider);
             setAuthenticated(true);
             Router.push("/"); // Navigate to homepage.
 
