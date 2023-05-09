@@ -9,7 +9,6 @@ import {
     updatePassword,
     sendPasswordResetEmail,
     updateProfile,
-    signInWithRedirect,
 } from "firebase/auth";
 import Image from "next/image";
 import Router from "next/router";
@@ -146,26 +145,14 @@ export function AuthContextProvider({ children }) {
         //Login with Google account
 
         try {
-            // Set the custom redirect URI for Netlify
-            const redirectUri = `${window.location.origin}/auth/redirect`;
-
-            // Set the custom redirect URI as a parameter for Google sign-in
-            googleProvider.setCustomParameters({
-                redirect_uri: redirectUri,
-            });
-
-            // Initiate the authentication flow with the redirect method
-            await signInWithRedirect(auth, googleProvider);
-
-            // If the user signs in successfully, set the authenticated state and navigate to the homepage
+            await signInWithPopup(auth, googleProvider);
             setAuthenticated(true);
-            Router.push("/");
+            window.alert("welcome " + auth.currentUser.email); //show wich email did singIn
+            Router.push("/"); // Navigate to homepage.
 
             localStorage.setItem("image", auth.currentUser.photoURL);
         } catch (error) {
-            // If there is an error, set the authenticated state to false and navigate to the 404 page
-            setAuthenticated(false);
-            Router.push("/404");
+            console.log(error);
         }
         return true;
     };
@@ -174,6 +161,7 @@ export function AuthContextProvider({ children }) {
         //login with FaceBook
         try {
             await signInWithPopup(auth, facebookProvider);
+            window.alert("welcome " + auth.currentUser.email); //show wich email did singIn
             Router.push("/"); // Navigate to homepage.
             setAuthenticated(true);
 
