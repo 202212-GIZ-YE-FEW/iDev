@@ -146,15 +146,26 @@ export function AuthContextProvider({ children }) {
         //Login with Google account
 
         try {
+            // Set the custom redirect URI for Netlify
+            const redirectUri = `${window.location.origin}/auth/redirect`;
+
+            // Set the custom redirect URI as a parameter for Google sign-in
+            googleProvider.setCustomParameters({
+                redirect_uri: redirectUri,
+            });
+
+            // Initiate the authentication flow with the redirect method
             await signInWithRedirect(auth, googleProvider);
+
+            // If the user signs in successfully, set the authenticated state and navigate to the homepage
             setAuthenticated(true);
-            Router.push("/"); // Navigate to homepage.
+            Router.push("/");
 
             localStorage.setItem("image", auth.currentUser.photoURL);
         } catch (error) {
+            // If there is an error, set the authenticated state to false and navigate to the 404 page
             setAuthenticated(false);
-            Router.push("/404"); // Navigate to 404.
-            setAuthenticated(false);
+            Router.push("/404");
         }
         return true;
     };
