@@ -33,6 +33,7 @@ const TwoLastSteps = (props) => {
 };
 
 function BookAppointment({ t }) {
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const { user } = useAuth();
     const [currentStep, setCurrentStep] = useState(0);
 
@@ -61,6 +62,7 @@ function BookAppointment({ t }) {
     };
 
     const onSubmit = async () => {
+        setIsSubmitting(true);
         if (
             numOfTickets.data.num_of_tickets &&
             numOfTickets.data.num_of_tickets <= 0
@@ -71,6 +73,7 @@ function BookAppointment({ t }) {
                 autoClose: 2000,
                 type: "error",
             });
+            isSubmitting(false);
             return;
         } else if (
             numOfTickets.data.num_of_tickets &&
@@ -205,6 +208,7 @@ function BookAppointment({ t }) {
                         },
                     ]}
                     onSubmit={onSubmit}
+                    isSubmitting={isSubmitting}
                 />
             </div>
         </>
