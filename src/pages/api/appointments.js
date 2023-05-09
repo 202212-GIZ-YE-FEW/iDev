@@ -5,11 +5,12 @@ export default async function handler(req, res) {
     const { method } = req;
     if (method === "POST") {
         const data = req.body;
-        const result = await addDocument("appointments", data);
+        const result = await addDocument("appointments", data.values);
         if (result) {
             try {
                 await transporter.sendMail({
                     ...mailOptions,
+                    to: data.user_email,
                     subject: "Appointment created",
                     text: "Appointment created",
                     html: `<h1>Appointment created</h1>`,

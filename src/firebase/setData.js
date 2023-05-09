@@ -5,9 +5,8 @@ export default async function setDocument(collectionPath, documentData) {
     try {
         const firestore = getFirestore();
         const documentRef = doc(firestore, collectionPath);
-
-        const docRef = await setDoc(documentRef, documentData);
-        result = docRef.id;
+        await setDoc(documentRef, documentData);
+        result = documentRef.id;
     } catch (e) {
         error = e;
     }

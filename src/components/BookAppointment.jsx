@@ -1,7 +1,10 @@
 import { withTranslation } from "next-i18next";
 import { useState } from "react";
+import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 
+import getDocById from "@/firebase/getDocById";
+import setDocument from "@/firebase/setData";
 import { postHandler } from "@/utils/api";
 
 import BringsHere from "./BookAppointment/BringsHere";
@@ -45,22 +48,56 @@ function BookAppointment({ t }) {
 
     const [values, setValues] = useState(initialValues);
 
+    const numOfTickets = useQuery({
+        queryKey: "numOfTickets",
+        queryFn: async () => {
+            const ticket = await getDocById("users_tickets", user.uid);
+            return ticket;
+        },
+    });
+
     const handelChange = ({ target }) => {
         setValues({ ...values, [target.name]: target.value });
     };
 
     const onSubmit = async () => {
-        values.participants = { user: user.uid };
-        const res = await postHandler("/api/appointments", values);
-        if (res.data.success === 0) {
-            setCurrentStep(currentStep + 1);
+        if (
+            numOfTickets.data.num_of_tickets &&
+            numOfTickets.data.num_of_tickets <= 0
+        ) {
+            toast(t("noTickets"), {
+                hideProgressBar: true,
+                position: "bottom-left",
+                autoClose: 2000,
+                type: "error",
+            });
+            return;
+        } else if (
+            numOfTickets.data.num_of_tickets &&
+            numOfTickets.data.num_of_tickets > 0
+        ) {
+            values.participants = { user: user.uid };
+            const data = {
+                values: values,
+                user_email: user.email,
+            };
+            const res = await postHandler("/api/appointments", data);
+            if (res.data.success === 0) {
+                const result = await setDocument(`users_tickets/${user.uid}/`, {
+                    num_of_tickets:
+                        parseInt(numOfTickets.data.num_of_tickets) - 1,
+                });
+                if (result.result) {
+                    setCurrentStep(currentStep + 1);
+                }
+            }
+            toast(t(`${res.data.message}`), {
+                hideProgressBar: true,
+                position: "bottom-left",
+                autoClose: 2000,
+                type: res.data.success === 1 ? "error" : "success",
+            });
         }
-        toast(t(`${res.data.message}`), {
-            hideProgressBar: true,
-            position: "bottom-left",
-            autoClose: 2000,
-            type: res.data.success === 1 ? "error" : "success",
-        });
     };
 
     return (

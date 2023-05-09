@@ -39,5 +39,6 @@
     "whatRelationshipStatus": "What is your relationship status?",
     "yes": "Yes",
     "appointmentBooked": "The appointment was booked successfully, and you will receive an email soon, thank you.",
-    "appointmentNotBooked": "The appointment was not booked, please try again later."
+    "appointmentNotBooked": "The appointment was not booked, please try again later.",
+    "noTickets": "You don't have enough tickets to book an appointment, please buy more tickets."
 }
