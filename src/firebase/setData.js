@@ -1,12 +1,15 @@
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
 export default async function setDocument(collectionPath, documentData) {
+    let result = null;
+    let error = null;
     try {
         const firestore = getFirestore();
         const documentRef = doc(firestore, collectionPath);
 
-        await setDoc(documentRef, documentData);
-        console.log("Document written with ID: ", documentRef.id);
-    } catch (error) {
-        console.error("Error adding document: ", error);
+        const docRef = await setDoc(documentRef, documentData);
+        result = docRef.id;
+    } catch (e) {
+        error = e;
     }
+    return { result, error };
 }

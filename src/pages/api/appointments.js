@@ -16,17 +16,17 @@ export default async function handler(req, res) {
                 });
                 return res.status(200).json({
                     success: 0,
-                    message: "Appointment created successfully",
+                    message: "appointmentBooked",
                 });
             } catch {
                 return res
                     .status(400)
-                    .json({ success: 1, message: "Appointment not created" });
+                    .json({ success: 1, message: "appointmentNotBooked" });
             }
         } else {
             res.status(400).json({
                 success: 1,
-                message: "Appointment not created",
+                message: "appointmentNotBooked",
             });
         }
     }

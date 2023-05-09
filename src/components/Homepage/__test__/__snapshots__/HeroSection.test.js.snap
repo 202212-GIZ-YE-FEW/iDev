@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
         help
       </p>
       <a
-        className="w-fit xl:w-full rtl:w-full"
+        className="w-fit xl:w-full rtl:w-full self-center lg:self-start"
         href="/appointment"
         onClick={[Function]}
         onMouseEnter={[Function]}

@@ -33,7 +33,7 @@ function HeroSection({ t }) {
                         {t("help")}
                     </p>
                     <Link
-                        className='w-fit xl:w-full rtl:w-full'
+                        className='w-fit xl:w-full rtl:w-full self-center lg:self-start'
                         href='/appointment'
                     >
                         <Button

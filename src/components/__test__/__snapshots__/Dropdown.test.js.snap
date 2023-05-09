@@ -6,7 +6,7 @@ exports[`renders correctly 1`] = `
   onClick={[Function]}
 >
   <div
-    className="w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl absolute end-0 z-20"
+    className="w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl absolute absolute end-0 z-20"
   />
 </div>
 `;
