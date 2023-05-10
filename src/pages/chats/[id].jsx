@@ -274,11 +274,12 @@ const Chatroom = ({ chat, id, t }) => {
                             <Picker
                                 data={data}
                                 previewPosition='none'
+                                onClickOutside={(e) =>
+                                    setEmojiPickerVisible(false)
+                                }
                                 onEmojiSelect={(e) => {
                                     setInput((prev) => prev + e.native);
-                                    setEmojiPickerVisible(
-                                        !isEmojiPickerVisible
-                                    );
+                                    setEmojiPickerVisible((prev) => prev);
                                 }}
                             />
                         </div>
