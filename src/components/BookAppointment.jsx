@@ -14,6 +14,7 @@ import RelationshipStatus from "./BookAppointment/RelationshipStatus";
 import SpecificQualities from "./BookAppointment/SpecificQualities";
 import TherapyBefore from "./BookAppointment/TherapyBefore";
 import { useAuth } from "./context/AuthContext";
+import { useTherapist } from "./context/TherapistContext";
 import Stepper from "./Stepper";
 
 const TwoLastSteps = (props) => {
@@ -35,6 +36,7 @@ const TwoLastSteps = (props) => {
 function BookAppointment({ t }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { user } = useAuth();
+    const { therapistIDs } = useTherapist();
     const [currentStep, setCurrentStep] = useState(0);
 
     const initialValues = {
@@ -57,6 +59,15 @@ function BookAppointment({ t }) {
         },
     });
 
+    // Arbitrary assign therapist to user
+    const assignTherapistToBooker = () => {
+        if (therapistIDs?.length > 0) {
+            return therapistIDs[
+                Math.floor(Math.random() * therapistIDs?.length)
+            ].id;
+        }
+    };
+
     const handelChange = ({ target }) => {
         setValues({ ...values, [target.name]: target.value });
     };
@@ -74,7 +85,10 @@ function BookAppointment({ t }) {
             setIsSubmitting(false);
             return;
         } else if (userTickets > 0) {
-            values.participants = { user: user.uid };
+            values.participants = {
+                user: user.uid,
+                therapist: assignTherapistToBooker(),
+            };
             const data = {
                 values: values,
                 user_email: user.email,
