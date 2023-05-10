@@ -46,8 +46,6 @@ export async function getStaticProps({ locale }) {
         props: {
             ...(await serverSideTranslations(locale, "common")),
             blogs,
-
-            // Will be passed to the page component as props
         },
     };
 }
