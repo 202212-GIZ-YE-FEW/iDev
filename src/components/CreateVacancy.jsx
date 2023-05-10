@@ -1,5 +1,4 @@
 import Button from "@/components/ui/Button";
-import Router from "next/router";
 import PageIntro from "@/components/PageIntro";
 import { withTranslation } from "next-i18next";
 import { useAuth } from "@/components/context/AuthContext";
