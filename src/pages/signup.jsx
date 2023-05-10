@@ -115,7 +115,6 @@ function SignUp({ t }) {
                 </div>
                 <div className='max-w-[29rem] lg:justify-self-end'>
                     <FormTitle title={t(`${signup}`)} />
-
                     <form
                         className='shadow-lg px-7 py-11  mt-4 rounded-lg'
                         onSubmit={handleSubmit}
@@ -146,7 +145,6 @@ function SignUp({ t }) {
                                 />
                             </div>
                         </div>
-
                         <div className='mb-[0.8rem]'>
                             <Input
                                 field={t(`${email}`)}

@@ -75,7 +75,7 @@ const Input = (props) => {
             {error && (
                 <div className=' text-red text-sm md:text-base mt-1 '>
                     {t(`validation:${error}`, {
-                        field: t(`${field}`),
+                        field: t(`${field || name}`),
                         count: "3",
                     })}
                 </div>

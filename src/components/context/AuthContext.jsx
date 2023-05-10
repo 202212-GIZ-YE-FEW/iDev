@@ -197,13 +197,11 @@ export function AuthContextProvider({ children }) {
     };
     const changePassword = (currentPassword, newPassword) => {
         const user = auth.currentUser;
-        console.log("user", user);
 
         const credential = EmailAuthProvider.credential(
             user.email,
             currentPassword
         );
-        console.log("credential", credential);
         reauthenticateWithCredential(user, credential)
             .then(() => {
                 updatePassword(user, newPassword)
@@ -243,7 +241,6 @@ export function AuthContextProvider({ children }) {
     };
     const updateProfilePhoto = async (photoURL) => {
         const user = auth.currentUser;
-        console.log(photoURL);
         updateProfile(user, { photoURL });
     };
 

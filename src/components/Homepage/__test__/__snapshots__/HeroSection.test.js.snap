@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
         help
       </p>
       <a
-        className="w-fit xl:w-full rtl:w-full"
+        className="w-fit xl:w-full rtl:w-full self-center lg:self-start"
         href="/appointment"
         onClick={[Function]}
         onMouseEnter={[Function]}
@@ -38,8 +38,8 @@ exports[`renders correctly 1`] = `
         >
           <button
             className="transform hover:bg-yellow transition duration-500  hover:animate-bounce hover:scale-75 active:bg-cyan focus:outline-none focus:ring focus:ring-cyan
-                font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black "
-            disabled={false}
+                font-normal whitespace-nowrap cursor-pointer  capitalize text-lg md:text-xl lg:text-2xl rounded-md px-[25px] md:px-[35px] py-[8px] font-medium bg-cyan text-black  bg-light-gray text-gray"
+            disabled={true}
             onClick={[Function]}
           >
             bookAppointment

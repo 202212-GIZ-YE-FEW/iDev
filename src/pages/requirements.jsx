@@ -4,7 +4,7 @@ import { withTranslation } from "next-i18next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RequirementSVG from "public/requirements.svg";
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 import PageIntro from "@/components/PageIntro";
 import Requirement from "@/components/Requirement";
@@ -12,15 +12,19 @@ import RequirementsSection from "@/components/RequirementsSection";
 
 import getDocument from "@/firebase/getData";
 
-function Requirements({ t, requirements }) {
-    const [requirement, setRequirement] = useState([]);
+function Requirements({ t }) {
     const { i18n } = useTranslation("requirements");
 
-    useEffect(() => {
-        const data = requirements.filter((item) => item.id === i18n.language);
+    const {
+        isLoading,
+        error,
+        data: requirements,
+    } = useQuery("requirements", async () => {
+        let data = await getDocument("requirements");
+        data = data.filter((item) => item.id === i18n.language);
         const dataArr = data[0].content.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-        setRequirement(dataArr);
-    }, [i18n.language, requirements]);
+        return dataArr;
+    });
 
     return (
         <>
@@ -42,7 +46,7 @@ function Requirements({ t, requirements }) {
                         title={t("focusCounseling")}
                         subtitle={t("focusCounselingDesc")}
                     />
-                    <RequirementsSection requirements={requirement} />
+                    <RequirementsSection requirements={requirements} />
                 </div>
                 <div className='grid-cols-3 lg:justify-self-end py-10'>
                     <Image src={RequirementSVG} alt='requirements' />
@@ -53,10 +57,8 @@ function Requirements({ t, requirements }) {
 }
 
 export async function getStaticProps({ locale }) {
-    const requirements = await getDocument("requirements");
     return {
         props: {
-            requirements,
             ...(await serverSideTranslations(locale, [
                 "common",
                 "requirements",

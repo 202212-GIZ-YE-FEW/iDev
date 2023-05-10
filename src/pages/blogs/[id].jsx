@@ -84,23 +84,28 @@ function Blog({ blog }) {
         </div>
     );
 }
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
     let blogs = [];
     try {
         blogs = await getDocument("blogs");
     } catch (error) {
         //
     }
-    const paths = blogs.map((blog) => {
-        return {
-            params: {
-                id: blog.id,
-            },
-        };
+    const paths = [];
+    blogs.forEach((blog) => {
+        locales.forEach((locale) => {
+            const path = {
+                params: {
+                    id: blog.id,
+                },
+                locale: locale,
+            };
+            paths.push(path);
+        });
     });
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 }
 export async function getStaticProps({ locale, params }) {
