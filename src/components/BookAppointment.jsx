@@ -63,22 +63,17 @@ function BookAppointment({ t }) {
 
     const onSubmit = async () => {
         setIsSubmitting(true);
-        if (
-            numOfTickets.data.num_of_tickets &&
-            numOfTickets.data.num_of_tickets <= 0
-        ) {
+        const userTickets = numOfTickets?.data?.num_of_tickets || 0;
+        if (userTickets <= 0) {
             toast(t("noTickets"), {
                 hideProgressBar: true,
                 position: "bottom-left",
                 autoClose: 2000,
                 type: "error",
             });
-            isSubmitting(false);
+            setIsSubmitting(false);
             return;
-        } else if (
-            numOfTickets.data.num_of_tickets &&
-            numOfTickets.data.num_of_tickets > 0
-        ) {
+        } else if (userTickets > 0) {
             values.participants = { user: user.uid };
             const data = {
                 values: values,

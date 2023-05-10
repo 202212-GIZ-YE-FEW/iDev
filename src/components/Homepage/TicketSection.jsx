@@ -20,6 +20,7 @@ function TicketSection({ t, tickets }) {
                             {tickets?.map((item, index) => {
                                 return (
                                     <TicketItem
+                                        bestOption={item.best_option || false}
                                         key={index}
                                         ticketID={item.id}
                                         numberOfTickets={item.number_of_tickets}

@@ -79,7 +79,7 @@ function Payment({ t }) {
         if (paymentMethod) {
             const tickets =
                 parseInt(ticketQuery.data.number_of_tickets) +
-                parseInt(numOfTickets.data.num_of_tickets);
+                parseInt(numOfTickets.data.num_of_tickets || 0);
             const data = {
                 num_of_tickets: tickets,
                 user_id: user.uid,
@@ -184,10 +184,7 @@ function Payment({ t }) {
                     <p className='text-base lg:text-3xl my-20 text-center font-medium'>
                         {t("confirmBuyDesc", {
                             count: ticketQuery.data.number_of_tickets,
-                            price: `${
-                                ticketQuery.data.number_of_tickets *
-                                ticketQuery.data.price
-                            }$`,
+                            price: `${ticketQuery.data.price}$`,
                         })}
                     </p>
                 )}

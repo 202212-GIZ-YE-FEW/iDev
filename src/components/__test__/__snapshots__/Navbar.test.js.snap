@@ -103,7 +103,7 @@ exports[`renders correctly 1`] = `
         </div>
         <a
           className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-          href="blogs"
+          href="/blogs"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
@@ -261,7 +261,7 @@ exports[`renders correctly 1`] = `
       </div>
       <a
         className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-        href="blogs"
+        href="/blogs"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}

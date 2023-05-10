@@ -9,9 +9,6 @@ export default async function handler(req, res) {
             num_of_tickets: data.num_of_tickets,
         });
         if (result) {
-            const total =
-                parseFloat(data.ticket.price) *
-                parseInt(data.ticket.number_of_tickets);
             try {
                 await transporter.sendMail({
                     ...mailOptions,
@@ -22,7 +19,7 @@ export default async function handler(req, res) {
               <h1>Ticket purchased</h1>
               <p>Number of tickets: ${data.ticket.number_of_tickets}</p>
               <p>Price: ${data.ticket.price}</p>
-              <p>Total: ${total}</p>
+              <p>Total: ${data.ticket.price}</p>
               <p>Thank you for your purchase</p>
           </div>`,
                 });
