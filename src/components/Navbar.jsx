@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
+import { AiFillCaretDown } from "react-icons/ai";
 
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/ui/Button";
@@ -33,7 +34,7 @@ function MobileNav(prop) {
     const { authenticated } = useAuth();
     return (
         <div
-            className={`lg:hidden absolute top-0 right-0 h-full w-full z-10 bg-background transform ${
+            className={`lg:hidden absolute top-0 right-0 h-full w-full z-10 bg-light-cyan transform ${
                 openHamburger
                     ? "ltr:translate-x-0 rtl:-translate-x-0"
                     : "hidden"
@@ -60,11 +61,12 @@ function MobileNav(prop) {
                 </div>
             </div>
             {/* Dropdown panel */}
-            <div className='container flex flex-col bg-background'>
+            <div className='container flex flex-col bg-light-cyan'>
                 {/* Navigation links */}
                 {navigation.map((nav) => {
                     return nav.name === "about" ? (
                         <Dropdown
+                            key={nav.name}
                             activeDropdown={activeDropdown}
                             links={nav.links}
                             item='about'
@@ -72,13 +74,7 @@ function MobileNav(prop) {
                             setActiveDropdown={setActiveDropdown}
                             icon={
                                 <button className='flex items-center'>
-                                    <Image
-                                        priority
-                                        src='/arrow.svg'
-                                        width={15}
-                                        height={15}
-                                        alt=''
-                                    />
+                                    <AiFillCaretDown />
                                     <span className='inline-block ms-1'>
                                         {t(`${nav.name}`)}
                                     </span>
@@ -193,19 +189,14 @@ function Navbar({ t, i18n }) {
                         {navigation.map((nav) => {
                             return nav.name === "about" ? (
                                 <Dropdown
+                                    key={nav.name}
                                     activeDropdown={activeDropdown}
                                     links={nav.links}
                                     item='about'
                                     setActiveDropdown={setActiveDropdown}
                                     icon={
                                         <button className='flex items-center md:mx-2 xl:mx-6'>
-                                            <Image
-                                                priority
-                                                src='/arrow.svg'
-                                                width={15}
-                                                height={15}
-                                                alt=''
-                                            />
+                                            <AiFillCaretDown />
                                             <span className='inline-block ms-1'>
                                                 {t(`${nav.name}`)}
                                             </span>
@@ -261,14 +252,16 @@ function Navbar({ t, i18n }) {
                             item='profile'
                             setActiveDropdown={setActiveDropdown}
                             icon={
-                                <button className='mx-2 w-9 max-w-14 max-h-14 rounded-full items-center'>
-                                    <Image
-                                        className='rounded-full w-full h-full object-cover'
-                                        width={14}
-                                        height={14}
-                                        alt='userImage'
-                                        src={photo}
-                                    />
+                                <button className='mx-2 w-9 max-w-14 max-h-14 rounded-full items-center my-4'>
+                                    {photo && (
+                                        <Image
+                                            className='rounded-full w-full h-full object-cover'
+                                            width={14}
+                                            height={14}
+                                            alt='userImage'
+                                            src={photo}
+                                        />
+                                    )}
                                 </button>
                             }
                             t={t}

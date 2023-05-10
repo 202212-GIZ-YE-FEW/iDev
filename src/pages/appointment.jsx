@@ -24,6 +24,7 @@ export async function getStaticProps({ locale }) {
                 "common",
                 "appointment",
             ])),
+            requireAuth: true,
         },
     };
 }

@@ -92,7 +92,7 @@ exports[`renders correctly 1`] = `
             className="mx-6"
           >
             <a
-              href="blogs"
+              href="/blogs"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onTouchStart={[Function]}

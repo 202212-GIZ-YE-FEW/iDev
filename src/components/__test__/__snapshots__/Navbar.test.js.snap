@@ -76,22 +76,24 @@ exports[`renders correctly 1`] = `
           <button
             className="flex items-center md:mx-2 xl:mx-6"
           >
-            <img
-              alt=""
-              data-nimg="1"
-              decoding="async"
-              fetchpriority="high"
-              height={15}
-              onError={[Function]}
-              onLoad={[Function]}
-              src="/arrow.svg"
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
               style={
                 Object {
-                  "color": "transparent",
+                  "color": undefined,
                 }
               }
-              width={15}
-            />
+              viewBox="0 0 1024 1024"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"
+              />
+            </svg>
             <span
               className="inline-block ms-1"
             >
@@ -101,7 +103,7 @@ exports[`renders correctly 1`] = `
         </div>
         <a
           className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-          href="blogs"
+          href="/blogs"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
@@ -174,7 +176,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="lg:hidden absolute top-0 right-0 h-full w-full z-10 bg-background transform hidden transition-transform duration-300 ease-in-out"
+    className="lg:hidden absolute top-0 right-0 h-full w-full z-10 bg-light-cyan transform hidden transition-transform duration-300 ease-in-out"
   >
     <div
       className="container flex items-center bg-light-cyan h-20"
@@ -214,7 +216,7 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="container flex flex-col bg-background"
+      className="container flex flex-col bg-light-cyan"
     >
       <a
         className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
@@ -232,22 +234,24 @@ exports[`renders correctly 1`] = `
         <button
           className="flex items-center"
         >
-          <img
-            alt=""
-            data-nimg="1"
-            decoding="async"
-            fetchpriority="high"
-            height={15}
-            onError={[Function]}
-            onLoad={[Function]}
-            src="/arrow.svg"
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
             style={
               Object {
-                "color": "transparent",
+                "color": undefined,
               }
             }
-            width={15}
-          />
+            viewBox="0 0 1024 1024"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"
+            />
+          </svg>
           <span
             className="inline-block ms-1"
           >
@@ -257,7 +261,7 @@ exports[`renders correctly 1`] = `
       </div>
       <a
         className="my-4 lg:my-0 lg:mx-2 xl:mx-5 text-md lg:text-md xl:text-lg relative hover:text-yellow"
-        href="blogs"
+        href="/blogs"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}

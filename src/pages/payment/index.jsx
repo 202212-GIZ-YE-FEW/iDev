@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -7,6 +6,7 @@ import { useState } from "react";
 import { MdOutlinePayment } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 
 import "react-multi-carousel/lib/styles.css";
 
@@ -18,20 +18,24 @@ import RadioInputItem from "@/components/ui/radiogroup/RadioInputItem";
 import getDocument from "@/firebase/getData";
 import getDocById from "@/firebase/getDocById";
 import { checkout } from "@/pages/api/checkout";
+import { postHandler } from "@/utils/api";
 import parseCardData from "@/utils/payment";
 
 function Payment({ t }) {
     const { user } = useAuth();
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("");
     const router = useRouter();
     const query = router.query;
 
-    const collectionPath = `users/${user.uid}/Personal_data/payment_methods/data`;
+    const collectionPath = `users/${user.uid}/Personal_data`;
 
     const cardsQuery = useQuery({
         queryKey: "paymentMethods",
         queryFn: async () => {
-            const data = await getDocument(collectionPath);
+            const data = await getDocument(
+                `${collectionPath}/payment_methods/data`
+            );
             return parseCardData(data);
         },
     });
@@ -40,6 +44,14 @@ function Payment({ t }) {
         queryKey: "ticket",
         queryFn: async () => {
             const ticket = await getDocById("tickets", query.id);
+            return ticket;
+        },
+    });
+
+    const numOfTickets = useQuery({
+        queryKey: "numOfTickets",
+        queryFn: async () => {
+            const ticket = await getDocById("users_tickets", user.uid);
             return ticket;
         },
     });
@@ -61,7 +73,43 @@ function Payment({ t }) {
             items: 1,
         },
     };
-    console.log(ticketQuery.data);
+
+    const purchaseTicket = async () => {
+        setIsSubmitting(true);
+        if (paymentMethod) {
+            const tickets =
+                parseInt(ticketQuery.data.number_of_tickets) +
+                parseInt(numOfTickets.data.num_of_tickets || 0);
+            const data = {
+                num_of_tickets: tickets,
+                user_id: user.uid,
+                user_email: user.email,
+                ticket: ticketQuery.data,
+            };
+            const res = postHandler("api/payment", data);
+            res.then((res) => {
+                toast(t(`${res.data.message}`), {
+                    hideProgressBar: true,
+                    position: "bottom-left",
+                    autoClose: 2000,
+                    type: res.data.success === 1 ? "error" : "success",
+                });
+                router.push({
+                    pathname: "/thanks",
+                    query: {
+                        subtitle: "purchaseSubmitted",
+                    },
+                });
+            });
+        } else {
+            toast(t("selectPaymentFirst"), {
+                hideProgressBar: true,
+                position: "bottom-left",
+                autoClose: 2000,
+                type: "error",
+            });
+        }
+    };
 
     return (
         <>
@@ -136,10 +184,7 @@ function Payment({ t }) {
                     <p className='text-base lg:text-3xl my-20 text-center font-medium'>
                         {t("confirmBuyDesc", {
                             count: ticketQuery.data.number_of_tickets,
-                            price: `${
-                                ticketQuery.data.number_of_tickets *
-                                ticketQuery.data.price
-                            }$`,
+                            price: `${ticketQuery.data.price}$`,
                         })}
                     </p>
                 )}
@@ -147,10 +192,7 @@ function Payment({ t }) {
                     {cardsQuery.data?.length > 0 ? (
                         <>
                             <div className='flex items-center'>
-                                <Link
-                                    href='#'
-                                    className='block text-center mx-auto my-20'
-                                >
+                                <div className='block text-center mx-auto my-20'>
                                     <Button
                                         content={t("confirmPurchase")}
                                         textTransform='uppercase'
@@ -158,8 +200,12 @@ function Payment({ t }) {
                                         size='medium'
                                         fontSize='text-sm md:text-xl'
                                         radius='md'
+                                        onClick={() => purchaseTicket()}
+                                        disabled={
+                                            !paymentMethod || isSubmitting
+                                        }
                                     />
-                                </Link>
+                                </div>
                             </div>
                             <div className='flex items-center'>
                                 <span className='text-gray-400 text-sm md:text-xl uppercase'>
