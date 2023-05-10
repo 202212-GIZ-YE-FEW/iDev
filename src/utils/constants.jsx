@@ -7,10 +7,10 @@ export const navigation = [
         links: [
             { name: "team", href: "/team" },
             { name: "about", href: "/about" },
-            { name: "therapists", href: "therapists" },
+            { name: "therapists", href: "/therapists" },
         ],
     },
-    { name: "blogs", href: "blogs" },
+    { name: "blogs", href: "/blogs" },
     { name: "careers", href: "/careers" },
     { name: "contactUs", href: "/contact-us" },
 ];

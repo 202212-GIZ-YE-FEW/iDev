@@ -1,12 +1,14 @@
 import AOS from "aos";
+import clsx from "clsx";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import React, { useEffect } from "react";
+import { AiFillStar } from "react-icons/ai";
 
 import "aos/dist/aos.css";
 
 import Button from "@/components/ui/Button";
-function TicketItem({ t, ticketID, numberOfTickets, price }) {
+function TicketItem({ t, bestOption, ticketID, numberOfTickets, price }) {
     useEffect(() => {
         AOS.init({
             duration: 1000,
@@ -17,11 +19,21 @@ function TicketItem({ t, ticketID, numberOfTickets, price }) {
         <>
             <div
                 data-aos='flip-down'
-                className='bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg'
+                className={clsx(
+                    "bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg",
+                    {
+                        "border-4 border-cyan": bestOption,
+                    }
+                )}
             >
-                <span className='uppercase text-4xl'>
-                    {numberOfTickets} {t("ticket")}
-                </span>
+                <div className='flex items-center justify-center space-x-2'>
+                    <span className='uppercase text-4xl'>
+                        {numberOfTickets} {t("ticket")}
+                    </span>
+                    {bestOption && (
+                        <AiFillStar className='text-cyan text-3xl' />
+                    )}
+                </div>
                 <span className='text-base rtl:text-3xl text-black/50'>
                     {price}$
                 </span>

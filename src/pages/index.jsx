@@ -8,7 +8,7 @@ import getDocument from "@/firebase/getData";
 export default function Index({ blogs }) {
     const { data } = useQuery("tickets", async () => {
         const data = await getDocument("tickets");
-        return data;
+        return data.sort((a, b) => a.price - b.price);
     });
     return (
         <>

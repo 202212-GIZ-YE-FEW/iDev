@@ -29,5 +29,8 @@
     "cardNumberNotValid": "Card number not valid",
     "nameOnCardNotValid": "Name on card not valid",
     "cardAlreadyExists": "Card already exists please try another one!",
-    "payWithOtherCard": "Pay with other card"
+    "payWithOtherCard": "Pay with other card",
+    "selectPaymentFirst": "Please select a payment method first!",
+    "ticketPurchased": "Ticket purchased successfully",
+    "ticketNotPurchased": "Ticket not purchased, please try again!"
 }

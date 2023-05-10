@@ -87,6 +87,7 @@ function Stepper(props) {
                                         size='large'
                                         fontSize='text-lg md:text-xl lg:text-2xl'
                                         radius='md'
+                                        disabled={props.isSubmitting}
                                     />
                                 )}
                                 {/* After submission:Completed step */}

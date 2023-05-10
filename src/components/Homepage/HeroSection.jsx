@@ -1,14 +1,16 @@
+import AOS from "aos";
 import Image from "next/image";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
-
 import React, { useEffect } from "react";
-import AOS from "aos";
+
 import "aos/dist/aos.css";
 
+import { useAuth } from "../context/AuthContext";
 import Button from "../ui/Button";
 
 function HeroSection({ t }) {
+    const { authenticated } = useAuth();
     useEffect(() => {
         AOS.init({
             duration: 1000,
@@ -31,7 +33,7 @@ function HeroSection({ t }) {
                         {t("help")}
                     </p>
                     <Link
-                        className='w-fit xl:w-full rtl:w-full'
+                        className='w-fit xl:w-full rtl:w-full self-center lg:self-start'
                         href='/appointment'
                     >
                         <Button
@@ -41,6 +43,7 @@ function HeroSection({ t }) {
                             size='large'
                             fontSize='text-lg md:text-xl lg:text-2xl'
                             radius='md'
+                            disabled={!authenticated}
                         />
                     </Link>
                 </div>

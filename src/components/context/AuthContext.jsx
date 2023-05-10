@@ -1,30 +1,25 @@
 import {
     createUserWithEmailAndPassword,
-    onAuthStateChanged,
-    sendEmailVerification,
-    signInWithPopup,
-    signInWithEmailAndPassword,
-    reauthenticateWithCredential,
     EmailAuthProvider,
-    updatePassword,
+    onAuthStateChanged,
+    reauthenticateWithCredential,
+    sendEmailVerification,
     sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    updatePassword,
     updateProfile,
 } from "firebase/auth";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
 import Image from "next/image";
 import Router from "next/router";
+import image from "public/profile-icon.svg";
 import Spinner from "public/spinner.svg";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import {
-    auth,
-    facebookProvider,
-    googleProvider,
-    storage,
-} from "@/firebase/config";
-import image from "public/profile-icon.svg";
-import { setDoc, doc, getFirestore } from "firebase/firestore";
-import setDocument from "@/firebase/setData";
 import toastr from "toastr";
+
+import { auth, facebookProvider, googleProvider } from "@/firebase/config";
+import setDocument from "@/firebase/setData";
 
 const db = getFirestore();
 const AuthContext = createContext({});
@@ -189,13 +184,11 @@ export function AuthContextProvider({ children }) {
     };
     const changePassword = (currentPassword, newPassword) => {
         const user = auth.currentUser;
-        console.log("user", user);
 
         const credential = EmailAuthProvider.credential(
             user.email,
             currentPassword
         );
-        console.log("credential", credential);
         reauthenticateWithCredential(user, credential)
             .then(() => {
                 updatePassword(user, newPassword)
@@ -235,7 +228,6 @@ export function AuthContextProvider({ children }) {
     };
     const updateProfilePhoto = async (photoURL) => {
         const user = auth.currentUser;
-        console.log(photoURL);
         updateProfile(user, { photoURL });
     };
 
