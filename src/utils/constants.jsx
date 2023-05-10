@@ -1,3 +1,4 @@
+// for Navbar
 export const navigation = [
     { name: "home", href: "/" },
     {
