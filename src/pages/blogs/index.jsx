@@ -1,8 +1,9 @@
 import "react-multi-carousel/lib/styles.css";
 import getDocument from "@/firebase/getData";
 import BlogCard from "@/components/BlogCard";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import AddBlog from "@/components/AddBlog";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const Blogs = ({ blogs }) => {
     return (
         <div className='container'>
