@@ -18,11 +18,11 @@ const AddBlog = ({ t }) => {
                 <>
                     <div className='  pt-8 pb-6'>
                         <PageIntro
-                            title={t("ShareYourBlogPost")}
+                            title={t("shareYourBlogPost")}
                             subtitle={t("submitYourBlog")}
                         />
                         <Button
-                            content={t("addToCareersList")}
+                            content={t("addYourBlog")}
                             textTransform='uppercase'
                             filled='true'
                             size='large'
