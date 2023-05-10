@@ -69,7 +69,7 @@ function Team({ t }) {
                     </p>
                     <div
                         data-aos='zoom-in-up'
-                        className='flex justify-between flex-wrap items-center gap-x-1 gap-y-7'
+                        className='flex justify-center md:justify-between flex-wrap items-center gap-x-1 gap-y-7'
                     >
                         {teamMembers.map((member) => {
                             return (
