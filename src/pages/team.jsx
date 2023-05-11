@@ -2,12 +2,12 @@ import AOS from "aos";
 import Head from "next/head";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Abdulmajeed from "public/team/AbdulmajeedJaafer.png";
+import Abrar from "public/team/Abrar.jpg";
 import DhiaShalabi from "public/team/dhiashalabi.png";
 import HaneenAbdulglil from "public/team/haneenabdulglil.jpg";
+import Jehad from "public/team/jehad.png";
 import MohammedAljaberi from "public/team/mohammedaljaberi.jpg";
 import MohBassura from "public/team/mohbassura.jpg";
-import PayamAbubakr from "public/team/PayamAbubakr.png";
 import React, { useEffect } from "react";
 
 import "aos/dist/aos.css";
@@ -35,23 +35,23 @@ function Team({ t }) {
             id: 2,
             name: "Abrar Alkhorasani",
             job: "Full Stack Developer",
-            photo: PayamAbubakr,
+            photo: Abrar,
             github: "Abrar-Abdulwahed",
             linkedin: "abrar-alkhorasani-b31472240/",
         },
         {
             id: 3,
-            name: "Mohammed Basura",
+            name: "Mohammed Basurra",
             job: "Full Stack Developer",
             photo: MohBassura,
             github: "MohdBasurra",
-            linkedin: "",
+            linkedin: "mohammed-basurra-695a3b275/",
         },
         {
             id: 4,
             name: "Jehad Almaliki",
             job: "Full Stack Developer",
-            photo: Abdulmajeed,
+            photo: Jehad,
             github: "Jehadalmaliki",
             linkedin: "jehad-almaliki-832318183",
         },
@@ -69,7 +69,7 @@ function Team({ t }) {
             job: "Full Stack Developer",
             photo: MohammedAljaberi,
             github: "MohammedALjaberi",
-            linkedin: "",
+            linkedin: "mohammed-aljabri-5069b522a",
         },
     ];
     return (
