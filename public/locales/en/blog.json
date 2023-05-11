@@ -12,5 +12,8 @@
     "save": "save",
     "uploadArticleImage": "Upload Article Image",
     "uploadYourArticle": "upload your article",
-    "readMore": "read More"
+    "readMore": "read More",
+    "shareYourBlogPost": "share your blog post",
+    "submitYourBlog": "submit your blog post and share it with our community",
+    "addYourBlog": "add your blog"
 }

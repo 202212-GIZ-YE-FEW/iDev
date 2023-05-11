@@ -1,10 +1,8 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
 import "react-multi-carousel/lib/styles.css";
-
-import BlogCard from "@/components/BlogCard";
-
 import getDocument from "@/firebase/getData";
+import BlogCard from "@/components/BlogCard";
+import AddBlog from "@/components/AddBlog";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Blogs = ({ blogs }) => {
     return (
@@ -30,6 +28,7 @@ const Blogs = ({ blogs }) => {
                     </div>
                 ))}
             </div>
+            <AddBlog />
         </div>
     );
 };
