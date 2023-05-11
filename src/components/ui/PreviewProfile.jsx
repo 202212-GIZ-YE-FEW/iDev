@@ -1,13 +1,15 @@
-import { storage } from "@/firebase/config";
 import { ref } from "firebase/storage";
-import { React, useEffect, useState } from "react";
+import { getDownloadURL } from "firebase/storage";
 import Image from "next/image";
 import ProfileEditSVG from "public/edit-profile-icon.svg";
 import ProfilePreviewSVG from "public/profile-icon.svg";
-import uploadImage from "@/firebase/addImage";
-import { useAuth } from "../context/AuthContext";
-import { getDownloadURL } from "firebase/storage";
+import { React, useEffect, useState } from "react";
 import toastr from "toastr";
+
+import uploadImage from "@/firebase/addImage";
+import { storage } from "@/firebase/config";
+
+import { useAuth } from "../context/AuthContext";
 export default function PreviewProfile() {
     const [photo, uploadimg] = useState("");
     const { user, updateProfilePhoto } = useAuth();
@@ -40,7 +42,7 @@ export default function PreviewProfile() {
     };
 
     useEffect(() => {
-        uploadimg(user.photoURL);
+        uploadimg(user?.photoURL);
     }, [user]);
 
     return (

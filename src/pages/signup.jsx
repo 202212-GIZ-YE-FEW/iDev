@@ -14,6 +14,7 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 
 import schema from "@/utils/validationSchemaSignUp";
+import { serverTimestamp } from "@firebase/firestore";
 
 function SignUp({ t }) {
     useEffect(() => {
@@ -59,10 +60,11 @@ function SignUp({ t }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             const userData = {
-                active: true,
+                active: false,
                 email: formData.email,
                 first_name: formData.firstName,
                 last_name: formData.lastName,
+                last_seen: serverTimestamp(),
                 dateOfBirth: formData.dateOfBirth,
                 isTherapist: false,
             };
