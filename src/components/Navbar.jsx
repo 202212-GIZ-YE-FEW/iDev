@@ -261,7 +261,7 @@ function Navbar({ t, i18n }) {
                             item='profile'
                             setActiveDropdown={setActiveDropdown}
                             icon={
-                                <button className='mx-2 w-9 max-w-14 max-h-14 rounded-full items-center'>
+                                <button className='mx-2 w-9 max-w-14 max-h-14 rounded-full items-center mt-2'>
                                     <Image
                                         className='rounded-full w-full h-full object-cover'
                                         width={14}
