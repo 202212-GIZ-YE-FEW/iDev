@@ -2,11 +2,11 @@ import AOS from "aos";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Abdulmajeed from "public/team/AbdulmajeedJaafer.png";
-import AhmedMohammed from "public/team/AhmedMohammed.png";
-import AvrazZebary from "public/team/AvrazZebary.png";
 import DhiaShalabi from "public/team/dhiashalabi.png";
+import HaneenAbdulglil from "public/team/haneenabdulglil.jpg";
+import MohammedAljaberi from "public/team/mohammedaljaberi.webp";
+import MohBassura from "public/team/mohbassura.jpg";
 import PayamAbubakr from "public/team/PayamAbubakr.png";
-import SnoorMadih from "public/team/SnoorMadih.png";
 import React, { useEffect } from "react";
 
 import "aos/dist/aos.css";
@@ -42,7 +42,7 @@ function Team({ t }) {
             id: 3,
             name: "Mohammed Basura",
             job: "Full Stack Developer",
-            photo: AhmedMohammed,
+            photo: MohBassura,
             github: "MohdBasurra",
             linkedin: "",
         },
@@ -58,7 +58,7 @@ function Team({ t }) {
             id: 5,
             name: "Haneen Abdulglil",
             job: "Full Stack Developer",
-            photo: SnoorMadih,
+            photo: HaneenAbdulglil,
             github: "Haneen-Abdulgllil",
             linkedin: "haneen-abdulglil-762601241",
         },
@@ -66,7 +66,7 @@ function Team({ t }) {
             id: 6,
             name: "Mohammed Al-jaberi",
             job: "Full Stack Developer",
-            photo: AvrazZebary,
+            photo: MohammedAljaberi,
             github: "MohammedALjaberi",
             linkedin: "",
         },
