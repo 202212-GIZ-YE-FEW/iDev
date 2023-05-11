@@ -137,7 +137,7 @@ function Navbar({ t, i18n }) {
     const [photo, uploadimg] = useState("");
 
     useEffect(() => {
-        uploadimg(user.photoURL);
+        uploadimg(user?.photoURL);
     }, [user]);
     return (
         <nav className='bg-light-cyan'>

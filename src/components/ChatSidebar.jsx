@@ -1,18 +1,18 @@
-import { doc, where } from "firebase/firestore";
+import { where } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
-import { useEffect, useState } from "react";
-import { useQuery, useFilter } from "react-query";
+import { useState } from "react";
+import { useQuery } from "react-query";
+
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useAuth } from "@/components/context/AuthContext";
-import { collection, getDocs, query } from "firebase/firestore";
-import getDocument from "@/firebase/getData";
+
+import { db } from "@/firebase/config";
+import { getFullName } from "@/utils/getFullName";
+import { getPeerData } from "@/utils/getPeer";
 
 import ChatItem from "./ChatItem";
-import { getPeerData } from "@/utils/getPeer";
-import { getFullName } from "@/utils/getFullName";
-import { db } from "@/firebase/config";
-import { getMyPeer } from "./../utils/getPeer";
 const ChatSidebar = (props) => {
     const { chatRef, t } = props;
     const { user } = useAuth();

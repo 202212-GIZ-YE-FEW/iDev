@@ -116,7 +116,7 @@ const Chatroom = ({ chat, id, t }) => {
                     label = "";
                 }
             }
-            const sender = msg.sender === user.uid;
+            const sender = msg?.sender === user?.uid;
             if (sender) {
                 return (
                     <Fragment key={index}>
