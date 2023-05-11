@@ -142,7 +142,6 @@ export function AuthContextProvider({ children }) {
         try {
             await signInWithPopup(auth, googleProvider);
             setAuthenticated(true);
-            window.alert("welcome " + auth.currentUser.email); //show wich email did singIn
             Router.push("/"); // Navigate to homepage.
 
             localStorage.setItem("image", auth.currentUser.photoURL);
