@@ -4,6 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import "react-multi-carousel/lib/styles.css";
 
+import AddBlog from "@/components/AddBlog";
 import BlogCard from "@/components/BlogCard";
 
 import getDocument from "@/firebase/getData";
@@ -38,6 +39,7 @@ const Blogs = ({ blogs }) => {
                     ))}
                 </div>
             </div>
+            <AddBlog />
         </>
     );
 };

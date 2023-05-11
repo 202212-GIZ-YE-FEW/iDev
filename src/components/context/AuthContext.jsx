@@ -1,3 +1,4 @@
+import { serverTimestamp } from "@firebase/firestore";
 import {
     createUserWithEmailAndPassword,
     EmailAuthProvider,
@@ -10,7 +11,7 @@ import {
     updatePassword,
     updateProfile,
 } from "firebase/auth";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { doc, getFirestore, setDoc, updateDoc } from "firebase/firestore";
 import Image from "next/image";
 import Router from "next/router";
 import image from "public/profile-icon.svg";
@@ -97,6 +98,12 @@ export function AuthContextProvider({ children }) {
         return signInWithEmailAndPassword(auth, email, password).then(() => {
             const user = auth.currentUser;
             if (user && user.emailVerified) {
+                const docRef = doc(db, `users`, user.uid);
+                updateDoc(docRef, {
+                    active: true,
+                    last_seen: serverTimestamp(),
+                    photoURL: user.photoURL,
+                });
                 setAuthenticated(true);
             } else {
                 // If the user's email is not verified, log them out and show an error message
@@ -142,7 +149,6 @@ export function AuthContextProvider({ children }) {
         try {
             await signInWithPopup(auth, googleProvider);
             setAuthenticated(true);
-            window.alert("welcome " + auth.currentUser.email); //show wich email did singIn
             Router.push("/"); // Navigate to homepage.
 
             localStorage.setItem("image", auth.currentUser.photoURL);
@@ -171,6 +177,12 @@ export function AuthContextProvider({ children }) {
     };
     const Logout = async () => {
         try {
+            // to update the status of user (active & last seen)
+            const docRef = doc(db, `users`, user.uid);
+            updateDoc(docRef, {
+                active: false,
+                last_seen: serverTimestamp(),
+            });
             setUser({ email: null, uid: null });
             setAuthenticated(false);
             await auth.signOut(); // Sign-out successful
