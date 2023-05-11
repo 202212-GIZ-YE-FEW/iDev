@@ -5,12 +5,16 @@ exports[`renders correctly 1`] = `
   className="bg-light-white  flex flex-col items-center justify-center text-center py-16 rounded-3xl space-y-6 drop-shadow-lg"
   data-aos="flip-down"
 >
-  <span
-    className="uppercase text-4xl"
+  <div
+    className="flex items-center justify-center space-x-2"
   >
-     
-    ticket
-  </span>
+    <span
+      className="uppercase text-4xl"
+    >
+       
+      ticket
+    </span>
+  </div>
   <span
     className="text-base rtl:text-3xl text-black/50"
   >

@@ -3,12 +3,12 @@ import PageIntro from "@/components/PageIntro";
 import { withTranslation } from "next-i18next";
 import { useAuth } from "@/components/context/AuthContext";
 
-const CreateVacancy = ({ t }) => {
+const AddBlog = ({ t }) => {
     const { authenticated } = useAuth();
     const handleClick = () => {
         const router = require("next/router").default;
         router.push({
-            pathname: "/careers/create",
+            pathname: "/blogs/create",
         });
     };
 
@@ -16,14 +16,13 @@ const CreateVacancy = ({ t }) => {
         <>
             {authenticated ? (
                 <>
-                    (
-                    <div className='container pb-8'>
+                    <div className='  pt-8 pb-6'>
                         <PageIntro
-                            title={t("doYouHavevacancy")}
-                            subtitle={t("doYouHavevacancyDescrption")}
+                            title={t("shareYourBlogPost")}
+                            subtitle={t("submitYourBlog")}
                         />
                         <Button
-                            content={t("addToCareersList")}
+                            content={t("addYourBlog")}
                             textTransform='uppercase'
                             filled='true'
                             size='large'
@@ -39,4 +38,4 @@ const CreateVacancy = ({ t }) => {
         </>
     );
 };
-export default withTranslation("career")(CreateVacancy);
+export default withTranslation("blog")(AddBlog);

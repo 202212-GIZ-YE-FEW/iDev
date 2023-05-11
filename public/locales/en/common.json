@@ -2,7 +2,7 @@
     "about": "About",
     "backToHome": "back to home",
     "blogs": "Blogs",
-    "careers": "careers",
+    "careers": "Careers",
     "chatbox": "Chatbox",
     "contactUs": "Contact Us",
     "deletedSuccessfully": "Deleted Successfully",
@@ -29,5 +29,6 @@
     "test": "Hello",
     "thankYou": "Thank you!",
     "therapists": "Therapists",
-    "yes": "Yes"
+    "yes": "Yes",
+    "purchaseSubmitted": "Your purchase has been submitted, you should receive an email with the receipt soon."
 }

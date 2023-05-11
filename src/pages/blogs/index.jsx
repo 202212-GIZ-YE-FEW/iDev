@@ -1,6 +1,7 @@
 import "react-multi-carousel/lib/styles.css";
 import getDocument from "@/firebase/getData";
 import BlogCard from "@/components/BlogCard";
+import AddBlog from "@/components/AddBlog";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Blogs = ({ blogs }) => {
@@ -27,6 +28,7 @@ const Blogs = ({ blogs }) => {
                     </div>
                 ))}
             </div>
+            <AddBlog />
         </div>
     );
 };
@@ -44,8 +46,6 @@ export async function getStaticProps({ locale }) {
         props: {
             ...(await serverSideTranslations(locale, "common")),
             blogs,
-
-            // Will be passed to the page component as props
         },
     };
 }

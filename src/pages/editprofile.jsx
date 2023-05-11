@@ -1,36 +1,43 @@
+import { collection, doc, getDocs, getFirestore } from "firebase/firestore";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import toastr from "toastr";
+import "firebase/firestore";
+
+import { useAuth } from "@/components/context/AuthContext";
+import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import PreviewProfile from "@/components/ui/PreviewProfile";
-import { useAuth } from "@/components/context/AuthContext";
-import schema from "@/utils/validationSchemaProfile";
-import { doc, collection, getFirestore, getDocs } from "firebase/firestore";
-import "firebase/firestore";
-import updateDocument from "@/firebase/updateSubCollection";
-import PageIntro from "@/components/PageIntro";
-import uploadImage from "@/firebase/addImage";
 import Select from "@/components/ui/Select";
-import toastr from "toastr";
+
+import uploadImage from "@/firebase/addImage";
 import deleteDocument from "@/firebase/deleteData";
+import getDocument from "@/firebase/getData";
+import getDocById from "@/firebase/getDocById";
+import updateDocument from "@/firebase/updateSubCollection";
+import schema from "@/utils/validationSchemaProfile";
 
 function EditProfile({ t }) {
     const { user, changePassword, deleteuser } = useAuth();
     const [imgfile, uploadimg] = useState("");
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({});
+    const collectionPath = `users/${user.uid}/Personal_data`;
     const data = {
-        Fullname: formData.Fullname,
+        Fullname: formData?.Fullname,
         deleted: false,
-        hobbies: formData.hobbies,
-        familySize: formData.familySize,
-        educationLevel: formData.educationLevel,
-        phoneNumber: formData.phoneNumber,
-        gender: formData.gender,
+        hobbies: formData?.hobbies,
+        familySize: formData?.familySize,
+        educationLevel: formData?.educationLevel,
+        phoneNumber: formData?.phoneNumber,
+        gender: formData?.gender,
     };
     const userData = {
-        dateOfBirth: formData.dateOfBirth,
+        dateOfBirth: formData?.dateOfBirth,
     };
 
     const db = getFirestore();
@@ -55,10 +62,27 @@ function EditProfile({ t }) {
         fetchData();
     }, []);
 
+    const cardsQuery = useQuery({
+        queryKey: "paymentMethods",
+        queryFn: async () => {
+            const data = await getDocument(
+                `${collectionPath}/payment_methods/data`
+            );
+            return data;
+        },
+    });
+
+    const numOfTickets = useQuery({
+        queryKey: "numOfTickets",
+        queryFn: async () => {
+            const ticket = await getDocById("users_tickets", user.uid);
+            return ticket;
+        },
+    });
+
     const handleChange = async (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         const file = e.target.files && e.target.files[0];
-
         if (file) {
             const userId = user.uid;
             const imageName = `${userId}`;
@@ -201,7 +225,6 @@ function EditProfile({ t }) {
                                     t={t}
                                     field={t("familySize")}
                                 />
-
                                 <div className='ms-10 flex-[0_1_0%]'>
                                     {t("member(s)")}
                                 </div>
@@ -224,7 +247,7 @@ function EditProfile({ t }) {
                                         },
                                         { value: "male", label: t("male") },
                                     ]}
-                                    value={formData.gender}
+                                    value={formData?.gender}
                                     onChange={(e) =>
                                         setFormData({
                                             ...formData,
@@ -404,30 +427,42 @@ function EditProfile({ t }) {
                             />
                         </div>
                     </form>
-
                     <PageIntro title={t("paymentMethods&Tickets")} />
                     <div className='flex gap-10'>
                         <div className='flex flex-col gap-5'>
-                            <p>{t("cardsAdded", { count: 3 })}</p>
-                            <Button
-                                content={t("showCards")}
-                                filled='true'
-                                size='medium'
-                                radius='md'
-                                textTransform='uppercase'
-                                shadow='shadow-lg'
-                            />
+                            <p>
+                                {t("cardsAdded", {
+                                    count: cardsQuery?.data?.length || 0,
+                                })}
+                            </p>
+                            <Link href='/payment-methods'>
+                                <Button
+                                    content={t("showCards")}
+                                    filled='true'
+                                    size='medium'
+                                    radius='md'
+                                    textTransform='uppercase'
+                                    shadow='shadow-lg'
+                                />
+                            </Link>
                         </div>
                         <div className='flex flex-col gap-5'>
-                            <p>{t("ticketsRemaining", { count: 10 })}</p>
-                            <Button
-                                content={t("buyTickets")}
-                                filled='true'
-                                size='medium'
-                                radius='md'
-                                textTransform='uppercase'
-                                shadow='shadow-lg'
-                            />
+                            <p>
+                                {t("ticketsRemaining", {
+                                    count:
+                                        numOfTickets?.data?.num_of_tickets || 0,
+                                })}
+                            </p>
+                            <Link href='/home'>
+                                <Button
+                                    content={t("buyTickets")}
+                                    filled='true'
+                                    size='medium'
+                                    radius='md'
+                                    textTransform='uppercase'
+                                    shadow='shadow-lg'
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>
