@@ -453,7 +453,7 @@ function EditProfile({ t }) {
                                         numOfTickets?.data?.num_of_tickets || 0,
                                 })}
                             </p>
-                            <Link href='/home'>
+                            <Link href='/'>
                                 <Button
                                     content={t("buyTickets")}
                                     filled='true'
