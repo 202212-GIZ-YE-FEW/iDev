@@ -16,11 +16,13 @@ function MyApp({ Component, pageProps }) {
     if (Component.getLayout) {
         // customized layout
         return (
-            <QueryClientProvider client={queryClient}>
-                <Component.getLayout>
-                    <Component {...pageProps} />
-                </Component.getLayout>
-            </QueryClientProvider>
+            <AuthContextProvider>
+                <QueryClientProvider client={queryClient}>
+                    <Component.getLayout>
+                        <Component {...pageProps} />
+                    </Component.getLayout>
+                </QueryClientProvider>
+            </AuthContextProvider>
         );
     } else {
         // default layout

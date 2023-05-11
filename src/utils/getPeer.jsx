@@ -1,5 +1,6 @@
-import getDocById from "@/firebase/getDocById";
 import { getFirestore } from "firebase/firestore";
+
+import getDocById from "@/firebase/getDocById";
 
 import firebase_app from "../firebase/config";
 

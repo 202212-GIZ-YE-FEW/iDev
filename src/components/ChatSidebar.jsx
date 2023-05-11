@@ -1,5 +1,4 @@
-import { where } from "firebase/firestore";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import Link from "next/link";
 import { withTranslation } from "next-i18next";
 import { useState } from "react";

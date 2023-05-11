@@ -1,7 +1,8 @@
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import LogoSVG from "public/logo.svg";
-import { useTranslation } from "next-i18next";
+
 import ChatSidebar from "@/components/ChatSidebar";
 
 import LayoutChat from "@/layout/LayoutChat";
@@ -16,7 +17,7 @@ const Chat = () => {
                 <ChatSidebar />
                 <div className='hidden w-5/6 bg-background h-full lg:flex flex-col justify-center items-center border-r-2 border-l-2 border-gray/10 lg:rounded-r-md xl:rounded-none'>
                     <div className='flex items-center justify-center space-s-4'>
-                        <Image src={LogoSVG} />
+                        <Image src={LogoSVG} alt='intro chat' />
                         <span className='font-semibold flex items-center text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase'>
                             Healing
                         </span>

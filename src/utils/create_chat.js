@@ -20,7 +20,7 @@ export default async function create_chat(participants) {
         if (!isExist) {
             // No chat found for these two users, create a new chat
             chatRef = await addDoc(collection(db, "chats"), {
-                users: [therapist, user],
+                users: [user, therapist],
                 lastMsg: null,
             });
         }

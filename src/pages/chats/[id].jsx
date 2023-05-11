@@ -11,7 +11,6 @@ import {
     updateDoc,
 } from "firebase/firestore";
 import moment from "moment/moment";
-import image from "public/profile-icon.svg";
 import Image from "next/image";
 import EmojiSVG from "public/images/emoji.svg";
 import EmptyChatGIF from "public/images/empty-chat.gif";
@@ -19,6 +18,7 @@ import EmptyChatGIF from "public/images/empty-chat.gif";
 import OnlineSVG from "public/images/green-circle.svg";
 import PinSVG from "public/images/pin.svg";
 import VoiceSVG from "public/images/voice.svg";
+import image from "public/profile-icon.svg";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { useEffect, useRef } from "react";
@@ -82,6 +82,7 @@ const Chatroom = ({ chat, id, t }) => {
             const docRef = doc(db, `chats`, id);
             await updateDoc(docRef, {
                 lastMsg: lastMsgRef.id,
+                timestamp: serverTimestamp(),
             });
         } catch (error) {
             // console.error("Error updating document:", error);
