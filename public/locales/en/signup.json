@@ -21,6 +21,7 @@
     "selectGender": "Select Gender",
     "male": "Male",
     "female": "Female",
+    "Subscription": "Subscription done successfully!",
     "forgotPassword": " Forgot Password ",
     "passwordResetEmail": "Password reset email sent!."
 }
