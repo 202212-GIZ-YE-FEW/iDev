@@ -23,6 +23,7 @@
         "build-storybook": "build-storybook"
     },
     "dependencies": {
+        "@emailjs/browser": "^3.11.0",
         "@emoji-mart/data": "^1.1.2",
         "@emoji-mart/react": "^1.1.1",
         "@firebase/firestore": "^3.10.0",
