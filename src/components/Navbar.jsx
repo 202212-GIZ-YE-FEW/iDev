@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { withTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
+import { MdLanguage } from "react-icons/md";
 
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/ui/Button";
@@ -100,13 +101,7 @@ function MobileNav(prop) {
                         setActiveDropdown={setActiveDropdown}
                         icon={
                             <button className='p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3'>
-                                <Image
-                                    priority
-                                    src='/lang.svg'
-                                    width={23}
-                                    height={23}
-                                    alt=''
-                                />
+                                <MdLanguage className='text-2xl' />
                             </button>
                         }
                     />
@@ -220,13 +215,7 @@ function Navbar({ t, i18n }) {
                             setActiveDropdown={setActiveDropdown}
                             icon={
                                 <button className='p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-2'>
-                                    <Image
-                                        priority
-                                        src='/lang.svg'
-                                        width={23}
-                                        height={23}
-                                        alt=''
-                                    />
+                                    <MdLanguage className='text-2xl' />
                                 </button>
                             }
                         />

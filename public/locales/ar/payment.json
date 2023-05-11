@@ -32,5 +32,6 @@
     "payWithOtherCard": "الدفع باستخدام بطاقة أخرى",
     "selectPaymentFirst": "الرجاء تحديد طريقة الدفع أولاً!",
     "ticketPurchased": "تم شراء التذكرة بنجاح.",
-    "ticketNotPurchased": "لم يتم شراء التذكرة, يرجى المحاولة مرة أخرى!"
+    "ticketNotPurchased": "لم يتم شراء التذكرة, يرجى المحاولة مرة أخرى!",
+    "payment": "دفع"
 }

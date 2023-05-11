@@ -1,12 +1,13 @@
+import AOS from "aos";
+import Head from "next/head";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React, { useEffect } from "react";
+
+import "aos/dist/aos.css";
 
 import PageIntro from "@/components/PageIntro";
-
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const About = () => {
     useEffect(() => {
@@ -20,6 +21,9 @@ const About = () => {
     return (
         <>
             {/* Page Intro  */}
+            <Head>
+                <title>{t("common:about")}</title>
+            </Head>
             <div className='container mt-8'>
                 <div className='text-center nowrap md:text-start justify-center items-center'>
                     <PageIntro
@@ -27,12 +31,10 @@ const About = () => {
                         subtitle={t("bringingHopeThroughTherapy")}
                     />
                 </div>
-
                 <div className='text-start  sm:w-full text-gray text-xl my-12 md:mb-[120px]'>
                     <p>{t("introAboutPage")}</p>
                 </div>
             </div>
-
             <div className='bg-light-cyan py-8'>
                 <div className='container flex flex-col md:flex-row md:space-s-9'>
                     <div className='hidden md:block md:w-1/3'>
@@ -61,7 +63,6 @@ export async function getStaticProps({ locale }) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ["about", "common"])),
-            // Will be passed to the page component as props
         },
     };
 }

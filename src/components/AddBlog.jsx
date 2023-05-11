@@ -1,7 +1,8 @@
-import Button from "@/components/ui/Button";
-import PageIntro from "@/components/PageIntro";
 import { withTranslation } from "next-i18next";
+
 import { useAuth } from "@/components/context/AuthContext";
+import PageIntro from "@/components/PageIntro";
+import Button from "@/components/ui/Button";
 
 const AddBlog = ({ t }) => {
     const { authenticated } = useAuth();
@@ -16,7 +17,7 @@ const AddBlog = ({ t }) => {
         <>
             {authenticated ? (
                 <>
-                    <div className='  pt-8 pb-6'>
+                    <div className='container py-20'>
                         <PageIntro
                             title={t("shareYourBlogPost")}
                             subtitle={t("submitYourBlog")}
