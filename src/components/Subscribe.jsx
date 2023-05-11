@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import addDocument from "@/firebase/addData";
 import getDocument from "@/firebase/getData";
+import { toast } from "react-toastify";
 
 function Subscribe({
     t,
@@ -35,15 +36,36 @@ function Subscribe({
             console.log(arr);
             const result = arr.includes(formData.user_email);
             if (!formData.user_email) {
-                alert("! Please enter an email ! الرجاء ادخال ايميل ");
+                toast("! Please enter an email ! الرجاء ادخال ايميل ", {
+                    hideProgressBar: true,
+                    position: "bottom-left",
+                    autoClose: 2000,
+                    type: "error",
+                });
             } else if (
                 !formData.user_email
                     .trim()
                     .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i)
             ) {
-                alert("! Please enter a valid email ! الرجاء ادخال ايميل صحيح");
+                toast(
+                    "! Please enter a valid email ! الرجاء ادخال ايميل صحيح",
+                    {
+                        hideProgressBar: true,
+                        position: "bottom-left",
+                        autoClose: 2000,
+                        type: "error",
+                    }
+                );
             } else if (result === true) {
-                alert("! This email already exist ! هذا الايميل موجود بالفعل ");
+                toast(
+                    "! This email already exist ! هذا الايميل موجود بالفعل ",
+                    {
+                        hideProgressBar: true,
+                        position: "bottom-left",
+                        autoClose: 2000,
+                        type: "error",
+                    }
+                );
             } else {
                 emailjs
                     .sendForm(
@@ -55,8 +77,14 @@ function Subscribe({
                     .then(
                         (result) => {
                             console.log(result.text);
-                            alert(
-                                "Subscription done! تمت عملية الاشتراك بنجاح!"
+                            toast(
+                                "Subscription done! تمت عملية الاشتراك بنجاح!",
+                                {
+                                    hideProgressBar: true,
+                                    position: "bottom-left",
+                                    autoClose: 2000,
+                                    type: "success",
+                                }
                             );
                         },
                         (error) => {
