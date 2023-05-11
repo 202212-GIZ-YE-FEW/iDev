@@ -1,8 +1,9 @@
-import Button from "@/components/ui/Button";
-import Router from "next/router";
-import PageIntro from "@/components/PageIntro";
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
+
 import { useAuth } from "@/components/context/AuthContext";
+import PageIntro from "@/components/PageIntro";
+import Button from "@/components/ui/Button";
 
 const CreateVacancy = ({ t }) => {
     const { authenticated } = useAuth();
@@ -23,15 +24,17 @@ const CreateVacancy = ({ t }) => {
                             title={t("doYouHavevacancy")}
                             subtitle={t("doYouHavevacancyDescrption")}
                         />
-                        <Button
-                            content={t("addToCareersList")}
-                            textTransform='uppercase'
-                            filled='true'
-                            size='large'
-                            fontSize='text-lg md:text-xl lg:text-2xl'
-                            radius='md'
-                            onClick={handleClick}
-                        />
+                        <Link href='/careers/create'>
+                            <Button
+                                content={t("addToCareersList")}
+                                textTransform='uppercase'
+                                filled='true'
+                                size='large'
+                                fontSize='text-lg md:text-xl lg:text-2xl'
+                                radius='md'
+                                onClick={handleClick}
+                            />
+                        </Link>
                     </div>
                 </>
             ) : (

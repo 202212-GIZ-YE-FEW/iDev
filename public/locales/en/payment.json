@@ -32,5 +32,6 @@
     "payWithOtherCard": "Pay with other card",
     "selectPaymentFirst": "Please select a payment method first!",
     "ticketPurchased": "Ticket purchased successfully",
-    "ticketNotPurchased": "Ticket not purchased, please try again!"
+    "ticketNotPurchased": "Ticket not purchased, please try again!",
+    "payment": "Payment"
 }

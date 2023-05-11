@@ -1,4 +1,5 @@
 import AOS from "aos";
+import Head from "next/head";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Abdulmajeed from "public/team/AbdulmajeedJaafer.png";
@@ -73,6 +74,9 @@ function Team({ t }) {
     ];
     return (
         <>
+            <Head>
+                <title>{t("common:team")}</title>
+            </Head>
             <div className='container py-20'>
                 <PageIntro title={t("teamPageTitle")} />
                 <div className='team-members mt-32'>

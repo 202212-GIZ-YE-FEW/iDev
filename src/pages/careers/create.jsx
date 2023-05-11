@@ -1,11 +1,14 @@
-import { useState } from "react";
-import Button from "@/components/ui/Button";
-import PageIntro from "@/components/PageIntro";
+import Head from "next/head";
+import { useRouter } from "next/navigation";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useRouter } from "next/navigation";
-import addDocument from "@/firebase/addData";
+import { useState } from "react";
+
+import PageIntro from "@/components/PageIntro";
+import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+
+import addDocument from "@/firebase/addData";
 
 const Add_Career = ({ t }) => {
     const [formData, setFormData] = useState({
@@ -42,6 +45,9 @@ const Add_Career = ({ t }) => {
 
     return (
         <>
+            <Head>
+                <title>{t("common:createCareer")}</title>
+            </Head>
             <div className='container'>
                 <PageIntro
                     title={t("AddYourJob")}
@@ -127,12 +133,12 @@ const Add_Career = ({ t }) => {
             <div className='w-full p-4 flex items-center justify-center'>
                 <Button
                     content={t("addNewJob")}
-                    size={"large"}
-                    filled={"true"}
-                    textTransform={"capitalize"}
-                    fontSize={"2xl"}
-                    radius={"6px"}
-                    shadow={"4px"}
+                    size='large'
+                    filled='true'
+                    textTransform='capitalize'
+                    fontSize='2xl'
+                    radius='6px'
+                    shadow='4px'
                     onClick={setData}
                 />
             </div>

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import _404SVG from "public/images/404.svg";
@@ -10,6 +11,9 @@ export default function NotFoundPage() {
     const { t } = useTranslation("404");
     return (
         <>
+            <Head>
+                <title>404</title>
+            </Head>
             <div className='bg-light-cyan min-w-screen min-h-screen p-5 md:p-10 lg:p-20'>
                 <div className='container min-h-full min-w-full rounded-3xl bg-light-white shadow-xl p-10 md:p-15 lg:p-20 md:flex items-center text-center md:text-left'>
                     <NoContent
