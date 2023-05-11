@@ -4,7 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Abdulmajeed from "public/team/AbdulmajeedJaafer.png";
 import DhiaShalabi from "public/team/dhiashalabi.png";
 import HaneenAbdulglil from "public/team/haneenabdulglil.jpg";
-import MohammedAljaberi from "public/team/mohammedaljaberi.webp";
+import MohammedAljaberi from "public/team/mohammedaljaberi.jpg";
 import MohBassura from "public/team/mohbassura.jpg";
 import PayamAbubakr from "public/team/PayamAbubakr.png";
 import React, { useEffect } from "react";
