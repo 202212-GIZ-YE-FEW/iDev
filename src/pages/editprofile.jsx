@@ -22,7 +22,7 @@ import updateDocument from "@/firebase/updateSubCollection";
 import schema from "@/utils/validationSchemaProfile";
 
 function EditProfile({ t }) {
-    const { user, changePassword, authenticated, deleteuser } = useAuth();
+    const { user, changePassword, deleteuser } = useAuth();
     const [imgfile, uploadimg] = useState("");
     const [formErrors, setFormErrors] = useState({});
     const [formData, setFormData] = useState({});
@@ -106,10 +106,7 @@ function EditProfile({ t }) {
             await schema.validate(formData, { abortEarly: false });
             await updateDocument(childCollectionRef.path, profile, data);
             await updateDocument("users", userId, userData);
-            await changePassword(
-                formData.currentPassword,
-                formData.newPassword
-            );
+
             setFormErrors({});
         } catch (error) {
             if (error.inner) {
@@ -130,6 +127,12 @@ function EditProfile({ t }) {
         e.preventDefault();
         await deleteuser(formData.password);
         await deleteDocument("users", user.uid);
+    };
+
+    const handelUpdatePassword = async (e) => {
+        e.preventDefault();
+        await changePassword(formData.currentPassword, formData.newPassword);
+        setFormErrors({});
     };
     return (
         <div className='container '>
@@ -310,6 +313,26 @@ function EditProfile({ t }) {
                                 />
                             </div>
                         </fieldset>
+                        <div className='flex flex-col sm:flex-row gap-2 my-8'>
+                            <Button
+                                content={t("saveChanges")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                                onClick={handleSubmit}
+                            />
+                            <Button
+                                content={t("cancel")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                                onClick={handelCancel}
+                            />
+                        </div>
                         <fieldset className='mt-8'>
                             <legend class='text-3xl font-semibold'>
                                 {t("security")}
@@ -344,6 +367,26 @@ function EditProfile({ t }) {
                                 />
                             </div>
                         </fieldset>
+                        <div className='flex flex-col sm:flex-row gap-2 my-8'>
+                            <Button
+                                content={t("UpdatePassword")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                                onClick={handelUpdatePassword}
+                            />
+                            <Button
+                                content={t("cancel")}
+                                filled='true'
+                                size='medium'
+                                radius='md'
+                                textTransform='uppercase'
+                                shadow='shadow-lg'
+                                onClick={handelCancel}
+                            />
+                        </div>
                         <fieldset className='mt-8'>
                             <legend class='text-3xl font-semibold'>
                                 {t("ConfirmDelete")}
@@ -364,15 +407,6 @@ function EditProfile({ t }) {
                             </div>
                         </fieldset>
                         <div className='flex flex-col sm:flex-row gap-2 my-8'>
-                            <Button
-                                content={t("saveChanges")}
-                                filled='true'
-                                size='medium'
-                                radius='md'
-                                textTransform='uppercase'
-                                shadow='shadow-lg'
-                                onClick={handleSubmit}
-                            />
                             <Button
                                 content={t("deleteAccount")}
                                 filled='true'
