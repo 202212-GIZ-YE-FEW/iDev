@@ -16,4 +16,36 @@
     body {
         @apply h-full;
     }
+    /* section#root {
+        width: 100vw !important;
+        background-color: red;
+    }
+    .scroll.flex-grow.padding-lr > div {
+        width: 100%;
+    } */
+
+    .left-top:after {
+        content: " ";
+        position: absolute;
+        width: 0;
+        height: 0;
+        inset-inline-start: -20px;
+        inset-inline-end: auto;
+        top: 0px;
+        bottom: auto;
+        border: 22px solid;
+        border-color: white transparent transparent transparent;
+    }
+    .right-bottom:after {
+        content: " ";
+        position: absolute;
+        width: 0;
+        height: 0;
+        inset-inline-start: auto;
+        inset-inline-end: -16px;
+        bottom: -18px;
+        top: auto;
+        border: 20px solid;
+        border-color: #eaf8f9 transparent transparent transparent;
+    }
 }

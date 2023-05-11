@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { withTranslation } from "next-i18next";
 
 import Button from "./ui/Button";
-import Link from "next/link";
 function RequirementsSection({ t, requirements }) {
     return (
         <div className='py-8'>

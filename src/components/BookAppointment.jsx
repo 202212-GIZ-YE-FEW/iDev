@@ -1,6 +1,10 @@
 import { withTranslation } from "next-i18next";
 import { useState } from "react";
+import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 
+import getDocById from "@/firebase/getDocById";
+import setDocument from "@/firebase/setData";
 import { postHandler } from "@/utils/api";
 
 import BringsHere from "./BookAppointment/BringsHere";
@@ -9,6 +13,8 @@ import Issues from "./BookAppointment/Issues";
 import RelationshipStatus from "./BookAppointment/RelationshipStatus";
 import SpecificQualities from "./BookAppointment/SpecificQualities";
 import TherapyBefore from "./BookAppointment/TherapyBefore";
+import { useAuth } from "./context/AuthContext";
+import { useTherapist } from "./context/TherapistContext";
 import Stepper from "./Stepper";
 
 const TwoLastSteps = (props) => {
@@ -28,6 +34,9 @@ const TwoLastSteps = (props) => {
 };
 
 function BookAppointment({ t }) {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { user } = useAuth();
+    const { therapistIDs } = useTherapist();
     const [currentStep, setCurrentStep] = useState(0);
 
     const initialValues = {
@@ -42,14 +51,64 @@ function BookAppointment({ t }) {
 
     const [values, setValues] = useState(initialValues);
 
+    const numOfTickets = useQuery({
+        queryKey: "numOfTickets",
+        queryFn: async () => {
+            const ticket = await getDocById("users_tickets", user.uid);
+            return ticket;
+        },
+    });
+
+    // Arbitrary assign therapist to user
+    const assignTherapistToBooker = () => {
+        if (therapistIDs?.length > 0) {
+            return therapistIDs[
+                Math.floor(Math.random() * therapistIDs?.length)
+            ].id;
+        }
+    };
+
     const handelChange = ({ target }) => {
         setValues({ ...values, [target.name]: target.value });
     };
 
     const onSubmit = async () => {
-        const res = await postHandler("/api/appointments", values);
-        if (res.data.success === 0) {
-            setCurrentStep(currentStep + 1);
+        setIsSubmitting(true);
+        const userTickets = numOfTickets?.data?.num_of_tickets || 0;
+        if (userTickets <= 0) {
+            toast(t("noTickets"), {
+                hideProgressBar: true,
+                position: "bottom-left",
+                autoClose: 2000,
+                type: "error",
+            });
+            setIsSubmitting(false);
+            return;
+        } else if (userTickets > 0) {
+            values.participants = {
+                user: user.uid,
+                therapist: assignTherapistToBooker(),
+            };
+            const data = {
+                values: values,
+                user_email: user.email,
+            };
+            const res = await postHandler("/api/appointments", data);
+            if (res.data.success === 0) {
+                const result = await setDocument(`users_tickets/${user.uid}/`, {
+                    num_of_tickets:
+                        parseInt(numOfTickets.data.num_of_tickets) - 1,
+                });
+                if (result.result) {
+                    setCurrentStep(currentStep + 1);
+                }
+            }
+            toast(t(`${res.data.message}`), {
+                hideProgressBar: true,
+                position: "bottom-left",
+                autoClose: 2000,
+                type: res.data.success === 1 ? "error" : "success",
+            });
         }
     };
 
@@ -158,6 +217,7 @@ function BookAppointment({ t }) {
                         },
                     ]}
                     onSubmit={onSubmit}
+                    isSubmitting={isSubmitting}
                 />
             </div>
         </>

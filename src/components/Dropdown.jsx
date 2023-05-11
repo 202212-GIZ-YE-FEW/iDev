@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
+
 import { useAuth } from "./context/AuthContext";
 
 function Dropdown(prop) {
@@ -29,7 +30,7 @@ function Dropdown(prop) {
             {activeDropdown === item ? (
                 <div
                     className={clsx(
-                        "w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl",
+                        "w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl absolute",
                         {
                             "absolute end-0 z-20": mobile === false,
                         }
@@ -40,7 +41,7 @@ function Dropdown(prop) {
                               <Link
                                   key={link.name}
                                   href={to}
-                                  className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
+                                  className='block px-4 py-3 mx-2 rounded-md text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                                   locale={link.locale}
                                   onClick={() => {
                                       document.dir = link.dir;
@@ -56,7 +57,7 @@ function Dropdown(prop) {
                                       key={link.name}
                                       href=''
                                       onClick={Logout}
-                                      className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
+                                      className='block px-4 py-3 mx-2 rounded-md text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                                   >
                                       {t(`${link.name}`)}
                                   </Link>
@@ -64,7 +65,7 @@ function Dropdown(prop) {
                                   <Link
                                       key={link.name}
                                       href={link.href}
-                                      className='block px-4 py-3 text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
+                                      className='block px-4 py-3 mx-2 rounded-md text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                                   >
                                       {t(`${link.name}`)}
                                   </Link>

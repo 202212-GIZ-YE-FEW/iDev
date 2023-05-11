@@ -1,10 +1,14 @@
+import AOS from "aos";
 import { useFormik } from "formik";
 import Head from "next/head";
 import Image from "next/image";
 import { withTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import ContactSVG from "public/contactus.svg";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
+
+import "aos/dist/aos.css";
 
 import PageIntro from "@/components/PageIntro";
 import Button from "@/components/ui/Button";
@@ -16,10 +20,6 @@ import Textarea from "@/components/ui/textarea/Textarea";
 import getDocument from "@/firebase/getData";
 import { postHandler } from "@/utils/api";
 import schema from "@/utils/validationSchema";
-
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function ContactUs({ t, reasons, address }) {
     useEffect(() => {
@@ -65,6 +65,7 @@ function ContactUs({ t, reasons, address }) {
         validationSchema: schema,
         onSubmit,
     });
+
     return (
         <>
             <Head>
@@ -106,6 +107,7 @@ function ContactUs({ t, reasons, address }) {
                         <div className='min-w-fit md:min-w-[25rem] lg:min-w-[30rem]'>
                             <div className='mb-[1.2rem]'>
                                 <Input
+                                    field={t("fullName")}
                                     value={values.fullName}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -123,14 +125,15 @@ function ContactUs({ t, reasons, address }) {
                             </div>
                             <div className='mb-[1.2rem]'>
                                 <Input
+                                    field={t("email")}
                                     value={values.email}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    touched={touched.email}
                                     error={errors.email}
+                                    touched={touched.email}
                                     label={t("email")}
-                                    type='text'
                                     name='email'
+                                    type='text'
                                     labelColor='text-black'
                                     placeholder={t("enterEmail")}
                                     shadow='md'

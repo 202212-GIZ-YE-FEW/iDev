@@ -1,30 +1,26 @@
+import { serverTimestamp } from "@firebase/firestore";
 import {
     createUserWithEmailAndPassword,
-    onAuthStateChanged,
-    sendEmailVerification,
-    signInWithPopup,
-    signInWithEmailAndPassword,
-    reauthenticateWithCredential,
     EmailAuthProvider,
-    updatePassword,
+    onAuthStateChanged,
+    reauthenticateWithCredential,
+    sendEmailVerification,
     sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    updatePassword,
     updateProfile,
 } from "firebase/auth";
+import { doc, getFirestore, setDoc, updateDoc } from "firebase/firestore";
 import Image from "next/image";
 import Router from "next/router";
+import image from "public/profile-icon.svg";
 import Spinner from "public/spinner.svg";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import {
-    auth,
-    facebookProvider,
-    googleProvider,
-    storage,
-} from "@/firebase/config";
-import image from "public/profile-icon.svg";
-import { setDoc, doc, getFirestore } from "firebase/firestore";
-import setDocument from "@/firebase/setData";
 import toastr from "toastr";
+
+import { auth, facebookProvider, googleProvider } from "@/firebase/config";
+import setDocument from "@/firebase/setData";
 
 const db = getFirestore();
 const AuthContext = createContext({});
@@ -102,6 +98,12 @@ export function AuthContextProvider({ children }) {
         return signInWithEmailAndPassword(auth, email, password).then(() => {
             const user = auth.currentUser;
             if (user && user.emailVerified) {
+                const docRef = doc(db, `users`, user.uid);
+                updateDoc(docRef, {
+                    active: true,
+                    last_seen: serverTimestamp(),
+                    photoURL: user.photoURL,
+                });
                 setAuthenticated(true);
             } else {
                 // If the user's email is not verified, log them out and show an error message
@@ -147,7 +149,6 @@ export function AuthContextProvider({ children }) {
         try {
             await signInWithPopup(auth, googleProvider);
             setAuthenticated(true);
-            window.alert("welcome " + auth.currentUser.email); //show wich email did singIn
             Router.push("/"); // Navigate to homepage.
 
             localStorage.setItem("image", auth.currentUser.photoURL);
@@ -176,6 +177,12 @@ export function AuthContextProvider({ children }) {
     };
     const Logout = async () => {
         try {
+            // to update the status of user (active & last seen)
+            const docRef = doc(db, `users`, user.uid);
+            updateDoc(docRef, {
+                active: false,
+                last_seen: serverTimestamp(),
+            });
             setUser({ email: null, uid: null });
             setAuthenticated(false);
             await auth.signOut(); // Sign-out successful
@@ -189,13 +196,11 @@ export function AuthContextProvider({ children }) {
     };
     const changePassword = (currentPassword, newPassword) => {
         const user = auth.currentUser;
-        console.log("user", user);
 
         const credential = EmailAuthProvider.credential(
             user.email,
             currentPassword
         );
-        console.log("credential", credential);
         reauthenticateWithCredential(user, credential)
             .then(() => {
                 updatePassword(user, newPassword)
@@ -235,7 +240,6 @@ export function AuthContextProvider({ children }) {
     };
     const updateProfilePhoto = async (photoURL) => {
         const user = auth.currentUser;
-        console.log(photoURL);
         updateProfile(user, { photoURL });
     };
 

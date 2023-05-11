@@ -14,6 +14,7 @@ import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 
 import schema from "@/utils/validationSchemaSignUp";
+import { serverTimestamp } from "@firebase/firestore";
 
 function SignUp({ t }) {
     useEffect(() => {
@@ -59,10 +60,11 @@ function SignUp({ t }) {
         try {
             await schema.validate(formData, { abortEarly: false });
             const userData = {
-                active: true,
+                active: false,
                 email: formData.email,
                 first_name: formData.firstName,
                 last_name: formData.lastName,
+                last_seen: serverTimestamp(),
                 dateOfBirth: formData.dateOfBirth,
                 isTherapist: false,
             };
@@ -113,7 +115,6 @@ function SignUp({ t }) {
                 </div>
                 <div className='max-w-[29rem] lg:justify-self-end'>
                     <FormTitle title={t(`${signup}`)} />
-
                     <form
                         className='shadow-lg px-7 py-11  mt-4 rounded-lg'
                         onSubmit={handleSubmit}
@@ -144,7 +145,6 @@ function SignUp({ t }) {
                                 />
                             </div>
                         </div>
-
                         <div className='mb-[0.8rem]'>
                             <Input
                                 field={t(`${email}`)}
