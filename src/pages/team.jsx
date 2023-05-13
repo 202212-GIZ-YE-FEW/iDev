@@ -42,7 +42,7 @@ function Team({ t }) {
         {
             id: 3,
             name: "Mohammed Basurra",
-            job: "Full Stack Developer",
+            job: "Computer Engineer",
             photo: MohBassura,
             github: "MohdBasurra",
             linkedin: "mohammed-basurra-695a3b275/",
@@ -66,7 +66,7 @@ function Team({ t }) {
         {
             id: 6,
             name: "Mohammed Al-jaberi",
-            job: "Full Stack Developer",
+            job: "Front-end Developer",
             photo: MohammedAljaberi,
             github: "MohammedALjaberi",
             linkedin: "mohammed-aljabri-5069b522a",

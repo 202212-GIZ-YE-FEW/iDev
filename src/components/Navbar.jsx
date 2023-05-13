@@ -14,7 +14,7 @@ import { authenticatedDropdown, langs, navigation } from "@/utils/constants";
 
 import { useAuth } from "./context/AuthContext";
 
-function NavLink({ to, children }) {
+function NavLink({ to, setOpenHamburger, children }) {
     return (
         <Link
             href={to}
@@ -24,14 +24,22 @@ function NavLink({ to, children }) {
                     "text-yellow font-semibold underline": usePathname() === to,
                 }
             )}
+            onClick={() => setOpenHamburger((prevState) => !prevState)}
         >
             {children}
         </Link>
     );
 }
 function MobileNav(prop) {
-    const { openHamburger, setActiveDropdown, activeDropdown, i18n, path, t } =
-        prop;
+    const {
+        openHamburger,
+        setOpenHamburger,
+        setActiveDropdown,
+        activeDropdown,
+        i18n,
+        path,
+        t,
+    } = prop;
     const { authenticated } = useAuth();
     return (
         <div
@@ -72,6 +80,7 @@ function MobileNav(prop) {
                             links={nav.links}
                             item='about'
                             mobile={true}
+                            setOpenHamburger={setOpenHamburger}
                             setActiveDropdown={setActiveDropdown}
                             icon={
                                 <button className='flex items-center'>
@@ -84,7 +93,11 @@ function MobileNav(prop) {
                             t={t}
                         />
                     ) : (
-                        <NavLink key={nav.name} to={nav.href}>
+                        <NavLink
+                            key={nav.name}
+                            to={nav.href}
+                            setOpenHamburger={setOpenHamburger}
+                        >
                             {t(`${nav.name}`)}
                         </NavLink>
                     );
@@ -99,6 +112,7 @@ function MobileNav(prop) {
                         to={path}
                         i18n={i18n}
                         setActiveDropdown={setActiveDropdown}
+                        setOpenHamburger={setOpenHamburger}
                         icon={
                             <button className='p-2 text-black bg-yellow rounded-md focus:outline-none lg:mx-3'>
                                 <MdLanguage className='text-2xl' />
@@ -158,7 +172,7 @@ function Navbar({ t, i18n }) {
                 <div className='w-8/12 justify-end flex items-center'>
                     {/* Hamburger button */}
                     <div
-                        className='flex relative z-20 order-last w-8 h-5 flex-col justify-between items-center lg:hidden'
+                        className='flex relative z-20 cursor-pointer order-last w-8 h-5 flex-col justify-between items-center lg:hidden'
                         onClick={() => setOpenHamburger(!openHamburger)}
                     >
                         <span
@@ -200,7 +214,11 @@ function Navbar({ t, i18n }) {
                                     t={t}
                                 />
                             ) : (
-                                <NavLink key={nav.name} to={nav.href}>
+                                <NavLink
+                                    key={nav.name}
+                                    to={nav.href}
+                                    setOpenHamburger={setOpenHamburger}
+                                >
                                     {t(`${nav.name}`)}
                                 </NavLink>
                             );
@@ -260,6 +278,7 @@ function Navbar({ t, i18n }) {
             </div>
             <MobileNav
                 openHamburger={openHamburger}
+                setOpenHamburger={setOpenHamburger}
                 activeDropdown={activeDropdown}
                 setActiveDropdown={setActiveDropdown}
                 i18n={i18n}
