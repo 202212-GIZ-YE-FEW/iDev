@@ -12,6 +12,7 @@ function Dropdown(prop) {
         item,
         setActiveDropdown,
         activeDropdown,
+        setOpenHamburger,
         i18n,
         to = "/",
         t = null,
@@ -45,6 +46,9 @@ function Dropdown(prop) {
                                   locale={link.locale}
                                   onClick={() => {
                                       document.dir = link.dir;
+                                      setOpenHamburger(
+                                          (prevState) => !prevState
+                                      );
                                       i18n.changeLanguage(link.locale);
                                   }}
                               >
@@ -65,6 +69,11 @@ function Dropdown(prop) {
                                   <Link
                                       key={link.name}
                                       href={link.href}
+                                      onClick={() => {
+                                          setOpenHamburger(
+                                              (prevState) => !prevState
+                                          );
+                                      }}
                                       className='block px-4 py-3 mx-2 rounded-md text-sm md:text:lg text-gray font-medium capitalize transition-colors duration-300 transform hover:bg-cyan'
                                   >
                                       {t(`${link.name}`)}

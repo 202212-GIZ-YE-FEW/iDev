@@ -44,7 +44,7 @@ exports[`renders correctly 1`] = `
       className="w-8/12 justify-end flex items-center"
     >
       <div
-        className="flex relative z-20 order-last w-8 h-5 flex-col justify-between items-center lg:hidden"
+        className="flex relative z-20 cursor-pointer order-last w-8 h-5 flex-col justify-between items-center lg:hidden"
         onClick={[Function]}
       >
         <span

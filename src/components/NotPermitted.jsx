@@ -11,7 +11,7 @@ function NotPermitted({ t }) {
                 title={t("seemYouAreNotPermitted")}
                 text={t("permittedDesc")}
                 buttonText={t("login")}
-                buttonLink='/'
+                buttonLink='/login'
                 image={_403SVG}
                 alt='403 image'
             />
