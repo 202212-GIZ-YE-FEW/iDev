@@ -15,7 +15,7 @@ exports[`renders correctly 1`] = `
     onLoad={[Function]}
     src="/home/undefined.svg"
     style={
-      Object {
+      {
         "color": "transparent",
       }
     }

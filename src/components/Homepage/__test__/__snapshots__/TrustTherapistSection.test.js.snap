@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
     src="/_next/image?url=%2Ftrust_therapists.png&w=1200&q=75"
     srcSet="/_next/image?url=%2Ftrust_therapists.png&w=640&q=75 1x, /_next/image?url=%2Ftrust_therapists.png&w=1200&q=75 2x"
     style={
-      Object {
+      {
         "color": "transparent",
       }
     }

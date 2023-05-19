@@ -30,7 +30,7 @@ exports[`renders correctly 1`] = `
         onLoad={[Function]}
         src="/home/voice.svg"
         style={
-          Object {
+          {
             "color": "transparent",
           }
         }
@@ -61,7 +61,7 @@ exports[`renders correctly 1`] = `
         onLoad={[Function]}
         src="/home/chat.svg"
         style={
-          Object {
+          {
             "color": "transparent",
           }
         }
@@ -92,7 +92,7 @@ exports[`renders correctly 1`] = `
         onLoad={[Function]}
         src="/home/video.svg"
         style={
-          Object {
+          {
             "color": "transparent",
           }
         }

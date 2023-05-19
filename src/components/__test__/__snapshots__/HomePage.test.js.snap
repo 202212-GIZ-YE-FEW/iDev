@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-Array [
+[
   <header
     className="min-w-[96vw] bg-cover"
     style={
-      Object {
+      {
         "backgroundImage": "url(/header.png)",
         "minHeight": "calc(100vh - 5rem)",
       }
@@ -64,7 +64,7 @@ Array [
           src="/_next/image?url=%2Fhero.png&w=1080&q=75"
           srcSet="/_next/image?url=%2Fhero.png&w=640&q=75 1x, /_next/image?url=%2Fhero.png&w=1080&q=75 2x"
           style={
-            Object {
+            {
               "color": "transparent",
             }
           }
@@ -99,7 +99,7 @@ Array [
         src="/_next/image?url=%2Ftrust_therapists.png&w=1200&q=75"
         srcSet="/_next/image?url=%2Ftrust_therapists.png&w=640&q=75 1x, /_next/image?url=%2Ftrust_therapists.png&w=1200&q=75 2x"
         style={
-          Object {
+          {
             "color": "transparent",
           }
         }
@@ -165,7 +165,7 @@ Array [
             onLoad={[Function]}
             src="/home/voice.svg"
             style={
-              Object {
+              {
                 "color": "transparent",
               }
             }
@@ -196,7 +196,7 @@ Array [
             onLoad={[Function]}
             src="/home/chat.svg"
             style={
-              Object {
+              {
                 "color": "transparent",
               }
             }
@@ -227,7 +227,7 @@ Array [
             onLoad={[Function]}
             src="/home/video.svg"
             style={
-              Object {
+              {
                 "color": "transparent",
               }
             }
@@ -273,7 +273,7 @@ Array [
           onTouchMove={[Function]}
           onTouchStart={[Function]}
           style={
-            Object {
+            {
               "overflow": "unset",
               "transform": "translate3d(0px,0,0)",
               "transition": "none",

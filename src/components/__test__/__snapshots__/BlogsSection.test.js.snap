@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
       onTouchMove={[Function]}
       onTouchStart={[Function]}
       style={
-        Object {
+        {
           "overflow": "unset",
           "transform": "translate3d(0px,0,0)",
           "transition": "none",
