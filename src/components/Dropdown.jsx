@@ -12,7 +12,7 @@ function Dropdown(prop) {
         item,
         setActiveDropdown,
         activeDropdown,
-        setOpenHamburger,
+        setOpenHamburger = () => {},
         i18n,
         to = "/",
         t = null,

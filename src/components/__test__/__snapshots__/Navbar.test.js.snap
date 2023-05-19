@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
           onLoad={[Function]}
           src="/logo.svg"
           style={
-            Object {
+            {
               "color": "transparent",
             }
           }
@@ -82,7 +82,7 @@ exports[`renders correctly 1`] = `
               stroke="currentColor"
               strokeWidth="0"
               style={
-                Object {
+                {
                   "color": undefined,
                 }
               }
@@ -142,7 +142,7 @@ exports[`renders correctly 1`] = `
               stroke="currentColor"
               strokeWidth="0"
               style={
-                Object {
+                {
                   "color": undefined,
                 }
               }
@@ -208,7 +208,7 @@ exports[`renders correctly 1`] = `
             onLoad={[Function]}
             src="/logo.svg"
             style={
-              Object {
+              {
                 "color": "transparent",
               }
             }
@@ -247,7 +247,7 @@ exports[`renders correctly 1`] = `
             stroke="currentColor"
             strokeWidth="0"
             style={
-              Object {
+              {
                 "color": undefined,
               }
             }
@@ -310,7 +310,7 @@ exports[`renders correctly 1`] = `
               stroke="currentColor"
               strokeWidth="0"
               style={
-                Object {
+                {
                   "color": undefined,
                 }
               }

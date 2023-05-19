@@ -16,7 +16,7 @@ exports[`renders correctly 1`] = `
     src="/_next/image?url=%2Fimg.jpg&w=640&q=75"
     srcSet="/_next/image?url=%2Fimg.jpg&w=384&q=75 1x, /_next/image?url=%2Fimg.jpg&w=640&q=75 2x"
     style={
-      Object {
+      {
         "color": "transparent",
       }
     }
@@ -38,7 +38,7 @@ exports[`renders correctly 1`] = `
       src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
       srcSet="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
       style={
-        Object {
+        {
           "color": "transparent",
         }
       }

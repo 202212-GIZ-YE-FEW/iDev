@@ -22,7 +22,7 @@ exports[`renders correctly 1`] = `
         onLoad={[Function]}
         src="/signup.svg"
         style={
-          Object {
+          {
             "color": "transparent",
           }
         }

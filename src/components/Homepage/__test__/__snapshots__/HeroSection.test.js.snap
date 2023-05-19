@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <header
   className="min-w-[96vw] bg-cover"
   style={
-    Object {
+    {
       "backgroundImage": "url(/header.png)",
       "minHeight": "calc(100vh - 5rem)",
     }
@@ -63,7 +63,7 @@ exports[`renders correctly 1`] = `
         src="/_next/image?url=%2Fhero.png&w=1080&q=75"
         srcSet="/_next/image?url=%2Fhero.png&w=640&q=75 1x, /_next/image?url=%2Fhero.png&w=1080&q=75 2x"
         style={
-          Object {
+          {
             "color": "transparent",
           }
         }
