@@ -37,7 +37,7 @@ function Team({ t }) {
             job: "Full Stack Developer",
             photo: Abrar,
             github: "Abrar-Abdulwahed",
-            linkedin: "abrar-alkhorasani-b31472240/",
+            linkedin: "abraralkhorasani",
         },
         {
             id: 3,
