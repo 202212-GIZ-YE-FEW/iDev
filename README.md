@@ -67,11 +67,9 @@ Use the following command to run the project in development mode
 
 ## 🚀 Live Demo
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8f7034b6-9a78-4634-bbe0-8ad0611dd6c7/deploy-status)](https://app.netlify.com/sites/therapistidev/deploys)
+![Vercel Status](https://therealsujitk-vercel-badge.vercel.app/?app=idev-therapist.vercel.app)
 
-![Netlify Badge](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
-
-Deployed on Netlify: [iDev Therapist](https://therapistidev.netlify.app/)
+Deployed on Vercel: [iDev Therapist](https://idev-therapist.vercel.app/)
 
 ## 🌵 Branches
 
